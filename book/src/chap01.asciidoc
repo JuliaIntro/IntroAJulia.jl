@@ -75,7 +75,7 @@ Este ((("declaración de impresión", "función println"))) ((("salida", "declar
 
 Las comillas en el programa marcan el principio y el final del texto que se mostrará; no aparecen en el resultado.
 
-Los paréntesis indican que +printl+ es una función. Estudiaremos funciones en <<chap03>>.
+Los paréntesis indican que +printl+ es una función. Se estudiarán funciones en <<chap03>>.
 
 
 === Operadores aritméticos
