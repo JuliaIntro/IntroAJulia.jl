@@ -125,9 +125,9 @@ Si ((("" typeof function "))) no está seguro de qué tipo tiene un valor, el RE
 julia> typeof (2)
 Int64
 julia> typeof (42.0)
-Flotador64
+Float64
 julia> typeof ("¡Hola, mundo!")
-Cuerda
+String
 ----
 
 Los enteros pertenecen al tipo + Int64 +, las cadenas pertenecen a + String + y los números de punto flotante pertenecen a + Float64 +.
@@ -137,9 +137,9 @@ Qué ((("comillas (& quot; & # x2026; & quot;)", "cadenas de inclusión"))) ((((
 [fuente, @ julia-repl-test]
 ----
 julia> typeof ("2")
-Cuerda
+String
 julia> typeof ("42.0")
-Cuerda
+String
 ----
 
 When ((("coma ($$, $$)", "no usar en enteros"))) ((("$$, $$ (coma)", "no usar en enteros", primary-sortas = " * coma "))) si escribe un número entero grande, podría verse tentado a usar comas entre grupos de dígitos, como en +1,000,000+. Este no es un _integer_ legal en Julia, pero es legal:
@@ -243,7 +243,7 @@ Un tipo ((("tipo entero (Int64)"))) que representa números enteros.
 punto flotante::
 Un tipo ((("tipo de punto flotante (Float64)"))) que representa números con un punto decimal.
 
-cuerda::
+string::
 Un tipo (((("cadenas"))) que representa secuencias de caracteres.
 
 lenguaje natural::
