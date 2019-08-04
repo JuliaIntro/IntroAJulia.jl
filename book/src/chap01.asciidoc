@@ -1,13 +1,11 @@
 [role = "pagenumrestart"]
 [[chap01]]
 == El camino del programa
+El objetivo de ((("informáticos, habilidades de", seealso = "programación"))) este libro es enseñarte a pensar como un informático. Esta manera de pensar combina los mejores elementos de las matemáticas, la ingeniería y las ciencias naturales. Los informáticos, al igual que los matemáticos, usan lenguajes formales para denotar ideas (específicamente cálculos). También diseñan cosas; ensamblan componentes para formar sistemas, y evalúan los costos y beneficios entre alternativas, tal como los ingenieros. Además, observan el comportamiento de sistemas complejos, forman hipótesis y prueban predicciones, como los científicos.
 
-El objetivo de ((("informáticos, habilidades de", seealso = "programación"))) de este libro es enseñarle a pensar como un informático. Esta forma de pensar combina algunas de las mejores características de las matemáticas, la ingeniería y las ciencias naturales. Al igual que los matemáticos, los informáticos usan lenguajes formales para denotar ideas (específicamente cálculos). Al igual que los ingenieros, diseñan cosas, ensamblan componentes en sistemas y evalúan las compensaciones entre alternativas. Como los científicos, observan el comportamiento de sistemas complejos, forman hipótesis y prueban predicciones.
+La ((("" resolución de problemas "))) habilidad más importante para un informático es la resolución de problemas. Esto implica ser capaz de formular problemas, pensar soluciones de manera creativa y poder expresar una solución clara y precisa. Como resultado, el proceso de aprender a programar es una excelente oportunidad para practicar habilidades de resolución de problemas. Es por ello que este capítulo se llama "El camino del programa".
 
-La ((("" resolución de problemas "))) la habilidad más importante para un informático es la resolución de problemas. La resolución de problemas significa la capacidad de formular problemas, pensar creativamente sobre soluciones y expresar una solución clara y precisa. Como resultado, el proceso de aprender a programar es una excelente oportunidad para practicar habilidades de resolución de problemas. Es por eso que este capítulo se llama "El camino del programa".
-
-En un nivel, aprenderás a programar, una habilidad útil por sí misma. En otro nivel, utilizará la programación como un medio para un fin. A medida que avanzamos, ese final se hará más claro.
-
+Por una parte, aprenderás a programar, lo cual es beneficioso por si solo. Por otra, la programación se constituirá como un medio para un fin. A medida que avancemos, este final se hará más claro.
 
 === ¿Qué es un programa?
 
