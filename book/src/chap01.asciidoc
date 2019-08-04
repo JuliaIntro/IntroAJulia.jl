@@ -36,7 +36,7 @@ Para evitar ese problema, le recomiendo que comience a ejecutar julia en un nave
 
 En ((("JuliaBox"))) ((("recursos en línea", "JuliaBox"))) el navegador, puede ejecutar Julia en https://www.juliabox.com [JuliaBox]. No se requiere instalación: simplemente abra su navegador y entre a la página de JuliaBox, inicie sesión y comience a programar (consulte <<juliabox>>).
 
-Julia _REPL_ (Read – Eval – Print Loop) ((("REPL (Read-Eval-Print Loop)"))) es un programa que lee y ejecuta el código de Julia. Puede iniciar REPL abriendo un terminal en JuliaBox y escribiendo *+julia+* en la línea de comando. Cuando comienza, debería ver una salida como esta:
+Julia _REPL_ (Read – Eval – Print Loop) ((("REPL (Read-Eval-Print Loop)"))) es un programa que lee y ejecuta código de Julia. Puede iniciar REPL abriendo un terminal en JuliaBox y escribiendo *+julia+* en la línea de comando. Cuando comienza, debería ver una salida como esta:
 
 [fuente, @ julia-eval]
 ----
