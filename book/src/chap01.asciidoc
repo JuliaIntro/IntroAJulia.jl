@@ -1,319 +1,319 @@
-[role="pagenumrestart"]
+[role = "pagenumrestart"]
 [[chap01]]
-== The Way of the Program
+== El camino del programa
 
-The ((("computer scientists, skills of", seealso="programming")))goal of this book is to teach you to think like a computer scientist. This way of thinking combines some of the best features of mathematics, engineering, and natural science. Like mathematicians, computer scientists use formal languages to denote ideas (specifically computations). Like engineers, they design things, assembling components into systems and evaluating trade-offs among alternatives. Like scientists, they observe the behavior of complex systems, form hypotheses, and test predictions.
+El objetivo de ((("informáticos, habilidades de", seealso = "programación"))) de este libro es enseñarle a pensar como un informático. Esta forma de pensar combina algunas de las mejores características de las matemáticas, la ingeniería y las ciencias naturales. Al igual que los matemáticos, los informáticos usan lenguajes formales para denotar ideas (específicamente cálculos). Al igual que los ingenieros, diseñan cosas, ensamblan componentes en sistemas y evalúan las compensaciones entre alternativas. Como los científicos, observan el comportamiento de sistemas complejos, forman hipótesis y prueban predicciones.
 
-The ((("problem solving")))single most important skill for a computer scientist is _problem solving_. Problem solving means the ability to formulate problems, think creatively about solutions, and express a solution clearly and accurately. As it turns out, the process of learning to program is an excellent opportunity to practice problem-solving skills. That’s why this chapter is called “The Way of the Program.”
+La ((("" resolución de problemas "))) la habilidad más importante para un informático es la resolución de problemas. La resolución de problemas significa la capacidad de formular problemas, pensar creativamente sobre soluciones y expresar una solución clara y precisa. Como resultado, el proceso de aprender a programar es una excelente oportunidad para practicar habilidades de resolución de problemas. Es por eso que este capítulo se llama "El camino del programa".
 
-On one level, you will be learning to program, a useful skill by itself. On another level, you will use programming as a means to an end. As we go along, that end will become clearer.
-
-
-=== What Is a Program?
-
-A _program_ ((("programs")))is a sequence of instructions that specifies how to perform a computation. The computation might be something mathematical, such as solving a system of equations or finding the roots of a polynomial, but it can also be a symbolic computation, such as searching for and replacing text in a document, or something graphical, like processing an image or playing a video.
-
-The ((("instructions", seealso="statements")))details look different in different languages, but a few basic instructions appear in just about every language:
-
-Input::
-Get data from the keyboard, a file, the network, or some other device.
-
-Output::
-Display data on the screen, save it in a file, send it over the network, etc.
-
-Math::
-Perform basic mathematical operations like addition and multiplication.
-
-Conditional execution::
-Check for certain conditions and run the appropriate code.
-
-Repetition::
-Perform ((("repetition", see="iteration")))some action repeatedly, usually with some variation.
-
-Believe it or not, that’s pretty much all there is to it. Every program you’ve ever used, no matter how complicated, is made up of instructions that look pretty much like these. So you can think of programming as the process of breaking a large, complex task into smaller and smaller subtasks until the subtasks are simple enough to be performed with one of these basic instructions.
+En un nivel, aprenderás a programar, una habilidad útil por sí misma. En otro nivel, utilizará la programación como un medio para un fin. A medida que avanzamos, ese final se hará más claro.
 
 
-=== Running Julia
+=== ¿Qué es un programa?
 
-One ((("Julia", "running")))of the challenges of getting started with Julia is that you might have to install it and related software on your computer. If you are familiar with your operating system, and especially if you are comfortable with the command-line interface, you will have no trouble installing Julia. But for beginners, it can be painful to learn about system administration and programming at the same time.
+Un _programa_ ((("programas")) es una secuencia de instrucciones que especifica cómo realizar un cálculo. El cálculo puede ser algo matemático, como resolver un sistema de ecuaciones o encontrar las raíces de un polinomio, pero también puede ser un cálculo simbólico, como buscar y reemplazar texto en un documento, o algo gráfico, como procesar una imagen o reproduciendo un video.
 
-To avoid that problem, I recommend that you start out running Julia in a browser. Later, when you are comfortable with Julia, I’ll make suggestions for installing Julia on your computer.
+Los detalles de ((("instrucciones", seealso = "declaraciones"))) se ven diferentes en diferentes idiomas, pero aparecen algunas instrucciones básicas en casi todos los idiomas:
 
-In ((("JuliaBox")))((("online resources", "JuliaBox")))the browser, you can run Julia on https://www.juliabox.com[JuliaBox]. No installation is required—just point your browser there, log in, and start computing (see <<juliabox>>).
+Entrada::
+Obtenga datos del teclado, un archivo, la red o algún otro dispositivo.
 
-The Julia _REPL_ (Read–Eval–Print Loop) ((("REPL (Read-Eval-Print Loop)")))is a program that reads and executes Julia code. You can start the REPL by opening a terminal on JuliaBox and typing *+julia+* on the command line. When it starts, you should see output like this:
+Salida::
+Visualice datos en la pantalla, guárdelos en un archivo, envíelos a través de la red, etc.
 
-[source,@julia-eval]
+Mates::
+Realizar operaciones matemáticas básicas como la suma y la multiplicación.
+
+Ejecución condicional ::
+Verifique ciertas condiciones y ejecute el código apropiado.
+
+Repetición::
+Realice ((("repetición", vea = "iteración"))) alguna acción repetidamente, generalmente con alguna variación.
+
+Lo creas o no, eso es todo lo que hay que hacer. Todos los programas que ha usado, sin importar cuán complicado, se componen de instrucciones que se parecen bastante a estas. Por lo tanto, puede pensar en la programación como el proceso de dividir una tarea grande y compleja en subtareas cada vez más pequeñas hasta que las subtareas sean lo suficientemente simples como para realizarse con una de estas instrucciones básicas.
+
+
+=== Corriendo Julia
+
+Uno ((("Julia", "en ejecución"))) de los desafíos de comenzar con Julia es que es posible que deba instalarlo y el software relacionado en su computadora. Si está familiarizado con su sistema operativo, y especialmente si se siente cómodo con la interfaz de línea de comandos, no tendrá problemas para instalar Julia. Pero para los principiantes, puede ser doloroso aprender sobre la administración y programación del sistema al mismo tiempo.
+
+Para evitar ese problema, le recomiendo que comience a ejecutar Julia en un navegador. Más tarde, cuando se sienta cómodo con Julia, le haré sugerencias para instalar Julia en su computadora.
+
+En ((("JuliaBox"))) ((("recursos en línea", "JuliaBox"))) el navegador, puede ejecutar Julia en https://www.juliabox.com [JuliaBox]. No se requiere instalación: simplemente apunte su navegador allí, inicie sesión y comience a computar (consulte <<juliabox>>).
+
+Julia _REPL_ (Read – Eval – Print Loop) ((("REPL (Read-Eval-Print Loop)"))) es un programa que lee y ejecuta el código de Julia. Puede iniciar REPL abriendo un terminal en JuliaBox y escribiendo * + julia + * en la línea de comando. Cuando comienza, debería ver una salida como esta:
+
+[fuente, @ julia-eval]
 ----
-io = IOBuffer()
-Base.banner(io)
-banner = String(take!(io))
-println("$(banner)julia>")
+io = IOBuffer ()
+Base.banner (io)
+banner = String (tomar! (io))
+println ("$ (banner) julia>")
 ----
 
-The first lines contain information about the REPL, so it might be different for you. But you should check that the version number is at least +1.0.0+.
+Las primeras líneas contienen información sobre el REPL, por lo que puede ser diferente para usted. Pero debe verificar que el número de versión sea al menos +1.0.0+.
 
-The ((("prompt", "in REPL", secondary-sortas="REPL")))last line is a _prompt_ that indicates that the REPL is ready for you to enter code. If you type a line of code and hit Enter, the REPL displays the result:
+La ((("solicitud", "en REPL", secundaria-sortas = "REPL"))) última línea es un _prompt_ que indica que REPL está listo para que usted ingrese el código. Si escribe una línea de código y presiona Enter, REPL muestra el resultado:
 
-[source,@julia-repl-test]
+[fuente, @ julia-repl-test]
 ----
 julia> 1 + 1
 2
 ----
 
-Code snippets can be copied and pasted verbatim, including the +julia>+ prompt and any output.
+Los fragmentos de código se pueden copiar y pegar textualmente, incluido el indicador + julia> + y cualquier salida.
 
-Now you’re ready to get started. From here on, I assume that you know how to start the Julia REPL and run code.
+Ahora estás listo para comenzar. De aquí en adelante, supongo que sabe cómo iniciar Julia REPL y ejecutar el código.
 
 
-=== The First Program
+=== El primer programa
 
-Traditionally, the first program you write in a new language is called “Hello, World!” because all it does is display the words “Hello, World!” In Julia, it looks like this:
+Tradicionalmente, el primer programa que escribe en un nuevo idioma se llama "¡Hola, mundo!" Porque todo lo que hace es mostrar las palabras "¡Hola, mundo!" En Julia, se ve así:
 
-[source,@julia-repl-test]
+[fuente, @ julia-repl-test]
 ----
-julia> println("Hello, World!")
-Hello, World!
+julia> println ("¡Hola, mundo!")
+¡Hola Mundo!
 ----
 
-This ((("print statement", "println function")))((("output", "print statement")))is an example of a _print statement_, although it doesn’t actually print anything on paper. It displays a result on the screen.
+Este ((("declaración de impresión", "función println"))) ((("salida", "declaración de impresión"))) es un ejemplo de una _impresión de impresión_, aunque en realidad no imprime nada en papel. Muestra un resultado en la pantalla.
 
 
-The quotation marks in the program mark the beginning and end of the text to be displayed; they don’t appear in the result.
+Las comillas en el programa marcan el principio y el final del texto que se mostrará; no aparecen en el resultado.
 
-The parentheses indicate that +println+ is a function. We’ll get to functions in <<chap03>>.
+Los paréntesis indican que + println + es una función. Llegaremos a las funciones en <<chap03>>.
 
 
-=== Arithmetic Operators
+=== Operadores aritméticos
 
-After((("operators", "arithmetic")))((("arithmetic operators")))((("mathematics", "arithmetic operators"))) “Hello, World!” the next step is arithmetic. Julia ((("operators")))provides _operators_, which are symbols that represent computations like addition and multiplication.
+Después de ((("operadores", "aritmética"))) (((("operadores aritméticos"))) ((("matemáticas", "operadores aritméticos"))) "¡Hola, Mundo!", El siguiente paso es la aritmética. Julia ((("operadores"))) proporciona _operadores_, que son símbolos que representan cálculos como la suma y la multiplicación.
 
-The ((("$$+$$ (addition operator)", primary-sortas="* addition")))((("addition operator ($$+$$)")))((("$$-$$ (subtraction operator)", primary-sortas="* subtraction")))((("subtraction operator ($$-$$)")))((("$$*$$ (asterisk)", "multiplication operator", primary-sortas="* asterisk")))((("multiplication operator ($$*$$)")))((("asterisk ($$*$$)", "multiplication operator")))operators +pass:[+]+, +-+, and +*+ perform addition, subtraction, and multiplication, as in the following examples:
+El ((("$$ + $$ (operador de suma)", primary-sortas = "* suma"))) ((("operador de suma ($$ + $$)"))) (((($$ - $$ (operador de resta) ", primary-sortas =" * subtraction "))) (((" operador de resta ($$ - $$) "))) (((" $$ * $$ (asterisco) " , "operador de multiplicación", primario-sortas = "* asterisco"))) ((("operador de multiplicación ($$ * $$)"))) ((("asterisco ($$ * $$)", "multiplicación operator "))) operadores + pass: [+] +, + - + y + * + realizan sumas, restas y multiplicaciones, como en los siguientes ejemplos:
 
-[source,@julia-repl-test]
+[fuente, @ julia-repl-test]
 ----
 julia> 40 + 2
 42
-julia> 43 - 1
+julia> 43-1
 42
 julia> 6 * 7
 42
 ----
 
-The ((("$$/$$ (division operator)", primary-sortas="* division")))((("division", "division operator ($$/$$)")))operator +/+ performs division:
+El operador ((("$$ / $$ (operador de división)", primary-sortas = "* division"))) ((("division", "operador de división ($$ / $$)"))) + / + realiza la división:
 
-[source,@julia-repl-test]
+[fuente, @ julia-repl-test]
 ----
-julia> 84 / 2
-42.0
+julia> 84/2
+42,0
 ----
 
-You might wonder why the result is +42.0+ instead of +42+. I’ll explain in the next section.
+Quizás se pregunte por qué el resultado es +42.0+ en lugar de +42+. Lo explicaré en la siguiente sección.
 
-Finally, the ((("$$^$$ (caret)", "exponentiation operator", primary-sortas="* caret")))((("exponentiation operator ($$^$$)")))((("caret ($$^$$)", "exponentiation operator")))operator +^+ performs exponentiation; that is, it raises a number to a power:
+Finalmente, el ((("$$ ^ $$ (caret)", "operador de exponenciación", primary-sortas = "* caret"))) ((("operador de exponenciación ($$ ^ $$)"))) ((("caret ($$ ^ $$)", "operador de exponenciación"))) operador + ^ + realiza exponenciación; es decir, eleva un número a una potencia:
 
-[source,@julia-repl-test]
+[fuente, @ julia-repl-test]
 ----
-julia> 6^2 + 6
+julia> 6 ^ 2 + 6
 42
 ----
 
-=== Values and Types
+=== Valores y tipos
 
-A _value_ ((("values")))is one of the basic things a program works with, like a letter or a number. Some values we have seen so far are +2+, +42.0+, and +"Hello, World!"+.
+Un _valor_ ((("valores"))) es una de las cosas básicas con las que trabaja un programa, como una letra o un número. Algunos valores que hemos visto hasta ahora son +2+, +42.0+ y + "Hello, World!" +.
 
-These ((("types")))((("data types", see="types")))((("integer type (Int64)")))((("floating-point type (Float64)")))((("strings")))((("types", "Int64", see="integer type")))((("types", "Float64", see="floating-point type")))((("types", "String", see="strings")))values belong to different _types_: +2+ is an _integer_, +42.0+ is a _floating-point number_, and +"Hello, World!"+ is a _string_, so called because the letters it contains are strung together.
+Estos ((("tipos"))) ((("tipos de datos", ver = "tipos"))) ((("tipo entero (Int64)"))) ((("tipo de punto flotante (Float64) "))) (((" strings "))) (((" types "," Int64 ", see =" integer type "))) (((" types "," Float64 ", see =" coma flotante type "))) (((" types "," String ", see =" strings "))) los valores pertenecen a diferentes _types_: +2+ es un _integer_, +42.0+ es un _ número de punto flotante_, y +" Hola, Mundo! "+ Es una _cadena_, llamada así porque las letras que contiene están unidas.
 
-If ((("typeof function")))you are not sure what type a value has, the REPL can tell you:
+Si ((("" typeof function "))) no está seguro de qué tipo tiene un valor, el REPL puede decirle:
 
-[source,@julia-repl-test]
+[fuente, @ julia-repl-test]
 ----
-julia> typeof(2)
+julia> typeof (2)
 Int64
-julia> typeof(42.0)
-Float64
-julia> typeof("Hello, World!")
-String
+julia> typeof (42.0)
+Flotador64
+julia> typeof ("¡Hola, mundo!")
+Cuerda
 ----
 
-Integers belong to the type +Int64+, strings belong to +String+, and floating-point numbers belong to +Float64+.
+Los enteros pertenecen al tipo + Int64 +, las cadenas pertenecen a + String + y los números de punto flotante pertenecen a + Float64 +.
 
-What ((("quotation marks (&quot;&#x2026;&quot;)", "enclosing strings")))((("&quot;&#x2026;&quot; (quotation marks)", "enclosing strings", primary-sortas="* quotation marks")))about values like +"2"+ and +"42.0"+? They look like numbers, but they are in quotation marks like strings. These are strings too:
+Qué ((("comillas (& quot; & # x2026; & quot;)", "cadenas de inclusión"))) (((("" "& # x2026; & quot; (comillas)", "cadenas de inclusión", primaria -sortas = "* comillas"))) sobre valores como + "2" + y + "42.0" +? Parecen números, pero están entre comillas como cadenas. Estas también son cadenas:
 
-[source,@julia-repl-test]
+[fuente, @ julia-repl-test]
 ----
-julia> typeof("2")
-String
-julia> typeof("42.0")
-String
+julia> typeof ("2")
+Cuerda
+julia> typeof ("42.0")
+Cuerda
 ----
 
-When ((("comma ($$,$$)", "not using in integers")))((("$$,$$ (comma)", "not using in integers", primary-sortas="* comma")))you type a large integer, you might be tempted to use commas between groups of digits, as in +1,000,000+. This is not a legal _integer_ in Julia, but it is legal:
+When ((("coma ($$, $$)", "no usar en enteros"))) ((("$$, $$ (coma)", "no usar en enteros", primary-sortas = " * coma "))) si escribe un número entero grande, podría verse tentado a usar comas entre grupos de dígitos, como en +1,000,000+. Este no es un _integer_ legal en Julia, pero es legal:
 
-[source,@julia-repl-test]
+[fuente, @ julia-repl-test]
 ----
 julia> 1,000,000
 (1, 0, 0)
 ----
 
-That’s not what we expected at all! Julia parses +1,000,000+ as a comma-separated sequence of integers. We’ll learn more about this kind of sequence later.
+¡Eso no es lo que esperábamos! Julia analiza +1,000,000+ como una secuencia de enteros separados por comas. Aprenderemos más sobre este tipo de secuencia más adelante.
 
-You ((("underscore ($$_$$)", "in integers")))((("$$_$$ (underscore)", "in integers", primary-sortas="* underscore")))can get the expected result using +1_000_000+, however.
-
-
-=== Formal and Natural Languages
-
-_Natural languages_ ((("natural language", id="ch1nat", range="startofrange")))are the languages people speak, such as English, Spanish, and French. They were not designed by people (although people try to impose some order on them); they evolved naturally.
-
-_Formal languages_ ((("formal language", id="ch1nat2", range="startofrange")))are languages that are designed by people for specific applications. For example, the notation that mathematicians use is a formal language that is particularly good at denoting relationships among numbers and symbols. Chemists use a formal language to represent the chemical structure of molecules. And ((("programming language", id="ch1nat3", range="startofrange")))most importantly, programming languages are formal languages that have been designed to express computations.
-
-Formal ((("syntax", id="ch1nat4", range="startofrange")))languages tend to have strict _syntax_ rules that govern the structure of statements. For example, in mathematics the statement latexmath:[\(3 + 3 = 6\)] has correct syntax, but latexmath:[\(3 += 3 \$ 6\)] does not. In chemistry, latexmath:[\(\mathrm{H_2O}\)] is a syntactically correct formula, but latexmath:[\(\mathrm{_2Zz}\)] is not.
-
-Syntax ((("tokens", id="ch1nat5", range="startofrange")))((("structure", id="ch1nat6", range="startofrange")))rules come in two flavors, pertaining to _tokens_ and _structure_. Tokens are the basic elements of the language, such as words, numbers, and chemical elements. One of the problems with latexmath:[\(3 += 3 \$ 6\)] is that latexmath:[\(\$\)] is not a legal token in mathematics (at least as far as I know). Similarly, latexmath:[\(\mathrm{_2Zz}\)] is not legal because there is no element with the abbreviation latexmath:[\(\mathrm{Zz}\)].
-
-The second type of syntax rule pertains to the way tokens are combined. The equation latexmath:[\(3 += 3\)] is illegal because even though latexmath:[\(+\)] and latexmath:[\(=\)] are legal tokens, you can’t have one right after the other. Similarly, in a chemical formula the subscript comes after the element name, not before.
-
-This is @ well-structured Engli$h sentence with invalid t*kens in it. This sentence all valid tokens has, but invalid structure with.
-
-When ((("parsing")))you read a sentence in English or a statement in a formal language, you have to figure out the structure (although in a natural language you do this subconsciously). This process is called _parsing_.
-
-Although formal and natural languages have many features in common—tokens, structure, and syntax—there are some differences:
-
-Ambiguity::
-Natural languages are full of ambiguity, which people deal with by using contextual clues and other information. Formal languages are designed to be nearly or completely unambiguous, which means that any statement has exactly one meaning, regardless of context.
-
-Redundancy::
-In order to make up for ambiguity and reduce misunderstandings, natural languages employ lots of redundancy. As a result, they are often verbose. Formal languages are less redundant and more concise.
-
-Literalness::
-Natural languages are full of idiom and metaphor. If I say, “The penny dropped,” there is probably no penny and nothing dropping (this idiom means that someone understood something after a period of confusion). Formal languages mean exactly what they say.
-
-Because we all grow up speaking natural languages, it is sometimes hard to adjust to formal languages. The difference between formal and natural language is like the difference between poetry and prose, but more so:
-
-Poetry::
-Words are used for their sounds as well as for their meaning, and the whole poem together creates an effect or emotional response. Ambiguity is not only common but often deliberate.
-
-Prose::
-The literal meaning of words is more important, and the structure contributes more meaning. Prose is more amenable to analysis than poetry but still often ambiguous.
-
-Programs::
-The meaning of a computer program is unambiguous and literal, and can be understood entirely by analysis of the tokens and structure.
-
-Formal languages are more dense than natural languages, so it takes longer to read them. Also, the structure is important, so it is not always best to read from top to bottom, left to right. Instead, you'll learn to parse the program in your head, identifying the tokens and interpreting the structure. Finally, the details matter. Small errors in spelling and punctuation, which you can get away with in natural languages, can make a big difference in a formal (((range="endofrange", startref="ch1nat")))(((range="endofrange", startref="ch1nat2")))(((range="endofrange", startref="ch1nat3")))(((range="endofrange", startref="ch1nat4")))(((range="endofrange", startref="ch1nat5")))(((range="endofrange", startref="ch1nat6")))language.
+Usted ((("guión bajo ($$ _ $$)", "en enteros"))) ((("$$ _ $$ (guión bajo)", "en enteros", primario-sortas = "* guión bajo") )) puede obtener el resultado esperado usando + 1_000_000 +, sin embargo.
 
 
-=== Debugging
+=== Lenguas formales y naturales
 
-Programmers ((("errors (bugs)")))((("debugging", "emotions from, dealing with")))make mistakes. For whimsical reasons, programming errors are called _bugs_ and the process of tracking them down is called _debugging_.
+_Los idiomas naturales_ ((("lenguaje natural", id = "ch1nat", range = "startofrange"))) son los idiomas que las personas hablan, como inglés, español y francés. No fueron diseñados por personas (aunque las personas intentan imponerles algún orden); evolucionaron naturalmente.
 
-Programming, and especially debugging, sometimes brings out strong emotions. If you are struggling with a difficult bug, you might feel angry, despondent, or embarrassed.
+_Los idiomas formales_ ((("lenguaje formal", id = "ch1nat2", rango = "startofrange"))) son idiomas diseñados por personas para aplicaciones específicas. Por ejemplo, la notación que usan los matemáticos es un lenguaje formal que es particularmente bueno para denotar relaciones entre números y símbolos. Los químicos usan un lenguaje formal para representar la estructura química de las moléculas. Y ((("lenguaje de programación", id = "ch1nat3", rango = "startofrange"))) lo más importante, los lenguajes de programación son lenguajes formales que han sido diseñados para expresar cálculos.
 
-There is evidence that people naturally respond to computers as if they were people. When they work well, we think of them as teammates, and when they are obstinate or rude, we respond to them the same way we respond to rude, obstinate people.footnote:[Reeves, Byron, and Clifford Ivar Nass. 1996. “The Media Equation: How People Treat Computers, Television, and New Media Like Real People and Places.” Chicago, IL: Center for the Study of Language and Information; New York: Cambridge University Press.]
+Los lenguajes formales ((("sintaxis", id = "ch1nat4", rango = "startofrange"))) tienden a tener reglas estrictas de sintaxis que gobiernan la estructura de las declaraciones. Por ejemplo, en matemáticas, la declaración latexmath: [\ (3 + 3 = 6 \)] tiene la sintaxis correcta, pero latexmath: [\ (3 + = 3 \ $ 6 \)] no. En química, latexmath: [\ (\ mathrm {H_2O} \)] es una fórmula sintácticamente correcta, pero latexmath: [\ (\ mathrm {_2Zz} \)] no lo es.
 
-Preparing for these reactions might help you deal with them. One approach is to think of the computer as an employee with certain strengths, like speed and precision, and particular weaknesses, like lack of empathy and inability to grasp the big picture.
+Las reglas de sintaxis ((("tokens", id = "ch1nat5", range = "startofrange"))) ((("structure", id = "ch1nat6", range = "startofrange"))) vienen en dos tipos, correspondientes a _tokens_ y _estructura_. Los tokens son los elementos básicos del lenguaje, como palabras, números y elementos químicos. Uno de los problemas con latexmath: [\ (3 + = 3 \ $ 6 \)] es que latexmath: [\ (\ $ \)] no es un token legal en matemáticas (al menos hasta donde yo sé). Del mismo modo, latexmath: [\ (\ mathrm {_2Zz} \)] no es legal porque no hay ningún elemento con la abreviatura latexmath: [\ (\ mathrm {Zz} \)].
 
-Your job is to be a good manager: find ways to take advantage of the strengths and mitigate the weaknesses. And find ways to use your emotions to engage with the problem, without letting your reactions interfere with your ability to work effectively.
+El segundo tipo de regla de sintaxis se refiere a la forma en que se combinan los tokens. La ecuación latexmath: [\ (3 + = 3 \)] es ilegal porque aunque latexmath: [\ (+ \)] y latexmath: [\ (= \)] son ​​tokens legales, no puedes tener uno justo después el otro. Del mismo modo, en una fórmula química, el subíndice viene después del nombre del elemento, no antes.
 
-Learning to debug can be frustrating, but it is a valuable skill that is useful for many activities beyond programming. At the end of each chapter there is a section, like this one, with my suggestions for debugging. I hope they help!
+Esta es una oración engli $ h bien estructurada con t * kens no válidos. Esta oración tiene todos los tokens válidos, pero con una estructura no válida.
 
+Cuando ((("parsing"))) lee una oración en inglés o una declaración en un idioma formal, tiene que descubrir la estructura (aunque en un lenguaje natural lo hace inconscientemente). Este proceso se llama _parsing_.
 
-=== Glossary
+Aunque los lenguajes formales y naturales tienen muchas características en común (tokens, estructura y sintaxis), existen algunas diferencias:
 
-problem solving::
-The ((("problem solving")))process of formulating a problem, finding a solution, and expressing it.
+Ambigüedad::
+Los lenguajes naturales están llenos de ambigüedad, que las personas tratan mediante el uso de pistas contextuales y otra información. Los lenguajes formales están diseñados para ser casi o completamente inequívocos, lo que significa que cualquier declaración tiene exactamente un significado, independientemente del contexto.
 
-program::
-A ((("programs")))sequence of instructions that specifies a computation.
+Redundancia::
+Para compensar la ambigüedad y reducir los malentendidos, los lenguajes naturales emplean mucha redundancia. Como resultado, a menudo son verbosas. Los lenguajes formales son menos redundantes y más concisos.
 
-REPL::
-A ((("REPL (Read-Eval-Print Loop)")))program that repeatedly reads input, executes it, and outputs results.
+Literalidad ::
+Los lenguajes naturales están llenos de modismos y metáforas. Si digo: "Se cayó el centavo", probablemente no haya ni un centavo y nada se caiga (este modismo significa que alguien entendió algo después de un período de confusión). Los idiomas formales significan exactamente lo que dicen.
 
-prompt::
-Characters ((("prompt", "in REPL", secondary-sortas="REPL")))displayed by the REPL to indicate that it is ready to take input from the user.
+Debido a que todos crecemos hablando idiomas naturales, a veces es difícil adaptarse a los idiomas formales. La diferencia entre lenguaje formal y natural es como la diferencia entre poesía y prosa, pero más aún:
 
-print statement::
-An ((("print statement")))((("output", "print statement")))instruction that causes the Julia REPL to display a value on the screen.
+Poesía::
+Las palabras se usan para sus sonidos, así como para su significado, y todo el poema en conjunto crea un efecto o una respuesta emocional. La ambigüedad no solo es común sino a menudo deliberada.
 
-operator::
-A ((("operators")))symbol that represents a simple computation like addition, multiplication, or string concatenation.
+Prosa::
+El significado literal de las palabras es más importante, y la estructura aporta más significado. La prosa es más susceptible de análisis que la poesía, pero a menudo sigue siendo ambigua.
 
-value::
-One ((("values")))of the basic units of data, like a number or string, that a program manipulates.
+Programas ::
+El significado de un programa de computadora es inequívoco y literal, y puede entenderse por completo mediante el análisis de los tokens y la estructura.
 
-type::
-A ((("types")))category of values. The types we have seen so far are integers (+Int64+), floating-point numbers (+Float64+), and strings (+String+).
-
-integer::
-A ((("integer type (Int64)")))type that represents whole numbers.
-
-floating-point::
-A ((("floating-point type (Float64)")))type that represents numbers with a decimal point.
-
-string::
-A ((("strings")))type that represents sequences of characters.
-
-natural language::
-Any ((("natural language")))one of the languages that people speak that evolved naturally.
-
-formal language::
-Any ((("formal language")))one of the languages that people have designed for specific purposes, such as representing mathematical ideas or computer programs. All ((("programming language")))programming languages are formal languages.
-
-syntax::
-The ((("syntax")))rules that govern the structure of a program.
-
-token::
-One ((("tokens")))of the basic elements of the syntactic structure of a program, analogous to a word in a natural language.
-
-structure::
-The ((("structure")))way tokens are combined.
-
-parse::
-To ((("parsing")))examine a program and analyze the syntactic structure.
-
-bug::
-An ((("errors (bugs)", seealso="debugging")))((("bugs", see="errors")))error in a program.
-
-debugging::
-The ((("debugging", seealso="errors (bugs); testing")))process of finding and correcting bugs.
+Los idiomas formales son más densos que los naturales, por lo que lleva más tiempo leerlos. Además, la estructura es importante, por lo que no siempre es mejor leer de arriba a abajo, de izquierda a derecha. En cambio, aprenderá a analizar el programa en su cabeza, identificando los tokens e interpretando la estructura. Finalmente, los detalles importan. Pequeños errores de ortografía y puntuación, que puede salirse con la suya en los lenguajes naturales, pueden hacer una gran diferencia en un formato formal (((range = "endofrange", startref = "ch1nat"))) ((((range = "endofrange" , startref = "ch1nat2"))) ((((range = "endofrange", startref = "ch1nat3"))) (((range = "endofrange", startref = "ch1nat4"))) ((((range = "endofrange ", startref =" ch1nat5 "))) (((rango =" endofrange ", startref =" ch1nat6 "))) idioma.
 
 
-=== Exercises
+=== Depuración
 
-[TIP]
+Los programadores ((("errores (errores)"))) ((("depuración", "emociones de, tratar con"))) cometen errores. Por razones caprichosas, los errores de programación se denominan _bugs_ y el proceso para rastrearlos se denomina _debugging_.
+
+La programación, y especialmente la depuración, a veces provoca emociones fuertes. Si está luchando con un error difícil, puede sentirse enojado, abatido o avergonzado.
+
+Existe evidencia de que las personas responden naturalmente a las computadoras como si fueran personas. Cuando trabajan bien, los consideramos compañeros de equipo y cuando son obstinados o groseros, les respondemos de la misma manera que respondemos a personas groseras y obstinadas. Nota al pie: [Reeves, Byron y Clifford Ivar Nass. 1996. "La ecuación de los medios: cómo las personas tratan las computadoras, la televisión y los nuevos medios como personas y lugares reales". Chicago, IL: Centro para el estudio del lenguaje y la información; Nueva York: Cambridge University Press.]
+
+Prepararse para estas reacciones puede ayudarlo a lidiar con ellas. Un enfoque es pensar en la computadora como un empleado con ciertas fortalezas, como la velocidad y la precisión, y debilidades particulares, como la falta de empatía y la incapacidad para comprender el panorama general.
+
+Su trabajo es ser un buen gerente: encuentre formas de aprovechar las fortalezas y mitigar las debilidades. Y encuentre formas de usar sus emociones para involucrarse con el problema, sin dejar que sus reacciones interfieran con su capacidad para trabajar de manera efectiva.
+
+Aprender a depurar puede ser frustrante, pero es una habilidad valiosa que es útil para muchas actividades más allá de la programación. Al final de cada capítulo hay una sección, como esta, con mis sugerencias para la depuración. Espero que te ayuden!
+
+
+=== Glosario
+
+resolución de problemas ::
+El proceso ((("" resolución de problemas "))) de formular un problema, encontrar una solución y expresarla.
+
+programa::
+Una secuencia de instrucciones ((("programas"))) que especifica un cálculo.
+
+REPL ::
+Un programa ((("REPL (Read-Eval-Print Loop)"))) que lee repetidamente la entrada, la ejecuta y genera resultados.
+
+rápido::
+Caracteres ((("prompt", "en REPL", secundario-sortas = "REPL"))) mostrados por REPL para indicar que está listo para recibir información del usuario.
+
+declaración impresa ::
+Una instrucción ((("instrucción de impresión"))) ((("salida", "instrucción de impresión"))) que hace que Julia REPL muestre un valor en la pantalla.
+
+operador::
+Un símbolo ((("operadores"))) que representa un cálculo simple como la suma, la multiplicación o la concatenación de cadenas.
+
+valor::
+Una ((("valores"))) de las unidades básicas de datos, como un número o cadena, que manipula un programa.
+
+tipo::
+Una categoría de valores ((("tipos"))). Los tipos que hemos visto hasta ahora son enteros (+ Int64 +), números de coma flotante (+ Float64 +) y cadenas (+ String +).
+
+entero::
+Un tipo ((("tipo entero (Int64)"))) que representa números enteros.
+
+punto flotante::
+Un tipo ((("tipo de punto flotante (Float64)"))) que representa números con un punto decimal.
+
+cuerda::
+Un tipo (((("cadenas"))) que representa secuencias de caracteres.
+
+lenguaje natural::
+Cualquiera ((("lenguaje natural"))) uno de los idiomas que las personas hablan que evolucionó naturalmente.
+
+lenguaje formal::
+Cualquiera ((("lenguaje formal"))) uno de los idiomas que las personas han diseñado para fines específicos, como la representación de ideas matemáticas o programas de computadora. Todos los lenguajes de programación ((("lenguaje de programación"))) son lenguajes formales.
+
+sintaxis::
+Las reglas ((("sintaxis"))) que gobiernan la estructura de un programa.
+
+simbólico::
+Uno ((("tokens"))) de los elementos básicos de la estructura sintáctica de un programa, análogo a una palabra en un lenguaje natural.
+
+estructura::
+Los tokens de forma ((("estructura"))) se combinan.
+
+analizar gramaticalmente::
+Para ((("análisis"))) examinar un programa y analizar la estructura sintáctica.
+
+insecto::
+Un error ((("errores (errores)", seealso = "depuración"))) ((("errores", vea = "errores"))) en un programa.
+
+depuración ::
+El proceso ((("depuración", seealso = "errores (errores); prueba"))) de búsqueda y corrección de errores.
+
+
+=== Ejercicios
+
+[PROPINA]
 ====
-It is a good idea to read this book in front of a computer so you can try out the examples as you go.
+Es una buena idea leer este libro frente a una computadora para que pueda probar los ejemplos a medida que avanza.
 ====
 
 [[ex01-1]]
-===== Exercise 1-1
+===== Ejercicio 1-1
 
-Whenever you are experimenting with a new feature, you should try to make mistakes. For example, in the “Hello, World!” program, what happens if you leave out one of the quotation marks? What if you leave out both? What if you spell +println+ wrong?
+Siempre que esté experimentando con una nueva característica, debe intentar cometer errores. Por ejemplo, en el programa "¡Hola, Mundo!", ¿Qué sucede si omite una de las comillas? ¿Qué pasa si deja de lado a ambos? ¿Qué pasa si deletreas + println + mal?
 
-This kind of experiment helps you remember what you read; it also helps when you are programming, because you get to know what the error messages mean. It is better to make mistakes now and on purpose rather than later and accidentally.
+Este tipo de experimento te ayuda a recordar lo que lees; También ayuda cuando está programando, porque puede saber qué significan los mensajes de error. Es mejor cometer errores ahora y a propósito en lugar de más tarde y accidentalmente.
 
-. In a print statement, what happens if you leave out one of the parentheses, or both?
+. En una declaración impresa, ¿qué sucede si omite uno de los paréntesis, o ambos?
 
-. If you are trying to print a string, what happens if you leave out one of the quotation marks, or both?
+. Si está intentando imprimir una cadena, ¿qué sucede si omite una de las comillas, o ambas?
 
-. You can use a minus sign to make a negative number like +-2+. What happens if you put a plus sign before a number? What about +pass:[2++2]+?
+. Puede usar un signo menos para hacer un número negativo como + -2 +. ¿Qué sucede si pones un signo más antes de un número? ¿Qué pasa con + pass: [2 ++ 2] +?
 
-. In math notation, leading zeros are okay, as in +02+. What happens if you try this in Julia?
+. En notación matemática, los ceros iniciales están bien, como en +02+. ¿Qué pasa si intentas esto en Julia?
 
-. What happens if you have two values with no operator between them?
+. ¿Qué sucede si tiene dos valores sin operador entre ellos?
 
 
 [[ex01-2]]
-===== Exercise 1-2
+===== Ejercicio 1-2
 
-Start the Julia REPL and use it as a calculator.
+Inicie el Julia REPL y úselo como una calculadora.
 
-. How many seconds are there in 42 minutes 42 seconds?
+. ¿Cuántos segundos hay en 42 minutos y 42 segundos?
 
-. How many miles are there in 10 kilometers?
+. ¿Cuántas millas hay en 10 kilómetros?
 +
-[TIP]
+[PROPINA]
 ====
-There are 1.61 kilometers in a mile.
+Hay 1,61 kilómetros en una milla.
 ====
 
-. If you run a 10-kilometer race in 37 minutes 48 seconds, what is your average pace (time per mile in minutes and seconds)? What is your average speed in miles per hour?
+. Si corres una carrera de 10 kilómetros en 37 minutos y 48 segundos, ¿cuál es tu ritmo promedio (tiempo por milla en minutos y segundos)? ¿Cuál es su velocidad promedio en millas por hora?
