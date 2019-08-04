@@ -32,7 +32,7 @@ Lo creas o no, eso es todo lo que se debe hacer. Cada programa que ha usado, sin
 === Ejecutando Julia
 Uno de los desafíos para comenzar a utilizar Julia es que tendrá que instalarlo, además del software relacionado. Si está familiarizado con su sistema operativo, y se siente cómodo con la interfaz de línea de comandos, no tendrá problemas. Para los principiantes puede ser difícil aprender sobre administración del sistema y sobre programación al mismo tiempo.
 
-Para evitar ese problema, le recomiendo que comience a ejecutar julia en un navegador. Más tarde, cuando se sienta cómodo con Julia, se harán sugerencias para instalar Julia en su computadora.
+Para evitar ese problema, le recomiendo que comience a ejecutar julia en un navegador. Más tarde, cuando se sienta cómodo con Julia, se harán sugerencias para instalar Julia en la computadora.
 
 En ((("JuliaBox"))) ((("recursos en línea", "JuliaBox"))) el navegador, puede ejecutar Julia en https://www.juliabox.com [JuliaBox]. No se requiere instalación: simplemente abra su navegador y entre a la página de JuliaBox, inicie sesión y comience a programar (consulte <<juliabox>>).
 
