@@ -27,14 +27,14 @@ Se verifican ciertas condiciones y se ejecuta el código apropiado.
 Repetición::
 Se realiza ((("repetición", vea = "iteración"))) alguna acción repetidamente, generalmente con alguna variación.
 
-Lo creas o no, eso es todo lo que se debe hacer. Cada programa que ha usado, sin importar su complejidad, está construido en base a instrucciones que se parecen bastante a estas. De esta manera, la programación puede entenderse como el proceso de dividir una compleja y larga tarea en pequeñas subtareas, lo suficientemente simples como para realizarse con una de estas instrucciones básicas.
+Lo creas o no, eso es todo lo que se debe hacer. Cada programa que ha usado, sin importar su complejidad, está construido en base a instrucciones que se parecen bastante a estas. De esta manera, la programación puede entenderse como el proceso de dividir una tarea compleja y larga en pequeñas subtareas, lo suficientemente simples como para realizarse con una de estas instrucciones básicas.
 
 === Ejecutando Julia
 Uno de los desafíos para comenzar a utilizar Julia es que tendrá que instalarlo, además del software relacionado. Si está familiarizado con su sistema operativo, y se siente cómodo con la interfaz de línea de comandos, no tendrá problemas. Para los principiantes puede ser difícil aprender sobre administración de sistemas y sobre programación al mismo tiempo.
 
 Para evitar ese problema, le recomiendo que comience a ejecutar julia en un navegador. Más tarde, cuando se sienta cómodo con Julia, le haré sugerencias para instalar Julia en su computadora.
 
-En ((("JuliaBox"))) ((("recursos en línea", "JuliaBox"))) el navegador, puede ejecutar Julia en https://www.juliabox.com [JuliaBox]. No se requiere instalación: simplemente apunte su navegador allí, inicie sesión y comience a computar (consulte <<juliabox>>).
+En ((("JuliaBox"))) ((("recursos en línea", "JuliaBox"))) el navegador, puede ejecutar Julia en https://www.juliabox.com [JuliaBox]. No se requiere instalación: simplemente abra su navegador y entre a la página de JuliaBox, inicie sesión y comience a programar (consulte <<juliabox>>).
 
 Julia _REPL_ (Read – Eval – Print Loop) ((("REPL (Read-Eval-Print Loop)"))) es un programa que lee y ejecuta el código de Julia. Puede iniciar REPL abriendo un terminal en JuliaBox y escribiendo * + julia + * en la línea de comando. Cuando comienza, debería ver una salida como esta:
 
