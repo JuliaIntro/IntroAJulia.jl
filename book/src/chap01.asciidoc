@@ -272,23 +272,22 @@ El proceso ((("depuración", seealso = "errores (errores); prueba"))) de búsque
 
 [PROPINA]
 ====
-Es una buena idea leer este libro frente a una computadora para que pueda probar los ejemplos a medida que avanza.
+Es una buena idea leer este libro frente a un computador para que pueda hacer los ejemplos y ejercicios conforme avance.
 ====
 
 [[ex01-1]]
 ===== Ejercicio 1-1
+Siempre que esté experimentando con algo nuevo, debe intentar cometer errores. Por ejemplo, en el programa "¡Hola, Mundo!", ¿Qué sucede si omite una de las comillas? ¿Qué pasa si omite ambas? ¿Qué pasa si escribe +println+ mal?
 
-Siempre que esté experimentando con una nueva característica, debe intentar cometer errores. Por ejemplo, en el programa "¡Hola, Mundo!", ¿Qué sucede si omite una de las comillas? ¿Qué pasa si deja de lado a ambos? ¿Qué pasa si deletreas + println + mal?
+Este tipo de experimentos le ayuda a recordar lo que leyó; también le ayuda a programar, porque puede saber qué significan los mensajes de error. Es mejor cometer errores ahora y a propósito, en lugar de después y accidentalmente.
 
-Este tipo de experimento te ayuda a recordar lo que lees; También ayuda cuando está programando, porque puede saber qué significan los mensajes de error. Es mejor cometer errores ahora y a propósito en lugar de más tarde y accidentalmente.
+. En un comando print, ¿qué sucede si omite uno de los paréntesis, o ambos?
 
-. En una declaración impresa, ¿qué sucede si omite uno de los paréntesis, o ambos?
+. Si está intentando imprimir un _string_, ¿qué sucede si omite una de las comillas, o ambas?
 
-. Si está intentando imprimir una cadena, ¿qué sucede si omite una de las comillas, o ambas?
+. Se puede usar un signo menos para escribir un número negativo, como +-2+. ¿Qué sucede si pone un signo + antes de un número? ¿Qué pasa con +pass:[2++2]+?
 
-. Puede usar un signo menos para hacer un número negativo como + -2 +. ¿Qué sucede si pones un signo más antes de un número? ¿Qué pasa con + pass: [2 ++ 2] +?
-
-. En notación matemática, los ceros iniciales están bien, como en +02+. ¿Qué pasa si intentas esto en Julia?
+. En notación matemática, los ceros a la derecha no tienen implicancia, como 02. ¿Qué pasa si intenta esto en Julia?
 
 . ¿Qué sucede si tiene dos valores sin operador entre ellos?
 
