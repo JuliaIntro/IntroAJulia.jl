@@ -5,7 +5,7 @@ El objetivo de ((("informáticos, habilidades de", seealso = "programación"))) 
 
 La ((("" resolución de problemas "))) habilidad más importante para un informático es la resolución de problemas. Esto implica ser capaz de formular problemas, pensar soluciones de manera creativa y poder expresar una solución clara y precisa. Como resultado, el proceso de aprender a programar es una excelente oportunidad para practicar habilidades de resolución de problemas. Es por ello que este capítulo se llama "El camino para programar".
 
-Por una parte, aprenderás a programar, lo cual es beneficioso por si solo. Por otra, la programación se constituirá como un medio para un fin. A medida que avancemos este final se hará más claro.
+Por una parte, aprenderás a programar, lo cual es beneficioso por si solo. Por otra, la programación se constituirá como un medio para un fin. A medida que avancemos este fin se hará más claro.
 
 === ¿Qué es un programa?
 Un _programa_ ((("programas"))) es una secuencia de instrucciones que especifican cómo hacer un cálculo. El cálculo puede ser de naturaleza matemática; tal como resolver un sistema de ecuaciones, o encontrar las raíces de un polinomio, pero también puede ser un cálculo simbólico, como encontrar y reemplazar texto en un documento, o bien algo gráfico, tal como procesar una imagen o reproducir un video.
