@@ -30,7 +30,7 @@ Se realiza ((("repetición", vea = "iteración"))) alguna acción repetidamente,
 Aunque no lo creas, eso es todo lo que se debe hacer. Cada programa que has usado, sin importar su complejidad, está construido en base a instrucciones que se parecen bastante a estas. De esta manera, la programación puede entenderse como el proceso de dividir una tarea compleja y larga en pequeñas subtareas, lo suficientemente simples como para realizarse con una de estas instrucciones básicas.
 
 === Ejecutando Julia
-Uno de los desafíos para comenzar a utilizar Julia es su instalación, además del software relacionado. Si está familiarizado con su sistema operativo, y se siente cómodo con la interfaz de línea de comandos, no tendrá problemas. Para los principiantes puede ser difícil aprender sobre administración del sistema y sobre programación al mismo tiempo.
+Uno ((("Julia", "ejecutando"))) de los desafíos para comenzar a utilizar Julia es su instalación, además del software relacionado. Si está familiarizado con su sistema operativo, y se siente cómodo con la interfaz de línea de comandos, no tendrá problemas. Para los principiantes puede ser difícil aprender sobre administración del sistema y sobre programación al mismo tiempo.
 
 Para evitar ese problema, le recomiendo que comience a ejecutar julia en un navegador. Más tarde, cuando se sienta cómodo con Julia, se harán sugerencias para instalar Julia en su ordenador.
 
@@ -40,15 +40,15 @@ Julia _REPL_ (Read – Eval – Print Loop) ((("REPL (Read-Eval-Print Loop)"))) 
 
 [fuente, @ julia-eval]
 ----
-io = IOBuffer ()
-Base.banner (io)
-banner = String (tomar! (io))
-println ("$ (banner) julia>")
+io = IOBuffer()
+Base.banner(io)
+banner = String(take!(io))
+println("$(banner)julia>")
 ----
 
 Las primeras líneas contienen información sobre el REPL, por lo que esto puede lucir diferente en su ordenador. Debe verificar que la versión sea al menos +1.0.0+.
 
-La ((("solicitud", "en REPL", secundaria-sortas = "REPL"))) última línea es un _prompt_ que indica que el REPL está listo para que usted ingrese el código. Si escribe una línea de código y presiona Enter, REPL muestra el resultado:
+La ((("prompt", "en REPL", secondary-sortas = "REPL"))) última línea es un _prompt_ que indica que el REPL está listo para que usted ingrese el código. Si escribe una línea de código y presiona Enter, REPL muestra el resultado:
 
 [fuente, @ julia-repl-test]
 ----
@@ -68,10 +68,10 @@ Tradicionalmente, el primer programa que se escribe en un nuevo lenguaje se llam
 [fuente, @ julia-repl-test]
 ----
 julia> println ("¡Hola, mundo!")
-¡Hola Mundo!
+¡Hola, mundo!
 ----
 
-Este ((("declaración de impresión", "función println"))) ((("salida", "declaración de impresión"))) es un ejemplo de una _impresión_, aunque en realidad no imprime nada en papel. Muestra un resultado en la pantalla.
+Este ((("print statement", "println function")))((("output", "print statement"))) es un ejemplo de una _impresión_, aunque en realidad no imprime nada en papel. Muestra un resultado en la pantalla.
 
 Las comillas en el programa marcan el principio y el final del texto que se mostrará; no aparecen en el resultado.
 
@@ -82,7 +82,7 @@ Los paréntesis indican que +printl+ es una función. Se estudiarán funciones e
 
 Después de ((("operadores", "aritmética"))) (((("operadores aritméticos"))) ((("matemáticas", "operadores aritméticos"))) nuestro programa "¡Hola, Mundo!", el siguiente paso es la aritmética. Julia ((("operadores"))) tiene _operadores_, los cuales son símbolos que representan cálculos como la suma y la multiplicación.
 
-Los ((("$$ + $$ (operador de suma)", primary-sortas = "* suma"))) ((("operador de suma ($$ + $$)"))) (((($$ - $$ (operador de resta) ", primary-sortas =" * subtraction "))) (((" operador de resta ($$ - $$) "))) (((" $$ * $$ (asterisco) " , "operador de multiplicación", primario-sortas = "* asterisco"))) ((("operador de multiplicación ($$ * $$)"))) ((("asterisco ($$ * $$)", "multiplicación operator "))) operadores `+`, `-`, y `*` realizan sumas, restas y multiplicaciones respectivamente, como en los siguientes ejemplos:
+Los ((("$$ + $$ (operador de suma)", primary-sortas = "* suma"))) ((("operador de suma ($$+$$)"))) (((($$-$$ (operador de resta) ", primary-sortas ="* subtraction"))) (((" operador de resta ($$-$$) "))) (((" $$*$$ (asterisco) " , "operador de multiplicación", primario-sortas = "* asterisco"))) ((("operador de multiplicación ($$*$$)"))) ((("asterisco ($$*$$)", "operador de multiplicación"))) operadores +pass:[+]+, +-+, y +*+ realizan sumas, restas y multiplicaciones respectivamente, como en los siguientes ejemplos:
 
 [fuente, @ julia-repl-test]
 ----
@@ -151,8 +151,7 @@ julia> 1,000,000
 
 ¡Esto no es lo que esperábamos! Julia entiende +1,000,000+ como una secuencia de enteros separados por comas. Aprenderemos más sobre este tipo de secuencias más adelante.
 
-Usted ((("guión bajo ($$ _ $$)", "en enteros"))) ((("$$ _ $$ (guión bajo)", "en enteros", primario-sortas = "* guión bajo") )) puede obtener el resultado esperado usando + 1_000_000 +, sin embargo.
-
+Sin embargo, puedes ((("guión bajo ($$ _ $$)", "en enteros"))) ((("$$ _ $$ (guión bajo)", "en enteros", primario-sortas = "* guión bajo") )) obtener el resultado esperado usando 1_000_000.
 
 === Lenguas formales y naturales
 _Los lenguajes naturales_ ((("lenguaje natural", id = "ch1nat", range = "startofrange"))) son los idiomas hablados, como inglés, español y francés. No fueron diseñados por personas (aunque las personas intentan imponerles algún orden); sino que evolucionaron naturalmente.
