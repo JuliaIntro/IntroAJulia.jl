@@ -46,7 +46,7 @@ banner = String (tomar! (io))
 println ("$ (banner) julia>")
 ----
 
-Las primeras líneas contienen información sobre el REPL, por lo que puede ser diferente para usted. Pero debe verificar que el número de versión sea al menos +1.0.0+.
+Las primeras líneas contienen información sobre el REPL, por lo que puede ser diferente para usted. Pero debe verificar que la versión sea al menos +1.0.0+.
 
 La ((("solicitud", "en REPL", secundaria-sortas = "REPL"))) última línea es un _prompt_ que indica que REPL está listo para que usted ingrese el código. Si escribe una línea de código y presiona Enter, REPL muestra el resultado:
 
@@ -63,7 +63,7 @@ Ahora estás listo para comenzar. De aquí en adelante, supongo que sabe cómo i
 
 === El primer programa
 
-Tradicionalmente, el primer programa que escribe en un nuevo idioma se llama "¡Hola, mundo!" Porque todo lo que hace es mostrar las palabras "¡Hola, mundo!" En Julia, se ve así:
+Tradicionalmente, el primer programa que escribe en un nuevo lenguaje se llama "¡Hola, mundo!" porque todo lo que hace es mostrar las palabras "¡Hola, mundo!". En Julia, se ve así:
 
 [fuente, @ julia-repl-test]
 ----
@@ -71,8 +71,7 @@ julia> println ("¡Hola, mundo!")
 ¡Hola Mundo!
 ----
 
-Este ((("declaración de impresión", "función println"))) ((("salida", "declaración de impresión"))) es un ejemplo de una _impresión de impresión_, aunque en realidad no imprime nada en papel. Muestra un resultado en la pantalla.
-
+Este ((("declaración de impresión", "función println"))) ((("salida", "declaración de impresión"))) es un ejemplo de una _impresión_, aunque en realidad no imprime nada en papel. Muestra un resultado en la pantalla.
 
 Las comillas en el programa marcan el principio y el final del texto que se mostrará; no aparecen en el resultado.
 
