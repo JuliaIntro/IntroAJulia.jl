@@ -12,25 +12,25 @@ Un _programa_ ((("programas"))) es una secuencia de instrucciones que especifica
 
 Los detalles ((("instrucciones", seealso = "declaraciones"))) difieren para cada lenguaje, pero algunas instrucciones básicas aparecen en casi todos los lenguajes:
 
-Entrada::
-Obtenga datos del teclado, un archivo, la red o algún otro dispositivo.
+Input/Entrada::
+Se obtienen datos a través del teclado, un archivo, una red, u otro dispositivo.
 
-Salida::
-Visualice datos en la pantalla, guárdelos en un archivo, envíelos a través de la red, etc.
+Salida/Output::
+Los datos se muestran por pantalla, se guardan en un archivo, se envían a través de la red, etc.
 
-Mates::
+Matemáticas::
 Realizar operaciones matemáticas básicas como la suma y la multiplicación.
 
 Ejecución condicional ::
-Verifique ciertas condiciones y ejecute el código apropiado.
+Se verifican ciertas condiciones y se ejecuta el código apropiado.
 
 Repetición::
-Realice ((("repetición", vea = "iteración"))) alguna acción repetidamente, generalmente con alguna variación.
+Se realiza ((("repetición", vea = "iteración"))) alguna acción repetidamente, generalmente con alguna variación.
 
 Lo creas o no, eso es todo lo que hay que hacer. Todos los programas que ha usado, sin importar cuán complicado, se componen de instrucciones que se parecen bastante a estas. Por lo tanto, puede pensar en la programación como el proceso de dividir una tarea grande y compleja en subtareas cada vez más pequeñas hasta que las subtareas sean lo suficientemente simples como para realizarse con una de estas instrucciones básicas.
+Lo creas o no, eso es todo lo que hay que hacer. Cada programa que has usado, sin importar su complejidad, está construido en base a instrucciones que se parecen bastante a estas. De esta manera, la programación puede entenderse como el proceso de dividir una compleja y larga tarea en pequeñas subtareas, lo suficientemente simples para ser representadas con una de estas instrucciones básicas.
 
-
-=== Corriendo Julia
+=== Ejecutando Julia
 
 Uno ((("Julia", "en ejecución"))) de los desafíos de comenzar con Julia es que es posible que deba instalarlo y el software relacionado en su computadora. Si está familiarizado con su sistema operativo, y especialmente si se siente cómodo con la interfaz de línea de comandos, no tendrá problemas para instalar Julia. Pero para los principiantes, puede ser doloroso aprender sobre la administración y programación del sistema al mismo tiempo.
 
