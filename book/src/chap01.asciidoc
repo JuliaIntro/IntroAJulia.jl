@@ -141,8 +141,7 @@ String
 julia> typeof ("42.0")
 String
 ----
-
-Al ((("coma ($$, $$)", "no usar en enteros"))) ((("$$, $$ (coma)", "no usar en enteros", primary-sortas = " * coma "))) escribir un número entero de grandes dimensiones, podrías querer usar comas para separar cifras, como por ejemplo 1,000,000. Este no es un _entero_ válido en Julia, aunque sí es válido.
+Si ((("coma ($$, $$)", "no usar en enteros"))) ((("$$, $$ (coma)", "no usar en enteros", primary-sortas = " * coma "))) quisiéramos escribir un número de grandes dimensiones, podríamos caer en la costumbre de usar comas para separar sus cifras, como por ejemplo 1,000,000. Este no es un _entero_ válido en Julia, aunque sí es válido.
 
 [fuente, @ julia-repl-test]
 ----
@@ -150,7 +149,7 @@ julia> 1,000,000
 (1, 0, 0)
 ----
 
-¡Eso no es lo que esperábamos! Julia analiza +1,000,000+ como una secuencia de enteros separados por comas. Aprenderemos más sobre este tipo de secuencia más adelante.
+¡Esto no es lo que esperábamos! Julia entiende +1,000,000+ como una secuencia de enteros separados por comas. Aprenderemos más sobre este tipo de secuencias más adelante.
 
 Usted ((("guión bajo ($$ _ $$)", "en enteros"))) ((("$$ _ $$ (guión bajo)", "en enteros", primario-sortas = "* guión bajo") )) puede obtener el resultado esperado usando + 1_000_000 +, sin embargo.
 
