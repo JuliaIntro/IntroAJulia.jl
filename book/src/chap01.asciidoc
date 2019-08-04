@@ -58,7 +58,7 @@ julia> 1 + 1
 
 Los fragmentos de código se pueden copiar y pegar textualmente, incluido el indicador + julia> + y cualquier salida.
 
-Ahora estás listo para comenzar. De aquí en adelante, supongo que sabe cómo iniciar Julia REPL y ejecutar el código.
+Ahora estás listo para comenzar. De aquí en adelante, ya sabrás cómo iniciar Julia REPL y ejecutar el código.
 
 
 === El primer programa
