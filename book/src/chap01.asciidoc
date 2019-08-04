@@ -202,7 +202,7 @@ Los programadores ((("errores (errores)"))) ((("depuración", "emociones de, tra
 
 La programación, y especialmente la depuración, a veces provoca emociones fuertes. Si está luchando con un error difícil, puede sentirse enojado, abatido o avergonzado.
 
-Existe evidencia de que las personas responden naturalmente a las computadoras como si fueran personas. Cuando trabajan bien, los consideramos compañeros de equipo y cuando son obstinados o groseros, les respondemos de la misma manera que respondemos a personas groseras y obstinadas. Nota al pie: [Reeves, Byron y Clifford Ivar Nass. 1996. "La ecuación de los medios: cómo las personas tratan las computadoras, la televisión y los nuevos medios como personas y lugares reales". Chicago, IL: Centro para el estudio del lenguaje y la información; Nueva York: Cambridge University Press.]
+Existe evidencia de que las personas responden naturalmente a las computadoras como si fueran personas. Cuando trabajan bien, los consideramos compañeros de equipo y cuando son obstinados o groseros, les respondemos de la misma manera que respondemos a personas groseras y obstinadas. footnote:[Reeves, Byron, and Clifford Ivar Nass. 1996. “The Media Equation: How People Treat Computers, Television, and New Media Like Real People and Places.” Chicago, IL: Center for the Study of Language and Information; New York: Cambridge University Press.]
 
 Prepararse para estas reacciones puede ayudarlo a lidiar con ellas. Un enfoque es pensar en la computadora como un empleado con ciertas fortalezas, como la velocidad y la precisión, y debilidades particulares, como la falta de empatía y la incapacidad para comprender el panorama general.
 
