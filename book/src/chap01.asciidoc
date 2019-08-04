@@ -46,9 +46,9 @@ banner = String (tomar! (io))
 println ("$ (banner) julia>")
 ----
 
-Las primeras líneas contienen información sobre el REPL, por lo que puede ser diferente para usted. Pero debe verificar que la versión sea al menos +1.0.0+.
+Las primeras líneas contienen información sobre el REPL, por lo que esto puede lucir diferente. Debe verificar que la versión sea al menos `1.0.0`.
 
-La ((("solicitud", "en REPL", secundaria-sortas = "REPL"))) última línea es un _prompt_ que indica que REPL está listo para que usted ingrese el código. Si escribe una línea de código y presiona Enter, REPL muestra el resultado:
+La ((("solicitud", "en REPL", secundaria-sortas = "REPL"))) última línea es un _prompt_ que indica que el REPL está listo para que usted ingrese el código. Si escribe una línea de código y presiona Enter, REPL muestra el resultado:
 
 [fuente, @ julia-repl-test]
 ----
