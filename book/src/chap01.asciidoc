@@ -63,7 +63,7 @@ Ahora estás listo para comenzar. De aquí en adelante, supongo que sabe cómo i
 
 === El primer programa
 
-Tradicionalmente, el primer programa que escribe en un nuevo lenguaje se llama "¡Hola, mundo!" porque todo lo que hace es mostrar las palabras "¡Hola, mundo!". En Julia, se ve así:
+Tradicionalmente, el primer programa que se escribe en un nuevo lenguaje se llama "¡Hola, mundo!" porque todo lo que hace es mostrar las palabras "¡Hola, mundo!". En Julia, se ve así:
 
 [fuente, @ julia-repl-test]
 ----
