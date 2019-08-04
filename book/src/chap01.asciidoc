@@ -46,7 +46,7 @@ banner = String (tomar! (io))
 println ("$ (banner) julia>")
 ----
 
-Las primeras líneas contienen información sobre el REPL, por lo que esto puede lucir diferente. Debe verificar que la versión sea al menos `1.0.0`.
+Las primeras líneas contienen información sobre el REPL, por lo que esto puede lucir diferente en su ordenador. Debe verificar que la versión sea al menos `1.0.0`.
 
 La ((("solicitud", "en REPL", secundaria-sortas = "REPL"))) última línea es un _prompt_ que indica que el REPL está listo para que usted ingrese el código. Si escribe una línea de código y presiona Enter, REPL muestra el resultado:
 
@@ -80,7 +80,7 @@ Los paréntesis indican que `println` es una función. Estudiaremos funciones en
 
 === Operadores aritméticos
 
-Después de ((("operadores", "aritmética"))) (((("operadores aritméticos"))) ((("matemáticas", "operadores aritméticos"))) "¡Hola, Mundo!", el siguiente paso es la aritmética. Julia ((("operadores"))) tiene _operadores_, los cuales son símbolos que representan cálculos como la suma y la multiplicación.
+Después de ((("operadores", "aritmética"))) (((("operadores aritméticos"))) ((("matemáticas", "operadores aritméticos"))) nuestro programa "¡Hola, Mundo!", el siguiente paso es la aritmética. Julia ((("operadores"))) tiene _operadores_, los cuales son símbolos que representan cálculos como la suma y la multiplicación.
 
 Los ((("$$ + $$ (operador de suma)", primary-sortas = "* suma"))) ((("operador de suma ($$ + $$)"))) (((($$ - $$ (operador de resta) ", primary-sortas =" * subtraction "))) (((" operador de resta ($$ - $$) "))) (((" $$ * $$ (asterisco) " , "operador de multiplicación", primario-sortas = "* asterisco"))) ((("operador de multiplicación ($$ * $$)"))) ((("asterisco ($$ * $$)", "multiplicación operator "))) operadores `+`, `-`, y `*` realizan sumas, restas y multiplicaciones respectivamente, como en los siguientes ejemplos:
 
@@ -102,7 +102,7 @@ julia> 84/2
 42,0
 ----
 
-Quizás se pregunte por qué el resultado es `42.0` en vez de `42`. Lo explicaré en la siguiente sección.
+Quizás se pregunte por qué el resultado es `42.0` en vez de `42`. Esto será explicado en la siguiente sección.
 
 Finalmente, el ((("$$ ^ $$ (caret)", "operador de exponenciación", primary-sortas = "* caret"))) ((("operador de exponenciación ($$ ^ $$)"))) ((("caret ($$ ^ $$)", "operador de exponenciación"))) operador `^` realiza potencias; es decir, eleva un número a una potencia:
 
