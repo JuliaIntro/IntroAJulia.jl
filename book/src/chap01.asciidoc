@@ -94,7 +94,7 @@ julia> 6 * 7
 42
 ----
 
-El operador ((("$$ / $$ (operador de división)", primary-sortas = "* division"))) ((("division", "operador de división ($$ / $$)"))) `/` realiza la división:
+El operador ((("$$ / $$ (operador de división)", primary-sortas = "* division"))) ((("division", "operador de división ($$ / $$)"))) +/+ realiza la división:
 
 [fuente, @ julia-repl-test]
 ----
@@ -151,7 +151,7 @@ julia> 1,000,000
 
 ¡Esto no es lo que esperábamos! Julia entiende +1,000,000+ como una secuencia de enteros separados por comas. Aprenderemos más sobre este tipo de secuencias más adelante.
 
-Sin embargo, puedes ((("guión bajo ($$ _ $$)", "en enteros"))) ((("$$ _ $$ (guión bajo)", "en enteros", primario-sortas = "* guión bajo") )) obtener el resultado esperado usando 1_000_000.
+Sin embargo, puedes ((("guión bajo ($$_$$)", "en enteros"))) ((("$$_$$ (guión bajo)", "en enteros", primary-sortas="* guión bajo"))) obtener el resultado esperado usando 1_000_000.
 
 === Lenguas formales y naturales
 _Los lenguajes naturales_ ((("lenguaje natural", id = "ch1nat", range = "startofrange"))) son los idiomas hablados, como inglés, español y francés. No fueron diseñados por personas (aunque las personas intentan imponerles algún orden); sino que evolucionaron naturalmente.
