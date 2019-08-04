@@ -10,9 +10,7 @@ Por una parte, aprenderás a programar, lo cual es beneficioso por si solo. Por 
 === ¿Qué es un programa?
 Un _programa_ ((("programas"))) es una secuencia de instrucciones que especifican cómo hacer un cálculo. El cálculo puede ser de naturaleza matemática; tal como resolver un sistema de ecuaciones, o encontrar las raíces de un polinomio, pero también puede ser un cálculo simbólico, como encontrar y reemplazar texto en un documento, o bien algo gráfico, tal como procesar una imagen o reproducir un video.
 
-Los detalles difieren para cada lenguaje, pero algunas instrucciones básicas aparecen en casi todos los lenguajes:
-
-Los detalles de ((("instrucciones", seealso = "declaraciones"))) se ven diferentes en diferentes idiomas, pero aparecen algunas instrucciones básicas en casi todos los idiomas:
+Los detalles ((("instrucciones", seealso = "declaraciones"))) difieren para cada lenguaje, pero algunas instrucciones básicas aparecen en casi todos los lenguajes:
 
 Entrada::
 Obtenga datos del teclado, un archivo, la red o algún otro dispositivo.
