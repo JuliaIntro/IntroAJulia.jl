@@ -116,7 +116,7 @@ julia> 6 ^ 2 + 6
 
 Un _valor_ ((("valores"))) es una de las cosas básicas con las que trabaja un programa, tal como una letra o un número. Algunos de los valores que hemos visto hasta ahora son +2+, +42.0+ y +"Hola, Mundo!"+.
 
-Estos ((("tipos"))) ((("tipos de datos", ver = "tipos"))) ((("tipo entero (Int64)"))) ((("tipo de punto flotante (Float64) "))) (((" strings "))) (((" types "," Int64 ", see =" integer type "))) (((" types "," Float64 ", see =" coma flotante type "))) (((" types "," String ", see =" strings "))) valores pertenecen a diferentes _tipos_: +2+ es un _entero_(_integer_), +42.0+ es un _número de punto flotante_(_floating-point number_), y +"Hola, Mundo!"+ es una _cadena_(_string_), llamada así porque las letras que contiene están unidas.
+Estos ((("tipos"))) ((("tipos de datos", ver = "tipos"))) ((("tipo entero (Int64)"))) ((("tipo de punto flotante (Float64) "))) (((" strings "))) (((" types "," Int64 ", see =" integer type "))) (((" types "," Float64 ", see =" coma flotante type "))) (((" types "," String ", see =" strings "))) valores pertenecen a diferentes _tipos_: +2+ es un _entero_ (_integer_ en inglés), +42.0+ es un _número de punto flotante_ (_floating-point number_ en inglés), y +"Hola, Mundo!"+ es una _cadena_ (_string_ en inglés), llamada así porque las letras que contiene están unidas.
 
 Si ((("" typeof function "))) no está seguro del tipo de un valor, el REPL puede ayudarle:
 
