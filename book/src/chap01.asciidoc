@@ -104,7 +104,7 @@ julia> 84/2
 
 Quizás se pregunte por qué el resultado es +42.0+ en vez de +42+. Esto será explicado en la siguiente sección.
 
-Finalmente, el ((("$$ ^ $$ (caret)", "operador de exponenciación", primary-sortas = "* caret"))) ((("operador de exponenciación ($$ ^ $$)"))) ((("caret ($$ ^ $$)", "operador de exponenciación"))) operador `^` realiza potencias; es decir, eleva un número a una potencia:
+Finalmente, el ((("$$ ^ $$ (caret)", "operador de exponenciación", primary-sortas = "* caret"))) ((("operador de exponenciación ($$ ^ $$)"))) ((("caret ($$ ^ $$)", "operador de exponenciación"))) operador +^+ realiza potencias; es decir, eleva un número a una potencia:
 
 [fuente, @ julia-repl-test]
 ----
@@ -149,14 +149,14 @@ julia> 1,000,000
 (1, 0, 0)
 ----
 
-¡Esto no es lo que esperábamos! Julia entiende +1,000,000+ como una secuencia de enteros separados por comas. Aprenderemos más sobre este tipo de secuencias más adelante.
+¡Esto no es lo que esperábamos! Julia entiende +1,000,000+ como una secuencia de enteros separados por comas. Más adelante aprenderemos más sobre este tipo de secuencias.
 
 Sin embargo, puedes ((("guión bajo ($$_$$)", "en enteros"))) ((("$$_$$ (guión bajo)", "en enteros", primary-sortas="* guión bajo"))) obtener el resultado esperado usando 1_000_000.
 
 === Lenguas formales y naturales
 _Los lenguajes naturales_ ((("lenguaje natural", id = "ch1nat", range = "startofrange"))) son los idiomas hablados, como el inglés, español y francés. No fueron diseñados por personas (aunque las personas intentan imponerles un orden); sino que evolucionaron naturalmente.
 
-_Los lenguajes formales_ ((("lenguaje formal", id = "ch1nat2", rango = "startofrange"))) son idiomas diseñados por personas para propósitos específicos. Por ejemplo, la notación que usan los matemáticos es un lenguaje formal particularmente útil para denotar relaciones entre números y símbolos. Los químicos usan un lenguaje formal para representar la estructura química de las moléculas. Y ((("lenguaje de programación", id = "ch1nat3", rango = "startofrange"))) lo más importante, los lenguajes de programación son lenguajes formales que han sido diseñados para expresar cálculos.
+_Los lenguajes formales_ ((("lenguaje formal", id = "ch1nat2", rango = "startofrange"))) son idiomas diseñados por personas para propósitos específicos. Por ejemplo, la notación que usan los matemáticos es un lenguaje formal particularmente útil para denotar relaciones entre números y símbolos. Los químicos usan un lenguaje formal para representar la estructura química de las moléculas. Los ((("lenguaje de programación", id = "ch1nat3", rango = "startofrange"))) lenguajes de programación también son lenguajes formales, y han sido diseñados para expresar cálculos.
 
 Los lenguajes formales ((("sintaxis", id = "ch1nat4", rango = "startofrange"))) tienden a tener reglas estrictas de sintaxis que gobiernan su estructura. Por ejemplo, en matemáticas, la declaración latexmath: [\ (3 + 3 = 6 \)] tiene la sintaxis correcta, pero latexmath: [\ (3 + = 3 \ $ 6 \)] no. En química, latexmath: [\ (\ mathrm {H_2O} \)] es una fórmula sintácticamente correcta, pero latexmath: [\ (\ mathrm {_2Zz} \)] no lo es.
 
