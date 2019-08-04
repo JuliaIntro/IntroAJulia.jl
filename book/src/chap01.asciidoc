@@ -131,8 +131,7 @@ String
 ----
 
 Los enteros pertenecen al tipo +Int64+, las cadenas pertenecen a +String+ y los números de punto flotante pertenecen a +Float64+.
-
-Qué ((("comillas (& quot; & # x2026; & quot;)", "cadenas de inclusión"))) (((("" "& # x2026; & quot; (comillas)", "cadenas de inclusión", primaria -sortas = "* comillas"))) sobre valores como +"2"+ y +"42.0"+? Parecen números, pero están entre comillas como cadenas. Estas también son cadenas:
+¿Qué ((("comillas (& quot; & # x2026; & quot;)", "cadenas de inclusión"))) (((("" "& # x2026; & quot; (comillas)", "cadenas de inclusión", primaria -sortas = "* comillas"))) pasa con los valores "2" y "42.0"? Parecen números, pero están entre comillas como si fueran cadenas. Estos valores también son cadenas:
 
 [fuente, @ julia-repl-test]
 ----
