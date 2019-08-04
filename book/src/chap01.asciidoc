@@ -131,6 +131,7 @@ String
 ----
 
 Los enteros pertenecen al tipo +Int64+, las cadenas pertenecen a +String+ y los números de punto flotante pertenecen a +Float64+.
+
 ¿Qué ((("comillas (& quot; & # x2026; & quot;)", "cadenas de inclusión"))) (((("" "& # x2026; & quot; (comillas)", "cadenas de inclusión", primaria -sortas = "* comillas"))) pasa con los valores "2" y "42.0"? Parecen números, pero están entre comillas como si fueran cadenas. Estos valores también son cadenas:
 
 [fuente, @ julia-repl-test]
@@ -141,7 +142,7 @@ julia> typeof ("42.0")
 String
 ----
 
-When ((("coma ($$, $$)", "no usar en enteros"))) ((("$$, $$ (coma)", "no usar en enteros", primary-sortas = " * coma "))) si escribe un número entero grande, podría verse tentado a usar comas entre grupos de dígitos, como en +1,000,000+. Este no es un _integer_ legal en Julia, pero es legal:
+Al ((("coma ($$, $$)", "no usar en enteros"))) ((("$$, $$ (coma)", "no usar en enteros", primary-sortas = " * coma "))) escribir un número entero de grandes dimensiones, podrías querer usar comas para separar cifras, como por ejemplo 1,000,000. Este no es un _entero_ válido en Julia, aunque sí es válido.
 
 [fuente, @ julia-repl-test]
 ----
