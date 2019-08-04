@@ -36,7 +36,7 @@ Para evitar ese problema, le recomiendo que comience a ejecutar julia en un nave
 
 En ((("JuliaBox"))) ((("recursos en línea", "JuliaBox"))) el navegador, puede ejecutar Julia en https://www.juliabox.com [JuliaBox]. No se requiere instalación: simplemente abra su navegador y entre a la página de JuliaBox, inicie sesión y comience a programar (consulte <<juliabox>>).
 
-Julia _REPL_ (Read – Eval – Print Loop) ((("REPL (Read-Eval-Print Loop)"))) es un programa que lee y ejecuta el código de Julia. Puede iniciar REPL abriendo un terminal en JuliaBox y escribiendo * `julia` * en la línea de comando. Cuando comienza, debería ver una salida como esta:
+Julia _REPL_ (Read – Eval – Print Loop) ((("REPL (Read-Eval-Print Loop)"))) es un programa que lee y ejecuta el código de Julia. Puede iniciar REPL abriendo un terminal en JuliaBox y escribiendo *+julia+* en la línea de comando. Cuando comienza, debería ver una salida como esta:
 
 [fuente, @ julia-eval]
 ----
@@ -46,7 +46,7 @@ banner = String (tomar! (io))
 println ("$ (banner) julia>")
 ----
 
-Las primeras líneas contienen información sobre el REPL, por lo que esto puede lucir diferente en su ordenador. Debe verificar que la versión sea al menos `1.0.0`.
+Las primeras líneas contienen información sobre el REPL, por lo que esto puede lucir diferente en su ordenador. Debe verificar que la versión sea al menos +1.0.0+.
 
 La ((("solicitud", "en REPL", secundaria-sortas = "REPL"))) última línea es un _prompt_ que indica que el REPL está listo para que usted ingrese el código. Si escribe una línea de código y presiona Enter, REPL muestra el resultado:
 
@@ -56,7 +56,7 @@ julia> 1 + 1
 2
 ----
 
-Los fragmentos de código se pueden copiar y pegar textualmente, incluido el indicador + julia> + y cualquier salida.
+Los fragmentos de código se pueden copiar y pegar textualmente, incluido el indicador +julia>+ y cualquier salida.
 
 Ahora estás listo para comenzar. De aquí en adelante, ya sabrás cómo iniciar Julia REPL y ejecutar el código.
 
@@ -130,7 +130,7 @@ julia> typeof ("¡Hola, mundo!")
 String
 ----
 
-Los enteros pertenecen al tipo + Int64 +, las cadenas pertenecen a + String + y los números de punto flotante pertenecen a + Float64 +.
+Los enteros pertenecen al tipo +Int64+, las cadenas pertenecen a +String+ y los números de punto flotante pertenecen a +Float64+.
 
 Qué ((("comillas (& quot; & # x2026; & quot;)", "cadenas de inclusión"))) (((("" "& # x2026; & quot; (comillas)", "cadenas de inclusión", primaria -sortas = "* comillas"))) sobre valores como + "2" + y + "42.0" +? Parecen números, pero están entre comillas como cadenas. Estas también son cadenas:
 
