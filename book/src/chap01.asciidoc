@@ -19,7 +19,7 @@ Salida/Output::
 Los datos se muestran por pantalla, se guardan en un archivo, se envían a través de la red, etc.
 
 Matemáticas::
-Realizar operaciones matemáticas básicas como la suma y la multiplicación.
+Se realizan operaciones matemáticas básicas como la suma y la multiplicación.
 
 Ejecución condicional ::
 Se verifican ciertas condiciones y se ejecuta el código apropiado.
