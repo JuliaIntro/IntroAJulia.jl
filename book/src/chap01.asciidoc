@@ -252,11 +252,11 @@ Cualquier ((("lenguaje formal"))) lenguaje que se ha diseñado para fines espec�
 sintaxis::
 Las reglas ((("sintaxis"))) que gobiernan la estructura de un programa.
 
-simbólico::
-Uno ((("tokens"))) de los elementos básicos de la estructura sintáctica de un programa, análogo a una palabra en un lenguaje natural.
+componente léxico::
+Uno ((("componente léxico"))) de los elementos básicos de la estructura de un programa, análogo a una palabra en un lenguaje natural.
 
 estructura::
-Los tokens de forma ((("estructura"))) se combinan.
+Los manera en que los componentes léxicos ((("estructura"))) se combinan.
 
 analizar gramaticalmente::
 Para ((("análisis"))) examinar un programa y analizar la estructura sintáctica.
