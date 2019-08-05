@@ -56,7 +56,7 @@ julia> 1 + 1
 2
 ----
 
-Los fragmentos de código se pueden copiar y pegar textualmente, incluido "+julia>+" y cualquier salida.
+Los fragmentos de código se pueden copiar y pegar textualmente, incluido el prompt "+julia>+" y cualquier salida.
 
 Ahora estás listo para comenzar. De aquí en adelante, ya sabrás cómo iniciar Julia REPL y ejecutar el código.
 
@@ -71,7 +71,7 @@ julia> println ("¡Hola, mundo!")
 ¡Hola, mundo!
 ----
 
-Este ((("print statement", "println function")))((("output", "print statement"))) es un ejemplo de una _impresión_, aunque en realidad no imprime nada en papel. Muestra un resultado en la pantalla.
+Este ((("print statement", "println function")))((("output", "print statement"))) es un ejemplo de una _sentencia de impresión_, aunque en realidad no imprime nada en papel. Muestra un resultado en la pantalla.
 
 Las comillas en el programa marcan el principio y el final del texto que se mostrará; no aparecen en el resultado.
 
@@ -158,7 +158,7 @@ _Los lenguajes naturales_ ((("lenguaje natural", id = "ch1nat", range = "startof
 
 _Los lenguajes formales_ ((("lenguaje formal", id = "ch1nat2", rango = "startofrange"))) son idiomas diseñados por personas para propósitos específicos. Por ejemplo, la notación que usan los matemáticos es un lenguaje formal particularmente útil para denotar relaciones entre números y símbolos. Los químicos usan un lenguaje formal para representar la estructura química de las moléculas. Los ((("lenguaje de programación", id = "ch1nat3", rango = "startofrange"))) lenguajes de programación también son lenguajes formales, y han sido diseñados para expresar cálculos.
 
-Los lenguajes formales ((("sintaxis", id = "ch1nat4", rango = "startofrange"))) tienden a tener reglas estrictas de sintaxis que gobiernan su estructura. Por ejemplo, en matemáticas, la declaración latexmath:[\(3 + 3 = 6\)] tiene la sintaxis correcta, pero latexmath:[\(3 + = 3 \ $6 \)] no. En química, latexmath:[\ (\ mathrm {H_2O} \)] es una fórmula sintácticamente correcta, pero latexmath:[\ (\ mathrm {_2Zz} \)] no lo es.
+Los lenguajes formales ((("sintaxis", id = "ch1nat4", rango = "startofrange"))) tienden a tener reglas estrictas de sintaxis que gobiernan la estructura de las sentencias. Por ejemplo, en matemáticas, la sentencia latexmath:[\(3 + 3 = 6\)] tiene la sintaxis correcta, pero latexmath:[\(3 + = 3 \ $6 \)] no. En química, latexmath:[\ (\ mathrm {H_2O} \)] es una fórmula sintácticamente correcta, pero latexmath:[\ (\ mathrm {_2Zz} \)] no lo es.
 
 Las reglas de sintaxis ((("tokens", id = "ch1nat5", range = "startofrange"))) ((("structure", id = "ch1nat6", range = "startofrange")))  pueden ser de dos tipos, correspondientes a componentes léxicos y a la estructura. Los componentes léxicos son los elementos básicos del lenguaje, como palabras, números y elementos químicos. Uno de los problemas con latexmath:[\ (3 + = 3 \ $ 6 \)] es que latexmath:[\ (\ $ \)] no es un componente léxico válido en matemáticas (al menos hasta donde conocemos). Del mismo modo, latexmath:[\ (\ mathrm {_2Zz} \)] no es válido porque no hay ningún elemento con la abreviatura latexmath:[\(\ mathrm {Zz}\)].
 
@@ -166,7 +166,7 @@ El segundo tipo de regla de sintaxis se refiere a la forma en que se combinan lo
 
 Esta es un@ oración en espa$ol bien estructurada con c*mponentes léxicos no válidos. Esta oración tiene todos los componentes léxicos válidos, pero con una estructura no válida.
 
-Cuando ((("parsing"))) lee una oración en español, o en un idioma formal, tiene que descubrir la estructura (aunque en un lenguaje natural lo hace inconscientemente). Este proceso se llama _parsing_.
+Cuando ((("parsing"))) lee una oración en español, o una sentencia en un idioma formal, tiene que descubrir la estructura (aunque en un lenguaje natural lo hace inconscientemente). Este proceso se llama _parsing_ o _análisis de sintaxis_.
 
 Aunque los lenguajes formales y naturales tienen muchas características en común (componentes léxicos, estructura y sintaxis), existen algunas diferencias:
 
@@ -174,10 +174,10 @@ Ambigüedad::
 Los lenguajes naturales están llenos de ambigüedad, esto es abordado mediante el uso del contexto y otro tipo de información. Los lenguajes formales están diseñados para ser casi o completamente inequívocos, lo que significa que cualquier declaración tiene exactamente un significado, independientemente del contexto.
 
 Redundancia::
-Para compensar la ambigüedad y reducir los malentendidos, los lenguajes naturales emplean mucha redundancia. Como resultado, a menudo son verbosas. Los lenguajes formales son menos redundantes y más concisos.
+Para compensar la ambigüedad y reducir los malentendidos, los lenguajes naturales emplean mucha redundancia. Como resultado, a menudo tienen un uso excesivo de palabras. Los lenguajes formales son menos redundantes y más concisos.
 
 Literalidad ::
-Los lenguajes naturales están llenos de modismos y metáforas. Los idiomas formales significan exactamente lo que dicen.
+Los lenguajes naturales están llenos de modismos y metáforas. Si digo: "Me cayó la teja", probablemente no haya ni una teja y nada se caiga (este modismo significa que alguien entendió algo después de un período de confusión). Los idiomas formales significan exactamente lo que dicen.
 
 Debido a que todos crecemos hablando lenguajes naturales, a veces es difícil adaptarse a los lenguajes formales. La diferencia entre lenguaje formal y natural es como la diferencia entre poesía y prosa:
 
@@ -188,7 +188,7 @@ Prosa::
 El significado literal de las palabras es más importante, y la estructura aporta significado. La prosa es más fácil de análizar que la poesía, pero a menudo sigue siendo ambigua.
 
 Programas ::
-El significado de un programa es inequívoco y literal, y puede entenderse por completo mediante el análisis de los componentes léxicos y la estructura.
+El significado de un programa computacional es inequívoco y literal, y puede entenderse por completo mediante el análisis de los componentes léxicos y la estructura.
 
 Los idiomas formales son más densos que los naturales, por lo que lleva más tiempo leerlos. Además, la estructura es importante, por lo que no siempre es mejor leer de arriba a abajo, y de izquierda a derecha. En cambio, aprenderás a analizar el programa mentalmente, identificando los componentes léxicos e interpretando la estructura. Finalmente, los detalles importan. Pequeños errores de ortografía y puntuación, que pueden pasar desapercibidos en los lenguajes naturales, pueden hacer una gran diferencia en un lenguaje formal (((range = "endofrange", startref = "ch1nat"))) ((((range = "endofrange" , startref = "ch1nat2"))) ((((range = "endofrange", startref = "ch1nat3"))) (((range = "endofrange", startref = "ch1nat4"))) ((((range = "endofrange ", startref =" ch1nat5 "))) (((rango =" endofrange ", startref =" ch1nat6 "))).
 
@@ -222,7 +222,7 @@ Un programa ((("REPL (Read-Eval-Print Loop)"))) que de manera reiterada lee una 
 prompt::
 Caracteres ((("prompt", "en REPL", secundario-sortas = "REPL"))) mostrados por el REPL para indicar que está listo para recibir información del usuario.
 
-comando print::
+sentencia de impresión (print)::
 Una instrucción ((("instrucción de impresión"))) ((("salida", "instrucción de impresión"))) que hace que Julia REPL muestre un valor en la pantalla.
 
 operador::
@@ -232,7 +232,7 @@ valor::
 Una ((("valores"))) de las unidades básicas de datos, como un número o cadena, que manipula un programa.
 
 tipo::
-Una categoría de valores ((("tipos"))). Los tipos que hemos visto hasta ahora son enteros (+Int64+), números de coma flotante (+Float64+) y cadenas (+String+).
+Una categoría de valores ((("tipos"))). Los tipos que hemos visto hasta ahora son enteros (+Int64+), números de punto flotante (+Float64+) y cadenas (+String+).
 
 entero::
 Un tipo ((("tipo entero (Int64)"))) que representa números enteros.
@@ -249,8 +249,8 @@ Cualquier ((("lenguaje natural"))) lenguaje hablado que evolucionó naturalmente
 lenguaje formal::
 Cualquier ((("lenguaje formal"))) lenguaje que se ha diseñado para fines específicos, como la representación de ideas matemáticas o programas de computadora. Todos los lenguajes de programación ((("lenguaje de programación"))) son lenguajes formales.
 
-sintaxis::
-Las reglas ((("sintaxis"))) que gobiernan la estructura de un programa.
+análisis de sintaxis::
+Las reglas ((("análisis de sintaxis"))) que gobiernan la estructura de un programa.
 
 componente léxico::
 Uno ((("componente léxico"))) de los elementos básicos de la estructura de un programa, análogo a una palabra en un lenguaje natural.
