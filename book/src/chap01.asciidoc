@@ -153,7 +153,7 @@ julia> 1,000,000
 
 Sin embargo, puedes ((("guión bajo ($$_$$)", "en enteros"))) ((("$$_$$ (guión bajo)", "en enteros", primary-sortas="* guión bajo"))) obtener el resultado esperado usando 1_000_000.
 
-=== Lenguas formales y naturales
+=== Lenguajes formales y naturales
 _Los lenguajes naturales_ ((("lenguaje natural", id = "ch1nat", range = "startofrange"))) son los idiomas hablados, como el inglés, español y francés. No fueron diseñados por personas (aunque las personas intentan imponerles un orden); sino que evolucionaron naturalmente.
 
 _Los lenguajes formales_ ((("lenguaje formal", id = "ch1nat2", rango = "startofrange"))) son idiomas diseñados por personas para propósitos específicos. Por ejemplo, la notación que usan los matemáticos es un lenguaje formal particularmente útil para denotar relaciones entre números y símbolos. Los químicos usan un lenguaje formal para representar la estructura química de las moléculas. Los ((("lenguaje de programación", id = "ch1nat3", rango = "startofrange"))) lenguajes de programación también son lenguajes formales, y han sido diseñados para expresar cálculos.
