@@ -270,7 +270,7 @@ El proceso ((("depuración", seealso = "errores (errores); prueba"))) de búsque
 
 === Ejercicios
 
-[PROPINA]
+[TIP]
 ====
 Es una buena idea leer este libro frente a un computador para que pueda hacer los ejemplos y ejercicios conforme avance.
 ====
@@ -301,7 +301,7 @@ Inicie el Julia REPL y úselo como una calculadora.
 
 . ¿Cuántas millas hay en 10 kilómetros?
 +
-[PROPINA]
+[TIP]
 ====
 Hay 1,61 kilómetros en una milla.
 ====
