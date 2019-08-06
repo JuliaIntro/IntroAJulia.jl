@@ -12,7 +12,7 @@ Una _sentencia de asignación_ crea una nueva variable y le da un valor:
 
 [source,@julia-repl-test chap02]
 ----
-julia> message = "Y ahora, algo completamente diferente"
+julia> mensaje = "Y ahora, algo completamente diferente"
 "Y ahora, algo completamente diferente"
 julia> n = 17
 17
@@ -27,7 +27,7 @@ Una forma común de representar variables en papel es escribir el nombre con una
 
 [[fig02-1]]
 .Diagrama de estado
-imagen :: images / fig21.svg []
+image::images/fig21.svg[]
 
 
 === Nombres de variables
