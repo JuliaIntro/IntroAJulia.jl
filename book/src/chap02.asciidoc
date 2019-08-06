@@ -1,87 +1,87 @@
 [[chap02]]
-== Variables, Expressions and Statements
+== Variables, expresiones y declaraciones
 
-One of the most powerful features of a programming language is the ability to manipulate _variables_. A variable is a name that refers to a value.
-(((variable)))(((value)))
+Una de las características más poderosas de un lenguaje de programación es la capacidad de manipular _variables_. Una variable es un nombre que se refiere a un valor.
+(((valor variable)))
 
 
-=== Assignment Statements
+=== Declaraciones de asignación
 
-An _assignment statement_ creates a new variable and gives it a value:
-(((assignment statement)))((("statement", "assignment", see="assignment statement")))(((pass:[=], see="assignment statement")))(((pi)))((("π", see="pi")))
+Una _asignación de asignación_ crea una nueva variable y le da un valor:
+(((declaración de asignación))) ((("declaración", "asignación", ver = "declaración de asignación"))) (((pasar: [=], ver = "declaración de asignación"))) (((pi ))) ((("π", ver = "pi")))
 
-[source,@julia-repl-test chap02]
+[fuente, @ julia-repl-test chap02]
 ----
-julia> message = "And now for something completely different"
-"And now for something completely different"
+julia> message = "Y ahora por algo completamente diferente"
+"Y ahora para algo completamente diferente"
 julia> n = 17
 17
 julia> π_val = 3.141592653589793
 3.141592653589793
 ----
 
-This example makes three assignments. The first assigns a string to a new variable named +message+; the second gives the integer +17+ to +n+; the third assigns the (approximate) value of latexmath:[\(\pi\)] to +π_val+ (*+\pi TAB+*).
+Este ejemplo hace tres asignaciones. El primero asigna una cadena a una nueva variable llamada + mensaje +; el segundo le da al entero +17+ a + n +; el tercero asigna el valor (aproximado) de latexmath: [\ (\ pi \)] a + π_val + (* + \ pi TAB + *).
 
-A common way to represent variables on paper is to write the name with an arrow pointing to its value. This kind of figure is called a _state diagram_ because it shows what state each of the variables is in (think of it as the variable’s state of mind). <<fig02-1>> shows the result of the previous example.
-(((state diagram)))((("diagram", "state", see="state diagram")))
+Una forma común de representar variables en papel es escribir el nombre con una flecha apuntando a su valor. Este tipo de figura se llama diagrama de estado porque muestra en qué estado se encuentra cada una de las variables (considérelo como el estado mental de la variable). <<fig02-1>> muestra el resultado del ejemplo anterior.
+(((diagrama de estado))) ((("diagrama", "estado", ver = "diagrama de estado")))
 
 [[fig02-1]]
-.State diagram
-image::images/fig21.svg[]
+.Diagrama de estado
+imagen :: images / fig21.svg []
 
 
-=== Variable Names
+=== Nombres de variables
 (((variable)))
 
-Programmers generally choose names for their variables that are meaningful—they document what the variable is used for.
+Los programadores generalmente eligen nombres para sus variables que son significativos: documentan para qué se usa la variable.
 
-Variable names can be as long as you like. They can contain almost all Unicode characters (see <<characters>>), but they can’t begin with a number. It is legal to use uppercase letters, but it is conventional to use only lower case for variable names.
+Los nombres de las variables pueden ser tan largos como desee. Pueden contener casi todos los caracteres Unicode (consulte <<caracteres>>), pero no pueden comenzar con un número. Es legal usar letras mayúsculas, pero es convencional usar solo minúsculas para nombres de variables.
 
-Unicode characters can be entered via tab completion of LaTeX-like abbreviations in the Julia REPL.
-(((Unicode character)))
+Los caracteres Unicode se pueden ingresar mediante la finalización de pestañas de las abreviaturas tipo LaTeX en Julia REPL.
+(((Carácter Unicode)))
 
-The underscore character, +_+, can appear in a name. It is often used in names with multiple words, such as +your_name+ or +airspeed_of_unladen_swallow+.
-(((underscore character)))(((LaTeX-like abbreviations)))
+El carácter de subrayado, + _ +, puede aparecer en un nombre. A menudo se usa en nombres con varias palabras, como + your_name + o + airspeed_of_unladen_swallow +.
+(((carácter de subrayado))) (((abreviaturas tipo LaTeX)))
 
-If you give a variable an illegal name, you get a syntax error:
-(((syntax error)))((("error", "syntax", see="syntax error")))
+Si le das a una variable un nombre ilegal, obtienes un error de sintaxis:
+(((error de sintaxis))) ((("error", "sintaxis", ver = "error de sintaxis")))
 
-[source,jlcon]
+[fuente, jlcon]
 ----
-julia> 76trombones = "big parade"
-ERROR: syntax: "76" is not a valid function argument name
-julia> more@ = 1000000
-ERROR: syntax: extra token "@" after end of expression
-julia> struct = "Advanced Theoretical Zymurgy"
-ERROR: syntax: unexpected "="
-----
-
-+76trombones+ is illegal because it begins with a number. +more@+ is illegal because it contains an illegal character, +@+. But what’s wrong with +struct+?
-
-It turns out that +struct+ is one of Julia’s _keywords_. The REPL uses keywords to recognize the structure of the program, and they cannot be used as variable names.
-(((keyword)))
-
-Julia has these keywords:
-
-----
-abstract type    baremodule   begin      break       catch
-const            continue     do         else        elseif      
-end              export       finally    for         function
-global           if           import     importall   in         
-let              local        macro      module      mutable struct
-primitive type   quote        return     try         using            
-struct           where        while
+julia> 76trombones = "gran desfile"
+ERROR: sintaxis: "76" no es un nombre de argumento de función válido
+julia> más @ = 1000000
+ERROR: sintaxis: token adicional "@" después del final de la expresión
+julia> struct = "Zymurgy teórico avanzado"
+ERROR: sintaxis: inesperado "="
 ----
 
-You don’t have to memorize this list. In most development environments, keywords are displayed in a different color; if you try to use one as a variable name, you’ll know.
++ 76trombones + es ilegal porque comienza con un número. + more @ + es ilegal porque contiene un carácter ilegal, + @ +. Pero, ¿qué hay de malo con + struct +?
+
+Resulta que + struct + es una de las _palabras clave_ de Julia. El REPL usa palabras clave para reconocer la estructura del programa, y ​​no se pueden usar como nombres de variables.
+(((palabra clave)))
+
+Julia tiene estas palabras clave:
+
+----
+tipo abstracto baremodule comenzar captura de descanso
+const continue do else elseif
+finaliza la exportación finalmente para la función
+global si import importall en
+deje que la estructura mutable del módulo macro local
+tipo primitivo cotización retorno intente usar
+estructura donde mientras
+----
+
+No tienes que memorizar esta lista. En la mayoría de los entornos de desarrollo, las palabras clave se muestran en un color diferente; si intenta usar uno como nombre de variable, lo sabrá.
 
 
-=== Expressions and Statements
+=== Expresiones y declaraciones
 
-An _expression_ is a combination of values, variables, and operators. A value all by itself is considered an expression, and so is a variable, so the following are all legal expressions:
-(((expression)))
+Una _expresión_ es una combinación de valores, variables y operadores. Un valor en sí mismo se considera una expresión, por lo que es una variable, por lo que las siguientes son todas expresiones legales:
+(((expresión)))
 
-[source,@julia-repl-test chap02]
+[fuente, @ julia-repl-test chap02]
 ----
 julia> 42
 42
@@ -91,322 +91,321 @@ julia> n + 25
 42
 ----
 
-When you type an expression at the prompt, the REPL _evaluates_ it, which means that it finds the value of the expression. In this example, +n+ has the value 17 and +n + 25+ has the value 42.
-(((evaluate)))
+Cuando escribe una expresión en el indicador, REPL la evalúa, lo que significa que encuentra el valor de la expresión. En este ejemplo, + n + tiene el valor 17 y + n + 25+ tiene el valor 42.
+(((evaluar)))
 
-A _statement_ is a unit of code that has an effect, like creating a variable or displaying a value.
-(((statement)))
+Una declaración es una unidad de código que tiene un efecto, como crear una variable o mostrar un valor.
+(((declaración)))
 
-[source,@julia-repl-test chap02]
+[fuente, @ julia-repl-test chap02]
 ----
 julia> n = 17
 17
-julia> println(n)
+julia> println (n)
 17
 ----
 
-The first line is an assignment statement that gives a value to +n+. The second line is a print statement that displays the value of +n+.
+La primera línea es una declaración de asignación que le da un valor a + n +. La segunda línea es una declaración de impresión que muestra el valor de + n +.
 
-When you type a statement, the REPL _executes_ it, which means that it does whatever the statement says.
-(((execute)))
+Cuando escribe una declaración, REPL la ejecuta, lo que significa que hace lo que dice la declaración.
+(((ejecutar)))
 
 
-=== Script Mode
+=== Modo de secuencia de comandos
 
-So far we have run Julia in _interactive mode_, which means that you interact directly with the REPL. Interactive mode is a good way to get started, but if you are working with more than a few lines of code, it can be clumsy.
-(((interactive mode)))
+Hasta ahora hemos ejecutado a Julia en _ modo interactivo_, lo que significa que interactúa directamente con REPL. El modo interactivo es una buena manera de comenzar, pero si está trabajando con más de unas pocas líneas de código, puede ser torpe.
+(((modo interactivo)))
 
-The alternative is to save code in a file called a _script_ and then run Julia in _script mode_ to execute the script. By convention, Julia scripts have names that end with _.jl_.
-(((script)))(((script mode)))
+La alternativa es guardar el código en un archivo llamado _script_ y luego ejecutar Julia en _script mode_ para ejecutar el script. Por convención, los scripts de Julia tienen nombres que terminan en _.jl_.
+(((script))) (((modo script)))
 
-If you know how to create and run a script on your computer, you are ready to go. Otherwise I recommend using JuliaBox again. Open a text file, write the script and save with a _.jl_ extension. The script can be executed in a terminal with the command *+julia name_of_the_script.jl+*.
-(((extension, .jl)))(((JuliaBox)))
+Si sabe cómo crear y ejecutar un script en su computadora, está listo para comenzar. De lo contrario, recomiendo usar JuliaBox nuevamente. Abra un archivo de texto, escriba el script y guárdelo con una extensión _.jl_. El script se puede ejecutar en una terminal con el comando * + julia name_of_the_script.jl + *.
+(((extension, .jl))) (((JuliaBox)))
 
-Because Julia provides both modes, you can test bits of code in interactive mode before you put them in a script. But there are differences between interactive mode and script mode that can be confusing.
+Debido a que Julia proporciona ambos modos, puede probar bits de código en modo interactivo antes de colocarlos en un script. Pero hay diferencias entre el modo interactivo y el modo de script que pueden ser confusos.
 
-For example, if you are using Julia as a calculator, you might type
+Por ejemplo, si está utilizando a Julia como calculadora, puede escribir
 
-[source,@julia-repl-test]
+[fuente, @ julia-repl-test]
 ----
-julia> miles = 26.2
-26.2
-julia> miles * 1.61
-42.182
-----
-
-The first line assigns a value to +miles+ and displays the value. The second line is an expression, so the REPL evaluates it and displays the result. It turns out that a marathon is about 42 kilometers.
-
-But if you type the same code into a script and run it, you get no output at all. In script mode an expression, all by itself, has no visible effect. Julia actually evaluates the expression, but it doesn’t display the value unless you tell it to:
-
-[source,julia]
-----
-miles = 26.2
-println(miles * 1.61)
+julia> millas = 26.2
+26,2
+julia> millas * 1.61
+42,182
 ----
 
-This behavior can be confusing at first.
+La primera línea asigna un valor a + millas + y muestra el valor. La segunda línea es una expresión, por lo que REPL la evalúa y muestra el resultado. Resulta que una maratón es de unos 42 kilómetros.
 
-A script usually contains a sequence of statements. If there is more than one statement, the results appear one at a time as the statements execute.
+Pero si escribe el mismo código en un script y lo ejecuta, no obtendrá ningún resultado. En el modo de secuencia de comandos, una expresión, por sí sola, no tiene ningún efecto visible. Julia realmente evalúa la expresión, pero no muestra el valor a menos que se lo indique:
 
-For example, the script
-
-[source,julia]
+[fuente, julia]
 ----
-println(1)
+millas = 26.2
+println (millas * 1.61)
+----
+
+Este comportamiento puede ser confuso al principio.
+
+Un script generalmente contiene una secuencia de declaraciones. Si hay más de una declaración, los resultados aparecen uno a la vez a medida que se ejecutan las declaraciones.
+
+Por ejemplo, el guión
+
+[fuente, julia]
+----
+println (1)
 x = 2
-println(x)
+println (x)
 ----
 
-produces the output
+produce la salida
 
-[source,@julia-eval]
+[fuente, @ julia-eval]
 ----
-println(1)
+println (1)
 x = 2
-println(x)
+println (x)
 ----
 
-The assignment statement produces no output.
+La declaración de asignación no produce salida.
 
-===== Exercise 2-1
+===== Ejercicio 2-1
 
-To check your understanding, type the following statements in the Julia REPL and see what they do:
+Para verificar su comprensión, escriba las siguientes declaraciones en Julia REPL y vea lo que hacen:
 
-[source,julia]
+[fuente, julia]
 ----
-5
+5 5
 x = 5
 x + 1
 ----
 
-Now put the same statements in a script and run it. What is the output? Modify the script by transforming each expression into a print statement and then run it again.
+Ahora ponga las mismas declaraciones en un script y ejecútelo. ¿Cuál es el resultado? Modifique el script transformando cada expresión en una declaración de impresión y luego ejecútela de nuevo.
 
-=== Operator Precedence
+=== Precedencia del operador
 
-When an expression contains more than one operator, the order of evaluation depends on the _operator precedence_. For mathematical operators, Julia follows mathematical convention. The acronym _PEMDAS_ is a useful way to remember the rules:
-(((operator precedence)))(((PEMDAS)))
+Cuando una expresión contiene más de un operador, el orden de evaluación depende de la _precedencia del operador_. Para los operadores matemáticos, Julia sigue la convención matemática. El acrónimo _PEMDAS_ es una forma útil de recordar las reglas:
+(((precedencia de operador))) (((PEMDAS)))
 
-* __P__arentheses have the highest precedence and can be used to force an expression to evaluate in the order you want. Since expressions in parentheses are evaluated first, +2*(3-1)+ is 4, and +pass:[(1+1)^(5-2)]+ is 8. You can also use parentheses to make an expression easier to read, as in +(minute * 100) / 60+, even if it doesn’t change the result.
-(((parentheses)))
+* __P__rentheses tienen la mayor precedencia y se pueden utilizar para forzar una expresión a evaluar en el orden que desee. Dado que las expresiones entre paréntesis se evalúan primero, + 2 * (3-1) + es 4, y + pass: [(1 + 1) ^ (5-2)] + es 8. También puede usar paréntesis para hacer una expresión más fácil de leer, como en + (minuto * 100) / 60+, incluso si no cambia el resultado.
+(((paréntesis)))
 
-* __E__xponentiation has the next highest precedence, so +pass:[1+2^3]+ is 9, not 27, and +2*3^2+ is 18, not 36.
-(((pass:[^])))
+* __E__xponentiation tiene la siguiente precedencia más alta, por lo que + pass: [1 + 2 ^ 3] + es 9, no 27, y + 2 * 3 ^ 2 + es 18, no 36.
+(((pase: [^])))
 
-* __M__ultiplication and __D__ivision have higher precedence than __A__ddition and __S__ubtraction. So +2*3-1+ is 5, not 4, and +pass:[6+4/2]+ is 8, not 5.
-(((pass:[*])))(((pass:[/])))(((pass:[+])))(((pass:[-])))
+* __M__ultiplicación y __D__ivisión tienen mayor precedencia que __A__ddition y __S__ubtraction. Entonces + 2 * 3-1 + es 5, no 4, y + pasa: [6 + 4/2] + es 8, no 5.
+(((pase: [*]))) (((pase: [/]))) (((pase: [+]))) (((pase: [-])))
 
-* Operators with the same precedence are evaluated from left to right (except exponentiation). So in the expression +degrees / 2 * π+, the division happens first and the result is multiplied by +π+. To divide by latexmath:[\(2\pi\)], you can use parentheses, write +degrees / 2 / π+ or +degrees / 2π+.
+* Los operadores con la misma precedencia se evalúan de izquierda a derecha (excepto la exponenciación). Entonces, en la expresión + grados / 2 * π +, la división ocurre primero y el resultado se multiplica por + π +. Para dividir entre latexmath: [\ (2 \ pi \)], puede usar paréntesis, escribir + grados / 2 / π + o + grados / 2π +.
 
-[TIP]
+[PROPINA]
 ====
-I don’t work very hard to remember the precedence of operators. If I can’t tell by looking at the expression, I use parentheses to make it obvious.
+No trabajo mucho para recordar la precedencia de los operadores. Si no puedo verlo mirando la expresión, uso paréntesis para hacerlo obvio.
 ====
 
-=== String Operations
+=== Operaciones de cadena
 
-In general, you can’t perform mathematical operations on strings, even if the strings look like numbers, so the following are illegal:
-(((string operation)))(((operator, string)))
+En general, no puede realizar operaciones matemáticas en cadenas, incluso si las cadenas parecen números, por lo que lo siguiente es ilegal:
+(((operación de cadena))) (((operador, cadena)))
 
-[source,julia]
+[fuente, julia]
 ----
-"2" - "1"    "eggs" / "easy"    "third" + "a charm"
+"2" - "1" "huevos" / "fácil" "tercero" + "un encanto"
 ----
 
-But there are two exceptions, +*+ and +pass:[^]+.
-(((pass:[*])))(((pass:[^])))
+Pero hay dos excepciones, + * + y + pass: [^] +.
+(((pase: [*]))) (((pase: [^])))
 
-The +pass:[*]+ operator performs _string concatenation_, which means it joins the strings by linking them end-to-end. For example:
-((("string", "concatenation", see="concatenate")))((("concatenate")))
+El operador + pass: [*] + realiza _concatenación de cadenas_, lo que significa que une las cadenas uniéndolas de extremo a extremo. Por ejemplo:
+((("string", "concatenation", see = "concatenate"))) ((("concatenate")))
 
-[source,@julia-repl-test]
+[fuente, @ julia-repl-test]
 ----
-julia> first_str = "throat"
-"throat"
-julia> second_str = "warbler"
-"warbler"
+julia> first_str = "garganta"
+"garganta"
+julia> second_str = "curruca"
+"curruca"
 julia> first_str * second_str
-"throatwarbler"
+"enrojecedor"
 ----
 
-The +^+ operator also works on strings; it performs repetition. For example, +"Spam"pass:[^]3+ is +"SpamSpamSpam"+. If one of the values is a string, the other has to be an integer.
-((("string", "repetition", see="repetition")))((("repetition")))
+El operador + ^ + también funciona en cadenas; Realiza la repetición. Por ejemplo, pase "Spam" +: [^] 3+ es + "SpamSpamSpam" +. Si uno de los valores es una cadena, el otro tiene que ser un número entero.
+((("cadena", "repetición", ver = "repetición"))) ((("repetición")))
 
-This use of +pass:[*]+ and +^+ makes sense by analogy with multiplication and exponentiation. Just as +4pass:[^]3+ is equivalent to +4*4*4+, we expect +"Spam"pass:[^]3+ to be the same as +pass:["Spam"*"Spam"*"Spam"]+, and it is.
+Este uso de + pass: [*] + y + ^ + tiene sentido por analogía con multiplicación y exponenciación. Así como + 4pass: [^] 3+ es equivalente a + 4 * 4 * 4 +, esperamos que el pase + "Spam": [^] 3+ sea el mismo que el pase +: ["Spam" * "Spam" * "Spam"] +, y lo es.
 
 
-=== Comments
+=== Comentarios
 
-As programs get bigger and more complicated, they get more difficult to read. Formal languages are dense, and it is often difficult to look at a piece of code and figure out what it is doing, or why.
+A medida que los programas se hacen más grandes y más complicados, se vuelven más difíciles de leer. Los lenguajes formales son densos, y a menudo es difícil mirar un código y descubrir qué está haciendo o por qué.
 
-For this reason, it is a good idea to add notes to your programs to explain in natural language what the program is doing. These notes are called _comments_, and they start with the +#+ symbol:
-(((comment)))((("pass:[#]", see="comment")))
+Por esta razón, es una buena idea agregar notas a sus programas para explicar en lenguaje natural lo que está haciendo el programa. Estas notas se llaman _comments_, y comienzan con el símbolo + # +:
+(((comentario))) ((("pasar: [#]", ver = "comentario")))
 
-[source,julia]
+[fuente, julia]
 ----
-# compute the percentage of the hour that has elapsed
-percentage = (minute * 100) / 60
-----
-
-In this case, the comment appears on a line by itself. You can also put comments at the end of a line:
-
-[source,julia]
-----
-percentage = (minute * 100) / 60   # percentage of an hour
+# calcular el porcentaje de la hora que ha transcurrido
+porcentaje = (minuto * 100) / 60
 ----
 
-Everything from the +#+ to the end of the line is ignored—it has no effect on the execution of the program.
+En este caso, el comentario aparece en una línea por sí mismo. También puede poner comentarios al final de una línea:
 
-Comments are most useful when they document non-obvious features of the code. It is reasonable to assume that the reader can figure out _what_ the code does; it is more useful to explain _why_.
-
-This comment is redundant with the code and useless:
-
-[source,julia]
+[fuente, julia]
 ----
-v = 5   # assign 5 to v
+porcentaje = (minuto * 100) / 60 # porcentaje de una hora
 ----
 
-This comment contains useful information that is not in the code:
+Todo, desde el + # + hasta el final de la línea, se ignora, no tiene ningún efecto en la ejecución del programa.
 
-[source,julia]
+Los comentarios son más útiles cuando documentan características no obvias del código. Es razonable suponer que el lector puede averiguar qué hace el código; Es más útil explicar _por qué_.
+
+Este comentario es redundante con el código e inútil:
+
+[fuente, julia]
 ----
-v = 5   # velocity in meters/second.
+v = 5 # asigna 5 a v
 ----
 
-[WARNING]
+Este comentario contiene información útil que no está en el código:
+
+[fuente, julia]
+----
+v = 5 # velocidad en metros / segundo.
+----
+
+[ADVERTENCIA]
 ====
-Good variable names can reduce the need for comments, but long names can make complex expressions hard to read, so there is a tradeoff.
+Los buenos nombres de variables pueden reducir la necesidad de comentarios, pero los nombres largos pueden hacer que las expresiones complejas sean difíciles de leer, por lo que existe una compensación.
 ====
 
 
-=== Debugging
+=== Depuración
 
-Three kinds of errors can occur in a program: syntax errors, runtime errors, and semantic errors. It is useful to distinguish between them in order to track them down more quickly.
-(((debugging)))
+Se pueden producir tres tipos de errores en un programa: errores de sintaxis, errores de tiempo de ejecución y errores semánticos. Es útil distinguirlos para rastrearlos más rápidamente.
+(((depuración)))
 
-Syntax error:: 
-“Syntax” refers to the structure of a program and the rules about that structure. For example, parentheses have to come in matching pairs, so +(1 + 2)+ is legal, but +8)+ is a syntax error.
+Error de sintaxis::
+"Sintaxis" se refiere a la estructura de un programa y las reglas sobre esa estructura. Por ejemplo, los paréntesis tienen que venir en pares coincidentes, por lo que + (1 + 2) + es legal, pero +8) + es un error de sintaxis.
 +
-If there is a syntax error anywhere in your program, Julia displays an error message and quits, and you will not be able to run the program. During the first few weeks of your programming career, you might spend a lot of time tracking down syntax errors. As you gain experience, you will make fewer errors and find them faster.
-(((syntax error)))(((error message)))
+Si hay un error de sintaxis en cualquier parte de su programa, Julia muestra un mensaje de error y se cierra, y no podrá ejecutar el programa. Durante las primeras semanas de su carrera de programación, puede pasar mucho tiempo rastreando errores de sintaxis. A medida que gane experiencia, cometerá menos errores y los encontrará más rápido.
+(((error de sintaxis))) (((mensaje de error)))
 
-Runtime error:: 
-The second type of error is a runtime error, so called because the error does not appear until after the program has started running. These errors are also called _exceptions_ because they usually indicate that something exceptional (and bad) has happened.
+Error de tiempo de ejecución::
+El segundo tipo de error es un error de tiempo de ejecución, llamado así porque el error no aparece hasta después de que el programa ha comenzado a ejecutarse. Estos errores también se denominan _excepciones_ porque generalmente indican que ha sucedido algo excepcional (y malo).
 +
-Runtime errors are rare in the simple programs you will see in the first few chapters, so it might be a while before you encounter one.
-(((runtime error)))((("error", "runtime", see="runtime error")))(((exception, see="runtime error")))
+Los errores de tiempo de ejecución son raros en los programas simples que verá en los primeros capítulos, por lo que puede pasar un tiempo antes de que encuentre uno.
+(((error de tiempo de ejecución))) ((("error", "tiempo de ejecución", ver = "error de tiempo de ejecución"))) (((excepción, ver = "error de tiempo de ejecución")))
 
-Semantic error:: 
-The third type of error is “semantic”, which means related to meaning. If there is a semantic error in your program, it will run without generating error messages, but it will not do the right thing. It will do something else. Specifically, it will do what you told it to do.
+Error semántico ::
+El tercer tipo de error es "semántico", que significa relacionado con el significado. Si hay un error semántico en su programa, se ejecutará sin generar mensajes de error, pero no hará lo correcto. Hará algo más. Específicamente, hará lo que usted le dijo que hiciera.
 +
-Identifying semantic errors can be tricky because it requires you to work backward by looking at the output of the program and trying to figure out what it is doing.
-(((semantic error)))((("error", "semantic", see="semantic error")))
+Identificar errores semánticos puede ser complicado porque requiere que trabajes hacia atrás mirando la salida del programa e intentando descubrir qué está haciendo.
+(((error semántico))) ((("error", "semántico", ver = "error semántico")))
 
-=== Glossary
+=== Glosario
 
 variable::
-A name that refers to a value.
+Un nombre que se refiere a un valor.
 (((variable)))
 
-assignment::
-A statement that assigns a value to a variable
-(((assignment)))
+asignación::
+Una declaración que asigna un valor a una variable
+(((asignación)))
 
-state diagram::
-A graphical representation of a set of variables and the values they refer to.
-(((state diagram)))
+diagrama de estado::
+Una representación gráfica de un conjunto de variables y los valores a los que se refieren.
+(((diagrama de estado)))
 
-keyword::
-A reserved word that is used to parse a program; you cannot use keywords like +if+, +function+, and +while+ as variable names.
-(((keyword)))
+palabra clave::
+Una palabra reservada que se utiliza para analizar un programa; no puede usar palabras clave como + if +, + function + y + while + como nombres de variables.
+(((palabra clave)))
 
-operand::
-One of the values on which an operator operates.
-(((operand)))
+operando ::
+Uno de los valores en los que opera un operador.
+(((operando)))
 
-expression::
-A combination of variables, operators, and values that represents a single result.
-(((expression)))
+expresión::
+Una combinación de variables, operadores y valores que representa un solo resultado.
+(((expresión)))
 
-evaluate::
-To simplify an expression by performing the operations in order to yield a single value.
-(((evaluate)))
+evaluar::
+Para simplificar una expresión realizando las operaciones para obtener un valor único.
+(((evaluar)))
 
-statement::
-A section of code that represents a command or action. So far, the statements we have seen are assignments and print statements.
-(((statement)))
+declaración::
+Una sección de código que representa un comando o acción. Hasta ahora, las declaraciones que hemos visto son asignaciones y declaraciones impresas.
+(((declaración)))
 
-execute::
-To run a statement and do what it says.
-(((execute)))
+ejecutar::
+Para ejecutar una declaración y hacer lo que dice.
+(((ejecutar)))
 
-interactive mode::
-A way of using the Julia REPL by typing code at the prompt.
-(((interactive mode)))
+modo interactivo::
+Una forma de utilizar Julia REPL escribiendo código en el indicador.
+(((modo interactivo)))
 
-script mode::
-A way of using Julia to read code from a script and run it.
-(((script mode)))
+modo de secuencia de comandos ::
+Una forma de usar Julia para leer el código de un script y ejecutarlo.
+(((modo script)))
 
-script::
-A program stored in a file.
-(((script)))
+guión::
+Un programa almacenado en un archivo.
+(((guión)))
 
-operator precedence::
-Rules governing the order in which expressions involving multiple mathematical operators and operands are evaluated.
-(((operator precedence)))
+precedencia del operador ::
+Reglas que rigen el orden en que se evalúan las expresiones que involucran múltiples operadores matemáticos y operandos.
+(((precedencia del operador)))
 
-concatenate::
-To join two strings end-to-end.
-(((string concatenation)))
+concatenar::
+Para unir dos cadenas de extremo a extremo.
+(((concatenación de cadenas)))
 
-comment::
-Information in a program that is meant for other programmers (or anyone reading the source code) and has no effect on the execution of the program.
-(((comment)))
+comentario::
+Información en un programa que está destinada a otros programadores (o cualquier persona que lea el código fuente) y no tiene ningún efecto en la ejecución del programa.
+(((comentario)))
 
-syntax error::
-An error in a program that makes it impossible to parse (and therefore impossible to interpret).
-(((syntax error)))
+error de sintaxis::
+Un error en un programa que hace que sea imposible de analizar (y, por lo tanto, imposible de interpretar).
+(((error de sintaxis)))
 
-runtime error or exception::
-An error that is detected while the program is running.
-(((runtime error)))
+error de tiempo de ejecución o excepción ::
+Un error que se detecta mientras se ejecuta el programa.
+(((Error de tiempo de ejecución)))
 
-semantics::
-The meaning of a program.
-(((semantics)))
+semántica::
+El significado de un programa.
+(((semántica)))
 
-semantic error::
-An error in a program that makes it do something other than what the programmer intended.
-(((semantic error)))
+error semántico ::
+Un error en un programa que hace que haga algo diferente a lo que pretendía el programador.
+(((error semántico)))
 
 
-=== Exercises
+=== Ejercicios
 
 [[ex02-1]]
-===== Exercise 2-2
+===== Ejercicio 2-2
 
-Repeating my advice from the previous chapter, whenever you learn a new feature, you should try it out in interactive mode and make errors on purpose to see what goes wrong.
+Repitiendo mi consejo del capítulo anterior, cada vez que aprenda una nueva característica, debe probarla en modo interactivo y cometer errores a propósito para ver qué sale mal.
 
-. We’ve seen that +n = 42+ is legal. What about +42 = n+?
+. Hemos visto que + n = 42+ es legal. ¿Qué pasa con +42 = n +?
 
-. How about +x = y = 1+?
+. ¿Qué tal + x = y = 1+?
 
-. In some languages every statement ends with a semi-colon, +;+. What happens if you put a semi-colon at the end of a Julia statement?
-(((pass:[;])))
+. En algunos idiomas, cada declaración termina con un punto y coma, +; +. ¿Qué sucede si pones un punto y coma al final de una declaración de Julia?
+(((pasar:[;])))
 
-. What if you put a period at the end of a statement?
+. ¿Qué pasa si pone un punto al final de una declaración?
 
-. In math notation you can multiply +x+ and +y+ like this: +x y+. What happens if you try that in Julia? What about 5x?
+. En notación matemática puedes multiplicar + x + y + y + de esta manera: + x y +. ¿Qué pasa si intentas eso en Julia? ¿Qué hay de 5x?
 
 [[ex02-2]]
-===== Exercise 2-3
+===== Ejercicio 2-3
 
-Practice using the Julia REPL as a calculator:
-(((calculator)))
+Practique el uso de Julia REPL como calculadora:
+(((calculadora)))
 
-. The volume of a sphere with radius latexmath:[\(r\)] is latexmath:[\(\frac{4}{3} \pi r^3\)]. What is the volume of a sphere with radius 5?
+. El volumen de una esfera con radio latexmath: [\ (r \)] es latexmath: [\ (\ frac {4} {3} \ pi r ^ 3 \)]. ¿Cuál es el volumen de una esfera con radio 5?
 
-. Suppose the cover price of a book is $ 24.95, but bookstores get a 40 % discount. Shipping costs $ 3 for the first copy and 75 cents for each additional copy. What is the total wholesale cost for 60 copies?
+. Supongamos que el precio de portada de un libro es de $ 24.95, pero las librerías obtienen un descuento del 40%. El envío cuesta $ 3 por la primera copia y 75 centavos por cada copia adicional. ¿Cuál es el costo total al por mayor de 60 copias?
 
-. If I leave my house at 6:52 am and run 1 mile at an easy pace (8:15 per mile), then 3 miles at tempo (7:12 per mile) and 1 mile at easy pace again, what time do I get home for breakfast?
-
+. Si salgo de mi casa a las 6:52 a.m. y corro 1 milla a un ritmo fácil (8:15 por milla), luego 3 millas a ritmo (7:12 por milla) y 1 milla a ritmo fácil nuevamente, ¿a qué hora debo llegar a casa para el desayuno?
