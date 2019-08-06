@@ -1,19 +1,19 @@
 [[chap02]]
-== Variables, expresiones y declaraciones
+== Variables, expresiones y sentencias
 
 Una de las características más poderosas de un lenguaje de programación es la capacidad de manipular _variables_. Una variable es un nombre que se refiere a un valor.
-(((valor variable)))
+(((variable)))(((valor)))
 
 
 === Sentencias de asignación
 
 Una _sentencia de asignación_ crea una nueva variable y le da un valor:
-(((declaración de asignación))) ((("declaración", "asignación", ver = "declaración de asignación"))) (((pasar: [=], ver = "declaración de asignación"))) (((pi ))) ((("π", ver = "pi")))
+(((sentencia de asignación))) ((("sentencia", "asignación", ver = "sentencia de asignación"))) (((pass: [=], see = "sentencia de asignación"))) (((pi))) ((("π", see = "pi")))
 
-[fuente, @ julia-repl-test chap02]
+[source,@julia-repl-test chap02]
 ----
-julia> message = "Y ahora por algo completamente diferente"
-"Y ahora para algo completamente diferente"
+julia> message = "Y ahora, algo completamente diferente"
+"Y ahora, algo completamente diferente"
 julia> n = 17
 17
 julia> π_val = 3.141592653589793
