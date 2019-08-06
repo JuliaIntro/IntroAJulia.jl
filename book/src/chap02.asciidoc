@@ -5,9 +5,9 @@ Una de las características más poderosas de un lenguaje de programación es la
 (((valor variable)))
 
 
-=== Declaraciones de asignación
+=== Sentencias de asignación
 
-Una _asignación de asignación_ crea una nueva variable y le da un valor:
+Una _sentencia de asignación_ crea una nueva variable y le da un valor:
 (((declaración de asignación))) ((("declaración", "asignación", ver = "declaración de asignación"))) (((pasar: [=], ver = "declaración de asignación"))) (((pi ))) ((("π", ver = "pi")))
 
 [fuente, @ julia-repl-test chap02]
