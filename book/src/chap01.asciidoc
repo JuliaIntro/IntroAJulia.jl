@@ -8,7 +8,7 @@ La ((("" resolución de problemas "))) habilidad más importante para un inform�
 Por una parte, aprenderás a programar, lo cual es beneficioso por si solo. Por otra, la programación se constituirá como un medio para un fin. A medida que avancemos este fin será más claro.
 
 === ¿Qué es un programa?
-Un _programa_ ((("programas"))) es una secuencia de instrucciones que especifican cómo hacer un cálculo. El cálculo puede ser de naturaleza matemática; tal como resolver un sistema de ecuaciones, o encontrar las raíces de un polinomio, pero también puede ser un cálculo simbólico, como encontrar y reemplazar texto en un documento, o bien algo gráfico, tal como procesar una imagen o reproducir un video.
+Un _programa_ ((("programas"))) es una secuencia de instrucciones que especifican cómo hacer un cálculo. El cálculo puede ser de naturaleza matemática; tal como resolver un sistema de ecuaciones, o encontrar las raíces de un polinomio, pero también puede ser un cálculo simbólico; como encontrar y reemplazar texto en un documento, o bien algo gráfico; tal como procesar una imagen o reproducir un video.
 
 Los detalles ((("instrucciones", seealso = "declaraciones"))) difieren para cada lenguaje, pero algunas instrucciones básicas aparecen en casi todos los lenguajes:
 
