@@ -205,7 +205,7 @@ Prepararse para estas reacciones puede ayudarlo a lidiar con ellas. Un enfoque e
 
 Su trabajo es ser un buen gerente: debe encontrar formas de aprovechar las fortalezas y mitigar las debilidades. Y encontrar formas de usar sus emociones para involucrarse con el problema, sin dejar que sus reacciones interfieran con su capacidad para trabajar de manera efectiva.
 
-Aprender a depurar puede ser frustrante, pero es una habilidad valiosa que es útil para muchas actividades más allá de la programación. Al final de cada capítulo hay una sección, como esta, con mis sugerencias para la depuración. Espero que te ayuden!
+Aprender a depurar puede ser frustrante, pero es una habilidad valiosa que es útil para muchas actividades más allá de la programación. Al final de cada capítulo hay una sección, como esta, con mis sugerencias para la depuración. ¡Espero que te ayuden!
 
 
 === Glosario
