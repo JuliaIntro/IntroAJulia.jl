@@ -22,8 +22,8 @@ julia> π_val = 3.141592653589793
 
 Este ejemplo hace tres asignaciones. La primera asigna una cadena a una nueva variable llamada +mensaje+; la segunda le asigna el entero +17+ a +n+; el tercero asigna el valor (aproximado) de latexmath:[\(\pi\)] a +π_val+ (*+\pi TAB+*).
 
-Una forma común de representar variables en papel es escribir el nombre con una flecha apuntando a su valor. Este tipo de figura se llama diagrama de estado porque muestra en qué estado se encuentra cada una de las variables (considérelo como el estado mental de la variable). <<fig02-1>> muestra el resultado del ejemplo anterior.
-(((diagrama de estado))) ((("diagrama", "estado", ver = "diagrama de estado")))
+Una forma común de representar variables en papel es escribir el nombre con una flecha apuntando a su valor. Este tipo de figura se llama diagrama de estado porque muestra en qué estado se encuentra cada una de las variables. <<fig02-1>> muestra el resultado del ejemplo anterior.
+(((diagrama de estado))) ((("diagrama", "estado", see = "diagrama de estado")))
 
 [[fig02-1]]
 .Diagrama de estado
