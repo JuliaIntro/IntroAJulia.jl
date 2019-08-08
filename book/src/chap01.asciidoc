@@ -116,17 +116,17 @@ julia> 6^2 + 6
 
 Un _valor_ ((("valores"))) es uno de los elementos básicos con los que trabaja un programa, tal como una letra o un número. Algunos de los valores que hemos visto hasta ahora son +2+, +42.0+ y +"Hola, Mundo!"+.
 
-Estos ((("tipos"))) ((("tipos de datos", ver = "tipos"))) ((("tipo entero (Int64)"))) ((("tipo de punto flotante (Float64) "))) (((" strings "))) (((" types "," Int64 ", see =" integer type "))) (((" types "," Float64 ", see =" coma flotante type "))) (((" types "," String ", see =" strings "))) valores pertenecen a diferentes _tipos_: +2+ es un _entero_ (_integer_ en inglés), +42.0+ es un _número de punto flotante_ (_floating-point number_ en inglés), y +"Hola, Mundo!"+ es una _cadena_ (_string_ en inglés), llamada así porque las letras que contiene están unidas.
+Estos ((("tipos")))((("tipos de datos", see="tipos")))((("tipo entero (Int64)")))((("tipo de punto flotante (Float64)")))((("strings")))((("tipos","Int64", see="tipo entero")))((("tipos","Float64", see="tipo de punto flotante")))((("tipos","String", see="strings"))) valores pertenecen a diferentes _tipos_: +2+ es un _entero_ (_integer_ en inglés), +42.0+ es un _número de punto flotante_ (_floating-point number_ en inglés), y +"Hola, Mundo!"+ es una _cadena_ (_string_ en inglés), llamada así porque las letras que contiene están unidas.
 
-Si ((("" typeof function "))) no está seguro del tipo de un valor, el REPL puede ayudarle:
+Si (((""typeof function"))) no está seguro del tipo de un valor, el REPL puede ayudarle:
 
-[source, @ julia-repl-test]
+[source,@julia-repl-test]
 ----
-julia> typeof (2)
+julia> typeof(2)
 Int64
-julia> typeof (42.0)
+julia> typeof(42.0)
 Float64
-julia> typeof ("¡Hola, mundo!")
+julia> typeof("¡Hola, mundo!")
 String
 ----
 
@@ -136,14 +136,14 @@ Los enteros pertenecen al tipo +Int64+, las cadenas pertenecen a +String+ y los 
 
 [source, @ julia-repl-test]
 ----
-julia> typeof ("2")
+julia> typeof("2")
 String
-julia> typeof ("42.0")
+julia> typeof("42.0")
 String
 ----
-Si ((("coma ($$, $$)", "no usar en enteros"))) ((("$$, $$ (coma)", "no usar en enteros", primary-sortas = " * coma "))) quisiéramos escribir un número de grandes dimensiones, podríamos caer en la costumbre de usar comas para separar sus cifras, como por ejemplo 1,000,000. Este no es un _entero_ válido en Julia, aunque sí es válido.
+Si ((("coma ($$,$$)", "no usar en enteros"))) ((("$$, $$ (coma)", "no usar en enteros", primary-sortas = " * coma "))) quisiéramos escribir un número de grandes dimensiones, podríamos caer en la costumbre de usar comas para separar sus cifras, como por ejemplo 1,000,000. Este no es un _entero_ válido en Julia, aunque sí es válido.
 
-[source, @ julia-repl-test]
+[source,@julia-repl-test]
 ----
 julia> 1,000,000
 (1, 0, 0)
