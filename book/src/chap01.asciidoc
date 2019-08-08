@@ -25,7 +25,7 @@ Ejecución condicional ::
 Se verifican ciertas condiciones y se ejecuta el código apropiado.
 
 Repetición::
-Se realiza ((("repetición", vea = "iteración"))) alguna acción repetidamente, generalmente con alguna variación.
+Se realiza ((("repetición", see = "iteración"))) alguna acción repetidamente, generalmente con alguna variación.
 
 Aunque no lo creas, eso es todo lo que se debe hacer. Cada programa que has usado, sin importar su complejidad, está construido en base a instrucciones que se parecen bastante a estas. De esta manera, la programación puede entenderse como el proceso de dividir una tarea compleja y larga en pequeñas subtareas, lo suficientemente simples como para realizarse con una de estas instrucciones básicas.
 
@@ -34,11 +34,11 @@ Uno ((("Julia", "ejecutando"))) de los desafíos para comenzar a utilizar Julia 
 
 Para evitar ese problema, recomiendo que comience ejecutando Julia en un navegador. Más tarde, cuando se sienta cómodo con Julia, se harán sugerencias para instalar Julia en su ordenador.
 
-En ((("JuliaBox"))) ((("recursos en línea", "JuliaBox"))) el navegador, puede ejecutar Julia en https://www.juliabox.com [JuliaBox]. No se requiere instalación: simplemente abra su navegador y entre a la página de JuliaBox, inicie sesión y comience a programar (consulte <<juliabox>>).
+En ((("JuliaBox"))) ((("recursos en línea", "JuliaBox"))) el navegador, puede ejecutar Julia en https://www.juliabox.com[JuliaBox]. No se requiere instalación: simplemente abra su navegador y entre a la página de JuliaBox, inicie sesión y comience a programar (consulte <<juliabox>>).
 
 Julia _REPL_ (Read – Eval – Print Loop) ((("REPL (Read-Eval-Print Loop)"))) es un programa que lee y ejecuta código de Julia. Puede iniciar REPL abriendo un terminal en JuliaBox y escribiendo *+julia+* en la línea de comando. Cuando comienza, debería ver una salida como esta:
 
-[fuente, @ julia-eval]
+[source, @ julia-eval]
 ----
 io = IOBuffer()
 Base.banner(io)
@@ -50,7 +50,7 @@ Las primeras líneas contienen información sobre el REPL, por lo que esto puede
 
 La ((("prompt", "en REPL", secondary-sortas = "REPL"))) última línea es un _prompt_ que indica que el REPL está listo para que usted ingrese el código. Si escribe una línea de código y presiona Enter, REPL muestra el resultado:
 
-[fuente, @ julia-repl-test]
+[source, @ julia-repl-test]
 ----
 julia> 1 + 1
 2
@@ -65,7 +65,7 @@ Ahora estás listo para comenzar. De aquí en adelante, ya sabrás cómo iniciar
 
 Tradicionalmente, el primer programa que se escribe en un nuevo lenguaje se llama "¡Hola, mundo!" porque todo lo que hace es mostrar las palabras "¡Hola, mundo!". En Julia, se ve así:
 
-[fuente, @ julia-repl-test]
+[source, @ julia-repl-test]
 ----
 julia> println ("¡Hola, mundo!")
 ¡Hola, mundo!
@@ -84,7 +84,7 @@ Después de ((("operadores", "aritmética"))) (((("operadores aritméticos"))) (
 
 Los ((("$$ + $$ (operador de suma)", primary-sortas = "* suma"))) ((("operador de suma ($$+$$)"))) (((($$-$$ (operador de resta) ", primary-sortas ="* subtraction"))) (((" operador de resta ($$-$$) "))) (((" $$*$$ (asterisco) " , "operador de multiplicación", primario-sortas = "* asterisco"))) ((("operador de multiplicación ($$*$$)"))) ((("asterisco ($$*$$)", "operador de multiplicación"))) operadores +pass:[+]+, +-+, y +*+ realizan sumas, restas y multiplicaciones respectivamente, como en los siguientes ejemplos:
 
-[fuente, @ julia-repl-test]
+[source, @ julia-repl-test]
 ----
 julia> 40 + 2
 42
@@ -96,7 +96,7 @@ julia> 6 * 7
 
 El operador ((("$$ / $$ (operador de división)", primary-sortas = "* division"))) ((("division", "operador de división ($$ / $$)"))) +/+ realiza la división:
 
-[fuente, @ julia-repl-test]
+[source, @ julia-repl-test]
 ----
 julia> 84/2
 42,0
@@ -106,7 +106,7 @@ Quizás se pregunte por qué el resultado es +42.0+ en vez de +42+. Esto será e
 
 Finalmente, el ((("$$ ^ $$ (caret)", "operador de exponenciación", primary-sortas = "* caret"))) ((("operador de exponenciación ($$ ^ $$)"))) ((("caret ($$ ^ $$)", "operador de exponenciación"))) operador +^+ realiza potencias; es decir, eleva un número a una potencia:
 
-[fuente, @ julia-repl-test]
+[source, @ julia-repl-test]
 ----
 julia> 6 ^ 2 + 6
 42
@@ -120,7 +120,7 @@ Estos ((("tipos"))) ((("tipos de datos", ver = "tipos"))) ((("tipo entero (Int64
 
 Si ((("" typeof function "))) no está seguro del tipo de un valor, el REPL puede ayudarle:
 
-[fuente, @ julia-repl-test]
+[source, @ julia-repl-test]
 ----
 julia> typeof (2)
 Int64
@@ -134,7 +134,7 @@ Los enteros pertenecen al tipo +Int64+, las cadenas pertenecen a +String+ y los 
 
 ¿Qué ((("comillas (& quot; & # x2026; & quot;)", "cadenas de inclusión"))) (((("" "& # x2026; & quot; (comillas)", "cadenas de inclusión", primaria -sortas = "* comillas"))) pasa con los valores "2" y "42.0"? Parecen números, pero están entre comillas como si fueran cadenas. Estos valores también son cadenas:
 
-[fuente, @ julia-repl-test]
+[source, @ julia-repl-test]
 ----
 julia> typeof ("2")
 String
@@ -143,7 +143,7 @@ String
 ----
 Si ((("coma ($$, $$)", "no usar en enteros"))) ((("$$, $$ (coma)", "no usar en enteros", primary-sortas = " * coma "))) quisiéramos escribir un número de grandes dimensiones, podríamos caer en la costumbre de usar comas para separar sus cifras, como por ejemplo 1,000,000. Este no es un _entero_ válido en Julia, aunque sí es válido.
 
-[fuente, @ julia-repl-test]
+[source, @ julia-repl-test]
 ----
 julia> 1,000,000
 (1, 0, 0)
@@ -160,9 +160,9 @@ _Los lenguajes formales_ ((("lenguaje formal", id = "ch1nat2", rango = "startofr
 
 Los lenguajes formales ((("sintaxis", id = "ch1nat4", rango = "startofrange"))) tienden a tener reglas estrictas de sintaxis que gobiernan la estructura de las sentencias. Por ejemplo, en matemáticas, la sentencia latexmath:[\(3 + 3 = 6\)] tiene la sintaxis correcta, pero latexmath:[\(3 + = 3 \ $6 \)] no. En química, latexmath:[\ (\ mathrm {H_2O} \)] es una fórmula sintácticamente correcta, pero latexmath:[\ (\ mathrm {_2Zz} \)] no lo es.
 
-Las reglas de sintaxis ((("tokens", id = "ch1nat5", range = "startofrange"))) ((("structure", id = "ch1nat6", range = "startofrange")))  pueden ser de dos tipos, correspondientes a componentes léxicos y a la estructura. Los componentes léxicos son los elementos básicos del lenguaje, como palabras, números y elementos químicos. Uno de los problemas con latexmath:[\ (3 + = 3 \ $ 6 \)] es que latexmath:[\ (\ $ \)] no es un componente léxico válido en matemáticas (al menos hasta donde conocemos). Del mismo modo, latexmath:[\ (\ mathrm {_2Zz} \)] no es válido porque no hay ningún elemento con la abreviatura latexmath:[\(\ mathrm {Zz}\)].
+Las reglas de sintaxis ((("tokens", id = "ch1nat5", range = "startofrange"))) ((("structure", id = "ch1nat6", range = "startofrange")))  pueden ser de dos tipos, correspondientes a componentes léxicos y a la estructura. Los componentes léxicos son los elementos básicos del lenguaje, como palabras, números y elementos químicos. Uno de los problemas con latexmath:[\(3 + = 3 \$ 6\)] es que latexmath:[\(\$\)] no es un componente léxico válido en matemáticas (al menos hasta donde conocemos). Del mismo modo, latexmath:[\(\mathrm{_2Zz}\)] no es válido porque no hay ningún elemento con la abreviatura latexmath:[\(\mathrm {Zz}\)].
 
-El segundo tipo de regla de sintaxis se refiere a la forma en que se combinan los componentes léxicos. La ecuación latexmath:[\ (3 + = 3 \)] no es válida porque aunque latexmath:[\ (+ \)] y latexmath:[\ (= \)] son componentes léxicos válidos, no puedes tener uno justo después el otro. Del mismo modo, en una fórmula química, el subíndice viene después del nombre del elemento, no antes.
+El segundo tipo de regla de sintaxis se refiere a la forma en que se combinan los componentes léxicos. La ecuación latexmath:[\(3 + = 3 \)] no es válida porque aunque latexmath:[\(+ \)] y latexmath:[\(= \)] son componentes léxicos válidos, no puedes tener uno justo después el otro. Del mismo modo, en una fórmula química, el subíndice viene después del nombre del elemento, no antes.
 
 Esta es un@ oración en espa$ol bien estructurada con c*mponentes léxicos no válidos. Esta oración tiene todos los componentes léxicos válidos, pero con una estructura no válida.
 
