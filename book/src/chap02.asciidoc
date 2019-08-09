@@ -8,7 +8,7 @@ Una de las características más poderosas de un lenguaje de programación es la
 === Sentencias de asignación
 
 Una _sentencia de asignación_ crea una nueva variable y le da un valor:
-(((sentencia de asignación))) ((("sentencia", "asignación", ver = "sentencia de asignación"))) (((pass: [=], see = "sentencia de asignación"))) (((pi))) ((("π", see = "pi")))
+(((sentencia de asignación)))((("sentencia", "asignación", see="sentencia de asignación")))(((pass:[=], see="sentencia de asignación"))) (((pi)))((("π", see = "pi")))
 
 [source,@julia-repl-test chap02]
 ----
@@ -20,10 +20,10 @@ julia> π_val = 3.141592653589793
 3.141592653589793
 ----
 
-Este ejemplo hace tres asignaciones. La primera asigna una cadena a una nueva variable llamada +mensaje+; la segunda le asigna el entero +17+ a +n+; el tercero asigna el valor (aproximado) de latexmath:[\(\pi\)] a +π_val+ (*+\pi TAB+*).
+Este ejemplo hace tres asignaciones. La primera asigna una cadena a una nueva variable llamada +mensaje+; la segunda le asigna a +n+ el entero +17+; el tercero asigna el valor (aproximado) de latexmath:[\(\pi\)] a +π_val+ (*+\pi TAB+*).
 
 Una forma común de representar variables en papel es escribir el nombre con una flecha apuntando a su valor. Este tipo de figura se llama diagrama de estado porque muestra en qué estado se encuentra cada una de las variables. <<fig02-1>> muestra el resultado del ejemplo anterior.
-(((diagrama de estado))) ((("diagrama", "estado", see = "diagrama de estado")))
+(((diagrama de estado)))((("diagrama", "estado", see="diagrama de estado")))
 
 [[fig02-1]]
 .Diagrama de estado
@@ -33,25 +33,25 @@ image::images/fig21.svg[]
 === Nombres de variables
 (((variable)))
 
-Los programadores generalmente eligen nombres significativos para sus variables; documentan para qué se usa la variable.
+Los programadores generalmente eligen nombres significativos para sus variables—explican para qué se usa la variable.
 
-Los nombres de las variables pueden ser tan largos como desee. Pueden contener casi todos los caracteres Unicode (consulte <<caracteres>>), pero no pueden comenzar con un número. Es válido usar letras mayúsculas, pero usar solo minúsculas para nombres de variables es la convención.
+Los nombres de las variables pueden ser tan largos como desee. Pueden contener casi todos los caracteres Unicode (consulte <<caracteres>>), pero no pueden comenzar con un número. Es válido usar letras mayúsculas, pero lo común es usar solo minúsculas para los nombres de variables.
 
-Los caracteres Unicode se pueden ingresar mediante la finalización de pestañas de las abreviaturas tipo LaTeX en Julia REPL.
+Los caracteres Unicode se pueden ingresar mediante autocompletado por tabulación de las abreviaturas tipo LaTeX en Julia REPL.
 (((Carácter Unicode)))
 
-El carácter de subrayado, + _ +, puede aparecer en un nombre. A menudo se usa en nombres con varias palabras, como + your_name + o + airspeed_of_unladen_swallow +.
-(((carácter de subrayado))) (((abreviaturas tipo LaTeX)))
+El carácter guión bajo, +_+, puede aparecer en un nombre. A menudo se usa en nombres con varias palabras, como +tu_nombre+ o +velocidad_aerodinámica_de_una_golondrina_sin_cargamento+.
+(((carácter guión bajo)))(((abreviaturas tipo LaTeX)))
 
-Si le das a una variable un nombre ilegal, obtienes un error de sintaxis:
-(((error de sintaxis))) ((("error", "sintaxis", ver = "error de sintaxis")))
+Si le das a una variable un nombre inválido, tendrás un error de sintaxis:
+(((error de sintaxis)))((("error", "sintaxis", see="error de sintaxis")))
 
-[fuente, jlcon]
+[source, jlcon]
 ----
 julia> 76trombones = "gran desfile"
-ERROR: sintaxis: "76" no es un nombre de argumento de función válido
+ERROR: sintaxis: "76" is not a valid function argument name ("76" no es un nombre de argumento de función válido)
 julia> más @ = 1000000
-ERROR: sintaxis: token adicional "@" después del final de la expresión
+ERROR: sintaxis: extra token "@" after end of expression (token adicional "@" después del final de la expresión)
 julia> struct = "Zymurgy teórico avanzado"
 ERROR: sintaxis: inesperado "="
 ----
