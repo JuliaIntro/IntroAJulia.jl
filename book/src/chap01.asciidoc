@@ -195,7 +195,7 @@ Los lenguajes formales son más densos que los naturales, por lo que lleva más 
 
 === Depuración
 
-Los programadores ((("errores (errores)"))) ((("depuración", "emociones de, tratar con"))) cometen errores. Los errores de programación se denominan _bugs_ y el proceso para rastrearlos se denomina _debugging_ o _depuración_.
+Los programadores ((("errores (bugs)")))((("depuración", "emociones de la, manejando las")))cometen errores. Los errores de programación se denominan _bugs_ y el proceso para rastrearlos se denomina _debugging_ o _depuración_.
 
 La programación, y especialmente la depuración, pueden provocar emociones negativas. Frente a un error difícil de solucionar, puedes sentir  enojo, verguenza, y cansancio.
 
@@ -241,7 +241,7 @@ punto flotante::
 Un tipo ((("tipo de punto flotante (Float64)")))que representa números con un punto decimal.
 
 cadena::
-Un tipo (((("cadenas")))que representa secuencias de caracteres.
+Un tipo ((("cadenas")))que representa secuencias de caracteres.
 
 lenguaje natural::
 Cualquier ((("lenguaje natural")))lenguaje hablado que evolucionó naturalmente.
@@ -249,8 +249,8 @@ Cualquier ((("lenguaje natural")))lenguaje hablado que evolucionó naturalmente.
 lenguaje formal::
 Cualquier ((("lenguaje formal")))lenguaje que se ha diseñado para fines específicos, como la representación de ideas matemáticas o programas de computadora. Todos los lenguajes de programación ((("lenguaje de programación")))son lenguajes formales.
 
-análisis de sintaxis::
-Las reglas ((("análisis de sintaxis"))) que gobiernan la estructura de un programa.
+sintaxis::
+Las reglas ((("sintaxis"))) que gobiernan la estructura de un programa.
 
 componente léxico::
 Uno ((("componente léxico")))de los elementos básicos de la estructura de un programa, análogo a una palabra en un lenguaje natural.
