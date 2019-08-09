@@ -116,7 +116,7 @@ julia> 6^2 + 6
 
 Un _valor_ ((("valores"))) es uno de los elementos básicos con los que trabaja un programa, tal como una letra o un número. Algunos de los valores que hemos visto hasta ahora son +2+, +42.0+ y +"Hola, Mundo!"+.
 
-Estos ((("tipos")))((("tipos de datos", see="tipos")))((("tipo entero (Int64)")))((("tipo de punto flotante (Float64)")))((("strings")))((("tipos","Int64", see="tipo entero")))((("tipos","Float64", see="tipo de punto flotante")))((("tipos", "String", see="strings")))valores pertenecen a diferentes _tipos_: +2+ es un _entero_ (_integer_ en inglés), +42.0+ es un _número de punto flotante_ (_floating-point number_ en inglés), y +"Hola, Mundo!"+ es una _cadena_ (_string_ en inglés), llamada así porque las letras que contiene están unidas.
+Estos ((("tipos")))((("tipos de datos", see="tipos")))((("tipo entero (Int64)")))((("tipo de punto flotante (Float64)")))((("cadenas")))((("tipos","Int64", see="tipo entero")))((("tipos","Float64", see="tipo de punto flotante")))((("tipos", "String", see="cadenas")))valores pertenecen a diferentes _tipos_: +2+ es un _entero_ (_integer_ en inglés), +42.0+ es un _número de punto flotante_ (_floating-point number_ en inglés), y +"Hola, Mundo!"+ es una _cadena_ (_string_ en inglés), llamada así porque las letras que contiene están unidas.
 
 Si ((("función typeof")))no está seguro del tipo de un valor, el REPL puede ayudarle:
 
@@ -253,19 +253,19 @@ sintaxis::
 Las reglas ((("sintaxis"))) que gobiernan la estructura de un programa.
 
 componente léxico::
-Uno ((("componente léxico")))de los elementos básicos de la estructura de un programa, análogo a una palabra en un lenguaje natural.
+Uno ((("componentes léxicos")))de los elementos básicos de la estructura de un programa, análogo a una palabra en un lenguaje natural.
 
 estructura::
-Los manera en que los componentes léxicos ((("estructura")))se combinan.
+La manera en que los componentes léxicos ((("estructura")))se combinan.
 
-analizar gramaticalmente::
-Para ((("análisis")))examinar un programa y analizar la estructura sintáctica.
+análisis de sintaxis::
+Examinar ((("análisis de sintaxis")))un programa y analizar la estructura sintáctica.
 
 bug::
-Un error ((("errores (errores)", seealso="depuración")))((("errores", see="errores")))en un programa.
+Un error ((("errores (bugs)", seealso="depuración")))((("errores", see="errores")))en un programa.
 
 depuración/debugging ::
-El proceso ((("depuración", seealso = "errores (errores); prueba"))) de búsqueda y corrección de errores.
+El proceso ((("depuración", seealso = "errores (bugs); prueba"))) de búsqueda y corrección de errores.
 
 
 === Ejercicios
