@@ -33,7 +33,7 @@ image::images/fig21.svg[]
 === Nombres de variables
 (((variable)))
 
-Los programadores generalmente eligen nombres significativos para sus variables—explican para qué se usa la variable.
+Los programadores generalmente eligen nombres significativos para sus variables— los nombres explican para qué se usa la variable.
 
 Los nombres de las variables pueden ser tan largos como desee. Pueden contener casi todos los caracteres Unicode (consulte <<caracteres>>), pero no pueden comenzar con un número. Es válido usar letras mayúsculas, pero lo común es usar solo minúsculas para los nombres de variables.
 
