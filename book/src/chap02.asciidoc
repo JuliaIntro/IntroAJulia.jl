@@ -37,7 +37,7 @@ Los programadores generalmente eligen nombres significativos para sus variables�
 
 Los nombres de las variables pueden ser tan largos como desee. Pueden contener casi todos los caracteres Unicode (consulte <<caracteres>>), pero no pueden comenzar con un número. Es válido usar letras mayúsculas, pero lo común es usar solo minúsculas para los nombres de variables.
 
-Los caracteres Unicode se pueden ingresar mediante autocompletado por tabulación de las abreviaturas tipo LaTeX en Julia REPL.
+Los caracteres Unicode se pueden ingresar mediante autocompletado por tabulación de las abreviaturas tipo LaTeX en el Julia REPL.
 (((Carácter Unicode)))
 
 El carácter guión bajo, +_+, puede aparecer en un nombre. A menudo se usa en nombres con varias palabras, como +tu_nombre+ o +velocidad_aerodinámica_de_una_golondrina_sin_cargamento+.
@@ -48,32 +48,31 @@ Si le das a una variable un nombre inválido, tendrás un error de sintaxis:
 
 [source, jlcon]
 ----
-julia> 76trombones = "gran desfile"
-ERROR: sintaxis: "76" is not a valid function argument name ("76" no es un nombre de argumento de función válido)
-julia> más @ = 1000000
-ERROR: sintaxis: extra token "@" after end of expression (token adicional "@" después del final de la expresión)
+julia> 76trombones = "un gran desfile"
+ERROR: syntax: "76" is not a valid function argument name (sintaxis: "76" no es un nombre de argumento de función válido)
+julia> mas@ = 1000000
+ERROR: syntax: extra token "@" after end of expression (sintaxis: token adicional "@" después del final de la expresión)
 julia> struct = "Zymurgy teórico avanzado"
-ERROR: sintaxis: inesperado "="
+ERROR: syntax: unexpected "=" (inesperado "=")
 ----
 
-+ 76trombones + es ilegal porque comienza con un número. + more @ + es ilegal porque contiene un carácter ilegal, + @ +. Pero, ¿qué hay de malo con + struct +?
++76trombones+ es un nombre inválido porque comienza con un número. +mas@+ es inválido porque contiene un carácter inválido: +@+. Pero, ¿qué hay de malo con +struct+?
 
-Resulta que + struct + es una de las _palabras clave_ de Julia. El REPL usa palabras clave para reconocer la estructura del programa, y ​​no se pueden usar como nombres de variables.
+Resulta que +struct+ es una de las _palabras clave_ de Julia. El REPL usa palabras clave para reconocer la estructura del programa, y no se pueden usar como nombres de variables.
 (((palabra clave)))
 
 Julia tiene estas palabras clave:
-
 ----
-tipo abstracto baremodule comenzar captura de descanso
-const continue do else elseif
-finaliza la exportación finalmente para la función
-global si import importall en
-deje que la estructura mutable del módulo macro local
-tipo primitivo cotización retorno intente usar
-estructura donde mientras
+abstract type    baremodule   begin      break       catch
+const            continue     do         else        elseif      
+end              export       finally    for         function
+global           if           import     importall   in         
+let              local        macro      module      mutable struct
+primitive type   quote        return     try         using            
+struct           where        while
 ----
 
-No tienes que memorizar esta lista. En la mayoría de los entornos de desarrollo, las palabras clave se muestran en un color diferente; si intenta usar uno como nombre de variable, lo sabrá.
+No hay necesidad de memorizar esta lista. En la mayoría de los entornos de desarrollo, las palabras clave se muestran en un color diferente; si intenta usar uno como nombre de variable, lo sabrá.
 
 
 === Expresiones y declaraciones
