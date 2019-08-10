@@ -121,7 +121,7 @@ Una alternativa es guardar el código en un archivo llamado _script_ y luego uti
 Si sabe cómo crear y ejecutar un script en su computadora, está listo para comenzar. De lo contrario, recomiendo usar JuliaBox nuevamente. Abra un archivo de texto, escriba el script y guárdelo con una extensión _.jl_. El script se puede ejecutar en una terminal con el comando *+julia name_of_the_script.jl+*.
 (((extension, .jl)))(((JuliaBox)))
 
-Debido a que Julia proporciona ambos modos, puede probar líneas de código en modo interactivo antes de colocarlos en un script. Aún así, tenga en consideración que existen diferencias entre el modo interactivo y el modo de script que pueden ser confusos.
+Debido a que Julia proporciona ambos modos, puede probar líneas de código en modo interactivo antes de colocarlos en un script. Aún así, tenga en consideración que existen diferencias entre el modo interactivo y el modo script que pueden ser confusos.
 
 Por ejemplo, si está utilizando Julia como una calculadora, puede escribir
 
