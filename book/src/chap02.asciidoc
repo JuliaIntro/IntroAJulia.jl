@@ -234,7 +234,7 @@ De manera análoga, este uso de +pass:[*]+ y +^+ también tiene sentido en la mu
 
 === Comentarios
 
-A medida que los programas se hacen más grandes y más complejos, se vuelven más difíciles de leer. Los lenguajes formales son densos, y a menudo es difícil mirar un código y descubrir qué está haciendo o por qué.
+A medida que los programas se hacen más largos y complejos, se vuelven más difíciles de leer. Los lenguajes formales son densos, y a menudo es difícil mirar un código y descubrir qué está haciendo o por qué.
 
 Por esta razón, es una buena idea agregar notas a sus programas para explicar en lenguaje natural lo que está haciendo el programa. Estas notas se llaman _commentarios_, y comienzan con el símbolo +#+:
 (((comentario)))((("pass:[#]", see="comentario")))
@@ -245,7 +245,7 @@ Por esta razón, es una buena idea agregar notas a sus programas para explicar e
 porcentaje = (minuto * 100) / 60
 ----
 
-En este caso, el comentario aparece en una línea. También puede poner comentarios al final de una línea:
+En este caso, el comentario aparece solo en una línea. También puede poner comentarios al final de una línea:
 
 [source, julia]
 ----
@@ -254,25 +254,25 @@ porcentaje = (minuto * 100) / 60    # porcentaje de una hora
 
 Todo, desde el +#+ hasta el final de la línea se ignora, no tiene ningún efecto en la ejecución del programa.
 
-Los comentarios son más útiles cuando documentan características no obvias del código. Es razonable suponer que el lector puede averiguar qué hace el código; Es más útil explicar _por qué_.
+Los comentarios son más útiles cuando documentan características no obvias del código. Es razonable suponer que el lector puede averiguar qué hace el código, por lo tanto es más útil explicar _por qué_.
 
 Este comentario es redundante con el código e inútil:
 
-[fuente, julia]
+[source,julia]
 ----
-v = 5 # asigna 5 a v
+v = 5   # asigna 5 a v
 ----
 
 Este comentario contiene información útil que no está en el código:
 
-[fuente, julia]
+[source, julia]
 ----
-v = 5 # velocidad en metros / segundo.
+v = 5   # velocidad en metros/segundo.
 ----
 
 [ADVERTENCIA]
 ====
-Los buenos nombres de variables pueden reducir la necesidad de comentarios, pero los nombres largos pueden hacer que las expresiones complejas sean difíciles de leer, por lo que existe una compensación.
+Los buenos nombres de variables pueden reducir la necesidad de comentarios, pero los nombres largos pueden hacer que las expresiones sean difíciles de leer, por lo que existe un trade-off.
 ====
 
 
