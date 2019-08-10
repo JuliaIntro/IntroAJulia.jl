@@ -80,7 +80,7 @@ No hay necesidad de memorizar esta lista. En la mayoría de los entornos de desa
 Una _expresión_ es una combinación de valores, variables y operadores. Un valor en sí mismo se considera una expresión, al igual que una variable, por lo que las siguientes son todas expresiones válidas:
 (((expresión)))
 
-[fuente, @ julia-repl-test chap02]
+[source,@julia-repl-test chap02]
 ----
 julia> 42
 42
@@ -93,7 +93,7 @@ julia> n + 25
 Cuando escribe una expresión en el prompt, REPL la _evalúa_, lo que significa que encuentra el valor de la expresión. En este ejemplo, +n+ tiene el valor 17 y +n+25+ tiene el valor 42.
 (((evaluar)))
 
-Una sentencia es una unidad de código que tiene un efecto, como crear una variable o mostrar un valor.
+Una sentencia es una unidad de código que tiene un efecto, tal como crear una variable o mostrar un valor.
 (((sentencia)))
 
 [source,@julia-repl-test chap02]
