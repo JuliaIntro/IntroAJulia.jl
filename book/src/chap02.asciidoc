@@ -226,7 +226,7 @@ julia> primer_str * segundo_str
 "automóvil"
 ----
 
-El operador +^+ también funciona con cadenas; repite. Por ejemplo, +"Spam"pass:[^]3+ es +"SpamSpamSpam"+. Si uno de los valores es una cadena, el otro tiene que ser un número entero.
+El operador +^+ también funciona con cadenas; realiza repeticiones. Por ejemplo, +"Spam"pass:[^]3+ es +"SpamSpamSpam"+. Si uno de los valores es una cadena, el otro tiene que ser un número entero.
 ((("cadena", "repetición", see="repetición")))((("repetición")))
 
 De manera análoga, este uso de +pass:[*]+ y +^+ también tiene sentido en la multiplicación y potencia. Así como +4pass:[^]3+ es equivalente a +4*4*4+, esperamos que el +"Spam"pass:[^]3+ sea lo mismo que el +pass:["Spam"*"Spam"*"Spam"]+, y lo es.
@@ -272,32 +272,32 @@ v = 5   # velocidad en metros/segundo.
 
 [ADVERTENCIA]
 ====
-Los buenos nombres de variables pueden reducir la necesidad de comentarios, pero los nombres largos pueden hacer que las expresiones sean difíciles de leer, por lo que existe un trade-off.
+Los buenos nombres de variables pueden reducir la necesidad de comentarios, pero los nombres largos pueden hacer que las expresiones sean difíciles de leer.
 ====
 
 
 === Depuración
 
-Se pueden producir tres tipos de errores en un programa: errores de sintaxis, errores de tiempo de ejecución y errores semánticos. Es útil distinguirlos para rastrearlos más rápidamente.
+Se pueden producir tres tipos de errores en un programa: errores de sintaxis, errores de tiempo de ejecución, y errores semánticos. Es útil distinguirlos para rastrearlos más rápidamente.
 (((depuración)))
 
 Error de sintaxis::
-"Sintaxis" se refiere a la estructura de un programa y las reglas sobre esa estructura. Por ejemplo, los paréntesis tienen que venir en pares coincidentes, por lo que + (1 + 2) + es legal, pero +8) + es un error de sintaxis.
+"Sintaxis" se refiere a la estructura de un programa y las reglas sobre esa estructura. Por ejemplo, los paréntesis deben presentarse de a pares, por lo que +(1+2)+ es válido, pero +8)+ es un error de sintaxis.
 +
-Si hay un error de sintaxis en cualquier parte de su programa, Julia muestra un mensaje de error y se cierra, y no podrá ejecutar el programa. Durante las primeras semanas de su carrera de programación, puede pasar mucho tiempo rastreando errores de sintaxis. A medida que gane experiencia, cometerá menos errores y los encontrará más rápido.
-(((error de sintaxis))) (((mensaje de error)))
+Si hay un error de sintaxis en cualquier parte de su programa, Julia muestra un mensaje de error y se cierra, no pudiendo ejecutar el programa. Durante sus primeras semanas como programador, puede pasar mucho tiempo rastreando errores de sintaxis. A medida que gane experiencia, cometerá menos errores y los encontrará más rápido.
+(((error de sintaxis)))(((mensaje de error)))
 
 Error de tiempo de ejecución::
 El segundo tipo de error es un error de tiempo de ejecución, llamado así porque el error no aparece hasta después de que el programa ha comenzado a ejecutarse. Estos errores también se denominan _excepciones_ porque generalmente indican que ha sucedido algo excepcional (y malo).
 +
 Los errores de tiempo de ejecución son raros en los programas simples que verá en los primeros capítulos, por lo que puede pasar un tiempo antes de que encuentre uno.
-(((error de tiempo de ejecución))) ((("error", "tiempo de ejecución", ver = "error de tiempo de ejecución"))) (((excepción, ver = "error de tiempo de ejecución")))
+(((error de tiempo de ejecución)))((("error", "tiempo de ejecución", see="error de tiempo de ejecución")))(((excepción,see="error de tiempo de ejecución")))
 
 Error semántico ::
-El tercer tipo de error es "semántico", que significa relacionado con el significado. Si hay un error semántico en su programa, se ejecutará sin generar mensajes de error, pero no hará lo correcto. Hará algo más. Específicamente, hará lo que usted le dijo que hiciera.
+El tercer tipo de error es "semántico", es decir, relacionado con el significado. Si hay un error semántico en su programa, se ejecutará sin generar mensajes de error, pero no hará lo correcto. Hará algo más. Específicamente, hará lo que usted le dijo que hiciera.
 +
-Identificar errores semánticos puede ser complicado porque requiere que trabajes hacia atrás mirando la salida del programa e intentando descubrir qué está haciendo.
-(((error semántico))) ((("error", "semántico", ver = "error semántico")))
+Identificar errores semánticos puede ser complicado porque requiere que trabajes en reversa, analizando el output del programa para intentar descubrir qué está haciendo.
+(((error semántico))) ((("error", "semántico",see="error semántico")))
 
 === Glosario
 
@@ -306,7 +306,7 @@ Un nombre que se refiere a un valor.
 (((variable)))
 
 asignación::
-Una declaración que asigna un valor a una variable
+Una sentencia que asigna un valor a una variable
 (((asignación)))
 
 diagrama de estado::
@@ -314,7 +314,7 @@ Una representación gráfica de un conjunto de variables y los valores a los que
 (((diagrama de estado)))
 
 palabra clave::
-Una palabra reservada que se utiliza para analizar un programa; no puede usar palabras clave como + if +, + function + y + while + como nombres de variables.
+Una palabra reservada que se utiliza para analizar un programa; no puede usar palabras clave como +if+, +function+ y +while+ como nombres de variables.
 (((palabra clave)))
 
 operando ::
@@ -329,25 +329,25 @@ evaluar::
 Para simplificar una expresión realizando las operaciones para obtener un valor único.
 (((evaluar)))
 
-declaración::
-Una sección de código que representa un comando o acción. Hasta ahora, las declaraciones que hemos visto son asignaciones y declaraciones impresas.
-(((declaración)))
+sentencia::
+Una sección de código que representa un comando o acción. Hasta ahora, las sentencias que hemos visto son asignaciones y declaraciones impresas.
+(((sentencia)))
 
 ejecutar::
-Para ejecutar una declaración y hacer lo que dice.
+Ejecutar una sentencia y hacer lo que dice.
 (((ejecutar)))
 
 modo interactivo::
-Una forma de utilizar Julia REPL escribiendo código en el indicador.
+Una forma de utilizar Julia REPL escribiendo código en el prompt.
 (((modo interactivo)))
 
-modo de secuencia de comandos ::
-Una forma de usar Julia para leer el código de un script y ejecutarlo.
+modo script::
+Una forma de usar Julia para leer código desde un script y ejecutarlo.
 (((modo script)))
 
-guión::
+script::
 Un programa almacenado en un archivo.
-(((guión)))
+(((script)))
 
 precedencia del operador ::
 Reglas que rigen el orden en que se evalúan las expresiones que involucran múltiples operadores matemáticos y operandos.
