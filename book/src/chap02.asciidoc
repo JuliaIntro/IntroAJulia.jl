@@ -314,7 +314,7 @@ Una representación gráfica de un conjunto de variables y los valores a los que
 (((diagrama de estado)))
 
 palabra clave::
-Una palabra reservada que se utiliza para analizar un programa; no puede usar palabras clave como +if+, +function+ y +while+ como nombres de variables.
+Una palabra reservada que se utiliza para definir la sintaxis y estructura de un programa; no puede usar palabras clave como +if+, +function+ y +while+ como nombres de variables.
 (((palabra clave)))
 
 operando ::
@@ -326,11 +326,11 @@ Una combinación de variables, operadores y valores que representa un solo resul
 (((expresión)))
 
 evaluar::
-Para simplificar una expresión realizando las operaciones para obtener un valor único.
+Simplificar una expresión realizando operaciones para obtener un valor único.
 (((evaluar)))
 
 sentencia::
-Una sección de código que representa un comando o acción. Hasta ahora, las sentencias que hemos visto son asignaciones y declaraciones impresas.
+Una sección de código que representa un comando o acción. Hasta ahora, las sentencias que hemos visto son asignaciones e impresiones.
 (((sentencia)))
 
 ejecutar::
@@ -354,11 +354,11 @@ Reglas que rigen el orden en que se evalúan las expresiones que involucran múl
 (((precedencia del operador)))
 
 concatenar::
-Para unir dos cadenas de extremo a extremo.
+Unir dos cadenas de extremo a extremo.
 (((concatenación de cadenas)))
 
 comentario::
-Información en un programa que está destinada a otros programadores (o cualquier persona que lea el código fuente) y no tiene ningún efecto en la ejecución del programa.
+Información en un programa que está destinada a otros programadores (o cualquier persona que lea el código fuente) y que no tiene efecto en la ejecución del programa.
 (((comentario)))
 
 error de sintaxis::
@@ -387,14 +387,14 @@ Repitiendo el consejo del capítulo anterior, cada vez que aprenda algo nuevo, d
 
 . Hemos visto que +n=42+ es válido. ¿Qué pasa con +42=n+?
 
-. ¿Qué tal +x=y=1+?
+. ¿Y con +x=y=1+?
 
-. En algunos lenguajes, cada declaración termina con un punto y coma, +;+. ¿Qué sucede si pones un punto y coma al final de una sentencia en Julia?
+. En algunos lenguajes, cada sentencia termina con un punto y coma, +;+. ¿Qué sucede si pones un punto y coma al final de una sentencia en Julia?
 (((pass:[;])))
 
-. ¿Qué pasa si pone un punto al final de una sentencia?
+. ¿Qué pasa si pones un punto al final de una sentencia?
 
-. En notación matemática puedes multiplicar +x+ y +y+ de esta manera: +x y+. ¿Qué pasa si intentas eso en Julia? ¿Y 5x?
+. En notación matemática puedes multiplicar +x+ e +y+ de esta manera: +x y+. ¿Qué pasa si intentas eso en Julia? ¿Y 5x?
 
 [[ex02-2]]
 ===== Ejercicio 2-3
