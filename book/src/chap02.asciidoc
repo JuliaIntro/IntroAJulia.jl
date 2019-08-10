@@ -133,7 +133,7 @@ julia> millas * 1.61
 42,182
 ----
 
-La primera línea asigna un valor a +millas+ y muestra el valor. La segunda línea es una expresión, por lo que REPL la evalúa y muestra el resultado. Resulta que una maratón es de unos 42 kilómetros.
+La primera línea asigna un valor a +millas+ y muestra el valor. La segunda línea es una expresión, por lo que REPL la evalúa y muestra el resultado. Gracias al código anterior sabemos que una maratón es de unos 42 kilómetros.
 
 Pero si escribe el mismo código en un script y lo ejecuta, no obtendrá ningún resultado. En el modo script, una expresión, por sí sola, no tiene ningún efecto visible. Julia realmente evalúa la expresión, pero no muestra el valor a menos que se lo indique:
 
@@ -147,38 +147,37 @@ Este comportamiento puede ser confuso al principio.
 
 Un script generalmente contiene una secuencia de sentencias. Si hay más de una sentencia, los resultados aparecen uno a la vez a medida que se ejecutan las declaraciones.
 
-Por ejemplo, el guión
+Por ejemplo, el script
 
-[fuente, julia]
+[source, julia]
 ----
-println (1)
+println(1)
 x = 2
-println (x)
+println(x)
 ----
 
-produce la salida
+produce el output
 
-[fuente, @ julia-eval]
+[source,@julia-eval]
 ----
-println (1)
-x = 2
-println (x)
+1
+2
 ----
 
-La declaración de asignación no produce salida.
+La sentencia de asignación no genera output.
 
 ===== Ejercicio 2-1
 
-Para verificar su comprensión, escriba las siguientes declaraciones en Julia REPL y vea lo que hacen:
+Para comprobar si ha aprendido, escriba las siguientes sentencias en Julia REPL y vea lo que hace cada una:
 
-[fuente, julia]
+[source,julia]
 ----
-5 5
+5
 x = 5
 x + 1
 ----
 
-Ahora ponga las mismas declaraciones en un script y ejecútelo. ¿Cuál es el resultado? Modifique el script transformando cada expresión en una declaración de impresión y luego ejecútela de nuevo.
+Ahora coloque las mismas sentencias en un script y ejecútelo. ¿Cuál es el resultado? Modifique el script transformando cada expresión en una sentencia de impresión y luego ejecútela de nuevo.
 
 === Precedencia del operador
 
