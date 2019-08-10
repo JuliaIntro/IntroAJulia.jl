@@ -133,7 +133,7 @@ julia> millas * 1.61
 42,182
 ----
 
-La primera línea asigna un valor a +millas+ y muestra el valor. La segunda línea es una expresión, por lo que REPL la evalúa y muestra el resultado. Gracias al código anterior sabemos que una maratón es de unos 42 kilómetros.
+La primera línea asigna un valor a +millas+ y muestra el valor. La segunda línea es una expresión, por lo que REPL la evalúa y muestra el resultado. Gracias al código anterior sabemos que una maratón tiene unos 42 kilómetros.
 
 Pero si escribe el mismo código en un script y lo ejecuta, no obtendrá ningún resultado. En el modo script, una expresión, por sí sola, no tiene ningún efecto visible. Julia realmente evalúa la expresión, pero no muestra el valor a menos que se lo indique:
 
