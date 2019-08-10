@@ -383,27 +383,27 @@ Un error en un programa que hace que haga algo diferente a lo que pretendía el 
 [[ex02-1]]
 ===== Ejercicio 2-2
 
-Repitiendo mi consejo del capítulo anterior, cada vez que aprenda una nueva característica, debe probarla en modo interactivo y cometer errores a propósito para ver qué sale mal.
+Repitiendo el consejo del capítulo anterior, cada vez que aprenda algo nuevo, debe probarlo en el modo interactivo y cometer errores a propósito para ver el resultado.
 
-. Hemos visto que + n = 42+ es legal. ¿Qué pasa con +42 = n +?
+. Hemos visto que +n=42+ es válido. ¿Qué pasa con +42=n+?
 
-. ¿Qué tal + x = y = 1+?
+. ¿Qué tal +x=y=1+?
 
-. En algunos idiomas, cada declaración termina con un punto y coma, +; +. ¿Qué sucede si pones un punto y coma al final de una declaración de Julia?
-(((pasar:[;])))
+. En algunos lenguajes, cada declaración termina con un punto y coma, +;+. ¿Qué sucede si pones un punto y coma al final de una sentencia en Julia?
+(((pass:[;])))
 
-. ¿Qué pasa si pone un punto al final de una declaración?
+. ¿Qué pasa si pone un punto al final de una sentencia?
 
-. En notación matemática puedes multiplicar + x + y + y + de esta manera: + x y +. ¿Qué pasa si intentas eso en Julia? ¿Qué hay de 5x?
+. En notación matemática puedes multiplicar +x+ y +y+ de esta manera: +x y+. ¿Qué pasa si intentas eso en Julia? ¿Y 5x?
 
 [[ex02-2]]
 ===== Ejercicio 2-3
 
-Practique usando el Julia REPL como una calculadora:
+Practique usando Julia REPL como una calculadora:
 (((calculadora)))
 
 . El volumen de una esfera con radio latexmath:[\(r\)] es latexmath:[\(\frac{4}{3} \pi r^3\)]. ¿Cuál es el volumen de una esfera con radio 5?
 
-. Supongamos que el precio de venta de un libro es de $ 24.95, pero las librerías obtienen un descuento del 40%. El envío cuesta $ 3 por la primera copia y 75 centavos por cada copia adicional. ¿Cuál es el costo total al por mayor de 60 copias?
+. Supongamos que el precio de venta de un libro es de $ 24.95, pero las librerías obtienen un descuento del 40%. El envío cuesta $3 por la primera copia y 75 centavos por cada copia adicional. ¿Cuál es el costo total al por mayor de 60 copias?
 
-. Si salgo de mi casa a las 6:52 a.m. y corro 1 milla a un ritmo relajado (8:15 por milla), luego 3 millas más rápido (7:12 por milla) y 1 milla a ritmo relajado nuevamente, ¿a qué hora llego a casa para desayunar?
+. Si salgo de mi casa a las 6:52 a.m. y corro 1 milla a un ritmo relajado (8:15 min. por milla), luego 3 millas más rápido (7:12 min. por milla) y 1 milla a ritmo relajado nuevamente, ¿a qué hora llego a casa para desayunar?
