@@ -334,7 +334,7 @@ Una sección de código que representa un comando o acción. Hasta ahora, las se
 (((sentencia)))
 
 ejecutar::
-Ejecutar una sentencia y hacer lo que dice.
+Ejecutar una sentencia y hacer lo que esta dice.
 (((ejecutar)))
 
 modo interactivo::
