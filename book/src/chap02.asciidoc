@@ -35,7 +35,7 @@ image::images/fig21.svg[]
 
 Los programadores generalmente eligen nombres significativos para sus variables, es decir, los nombres explican para qué se usa la variable.
 
-Los nombres de las variables pueden ser tan largos como desee. Pueden contener casi todos los caracteres Unicode (consulte <<caracteres>>), pero no pueden comenzar con un número. Es válido usar letras mayúsculas, pero lo común es usar solo minúsculas para los nombres de variables.
+Los nombres de las variables pueden ser tan largos como desee. Pueden contener casi todos los caracteres Unicode (consulte <<caracteres>>), pero no pueden comenzar con un número. Es válido usar letras mayúsculas, pero lo común es usar solo minúsculas para nombres de variables.
 
 Los caracteres Unicode se pueden ingresar mediante autocompletado por tabulación de las abreviaturas tipo LaTeX en el Julia REPL.
 (((Carácter Unicode)))
