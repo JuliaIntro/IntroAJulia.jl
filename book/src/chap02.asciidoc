@@ -72,12 +72,12 @@ primitive type   quote        return     try         using
 struct           where        while
 ----
 
-No hay necesidad de memorizar esta lista. En la mayoría de los entornos de desarrollo, las palabras clave se muestran en un color diferente; por lo tanto, si intenta usar uno como nombre de variable, lo sabrá.
+No hay necesidad de memorizar esta lista. En la mayoría de los entornos de desarrollo, las palabras clave se muestran en un color diferente; por lo tanto, si intenta usar una como nombre de variable, lo sabrá.
 
 
 === Expresiones y sentencias
 
-Una _expresión_ es una combinación de valores, variables y operadores. Un valor en sí mismo se considera una expresión, al igual que una variable, por lo que las siguientes son todas expresiones legales:
+Una _expresión_ es una combinación de valores, variables y operadores. Un valor en sí mismo se considera una expresión, al igual que una variable, por lo que las siguientes son todas expresiones válidas:
 (((expresión)))
 
 [fuente, @ julia-repl-test chap02]
@@ -93,7 +93,7 @@ julia> n + 25
 Cuando escribe una expresión en el prompt, REPL la _evalúa_, lo que significa que encuentra el valor de la expresión. En este ejemplo, +n+ tiene el valor 17 y +n+25+ tiene el valor 42.
 (((evaluar)))
 
-Una sentencia es una unidad de código que tiene un efecto, tal como crear una variable o mostrar un valor.
+Una sentencia es una unidad de código que tiene un efecto, como crear una variable o mostrar un valor.
 (((sentencia)))
 
 [source,@julia-repl-test chap02]
@@ -104,28 +104,28 @@ julia> println(n)
 17
 ----
 
-La primera línea es una declaración de asignación que le da un valor a + n +. La segunda línea es una declaración de impresión que muestra el valor de + n +.
+La primera línea es una sentencia de asignación que le da un valor a +n+. La segunda línea es una sentencia de impresión que muestra el valor de +n+.
 
-Cuando escribe una declaración, REPL la ejecuta, lo que significa que hace lo que dice la declaración.
+Cuando escribe una sentencia, REPL la ejecuta, lo que significa que hace lo que dice la sentencia.
 (((ejecutar)))
 
 
-=== Modo de secuencia de comandos
+=== Modo script
 
-Hasta ahora hemos ejecutado a Julia en _ modo interactivo_, lo que significa que interactúa directamente con REPL. El modo interactivo es una buena manera de comenzar, pero si está trabajando con más de unas pocas líneas de código, puede ser torpe.
+Hasta ahora hemos ejecutado Julia en _modo interactivo_, lo que significa que hemos interactuado directamente con el REPL. El modo interactivo es una buena manera de comenzar, pero si está trabajando con más de unas pocas líneas de código, puede ser difícil.
 (((modo interactivo)))
 
-La alternativa es guardar el código en un archivo llamado _script_ y luego ejecutar Julia en _script mode_ para ejecutar el script. Por convención, los scripts de Julia tienen nombres que terminan en _.jl_.
-(((script))) (((modo script)))
+Una alternativa es guardar el código en un archivo llamado _script_ y luego ejecutar Julia en _modo script_ para ejecutar el script. Por convención, los scripts de Julia tienen nombres que terminan en _.jl_.
+(((script)))(((modo script)))
 
-Si sabe cómo crear y ejecutar un script en su computadora, está listo para comenzar. De lo contrario, recomiendo usar JuliaBox nuevamente. Abra un archivo de texto, escriba el script y guárdelo con una extensión _.jl_. El script se puede ejecutar en una terminal con el comando * + julia name_of_the_script.jl + *.
-(((extension, .jl))) (((JuliaBox)))
+Si sabe cómo crear y ejecutar un script en su computadora, está listo para comenzar. De lo contrario, recomiendo usar JuliaBox nuevamente. Abra un archivo de texto, escriba el script y guárdelo con una extensión _.jl_. El script se puede ejecutar en una terminal con el comando *+julia name_of_the_script.jl+*.
+(((extension, .jl)))(((JuliaBox)))
 
 Debido a que Julia proporciona ambos modos, puede probar bits de código en modo interactivo antes de colocarlos en un script. Pero hay diferencias entre el modo interactivo y el modo de script que pueden ser confusos.
 
 Por ejemplo, si está utilizando a Julia como calculadora, puede escribir
 
-[fuente, @ julia-repl-test]
+[source,@julia-repl-test]
 ----
 julia> millas = 26.2
 26,2
