@@ -236,7 +236,7 @@ De manera análoga, este uso de +pass:[*]+ y +^+ también tiene sentido en la mu
 
 A medida que los programas se hacen más largos y complejos, se vuelven más difíciles de leer. Los lenguajes formales son densos, y a menudo es difícil mirar un código y descubrir qué está haciendo o por qué.
 
-Por esta razón, es una buena idea agregar notas a sus programas para explicar en lenguaje natural lo que está haciendo el programa. Estas notas se llaman _commentarios_, y comienzan con el símbolo +#+:
+Por esta razón, es una buena idea agregar notas a sus programas para explicar en lenguaje natural lo que está haciendo el programa. Estas notas se llaman _comentarios_, y comienzan con el símbolo +#+:
 (((comentario)))((("pass:[#]", see="comentario")))
 
 [source,julia]
