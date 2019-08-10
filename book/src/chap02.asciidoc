@@ -296,7 +296,7 @@ Los errores de tiempo de ejecución son raros en los programas simples que verá
 Error semántico ::
 El tercer tipo de error es "semántico", es decir, relacionado con el significado. Si hay un error semántico en su programa, se ejecutará sin generar mensajes de error, pero no hará lo correcto. Hará algo más. Específicamente, hará lo que usted le dijo que hiciera.
 +
-Identificar errores semánticos puede ser complicado porque requiere que trabajes en reversa, analizando el output del programa para intentar descubrir qué está haciendo.
+Identificar errores semánticos puede ser complicado porque requiere que trabajes a la inversa, analizando el output del programa para intentar descubrir qué está haciendo.
 (((error semántico))) ((("error", "semántico",see="error semántico")))
 
 === Glosario
