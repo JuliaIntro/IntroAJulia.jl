@@ -77,7 +77,7 @@ No hay necesidad de memorizar esta lista. En la mayoría de los entornos de desa
 
 === Expresiones y sentencias
 
-Una _expresión_ es una combinación de valores, variables y operadores. Un valor en sí mismo se considera una expresión, al igual que una variable, por lo que las siguientes son todas expresiones válidas:
+Una _expresión_ es una combinación de valores, variables y operadores. Un valor en sí mismo se considera una expresión, al igual que una variable, por lo que las siguientes expresiones son válidas:
 (((expresión)))
 
 [source,@julia-repl-test chap02]
