@@ -43,7 +43,7 @@ Los caracteres Unicode se pueden ingresar mediante autocompletado por tabulació
 El carácter guión bajo, +_+, puede aparecer en un nombre. A menudo se usa en nombres con varias palabras, como +tu_nombre+ o +velocidad_aerodinámica_de_una_golondrina_sin_cargamento+.
 (((carácter guión bajo)))(((abreviaturas tipo LaTeX)))
 
-Si le das a una variable un nombre inválido, tendrás un error de sintaxis:
+Si le das un nombre inválido a una variable, tendrás un error de sintaxis:
 (((error de sintaxis)))((("error", "sintaxis", see="error de sintaxis")))
 
 [source, jlcon]
