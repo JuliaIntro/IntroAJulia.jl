@@ -106,7 +106,7 @@ julia> println(n)
 
 La primera línea es una sentencia de asignación que le da un valor a +n+. La segunda línea es una sentencia de impresión que muestra el valor de +n+.
 
-Cuando escribe una sentencia, REPL la ejecuta, lo que significa que hace lo que dice la sentencia.
+Cuando escribe una sentencia, REPL la ejecuta, es decir, hace lo que dice la sentencia.
 (((ejecutar)))
 
 
