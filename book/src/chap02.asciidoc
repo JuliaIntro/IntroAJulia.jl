@@ -7,7 +7,7 @@ Una de las características más poderosas de un lenguaje de programación es la
 
 === Sentencias de asignación
 
-Una _sentencia de asignación_ crea una nueva variable y le da un valor:
+Una _sentencia de asignación_ crea una nueva variable y le asigna un valor:
 (((sentencia de asignación)))((("sentencia", "asignación", see="sentencia de asignación")))(((pass:[=], see="sentencia de asignación"))) (((pi)))((("π", see = "pi")))
 
 [source,@julia-repl-test chap02]
