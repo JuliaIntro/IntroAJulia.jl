@@ -149,7 +149,7 @@ Un script generalmente contiene una secuencia de sentencias. Si hay más de una 
 
 Por ejemplo, el script
 
-[source, julia]
+[source,julia]
 ----
 println(1)
 x = 2
@@ -190,24 +190,24 @@ Cuando una expresión contiene más de un operador, el orden de evaluación depe
 * __PO__tencias: tiene la siguiente precedencia más alta, por lo que +pass:[1+2^3]+ es 9, no 27, y +2*3^2+ es 18, no 36.
 (((pass:[^])))
 
-* __MU__ltiplicación y __D__ivisión tienen mayor precedencia que la __A__dición y __S__ustracción. Entonces +2*3-1+ es 5, no 4, y + pass:[6+4/2]+ es 8, no 5.
+* __MU__ltiplicación y __D__ivisión tienen mayor precedencia que la __A__dición y __S__ustracción. Entonces +2*3-1+ es 5, no 4, y +pass:[6+4/2]+ es 8, no 5.
 (((pass:[*])))(((pass:[/])))(((pass:[+])))(((pass:[-])))
 
-* Los operadores con la misma precedencia se evalúan de izquierda a derecha (excepto potencias). Entonces, en la expresión +grados/2*π+, la división ocurre primero y el resultado se multiplica por +π+. Para dividir entre latexmath:[\(2 \pi \)], puede usar paréntesis, escribir +grados/2/π+ o +grados/2π+.
+* Los operadores con la misma precedencia se evalúan de izquierda a derecha (excepto potencias). Entonces, en la expresión +grados/2*π+, la división ocurre primero y el resultado se multiplica por +π+. Para dividir entre latexmath:[\(2\pi\)], puede usar paréntesis, escribir +grados/2/π+ o +grados/2π+.
 
 [OBSERVACION]
 ====
-No me preocupo mucho del orden de las operaciones. Si no es evidente mirando la expresión, uso paréntesis para que sea obvio.
+No me preocupo mucho de recordar el orden de las operaciones. Si el orden no es evidente mirando la expresión, uso paréntesis para que sea obvio.
 ====
 
-=== Operaciones de cadena
+=== Operaciones con cadenas
 
 En general, no pueden realizar operaciones matemáticas con cadenas, incluso si las cadenas parecen números, por lo que lo siguiente es inválido:
 (((operación con cadenas)))(((operador, cadenas)))
 
 [source,julia]
 ----
-"2"-"1" "huevos" / "fácil" "tercero" + "un encanto"
+"2" - "1"    "huevos" / "fácil"    "tercero" + "talismán"
 ----
 
 Pero hay dos excepciones, +*+ y +pass:[^]+.
@@ -219,17 +219,17 @@ El operador +pass:[*]+ realiza _concatenación de cadenas_, lo que significa que
 [source,@julia-repl-test]
 ----
 julia> primer_str = "auto"
-"garganta"
+"auto"
 julia> segundo_str = "móvil"
-"curruca"
+"móvil"
 julia> primer_str * segundo_str
 "automóvil"
 ----
 
-El operador +^+ también funciona con cadenas; Realiza la repetición. Por ejemplo, pase "Spam" +:[^] 3+ es + "SpamSpamSpam" +. Si uno de los valores es una cadena, el otro tiene que ser un número entero.
-((("cadena", "repetición", ver = "repetición"))) ((("repetición")))
+El operador +^+ también funciona con cadenas; repite. Por ejemplo, +"Spam"pass:[^]3+ es +"SpamSpamSpam"+. Si uno de los valores es una cadena, el otro tiene que ser un número entero.
+((("cadena", "repetición", see="repetición")))((("repetición")))
 
-Este uso de + pass: [*] + y + ^ + tiene sentido por analogía con multiplicación y exponenciación. Así como + 4pass: [^] 3+ es equivalente a + 4 * 4 * 4 +, esperamos que el pase + "Spam": [^] 3+ sea el mismo que el pase +: ["Spam" * "Spam" * "Spam"] +, y lo es.
+Este uso de +pass:[*]+ y +^+ tiene sentido por analogía con multiplicación y exponenciación. Así como +4pass:[^]3+ es equivalente a +4*4*4+, esperamos que el +"Spam"pass:[^]3+ sea lo mismo que el +pass:["Spam"*"Spam"*"Spam"]+, y lo es.
 
 
 === Comentarios
