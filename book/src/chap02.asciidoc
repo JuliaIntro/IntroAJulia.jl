@@ -145,7 +145,7 @@ println(millas * 1.61)
 
 Este comportamiento puede ser confuso al principio.
 
-Un script generalmente contiene una secuencia de sentencias. Si hay más de una sentencia, los resultados aparecen uno a la vez a medida que se ejecutan las declaraciones.
+Un script generalmente contiene una secuencia de sentencias. Si hay más de una sentencia, los resultados aparecen uno a la vez a medida que se ejecutan las sentencias.
 
 Por ejemplo, el script
 
@@ -177,25 +177,25 @@ x = 5
 x + 1
 ----
 
-Ahora coloque las mismas sentencias en un script y ejecútelo. ¿Cuál es el resultado? Modifique el script transformando cada expresión en una sentencia de impresión y luego ejecútela de nuevo.
+Ahora coloque las mismas sentencias en un script y ejecútelo. ¿Cuál es el resultado? Modifique el script transformando cada expresión en una sentencia de impresión y luego ejecútelo de nuevo.
 
-=== Precedencia del operador
+=== Orden de operaciones
 
-Cuando una expresión contiene más de un operador, el orden de evaluación depende de la _precedencia del operador_. Para los operadores matemáticos, Julia sigue la convención matemática. El acrónimo _PEMDAS_ es una forma útil de recordar las reglas:
+Cuando una expresión contiene más de un operador, el orden de evaluación depende del _orden de operaciones_. Para los operadores matemáticos, Julia sigue la convención matemática. El acrónimo _PEMDAS_ es una forma útil de recordar las reglas:
 (((precedencia de operador))) (((PEMDAS)))
 
-* __P__rentheses tienen la mayor precedencia y se pueden utilizar para forzar una expresión a evaluar en el orden que desee. Dado que las expresiones entre paréntesis se evalúan primero, + 2 * (3-1) + es 4, y + pass: [(1 + 1) ^ (5-2)] + es 8. También puede usar paréntesis para hacer una expresión más fácil de leer, como en + (minuto * 100) / 60+, incluso si no cambia el resultado.
+* __PA__réntesis: tienen la mayor precedencia y se pueden utilizar para forzar la evaluación de una expresión en el orden que desee. Dado que las expresiones entre paréntesis se evalúan primero, +2*(3-1)+ es 4, y +pass:[(1+1)^(5-2)]+ es 8. También puede usar paréntesis para hacer una expresión más fácil de leer, como en +(minuto*100)/60+, incluso si no cambia el resultado.
 (((paréntesis)))
 
-* __E__xponentiation tiene la siguiente precedencia más alta, por lo que + pass: [1 + 2 ^ 3] + es 9, no 27, y + 2 * 3 ^ 2 + es 18, no 36.
-(((pase: [^])))
+* __PO__tencias: tiene la siguiente precedencia más alta, por lo que +pass:[1+2^3]+ es 9, no 27, y +2*3^2+ es 18, no 36.
+(((pass:[^])))
 
 * __M__ultiplicación y __D__ivisión tienen mayor precedencia que __A__ddition y __S__ubtraction. Entonces + 2 * 3-1 + es 5, no 4, y + pasa: [6 + 4/2] + es 8, no 5.
 (((pase: [*]))) (((pase: [/]))) (((pase: [+]))) (((pase: [-])))
 
 * Los operadores con la misma precedencia se evalúan de izquierda a derecha (excepto la exponenciación). Entonces, en la expresión + grados / 2 * π +, la división ocurre primero y el resultado se multiplica por + π +. Para dividir entre latexmath: [\ (2 \ pi \)], puede usar paréntesis, escribir + grados / 2 / π + o + grados / 2π +.
 
-[PROPINA]
+[OBSERVACION]
 ====
 No trabajo mucho para recordar la precedencia de los operadores. Si no puedo verlo mirando la expresión, uso paréntesis para hacerlo obvio.
 ====
