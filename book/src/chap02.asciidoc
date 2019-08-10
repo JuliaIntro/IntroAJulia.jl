@@ -197,7 +197,7 @@ Cuando una expresión contiene más de un operador, el orden de evaluación depe
 
 [OBSERVACION]
 ====
-No me preocupo mucho de recordar el orden de las operaciones. Si el orden no es evidente mirando la expresión, uso paréntesis para que sea obvio.
+No me esfuerzo mucho en recordar el orden de las operaciones. Si el orden no es evidente mirando la expresión, uso paréntesis para que sí lo sea.
 ====
 
 === Operaciones con cadenas
