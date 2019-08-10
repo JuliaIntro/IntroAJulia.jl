@@ -40,7 +40,7 @@ Los nombres de las variables pueden ser tan largos como desee. Pueden contener c
 Los caracteres Unicode se pueden ingresar mediante autocompletado por tabulación de las abreviaturas tipo LaTeX en el Julia REPL.
 (((Carácter Unicode)))
 
-El carácter guión bajo, +_+, puede aparecer en un nombre. A menudo se usa en nombres con varias palabras, como +tu_nombre+ o +velocidad_aerodinámica_de_una_golondrina_sin_cargamento+.
+El carácter guión bajo, +_+, puede aparecer en un nombre de variable. A menudo se usa en nombres con varias palabras, como +tu_nombre+ o +velocidad_aerodinámica_de_una_golondrina_sin_cargamento+.
 (((carácter guión bajo)))(((abreviaturas tipo LaTeX)))
 
 Si le das un nombre inválido a una variable, tendrás un error de sintaxis:
