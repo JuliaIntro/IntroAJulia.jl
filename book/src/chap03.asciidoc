@@ -114,7 +114,7 @@ julia> sqrt(2)/ 2
 
 === Composición
 
-Hasta ahora, hemos analizado los elementos de un programa (variables, expresiones y sentencias) de forma aislada, sin hablar sobre cómo combinarlos.
+Hasta ahora, hemos analizado los elementos de un programa (variables, expresiones y sentencias) de forma aislada, sin mencionar sobre cómo combinarlos.
 (((composición)))
 
 Una de las características más útiles de los lenguajes de programación es su capacidad para tomar pequeños bloques de construcción y combinarlos. Por ejemplo, el argumento de una función puede ser cualquier tipo de expresión, incluidos los operadores aritméticos:
@@ -150,69 +150,69 @@ ERROR: syntax: "60" is not a valid function argument name (ERROR: sintaxis: "60"
 
 === Agregar nuevas funciones
 
-Hasta ahora, solo hemos estado usando las funciones que vienen con Julia, pero también es posible agregar nuevas funciones. Una definición de función especifica el nombre de una nueva función y la secuencia de declaraciones que se ejecutan cuando se llama a la función. Aquí hay un ejemplo:
-(((función))) (((definición de función))) (((función definida por el programador))) (((printlyrics))) ((("función", "definido por el programador", "printlyrics", vea = "printlyrics")))
+Hasta ahora, solo hemos usado las funciones que vienen con Julia, pero también es posible agregar nuevas funciones. Una _definición de función_ especifica el nombre de una nueva función y la secuencia de sentencias que se ejecutan cuando se llama a la función. Aquí hay un ejemplo:
+(((función)))(((definición de función)))(((función definida por el programador)))(((imprimirletras)))((("función", "definido por el programador", "imprimirletras", see="imprimirletras")))
 
-[fuente, @ julia-setup chap03]
+[source,@julia-setup chap03]
 ----
-función printlyrics ()
-    println ("Soy un leñador y estoy bien")
-    println ("Duermo toda la noche y trabajo todo el día")
-final
+function imprimirletras()
+    println("Jueguemos en el bosque")
+    println("mientras el lobo no está.")
+end
 ----
 
-+ function + es una palabra clave que indica que esta es una definición de función. El nombre de la función es + printlyrics +. Las reglas para los nombres de funciones son las mismas que para los nombres de variables: pueden contener casi todos los caracteres Unicode (consulte <<caracteres>>), pero el primer carácter no puede ser un número. No puede usar una palabra clave como nombre de una función, y debe evitar tener una variable y una función con el mismo nombre.
-((("palabra clave", "función", ver = "función"))) (((argumento))) (((carácter Unicode)))
++function+ es una palabra clave que indica que esta es una definición de función. El nombre de la función es +imprimirletras+. Las reglas para los nombres de funciones son las mismas que para los nombres de variables: pueden contener casi todos los caracteres Unicode (consulte <<caracteres>>), pero el primer carácter no puede ser un número. No puede usar una palabra clave como nombre de una función, y debe evitar tener una variable y una función con el mismo nombre.
+((("palabra clave", "función", see="función")))(((argumento)))(((carácter Unicode)))
 
 Los paréntesis vacíos después del nombre indican que esta función no toma ningún argumento.
-(((paréntesis, vacío)))
+(((paréntesis, vacíos)))
 
-La primera línea de la definición de la función se llama _header_; el resto se llama el cuerpo. El cuerpo se termina con la palabra clave + end + y puede contener cualquier número de declaraciones. Para facilitar la lectura, el cuerpo de la función debe tener sangría.
-(((encabezado))) (((cuerpo))) (((final))) ((("palabra clave", "final", ver = "final"))) (((sangría)))
+La primera línea de la definición de la función se llama _encabezado_; el resto se llama _cuerpo_. El cuerpo termina con la palabra clave +end+ y puede contener todas las sentencias que desee. Para facilitar la lectura, el cuerpo de la función debe tener sangría.
+(((encabezado)))(((cuerpo)))(((end)))((("palabra clave", "final", see="final")))(((sangría)))
 
-Las comillas deben ser "comillas rectas", generalmente ubicadas junto a Enter en el teclado. Las "citas rizadas", como las de esta oración, no son legales en Julia.
+Las comillas deben ser "comillas simples", generalmente ubicadas junto a la tecla Enter en el teclado. Las "comillas inglesas dobles", como las de esta oración, no son válidas en Julia.
 (((comillas)))
 
-Si escribe una definición de función en modo interactivo, el REPL sangra para informarle que la definición no está completa:
+Si escribe una definición de función en modo interactivo, el REPL inserta una sangría para informarle que la definición no está completa:
 
-[fuente, jlcon]
+[source,jlcon]
 ----
-julia> function printlyrics ()
-       println ("Soy un leñador y estoy bien")
+julia> function imprimirletras()
+        println("Jueguemos en el bosque")
 
-----
-
-Para finalizar la función, debe ingresar + end +.
-
-La sintaxis para llamar a la nueva función es la misma que para las funciones integradas:
-
-[fuente, @ julia-repl-test chap03]
-----
-julia> printlyrics ()
-Soy leñador y estoy bien.
-Duermo toda la noche y trabajo todo el día.
 ----
 
-Una vez que haya definido una función, puede usarla dentro de otra función. Por ejemplo, para repetir el estribillo anterior, podríamos escribir una función llamada + repeatlyrics +:
-(((repeatlyrics))) ((("función", "definido por el programador", "repeatlyrics", ver = "repeatlyrics")))
+Para finalizar la función, debe escribir +end+.
 
-[fuente, @ julia-setup chap03]
+La sintaxis para llamar a la nueva función es la misma que para las funciones integradas en Julia:
+
+[source,@julia-repl-test chap03]
 ----
-función repetitiva ()
-    printlyrics ()
-    printlyrics ()
-final
+julia> imprimirletras()
+Jueguemos en el bosque
+mientras el lobo no está.
 ----
 
-Y luego llame + repetidamente +:
+Una vez que haya definido una función, puede usarla dentro de otra función. Por ejemplo, para repetir el estribillo anterior, podríamos escribir una función llamada +repetirletras+:
+(((repetirletras)))((("función", "definido por el programador", "repetirletras", see="repetirletras")))
+
+[source,@julia-setup chap03]
+----
+función repetirletras()
+    imprimirletras()
+    imprimirletras()
+end
+----
+
+Y luego llamammos a +repetirletras+:
 
 [fuente, @ julia-repl-test chap03]
 ----
 julia> repeatlyrics ()
-Soy leñador y estoy bien.
-Duermo toda la noche y trabajo todo el día.
-Soy leñador y estoy bien.
-Duermo toda la noche y trabajo todo el día.
+Jueguemos en el bosque
+mientras el lobo no está.
+Jueguemos en el bosque
+mientras el lobo no está.
 ----
 
 Pero no es así como va la canción.
