@@ -1,13 +1,13 @@
 [[chap03]]
 == Funciones
 
-En el contexto de la programación, una _función_ es una secuencia de sentencias que realiza un cálculo. Las funciones tienen nombre. Cuando se define una función, se especifica el nombre y la secuencia de sentencias. Una vez hecho esto, se puede "llamar" a la función por su nombre.
+En el contexto de la programación, una _función_ es una secuencia, con nombre, de sentencias que realiza un cálculo. Cuando se define una función, se especifica el nombre y la secuencia de sentencias. Una vez hecho esto, se puede "llamar" a la función por su nombre.
 (((función)))
 
-=== Llamadas de función
+=== Llamadas a función
 
-Ya hemos visto un ejemplo de una llamada de función:
-(((Llamada de función)))
+Ya hemos visto un ejemplo de una llamada a función:
+(((Llamada a función)))
 
 [source,@julia-repl-test]
 ----
@@ -77,7 +77,7 @@ proporción = potencia_de_señal/potencia_de_ruido
 decibelios = 10*log10(proporción)
 ----
 
-Este primer ejemplo utiliza +log10+ para calcular una proporción entre señal y ruido en decibelios (suponiendo que se definen +potencia_de_señal+ y +potencia_de_ruido+). También existe +log+, que calcula logaritmo natural.
+Este primer ejemplo utiliza +log10+ para calcular la proporción entre señal y ruido en decibelios (suponiendo que se definen +potencia_de_señal+ y +potencia_de_ruido+). También existe +log+, que calcula logaritmo natural.
 (((log)))((("función", "Base", "log",see="log")))((("función logaritmo", see="log")))
 
 [source,julia]
@@ -87,7 +87,7 @@ altura = cos(radianes)
 ----
 
 Este segundo ejemplo encuentra el coseno de +radianes+. El nombre de la variable es una pista de que +cos+ y las otras funciones trigonométricas (+sin+, +tan+, etc.) toman argumentos en radianes. Para convertir de grados a radianes, divida por 180 y multiplique por latexmath:[\(\pi\)]:
-(((cos)))((("función", "Base", "cos", see = "cos")))(((función trigonométrica)))
+(((cos)))((("función", "Base", "cos", see="cos")))(((función trigonométrica)))
 
 [source,@julia-repl-test]
 ----
