@@ -77,26 +77,26 @@ proporción = potencia_de_señal/potencia_de_ruido
 decibelios = 10*log10(proporción)
 ----
 
-Este primer ejemplo utiliza +log10+ para calcular una proporción entre señal y ruido en decibelios (suponiendo que se definen +potencia_de_señal+ y +potencia_de_ruido+). +log+, que calcula logaritmo natural, también se proporciona.
-(((log))) ((("function", "Base", "log", see = "log"))) ((("function logarithmic", see = "log")))
+Este primer ejemplo utiliza +log10+ para calcular una proporción entre señal y ruido en decibelios (suponiendo que se definen +potencia_de_señal+ y +potencia_de_ruido+). También existe +log+, que calcula logaritmo natural.
+(((log)))((("función", "Base", "log",see="log")))((("función logaritmo", see="log")))
 
-[fuente, julia]
+[source,julia]
 ----
 radianes = 0.7
-altura = sin (radianes)
+altura = cos(radianes)
 ----
 
-Este segundo ejemplo encuentra el seno de + radianes +. El nombre de la variable es una pista de que + sin + y las otras funciones trigonométricas (+ cos +, + tan +, etc.) toman argumentos en radianes. Para convertir de grados a radianes, divida por 180 y multiplique por latexmath: [\ (\ pi \)]:
-(((sin))) ((("function", "Base", "sin", see = "sin"))) (((función trigonométrica)))
+Este segundo ejemplo encuentra el coseno de +radianes+. El nombre de la variable es una pista de que +cos+ y las otras funciones trigonométricas (+sin+, +tan+, etc.) toman argumentos en radianes. Para convertir de grados a radianes, divida por 180 y multiplique por latexmath:[\(\pi\)]:
+(((cos)))((("función", "Base", "cos", see = "cos")))(((función trigonométrica)))
 
-[fuente, @ julia-repl-test]
+[source,@julia-repl-test]
 ----
-julia> grados = 45
+julia> grados=45
 45
-julia> radianes = grados / 180 * π
+julia> radianes=grados/180*π
 0.7853981633974483
-julia> sin (radianes)
-0.7071067811865475
+julia> cos(radianes)
+0.7648421872844885
 ----
 
 El valor de la variable + π + es una aproximación de coma flotante de latexmath: [\ (\ pi \)], con una precisión de aproximadamente 16 dígitos.
