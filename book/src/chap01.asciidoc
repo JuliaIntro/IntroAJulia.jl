@@ -164,7 +164,7 @@ Las reglas de sintaxis ((("componentes léxicos", id="ch1nat5", range="startofra
 
 El segundo tipo de regla de sintaxis se refiere a la forma en que se combinan los componentes léxicos. La ecuación latexmath:[\(3 += 3 \)] no es válida porque aunque latexmath:[\(+\)] y latexmath:[\(=\)] son componentes léxicos válidos, no puedes tener uno justo después el otro. Del mismo modo, en una fórmula química, el subíndice viene después del nombre del elemento, no antes.
 
-Esta es un@ oración en espa$ol bien estructurada con c*mponentes léxicos no válidos. Esta oración tiene todos los componentes léxicos válidos, pero con una estructura no válida.
+Esta es un@ oración en espa$ol bien estructurada con c*mponentes léxicos no válidos. Esta oración léxicos todos componentes los tiene, pero estructura una no válida con.
 
 Cuando ((("análisis de sintaxis"))) lee una oración en español, o una sentencia en un idioma formal, tiene que descubrir la estructura (aunque en un lenguaje natural lo hace inconscientemente). Este proceso se llama _parsing_ o _análisis de sintaxis_.
 
