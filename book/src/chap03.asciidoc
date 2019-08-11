@@ -1,40 +1,40 @@
 [[chap03]]
 == Funciones
 
-En el contexto de la programación, una _función_ es una secuencia con nombre de declaraciones que realiza un cálculo. Cuando define una función, especifica el nombre y la secuencia de las declaraciones. Más tarde, puede "llamar" a la función por su nombre.
+En el contexto de la programación, una _función_ es una secuencia, con nombre, de sentencias que realiza un cálculo. Cuando define una función, especifica el nombre y la secuencia de sentencias. Una vez hecho esto, puede "llamar" a la función por su nombre.
 (((función)))
 
-=== Llamadas de funciones
+=== Llamadas de función
 
-Ya hemos visto un ejemplo de una llamada a función:
+Ya hemos visto un ejemplo de una llamada de función:
 (((Llamada de función)))
 
-[fuente, @ julia-repl-test]
+[source,@julia-repl-test]
 ----
-julia> println ("¡Hola, mundo!")
-¡Hola Mundo!
+julia> println("¡Hola, mundo!")
+¡Hola, Mundo!
 ----
 
-El nombre de la función es + println +. La expresión entre paréntesis se llama _argumento_ de la función.
-(((argumento))) (((paréntesis)))
+El nombre de la función es +println+. La expresión entre paréntesis se llama _argumento_ de la función.
+(((argumento)))(((paréntesis)))
 
 Es común decir que una función "toma" un argumento y "devuelve" un resultado. El resultado también se llama _valor de retorno_.
 (((valor de retorno)))
 
-Julia proporciona funciones que convierten valores de un tipo a otro. La función + parse + toma una cadena y la convierte a cualquier tipo de número, si puede, o se queja de otra manera:
-(((conversión de tipo))) ((("function", "Base", "parse", see = "parse"))) (((ArgumentError))) ((("error", "Core", " ArgumentError ", see =" ArgumentError ")))
+Julia proporciona funciones que convierten valores de un tipo a otro. La función +parse+ toma una cadena y la convierte en cualquier tipo de número, si puede, en caso contrario arroja error:
+(((conversión de tipo)))((("función", "Base", "parse", see="parse")))(((ArgumentError)))((("error", "Core", "ArgumentError", see="ArgumentError")))
 
-[fuente, @ julia-repl-test]
+[source,@julia-repl-test]
 ----
-julia> parse (Int64, "32")
+julia> parse(Int64, "32")
 32
-julia> parse (Float64, "3.14159")
+julia> parse(Float64, "3.14159")
 3.14159
-julia> parse (Int64, "Hola")
-ERROR: ArgumentError: base inválida de 10 dígitos 'H' en "Hola"
+julia> parse(Int64, "Hello")
+ERROR: ArgumentError: invalid base 10 digit 'H' in "Hello" (ERROR: ArgumentError: base inválida de 10 dígitos 'H' en "Hola")
 ----
 
-+ trunc + puede convertir valores de punto flotante a enteros, pero no se redondea; corta la parte de la fracción:
++trunc+ puede convertir valores de punto flotante a enteros, pero no se redondea; corta la parte de la fracción:
 (((trunc))) ((("function", "Base", "trunc", see = "trunc")))
 
 [fuente, @ julia-repl-test]
