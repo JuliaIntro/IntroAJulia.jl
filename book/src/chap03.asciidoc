@@ -1,7 +1,7 @@
 [[chap03]]
 == Funciones
 
-En el contexto de la programación, una _función_ es una secuencia con nombre, de sentencias que realiza un cálculo. Cuando se define una función, se especifica el nombre y la secuencia de sentencias. Una vez hecho esto, se puede "llamar" a la función por su nombre.
+En el contexto de la programación, una _función_ es una secuencia de sentencias que realiza un cálculo. Las funciones tienen nombre. Cuando se define una función, se especifica el nombre y la secuencia de sentencias. Una vez hecho esto, se puede "llamar" a la función por su nombre.
 (((función)))
 
 === Llamadas de función
@@ -21,7 +21,7 @@ El nombre de la función es +println+. La expresión entre paréntesis se llama 
 Es común decir que una función "toma" un argumento y "devuelve" un resultado. El resultado también se llama _valor de retorno_.
 (((valor de retorno)))
 
-Julia proporciona funciones que convierten valores de un tipo a otro. La función +parse+ toma una cadena y la convierte en cualquier tipo de número, si se puede, en caso contrario arroja error:
+Julia proporciona funciones que convierten valores de un tipo a otro. La función +parse+ toma una cadena y la convierte en cualquier tipo de número, si es posible, en caso contrario arroja error:
 (((conversión de tipo)))((("función", "Base", "parse", see="parse")))(((ArgumentError)))((("error", "Core", "ArgumentError", see="ArgumentError")))
 
 [source,@julia-repl-test]
