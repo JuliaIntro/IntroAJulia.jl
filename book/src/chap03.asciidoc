@@ -34,50 +34,50 @@ julia> parse(Int64, "Hello")
 ERROR: ArgumentError: invalid base 10 digit 'H' in "Hello" (ERROR: ArgumentError: base inválida de 10 dígitos 'H' en "Hola")
 ----
 
-+trunc+ puede convertir valores de punto flotante a enteros, pero no se redondea; corta la parte de la fracción:
-(((trunc))) ((("function", "Base", "trunc", see = "trunc")))
++trunc+ puede convertir valores de punto flotante a enteros, pero no redondea; sino que trunca:
+(((trunc)))((("función", "Base", "trunc", see="trunc")))
 
-[fuente, @ julia-repl-test]
+[source,@julia-repl-test]
 ----
-julia> trunc (Int64, 3.99999)
+julia> trunc(Int64, 3.99999)
 3
-julia> trunc (Int64, -2.3)
+julia> trunc(Int64, -2.3)
 -2
 ----
 
-+ float + convierte números enteros en números de coma flotante:
-(((float))) ((("function", "Base", "float", see = "float")))
++float+ convierte números enteros en números de punto flotante:
+(((float)))((("función", "Base", "float", see="float")))
 
-[fuente, @ julia-repl-test]
+[source,@julia-repl-test]
 ----
-julia> flotador (32)
+julia> float(32)
 32,0
 ----
 
-Finalmente, + cadena + convierte su argumento en una cadena:
-(((string))) ((("function", "Base", "string", see = "string")))
+Finalmente, +string+ convierte el argumento en una cadena:
+(((string)))((("función", "Base", "string", see="string")))
 
-[fuente, @ julia-repl-test]
+[source,@julia-repl-test]
 ----
-julia> cuerda (32)
+julia> string(32)
 "32"
-julia> cuerda (3.14159)
+julia> string(3.14159)
 "3.14159"
 ----
 
 
 === Funciones matemáticas
 
-En Julia, la mayoría de las funciones matemáticas familiares están disponibles directamente:
-(((función matemática))) (((log10))) ((("function", "Base", "log10", see = "log10")))
+En Julia, la mayoría de las funciones matemáticas conocidas están disponibles de manera directa:
+(((función matemática)))(((log10)))((("función", "Base", "log10", see="log10")))
 
-[fuente, julia]
+[source,julia]
 ----
-relación = potencia de señal / potencia de ruido
-decibelios = 10 * log10 (relación)
+proporción = potencia_de_señal/potencia_de_ruido
+decibelios = 10*log10(proporción)
 ----
 
-Este primer ejemplo utiliza + log10 + para calcular una relación señal / ruido en decibelios (suponiendo que se definan + signal_power + y + noise_power +). + log +, que calcula los logaritmos naturales, también se proporciona.
+Este primer ejemplo utiliza +log10+ para calcular una proporción entre señal y ruido en decibelios (suponiendo que se definen +potencia_de_señal+ y +potencia_de_ruido+). +log+, que calcula logaritmo natural, también se proporciona.
 (((log))) ((("function", "Base", "log", see = "log"))) ((("function logarithmic", see = "log")))
 
 [fuente, julia]
