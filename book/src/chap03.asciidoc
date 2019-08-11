@@ -83,11 +83,11 @@ Este primer ejemplo utiliza +log10+ para calcular la proporción entre señal y 
 [source,julia]
 ----
 radianes = 0.7
-altura = cos(radianes)
+altura = sin(radianes)
 ----
 
-Este segundo ejemplo encuentra el coseno de +radianes+. El nombre de la variable es una pista de que +cos+ y las otras funciones trigonométricas (+sin+, +tan+, etc.) toman argumentos en radianes. Para convertir de grados a radianes, divida por 180 y multiplique por latexmath:[\(\pi\)]:
-(((cos)))((("función", "Base", "cos", see="cos")))(((función trigonométrica)))
+Este segundo ejemplo encuentra la razón seno de +radianes+. El nombre de esta variable es una pista de que +sin+ y las otras funciones trigonométricas (+cos+, +tan+, etc.) toman argumentos en radianes. Para convertir de grados a radianes, divida por 180 y multiplique por latexmath:[\(\pi\)]:
+(((sin)))((("función", "Base", "sin", see="sin")))(((función trigonométrica)))
 
 [source,@julia-repl-test]
 ----
@@ -95,57 +95,57 @@ julia> grados=45
 45
 julia> radianes=grados/180*π
 0.7853981633974483
-julia> cos(radianes)
-0.7648421872844885
+julia> sin(radianes)
+0.7071067811865475
 ----
 
-El valor de la variable + π + es una aproximación de coma flotante de latexmath: [\ (\ pi \)], con una precisión de aproximadamente 16 dígitos.
+El valor de la variable +π+ es una aproximación de punto flotante de latexmath:[\(\pi \)], con una precisión de aproximadamente 16 dígitos.
 (((Pi)))
 
-Si conoce la trigonometría, puede verificar el resultado anterior comparándolo con la raíz cuadrada de dos dividido por dos:
-(((sqrt))) ((("function", "Base", "sqrt", see = "sqrt"))) ((("function cuadrado", see = "sqrt")))
+Si sabe de trigonometría, puede verificar el resultado anterior comparándolo con la raíz cuadrada de dos dividido por dos:
+(((sqrt)))((("función", "Base", "sqrt", see="sqrt")))((("function raíz", see = "sqrt")))
 
-[fuente, @ julia-repl-test]
+[source,@julia-repl-test]
 ----
-julia> sqrt (2) / 2
+julia> sqrt(2)/ 2
 0.7071067811865476
 ----
 
 
 === Composición
 
-Hasta ahora, hemos analizado los elementos de un programa (variables, expresiones y declaraciones) de forma aislada, sin hablar sobre cómo combinarlos.
+Hasta ahora, hemos analizado los elementos de un programa (variables, expresiones y sentencias) de forma aislada, sin hablar sobre cómo combinarlos.
 (((composición)))
 
-Una de las características más útiles de los lenguajes de programación es su capacidad para tomar pequeños bloques de construcción y componerlos. Por ejemplo, el argumento de una función puede ser cualquier tipo de expresión, incluidos los operadores aritméticos:
+Una de las características más útiles de los lenguajes de programación es su capacidad para tomar pequeños bloques de construcción y combinarlos. Por ejemplo, el argumento de una función puede ser cualquier tipo de expresión, incluidos los operadores aritméticos:
 
-[fuente, julia]
+[source, julia]
 ----
-x = sin (grados / 360 * 2 * π)
-----
-
-E incluso llamadas a funciones:
-(((exp))) ((("function", "Base", "exp", see = "exp"))) ((("function exponencial", see = "exp")))
-
-[fuente, julia]
-----
-x = exp (log (x + 1))
+x = sin(grados/360*2*π)
 ----
 
-Casi en cualquier lugar donde pueda poner un valor, puede poner una expresión arbitraria, con una excepción: el lado izquierdo de una declaración de asignación debe ser un nombre de variable. Cualquier otra expresión en el lado izquierdo es un error de sintaxis (veremos excepciones a esta regla más adelante).
+E incluso las llamadas a funciones:
+(((exp)))((("función", "Base", "exp", see="exp"))) ((("function exponencial", see="exp")))
+
+[source, julia]
+----
+x = exp(log(x + 1))
+----
+
+Casi en cualquier lugar donde se pueda poner un valor, se puede poner una expresión arbitraria, con una excepción: el lado izquierdo de una sentencia de asignación debe ser un nombre de variable. Cualquier otra expresión en el lado izquierdo genera un error de sintaxis (veremos excepciones a esta regla más adelante).
 (((error de sintaxis)))
 
-[fuente, @ julia-eval chap03]
+[source,@julia-eval chap03]
 ----
 horas = 2;
 ----
 
-[fuente, @ julia-repl-test chap03]
+[source,@julia-repl-test chap03]
 ----
 julia> minutos = horas * 60 # derecha
 120
-julia> horas * 60 = minutos # mal!
-ERROR: sintaxis: "60" no es un nombre de argumento de función válido
+julia> horas * 60 = minutos # malo!
+ERROR: syntax: "60" is not a valid function argument name (ERROR: sintaxis: "60" no es un nombre de argumento de función válido)
 ----
 
 === Agregar nuevas funciones
