@@ -93,7 +93,7 @@ julia> n + 25
 Cuando escribe una expresión en el prompt, REPL la _evalúa_, lo que significa que encuentra el valor de la expresión. En este ejemplo, +n+ tiene el valor 17 y +n+25+ tiene el valor 42.
 (((evaluar)))
 
-Una sentencia es una unidad de código que tiene un efecto, tal como crear una variable o mostrar un valor.
+Una _sentencia_ es una unidad de código que tiene un efecto, tal como crear una variable o mostrar un valor.
 (((sentencia)))
 
 [source,@julia-repl-test chap02]
