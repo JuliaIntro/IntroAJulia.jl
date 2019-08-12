@@ -503,32 +503,32 @@ Por ejemplo, Linux es un sistema operativo que contiene millones de líneas de c
 === Glosario
 
 función::
-Una secuencia con nombre de declaraciones que realiza alguna operación útil. Las funciones pueden o no tomar argumentos y pueden o no producir un resultado.
+Una secuencia, con nombre, de sentencias que realiza alguna operación útil. Las funciones pueden tomar o no argumentos y pueden producir o no un resultado.
 (((función)))
 
-definición de función ::
-Una declaración que crea una nueva función, especificando su nombre, parámetros y las declaraciones que contiene.
+definición de función::
+Una sentencia que crea una nueva función, especificando su nombre, parámetros y las sentencias que contiene.
 (((definición de función)))
 
-objeto de función ::
+objeto de función::
 Un valor creado por una definición de función. El nombre de la función es una variable que se refiere a un objeto de función.
 (((objeto de función)))
 
-encabezamiento::
+encabezado::
 La primera línea de una definición de función.
-(((encabezamiento)))
+(((encabezado)))
 
 cuerpo::
-La secuencia de declaraciones dentro de una definición de función.
+La secuencia de sentencias dentro de una definición de función.
 (((cuerpo)))
 
 parámetro::
 Un nombre usado dentro de una función para referirse al valor pasado como argumento.
 (((parámetro)))
 
-Llamada de función::
-Una declaración que ejecuta una función. Consiste en el nombre de la función seguido de una lista de argumentos entre paréntesis.
-(((Llamada de función)))
+Llamada a función::
+Una sentencia que ejecuta una función. Consiste en el nombre de la función seguido de una lista de argumentos entre paréntesis.
+(((Llamada a función)))
 
 argumento::
 Un valor proporcionado a una función cuando se llama a la función. Este valor se asigna al parámetro correspondiente en la función.
@@ -538,28 +538,28 @@ variable local::
 Una variable definida dentro de una función. Una variable local solo puede usarse dentro de su función.
 (((variable local)))
 
-valor de retorno ::
-El resultado de una función. Si se utiliza una llamada de función como una expresión, el valor de retorno es el valor de la expresión.
+valor de retorno::
+El resultado de una función. Si se utiliza una llamada a función como una expresión, el valor de retorno es el valor de la expresión.
 (((valor de retorno)))
 
-función fructífera ::
+función fructífera::
 Una función que devuelve un valor.
 (((función fructífera)))
 
-función vacía ::
-Una función que siempre devuelve + nada +.
+función vacía::
+Una función que siempre devuelve +nada+.
 (((función nula)))
 
-+ nada + ::
++nada+::
 Un valor especial devuelto por las funciones nulas.
 (((nada)))
 
 composición::
-Usar una expresión como parte de una expresión más grande, o una declaración como parte de una declaración más grande.
+Usar una expresión como parte de una expresión más grande, o una sentencia como parte de una sentencia más grande.
 (((composición)))
 
-flujo de ejecución ::
-Las declaraciones de orden se ejecutan.
+flujo de ejecución::
+El orden en que las sentencias se ejecutan.
 (((flujo de ejecución)))
 
 diagrama de pila ::
