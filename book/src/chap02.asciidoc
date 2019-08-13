@@ -394,7 +394,7 @@ Repitiendo el consejo del capítulo anterior, cada vez que aprenda algo nuevo, d
 
 . ¿Qué pasa si pones un punto al final de una sentencia?
 
-. En notación matemática puedes multiplicar +x+ e +y+ de esta manera: +x y+. ¿Qué pasa si intentas eso en Julia? ¿Y 5x?
+. En notación matemática puedes multiplicar +x+ e +y+ de esta manera: +x y+. ¿Qué pasa si intentas eso en Julia? ¿Y qué sucede con 5x?
 
 [[ex02-2]]
 ===== Ejercicio 2-3
