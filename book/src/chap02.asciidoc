@@ -314,7 +314,7 @@ Una representación gráfica de un conjunto de variables y los valores a los que
 (((diagrama de estado)))
 
 palabra clave::
-Una palabra reservada que se utiliza para definir la sintaxis y estructura de un programa; no puede usar palabras clave como +if+, +function+ y +while+ como nombres de variables.
+Una palabra reservada que se utiliza para definir la sintaxis y estructura de un programa; no puede usar palabras reservadas como +if+, +function+ y +while+ como nombres de variables.
 (((palabra clave)))
 
 operando ::
