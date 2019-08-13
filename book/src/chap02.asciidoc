@@ -270,7 +270,7 @@ Este comentario contiene información útil que no está en el código:
 v = 5   # velocidad en metros/segundo.
 ----
 
-[ADVERTENCIA]
+[ATENCIÓN]
 ====
 Los buenos nombres de variables pueden reducir la necesidad de comentarios, pero los nombres largos pueden hacer que las expresiones sean difíciles de leer.
 ====
