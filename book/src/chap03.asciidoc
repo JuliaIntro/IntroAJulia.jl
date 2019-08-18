@@ -114,7 +114,7 @@ julia> sqrt(2)/ 2
 
 === Composición
 
-Hasta ahora, hemos analizado los elementos de un programa (variables, expresiones y sentencias) de forma aislada, sin mencionar sobre cómo combinarlos.
+Hasta ahora, hemos analizado los elementos de un programa (variables, expresiones y sentencias) de forma aislada, sin mencionar cómo se combinan.
 (((composición)))
 
 Una de las características más útiles de los lenguajes de programación es su capacidad para tomar pequeños bloques de construcción y combinarlos. Por ejemplo, el argumento de una función puede ser cualquier tipo de expresión, incluidos los operadores aritméticos:
