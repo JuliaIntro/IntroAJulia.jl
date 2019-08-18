@@ -86,7 +86,7 @@ radianes = 0.7
 altura = sin(radianes)
 ----
 
-Este segundo ejemplo encuentra la razón seno de +radianes+. El nombre de esta variable es una pista de que +sin+ y las otras funciones trigonométricas (+cos+, +tan+, etc.) toman argumentos en radianes. Para convertir de grados a radianes, divida por 180 y multiplique por latexmath:[\(\pi\)]:
+Este segundo ejemplo encuentra la razón seno de +radianes+. El nombre de esta variable es una pista de que +sin+ y las otras funciones trigonométricas (+cos+, +tan+, etc.) toman argumentos en radianes. Para convertir grados a radianes, divida por 180 y multiplique por latexmath:[\(\pi\)]:
 (((sin)))((("función", "Base", "sin", see="sin")))(((función trigonométrica)))
 
 [source,@julia-repl-test]
