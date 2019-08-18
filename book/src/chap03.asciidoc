@@ -1,7 +1,7 @@
 [[chap03]]
 == Funciones
 
-En el contexto de la programación, una _función_ es una secuencia, con nombre, de sentencias que realiza un cálculo. Cuando se define una función, se especifica el nombre y la secuencia de sentencias. Una vez hecho esto, se puede "llamar" a la función por su nombre.
+En el contexto de la programación, una _función_ es una secuencia de sentencias que realiza un cálculo. Las funciones tienen nombre. Cuando se define una función, se especifica el nombre y la secuencia de sentencias. Una vez hecho esto, se puede "llamar" a la función por su nombre.
 (((función)))
 
 === Llamadas a función
