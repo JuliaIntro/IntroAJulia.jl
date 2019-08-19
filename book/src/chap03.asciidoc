@@ -245,7 +245,7 @@ Como es de esperar, debe crear una función antes de poder ejecutarla. En otras 
 
 Mueva la última línea de este programa a la parte superior, de modo que la llamada a función aparezca antes de las definiciones. Ejecute el programa y vea qué mensaje de error obtiene.
 
-Ahora mueva la llamada a función hacia abajo y coloque la definición de +imprimirletras+ después de la definición de +repetirletras+. ¿Qué sucede cuando ejecutas este programa?
+Ahora mueva la llamada a función hacia abajo y coloque la definición de +imprimirletras+ después de la definición de +repetirletras+. ¿Qué sucede cuando ejecuta este programa?
 
 
 === Flujo de ejecución
@@ -261,72 +261,72 @@ Una llamada a función es como un desvío en el flujo de ejecución. En lugar de
 
 Esto suena bastante simple, hasta que recuerdas que una función puede llamar a otra. Mientras está en el medio de una función, el programa podría tener que ejecutar las sentencias de otra función. Luego, mientras ejecuta esa nueva función, ¡el programa podría tener que ejecutar otra función más!
 
-Afortunadamente, Julia es buena para llevar registros de dónde está, por lo que cada vez que se completa una función, el programa retoma donde lo dejó en la función que la llamó. Cuando llega al final del programa, finaliza.
+Afortunadamente, Julia es capaz de llevar registro de dónde está, por lo que cada vez que se completa una función, el programa retoma la función que la llamó justo donde la dejó. Cuando llega al final del programa, finaliza.
 
-En resumen, cuando lee un programa, no siempre debes leer de arriba hacia abajo. A veces tiene más sentido seguir el flujo de ejecución.
+En resumen, cuando lee un programa, no siempre debe leer de arriba hacia abajo. A veces tiene más sentido seguir el flujo de ejecución.
 
 
 === Parámetros y argumentos
 
-Algunas de las funciones que hemos visto requieren argumentos. Por ejemplo, cuando llamas + sin + pasas un número como argumento. Algunas funciones toman más de un argumento: + parse + toma dos, un tipo de número y una cadena.
+Algunas de las funciones que hemos visto requieren argumentos. Por ejemplo, cuando llamas +sin+ pasas un número como argumento. Algunas funciones toman más de un argumento: +parse+ toma dos, un número y una cadena.
 (((parámetro))) (((argumento))) (((analizar))) (((sin)))
 
-Dentro de la función, los argumentos se asignan a variables llamadas _parameters_. Aquí hay una definición para una función que toma un argumento:
-(((printtwice))) ((("función", "definido por el programador", "printtwice", ver = "printtwice")))
+Dentro de la función, los argumentos se asignan a variables llamadas _parametros_. Aquí hay una definición de función que toma un argumento:
+(((imprimirdosveces)))(("función", "definido por el programador", "imprimirdosveces", see = "imprimirdosveces")))
 
-[fuente, @ julia-setup chap03]
+[source, @julia-setup chap03]
 ----
-función printtwice (bruce)
-    println (bruce)
-    println (bruce)
-final
+function imprimirdosveces(juan)
+    imprimirdosveces(juan)
+    imprimirdosveces(juan)
+end
 ----
 
-Esta función asigna el argumento a un parámetro llamado + bruce +. Cuando se llama a la función, imprime el valor del parámetro (cualquiera que sea) dos veces.
+Esta función asigna el argumento a un parámetro llamado +juan+. Cuando se llama a la función, esta imprime el valor del parámetro (cualquiera que sea) dos veces.
 
 Esta función funciona con cualquier valor que se pueda imprimir.
 
-[fuente, @ julia-repl-test chap03]
+[source, @ julia-repl-test chap03]
 ----
-julia> printtwice ("Spam")
+julia> imprimirdosveces("Correo no deseado")
 Correo no deseado
 Correo no deseado
-julia> imprenta (42)
+julia> imprimirdosveces(42)
 42
 42
-julia> imprenta (π)
+julia> imprimirdosveces(π)
 π = 3.1415926535897 ...
 π = 3.1415926535897 ...
 ----
 
-Las mismas reglas de composición que se aplican a las funciones integradas también se aplican a las funciones definidas por el programador, por lo que podemos usar cualquier tipo de expresión como argumento para + printtwice +:
-(((composición))) (((función definida por el programador)))
+Las mismas reglas de composición que se aplican a las funciones integradas también se aplican a las funciones definidas por el programador, por lo que podemos usar cualquier tipo de expresión como argumento para +imprimirdosveces+:
+(((composición)))(((función definida por el programador)))
 
-[fuente, @ julia-repl-test chap03]
+[source, @ julia-repl-test chap03]
 ----
-julia> printtwice ("Spam" ^ 4)
-Spam Spam Spam Spam
-Spam Spam Spam Spam
-julia> printtwice (cos (π))
+julia> imprimirdosveces("Correo no deseado "^4)
+Correo no deseado Correo no deseado Correo no deseado Correo no deseado
+Correo no deseado Correo no deseado Correo no deseado Correo no deseado
+julia> imprimirdosveces(cos(π))
 -1.0
 -1.0
 ----
 
-El argumento se evalúa antes de llamar a la función, por lo que en los ejemplos las expresiones + "Spam" ^ 4 + y + cos (π) + solo se evalúan una vez.
-(((argumento))) (((cos))) ((("function", "Base", "cos", see = "cos")))
+El argumento se evalúa antes de llamar a la función, por lo que en los ejemplos las expresiones +"Correo no deseado "^4+ y +cos(π)+ solo se evalúan una vez.
+(((argumento)))(((cos)))((("función", "Base", "cos", see="cos")))
 
 También puede usar una variable como argumento:
 
-[fuente, @ julia-repl-test chap03]
+[source,@julia-repl-test chap03]
 ----
 julia> michael = "Eric, la mitad de una abeja".
 "Eric, la mitad de una abeja".
-julia> imprenta (michael)
+julia> imprimirdosveces(michael)
 Eric, la mitad de una abeja.
 Eric, la mitad de una abeja.
 ----
 
-El nombre de la variable que pasamos como argumento (+ michael +) no tiene nada que ver con el nombre del parámetro (+ bruce +). No importa cómo se llamó el valor en casa (en la persona que llama); aquí en + printtwice +, llamamos a todos + bruce +.
+El nombre de la variable que pasamos como argumento (+michael+) no tiene nada que ver con el nombre del parámetro (+ bruce +). No importa cómo se llamó el valor en casa (en la persona que llama); aquí en + printtwice +, llamamos a todos + bruce +.
 
 
 === Las variables y los parámetros son locales
