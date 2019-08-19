@@ -117,15 +117,15 @@ julia> sqrt(2)/ 2
 Hasta ahora, hemos analizado los elementos de un programa (variables, expresiones y sentencias) de forma aislada, sin mencionar cómo se combinan.
 (((composición)))
 
-Una de las características más útiles de los lenguajes de programación es su capacidad para tomar pequeños bloques de construcción y combinarlos. Por ejemplo, el argumento de una función puede ser cualquier tipo de expresión, incluidos los operadores aritméticos:
+Una de las características más útiles de los lenguajes de programación es la capacidad de tomar pequeños bloques de código y combinarlos. Por ejemplo, el argumento de una función puede ser cualquier tipo de expresión, incluidos operadores aritméticos:
 
 [source, julia]
 ----
 x = sin(grados/360*2*π)
 ----
 
-E incluso las llamadas a funciones:
-(((exp)))((("función", "Base", "exp", see="exp"))) ((("function exponencial", see="exp")))
+E incluso llamadas a funciones:
+(((exp)))((("función", "Base", "exp", see="exp"))) ((("función exponencial", see="exp")))
 
 [source, julia]
 ----
@@ -161,14 +161,14 @@ function imprimirletras()
 end
 ----
 
-+function+ es una palabra clave que indica que esta es una definición de función. El nombre de la función es +imprimirletras+. Las reglas para los nombres de funciones son las mismas que para los nombres de variables: pueden contener casi todos los caracteres Unicode (consulte <<caracteres>>), pero el primer carácter no puede ser un número. No puede usar una palabra clave como nombre de una función, y debe evitar tener una variable y una función con el mismo nombre.
++function+ es una palabra reservada que indica que esta es una definición de función. El nombre de la función es +imprimirletras+. Las reglas para los nombres de funciones son las mismas que para los nombres de variables: pueden contener casi todos los caracteres Unicode (consulte <<caracteres>>), pero el primer carácter no puede ser un número. No puede usar una palabra clave como nombre de una función, y debe evitar tener una variable y una función con el mismo nombre.
 ((("palabra clave", "función", see="función")))(((argumento)))(((carácter Unicode)))
 
 Los paréntesis vacíos después del nombre indican que esta función no toma ningún argumento.
 (((paréntesis, vacíos)))
 
-La primera línea de la definición de la función se llama _encabezado_; el resto se llama _cuerpo_. El cuerpo termina con la palabra clave +end+ y puede contener todas las sentencias que desee. Para facilitar la lectura, el cuerpo de la función debe tener sangría.
-(((encabezado)))(((cuerpo)))(((end)))((("palabra clave", "final", see="final")))(((sangría)))
+La primera línea de una definición de función se llama _encabezado_; el resto se llama _cuerpo_. El cuerpo termina con la palabra reservada +end+ y puede contener todas las sentencias que desee. Para facilitar la lectura, el cuerpo de la función debería tener sangría.
+(((encabezado)))(((cuerpo)))(((end)))((("palabra reservada", "final", see="final")))(((sangría)))
 
 Las comillas deben ser "comillas simples", generalmente ubicadas junto a la tecla Enter en el teclado. Las "comillas inglesas dobles", como las de esta oración, no son válidas en Julia.
 (((comillas)))
@@ -215,7 +215,7 @@ Jueguemos en el bosque
 mientras el lobo no está.
 ----
 
-Aunque la canción no va así.
+Aunque sabemos que la canción no es así.
 
 
 === Definiciones y usos
