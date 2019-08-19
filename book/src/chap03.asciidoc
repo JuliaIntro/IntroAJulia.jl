@@ -15,7 +15,7 @@ julia> println("¡Hola, mundo!")
 ¡Hola, Mundo!
 ----
 
-El nombre de la función es +println+. La expresión entre paréntesis se llama _argumento_ de la función.
+El nombre de esta función es +println+. La expresión entre paréntesis se llama _argumento_ de la función.
 (((argumento)))(((paréntesis)))
 
 Es común decir que una función "toma" un argumento y "devuelve" un resultado. El resultado también se llama _valor de retorno_.
