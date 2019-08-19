@@ -117,14 +117,14 @@ julia> sqrt(2)/ 2
 Hasta ahora, hemos analizado los elementos de un programa (variables, expresiones y sentencias) de forma aislada, sin mencionar cómo se combinan.
 (((composición)))
 
-Una de las características más útiles de los lenguajes de programación es la capacidad de tomar pequeños bloques de código y combinarlos. Por ejemplo, el argumento de una función puede ser cualquier tipo de expresión, incluidos operadores aritméticos:
+Una de las características más útiles de los lenguajes de programación es su capacidad para combinar pequeños bloques de código. Por ejemplo, el argumento de una función puede ser cualquier tipo de expresión, incluidos operadores aritméticos:
 
 [source, julia]
 ----
 x = sin(grados/360*2*π)
 ----
 
-E incluso llamadas a funciones:
+E incluso llamadas a función:
 (((exp)))((("función", "Base", "exp", see="exp"))) ((("función exponencial", see="exp")))
 
 [source, julia]
@@ -132,7 +132,7 @@ E incluso llamadas a funciones:
 x = exp(log(x + 1))
 ----
 
-Casi en cualquier lugar donde se pueda poner un valor, se puede poner una expresión arbitraria, con una excepción: el lado izquierdo de una sentencia de asignación debe ser un nombre de variable. Cualquier otra expresión en el lado izquierdo genera un error de sintaxis (veremos excepciones a esta regla más adelante).
+Casi en cualquier lugar donde se pueda colocar un valor, se puede colocar una expresión arbitraria, con una excepción: el lado izquierdo de una sentencia de asignación debe ser un nombre de variable. Cualquier otra expresión en el lado izquierdo genera un error de sintaxis (veremos excepciones a esta regla más adelante).
 (((error de sintaxis)))
 
 [source,@julia-eval chap03]
@@ -150,7 +150,7 @@ ERROR: syntax: "60" is not a valid function argument name (ERROR: sintaxis: "60"
 
 === Agregar nuevas funciones
 
-Hasta ahora, solo hemos usado las funciones que vienen con Julia, pero también es posible agregar nuevas funciones. Una _definición de función_ especifica el nombre de una nueva función y la secuencia de sentencias que se ejecutan cuando se llama a la función. Aquí hay un ejemplo:
+Hasta ahora, solo hemos usado las funciones que vienen con Julia, pero también es posible agregar nuevas funciones. Una _definición de función_ especifica el nombre de una nueva función y la secuencia de sentencias que se ejecutan cuando se llama a la función. A continuación se muestra un ejemplo:
 (((función)))(((definición de función)))(((función definida por el programador)))(((imprimirletras)))((("función", "definido por el programador", "imprimirletras", see="imprimirletras")))
 
 [source,@julia-setup chap03]
@@ -237,15 +237,15 @@ end
 repetirletras()
 ----
 
-Este programa contiene dos definiciones de funciones: +imprimirletras+ y +repetirletras+. Las definiciones de función se ejecutan al igual que otras sentencias, y con ello se crean objetos de función. Las sentencias dentro de la función no se ejecutan hasta que se llama a la función, y la definición de la función no genera output.
+Este programa contiene dos definiciones de función: +imprimirletras+ y +repetirletras+. Las definiciones de función se ejecutan al igual que otras sentencias, pero su ejecución crea objetos de función. Las sentencias dentro de la función no se ejecutan hasta que se llama a la función, y la definición de la función no genera output.
 
 Como es de esperar, debe crear una función antes de poder ejecutarla. En otras palabras, la definición de la función tiene que ejecutarse antes de que se llame a la función.
 
 ===== Ejercicio 3-1
 
-Mueva la última línea de este programa a la parte superior, de modo que la llamada a la función aparezca antes de las definiciones. Ejecute el programa y vea qué mensaje de error obtiene.
+Mueva la última línea de este programa a la parte superior, de modo que la llamada a función aparezca antes de las definiciones. Ejecute el programa y vea qué mensaje de error obtiene.
 
-Ahora mueva la llamada de función hacia abajo y mueva la definición de +imprimirletras+ después de la definición de +repetirletras+. ¿Qué sucede cuando ejecutas este programa?
+Ahora mueva la llamada a función hacia abajo y coloque la definición de +imprimirletras+ después de la definición de +repetirletras+. ¿Qué sucede cuando ejecutas este programa?
 
 
 === Flujo de ejecución
@@ -253,17 +253,17 @@ Ahora mueva la llamada de función hacia abajo y mueva la definición de +imprim
 Para asegurar de que una función sea definida antes de su primer uso, debe conocer el orden en que se ejecutan las instrucciones, lo que se denomina _flujo de ejecución_.
 (((flujo de ejecución)))
 
-La ejecución siempre comienza con la primera sentencia del programa. Las sentencias se ejecutan de una en una, de arriba hacia abajo.
+La ejecución siempre comienza con la primera sentencia del programa. Las sentencias se ejecutan una a la vez, en orden descendente.
 
-Las definiciones de funciones no alteran el flujo de ejecución del programa, pero recuerde que las sentencias dentro de la función no se ejecutan hasta que se llama a la función.
+Las definiciones de función no alteran el flujo de ejecución del programa, pero se debe recordar que las sentencias dentro de la función no se ejecutan hasta que se llama a la función.
 
-Una llamada de función es como un desvío en el flujo de ejecución. En lugar de pasar a la siguiente sentencia, el flujo salta al cuerpo de la función, ejecuta las sentencias que están allí y luego regresa para continuar el código donde lo dejó.
+Una llamada a función es como un desvío en el flujo de ejecución. En lugar de pasar a la siguiente sentencia, el flujo salta al cuerpo de la función, ejecuta las sentencias que están allí y luego regresa para continuar el código donde lo dejó.
 
-Eso suena bastante simple, hasta que recuerdas que una función puede llamar a otra. Mientras está en el medio de una función, el programa podría tener que ejecutar las declaraciones en otra función. Luego, mientras ejecuta esa nueva función, ¡el programa podría tener que ejecutar otra función más!
+Esto suena bastante simple, hasta que recuerdas que una función puede llamar a otra. Mientras está en el medio de una función, el programa podría tener que ejecutar las sentencias de otra función. Luego, mientras ejecuta esa nueva función, ¡el programa podría tener que ejecutar otra función más!
 
 Afortunadamente, Julia es buena para llevar registros de dónde está, por lo que cada vez que se completa una función, el programa retoma donde lo dejó en la función que la llamó. Cuando llega al final del programa, finaliza.
 
-En resumen, cuando lee un programa, no siempre debes leer de arriba a abajo. A veces tiene más sentido seguir el flujo de ejecución.
+En resumen, cuando lee un programa, no siempre debes leer de arriba hacia abajo. A veces tiene más sentido seguir el flujo de ejecución.
 
 
 === Parámetros y argumentos
