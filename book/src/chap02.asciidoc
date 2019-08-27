@@ -1,7 +1,7 @@
 [[chap02]]
 == Variables, expresiones y sentencias
 
-Una de las características más poderosas de un lenguaje de programación es la capacidad de manipular _variables_. Una variable es un nombre que se refiere a un valor.
+Una de las características más poderosas de un lenguaje de programación es la capacidad de manipular _variables_. Una variable es un nombre que hace referencia a un valor.
 (((variable)))(((valor)))
 
 
@@ -22,7 +22,7 @@ julia> π_val = 3.141592653589793
 
 Este ejemplo hace tres asignaciones. La primera asigna una cadena a una nueva variable llamada +mensaje+; la segunda le asigna a la variable +n+ el entero +17+; el tercero asigna el valor (aproximado) de latexmath:[\(\pi\)] a la variable +π_val+ (*+\pi TAB+*).
 
-Una forma común de representar variables en papel es escribir el nombre de la variable con una flecha apuntando a su valor. Este tipo de figura se llama "diagrama de estado" porque muestra en qué estado se encuentra cada una de las variables. <<fig02-1>> muestra el resultado del ejemplo anterior.
+Una forma común de representar variables en papel es escribir el nombre de la variable con una flecha apuntando a su valor. Este tipo de figura se llama "diagrama de estado" porque muestra en qué estado se encuentra cada una de las variables. La Figura 1, <<fig02-1>>, muestra el resultado del ejemplo anterior.
 (((diagrama de estado)))((("diagrama", "estado", see="diagrama de estado")))
 
 [[fig02-1]]
@@ -33,14 +33,14 @@ image::images/fig21.svg[]
 === Nombres de variables
 (((variable)))
 
-Los programadores generalmente eligen nombres significativos para sus variables, es decir, los nombres explican para qué se usa la variable.
+Los programadores generalmente eligen nombres representativos para sus variables, es decir, nombres que explican para qué se usa o qué contiene la variable.
 
-Los nombres de las variables pueden ser tan largos como desee. Pueden contener casi todos los caracteres Unicode (consulte <<caracteres>>), pero no pueden comenzar con un número. Es válido usar letras mayúsculas, pero lo común es usar solo minúsculas para nombres de variables.
+Los nombres de las variables pueden ser tan largos como se desee. Pueden contener casi todos los caracteres Unicode (consulte <<caracteres>>), pero no pueden comenzar con un número. Es válido usar letras mayúsculas, pero lo común es usar solo minúsculas para nombres de variables.
 
-Los caracteres Unicode se pueden ingresar mediante autocompletado por tabulación de las abreviaturas tipo LaTeX en el Julia REPL.
+Los caracteres Unicode se pueden ingresar mediante autocompletado por tabulación de las abreviaturas tipo LaTeX en el REPL de Julia.
 (((Carácter Unicode)))
 
-El carácter guión bajo, +_+, puede aparecer en un nombre de variable. Generalmente se usa en nombres con varias palabras, como +tu_nombre+ o +velocidad_aerodinámica_de_una_golondrina_sin_cargamento+.
+El carácter guión bajo, +_+, puede formar parte del nombre de una variable. Generalmente se usa como separador en nombres con varias palabras, como por ejemplo en +tu_nombre+ o +velocidad_aerodinámica_de_una_golondrina_sin_cargamento+.
 (((carácter guión bajo)))(((abreviaturas tipo LaTeX)))
 
 Si le das un nombre inválido a una variable, tendrás un error de sintaxis:
@@ -56,12 +56,12 @@ julia> struct = "Química avanzada"
 ERROR: syntax: unexpected "=" (ERROR: sintaxis: "=" inesperado)
 ----
 
-+76trombones+ es un nombre inválido porque comienza con un número. +mas@+ es inválido porque contiene un carácter inválido: +@+. Pero, ¿qué hay de malo con +struct+?
++76trombones+ es un nombre de variable inválido porque comienza con un número. También es inválido +mas@+ porque contiene un el carácter inválido: +@+. Pero, ¿cuál es el error en +struct+?
 
-Resulta que +struct+ es una de las _palabras clave_ de Julia. El REPL usa palabras clave para reconocer la estructura del programa, y no se pueden usar como nombres de variables.
+Resulta que +struct+ es una de las _palabras reservadas_ de Julia. Julia usa las palabras reservadas para reconocer la estructura del programa, por ello no pueden usarse como nombres de variables.
 (((palabra clave)))
 
-Julia tiene estas palabras clave:
+Julia tiene las siguientes palabras reservadas:
 ----
 abstract type    baremodule   begin      break       catch
 const            continue     do         else        elseif      
@@ -72,12 +72,12 @@ primitive type   quote        return     try         using
 struct           where        while
 ----
 
-No hay necesidad de memorizar esta lista. En la mayoría de los entornos de desarrollo, las palabras clave se muestran en un color diferente; por lo tanto, si intenta usar una como nombre de variable, lo sabrá.
+No es necesario memorizar esta lista. En la mayoría de los entornos de desarrollo, las palabras reservadas se muestran en un color diferente; por lo tanto, si intenta usar una como nombre de variable, lo sabrá.
 
 
 === Expresiones y sentencias
 
-Una _expresión_ es una combinación de valores, variables y operadores. Un valor en sí mismo se considera una expresión, al igual que una variable, por lo que las siguientes expresiones son válidas:
+Una _expresión_ es una combinación de valores, variables y operadores. Un valor o una variable por sí solos se consideran una expresión, por lo que las siguientes expresiones son válidas:
 (((expresión)))
 
 [source,@julia-repl-test chap02]
@@ -90,7 +90,7 @@ julia> n + 25
 42
 ----
 
-Cuando escribe una expresión en el prompt, REPL la _evalúa_, lo que significa que encuentra el valor de la expresión. En este ejemplo, +n+ tiene el valor 17 y +n+25+ tiene el valor 42.
+Cuando escribe una expresión en el prompt, REPL la _evalúa_, lo que significa que encuentra el valor de la expresión. En este ejemplo, +n+ tiene el valor 17 previamente asignado y +n+25+ retorna el valor 42.
 (((evaluar)))
 
 Una _sentencia_ es una unidad de código que tiene un efecto, tal como crear una variable o mostrar un valor.
@@ -104,7 +104,7 @@ julia> println(n)
 17
 ----
 
-La primera línea es una sentencia de asignación que le da un valor a +n+. La segunda línea es una sentencia de impresión que muestra el valor de +n+.
+La primera línea es una sentencia de asignación, ya que asigna un valor a +n+. La segunda línea es una sentencia de impresión que muestra el valor de +n+.
 
 Cuando escribe una sentencia, REPL la ejecuta, es decir, hace lo que dice la sentencia.
 (((ejecutar)))
@@ -112,13 +112,13 @@ Cuando escribe una sentencia, REPL la ejecuta, es decir, hace lo que dice la sen
 
 === Modo script
 
-Hasta ahora hemos ejecutado Julia en _modo interactivo_, lo que significa que hemos interactuado directamente con el REPL. El modo interactivo es una buena manera de comenzar, pero si está trabajando con más de unas pocas líneas de código, puede ser difícil.
+Hasta ahora hemos ejecutado Julia en _modo interactivo_, lo que significa que hemos interactuado directamente con el REPL. El modo interactivo es una buena manera de comenzar, pero si está trabajando con varias líneas de código, puede resultar incomodo.
 (((modo interactivo)))
 
-Una alternativa es guardar el código en un archivo llamado _script_ y luego utilizar Julia en _modo script_ para ejecutar el script. Por convención, los scripts de Julia tienen nombres que terminan en _.jl_.
+Una alternativa es guardar el código en un archivo de órdenes o _script_ y luego utilizar Julia en _modo script_ para ejecutarlo. Por convención, los scripts de Julia tienen nombres que terminan en _.jl_.
 (((script)))(((modo script)))
 
-Si sabe cómo crear y ejecutar un script en su computadora, está listo para comenzar. De lo contrario, recomiendo usar JuliaBox nuevamente. Abra un archivo de texto, escriba el script y guárdelo con una extensión _.jl_. El script se puede ejecutar en una terminal con el comando *+julia name_of_the_script.jl+*.
+Si sabe cómo crear y ejecutar un _script_ en su computadora, está listo para comenzar. De lo contrario, es recomendable usar JuliaBox nuevamente. Abra un archivo de texto, escriba el script y guárdelo con una extensión _.jl_. El script se puede ejecutar en una terminal con el comando *+julia nombre_del_script.jl+*.
 (((extension, .jl)))(((JuliaBox)))
 
 Debido a que Julia proporciona ambos modos, puede probar líneas de código en modo interactivo antes de colocarlos en un script. Aún así, tenga en consideración que existen diferencias entre el modo interactivo y el modo script que pueden generar confusión.
@@ -135,7 +135,7 @@ julia> millas * 1.61
 
 La primera línea asigna un valor a +millas+ y muestra el valor. La segunda línea es una expresión, por lo que REPL la evalúa y muestra el resultado. Gracias al código anterior sabemos que una maratón tiene unos 42 kilómetros.
 
-Pero si escribe el mismo código en un script y lo ejecuta, no obtendrá ningún resultado. En el modo script, una expresión, por sí sola, no tiene ningún efecto visible. Julia realmente evalúa la expresión, pero no muestra el valor a menos que se lo indique:
+Pero si escribe el mismo código en un script y lo ejecuta, no obtendrá ningún resultado. En el modo script, una expresión, por sí sola, no tiene ningún efecto visible. Julia evalúa la expresión, pero no muestra el valor a menos que se lo indique:
 
 [source, julia]
 ----
@@ -143,9 +143,9 @@ millas = 26.2
 println(millas * 1.61)
 ----
 
-Este comportamiento puede ser confuso al principio.
+Al principio este comportamiento puede ser confuso.
 
-Un script generalmente contiene una secuencia de sentencias. Si hay más de una sentencia, los resultados aparecen uno a la vez a medida que se ejecutan las sentencias.
+Un script generalmente contiene una secuencia de sentencias. Si hay más de una sentencia, los resultados aparecen de uno a la vez a medida que se ejecutan las sentencias.
 
 Por ejemplo, el script
 
@@ -156,7 +156,7 @@ x = 2
 println(x)
 ----
 
-produce el output
+produce la salida
 
 [source,@julia-eval]
 ----
@@ -164,11 +164,11 @@ produce el output
 2
 ----
 
-La sentencia de asignación no genera output.
+Notar que la sentencia de asignación +x = 2+ no tiene salida.
 
 ===== Ejercicio 2-1
 
-Para comprobar si ha aprendido, escriba las siguientes sentencias en Julia REPL y vea lo que hace cada una:
+Para comprobar si ha comprendido, escriba las siguientes sentencias en Julia REPL y vea lo que hace cada una:
 
 [source,julia]
 ----
@@ -181,13 +181,13 @@ Ahora coloque las mismas sentencias en un script y ejecútelo. ¿Cuál es el res
 
 === Orden de operaciones
 
-Cuando una expresión contiene más de un operador, el orden de evaluación depende del _orden de operaciones_. Para los operadores matemáticos, Julia sigue la convención matemática. El acrónimo _PAPOMUDAS_ es una forma útil de recordar las reglas:
+Cuando una expresión contiene más de un operador, el orden de evaluación depende de las _reglas de precedencia_. Julia sigue la convención matemática para el order de evaluación de los operadores matemáticos. El acrónimo _PAPOMUDAS_ es una forma útil de recordar estas reglas:
 (((orden de operaciones)))(((PAPOMUDAS)))
 
 * __PA__réntesis: tienen la mayor precedencia y se pueden utilizar para forzar la evaluación de una expresión en el orden que desee. Dado que las expresiones entre paréntesis se evalúan primero, +2*(3-1)+ es 4, y +pass:[(1+1)^(5-2)]+ es 8. También puede usar paréntesis para hacer una expresión más fácil de leer, como en +(minuto*100)/60+, incluso si no cambia el resultado.
 (((paréntesis)))
 
-* __PO__tencias: tiene la siguiente precedencia más alta, por lo que +pass:[1+2^3]+ es 9, no 27, y +2*3^2+ es 18, no 36.
+* __PO__tenciación: tiene la siguiente precedencia más alta, por lo que +pass:[1+2^3]+ es 9, no 27, y +2*3^2+ es 18, no 36.
 (((pass:[^])))
 
 * __MU__ltiplicación y __D__ivisión tienen mayor precedencia que la __A__dición y __S__ustracción. Entonces +2*3-1+ es 5, no 4, y +pass:[6+4/2]+ es 8, no 5.
@@ -197,7 +197,7 @@ Cuando una expresión contiene más de un operador, el orden de evaluación depe
 
 [OBSERVACION]
 ====
-No me esfuerzo mucho en recordar el orden de las operaciones. Si el orden no es evidente mirando la expresión, uso paréntesis para que sí lo sea.
+No se esfuerce demasiado en recordar el orden de las operaciones. Si el orden no es evidente mirando la expresión, use paréntesis para que sí lo sea.
 ====
 
 === Operaciones con cadenas
@@ -207,7 +207,9 @@ En general, no se puede realizar operaciones matemáticas con cadenas, incluso s
 
 [source,julia]
 ----
-"2" - "1"    "huevos" / "fácil"    "tercero" + "talismán"
+"2" - "1"
+"huevos" / "fácil"
+"tercero" + "talismán"
 ----
 
 Pero hay dos excepciones, +*+ y +pass:[^]+.
@@ -234,7 +236,7 @@ De manera análoga, este uso de +pass:[*]+ y +^+ también tiene sentido en la mu
 
 === Comentarios
 
-A medida que los programas se hacen más largos y complejos, se vuelven más difíciles de leer. Los lenguajes formales son densos, y a menudo es difícil mirar un código y descubrir qué está haciendo o por qué.
+A medida que los programas se hacen más largos y complejos, se vuelven más difíciles de leer. Los lenguajes formales son densos, y a menudo es difícil leer el código y entender qué está haciendo o por qué.
 
 Por esta razón, es una buena idea agregar notas a sus programas para explicar en lenguaje natural lo que está haciendo el programa. Estas notas se llaman _comentarios_, y comienzan con el símbolo +#+:
 (((comentario)))((("pass:[#]", see="comentario")))
@@ -256,14 +258,14 @@ Todo, desde el +#+ hasta el final de la línea se ignora, no tiene ningún efect
 
 Los comentarios son más útiles cuando documentan características no obvias del código. Es razonable suponer que el lector puede averiguar qué hace el código, por lo tanto es más útil explicar _por qué_.
 
-Este comentario es redundante con el código e inútil:
+Este comentario es inútil porque es redundante con el código:
 
 [source,julia]
 ----
 v = 5   # asigna 5 a v
 ----
 
-Este comentario contiene información útil que no está en el código:
+Este comentario contiene información útil que no está presente en el código:
 
 [source, julia]
 ----
@@ -272,13 +274,13 @@ v = 5   # velocidad en metros/segundo.
 
 [ATENCIÓN]
 ====
-Los buenos nombres de variables pueden reducir la necesidad de comentarios, pero los nombres largos pueden hacer que las expresiones sean difíciles de leer.
+Los nombres de las variables tienen que ser descriptivos pueden reducir la necesidad de comentarios, pero no tan largos como para dificultar la lectura del código.
 ====
 
 
 === Depuración
 
-Se pueden producir tres tipos de errores en un programa: errores de sintaxis, errores de tiempo de ejecución, y errores semánticos. Es útil distinguirlos para rastrearlos más rápidamente.
+Se pueden producir tres tipos de errores en un programa: errores de sintaxis, errores en tiempo de ejecución, y errores semánticos. Es útil distinguirlos para rastrearlos más rápidamente.
 (((depuración)))
 
 Error de sintaxis::
@@ -287,8 +289,8 @@ Error de sintaxis::
 Si hay un error de sintaxis en cualquier parte de su programa, Julia muestra un mensaje de error y se cierra, no pudiendo ejecutar el programa. Durante sus primeras semanas como programador, puede pasar mucho tiempo rastreando errores de sintaxis. A medida que gane experiencia, cometerá menos errores y los encontrará más rápido.
 (((error de sintaxis)))(((mensaje de error)))
 
-Error de tiempo de ejecución::
-El segundo tipo de error es un error de tiempo de ejecución, llamado así porque el error no aparece hasta después de que el programa ha comenzado a ejecutarse. Estos errores también se denominan _excepciones_ porque generalmente indican que ha sucedido algo excepcional (y malo).
+Error en tiempo de ejecución::
+El segundo tipo de error es el error en tiempo de ejecución, llamado así porque aparece durante la ejecución del programa. Estos errores también se denominan _excepciones_ porque generalmente indican que ha sucedido algo excepcional (y malo).
 +
 Los errores de tiempo de ejecución son raros en los programas simples que verá en los primeros capítulos, por lo que puede pasar un tiempo antes de que encuentre uno.
 (((error de tiempo de ejecución)))((("error", "tiempo de ejecución", see="error de tiempo de ejecución")))(((excepción,see="error de tiempo de ejecución")))
@@ -296,13 +298,13 @@ Los errores de tiempo de ejecución son raros en los programas simples que verá
 Error semántico ::
 El tercer tipo de error es "semántico", es decir, relacionado con el significado. Si hay un error semántico en su programa, se ejecutará sin generar mensajes de error, pero no hará lo correcto. Hará algo más. Específicamente, hará lo que usted le dijo que hiciera.
 +
-Identificar errores semánticos puede ser complicado porque requiere que trabajes a la inversa, analizando el output del programa para intentar descubrir qué está haciendo.
+Identificar errores semánticos puede ser complicado porque requiere que trabajes a la inversa, analizando la salida del programa para intentar descubrir qué está haciendo.
 (((error semántico))) ((("error", "semántico",see="error semántico")))
 
 === Glosario
 
 variable::
-Un nombre que se refiere a un valor.
+Un nombre que hace referencia a un valor.
 (((variable)))
 
 asignación::
@@ -310,7 +312,7 @@ Una sentencia que asigna un valor a una variable
 (((asignación)))
 
 diagrama de estado::
-Una representación gráfica de un conjunto de variables y los valores a los que se refieren.
+Una representación gráfica de un conjunto de variables y los valores a los que hace referencia.
 (((diagrama de estado)))
 
 palabra clave::
@@ -322,11 +324,11 @@ Uno de los valores en los que opera un operador.
 (((operando)))
 
 expresión::
-Una combinación de variables, operadores y valores que representa un solo resultado.
+Una combinación de variables, operadores y valores que representa un solo valor como resultado.
 (((expresión)))
 
 evaluar::
-Simplificar una expresión realizando operaciones para obtener un valor único.
+Simplificar una expresión realizando operaciones para obtener un solo valor.
 (((evaluar)))
 
 sentencia::
@@ -338,7 +340,7 @@ Ejecutar una sentencia y hacer lo que esta dice.
 (((ejecutar)))
 
 modo interactivo::
-Una forma de utilizar Julia REPL escribiendo código en el prompt.
+Una forma de utilizar el REPL de Julia escribiendo código en el _prompt_.
 (((modo interactivo)))
 
 modo script::
@@ -362,10 +364,10 @@ Información en un programa que está destinada a otros programadores (o cualqui
 (((comentario)))
 
 error de sintaxis::
-Un error en un programa que hace que sea imposible de analizar (y, por lo tanto, imposible de interpretar).
+Un error en un programa que hace que sea imposible de analizar (y, por lo tanto, imposible de ejecutar).
 (((error de sintaxis)))
 
-error de tiempo de ejecución o excepción ::
+error en tiempo de ejecución o excepción ::
 Un error que se detecta mientras se ejecuta el programa.
 (((Error de tiempo de ejecución)))
 
