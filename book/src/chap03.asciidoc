@@ -644,12 +644,12 @@ dotwice (estampado)
 [[ex03-3]]
 ===== Ejercicio 3-4
 
-. Escriba una función + printgrid + que dibuje una cuadrícula como la siguiente:
+. Escriba la función +imprimircuadricula+ que dibuje una cuadrícula como la siguiente:
 (((printgrid))) ((("función", "definida por el programador", "printgrid", ver = "printgrid")))
 +
-[fuente, @ julia-repl-test chap03-ex]
+[source, @ julia-repl-test chap03-ex]
 ----
-julia> printgrid ()
+julia> imprimircuadricula()
 + - - - - + - - - - +
 El | El | El |
 El | El | El |
