@@ -21,7 +21,7 @@ El nombre de esta función es +println+. La expresión entre paréntesis se llam
 Es común decir que una función "toma" un argumento y "devuelve" un resultado. El resultado también se llama _valor de retorno_.
 (((valor de retorno)))
 
-Julia proporciona funciones que convierten valores de un tipo a otro. La función +parse+ toma una cadena y la convierte en cualquier tipo de número, si es posible, en caso contrario arroja error:
+Julia proporciona funciones que convierten valores de un tipo a otro. La función +parse+ toma una cadena y si es posible, la convierte en cualquier tipo de número, en caso contrario arroja error:
 (((conversión de tipo)))((("función", "Base", "parse", see="parse")))(((ArgumentError)))((("error", "Core", "ArgumentError", see="ArgumentError")))
 
 [source,@julia-repl-test]
