@@ -150,7 +150,7 @@ ERROR: syntax: "60" is not a valid function argument name (ERROR: sintaxis: "60"
 
 === Agregar nuevas funciones
 
-Hasta ahora, solo hemos usado las funciones integradas de Julia, pero también es posible agregar nuevas funciones. Una _definición de función_ especifica el nombre de una nueva función y la secuencia de sentencias que se ejecutan cuando se llama a la función. A continuación se muestra un ejemplo:
+Hasta ahora, solo hemos usado las funciones integradas en Julia, pero también es posible agregar nuevas funciones. Una _definición de función_ especifica el nombre de una nueva función y la secuencia de sentencias que se ejecutan cuando se llama a la función. A continuación se muestra un ejemplo:
 (((función)))(((definición de función)))(((función definida por el programador)))(((imprimirletras)))((("función", "definido por el programador", "imprimirletras", see="imprimirletras")))
 
 [source,@julia-setup chap03]
@@ -161,7 +161,7 @@ function imprimirletras()
 end
 ----
 
-+function+ es una palabra reservada que indica que esta es una definición de función. El nombre de la función es +imprimirletras+. Las reglas para los nombres de funciones son las mismas que para los nombres de variables: pueden contener casi todos los caracteres Unicode (consulte <<caracteres>>), pero el primer carácter no puede ser un número. No puede usar una palabra clave como nombre de una función, y debe evitar tener una variable y una función con el mismo nombre.
++function+ es una palabra reservada que indica que esta es una definición de función. El nombre de la función es +imprimirletras+. Las reglas para los nombres de funciones son las mismas que para los nombres de variables: pueden contener casi todos los caracteres Unicode (consulte <<caracteres>>), pero el primer carácter no puede ser un número. No puede usar una palabra reservada como nombre de una función, y debe evitar tener una variable y una función con el mismo nombre.
 ((("palabra clave", "función", see="función")))(((argumento)))(((carácter Unicode)))
 
 Los paréntesis vacíos después del nombre indican que esta función no toma ningún argumento.
