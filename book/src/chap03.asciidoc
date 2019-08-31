@@ -164,7 +164,7 @@ end
 +function+ es una palabra reservada que indica que esta es una definición de función. El nombre de la función es +imprimirletras+. Las reglas para los nombres de funciones son las mismas que para los nombres de variables: pueden contener casi todos los caracteres Unicode (consulte <<caracteres>>), pero el primer carácter no puede ser un número. No puede usar una palabra reservada como nombre de una función, y debe evitar tener una variable y una función con el mismo nombre.
 ((("palabra clave", "función", see="función")))(((argumento)))(((carácter Unicode)))
 
-Los paréntesis vacíos después del nombre indican que esta función no toma ningún argumento.
+Los paréntesis vacíos después del nombre indican que esta función no tiene argumentos.
 (((paréntesis, vacíos)))
 
 La primera línea de una definición de función se llama _encabezado_; el resto se llama _cuerpo_. El cuerpo termina con la palabra reservada +end+ y puede contener todas las sentencias que desee. Para facilitar la lectura, el cuerpo de la función debería tener sangría.
@@ -204,7 +204,7 @@ función repetirletras()
 end
 ----
 
-Y luego llamammos a +repetirletras+:
+Y luego llamamos a +repetirletras+:
 
 [fuente, @ julia-repl-test chap03]
 ----
@@ -237,7 +237,7 @@ end
 repetirletras()
 ----
 
-Este programa contiene dos definiciones de función: +imprimirletras+ y +repetirletras+. Las definiciones de función se ejecutan al igual que otras sentencias, pero su ejecución crea objetos de función. Las sentencias dentro de la función no se ejecutan hasta que se llama a la función, y la definición de la función no genera output.
+Este programa contiene dos definiciones de función: +imprimirletras+ y +repetirletras+. Las definiciones de función se ejecutan al igual que otras sentencias, pero su ejecución crea objetos de función. Las sentencias dentro de la función no se ejecutan hasta que se llama a la función, y la definición de la función no genera salida.
 
 Como es de esperar, debe crear una función antes de poder ejecutarla. En otras palabras, la definición de la función tiene que ejecutarse antes de que se llame a la función.
 
@@ -268,7 +268,7 @@ En resumen, cuando lee un programa, no siempre debe leer de arriba hacia abajo. 
 
 === Parámetros y argumentos
 
-Algunas de las funciones que hemos visto requieren argumentos. Por ejemplo, cuando llamas +sin+ pasas un número como argumento. Algunas funciones toman más de un argumento: +parse+ toma dos, un número y una cadena.
+Algunas de las funciones que hemos visto requieren argumentos. Por ejemplo, cuando llamas a +sin+ pasas un número como argumento. Algunas funciones toman más de un argumento: +parse+ toma dos, un número y una cadena.
 (((parámetro))) (((argumento))) (((analizar))) (((sin)))
 
 Dentro de la función, los argumentos se asignan a variables llamadas _parametros_. Aquí hay una definición de función que toma un argumento:
@@ -277,8 +277,8 @@ Dentro de la función, los argumentos se asignan a variables llamadas _parametro
 [source, @julia-setup chap03]
 ----
 function imprimirdosveces(juan)
-    imprimirdosveces(juan)
-    imprimirdosveces(juan)
+    println(juan)
+    println(juan)
 end
 ----
 
@@ -319,60 +319,60 @@ También puede usar una variable como argumento:
 
 [source,@julia-repl-test chap03]
 ----
-julia> michael = "Eric, la mitad de una abeja".
-"Eric, la mitad de una abeja".
+julia> michael = "La vida es bella".
+"La vida es bella".
 julia> imprimirdosveces(michael)
-Eric, la mitad de una abeja.
-Eric, la mitad de una abeja.
+La vida es bella.
+La vida es bella.
 ----
 
-El nombre de la variable que pasamos como argumento (+michael+) no tiene nada que ver con el nombre del parámetro (+ bruce +). No importa cómo se llamó el valor en casa (en la persona que llama); aquí en + printtwice +, llamamos a todos + bruce +.
+El nombre de la variable que pasamos como argumento (+michael+) no tiene nada que ver con el nombre del parámetro (+juan+).Para la función +imprimirdosveces+ todos los parámetros se llaman +juan+, sin importar el nombre de la variable que pasemos como argumento (en este caso +michael+.
 
 
 === Las variables y los parámetros son locales
 
-Cuando crea una variable dentro de una función, es _local_, lo que significa que solo existe dentro de la función. Por ejemplo:
-(((variable local))) (((variable, local))) (((cattwice))) ((("función", "definido por el programador", "cattwice", see = "cattwice")))
+Cuando crea una variable dentro de una función, esta es _local_, lo que significa que solo existe dentro de la función. Por ejemplo:
+(((variable local))) (((variable, local))) (((concatenar_dos))) ((("función", "definido por el programador", "concatenar_dos", see = "concatenar_dos")))
 
-[fuente, @ julia-setup chap03]
+[source, @julia-setup chap03]
 ----
-función cattwice (parte1, parte2)
+function concatenar_dos(parte1, parte2)
     concat = parte1 * parte2
-    imprenta (concat)
-final
+    imprimirdosveces(concat)
+end
 ----
 
-Esta función toma dos argumentos, los concatena e imprime el resultado dos veces. Aquí hay un ejemplo que lo usa:
+Esta función toma dos argumentos, los concatena e imprime el resultado dos veces. Aquí hay un ejemplo:
 (((concatenar))) (((repetición)))
 
-[fuente, @ julia-repl-test chap03]
+[source, @ julia-repl-test chap03]
 ----
 julia> line1 = "Tingdle de Bing"
 "Bing tiddle"
 julia> line2 = "tiddle bang".
 "tiddle bang".
-julia> cattwice (línea1, línea2)
+julia> concatenar_dos(línea1, línea2)
 Bing tiddle tiddle bang.
 Bing tiddle tiddle bang.
 ----
 
-Cuando + cattwice + termina, la variable + concat + se destruye. Si intentamos imprimirlo, obtenemos una excepción:
+Cuando +concatenar_dos+ termina, la variable +concatenar+ es eliminada. Si intentamos imprimirla, obtendremos una excepción:
 (((error en tiempo de ejecución))) (((UndefVarError))) ((("error", "Core", "UndefVarError", see = "UndefVarError")))
 
-[fuente, @ julia-repl-test chap03]
+[source, @ julia-repl-test chap03]
 ----
 julia> println (concat)
 ERROR: UndefVarError: concat no definido
 ----
 
-Los parámetros también son locales. Por ejemplo, fuera + printtwice +, no hay tal cosa como + bruce +.
+Los parámetros también son locales. Por ejemplo, afuera de la función +imprimirdosveces+, no existe +bruce+.
 (((parámetro)))
 
 
 [[stack_diagrams]]
 === Diagramas de pila
 
-Para realizar un seguimiento de las variables que se pueden usar y dónde, a veces es útil dibujar un _ diagrama de pila_. Al igual que los diagramas de estado, los diagramas de pila muestran el valor de cada variable, pero también muestran la función a la que pertenece cada variable.
+Para realizar un seguimiento de las variables que se pueden usar y dónde, a veces es útil dibujar un _diagrama de pila_. Al igual que los diagramas de estado, los diagramas de pila muestran el valor de cada variable, pero también muestran la función a la que pertenece cada variable.
 (((diagrama de pila))) ((("diagrama", "pila", ver = "diagrama de pila")))
 
 Cada función está representada por un _frame_. Un marco es un cuadro con el nombre de una función al lado y los parámetros y variables de la función dentro de él. El diagrama de pila para el ejemplo anterior se muestra en <<fig03-1>>.
@@ -579,7 +579,7 @@ Una lista de las funciones que se están ejecutando, impresas cuando ocurre una 
 
 [PROPINA]
 ====
-Estos ejercicios deben hacerse usando solo las declaraciones y otras características que hemos aprendido hasta ahora.
+Estos ejercicios deben hacerse usando solo las sentencias y otras características que hemos aprendido hasta ahora.
 ====
 
 [[ex03-1]]
@@ -667,23 +667,23 @@ El | El | El |
 
 Crédito: Este ejercicio se basa en un ejercicio en Oualline, _Programación práctica C_, tercera edición, O’Reilly Media, 1997.
 
-[PROPINA]
+[TIP]
 ====
-Para imprimir más de un valor en una línea, puede imprimir una secuencia de valores separados por comas:
+Para imprimir más de un valor por línea, se puede imprimir una secuencia de valores separados por comas:
 
-[fuente, julia]
+[source, julia]
 ----
 println ("+", "-")
 ----
 
-La función + imprimir + no avanza a la siguiente línea:
+La función +print+ no avanza a la siguiente línea:
 
-[fuente, julia]
+[source, julia]
 ----
-imprimir ("+")
-println ("-")
+print("+")
+println("-")
 ----
 
-El resultado de estas declaraciones es + pass: ["+ -"] + en la misma línea. El resultado de la siguiente declaración de impresión comenzaría en la siguiente línea.
+El resultado de estas sentencias es +pass:["+ -"]+ en la misma línea. El resultado de una siguiente sentencia de impresión comenzaría en la siguiente línea.
 ====
 (((println))) (((print))) ((("function", "Base", "print", see = "print")))
