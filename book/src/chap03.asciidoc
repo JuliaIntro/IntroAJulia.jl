@@ -77,7 +77,7 @@ proporción = potencia_de_señal/potencia_de_ruido
 decibelios = 10*log10(proporción)
 ----
 
-Este primer ejemplo utiliza +log10+ para calcular la proporción entre señal y ruido en decibelios (suponiendo que se definen +potencia_de_señal+ y +potencia_de_ruido+). También existe +log+, que calcula logaritmo natural.
+Este primer ejemplo utiliza +log10+ para calcular la proporción entre señal y ruido en decibelios (suponiendo que +potencia_de_señal+ y +potencia_de_ruido+ están definidos). También existe +log+, que calcula logaritmo natural.
 (((log)))((("función", "Base", "log",see="log")))((("función logaritmo", see="log")))
 
 [source,julia]
