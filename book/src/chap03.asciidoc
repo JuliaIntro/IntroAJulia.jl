@@ -220,7 +220,7 @@ Aunque sabemos que la canción no es así.
 
 === Definiciones y usos
 
-Al reunir los fragmentos de código de la sección anterior, todo el programa se ve así:
+Al unir los fragmentos de código de la sección anterior, todo el programa se ve así:
 
 [source,julia]
 ----
