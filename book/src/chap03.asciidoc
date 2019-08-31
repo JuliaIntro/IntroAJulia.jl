@@ -215,8 +215,6 @@ Jueguemos en el bosque
 mientras el lobo no está.
 ----
 
-Aunque sabemos que la canción no es así.
-
 
 === Definiciones y usos
 
@@ -268,7 +266,7 @@ En resumen, cuando lee un programa, no siempre debe leer de arriba hacia abajo. 
 
 === Parámetros y argumentos
 
-Algunas de las funciones que hemos visto requieren argumentos. Por ejemplo, cuando llamas a +sin+ pasas un número como argumento. Algunas funciones toman más de un argumento: +parse+ toma dos, un número y una cadena.
+Algunas de las funciones que hemos visto requieren argumentos. Por ejemplo, la función +sin+ necesita un número como argumento. Algunas funciones toman más de un argumento; +parse+ toma dos: un número y una cadena.
 (((parámetro))) (((argumento))) (((analizar))) (((sin)))
 
 Dentro de la función, los argumentos se asignan a variables llamadas _parametros_. Aquí hay una definición de función que toma un argumento:
@@ -347,16 +345,16 @@ Esta función toma dos argumentos, los concatena e imprime el resultado dos vece
 
 [source, @ julia-repl-test chap03]
 ----
-julia> line1 = "Tingdle de Bing"
-"Bing tiddle"
-julia> line2 = "tiddle bang".
+julia> line1 = "Hola hola"
+"Hola hola"
+julia> line2 = "chao chao."
 "tiddle bang".
 julia> concatenar_dos(línea1, línea2)
-Bing tiddle tiddle bang.
-Bing tiddle tiddle bang.
+Hola hola chao chao.
+Hola hola chao chao.
 ----
 
-Cuando +concatenar_dos+ termina, la variable +concatenar+ es eliminada. Si intentamos imprimirla, obtendremos una excepción:
+Cuando +concatenar_dos+ termina, la variable +concatenar+ es eliminada. Si intentamos imprimirla, obtendremos error:
 (((error en tiempo de ejecución))) (((UndefVarError))) ((("error", "Core", "UndefVarError", see = "UndefVarError")))
 
 [source, @ julia-repl-test chap03]
@@ -365,7 +363,7 @@ julia> println (concat)
 ERROR: UndefVarError: concat no definido
 ----
 
-Los parámetros también son locales. Por ejemplo, afuera de la función +imprimirdosveces+, no existe +bruce+.
+Los parámetros también son locales. Por ejemplo, afuera de la función +imprimirdosveces+, no existe +juan+.
 (((parámetro)))
 
 
@@ -623,11 +621,11 @@ Aquí hay un ejemplo que usa + dotwice + para llamar a una función llamada + pr
 
 [fuente, julia]
 ----
-función printspam ()
-    println ("spam")
-final
+function imprimirgato()
+    println("gato")
+end
 
-dotwice (estampado)
+dotwice(imprimirgato)
 ----
 
 . Escriba este ejemplo en un script y pruébelo.
@@ -645,27 +643,27 @@ dotwice (estampado)
 ===== Ejercicio 3-4
 
 . Escriba la función +imprimircuadricula+ que dibuje una cuadrícula como la siguiente:
-(((printgrid))) ((("función", "definida por el programador", "printgrid", ver = "printgrid")))
+(((imprimircuadricula))) ((("función", "definida por el programador", "imprimircuadricula", ver = "imprimircuadricula")))
 +
 [source, @ julia-repl-test chap03-ex]
 ----
 julia> imprimircuadricula()
 + - - - - + - - - - +
-El | El | El |
-El | El | El |
-El | El | El |
-El | El | El |
+|         |         |
+|         |         |
+|         |         |
+|         |         |
 + - - - - + - - - - +
-El | El | El |
-El | El | El |
-El | El | El |
-El | El | El |
+|         |         |
+|         |         |
+|         |         |
+|         |         |
 + - - - - + - - - - +
 ----
 
 . Escriba una función que dibuje una cuadrícula similar con cuatro filas y cuatro columnas.
 
-Crédito: Este ejercicio se basa en un ejercicio en Oualline, _Programación práctica C_, tercera edición, O’Reilly Media, 1997.
+Créditos: Este ejercicio se basa en un ejercicio en Oualline, _Practical C Programming_, Third Edition, O’Reilly Media, 1997.
 
 [TIP]
 ====
