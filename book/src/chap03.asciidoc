@@ -261,7 +261,7 @@ Una llamada a función es como un desvío en el flujo de ejecución. En lugar de
 
 Esto suena bastante simple, hasta que tenemos en cuenta que una función puede llamar a otra. Mientras se está ejecutando una función, el programa podría tener que ejecutar las sentencias de otra función. Luego, mientras ejecuta esa nueva función, ¡el programa podría tener que ejecutar otra función más!
 
-Afortunadamente, Julia es capaz de hacer el seguimiento de sus movimientos, por lo que cada vez que se completa una función, el programa retoma la función que la llamó justo donde la dejó. Cuando llega al final del programa, la ejecución termina.
+Afortunadamente, Julia es capaz de hacer el seguimiento de sus movimientos, así que cada vez que una función termina, el programa retoma la función que la llamó justo donde la dejó. Cuando llega al final del programa, la ejecución termina.
 
 En resumen, cuando lee un programa, no siempre debe leer de arriba hacia abajo. A veces tiene más sentido seguir el flujo de ejecución.
 
