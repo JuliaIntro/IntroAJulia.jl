@@ -270,7 +270,7 @@ Algunas de las funciones que hemos visto requieren argumentos. Por ejemplo, la f
 (((parámetro))) (((argumento))) (((analizar))) (((sin)))
 
 Dentro de la función, los argumentos se asignan a variables llamadas _parámetros_. A continuación se muestra un ejemplo de definición de función que toma un argumento:
-(((imprimirdosveces)))(("función", "definido por el programador", "imprimirdosveces", see = "imprimirdosveces")))
+(((imprimirdosveces)))((("función", "definido por el programador", "imprimirdosveces", see = "imprimirdosveces")))
 
 [source, @julia-setup chap03]
 ----
