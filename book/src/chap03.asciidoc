@@ -68,7 +68,7 @@ julia> string(3.14159)
 
 === Funciones matemáticas
 
-En Julia, la mayoría de las funciones matemáticas conocidas están disponibles de manera directa:
+En Julia, la mayoría de las funciones matemáticas conocidas están disponibles directamente:
 (((función matemática)))(((log10)))((("función", "Base", "log10", see="log10")))
 
 [source,julia]
@@ -150,7 +150,7 @@ ERROR: syntax: "60" is not a valid function argument name (ERROR: sintaxis: "60"
 
 === Agregar nuevas funciones
 
-Hasta ahora, solo hemos usado las funciones que vienen con Julia, pero también es posible agregar nuevas funciones. Una _definición de función_ especifica el nombre de una nueva función y la secuencia de sentencias que se ejecutan cuando se llama a la función. A continuación se muestra un ejemplo:
+Hasta ahora, solo hemos usado las funciones integradas de Julia, pero también es posible agregar nuevas funciones. Una _definición de función_ especifica el nombre de una nueva función y la secuencia de sentencias que se ejecutan cuando se llama a la función. A continuación se muestra un ejemplo:
 (((función)))(((definición de función)))(((función definida por el programador)))(((imprimirletras)))((("función", "definido por el programador", "imprimirletras", see="imprimirletras")))
 
 [source,@julia-setup chap03]
