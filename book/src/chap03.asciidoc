@@ -173,7 +173,7 @@ La primera línea de una definición de función se llama _encabezado_; el resto
 Las comillas deben ser "comillas simples", generalmente ubicadas junto a la tecla Enter en el teclado. Las "comillas inglesas dobles", como las de esta oración, no son válidas en Julia.
 (((comillas)))
 
-Si escribe una definición de función en modo interactivo, el REPL inserta una sangría para informarle que la definición no está completa:
+Si escribe una definición de función en modo interactivo, Julia REPL inserta una sangría para informarle que la definición no está completa:
 
 [source,jlcon]
 ----
