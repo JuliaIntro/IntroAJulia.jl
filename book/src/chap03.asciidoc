@@ -77,7 +77,7 @@ proporción = potencia_de_señal/potencia_de_ruido
 decibelios = 10*log10(proporción)
 ----
 
-Este primer ejemplo utiliza +log10+ para calcular la proporción entre señal y ruido en decibelios (suponiendo que +potencia_de_señal+ y +potencia_de_ruido+ están definidos). También existe +log+, que calcula logaritmo natural.
+Este primer ejemplo utiliza la función +log10+ para calcular la proporción entre señal y ruido en decibelios (suponiendo que +potencia_de_señal+ y +potencia_de_ruido+ están definidos). También existe la función +log+, que calcula logaritmo natural.
 (((log)))((("función", "Base", "log",see="log")))((("función logaritmo", see="log")))
 
 [source,julia]
@@ -86,7 +86,7 @@ radianes = 0.7
 altura = sin(radianes)
 ----
 
-Este segundo ejemplo encuentra la razón seno de la varuable +radianes+. El nombre de esta variable es una pista de que +sin+ y las otras funciones trigonométricas (+cos+, +tan+, etc.) toman argumentos en radianes. Para convertir grados a radianes, se debe dividir por 180 y multiplicar por latexmath:[\(\pi\)]:
+Este segundo ejemplo encuentra la razón seno de la variable +radianes+. El nombre de esta variable es una pista de que +sin+ y las otras funciones trigonométricas (+cos+, +tan+, etc.) toman argumentos en radianes. Para convertir grados a radianes, se debe dividir por 180 y multiplicar por latexmath:[\(\pi\)]:
 (((sin)))((("función", "Base", "sin", see="sin")))(((función trigonométrica)))
 
 [source,@julia-repl-test]
