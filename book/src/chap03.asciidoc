@@ -4,7 +4,7 @@
 En el contexto de la programación, una _función_ es una secuencia de sentencias que ejecuta una operación deseada y tiene un nombre. Cuando se define una función, se especifica su nombre y secuencia de sentencias. Una vez hecho esto, se puede "llamar" a la función por su nombre.
 (((función)))
 
-=== Llamadas a función
+=== Llamada a función
 
 Ya hemos visto un ejemplo de una llamada a función:
 (((Llamada a función)))
