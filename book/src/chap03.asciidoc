@@ -266,10 +266,10 @@ En resumen, cuando lee un programa, no siempre debe leer de arriba hacia abajo. 
 
 === Parámetros y argumentos
 
-Algunas de las funciones que hemos visto requieren argumentos. Por ejemplo, la función +cos+ necesita un número como argumento. Algunas funciones toman más de un argumento; +parse+ toma dos: un número y una cadena.
+Algunas de las funciones que hemos visto requieren argumentos. Por ejemplo, la función +cos+ necesita un número como argumento. Algunas funciones toman más de un argumento; por ejemplo +parse+ toma dos: un número y una cadena.
 (((parámetro))) (((argumento))) (((analizar))) (((sin)))
 
-Dentro de la función, los argumentos se asignan a variables llamadas _parametros_. A continuación se muestra un ejemplo de definición de función que toma un argumento:
+Dentro de la función, los argumentos se asignan a variables llamadas _parámetros_. A continuación se muestra un ejemplo de definición de función que toma un argumento:
 (((imprimirdosveces)))(("función", "definido por el programador", "imprimirdosveces", see = "imprimirdosveces")))
 
 [source, @julia-setup chap03]
