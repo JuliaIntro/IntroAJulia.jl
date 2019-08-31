@@ -324,12 +324,12 @@ La vida es bella.
 La vida es bella.
 ----
 
-El nombre de la variable que pasamos como argumento (+michael+) no tiene nada que ver con el nombre del parámetro (+juan+).Para la función +imprimirdosveces+ todos los parámetros se llaman +juan+, sin importar el nombre de la variable que pasemos como argumento (en este caso +michael+).
+El nombre de la variable que pasamos como argumento (+michael+) no tiene nada que ver con el nombre del parámetro (+juan+). Para la función +imprimirdosveces+ todos los parámetros se llaman +juan+, sin importar el nombre de la variable que pasemos como argumento (en este caso +michael+).
 
 
 === Las variables y los parámetros son locales
 
-Cuando crea una variable dentro de una función, esta es _local_, lo que significa que solo existe dentro de la función. Por ejemplo:
+Cuando se crea una variable dentro de una función, esta es _local_, lo que significa que solo existe dentro de la función. Por ejemplo:
 (((variable local))) (((variable, local))) (((concatenar_dos))) ((("función", "definido por el programador", "concatenar_dos", see = "concatenar_dos")))
 
 [source, @julia-setup chap03]
@@ -354,7 +354,7 @@ Hola hola chao chao.
 Hola hola chao chao.
 ----
 
-Cuando +concatenar_dos+ termina, la variable +concatenar+ es eliminada. Si intentamos imprimirla, obtendremos error:
+Cuando +concatenar_dos+ termina, la variable +concatenar+ es destruida. Si intentamos imprimirla, obtendremos un error:
 (((error en tiempo de ejecución))) (((UndefVarError))) ((("error", "Core", "UndefVarError", see = "UndefVarError")))
 
 [source, @ julia-repl-test chap03]
