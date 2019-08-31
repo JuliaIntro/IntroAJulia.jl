@@ -259,7 +259,7 @@ Las definiciones de función no alteran el flujo de ejecución del programa, per
 
 Una llamada a función es como un desvío en el flujo de ejecución. En lugar de pasar a la siguiente sentencia, el flujo salta al cuerpo de la función, ejecuta las sentencias que están allí y luego regresa para continuar el código donde lo dejó.
 
-Esto suena bastante simple, hasta que recuerdas que una función puede llamar a otra. Mientras está en el medio de una función, el programa podría tener que ejecutar las sentencias de otra función. Luego, mientras ejecuta esa nueva función, ¡el programa podría tener que ejecutar otra función más!
+Esto suena bastante simple, hasta que tenemos en cuenta que una función puede llamar a otra. Mientras está en el medio de una función, el programa podría tener que ejecutar las sentencias de otra función. Luego, mientras ejecuta esa nueva función, ¡el programa podría tener que ejecutar otra función más!
 
 Afortunadamente, Julia es capaz de llevar registro de dónde está, por lo que cada vez que se completa una función, el programa retoma la función que la llamó justo donde la dejó. Cuando llega al final del programa, finaliza.
 
