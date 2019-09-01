@@ -348,7 +348,7 @@ Esta función toma dos argumentos, los concatena e imprime el resultado dos vece
 julia> line1 = "Hola hola"
 "Hola hola"
 julia> line2 = "chao chao."
-"tiddle bang".
+"chao chao".
 julia> concatenar_dos(línea1, línea2)
 Hola hola chao chao.
 Hola hola chao chao.
