@@ -605,32 +605,32 @@ Use la concatenación y repetición de cuerdas. Además, Julia proporciona una f
 [[ex03-2]]
 ===== Ejercicio 3-3
 
-Un objeto de función es un valor que puede asignar a una variable o pasar como argumento. Por ejemplo, + dotwice + es una función que toma un objeto de función como argumento y lo llama dos veces:
+Un objeto de función es un valor que se puede asignar a una variable o pasarlo como argumento. Por ejemplo, +dosveces+ es una función que toma un objeto de función como argumento y lo llama dos veces:
 (((objeto de función))) (((dotwice))) ((("función", "definido por el programador", "dotwice", ver = "dotwice")))
 
-[fuente, julia]
+[source, julia]
 ----
-función dotwice (f)
-    F()
-    F()
-final
+function dosveces(f)
+    f()
+    f()
+end
 ----
 
-Aquí hay un ejemplo que usa + dotwice + para llamar a una función llamada + printspam + dos veces.
-(((printspam))) ((("función", "definido por el programador", "printspam", ver = "printspam")))
+A continuación se muestra un ejemplo que usa +dosveces+ para llamar a una función llamada +imprimirgato+ dos veces.
+(((imprimirgato))) ((("función", "definido por el programador", "imprimirgato", see = "imprimirgato")))
 
-[fuente, julia]
+[source, julia]
 ----
 function imprimirgato()
     println("gato")
 end
 
-dotwice(imprimirgato)
+dosveces(imprimirgato)
 ----
 
 . Escriba este ejemplo en un script y pruébelo.
 
-. Modifique + dotwice + para que tome dos argumentos, un objeto de función y un valor, y llame a la función dos veces, pasando el valor como argumento.
+. Modifique +dosveces+ para que tome dos argumentos: un objeto de función y un valor, y que llame a la función dos veces, pasando el valor como argumento.
 
 . Copie la definición de + printtwice + de antes en este capítulo a su secuencia de comandos.
 
