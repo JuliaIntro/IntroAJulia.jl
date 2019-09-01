@@ -235,7 +235,7 @@ end
 repetirletras()
 ----
 
-Este programa contiene dos definiciones de función: +imprimirletras+ y +repetirletras+. Las definiciones de función se ejecutan al igual que otras sentencias, pero su ejecución crea objetos de función. Las sentencias dentro de la función no se ejecutan hasta que se llama a la función, y la definición de la función no genera salida.
+Este programa contiene dos definiciones de función: +imprimirletras+ y +repetirletras+. Las definiciones de función se ejecutan al igual que otras sentencias, pero su ejecución crea nuevas funciones. Las sentencias dentro de la función no se ejecutan hasta que se llama a la función, y la definición de la función no genera salida.
 
 Como es de esperar, debe crear una función antes de poder ejecutarla. En otras palabras, la definición de la función tiene que ejecutarse antes de que se llame a la función.
 
