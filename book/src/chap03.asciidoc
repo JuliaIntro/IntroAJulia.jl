@@ -170,7 +170,7 @@ Los paréntesis vacíos después del nombre indican que esta función no tiene a
 La primera línea de una definición de función se llama _encabezado_; el resto se llama _cuerpo_. El cuerpo termina con la palabra reservada +end+ y puede contener todas las sentencias que desee. Para facilitar la lectura, el cuerpo de la función debería tener sangría.
 (((encabezado)))(((cuerpo)))(((end)))((("palabra reservada", "final", see="final")))(((sangría)))
 
-Las comillas deben ser "comillas simples", generalmente ubicadas junto a la tecla Enter en el teclado. Las "comillas inglesas dobles", como las de esta oración, no son válidas en Julia.
+Las comillas deben ser "comillas rectas" (""), generalmente ubicadas junto a la tecla Enter en el teclado. Las "comillas tipográficas" (“”)no son válidas en Julia.
 (((comillas)))
 
 Si escribe una definición de función en modo interactivo, Julia REPL inserta una sangría para informarle que la definición no está completa:
