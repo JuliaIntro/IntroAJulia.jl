@@ -398,17 +398,17 @@ Stacktrace:
 ----
 
 Esta lista de funciones se llama _trazado inverso_. Indica en qué archivo de programa se produjo el error, en qué línea y qué funciones se estaban ejecutando en ese momento. También muestra la línea de código que causó el error.
-(((stacktrace)))
+(((trazado inverso)))
 
 El orden de las funciones en el trazado inverso es el opuesto del orden de los recuadros en el diagrama de pila. La función que se está ejecutando actualmente está en la parte superior.
 
 
 === Funciones productivas y funciones nulas
 
-Algunas de las funciones que hemos utilizado, como las funciones matemáticas, devuelven resultados. A este tipo de funciones las llamaremos funciones productivas. Otras funciones, como +imprimirdosveces+, realizan una acción pero no devuelven un valor. Se llaman _funciones nulas_.
+Algunas de las funciones que hemos utilizado, como las funciones matemáticas, devuelven resultados. A este tipo de funciones las llamaremos funciones productivas, a falta de un nombre mejor. Otras funciones, como +imprimirdosveces+, realizan una acción pero no devuelven un valor. Estas se llaman _funciones nulas_.
 (((función productiva))) (((función nula)))
 
-Cuando se llama a una función productiva, casi siempre queremos hacer algo con el resultado; por ejemplo, puede asignarlo a una variable o usarlo como parte de una expresión:
+Cuando se llama a una función productiva, casi siempre queremos hacer algo con el resultado; por ejemplo, asignarlo a una variable o usarlo como parte de una expresión:
 
 [source, julia]
 ----
@@ -416,16 +416,16 @@ x = cos(radianes)
 aurea = (sqrt(5)+1)/2
 ----
 
-Cuando llama a una función en modo interactivo, Julia muestra el resultado:
+Cuando se llama a una función en modo interactivo, Julia muestra el resultado:
 (((modo interactivo)))
 
 [source, @julia-repl-test]
 ----
-julia> sqrt (5)
+julia> sqrt(5)
 2.23606797749979
 ----
 
-Pero en un script, si llama a una función productiva por sí sola, ¡el valor de retorno se pierde para siempre!
+Pero en un script, si se llama a una función productiva, ¡el valor de retorno se pierde para siempre!
 (((modo script)))
 
 [fuente, @ julia-run]
@@ -435,16 +435,16 @@ sqrt (5)
 
 Este script calcula la raíz cuadrada de 5, pero como no almacena ni muestra el resultado, no es muy útil.
 
-Las funciones nulas pueden mostrar algo en la pantalla o tener algún otro efecto, pero no tienen un valor de retorno. Si asigna el resultado a una variable, obtendrá un valor especial llamado + nada +.
-(((nada)))
+Las funciones nulas pueden mostrar algo en la pantalla o tener algún otro efecto, pero no tienen un valor de retorno. Si asigna el resultado a una variable, obtendrá un valor especial llamado +nothing+ (nada en inglés).
+(((nothing)))
 
-[fuente, @ julia-repl-test chap03]
+[source, @julia-repl-test chap03]
 ----
-julia> resultado = printtwice ("Bing")
+julia> resultado = imprimirdosveces("Bing")
 Bing
 Bing
-julia> show (resultado)
-nada
+julia> show(resultado)
+nothing
 ----
 
 Para imprimir el valor + nothing +, debe usar la función + show + que es como + print + pero puede manejar el valor + nothing +.
