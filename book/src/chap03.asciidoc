@@ -370,10 +370,10 @@ Los parámetros también son locales. Por ejemplo, afuera de la función +imprim
 [[stack_diagrams]]
 === Diagramas de pila
 
-Para realizar un seguimiento de qué variables se usan en qué lugares es útil dibujar un _diagrama de pila_. Al igual que los diagramas de estado, los diagramas de pila muestran el valor de cada variable, pero también muestran la función a la que pertenece cada una.
+Para seguir la pista de qué variables se usan en qué lugares es útil dibujar un _diagrama de pila_. Al igual que los diagramas de estado, los diagramas de pila muestran el valor de cada variable, pero también muestran la función a la que pertenece cada una.
 (((diagrama de pila))) ((("diagrama", "pila", see = "diagrama de pila")))
 
-Cada función se representa por un _marco_. Un marco es un recuadro con el nombre de una función a un costado, y los parámetros y variables de la función adentro. El diagrama de pila para el ejemplo anterior se muestra en <<fig03-1>>.
+Cada función se representa por un _marco_. Un marco es un recuadro con el nombre de una función a un costado, y los parámetros y variables de la función dentro. El diagrama de pila para el ejemplo anterior se muestra en <<fig03-1>>.
 (((marco)))
 
 [[fig03-1]]
@@ -405,10 +405,10 @@ El orden de las funciones en el trazado inverso es el opuesto del orden de los r
 
 === Funciones productivas y funciones nulas
 
-Algunas de las funciones que hemos utilizado, como las funciones matemáticas, devuelven resultados. A este tipo de funciones las llamaremos funciones productivas, a falta de un nombre mejor. Otras funciones, como +imprimirdosveces+, realizan una acción pero no devuelven un valor. Estas se llaman _funciones nulas_.
+Algunas de las funciones que hemos utilizado, como las funciones matemáticas, devuelven resultados. A este tipo de funciones las llamaremos funciones productivas, a falta de un nombre mejor. Otras funciones como +imprimirdosveces+, realizan una acción pero no devuelven un valor. Estas se llaman _funciones nulas_.
 (((función productiva))) (((función nula)))
 
-Cuando se llama a una función productiva, casi siempre queremos hacer algo con el resultado; por ejemplo, asignarlo a una variable o usarlo como parte de una expresión:
+Cuando llamamos a una función productiva, casi siempre queremos hacer algo con el resultado; por ejemplo, asignarlo a una variable o usarlo como parte de una expresión:
 
 [source, julia]
 ----
@@ -447,42 +447,42 @@ julia> show(resultado)
 nothing
 ----
 
-Para imprimir el valor + nothing +, debe usar la función + show + que es como + print + pero puede manejar el valor + nothing +.
+Para imprimir el valor +nothing+, debe usar la función +show+ que es como la función +print+ pero permite el valor +nothing+.
 (((show))) ((("function", "Base", "show", see = "show")))
 
-El valor + nada + no es lo mismo que la cadena + "nada" +. Es un valor especial que tiene su propio tipo:
+El valor +nothing+ no es lo mismo que la cadena +"nothing"+. Es un valor especial que tiene su propio tipo:
 (((Nothing))) ((("type", "Base", "Nothing", see = "Nothing")))
 
-[fuente, @ julia-repl-test]
+[source, @julia-repl-test]
 ----
-julia> typeof (nada)
-Nada
+julia> typeof (nothing)
+Nothing
 ----
 
 Las funciones que hemos escrito hasta ahora son nulas. Comenzaremos a escribir funciones fructíferas en unos pocos capítulos.
 
 
-=== ¿Por qué funciones?
+=== ¿Por qué se necesitan funciones?
 
 Puede que no esté claro por qué vale la pena dividir un programa en funciones. Hay varias razones:
 
-* Crear una nueva función le brinda la oportunidad de nombrar un grupo de declaraciones, lo que hace que su programa sea más fácil de leer y depurar.
+* Crear una nueva función le brinda la oportunidad de darle nombre a un grupo de sentencias, lo que hace que su programa sea más fácil de leer y depurar.
 
-* Las funciones pueden hacer que un programa sea más pequeño al eliminar el código repetitivo. Más tarde, si realiza un cambio, solo tiene que hacerlo en un solo lugar.
+* Las funciones pueden hacer que un programa sea más pequeño al eliminar código repetitivo. Además, si realiza un cambio, solo tiene que hacerlo en un solo lugar.
 
-* Dividir un programa largo en funciones le permite depurar las partes de una en una y luego ensamblarlas en un todo funcional.
+* Dividir un programa largo en funciones le permite depurar las partes de a una y luego unirlas.
 
-* Las funciones bien diseñadas a menudo son útiles para muchos programas. Una vez que escribe y depura uno, puede reutilizarlo.
+* Las funciones bien diseñadas a menudo son útiles para muchos programas. Una vez que escribe y depura uno, puede reutilizarla.
 
 * En Julia, las funciones pueden mejorar mucho el rendimiento.
 
 
 === Depuración
 
-Una de las habilidades más importantes que adquirirás es la depuración. Aunque puede ser frustrante, la depuración es una de las partes más intelectualmente ricas, desafiantes e interesantes de la programación.
+Una de las habilidades más importantes que adquirirás es la depuración. Aunque puede ser frustrante, la depuración es una de las partes más intelectualmente gratificantes, desafiantes e interesantes de la programación.
 (((depuración)))
 
-De alguna manera, la depuración es como un trabajo de detective. Te enfrentas a pistas y tienes que inferir los procesos y eventos que llevaron a los resultados que ves.
+La depuración puede ser vista como un trabajo de detective. Te enfrentas a pistas, y tienes que inferir los procesos y eventos que generaron los resultados que ves.
 
 La depuración también es como una ciencia experimental. Una vez que tenga una idea de lo que va mal, modifique su programa e intente nuevamente. Si su hipótesis era correcta, puede predecir el resultado de la modificación y dar un paso más hacia un programa de trabajo. Si su hipótesis era incorrecta, tiene que encontrar una nueva. Como Sherlock Holmes señaló:
 
