@@ -384,23 +384,23 @@ Los marcos se ordenan de tal manera que cada función llama a la función inmedi
 
 Cada parámetro se refiere al mismo valor que su argumento correspondiente. Entonces, +part1+ tiene el mismo valor que +line1+, +part2+ tiene el mismo valor que +line2+, y +bruce+ tiene el mismo valor que +concat+.
 
-Si se produce un error durante una llamada a la función, Julia imprime el nombre de la función, el nombre de la función que la llamó y el nombre de la función que llamó a _that_, todo el camino de regreso a + Main +.
+Si se produce un error durante una llamada a función, Julia imprime el nombre de la función, el nombre de la función que la llamó, el nombre de la función que a su vez llamó a esta otra, y así sucesivamente hasta llegar a la función de más alto nivel +Main+.
 (((Principal)))
 
-Por ejemplo, si intenta acceder a + concat + desde + printtwice +, obtendrá un + UndefVarError +:
+Por ejemplo, si intenta acceder a +concat+ desde +imprimirdosveces+, obtendrá un +UndefVarError+:
 (((UndefVarError)))
 
 ----
-ERROR: UndefVarError: concat no definido
+ERROR: UndefVarError: concat not defined
 Stacktrace:
- [1] imprimir dos veces en ./REPL[1font>:2 [en línea]
- [2] cattwice (:: String, :: String) en ./REPL[2font>:3
+ [1] imprimirdosveces at ./REPL[1]>:2 [inlined]
+ [2] concatenar_dos(::String, ::String) at ./REPL[2]>:3
 ----
 
-Esta lista de funciones se llama _stacktrace_. Le indica en qué archivo de programa se produjo el error, en qué línea y qué funciones se estaban ejecutando en ese momento. También muestra la línea de código que causó el error.
+Esta lista de funciones se llama _trazado inverso_. Indica en qué archivo de programa se produjo el error, en qué línea y qué funciones se estaban ejecutando en ese momento. También muestra la línea de código que causó el error.
 (((stacktrace)))
 
-El orden de las funciones en el stacktrace es el inverso del orden de los cuadros en el diagrama de stack. La función que se está ejecutando actualmente está en la parte superior.
+El orden de las funciones en el trazado inverso es el opuesto del orden de los recuadros en el diagrama de pila. La función que se está ejecutando actualmente está en la parte superior.
 
 
 === Funciones fructíferas y funciones nulas
@@ -575,7 +575,7 @@ Una lista de las funciones que se están ejecutando, impresas cuando ocurre una 
 
 === Ejercicios
 
-[PROPINA]
+[TIP]
 ====
 Estos ejercicios deben hacerse usando solo las sentencias y otras características que hemos aprendido hasta ahora.
 ====
@@ -596,16 +596,16 @@ usando ThinkJulia
 rightjustify ("monty")
 ----
 
-[PROPINA]
+[TIP]
 ====
-Use la concatenación y repetición de cuerdas. Además, Julia proporciona una función incorporada llamada + length + que devuelve la longitud de una cadena, por lo que el valor de + length ("monty") + es 5.
+Use concatenación de cadenas y repetición. Además, Julia tiene una función integrada llamada +length+ que devuelve la longitud de una cadena, por lo que el valor de +length("monty")+ es 5.
 (((length))) ((("function", "Base", "length", see = "length)))
 ====
 
 [[ex03-2]]
 ===== Ejercicio 3-3
 
-Un objeto de función es un valor que se puede asignar a una variable o pasarlo como argumento. Por ejemplo, +dosveces+ es una función que toma un objeto de función como argumento y lo llama dos veces:
+Un objeto de función es un valor que se puede asignar a una variable o ser pasado como argumento. Por ejemplo, +dosveces+ es una función que toma un objeto de función como argumento y lo llama dos veces:
 (((objeto de función))) (((dotwice))) ((("función", "definido por el programador", "dotwice", ver = "dotwice")))
 
 [source, julia]
