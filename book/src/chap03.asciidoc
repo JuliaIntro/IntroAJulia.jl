@@ -403,29 +403,29 @@ Esta lista de funciones se llama _trazado inverso_. Indica en qué archivo de pr
 El orden de las funciones en el trazado inverso es el opuesto del orden de los recuadros en el diagrama de pila. La función que se está ejecutando actualmente está en la parte superior.
 
 
-=== Funciones fructíferas y funciones nulas
+=== Funciones productivas y funciones nulas
 
-Algunas de las funciones que hemos utilizado, como las funciones matemáticas, devuelven resultados; por falta de un nombre mejor, los llamo funciones fructíferas. Otras funciones, como + printtwice +, realizan una acción pero no devuelven un valor. Se llaman _ funciones vacías_.
-(((función fructífera))) (((función nula)))
+Algunas de las funciones que hemos utilizado, como las funciones matemáticas, devuelven resultados. A este tipo de funciones las llamaremos funciones productivas. Otras funciones, como +imprimirdosveces+, realizan una acción pero no devuelven un valor. Se llaman _funciones nulas_.
+(((función productiva))) (((función nula)))
 
-Cuando llamas a una función fructífera, casi siempre quieres hacer algo con el resultado; por ejemplo, puede asignarlo a una variable o usarlo como parte de una expresión:
+Cuando se llama a una función productiva, casi siempre queremos hacer algo con el resultado; por ejemplo, puede asignarlo a una variable o usarlo como parte de una expresión:
 
-[fuente, julia]
+[source, julia]
 ----
-x = cos (radianes)
-dorado = (sqrt (5) + 1) / 2
+x = cos(radianes)
+aurea = (sqrt(5)+1)/2
 ----
 
 Cuando llama a una función en modo interactivo, Julia muestra el resultado:
 (((modo interactivo)))
 
-[fuente, @ julia-repl-test]
+[source, @julia-repl-test]
 ----
 julia> sqrt (5)
 2.23606797749979
 ----
 
-Pero en un script, si llama a una función fructífera por sí sola, ¡el valor de retorno se pierde para siempre!
+Pero en un script, si llama a una función productiva por sí sola, ¡el valor de retorno se pierde para siempre!
 (((modo script)))
 
 [fuente, @ julia-run]
