@@ -484,15 +484,15 @@ Una de las habilidades más importantes que adquirirás es la depuración. Aunqu
 
 La depuración puede ser vista como un trabajo de detective. Te enfrentas a pistas, y tienes que inferir los procesos y eventos que generaron los resultados que ves.
 
-La depuración también es como una ciencia experimental. Una vez que tenga una idea de lo que va mal, modifique su programa e intente nuevamente. Si su hipótesis era correcta, puede predecir el resultado de la modificación y dar un paso más hacia un programa de trabajo. Si su hipótesis era incorrecta, tiene que encontrar una nueva. Como Sherlock Holmes señaló:
+La depuración también es como una ciencia experimental. Una vez que se tiene una idea de lo que está mal, se modifica el programa y se intenta nuevamente. Si la hipótesis era correcta, se puede predecir el resultado de la modificación y así estar un paso más cerca de un programa totalmente funcional. Si la hipótesis era incorrecta, se tiene que encontrar una nueva. Como Sherlock Holmes señaló:
 
 [cita, A. Conan Doyle, El signo de los cuatro]
 ____
-Cuando haya eliminado lo imposible, lo que queda, por improbable que sea, debe ser la verdad.
+Cuando todo aquello que es imposible ha sido eliminado, lo que quede, por muy improbable que parezca, es la verdad.
 ____
 (((depuración experimental))) (((Holmes, Sherlock))) (((Doyle, Arthur Conan)))
 
-Para algunas personas, la programación y la depuración son lo mismo. Es decir, la programación es el proceso de depurar gradualmente un programa hasta que haga lo que desea. La idea es que debe comenzar con un programa de trabajo y hacer pequeñas modificaciones, depurándolas a medida que avanza.
+Para algunas personas, la programación y la depuración son lo mismo. Es decir, la programación es el proceso de depurar gradualmente un programa hasta que haga lo que desea. Lo ideal es comenzar con un programa que funcione y hacer pequeñas modificaciones, depurándolas a medida que avanza.
 
 Por ejemplo, Linux es un sistema operativo que contiene millones de líneas de código, pero comenzó como un programa simple que Linus Torvalds usó para explorar el chip Intel 80386. Según Larry Greenfield, "Uno de los proyectos anteriores de Linus fue un programa que cambiaría entre imprimir" AAAA "y" BBBB ". Esto luego evolucionó a Linux ". (_The Linux Users'’ Guide_ Beta Version 1).
 (((Linux))) (((Torvalds, Linus)))
