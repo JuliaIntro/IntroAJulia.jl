@@ -370,19 +370,19 @@ Los parámetros también son locales. Por ejemplo, afuera de la función +imprim
 [[stack_diagrams]]
 === Diagramas de pila
 
-Para realizar un seguimiento de las variables que se pueden usar y dónde, a veces es útil dibujar un _diagrama de pila_. Al igual que los diagramas de estado, los diagramas de pila muestran el valor de cada variable, pero también muestran la función a la que pertenece cada variable.
-(((diagrama de pila))) ((("diagrama", "pila", ver = "diagrama de pila")))
+Para realizar un seguimiento de qué variables se usan en qué lugares es útil dibujar un _diagrama de pila_. Al igual que los diagramas de estado, los diagramas de pila muestran el valor de cada variable, pero también muestran la función a la que pertenece cada una.
+(((diagrama de pila))) ((("diagrama", "pila", see = "diagrama de pila")))
 
-Cada función se representa por un _marco_. Un marco es un recuadro con el nombre de una función al lado y los parámetros y variables de la función dentro de él. El diagrama de pila para el ejemplo anterior se muestra en <<fig03-1>>.
+Cada función se representa por un _marco_. Un marco es un recuadro con el nombre de una función a un costado, y los parámetros y variables de la función adentro. El diagrama de pila para el ejemplo anterior se muestra en <<fig03-1>>.
 (((marco)))
 
 [[fig03-1]]
 .Stack diagram
 image::images/fig31.svg[]
 
-Los marcos están dispuestos en una pila que indica qué función se llama a cuál, y así sucesivamente. En este ejemplo, +imprimirdosveces+ fue llamado por +concatenar_dos+, y +concatenar_dos+ fue llamado por +Main+, que es un nombre especial para el marco superior. Cuando crea una variable fuera de cualquier función, pertenece a +Main+.
+Los marcos se ordenan de tal manera que cada función llama a la función inmediatamente inferior. En este ejemplo, +imprimirdosveces+ fue llamado por +concatenar_dos+, y +concatenar_dos+ fue llamado por +Main+, que es un nombre especial para la función de más alto nivel. Cuando se crea una variable afuera de cualquier función, pertenece a +Main+.
 
-Cada parámetro se refiere al mismo valor que su argumento correspondiente. Entonces, + part1 + tiene el mismo valor que + line1 +, + part2 + tiene el mismo valor que + line2 +, y + bruce + tiene el mismo valor que + concat +.
+Cada parámetro se refiere al mismo valor que su argumento correspondiente. Entonces, +parte1+ tiene el mismo valor que +line1+, +part2+ tiene el mismo valor que +line2+, y +bruce+ tiene el mismo valor que +concat+.
 
 Si se produce un error durante una llamada a la función, Julia imprime el nombre de la función, el nombre de la función que la llamó y el nombre de la función que llamó a _that_, todo el camino de regreso a + Main +.
 (((Principal)))
