@@ -329,7 +329,7 @@ El nombre de la variable que pasamos como argumento (+michael+) no tiene nada qu
 
 === Las variables y los parámetros son locales
 
-Cuando se crea una variable dentro de una función, esta es _local_, lo que significa que solo existe dentro de la función. Por ejemplo:
+Cuando se crea una variable dentro de una función, esta es _local_, es decir, solo existe dentro de la función. Por ejemplo:
 (((variable local))) (((variable, local))) (((concatenar_dos))) ((("función", "definido por el programador", "concatenar_dos", see = "concatenar_dos")))
 
 [source, @julia-setup chap03]
