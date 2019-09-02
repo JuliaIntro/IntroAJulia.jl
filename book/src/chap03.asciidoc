@@ -382,7 +382,7 @@ image::images/fig31.svg[]
 
 Los marcos se ordenan de tal manera que cada función llama a la función inmediatamente inferior. En este ejemplo, +imprimirdosveces+ fue llamado por +concatenar_dos+, y +concatenar_dos+ fue llamado por +Main+, que es un nombre especial para la función de más alto nivel. Cuando se crea una variable afuera de cualquier función, pertenece a +Main+.
 
-Cada parámetro se refiere al mismo valor que su argumento correspondiente. Entonces, +parte1+ tiene el mismo valor que +line1+, +part2+ tiene el mismo valor que +line2+, y +bruce+ tiene el mismo valor que +concat+.
+Cada parámetro se refiere al mismo valor que su argumento correspondiente. Entonces, +part1+ tiene el mismo valor que +line1+, +part2+ tiene el mismo valor que +line2+, y +bruce+ tiene el mismo valor que +concat+.
 
 Si se produce un error durante una llamada a la función, Julia imprime el nombre de la función, el nombre de la función que la llamó y el nombre de la función que llamó a _that_, todo el camino de regreso a + Main +.
 (((Principal)))
