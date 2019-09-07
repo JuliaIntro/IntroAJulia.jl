@@ -468,11 +468,11 @@ Puede que no esté claro por qué vale la pena dividir un programa en funciones.
 
 * Crear una nueva función le brinda la oportunidad de darle nombre a un grupo de sentencias, lo que hace que su programa sea más fácil de leer y depurar.
 
-* Las funciones pueden hacer que un programa sea más pequeño al eliminar código repetitivo. Además, si realiza un cambio, solo tiene que hacerlo en un solo lugar.
+* Las funciones pueden hacer que un programa sea más corto al eliminar código repetitivo. Además, si realiza un cambio, solo tiene que hacerlo en un solo lugar.
 
-* Dividir un programa largo en funciones le permite depurar las partes de a una y luego unirlas.
+* Dividir un programa largo en funciones le permite depurar las partes de a una en una, y luego unirlas.
 
-* Las funciones bien diseñadas a menudo son útiles para muchos programas. Una vez que escribe y depura uno, puede reutilizarla.
+* Las funciones bien diseñadas pueden ser útiles para muchos programas. Una vez que escribe y depura uno, puede reutilizarla.
 
 * En Julia, las funciones pueden mejorar mucho el rendimiento.
 
@@ -501,7 +501,7 @@ Por ejemplo, Linux es un sistema operativo que contiene millones de líneas de c
 === Glosario
 
 función::
-Una secuencia, con nombre, de sentencias que realiza alguna operación útil. Las funciones pueden tomar o no argumentos y pueden producir o no un resultado.
+secuencia de sentencias que ejecuta una operación deseada y tiene un nombre. Las funciones pueden tomar o no argumentos, y pueden producir o no un resultado.
 (((función)))
 
 definición de función::
@@ -517,7 +517,7 @@ La primera línea de una definición de función.
 (((encabezado)))
 
 cuerpo::
-La secuencia de sentencias dentro de una definición de función.
+Secuencia de sentencias dentro de una definición de función.
 (((cuerpo)))
 
 parámetro::
@@ -525,11 +525,11 @@ Un nombre usado dentro de una función para referirse al valor pasado como argum
 (((parámetro)))
 
 Llamada a función::
-Una sentencia que ejecuta una función. Consiste en el nombre de la función seguido de una lista de argumentos entre paréntesis.
+Una sentencia que ejecuta una función. Compuesta del nombre de la función seguido por la lista de argumentos que usa entre paréntesis.
 (((Llamada a función)))
 
 argumento::
-Un valor proporcionado a una función cuando se llama a la función. Este valor se asigna al parámetro correspondiente en la función.
+Valor que se le pasa a una función cuando se la llama. Este valor se asigna al parámetro correspondiente en la función.
 (((argumento)))
 
 variable local::
@@ -540,15 +540,15 @@ valor de retorno::
 El resultado de una función. Si se utiliza una llamada a función como una expresión, el valor de retorno es el valor de la expresión.
 (((valor de retorno)))
 
-función fructífera::
+función productiva::
 Una función que devuelve un valor.
-(((función fructífera)))
+(((función productiva)))
 
 función vacía::
-Una función que siempre devuelve +nada+.
+Una función que siempre devuelve +nothing+.
 (((función nula)))
 
-+nada+::
++nothing+::
 Un valor especial devuelto por las funciones nulas.
 (((nada)))
 
@@ -565,48 +565,48 @@ Una representación gráfica de una pila de funciones, sus variables y los valor
 (((diagrama de pila)))
 
 marco::
-Un cuadro en un diagrama de pila que representa una llamada de función. Contiene las variables locales y los parámetros de la función.
+Un recuadro que en un diagrama de pila representa una llamada de función. Contiene las variables locales y los parámetros de la función.
 (((marco)))
 
-stacktrace ::
-Una lista de las funciones que se están ejecutando, impresas cuando ocurre una excepción.
-(((stacktrace)))
+trazado inverso::
+Una lista de las funciones que se están ejecutando, las cuales son impresas cuando ocurre una excepción.
+(((trazado inverso))) 
 
 
 === Ejercicios
 
 [TIP]
 ====
-Estos ejercicios deben hacerse usando solo las sentencias y otras características que hemos aprendido hasta ahora.
+Estos ejercicios deben realizarse utilizando sólo lo que hemos aprendido hasta ahora.
 ====
 
 [[ex03-1]]
 ===== Ejercicio 3-2
 
-Escriba una función llamada + rightjustify + que tome una cadena llamada + s + como parámetro e imprima la cadena con suficientes espacios iniciales para que la última letra de la cadena se encuentre en la columna 70 de la pantalla.
-(((rightjustify))) ((("función", "definido por el programador", "rightjustify", ver = "rightjustify)))
+Escriba una función llamada +justificar_a_la_derecha+ que tome una cadena +s+ como parámetro y que imprima la cadena con suficientes espacios en blanco para que la última letra de la cadena se encuentre en la columna 70 de la pantalla.
+(((justificar_a_la_derecha))) ((("función", "definido por el programador", "justificar_a_la_derecha", see = "justificar_a_la_derecha")))
 
-[fuente, @ julia-eval chap03-ex]
+[source, @julia-eval chap03-ex]
 ----
-usando ThinkJulia
+using ThinkJulia
 ----
 
-[fuente, @ julia-repl chap03-ex]
+[source, @julia-repl chap03-ex]
 ----
-rightjustify ("monty")
+justificar_a_la_derecha("Celia")
 ----
 
 [TIP]
 ====
-Use concatenación de cadenas y repetición. Además, Julia tiene una función integrada llamada +length+ que devuelve la longitud de una cadena, por lo que el valor de +length("monty")+ es 5.
-(((length))) ((("function", "Base", "length", see = "length)))
+Use concatenación de cadenas y repetición. Además, Julia tiene integrada una función llamada +length+ que devuelve la longitud de una cadena, por lo que el valor de +length("Celia")+ es 5.
+(((length))) ((("función", "Base", "length", see = "length")))
 ====
 
 [[ex03-2]]
 ===== Ejercicio 3-3
 
 Un objeto de función es un valor que se puede asignar a una variable o ser pasado como argumento. Por ejemplo, +dosveces+ es una función que toma un objeto de función como argumento y lo llama dos veces:
-(((objeto de función))) (((dotwice))) ((("función", "definido por el programador", "dotwice", ver = "dotwice")))
+(((objeto de función))) (((dosveces))) ((("función", "definido por el programador", "dosveces", see = "dosveces")))
 
 [source, julia]
 ----
@@ -617,27 +617,27 @@ end
 ----
 
 A continuación se muestra un ejemplo que usa +dosveces+ para llamar a una función llamada +imprimirgato+ dos veces.
-(((imprimirgato))) ((("función", "definido por el programador", "imprimirgato", see = "imprimirgato")))
+(((imprimirpalabra))) ((("función", "definido por el programador", "imprimirpalabra", see = "imprimirgato")))
 
 [source, julia]
 ----
-function imprimirgato()
-    println("gato")
+function imprimirpalabra()
+    println("palabra")
 end
 
-dosveces(imprimirgato)
+dosveces(imprimirpalabra)
 ----
 
 . Escriba este ejemplo en un script y pruébelo.
 
 . Modifique +dosveces+ para que tome dos argumentos: un objeto de función y un valor, y que llame a la función dos veces, pasando el valor como argumento.
 
-. Copie la definición de + printtwice + de antes en este capítulo a su secuencia de comandos.
+. Copie la definición de +imprimirdosveces+ mencionada antes en este capítulo a su secuencia de comandos.
 
-. Use la versión modificada de + dotwice + para llamar a + printtwice + dos veces, pasando + "spam" + como argumento.
+. Use la versión modificada de +dosveces+ para llamar a +imprimirdosveces+ dos veces, pasando +"palabra"+ como argumento.
 
-. Defina una nueva función llamada + dofour + que toma un objeto de función y un valor y llama a la función cuatro veces, pasando el valor como parámetro. Debe haber solo dos declaraciones en el cuerpo de esta función, no cuatro.
-(((dofour))) ((("función", "definido por el programador", "dofour", ver = "dofour")))
+. 5.	Defina una nueva función llamada +cuatroveces+ que tome un objeto de función y un valor, y que llame a la función cuatro veces, pasando el valor como parámetro. Debe haber solo dos sentencias en el cuerpo de esta función, no cuatro.
+(((cuatroveces))) ((("función", "definido por el programador", "cuatroveces", see = "cuatroveces")))
 
 [[ex03-3]]
 ===== Ejercicio 3-4
