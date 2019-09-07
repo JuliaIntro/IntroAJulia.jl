@@ -459,7 +459,7 @@ julia> typeof (nothing)
 Nothing
 ----
 
-Las funciones que hemos escrito hasta ahora son nulas. Comenzaremos a escribir funciones fructíferas en unos pocos capítulos.
+Las funciones que hemos escrito hasta ahora son nulas. Comenzaremos a escribir funciones productivas en unos pocos capítulos.
 
 
 === ¿Por qué se necesitan funciones?
