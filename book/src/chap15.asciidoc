@@ -198,7 +198,7 @@ julia> printpoint(blank)
 (3.0, 4.0)
 ----
 
-===== Exercise 15-1
+==== Exercise 15-1
 
 Write a function called +distancebetweenpoints+ that takes two points as arguments and returns the distance between them.
 (((distancebetweenpoints)))((("function", "programmer-defined", "distancebetweenpoints", see="distancebetweenpoints")))
@@ -317,7 +317,7 @@ false
 The +≡+ operator indicates that +p1+ and +p2+ are not the same object, which is what we expected. But you might have expected +==+ to yield +true+ because these points contain the same data. In that case, you will be disappointed to learn that for mutable objects, the default behavior of the +==+ operator is the same as the +===+ operator; it checks object identity, not object equivalence. That’s because for mutable composite types, Julia doesn’t know what should be considered equivalent. At least, not yet.
 (((==)))(((≡)))
 
-===== Exercise 15-2
+==== Exercise 15-2
 
 Create a +Point+ instance, make a copy of it and check the equivalence and the egality of both. The result can surprise you but it explains why aliasing is a non issue for an immutable object.
 
@@ -333,9 +333,6 @@ julia> p = Point(3.0, 4.0)
 Point(3.0, 4.0)
 julia> p.z = 1.0
 ERROR: type Point has no field z
-Stacktrace:
- [1] setproperty!(::Point, ::Symbol, ::Float64) at ./sysimg.jl:19
- [2] top-level scope at none:0
 ----
 
 If you are not sure what type an object is, you can ask:
@@ -417,7 +414,7 @@ A diagram that shows objects, their fields, and the values of the fields.
 === Exercises
 
 [[ex15-1]]
-===== Exercise 15-3
+==== Exercise 15-3
 
 . Write a definition for a type named +Circle+ with fields +center+ and +radius+, where +center+ is a +Point+ object and +radius+ is a number.
 (((Circle)))((("type", "programmer-defined", "Circle", see="Circle")))
@@ -434,7 +431,7 @@ A diagram that shows objects, their fields, and the values of the fields.
 (((rectcircleoverlap)))((("function", "programmer-defined", "rectcircleoverlap", see="rectcircleoverlap")))
 
 [[ex15-2]]
-===== Exercise 15-4
+==== Exercise 15-4
 
 . Write a function called +drawrect+ that takes a turtle object and a +Rectangle+ object and uses the turtle to draw the rectangle. See Chapter 4 for examples using +Turtle+ objects.
 (((drawrect)))((("function", "programmer-defined", "drawrect", see="drawrect")))

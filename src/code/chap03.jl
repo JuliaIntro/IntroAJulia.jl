@@ -8,7 +8,7 @@ function repeatlyrics()
   printlyrics()
 end
 
-function printtwice(bruce)
+function imprimirdosveces(bruce)
   println(bruce)
   println(bruce)
 end
