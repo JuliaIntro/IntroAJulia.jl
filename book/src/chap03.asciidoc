@@ -198,7 +198,7 @@ Una vez que haya definido una función, puede usarla dentro de otra función. Po
 
 [source,@julia-setup chap03]
 ----
-función repetirletras()
+function repetirletras()
     imprimirletras()
     imprimirletras()
 end
@@ -206,7 +206,7 @@ end
 
 Y luego llamamos a +repetirletras+:
 
-[fuente, @ julia-repl-test chap03]
+[source, @ julia-repl-test chap03]
 ----
 julia> repeatlyrics ()
 Jueguemos en el bosque
