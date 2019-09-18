@@ -208,9 +208,9 @@ end
 
 Y luego llamamos a +repetirletras+:
 
-[fuente, @ julia-repl-test chap03]
+[source, @ julia-repl-test chap03]
 ----
-julia> repeatlyrics ()
+julia> repetirletras()
 Jueguemos en el bosque
 mientras el lobo no está.
 Jueguemos en el bosque

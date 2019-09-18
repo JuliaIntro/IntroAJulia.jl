@@ -1,19 +1,20 @@
-function printlyrics()
-  println("I'm a lumberjack, and I'm okay.")
-  println("I sleep all night and I work all day.")
+function imprimirletras()
+    println("Jueguemos en el bosque")
+    println("mientras el lobo no está.")
 end
 
-function repeatlyrics()
-  printlyrics()
-  printlyrics()
+function repetirletras()
+    imprimirletras()
+    imprimirletras()
 end
 
-function imprimirdosveces(bruce)
-  println(bruce)
-  println(bruce)
+function imprimirdosveces(juan)
+    println(juan)
+    println(juan)
 end
 
-function cattwice(part1, part2)
-  concat = part1 * part2
-  printtwice(concat)
+function concatenar_dos(parte1, parte2)
+    concat = parte1 * parte2
+    imprimirdosveces(concat)
+
 end
