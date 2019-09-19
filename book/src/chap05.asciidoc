@@ -52,7 +52,7 @@ Además, puede extraer el dígito más a la derecha de un número. Por ejemplo, 
 
 === Expresiones booleanas
 
-Una _expresión booleana_ es una expresión que es verdadera o falsa. Los siguientes ejemplos usan el operador +==+, que compara dos operandos, y devuelve +true+ si son iguales, y +false+ de lo contrario. La traducción al español de true y false es verdadero y falso, respectivamente:
+Una _expresión booleana_ es una expresión que es verdadera o falsa. Los siguientes ejemplos usan el operador +==+, que compara dos operandos, y devuelve +true+ (verdadero en español) si son iguales, y +false+ (falso) de lo contrario.
 (((expresión booleana)))(((true)))(((false)))
 
 [source,@julia-repl-test]
