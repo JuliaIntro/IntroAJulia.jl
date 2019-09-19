@@ -74,25 +74,25 @@ julia> typeof(false)
 Bool
 ----
 
-The +==+ operator is one of the relational operators; the others are:
-(((relational operator)))(((==)))((("operator", "Base", "==", see="==")))
+El operador +==+ es uno de los operadores relacionales; los otros son:
+(((operador relacional)))(((==)))((("operador", "Base", "==", see="==")))
 
 [source,julia]
 ----
-      x != y               # x is not equal to y
+      x != y               # x no es igual a y 
       x ≠ y                # (\ne TAB)
-      x > y                # x is greater than y
-      x < y                # x is less than y
-      x >= y               # x is greater than or equal to y
+      x > y                # x es mayor que y
+      x < y                # x es menor que y
+      x >= y               # x es mayor o igual a y
       x ≥ y                # (\ge TAB)
-      x <= y               # x is less than or equal to y
+      x <= y               # x es menor o igual a y
       x ≤ y                # (\le TAB)
 ----
 
 [WARNING]
 ====
-Although these operations are probably familiar to you, the Julia symbols are different from the mathematical symbols. A common error is to use a single equal sign (+=+) instead of a double equal sign (+==+). Remember that +=+ is an assignment operator and +==+ is a relational operator. There is no such thing as +=<+ or +pass:[=>]+.
-(((≠)))((("operator", "Base", "≠", see="≠")))((("!=", see="≠")))((("operator", "Base", "!=", see="≠")))(((>)))((("operator", "Base", ">", see=">")))(((<)))((("operator", "Base", "<", see="<")))(((≥)))((("operator", "Base", "≥", see="≥")))(((">=", see="≥")))((("operator", "Base", ">=", see="≥")))(((≤)))((("operator", "Base", "≤", see="≤")))((("pass:[&lt;=]", see="≤")))((("operator", "Base", "pass:[&lt;=]", see="≤")))
+Aunque estas operaciones probablemente le sean familiares, los símbolos de Julia son diferentes de los símbolos matemáticos. Un error común es usar un solo signo igual (+=+) en vez de un doble signo igual (+==+). Recuerde que +=+ es un operador de asignación y +==+ es un operador relacional. No existe +=<+ o +pass:[=>]+.
+(((≠)))((("operador", "Base", "≠", see="≠")))((("!=", see="≠")))((("operador", "Base", "!=", see="≠")))(((>)))((("operador", "Base", ">", see=">")))(((<)))((("operador", "Base", "<", see="<")))(((≥)))((("operador", "Base", "≥", see="≥")))(((">=", see="≥")))((("operador", "Base", ">=", see="≥")))(((≤)))((("operador", "Base", "≤", see="≤")))((("pass:[&lt;=]", see="≤")))((("operador", "Base", "pass:[&lt;=]", see="≤")))
 ====
 
 
