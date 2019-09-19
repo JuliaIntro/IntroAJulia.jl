@@ -1,7 +1,7 @@
 [[chap05]]
 == Condicionales y recursividad
 
-El tema principal de este capítulo es la sentencia +if+, la cual permite ejecutar diferentes acciones dependiendo del estado del programa. Primeramente se presentarán dos nuevos operadores: división entera de tipo piso y módulo.
+El tema principal de este capítulo es la sentencia +if+, la cual permite ejecutar diferentes acciones dependiendo del estado del programa. Primeramente se presentan dos nuevos operadores: división entera de tipo piso y módulo.
 
 
 === División entera de tipo piso y Módulo
