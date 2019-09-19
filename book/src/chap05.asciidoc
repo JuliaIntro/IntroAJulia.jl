@@ -109,7 +109,7 @@ Finalmente, el operador +!+ niega una expresión booleana, entonces +!(X>y)+ es 
 
 === Ejecución Condicional
 
-Para escribir programas útiles, generalmente necesitamos poder verificar las condiciones y cambiar el comportamiento del programa acorde a ellas. Las sentencias condicionales nos permiten esto. La forma más simple es la sentencia +if+:
+Para escribir programas útiles, generalmente necesitamos poder verificar condiciones y cambiar el comportamiento del programa acorde a ellas. Las sentencias condicionales nos permiten hacer esto. La forma más simple es la sentencia +if+ (si en inglés):
 (((sentencia condicional)))(((if)))((("keyword", "if", see="if")))(((sentencia if)))((("sentencia", "if", see="sentencia if")))
 
 [source,julia]
@@ -119,18 +119,18 @@ if x > 0
 end
 ----
 
-The boolean expression after +if+ is called the _condition_. If it is true, the indented statement runs. If not, nothing happens.
+La expresión booleana después de +if+ se llama _condición_. Si es verdadera, se ejecuta la instrucción con sangría. Si no, no pasa nada.
 (((condition)))
 
-+if+ statements have the same structure as function definitions: a header followed by body terminated with the keyword +end+. Statements like this are called _compound statements_.
-(((compound statement)))(((end)))
+Las sentencias +if+ tienen la misma estructura que las definiciones de función: un encabezado seguido del cuerpo, terminado con la palabra reservada +end+ (en español fin). Los enunciados como este se denominan _enunciados compuestos_.
+(((sentencia compuesta)))(((end)))
 
-There is no limit on the number of statements that can appear in the body. Occasionally, it is useful to have a body with no statements (usually as a place keeper for code you haven’t written yet).
+No hay límite en el número de sentencias que pueden aparecer en el cuerpo. A veces es útil tener un cuerpo sin sentencias (por lo general, como un marcador de posición para el código que aún no se ha escrito).
 
 [source,julia]
 ----
 if x < 0
-    # TODO: need to handle negative values!
+    # TODO: se necesita realizar alguna acción con los valores negativos!
 end
 ----
 
