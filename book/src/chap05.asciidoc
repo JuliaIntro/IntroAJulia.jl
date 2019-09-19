@@ -109,13 +109,13 @@ Finalmente, el operador +!+ niega una expresión booleana, entonces +!(X>y)+ es 
 
 === Ejecución Condicional
 
-In order to write useful programs, we almost always need the ability to check conditions and change the behavior of the program accordingly. _Conditional statements_ give us this ability. The simplest form is the +if+ statement:
-(((conditional statement)))(((if)))((("keyword", "if", see="if")))(((if statement)))((("statement", "if", see="if statement")))
+Para escribir programas útiles, generalmente necesitamos poder verificar las condiciones y cambiar el comportamiento del programa acorde a ellas. Las sentencias condicionales nos permiten esto. La forma más simple es la sentencia +if+:
+(((sentencia condicional)))(((if)))((("keyword", "if", see="if")))(((sentencia if)))((("sentencia", "if", see="sentencia if")))
 
 [source,julia]
 ----
 if x > 0
-    println("x is positive")
+    println("x es positivo")
 end
 ----
 
