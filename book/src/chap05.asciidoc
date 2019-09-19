@@ -1,10 +1,10 @@
 [[chap05]]
 == Condicionales y recursividad
 
-El tema principal de este capítulo es la sentencia +if+, que ejecuta diferentes acciones dependiendo del estado del programa. Primero se presentarán dos nuevos operadores: división de piso y módulo.
+El tema principal de este capítulo es la sentencia +if+, la cual permite ejecutar diferentes acciones dependiendo del estado del programa. Primeramente se presentarán dos nuevos operadores: división entera de tipo piso y módulo.
 
 
-=== Floor Division and Modulus
+=== División entera de tipo piso y Módulo
 
 El operador _división entera de tipo piso_, +÷+ (*+\div TAB+*), divide dos números y redondea hacia abajo el resultado. Por ejemplo, suponga que la duración de una película es de 105 minutos. Es posible que desee saber la duración en horas. La división convencional devuelve un número de punto flotante:
 (((operador de división entera de tipo piso))) ((("operador", "Base", "÷", see = "operador división entera de tipo piso"))) ((("÷", see="operador división entera de tipo piso")))
@@ -38,22 +38,22 @@ Una alternativa es usar el _operador módulo_, +%+, que divide dos números y de
 
 [source,@julia-repl-test chap05]
 ----
-julia> remainder = minutes % 60
+julia> resto = minutos % 60
 45
 ----
 
 [TIP]
 ====
-The modulus operator is more useful than it seems. For example, you can check whether one number is divisible by another—if +x % y+ is zero, then +x+ is divisible by +y+.
+El operador módulo es más útil de lo que parece. Por ejemplo, permite verificar si un número es divisible por otro: si +x%y+ es cero, entonces +x+ es divisible por +y+.
 
-Also, you can extract the right-most digit or digits from a number. For example, +x % 10+ yields the right-most digit of an integer +x+ (in base 10). Similarly +x % 100+ yields the last two digits.
+Además, puede extraer el dígito más a la derecha de un número. Por ejemplo, +x%10+ devuelve el dígito más a la derecha de un entero +x+ (en base 10). Del mismo modo, +x%100+ devuelve los dos últimos dígitos.
+
 ====
 
+=== Expresiones booleanas
 
-=== Boolean Expressions
-
-A _boolean expression_ is an expression that is either true or false. The following examples use the operator +==+, which compares two operands and produces +true+ if they are equal and +false+ otherwise:
-(((boolean expression)))(((true)))(((false)))
+Una _expresión booleana_ es una expresión que es verdadera o falsa. Los siguientes ejemplos usan el operador +==+, que compara dos operandos, y devuelve +true+ si son iguales, y +false+ de lo contrario. La traducción al español de true y false es verdadero y falso, respectivamente:
+(((expresión booleana)))(((true)))(((false)))
 
 [source,@julia-repl-test]
 ----
@@ -63,7 +63,7 @@ julia> 5 == 6
 false
 ----
 
-+true+ and +false+ are special values that belong to the type +Bool+; they are not strings:
++true+ y +false+ son valores especiales que pertenecen al tipo +Bool+; no son cadenas:
 (((Bool)))((("type", "Base", "Bool", see="Bool")))
 
 [source,@julia-repl-test]
