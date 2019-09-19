@@ -1,40 +1,40 @@
 [[chap05]]
-== Conditionals and Recursion
+== Condicionales y recursividad
 
-The main topic of this chapter is the +if+ statement, which executes different code depending on the state of the program. But first I want to introduce two new operators: floor division and modulus.
+El tema principal de este capítulo es la sentencia +if+, que ejecuta diferentes códigos dependiendo del estado del programa. Primero se presentarán dos nuevos operadores: división de piso y módulo.
 
 
 === Floor Division and Modulus
 
-The _floor division_ operator, +÷+ (*+\div TAB+*), divides two numbers and rounds down to an integer. For example, suppose the run time of a movie is 105 minutes. You might want to know how long that is in hours. Conventional division returns a floating-point number:
-(((floor division operator)))((("operator", "Base", "÷", see="floor division operator")))((("÷", see="floor division operator")))
+El operador _división entera de tipo piso_, +÷+ (*+\div TAB+*), divide dos números y redondea hacia abajo el resultado. Por ejemplo, suponga que la duración de una película es de 105 minutos. Es posible que desee saber la duración en horas. La división convencional devuelve un número de punto flotante:
+(((operador de división entera de tipo piso))) ((("operador", "Base", "÷", see = "operador división entera de tipo piso"))) ((("÷", see="operador división entera de tipo piso")))
 
 [source,@julia-repl-test chap05]
 ----
-julia> minutes = 105
+julia> minutos = 105
 105
-julia> minutes / 60
+julia> minutos / 60
 1.75
 ----
 
-But we don’t normally write hours with decimal points. Floor division returns the integer number of hours, rounding down:
+Pero normalmente no escribimos horas con decimales. La división entera de tipo piso devuelve el número entero de horas, redondeando hacia abajo:
 
 [source,@julia-repl-test chap05]
 ----
-julia> hours = minutes ÷ 60
+julia> horas = minutos ÷ 60
 1
 ----
 
-To get the remainder, you could subtract off one hour in minutes:
+Para obtener el resto de la operación, se puede restar una hora (en minutos) a la duración total de la película:
 
 [source,@julia-repl-test chap05]
 ----
-julia> remainder = minutes - hours * 60
+julia> resto = minutos - horas * 60
 45
 ----
 
-An alternative is to use the _modulus operator_, +%+, which divides two numbers and returns the remainder.
-(((modulus operator)))((("operator", "Base", "%", see="modulus operator")))((("%", see="modulus operator)))
+Una alternativa es usar el _operador módulo_, +%+, que divide dos números y devuelve el resto.
+(((operador módulo)))((("operator", "Base", "%", see="operador módulo")))((("%", see="operador módulo")))
 
 [source,@julia-repl-test chap05]
 ----
