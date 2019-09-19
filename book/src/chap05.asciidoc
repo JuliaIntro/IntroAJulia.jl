@@ -1,7 +1,7 @@
 [[chap05]]
 == Condicionales y recursividad
 
-El tema principal de este capítulo es la sentencia +if+, que ejecuta diferentes códigos dependiendo del estado del programa. Primero se presentarán dos nuevos operadores: división de piso y módulo.
+El tema principal de este capítulo es la sentencia +if+, que ejecuta diferentes acciones dependiendo del estado del programa. Primero se presentarán dos nuevos operadores: división de piso y módulo.
 
 
 === Floor Division and Modulus
@@ -25,7 +25,7 @@ julia> horas = minutos ÷ 60
 1
 ----
 
-Para obtener el resto de la operación, se puede restar una hora (en minutos) a la duración total de la película:
+Para obtener el resto de la división, se puede restar una hora (en minutos) a la duración total de la película:
 
 [source,@julia-repl-test chap05]
 ----
