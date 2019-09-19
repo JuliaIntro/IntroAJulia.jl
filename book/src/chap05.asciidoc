@@ -17,7 +17,7 @@ julia> minutos / 60
 1.75
 ----
 
-Pero normalmente no escribimos horas con decimales. La división entera de tipo piso devuelve el número entero de horas, redondeando hacia abajo:
+Pero normalmente las horas no se escriben con decimales. La división entera de tipo piso devuelve el número entero de horas, redondeando hacia abajo:
 
 [source,@julia-repl-test chap05]
 ----
