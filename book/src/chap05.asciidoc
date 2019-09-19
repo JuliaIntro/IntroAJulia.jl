@@ -33,7 +33,7 @@ julia> resto = minutos - horas * 60
 45
 ----
 
-Una alternativa es usar el _operador módulo_, +%+, que divide dos números y devuelve el resto.
+Otra alternativa es usar el _operador módulo_, +%+, que divide dos números y devuelve el resto.
 (((operador módulo)))((("operator", "Base", "%", see="operador módulo")))((("%", see="operador módulo")))
 
 [source,@julia-repl-test chap05]
