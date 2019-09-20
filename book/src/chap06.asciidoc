@@ -89,7 +89,7 @@ Julia provides a built-in function called +abs+ that computes absolute values.
 (((abs)))((("function", "Base", "abs", see="abs")))
 ====
 
-===== Exercise 6-1
+==== Exercise 6-1
 
 Write a +compare+ function takes two values, +x+ and +y+, and returns +1+ if +x > y+, +0+ if +x == y+, and +-1+ if +x < y+.
 
@@ -195,7 +195,7 @@ The key aspects of the process are:
 
 . Once the program is working, you might want to remove some of the scaffolding or consolidate multiple statements into compound expressions, but only if it does not make the program difficult to read.
 
-===== Exercise 6-2
+==== Exercise 6-2
 
 Use incremental development to write a function called +hypotenuse+ that returns the length of the hypotenuse of a right triangle given the lengths of the other two legs as arguments. Record each stage of the development process as you go.
 
@@ -302,7 +302,7 @@ end
 
 But the extra comparison with +true+ is unnecessary.
 
-===== Exercise 6-3
+==== Exercise 6-3
 
 Write a function +isbetween(x, y, z)+ that returns +true+ if +x ≤ y ≤ z+ or +false+ otherwise.
 
@@ -593,7 +593,7 @@ A programming pattern that uses a conditional statement to check for and handle 
 === Exercises
 
 [[ex06-1]]
-===== Exercise 6-4
+==== Exercise 6-4
 
 Draw a stack diagram for the following program. What does the program print?
 
@@ -622,7 +622,7 @@ println(c(x, y+3, x+y))
 ----
 
 [[ex06-2]]
-===== Exercise 6-5
+==== Exercise 6-5
 
 The Ackermann function, latexmath:[\(A(m, n)\)], is defined:
 (((Ackermann function)))
@@ -642,7 +642,7 @@ See https://en.wikipedia.org/wiki/Ackermann_function. Write a function named +ac
 (((ack)))((("function", "programmer-defined", "ack", see="ack")))
 
 [[ex06-3]]
-===== Exercise 6-6
+==== Exercise 6-6
 
 A palindrome is a word that is spelled the same backward and forward, like “noon” and “redivider”. Recursively, a word is a palindrome if the first and last letters are the same and the middle is a palindrome.
 (((palindrome)))
@@ -677,7 +677,7 @@ We’ll see how they work in <<chap08>>
 (((ispalindrome)))((("function", "programmer-defined", "ispalindrome", see="ispalindrome")))(((length)))
 
 [[ex06-4]]
-===== Exercise 6-7
+==== Exercise 6-7
 
 A number, latexmath:[\(a\)], is a power of latexmath:[\(b\)] if it is divisible by latexmath:[\(b\)] and latexmath:[\(\frac{a}{b}\)] is a power of latexmath:[\(b\)]. Write a function called +ispower+ that takes parameters +a+ and +b+ and returns +true+ if +a+ is a power of +b+.
 (((ispower)))((("function", "programmer-defined", "ispower", see="ispower")))
@@ -688,7 +688,7 @@ You will have to think about the base case.
 ====
 
 [[ex06-5]]
-===== Exercise 6-8
+==== Exercise 6-8
 
 The greatest common divisor (GCD) of latexmath:[\(a\)] and latexmath:[\(b\)] is the largest number that divides both of them with no remainder.
 

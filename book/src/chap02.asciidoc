@@ -128,9 +128,9 @@ Por ejemplo, si está utilizando Julia como una calculadora, puede escribir
 [source,@julia-repl-test]
 ----
 julia> millas = 26.2
-26,2
+26.2
 julia> millas * 1.61
-42,182
+42.182
 ----
 
 La primera línea asigna un valor a +millas+ y muestra el valor. La segunda línea es una expresión, por lo que REPL la evalúa y muestra el resultado. Gracias al código anterior sabemos que una maratón tiene unos 42 kilómetros.
@@ -166,7 +166,7 @@ produce la salida
 
 Notar que la sentencia de asignación +x = 2+ no tiene salida.
 
-===== Ejercicio 2-1
+==== Ejercicio 2-1
 
 Para comprobar si ha comprendido, escriba las siguientes sentencias en Julia REPL y vea lo que hace cada una:
 
@@ -383,7 +383,7 @@ Un error en un programa que hace que haga algo diferente a lo que pretendía el 
 === Ejercicios
 
 [[ex02-1]]
-===== Ejercicio 2-2
+==== Ejercicio 2-2
 
 Repitiendo el consejo del capítulo anterior, cada vez que aprenda algo nuevo, debe probarlo en el modo interactivo y cometer errores a propósito para ver el resultado.
 
@@ -399,7 +399,7 @@ Repitiendo el consejo del capítulo anterior, cada vez que aprenda algo nuevo, d
 . En notación matemática puedes multiplicar +x+ e +y+ de esta manera: +x y+. ¿Qué pasa si intentas eso en Julia? ¿Y qué sucede con 5x?
 
 [[ex02-2]]
-===== Ejercicio 2-3
+==== Ejercicio 2-3
 
 Practique usando Julia REPL como una calculadora:
 (((calculadora)))
