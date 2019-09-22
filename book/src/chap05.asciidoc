@@ -98,14 +98,14 @@ Aunque estas operaciones probablemente le sean familiares, los símbolos de Juli
 
 === Operadores Lógicos
 
-Hay tres operadores lógicos: +&&+ (y), +||+ (o) y +!+ (No). La semántica (significado) de estos operadores es similar a su significado en español. Por ejemplo, +x>0 && x<10+ es verdadero solo si +x+ es mayor que +0+ _y_ menor que +10+.
+Hay tres operadores lógicos: +&&+ (y), +||+ (o) y +!+ (no). La semántica (significado) de estos operadores es similar a su significado en español. Por ejemplo, +x>0 && x<10+ es verdadero solo si +x+ es mayor que +0+ _y_ menor que +10+.
 (((operador lógico)))(((&&)))(((||)))(((!)))
 
 +n%2==0 || n%3 == 0+ es verdadero si _una o ambas_ condiciones son verdaderas, es decir, si el número es divisible por 2 _o_ por 3.
 
 Tanto +&&+ como +||+ se asocian en primer lugar con el objeto a su derecha, pero +&&+ tiene preferencia por sobre +||+.
 
-Finalmente, el operador +!+ niega una expresión booleana, entonces +!(X>y)+ es verdadero si + x>y+ es falso, es decir, si +x+ es menor o igual que +y+.
+Finalmente, el operador +!+ niega una expresión booleana, entonces +!(x>y)+ es verdadero si +x>y+ es falso, es decir, si +x+ es menor o igual que +y+.
 
 === Ejecución Condicional
 
