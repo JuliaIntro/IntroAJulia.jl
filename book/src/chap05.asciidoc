@@ -74,7 +74,7 @@ julia> typeof(false)
 Bool
 ----
 
-El operador +==+ es uno de los operadores relacionales; los otros son:
+El operador +==+ es un operador relacional. El resto de operadores relacionales son:
 (((operador relacional)))(((==)))((("operador", "Base", "==", see="==")))
 
 [source,julia]
