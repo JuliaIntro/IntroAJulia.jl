@@ -46,7 +46,7 @@ julia> resto = minutos % 60
 ====
 El operador módulo es más útil de lo que parece. Por ejemplo, permite verificar si un número es divisible por otro: si +x%y+ es cero, entonces +x+ es divisible por +y+.
 
-Además, puede extraer el dígito más a la derecha de un número. Por ejemplo, +x%10+ devuelve el dígito más a la derecha de un entero +x+ (en base 10). Del mismo modo, +x%100+ devuelve los dos últimos dígitos.
+Además, puede extraer el (o los) dígito(s) más a la derecha de un número. Por ejemplo, +x%10+ devuelve el dígito más a la derecha de un entero +x+ (en base 10). Del mismo modo, +x%100+ devuelve los dos últimos dígitos.
 
 ====
 
