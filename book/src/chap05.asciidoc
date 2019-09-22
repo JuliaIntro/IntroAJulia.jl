@@ -83,9 +83,9 @@ El operador +==+ es un operador relacional. El resto de operadores relacionales 
       x ≠ y                # (\ne TAB)
       x > y                # x es mayor que y
       x < y                # x es menor que y
-      x >= y               # x es mayor o igual a y
+      x >= y               # x es mayor o igual que y
       x ≥ y                # (\ge TAB)
-      x <= y               # x es menor o igual a y
+      x <= y               # x es menor o igual que y
       x ≤ y                # (\le TAB)
 ----
 
