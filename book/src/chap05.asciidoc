@@ -179,7 +179,7 @@ elseif choice == "c"
     draw_c()
 end
 ----
-
+Cada 
 Each condition is checked in order. If the first is false, the next is checked, and so on. If one of them is true, the corresponding branch runs and the statement ends. Even if more than one condition is true, only the first true branch runs.
 
 
