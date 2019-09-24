@@ -135,23 +135,21 @@ end
 ----
 
 
-=== Alternative Execution
+=== Ejecución alternativa
 
-A second form of the +if+ statement is “alternative execution”, in which there are two possibilities and the condition determines which one runs. The syntax looks like this:
-(((alternative execution)))(((else)))((("keyword", "else", see="else")))
+Una segunda forma de la sentencia +if+ es la "ejecución alternativa", en la que hay dos posibilidades y la condición determina cuál se ejecuta. La sintaxis se ve así:
+(((ejecución alternativa))(((else)))((("keyword", "else", see="else")))
 
 [source,julia]
 ----
 if x % 2 == 0
-    println("x is even")
+    println("x es par")
 else
-    println("x is odd")
+    println("x es impar")
 end
 ----
-
-If the remainder when +x+ is divided by 2 is 0, then we know that +x+ is even, and the program displays an appropriate message. If the condition is false, the second set of statements runs. Since the condition must be true or false, exactly one of the alternatives will run. The alternatives are called _branches_, because they are branches in the flow of execution.
+Si el resto de +x+ dividido por 2 es 0, entonces +x+ es par, y el programa muestra un mensaje acorde. Si la condición es falsa, se ejecuta el segundo conjunto de sentencias. Como la condición debe ser verdadera o falsa, se ejecutará exactamente una de las alternativas. Las alternativas se llaman _ramas_, porque son ramas en el flujo de ejecución.
 (((branch)))
-
 
 === Chained Conditionals
 
