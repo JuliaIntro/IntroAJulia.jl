@@ -475,7 +475,7 @@ The previous chapters demonstrate a development plan we might call “type-orien
 But sometimes it is less obvious what objects you need and how they should interact. In that case you need a different development plan. In the same way that we discovered function interfaces by encapsulation and generalization, we can discover type interfaces by _data encapsulation_.
 (((data encapsulation)))
 
-Markov analysis, from <<markov_analysis>>, provides a good example. If you download my code from https://github.com/BenLauwens/ThinkJulia.jl/blob/master/src/solutions/chap13.jl, you’ll see that it uses two global variables—+suffixes+ and +prefix+—that are read and written from several functions.
+Markov analysis, from <<markov_analysis>>, provides a good example. If you download code from https://github.com/PiensaEnJulia/PiensaEnJulia.jl/blob/master/src/solutions/chap13.jl, you’ll see that it uses two global variables—+suffixes+ and +prefix+—that are read and written from several functions.
 
 [source,@julia-setup]
 ----
@@ -533,7 +533,7 @@ This example suggests a development plan for designing types:
 
 ==== Exercise 18-3
 
-Download my Markov code from https://github.com/BenLauwens/ThinkJulia.jl/blob/master/src/solutions/chap13.jl, and follow the steps described above to encapsulate the global variables as attributes of a new struct called +Markov+.
+Download Markov code from https://github.com/PiensaEnJulia/PiensaEnJulia.jl/blob/master/src/solutions/chap13.jl, and follow the steps described above to encapsulate the global variables as attributes of a new struct called +Markov+.
 
 
 === Glossary

@@ -66,9 +66,9 @@ This element indicates a warning or caution.
 
 === Using Code Examples
 
-All code used in this book is available from a Git repository on GitHub: https://github.com/BenLauwens/ThinkJulia.jl. If you are not familiar with Git, it is a version control system that allows you to keep track of the files that make up a project. A collection of files under Git's control is called a “repository”. GitHub is a hosting service that provides storage for Git repositories and a convenient web interface.
+All code used in this book is available from a Git repository on GitHub: https://github.com/PiensaEnJulia/PiensaEnJulia.jl. If you are not familiar with Git, it is a version control system that allows you to keep track of the files that make up a project. A collection of files under Git's control is called a “repository”. GitHub is a hosting service that provides storage for Git repositories and a convenient web interface.
 
-A convenience package is provided that can be directly added to Julia. Just type *+pass:[add https://github.com/BenLauwens/ThinkJulia.jl]+* in the REPL in Pkg mode.
+A convenience package is provided that can be directly added to Julia. Just type *+pass:[add https://github.com/PiensaEnJulia/PiensaEnJulia.jl]+* in the REPL in Pkg mode.
 
 The easiest way to run Julia code is going to https://juliabox.com and start a free session. Both the REPL and a notebook interface are available. If you want to have Julia locally installed on you computer, JuliaPro from Julia Computing can be downloaded freely from https://juliacomputing.com/products/juliapro.html. It consists of a recent Julia version, the Juno IDE based on Atom and a number of preinstalled Julia packages. If you are more adventurous, you can download Julia from https://julialang.org, install the editor you like, e.g. Atom or Visual Studio Code, and activate the plugins for Julia integration. To a local install, you can also add the +IJulia+ package and run a Jupyter notebook on your computer.
 
@@ -145,7 +145,7 @@ Let me know what version of the book you are working with, and what format. If y
 - Robin Deits found some typos in Chapter 2.
 - Mark Schmitz suggested to turn on the syntax highlighting.
 - Zigu Zhao caught some bugs in Chapter 8.
-- Oleg Soloviev caught an error in the url to add the +ThinkJulia+ package.
+- Oleg Soloviev caught an error in the url to add the +PiensaEnJulia+ package.
 - Aaron Ang found some rendering and naming issues.
 - Sergey Volkov caught a broken link in Chapter 7.
 - Sean McAllister suggested to mention the excellent package +BenchmarkTools+.

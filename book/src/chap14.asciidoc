@@ -245,15 +245,15 @@ The function +close+ will always be executed.
 A _database_ is a file that is organized for storing data. Many databases are organized like a dictionary in the sense that they map from keys to values. The biggest difference between a database and a dictionary is that the database is on disk (or other permanent storage), so it persists after the program ends.
 (((database)))
 
-ThinkJulia provides an interface to +GDBM+ (GNU dbm) for creating and updating database files. As an example, I’ll create a database that contains captions for image files.
+PiensaEnJulia provides an interface to +GDBM+ (GNU dbm) for creating and updating database files. As an example, I’ll create a database that contains captions for image files.
 (((GDBM)))
 
 Opening a database is similar to opening other files:
-(((DBM)))((("type", "ThinkJulia", "DBM", see="DBM")))
+(((DBM)))((("type", "PiensaEnJulia", "DBM", see="DBM")))
 
 [source,@julia-repl-test chap14]
 ----
-julia> using ThinkJulia
+julia> using PiensaEnJulia
 
 julia> db = DBM("captions", "c")
 DBM(<captions>)

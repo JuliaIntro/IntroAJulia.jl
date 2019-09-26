@@ -600,7 +600,7 @@ recurse(3, 0)
 
 . Write a docstring that explains everything someone would need to know in order to use this function (and nothing else).
 
-The following exercises use the +ThinkJulia+ module, described in <<chap04>>:
+The following exercises use the +PiensaEnJulia+ module, described in <<chap04>>:
 
 [[ex05-5]]
 ==== Exercise 5-6

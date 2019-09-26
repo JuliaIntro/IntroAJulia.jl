@@ -3,7 +3,7 @@
 
 This chapter presents a case study that demonstrates a process for designing functions that work together.
 
-It introduces turtle graphics, a way to create programmatic drawings. Turtle graphics are not included in the Standard Library, so the ThinkJulia module has to be added to your Julia setup.
+It introduces turtle graphics, a way to create programmatic drawings. Turtle graphics are not included in the Standard Library, so the PiensaEnJulia module has to be added to your Julia setup.
 
 The examples in this chapter can be executed in a graphical notebook on JuliaBox, which combines code, formatted text, math, and multimedia in a single document (see <<juliabox>>).
 (((JuliaBox, graphical notebook)))
@@ -15,11 +15,11 @@ A _module_ is a file that contains a collection of related functions. Julia prov
 (((module)))(((package)))
 
 Packages can be installed in the REPL by entering the Pkg REPL-mode using the key +]+.
-(((pass:[&#93;])))(((ThinkJulia)))((("module", "ThinkJulia", see="ThinkJulia")))
+(((pass:[&#93;])))(((PiensaEnJulia)))((("module", "PiensaEnJulia", see="PiensaEnJulia")))
 
 [source,jlcon]
 ----
-(v1.0) pkg> add https://github.com/BenLauwens/ThinkJulia.jl
+(v1.2) pkg> add https://github.com/PiensaEnJulia/PiensaEnJulia.jl
 ----
 
 This can take some time.
@@ -35,11 +35,11 @@ julia> 🐢 = Turtle()
 Luxor.Turtle(0.0, 0.0, true, 0.0, (0.0, 0.0, 0.0))
 ----
 
-The +ThinkJulia+ module provides a function called +Turtle+ that creates a +Luxor.Turtle+ object, which we assign to a variable named +🐢+ (*+\:turtle: TAB+*).
+The +PiensaEnJulia+ module provides a function called +Turtle+ that creates a +Luxor.Turtle+ object, which we assign to a variable named +🐢+ (*+\:turtle: TAB+*).
 (((Turtle)))((("type", "Luxor", "Turtle", see="Turtle")))
 
 Once you create a turtle, you can call a function to move it around a drawing. For example, to move the turtle forward:
-(((forward)))((("function", "ThinkJulia", "forward", see="forward")))
+(((forward)))((("function", "PiensaEnJulia", "forward", see="forward")))
 
 [source,julia]
 ----
@@ -59,10 +59,10 @@ The +@svg+ keyword runs a macro that draws a SVG picture. Macros are an importan
 The arguments of +forward+ are the turtle and a distance in pixels, so the actual size depends on your display.
 
 Another function you can call with a turtle as argument is +turn+ for turning. The second argument for +turn+ is an angle in degrees.
-(((turn)))((("function", "ThinkJulia", "turn", see="turn")))
+(((turn)))((("function", "PiensaEnJulia", "turn", see="turn")))
 
 Also, each turtle is holding a pen, which is either down or up; if the pen is down, the turtle leaves a trail when it moves. <<fig04-1>> shows the trail left behind by the turtle. The functions +penup+ and +pendown+ stand for “pen up” and “pen down”.
-(((penup)))((("function", "ThinkJulia", "penup", see="penup")))(((pendown)))((("function", "ThinkJulia", "pendown", see="pendown")))
+(((penup)))((("function", "PiensaEnJulia", "penup", see="penup")))(((pendown)))((("function", "PiensaEnJulia", "pendown", see="pendown")))
 
 To draw a right angle, modify the macro call:
 
