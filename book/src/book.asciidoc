@@ -22,8 +22,12 @@ ifdef::preface-title[:preface-title: Prefacio]
 :version-label: Versión
 :warning-caption: Aviso
 
-= Think Julia: How to Think Like a Computer Scientist
-Ben Lauwens and Allen Downey; Traducido por Pamela Alejandra Bustamante Faúndez
+= Piensa en Julia: Cómo Pensar como un Informático
+Ben Lauwens y Allen Downey; Traducido por Pamela Alejandra Bustamante Faúndez
+
+Este libro no está completo. Algunos de los primeros capítulos están traducidos al español, pero la mayor parte del libro permanece en inglés.
+
+This book is not complete. A few of the early chapters are translated into Spanish, yet most of the book remains in English.
 
 include::colophon.asciidoc[]
 

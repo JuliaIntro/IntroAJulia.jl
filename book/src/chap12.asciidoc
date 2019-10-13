@@ -603,10 +603,8 @@ This exercise is a little more challenging than most, so here are some suggestio
 
 . You might want to write a function that takes a word and computes an array of all the words that can be formed by removing one letter. These are the “children” of the word.
 
-. Recursively, a word is reducible if any of its children are reducible. As a base case, you can consider the empty string reducible.
+. Recursively, a word is reducible if any of its children are reducible. As a base case, you can consider the empty string reducible. The word list provided, _palabras.txt_, doesn’t the empty string. So you might want to add the empty string.
 (((reducible)))
-
-. The word list I provided, _words.txt_, doesn’t contain single letter words. So you might want to add “I”, “a”, and the empty string.
 
 . To improve the performance of your program, you might want to memoize the words that are known to be reducible.
 (((memo)))

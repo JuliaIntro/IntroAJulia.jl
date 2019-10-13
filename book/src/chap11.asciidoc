@@ -646,7 +646,7 @@ A global variable that can not be reassigned.
 [[ex11-1]]
 ==== Exercise 11-2
 
-Write a function that reads the words in _words.txt_ and stores them as keys in a dictionary. It doesn’t matter what the values are. Then you can use the +∈+ operator as a fast way to check whether a string is in the dictionary.
+Write a function that reads the words in _palabras.txt_ and stores them as keys in a dictionary. It doesn’t matter what the values are. Then you can use the +∈+ operator as a fast way to check whether a string is in the dictionary.
 (((in)))
 
 If you did <<ex10-10>>, you can compare the speed of this implementation with the array +∈+ operator and the bisection search.
