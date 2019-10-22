@@ -269,15 +269,13 @@ pass:[&#8193;]La ejecución de +cuentaregresiva+ empieza con +n = 2+, y como +n+
 
 pass:[&#8193;&#8193;]La ejecución de +cuentaregresiva+ empieza con +n = 1+, y como +n+ es mayor que 0, pass:[<br/>&#8193;&#8193;&#8193;]muestra el valor 1, y luego se llama a si misma...
 
-pass:[&#8193;&#8193;&#8193;]La ejecución de +cuentaregresiva+ empieza con +n = 1+, y como +n+ es mayor que 0, pass:[<br/>&#8193;&#8193;&#8193;&#8193;]muestra la palabra +"Despegue!"+, y luego devuelve.
+pass:[&#8193;&#8193;&#8193;]La ejecución de +cuentaregresiva+ empieza con +n = 0+, y como +n+ no es mayor que 0, pass:[<br/>&#8193;&#8193;&#8193;&#8193;]muestra la palabra +"Despegue!"+, y luego termina.
 
-pass:[&#8193;&#8193;&#8193;]The execution of +countdown+ begins with +n = 0+, and since +n+ is not greater than pass:[<br/>&#8193;&#8193;&#8193;&#8193;]0, it outputs the word, +"Blastoff!"+ and then returns.
+pass:[&#8193;&#8193;]La +cuentaregresiva+ cuyo argumento es +n = 1+ termina.
 
-pass:[&#8193;&#8193;]The countdown that got +n = 1+ returns.
+pass:[&#8193;]La +cuentaregresiva+ cuyo argumento es +n = 2+ termina.
 
-pass:[&#8193;]The countdown that got +n = 2+ returns.
-
-The countdown that got +n = 3+ returns.
+La +cuentaregresiva+ cuyo argumento es +n = 3+ termina.
 
 And then you’re back in +Main+.
 
