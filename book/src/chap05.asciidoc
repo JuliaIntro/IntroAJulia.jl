@@ -255,19 +255,19 @@ end
 
 Si +n+ es 0 o negativo, muestra la palabra +"Despegue!"+. En otro caso, muestra el valor +n+ y luego llama a la función +cuentaregresiva+, pasándole +n-1+ como argumento.
 
-What happens if we call this function like this?
+Qué sucede si llamamos a una función como esta?
 
 [source,@julia-repl-test chap05]
 ----
-julia> countdown(3)
-3 2 1 Blastoff!
+julia> cuentaregresiva(3)
+3 2 1 Despegue!
 ----
 
-The execution of +countdown+ begins with +n = 3+, and since +n+ is greater than 0, it outputs the value 3, and then calls itself ...
+La ejecución de +cuentaregresiva+ comienza con +n = 3+, y como +n+ es mayor que 0, muestra el valor 3, y luego se llama a si misma...
 
 pass:[&#8193;]The execution of +countdown+ begins with +n = 2+, and since +n+ is greater than 0, pass:[<br/>&#8193;&#8193;]it outputs the value 2, and then calls itself ...
 
-pass:[&#8193;]La ejecución de +cuentaregresiva+ empieza con +n = 2+, y como +n+ es mayor que 0, pass:[<br/>&#8193;&#8193;] muestra el valor 2, y luego 
+pass:[&#8193;]La ejecución de +cuentaregresiva+ empieza con +n = 2+, y como +n+ es mayor que 0, pass:[<br/>&#8193;&#8193;]muestra el valor 2, y luego se llama a si misma...
 
 pass:[&#8193;&#8193;]The execution of +countdown+ begins with +n = 1+, and since +n+ is greater than 0, pass:[<br/>&#8193;&#8193;&#8193;]it outputs the value 1, and then calls itself ...
 
