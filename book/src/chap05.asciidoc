@@ -138,7 +138,7 @@ end
 === Ejecución alternativa
 
 Una segunda forma de la sentencia +if+ es la "ejecución alternativa", en la que hay dos posibilidades y la condición determina cuál se ejecuta. La sintaxis se ve así:
-(((ejecución alternativa))(((else)))((("keyword", "else", see="else")))
+(((ejecución alternativa)))(((else)))((("keyword", "else", see="else")))
 
 [source,julia]
 ----
