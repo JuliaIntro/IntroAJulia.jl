@@ -151,7 +151,9 @@ end
 Si el resto de +x+ dividido por 2 es 0, entonces +x+ es par, y el programa muestra un mensaje acorde. Si la condición es falsa, se ejecuta el segundo conjunto de sentencias. Como la condición debe ser verdadera o falsa, se ejecutará exactamente una de las alternativas. Las alternativas se llaman _ramas_, porque son ramas en el flujo de ejecución.
 (((branch)))
 
-=== Chained Conditionals
+=== Condicionales encadenadas
+
+A veces hay más de dos 
 
 Sometimes there are more than two possibilities and we need more than two branches. One way to express a computation like that is a _chained conditional_:
 (((chained conditional)))(((elseif)))((("keyword", "elseif", see="elseif")))
