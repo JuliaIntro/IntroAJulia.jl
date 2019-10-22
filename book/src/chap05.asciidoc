@@ -109,7 +109,7 @@ Finalmente, el operador +!+ niega una expresión booleana, entonces +!(x>y)+ es 
 
 === Ejecución Condicional
 
-Para escribir programas útiles, generalmente necesitamos poder verificar condiciones y cambiar el comportamiento del programa acorde a ellas. Las sentencias condicionales nos permiten hacer esto. La forma más simple es la sentencia +if+ (si en inglés):
+Para escribir programas útiles, generalmente necesitamos poder verificar condiciones y cambiar el comportamiento del programa acorde a ellas. Las sentencias condicionales nos permiten hacer esto. La forma más simple es la sentencia +if+ ("si" en inglés):
 (((sentencia condicional)))(((if)))((("keyword", "if", see="if")))(((sentencia if)))((("sentencia", "if", see="sentencia if")))
 
 [source,julia]
@@ -119,10 +119,10 @@ if x > 0
 end
 ----
 
-La expresión booleana después de +if+ se llama _condición_. Si es verdadera, se ejecuta la instrucción con sangría. Si no, no pasa nada.
+La expresión booleana después de +if+ se llama _condición_. Si es verdadera, se ejecuta la instrucción con sangría. Si no, nada ocurre.
 (((condition)))
 
-Las sentencias +if+ tienen la misma estructura que las definiciones de función: un encabezado seguido del cuerpo, terminado con la palabra reservada +end+ (en español fin). Los enunciados como este se denominan _enunciados compuestos_.
+Las sentencias +if+ tienen la misma estructura que las definiciones de función: un encabezado seguido del cuerpo, terminado con la palabra reservada +end+ (en español "fin"). Las sentencias como este se denominan _sentencias compuestas_.
 (((sentencia compuesta)))(((end)))
 
 No hay límite en el número de sentencias que pueden aparecer en el cuerpo. A veces es útil tener un cuerpo sin sentencias (por lo general, como un marcador de posición para el código que aún no se ha escrito).
