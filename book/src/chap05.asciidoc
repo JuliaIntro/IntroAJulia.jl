@@ -235,25 +235,25 @@ end
 ----
 
 
-[[recursion]]
-=== Recursion
+[[recursividad]]
+=== Recursividad
 
-It is legal for one function to call another; it is also legal for a function to call itself. It may not be obvious why that is a good thing, but it turns out to be one of the most magical things a program can do. For example, look at the following function:
-(((countdown)))((("function", "programmer-defined", "countdown", see="countdown")))
+Es posible que una función llame a otra; también es posible que una función se llame a si misma. Puede no parecer útil, pero resulta que sí lo es. Por ejemplo, mira la siguiente función:
+(((cuenta regresiva)))((("función", "definida por el programador", "cuenta regresiva", see="cuenta regresiva")))
 
 [source,@julia-setup chap05]
 ----
-function countdown(n)
+function cuentaregresiva(n)
     if n ≤ 0
-        println("Blastoff!")
+        println("Despegue!")
     else
         print(n, " ")
-        countdown(n-1)
+        cuentaregresiva(n-1)
     end
 end
 ----
 
-If +n+ is 0 or negative, it outputs the word, +"Blastoff!"+ Otherwise, it outputs +n+ and then calls a function named +countdown+—itself—passing +n-1+ as an argument.
+Si +n+ es 0 o negativo, muestra la palabra +"Despegue!"+. En otro caso, muestra el valor +n+ y luego llama a la función +cuentaregresiva+, pasándole +n-1+ como argumento.
 
 What happens if we call this function like this?
 
@@ -266,6 +266,8 @@ julia> countdown(3)
 The execution of +countdown+ begins with +n = 3+, and since +n+ is greater than 0, it outputs the value 3, and then calls itself ...
 
 pass:[&#8193;]The execution of +countdown+ begins with +n = 2+, and since +n+ is greater than 0, pass:[<br/>&#8193;&#8193;]it outputs the value 2, and then calls itself ...
+
+pass:[&#8193;]La ejecución de +cuentaregresiva+ empieza con +n = 2+, y como +n+ es mayor que 0, pass:[<br/>&#8193;&#8193;] muestra el valor 2, y luego 
 
 pass:[&#8193;&#8193;]The execution of +countdown+ begins with +n = 1+, and since +n+ is greater than 0, pass:[<br/>&#8193;&#8193;&#8193;]it outputs the value 1, and then calls itself ...
 
