@@ -238,7 +238,7 @@ end
 [[recursividad]]
 === Recursividad
 
-Es posible que una función llame a otra; también es posible que una función se llame a si misma. Puede no parecer útil, pero resulta que sí lo es. Por ejemplo, mira la siguiente función:
+Está permitido que una función llame a otra; también está permitido que una función se llame a si misma. Puede no parecer útil, pero resulta que sí lo es. Por ejemplo, mira la siguiente función:
 (((cuenta regresiva)))((("función", "definida por el programador", "cuenta regresiva", see="cuenta regresiva")))
 
 [source,@julia-setup chap05]
