@@ -153,87 +153,84 @@ Si el resto de +x+ dividido por 2 es 0, entonces +x+ es par, y el programa muest
 
 === Condicionales encadenadas
 
-A veces hay más de dos 
-
-Sometimes there are more than two possibilities and we need more than two branches. One way to express a computation like that is a _chained conditional_:
-(((chained conditional)))(((elseif)))((("keyword", "elseif", see="elseif")))
+A veces hay más de dos posibilidades y necesitamos más de dos ramas. Una manera de expresar este cómputo es a través de una _condicional encadenada_:
+(((condicional encadenada)))(((elseif)))((("palabra reservada", "elseif", see="elseif")))
 
 [source,julia]
 ----
 if x < y
-    println("x is less than y")
+    println("x es menor que y")
 elseif x > y
-    println("x is greater than y")
+    println("x es mayor que y")
 else
-    println("x and y are equal")
+    println("x e y son iguales")
 end
 ----
 
-Again, exactly one branch will run. There is no limit on the number of +elseif+ statements. If there is an +else+ clause, it has to be at the end, but there doesn’t have to be one.
+De nuevo, sólo se ejecutará una rama. No hay límite al número de sentencias +elseif+. Si hay una sentencia +else+, debe estar al final (aunque no es necesario que esté).
 
 [source,julia]
 ----
-if choice == "a"
-    draw_a()
-elseif choice == "b"
-    draw_b()
-elseif choice == "c"
-    draw_c()
+if alternativa == "a"
+    dibujar_a()
+elseif alternativa == "b"
+    dibujar_b()
+elseif alternativa == "c"
+    dibujar_c()
 end
 ----
-Cada 
-Each condition is checked in order. If the first is false, the next is checked, and so on. If one of them is true, the corresponding branch runs and the statement ends. Even if more than one condition is true, only the first true branch runs.
 
+Cada condición se comprueba en orden. Si la primera es falsa, se comprueba la siguiente, y así se sigue con las demás. Si una de ellas es verdadera, se ejecuta la rama correspondiente y la sentencia se termina. Si es verdadera más de una condición, sólo se ejecuta la primera rama verdadera.
 
-=== Nested Conditionals
+=== Condicionales anidadas
 
-One conditional can also be nested within another. We could have written the example in the previous section like this:
-(((nested conditional)))
+Una condicional puede estar anidada dentro de otra. Podríamos haber escrito el ejemplo de la sección anterior de la siguiente manera: 
+(((condicional anidada)))
 
 [source,julia]
 ----
 if x == y
-    println("x and y are equal")
+    println("x e y son iguales")
 else
     if x < y
-        println("x is less than y")
+        println("x es menor a y")
     else
-        println("x is greater than y")
+        println("x es mayor a y")
     end
 end
 ----
 
-The outer conditional contains two branches. The first branch contains a simple statement. The second branch contains another +if+ statement, which has two branches of its own. Those two branches are both simple statements, although they could have been conditional statements as well.
+La condicional externa contiene dos ramas. La primera rama contiene una sentencia simple. La segunda rama contiene otra sentencia if, que tiene dos ramas propias. Estas dos ramas son ambas sentencias simples, aunque podrían ser sentencias condicionales.
 
-Although the non-compulsory indentation of the statements makes the structure apparent, _nested conditionals_ become difficult to read very quickly. It is a good idea to avoid them when you can.
-(((indentation)))
+Aunque la sangría no obligatoria de las sentencias hace evidente su estructura, las condicionales anidadas muy pronto se vuelven difíciles de leer. Se recomienda evitarlas cuando pueda.
+(((sangría)))
 
-Logical operators often provide a way to simplify nested conditional statements. For example, we can rewrite the following code using a single conditional:
+Los operadores lógicos a menudo proporcionan una forma de simplificar las sentencias condicionales anidadas. Por ejemplo, podemos reescribir el siguiente código usando un solo condicional:
 
 [source,julia]
 ----
 if 0 < x
     if x < 10
-        println("x is a positive single-digit number.")
+        println("x es un número positivo de un solo dígito.")
     end
 end
 ----
 
-The +print+ statement runs only if we make it past both conditionals, so we can get the same effect with the +&&+ operator:
+La sentencia +print+ sólo se ejecuta si conseguimos superar ambas condicionales, de modo que podemos obtener el mismo efecto con el operador +&&+:
 
 [source,julia]
 ----
 if 0 < x && x < 10
-    println("x is a positive single-digit number.")
+    println("x es un número positivo de un solo dígito.")
 end
 ----
 
-For this kind of condition, Julia provides a more concise syntax:
+Para este tipo de condición, Julia proporciona una sintaxis más concisa:
 
 [source,julia]
 ----
 if 0 < x < 10
-    println("x is a positive single-digit number.")
+    println("x es un número positivo de un solo dígito.")
 end
 ----
 
