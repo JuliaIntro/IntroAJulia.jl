@@ -456,43 +456,44 @@ Debes tomarte el tiempo de leer los mensajes de error cuidadosamente, pero no as
 
 === Glosario
 
-floor division::
-An operator, denoted +÷+, that divides two numbers and rounds down (toward negative infinity) to an integer.
+División de tipo piso::
+Un operador, denotado por +÷+, que divide dos números y redondea hacia abajo (hacia el infinito negativo) a un entero.
 (((floor division)))
 
-modulus operator::
-An operator, denoted with a percent sign (%), that works on integers and returns the remainder when one number is divided by another.
+operador módulo::
+Un operador, denotado con el signo de porcentaje (%), que se utiliza con enteros y devuelve el resto cuando un número se divide por otro.
 (((modulus operator)))
 
-boolean expression::
-An expression whose value is either +true+ or +false+.
+expresión booleana::
+Una expresión cuyo valor es +verdadero+ o +falso+.
 (((boolean expression)))
 
-relational operator::
-One of the operators that compares its operands: +==+, +≠+ (+!=+), +>+, +<+, +≥+ (+>=+), and +≤+ (+pass:[&lt;=]+).
+operador relacional::
+Uno de los operadores que compara sus operandos: +==+, +≠+ (+!=+), +>+, +<+, +≥+ (+>=+), and +≤+ (+pass:[&lt;=]+).
 (((relational operator)))
 
-logical operator::
-One of the operators that combines boolean expressions: +&&+ (and), +||+ (or), and +!+ (not).
+operador lógico::
+Uno de los operadores que combina expresiones booleanas: +&&+ (and), +||+ (or), and +!+ (not).
 (((logical operator)))
 
-conditional statement::
-A statement that controls the flow of execution depending on some condition.
+sentencia condicional::
+Una sentencia que controla el flujo de ejecución dependiendo de alguna condición.
 (((conditional statement)))
 
-condition::
-The boolean expression in a conditional statement that determines which branch runs.
+condición::
+La expresión booleana en una sentencia condicional que determina qué rama se ejecuta.
 (((condition)))
 
-compound statement::
-A statement that consists of a header and a body. The body is terminated with the keyword +end+.
+sentencia compuesta::
+Una sentencia que consta de un encabezado y un cuerpo. El cuerpo termina con la palabra reservada +end+.
 (((compound statement)))
 
-branch::
-One of the alternative sequences of statements in a conditional statement.
+rama::
+Una de las secuencias alternativas de sentencias en una sentencia condicional.
 (((branch)))
 
-chained conditional::
+condicional encadenada::
+Una sentencia condicional con una serie de ramas alternativas.
 A conditional statement with a series of alternative branches.
 (((chained conditional)))
 
