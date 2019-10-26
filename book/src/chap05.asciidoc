@@ -326,14 +326,14 @@ Los cuatro marcos de +cuentaregresiva+ tienen diferentes valores del parámetro 
 
 Como ejercicio, dibuje un diagrama de pila para +printn+, llamada con +s = "Hola"+ y +n = 2+. Luego escriba una función llamada +hacer_n+, que tome como argumentos una función y un número +n+, y que luego llame a la función dada latexmath:[\(n\)] veces.
 
-=== Infinite Recursion
+=== Recursión infinita
 Si una recursión nunca alcanza un caso base, continúa haciendo llamadas recursivas para siempre, y el programa nunca termina. Esto se conoce como _recursión infinita_, y generalmente no es una buena idea. Aquí hay un código con una recursión infinita:
 (((infinite recursion)))(((recurse)))((("function", "programmer-defined", "recurse", see="recurse")))
 
 [source,julia]
 ----
-function recurse()
-    recurse()
+function recursion()
+    recursion()
 end
 ----
 
@@ -341,7 +341,7 @@ En la mayoría de los entornos de programación, un programa con recursión infi
 
 [source,jlcon]
 ----
-julia> recurse()
+julia> recursion()
 ERROR: StackOverflowError:
 Stacktrace:
  [1] recurse() at ./REPL[1]:2 (repeats 80000 times)
@@ -362,46 +362,44 @@ Julia tiene una función incorporada llamada +readline+ que detiene el programa 
 [source,jlcon]
 ----
 julia> text = readline()
-Qué estás esperando?
-"Qué estás esperando?"
+¿Qué estás esperando?
+"¿Qué estás esperando?"
 ----
-
-Before getting input from the user, it is a good idea to print a prompt telling the user what to type:
+Antes de recibir una entrada por teclado del usuario, es una buena idea imprimir un mensaje que le diga al usuario qué escribir:
 (((prompt)))
 
 [source,jlcon]
 ----
-julia> print("What...is your name? "); readline()
-What...is your name? Arthur, King of the Britons!
-"Arthur, King of the Britons!"
+julia> print("¿Cuál... es tu nombre? "); readline()
+¿Cuál... es tu nombre? ¡Arturo, Rey de los Bretones!
+"¡Arturo, Rey de los Bretones!"
 ----
 
-A semi-colon +;+ allows to put multiple statements on the same line. In the REPL only the last statement returns its value.
+Un punto y coma +;+ permite colocar varias sentencias en la misma línea. En el REPL solo la última sentencia devuelve su valor.
 (((;)))
 
-If you expect the user to type an integer, you can try to convert the return value to +Int64+:
+Si espera que el usuario escriba un número entero, puede intentar convertir el valor de retorno a +Int64+:
 
 [source,jlcon]
 ----
-julia> println("What...is the airspeed velocity of an unladen swallow?"); speed = readline()
-What...is the airspeed velocity of an unladen swallow?
-42
-"42"
-julia> parse(Int64, speed)
-42
+julia> println("¿Cuántos dejaron su casa, su tierra o su posesión?"); numero = readline()
+¿Cuántos dejaron su casa, su tierra o su posesión?
+115
+"115"
+julia> parse(Int64, numero)
+115
 ----
-
-But if the user types something other than a string of digits, you get an error:
+Pero si el usuario no escribe una cadena, obtendrá un error:
 (((parse)))
 
 [source,jlcon]
 ----
-julia> println("What...is the airspeed velocity of an unladen swallow? "); speed = readline()
-What...is the airspeed velocity of an unladen swallow?
-What do you mean, an African or a European swallow?
-"What do you mean, an African or a European swallow?"
+julia> println("¿Cuántos dejaron su casa, su tierra o su posesión?"); numero = readline()
+¿Cuántos dejaron su casa, su tierra o su posesión?
+En aquel día en la puente que pasa el río Arlanzón júntanse muchos guerreros, mas de ciento quince son.
+"En aquel día en la puente que pasa el río Arlanzón júntanse muchos guerreros, mas de ciento quince son."
 julia> parse(Int64, speed)
-ERROR: ArgumentError: invalid base 10 digit 'W' in "What do you mean, an African or a European swallow?"
+ERROR: ArgumentError: invalid base 10 digit 'E' in "En aquel día en la puente que pasa el río Arlanzón júntanse muchos guerreros, mas de ciento quince son."
 [...]
 ----
 
