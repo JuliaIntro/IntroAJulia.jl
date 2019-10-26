@@ -608,7 +608,7 @@ function dibujar(t, distancia, n)
     girar(t, -angulo)
     dibujar(t, distancia, n-1)
     girar(t, 2*angulo)
-    draw(t, distancia, n-1)
+    dibujar(t, distancia, n-1)
     girar(t, -angulo)
     adelante(t, -distancia*n)
 end
