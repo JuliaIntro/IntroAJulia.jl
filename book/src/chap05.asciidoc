@@ -563,7 +563,7 @@ Si tienes tres barras, estas podrían o no formar un triángulo. Por ejemplo, si
 Si cualquiera de las tres longitudes es mayor que la suma de las otras dos, entonces no se puede formar un triángulo. De lo contrario, se puede. (Si la suma de dos longitudes es igual a la tercera, forman lo que se llama un triángulo "degenerado").
 ====
 
-. Escriba una función llamada +estriangulo+ que tome tres enteros como argumentos, y que imprima “Sí” o “No”, dependiendo de si puede o no formar un triángulo a partir de barras de las longitudes dadas.
+. Escriba una función llamada +estriangulo+ que tome tres enteros como argumentos, y que imprima “Sí” o “No”, dependiendo de si se puede o no formar un triángulo a partir de barras de las longitudes dadas.
 (((istriangle)))((("function", "programmer-defined", "istriangle", see="istriangle")))
 
 . Escriba una función que solicite al usuario ingresar tres longitudes de barras, que las convierta en enteros y use +estriangulo+ para verificar si las barras con las longitudes dadas pueden formar un triángulo.
