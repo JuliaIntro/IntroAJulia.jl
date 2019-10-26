@@ -414,7 +414,7 @@ Cuando se produce un error de sintaxis o de tiempo de ejecución, el mensaje de 
 
 * Qué tipo de error fue, y
 
-* Donde ocurrió.
+* Dónde ocurrió.
 
 Los errores de sintaxis suelen ser fáciles de encontrar, pero hay algunos trucos. En general, los mensajes de error indican dónde se descubrió el problema, pero el error real podría estar antes en el código, a veces en una línea anterior.
 
@@ -615,37 +615,39 @@ end
 ----
 
 [[ex05-6]]
-===== Exercise 5-7
+===== Ejercicio 5-7
 
 [[fig05-2]]
 .A Koch curve
 image::images/fig52.svg[]
 
-
-The Koch curve is a fractal that looks something like <<fig05-2>>. To draw a Koch curve with length latexmath:[\(x\)], all you have to do is
+La curva de Koch es un fractal que luce como <<fig05-2>>. Para dibujar una curva de Koch con longitud latexmath: [\(x\)], todo lo que tiene que hacer es
 (((Koch curve)))(((fractal)))
 
-. Draw a Koch curve with length latexmath:[\(\frac{x}{3}\)].
+. Dibuje una curva de Koch con longitud latexmath:[\(\frac{x}{3}\)].
 
-. Turn left 60 degrees.
+. Gire a la izquierda 60 grados.
 
-. Draw a Koch curve with length latexmath:[\(\frac{x}{3}\)].
+. Dibuje una curva de Koch con longitud latexmath:[\(\frac{x}{3}\)].
 
-. Turn right 120 degrees.
+. Gire a la derecha 120 grados.
 
-. Draw a Koch curve with length latexmath:[\(\frac{x}{3}\)].
+. Dibuje una curva de Koch con longitud latexmath:[\(\frac{x}{3}\)].
 
-. Turn left 60 degrees.
+. Gire a la izquierda 60 grados.
 
-. Draw a Koch curve with length latexmath:[\(\frac{x}{3}\)].
+. Dibuje una curva de Koch con longitud latexmath:[\(\frac{x}{3}\)].
 
-The exception is if latexmath:[\(x\)] is less than 3: in that case, you can just draw a straight line with length latexmath:[\(x\)].
+La excepción es cuando latexmath:[\(x\)] es menor que 3: en ese caso, puede dibujar una línea recta con una longitud latexmath:[\(x\)].
+
+. Escribe una función llamada +koch+ que tome una tortuga y una longitud como parámetros, y que use la tortuga para dibujar una curva de Koch con la longitud dada.
+(((koch)))((("function", "programmer-defined", "koch", see="koch")))
+
+. Escriba una función llamada +copodenieve+ que dibuje tres curvas de Koch para hacer el contorno de un copo de nieve.
+(((snowflake)))((("function", "programmer-defined", "snowflake", see="snowflake")))
+
+. La curva de Koch se puede generalizar de varias maneras. Consulte https://en.wikipedia.org/wiki/Koch_snowflake para ver ejemplos e implementar su favorito.
+
 
 . Write a function called +koch+ that takes a turtle and a length as parameters, and that uses the turtle to draw a Koch curve with the given length.
 (((koch)))((("function", "programmer-defined", "koch", see="koch")))
-
-. Write a function called +snowflake+ that draws three Koch curves to make the outline of a snowflake.
-(((snowflake)))((("function", "programmer-defined", "snowflake", see="snowflake")))
-
-. The Koch curve can be generalized in several ways. See https://en.wikipedia.org/wiki/Koch_snowflake for examples and implement your favorite.
-
