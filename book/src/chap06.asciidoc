@@ -1,52 +1,51 @@
 [[chap06]]
-== Fruitful Functions
+== Funciones productivas
 
-Many of the Julia functions we have used, such as the math functions, produce return values. But the functions we’ve written are all void: they have an effect, like printing a value or moving a turtle, but they return +nothing+. In this chapter you will learn to write fruitful functions.
+Muchas de las funciones de Julia que hemos utilizado; como las funciones matemáticas, producen valores de retorno. Todas las funciones que hemos escrito son nulas, es decir, tienen un efecto, como imprimir un valor, pero devuelven el valor +nothing+. En este capítulo aprenderá a escribir funciones productivas.
 (((fruitful function)))
 
 
-=== Return Values
+=== Valores de retorno
 
-Calling the function generates a return value, which we usually assign to a variable or use as part of an expression.
+Llamar a la función genera un valor de retorno, que generalmente asignamos a una variable o usamos como parte de una expresión.
 
 [source,julia]
 ----
 e = exp(1.0)
-height = radius * sin(radians)
+altura = radio * sin(radio)
 ----
 
-The functions we have written so far are void. Speaking casually, they have no return value; more precisely, their return value is +nothing+. In this chapter, we are (finally) going to write fruitful functions. The first example is +area+, which returns the area of a circle with the given radius:
+Las funciones que hemos escrito hasta ahora son nulas. Hablando informalmente, no tienen valor de retorno; más precisamente, su valor de retorno es +nothing+. En este capítulo, (finalmente) vamos a escribir funciones productivas. El primer ejemplo es +area+, que devuelve el área de un círculo dado un radio:
 (((nothing)))(((area)))((("function", "programmer-defined", "area", see="area")))
 
 [source,@julia-setup]
 ----
-function area(radius)
-    a = π * radius^2
+function area(radio)
+    a = π * radio^2
     return a
 end
 ----
-
-We have seen the +return+ statement before, but in a fruitful function the +return+ statement includes an expression. This statement means: “Return immediately from this function and use the following expression as a return value.” The expression can be arbitrarily complicated, so we could have written this function more concisely:
+Hemos visto la sentencia +return+ antes, pero en una función productiva la sentencia +return+ incluye una expresión. Esta sentencia significa: "Retorne inmediatamente de esta función y use la siguiente expresión como valor de retorno". La expresión dada puede ser arbitrariamente complicada; así pues, podríamos haber escrito esta función más concisamente:
 (((return statement)))
 
 [source,@julia-setup]
 ----
-function area(radius)
-    π * radius^2
+function area(radio)
+    π * radio^2
 end
 ----
 
-The value returned by a function is the value of the last expression evaluated, which, by default, is the last expression in the body of the function definition.
+El valor devuelto por una función es el valor de la última expresión evaluada, que, por defecto, es la última expresión en el cuerpo de la definición de la función.
 
-On the other hand, _temporary variables_ like +a+ and explicit +return+ statements can make debugging easier.
+Por otro lado, las _variables temporales_ como +a+, y las sentencias +return+ explícitas pueden facilitar la depuración.
 (((temporary variable)))
 
-Sometimes it is useful to have multiple +return+ statements, one in each branch of a conditional:
+A veces es útil tener múltiples sentencias +return+, una en cada rama de una sentencia condicional:
 (((absvalue)))((("function", "programmer-defined", "absvalue", see="absvalue")))
 
 [source,@julia-setup chap06]
 ----
-function absvalue(x)
+function valorabsoluto(x)
     if x < 0
         return -x
     else
@@ -55,17 +54,17 @@ function absvalue(x)
 end
 ----
 
-Since these return statements are in an alternative conditional, only one runs.
+Dado que estas sentencias return están en una condicional alternativa, solo se ejecuta una.
 (((alternative conditional)))
 
-As soon as a +return+ statement runs, the function terminates without executing any subsequent statements. Code that appears after a +return+ statement, or any other place the flow of execution can never reach, is called _dead code_.
+En cuanto se ejecuta una sentencia return, la función termina sin ejecutar ninguna de las sentencias siguientes. El código que aparezca después de la sentencia return, o en cualquier otro lugar al que el flujo de ejecución nunca llegará, se llama código muerto.
 (((flow of execution)))(((dead code)))
 
-In a fruitful function, it is a good idea to ensure that every possible path through the program hits a return statement. For example:
+En una función productiva, es una buena idea asegurarse que cualquier posible recorrido del programa llegue a una sentencia return. Por ejemplo:
 
 [source,@julia-setup chap06]
 ----
-function absvalue(x)
+function valorabsoluto(x)
     if x < 0
         return -x
     end
@@ -75,11 +74,11 @@ function absvalue(x)
 end
 ----
 
-This function is incorrect because if +x+ happens to be 0, neither condition is true, and the function ends without hitting a +return+ statement. If the flow of execution gets to the end of a function, the return value is +nothing+, which is not the absolute value of 0.
+Esta versión no es correcta porque si +x+ es igual a 0, ninguna de las condiciones es verdadera, y la función termina sin alcanzar una sentencia return. Si el flujo de ejecución llega al final de la función, el valor de retorno es +nothing+, que claramente no es el valor absoluto de 0.
 
 [source,@julia-repl-test chap06]
 ----
-julia> show(absvalue(0))
+julia> show(valorabsoluto(0))
 nothing
 ----
 
