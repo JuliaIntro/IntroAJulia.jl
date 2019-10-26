@@ -344,7 +344,7 @@ En la mayoría de los entornos de programación, un programa con recursión infi
 julia> recursion()
 ERROR: StackOverflowError:
 Stacktrace:
- [1] recurse() at ./REPL[1]:2 (repeats 80000 times)
+ [1] recursion() at ./REPL[1]:2 (repeats 80000 times)
 ----
 
 Este stacktrace es un poco más grande que el que vimos en el capítulo anterior. Cuando se produce el error, ¡hay 80000 marcos de +recurse+ en el diagrama de pila!
