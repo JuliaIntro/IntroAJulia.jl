@@ -605,11 +605,11 @@ function dibujar(t, distancia, n)
     end
     angulo = 50
     adelante(t, distancia*n)
-    doblar(t, -angulo)
+    girar(t, -angulo)
     dibujar(t, distancia, n-1)
-    doblar(t, 2*angulo)
+    girar(t, 2*angulo)
     draw(t, distancia, n-1)
-    doblar(t, -angulo)
+    girar(t, -angulo)
     adelante(t, -distancia*n)
 end
 ----
@@ -618,7 +618,7 @@ end
 ===== Ejercicio 5-7
 
 [[fig05-2]]
-.A Koch curve
+.Una curva de Koch
 image::images/fig52.svg[]
 
 La curva de Koch es un fractal que luce como <<fig05-2>>. Para dibujar una curva de Koch con longitud latexmath: [\(x\)], todo lo que tiene que hacer es
