@@ -497,11 +497,11 @@ Una sentencia condicional con una serie de ramas alternativas.
 A conditional statement with a series of alternative branches.
 (((chained conditional)))
 
-nested conditional::
-A conditional statement that appears in one of the branches of another conditional statement.
+condicional anidada::
+Una sentencia condicional que aparece en una de las ramas de otra sentencia condicional.
 (((nested conditional)))
 
-return statement::
+sentencia return::
 A statement that causes a function to end immediately and return to the caller.
 (((return statement)))
 
