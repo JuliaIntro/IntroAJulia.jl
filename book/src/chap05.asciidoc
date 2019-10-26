@@ -502,28 +502,28 @@ Una sentencia condicional que aparece en una de las ramas de otra sentencia cond
 (((nested conditional)))
 
 sentencia return::
-A statement that causes a function to end immediately and return to the caller.
+Una sentencia que hace que una función finalice de inmediato y que vuelva a la sentencia de llamada a función.
 (((return statement)))
 
-recursion::
-The process of calling the function that is currently executing.
+recursividad o recursión::
+El proceso de llamar a la función que se está ejecutando actualmente.
 (((recursion)))
 
-base case::
-A conditional branch in a recursive function that does not make a recursive call.
+caso base::
+Una rama condicional en una función recursiva que no realiza una llamada recursiva.
 (((base case)))
 
-infinite recursion::
-A recursion that doesn’t have a base case, or never reaches it. Eventually, an infinite recursion causes a runtime error.
+recursividad infinita::
+Una recursión que no tiene un caso base, o que nunca llega a él. Eventualmente, una recursión infinita provoca un error de tiempo de ejecución.
 (((infinite recursion)))
 
 
-=== Exercises
+=== Ejercicios
 
 [[ex05-1]]
-===== Exercise 5-2
+===== Ejercicio 5-2
 
-The function +time+ returns the current Greenwich Mean Time in seconds since “the epoch”, which is an arbitrary time used as a reference point. On UNIX systems, the epoch is 1 January 1970.
+La función +time+ devuelve el tiempo medio de Greenwich actual en segundos desde "la época", que es un tiempo arbitrario utilizado como punto de referencia. En sistemas UNIX, la época es el 1 de enero de 1970.
 (((time)))((("function", "Base", "time", see="time")))
 
 [source,@julia-repl]
@@ -531,12 +531,12 @@ The function +time+ returns the current Greenwich Mean Time in seconds since “
 time()
 ----
 
-Write a script that reads the current time and converts it to a time of day in hours, minutes, and seconds, plus the number of days since the epoch.
+Escriba un script que lea la hora actual y la convierta a una hora del día en horas, minutos y segundos, más el número de días transcurridos desde la época.
 
 [[ex05-2]]
-===== Exercise 5-3
+===== Ejercicio 5-3
 
-Fermat’s Last Theorem says that there are no positive integers latexmath:[\(a\)], latexmath:[\(b\)], and latexmath:[\(c\)] such that
+El último teorema de Fermat dice que no hay enteros positivos latexmath:[\(a\)], latexmath:[\(b\)], and latexmath:[\(c\)] de modo que
 (((Fermat's last theorem)))
 
 [latexmath]
