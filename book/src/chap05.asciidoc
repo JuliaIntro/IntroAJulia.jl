@@ -277,13 +277,14 @@ pass:[&#8193;]La +cuentaregresiva+ cuyo argumento es +n = 2+ termina.
 
 La +cuentaregresiva+ cuyo argumento es +n = 3+ termina.
 
-And then you’re back in +Main+.
+Y volvemos a +Main+.
 
-A function that calls itself is _recursive_; the process of executing it is called _recursion_.
-(((recursive function)))(((recursion)))
+Una función que se llama a si misma es _recursiva_; el proceso de ejecución se llama _recursividad_.
+(((función recursiva)))(((recursividad)))
 
+Como otro ejemplo, podemos escribir una función que imprima una cadena latexmath:[\(n\)] veces.
 As another example, we can write a function that prints a string latexmath:[\(n\)] times.
-(((printn)))((("function", "programmer-defined", "printn", see="printn")))
+(((printn)))((("función", "definida por el programador", "printn", see="printn")))
 
 [source,julia]
 ----
