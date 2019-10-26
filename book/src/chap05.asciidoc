@@ -283,7 +283,6 @@ Una función que se llama a si misma es _recursiva_; el proceso de ejecución se
 (((función recursiva)))(((recursividad)))
 
 Como otro ejemplo, podemos escribir una función que imprima una cadena latexmath:[\(n\)] veces.
-As another example, we can write a function that prints a string latexmath:[\(n\)] times.
 (((printn)))((("función", "definida por el programador", "printn", see="printn")))
 
 [source,julia]
@@ -297,6 +296,7 @@ function printn(s, n)
 end
 ----
 
+Si +n pass:[&lt;]= 0+, la sentencia +return+ sale de la función. El flujo de ejecución inmediatamente vuelve al 
 If +n pass:[&lt;]= 0+ the +return+ statement exits the function. The flow of execution immediately returns to the caller, and the remaining lines of the function don’t run.
 (((return)))((("keyword", "return", see="return")))(((return statement)))((("statement", "return", see="return statement")))
 
