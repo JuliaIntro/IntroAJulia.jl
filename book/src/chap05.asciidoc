@@ -303,24 +303,23 @@ El resto de la función es similar a +cuenta regresiva+: muestra +s+ y luego se 
 
 Para ejemplos simples como este, es más fácil usar un ciclo +for+. Veremos ejemplos que son difíciles de escribir con un ciclo +for+, y fáciles de escribir con recursividad.
 
-=== Stack Diagrams for Recursive Functions
+=== Diagramas de pila para funciones recursivas
 
-In <<stack_diagrams>>, we used a stack diagram to represent the state of a program during a function call. The same kind of diagram can help interpret a recursive function.
+En <<stack_diagrams>>, se usó un diagrama de pila para representar el estado de un programa durante una llamada de función. El mismo tipo de diagrama puede ser de utilidad para interpretar una función recursiva.
 (((stack diagram)))
 
-Every time a function gets called, Julia creates a frame to contain the function’s local variables and parameters. For a recursive function, there might be more than one frame on the stack at the same time.
+Cada vez que se llama a una función, Julia crea un marco que contiene las variables locales de la función y los parámetros. En una función recursiva, puede haber más de un marco en el diagrama de pila al mismo tiempo.
 (((frame)))
 
 [[fig05-1]]
 .Stack diagram
 image::images/fig51.svg[]
 
+<<fig05-1>> muestra un diagrama de pila para +cuentaregresiva+ utilizando +n=3+. 
 
-<<fig05-1>> shows a stack diagram for +countdown+ called with +n = 3+.
+Como siempre, la parte superior de la pila es el marco para +Main+. Está vacío pues no se crearon variables en +Main+, ni tampoco se pasaron argumentos.
 
-As usual, the top of the stack is the frame for +Main+. It is empty because we did not create any variables in +Main+ or pass any arguments to it.
-
-The four +countdown+ frames have different values for the parameter +n+. The bottom of the stack, where +n = 0+, is called the _base case_. It does not make a recursive call, so there are no more frames.
+Los cuatro marcos de +cuentaregresiva+ tienen diferentes valores del parámetro +n+. La parte inferior del diagrama de pila, donde +n = 0+, es llamado _caso base_. No hace una llamada recursiva, así que no hay más marcos.
 (((base case)))
 
 ===== Exercise 5-1
