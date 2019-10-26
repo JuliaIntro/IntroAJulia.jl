@@ -648,6 +648,3 @@ La excepción es cuando latexmath:[\(x\)] es menor que 3: en ese caso, puede dib
 
 . La curva de Koch se puede generalizar de varias maneras. Consulte https://en.wikipedia.org/wiki/Koch_snowflake para ver ejemplos e implementar su favorito.
 
-
-. Write a function called +koch+ that takes a turtle and a length as parameters, and that uses the turtle to draw a Koch curve with the given length.
-(((koch)))((("function", "programmer-defined", "koch", see="koch")))
