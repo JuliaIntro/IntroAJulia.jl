@@ -423,7 +423,7 @@ Lo mismo aplica para los errores de tiempo de ejecución. Suponga que está trat
 [latexmath]
 ++++
 \begin{equation}
-{SNR_{\mathrm{db}} = 10 \log_{10} \frac{P_{\mathrm{signal}}}{P_{\mathrm{noise}}}\ .}
+{S/R_{\mathrm{db}} = 10 \log_{10} \frac{P_{\mathrm{señal}}}{P_{\mathrm{ruido}}}\ .}
 \end{equation}
 ++++
 
@@ -431,31 +431,30 @@ En Julia, se podría escribir algo como esto:
 
 [source,julia]
 ----
-signal_power = 9
-noise_power = 10
-ratio = signal_power ÷ noise_power
-decibels = 10 * log10(ratio)
-print(decibels)
+intensidad_señal = 9
+intendidad_ruido = 10
+relacion = intensidad_señal ÷ intendidad_ruido
+decibeles = 10 * log10(relacion)
+print(decibeles)
 ----
 
-And you get:
+Obteniendo:
 
 [source,julia]
 ----
 -Inf
 ----
+Este no es el resultado que esperábamos.
 
-This is not the result you expected.
-
-To find the error, it might be useful to print the value of ratio, which turns out to be 0. The problem is in line 3, which uses floor division instead of floating-point division.
+Para encontrar el error, puede ser útil imprimir el valor de la variable "relacion", que resulta ser 0. El problema está en la línea 3, que usa la división de tipo piso en lugar de la división de punto flotante.
 
 [WARNING]
 ====
-You should take the time to read error messages carefully, but don’t assume that everything they say is correct.
+Debes tomarte el tiempo de leer los mensajes de error cuidadosamente, pero no asumas que todo lo que dicen es correcto.
 ====
 
 
-=== Glossary
+=== Glosario
 
 floor division::
 An operator, denoted +÷+, that divides two numbers and rounds down (toward negative infinity) to an integer.
