@@ -536,7 +536,7 @@ Escriba un script que lea la hora actual y la convierta a una hora del día en h
 [[ex05-2]]
 ===== Ejercicio 5-3
 
-El último teorema de Fermat dice que no hay enteros positivos latexmath:[\(a\)], latexmath:[\(b\)], and latexmath:[\(c\)] de modo que
+El último teorema de Fermat dice que no hay enteros positivos latexmath:[\(a\)], latexmath:[\(b\)], and latexmath:[\(c\)] tal que
 (((Fermat's last theorem)))
 
 [latexmath]
@@ -546,37 +546,37 @@ El último teorema de Fermat dice que no hay enteros positivos latexmath:[\(a\)]
 \end{equation}
 ++++
 
-for any value of latexmath:[\(n\)] greater than 2.
+para cualquier valor de latexmath: [\ (n \)] mayor que 2.
 
-. Write a function named +checkfermat+ that takes four parameters—+a+, +b+, +c+ and +n+—and checks to see if Fermat’s theorem holds. If +n+ is greater than 2 and +pass:[a^n + b^n == c^n]+ the program should print, “Holy smokes, Fermat was wrong!” Otherwise the program should print, “No, that doesn’t work.”
+. Escriba una función llamada +verificarfermat+ que tome cuatro parámetros—+a+, +b+, +c+ and +n+— y que verifique si el teorema de Fermat es válido. Si +n+ es mayor que 2 y +pass:[a^n + b^n == c^n]+ el programa debería imprimir, "¡Santo cielo, Fermat estaba equivocado!" De lo contrario, el programa debería imprimir, "No, eso no funciona".
 (((checkfermat)))((("function", "programmer-defined", "checkfermat", see="checkfermat")))
 
-. Write a function that prompts the user to input values for +a+, +b+, +c+ and +n+, converts them to integers, and uses +checkfermat+ to check whether they violate Fermat’s theorem.
+. Escriba una función que solicite al usuario ingresar valores para +a+, +b+, +c+ and +n+, que los convierta en enteros y que use +verificarfermat+ para verificar si violan el teorema de Fermat.
 
 [[ex05-3]]
-===== Exercise 5-4
+===== Ejercicio 5-4
 
-If you are given three sticks, you may or may not be able to arrange them in a triangle. For example, if one of the sticks is 12 inches long and the other two are one inch long, you will not be able to get the short sticks to meet in the middle. For any three lengths, there is a simple test to see if it is possible to form a triangle:
+Si tienes tres barras, estas podrían o no formar un triángulo. Por ejemplo, si una de las barras tiene 12 centimetros de largo y las otras dos tienen un centimetro de largo, no es posible que las barras pequeñas puedan juntarse al medio. Para cualquier trío de longitudes, hay una prueba simple para ver si es posible formar un triángulo:
 
 [TIP]
 ====
-If any of the three lengths is greater than the sum of the other two, then you cannot form a triangle. Otherwise, you can. (If the sum of two lengths equals the third, they form what is called a “degenerate” triangle.)
+Si cualquiera de las tres longitudes es mayor que la suma de las otras dos, entonces no se puede formar un triángulo. De lo contrario, se puede. (Si la suma de dos longitudes es igual a la tercera, forman lo que se llama un triángulo "degenerado").
 ====
 
-. Write a function named +istriangle+ that takes three integers as arguments, and that prints either “Yes” or “No”, depending on whether you can or cannot form a triangle from sticks with the given lengths.
+. Escriba una función llamada +estriangulo+ que tome tres enteros como argumentos, y que imprima “Sí” o “No”, dependiendo de si puede o no formar un triángulo a partir de barras de las longitudes dadas.
 (((istriangle)))((("function", "programmer-defined", "istriangle", see="istriangle")))
 
-. Write a function that prompts the user to input three stick lengths, converts them to integers, and uses +istriangle+ to check whether sticks with the given lengths can form a triangle.
+. Escriba una función que solicite al usuario ingresar tres longitudes de barras, que las convierta en enteros y use +estriangulo+ para verificar si las barras con las longitudes dadas pueden formar un triángulo.
 
 [[ex05-4]]
-===== Exercise 5-5
+===== Ejercicio 5-5
 
-What is the output of the following program? Draw a stack diagram that shows the state of the program when it prints the result.
+¿Cuál es el resultado del siguiente programa? Dibuje un diagrama de pila que muestre el estado del programa cuando imprime el resultado.
 (((stack diagram)))(((recurse)))
 
 [source,julia]
 ----
-function recurse(n, s)
+function recursion(n, s)
     if n == 0
         println(s)
     else
@@ -584,34 +584,33 @@ function recurse(n, s)
     end
 end
 
-recurse(3, 0)
+recursion(3, 0)
 ----
+. ¿Qué pasaría si llamaras a esta función así: +recursion(-1, 0)+?
 
-. What would happen if you called this function like this: +recurse(-1, 0)+?
+. Escriba una documento que explique todo lo que alguien necesitaría saber para usar esta función (y nada más).
 
-. Write a docstring that explains everything someone would need to know in order to use this function (and nothing else).
-
-The following exercises use the +ThinkJulia+ module, described in <<chap04>>:
+Los siguientes ejercicios utilizan el módulo +ThinkJulia+, descrito en <<chap04>>:
 
 [[ex05-5]]
-===== Exercise 5-6
+===== Ejercicio 5-6
 
-Read the following function and see if you can figure out what it does (see the examples in <<chap04>>). Then run it and see if you got it right.
+Lea la siguiente función y vea si puede averiguar qué hace (vea los ejemplos en <<chap04>>). Luego ejecútelo y vea si lo hizo bien.
 
 [source,julia]
 ----
-function draw(t, length, n)
+function dibujar(t, distancia, n)
     if n == 0
         return
     end
-    angle = 50
-    forward(t, length*n)
-    turn(t, -angle)
-    draw(t, length, n-1)
-    turn(t, 2*angle)
-    draw(t, length, n-1)
-    turn(t, -angle)
-    forward(t, -length*n)
+    angulo = 50
+    adelante(t, distancia*n)
+    doblar(t, -angulo)
+    dibujar(t, distancia, n-1)
+    doblar(t, 2*angulo)
+    draw(t, distancia, n-1)
+    doblar(t, -angulo)
+    adelante(t, -distancia*n)
 end
 ----
 
