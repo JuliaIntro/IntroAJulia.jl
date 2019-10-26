@@ -580,7 +580,7 @@ function recursion(n, s)
     if n == 0
         println(s)
     else
-        recurse(n-1, n+s)
+        recursion(n-1, n+s)
     end
 end
 
