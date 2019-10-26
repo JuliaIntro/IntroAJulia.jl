@@ -322,13 +322,12 @@ Como siempre, la parte superior de la pila es el marco para +Main+. Está vacío
 Los cuatro marcos de +cuentaregresiva+ tienen diferentes valores del parámetro +n+. La parte inferior del diagrama de pila, donde +n = 0+, es llamado _caso base_. No hace una llamada recursiva, así que no hay más marcos.
 (((base case)))
 
-===== Exercise 5-1
+===== Ejercicio 5-1
 
-As an exercise, draw a stack diagram for +printn+ called with +s = "Hello"+ and +n = 2+. Then write a function called +do_n+ that takes a function object and a number, +n+, as arguments, and that calls the given function latexmath:[\(n\)] times.
+Como ejercicio, dibuje un diagrama de pila para +printn+, llamada con +s = "Hola"+ y +n = 2+. Luego escriba una función llamada +hacer_n+, que tome como argumentos una función y un número +n+, y que luego llame a la función dada latexmath:[\(n\)] veces.
 
 === Infinite Recursion
-
-If a recursion never reaches a base case, it goes on making recursive calls forever, and the program never terminates. This is known as _infinite recursion_, and it is generally not a good idea. Here is a minimal program with an infinite recursion:
+Si una recursión nunca alcanza un caso base, continúa haciendo llamadas recursivas para siempre, y el programa nunca termina. Esto se conoce como _recursión infinita_, y generalmente no es una buena idea. Aquí hay un código con una recursión infinita:
 (((infinite recursion)))(((recurse)))((("function", "programmer-defined", "recurse", see="recurse")))
 
 [source,julia]
@@ -338,7 +337,7 @@ function recurse()
 end
 ----
 
-In most programming environments, a program with infinite recursion does not really run forever. Julia reports an error message when the maximum recursion depth is reached:
+En la mayoría de los entornos de programación, un programa con recursión infinita realmente no se ejecuta para siempre. Julia entrega un mensaje de error cuando se alcanza la profundidad de recursión máxima:
 
 [source,jlcon]
 ----
@@ -348,24 +347,23 @@ Stacktrace:
  [1] recurse() at ./REPL[1]:2 (repeats 80000 times)
 ----
 
-This stacktrace is a little bigger than the one we saw in the previous chapter. When the error occurs, there are 80000 +recurse+ frames on the stack!
+Este stacktrace es un poco más grande que el que vimos en el capítulo anterior. Cuando se produce el error, ¡hay 80000 marcos de +recurse+ en el diagrama de pila!
 (((stacktrace)))(((StackOverflowError)))((("error", "Core", "StackOverflowError", see="StackOverflowError")))
 
-If you encounter an infinite recursion by accident, review your function to confirm that there is a base case that does not make a recursive call. And if there is a base case, check whether you are guaranteed to reach it.
+Si por accidente encuentra una recursión infinita en su código, revise su función para confirmar que hay un caso base que no realiza una llamada recursiva. Si hay un caso base, verifique si realmente puede ocurrir.
 
+=== Entrada por teclado
 
-=== Keyboard Input
+Los programas que hemos escrito hasta ahora no aceptan entradas del usuario. Simplemente hacen lo mismo cada vez.
 
-The programs we have written so far accept no input from the user. They just do the same thing every time.
-
-Julia provides a built-in function called +readline+ that stops the program and waits for the user to type something. When the user presses +RETURN+ or +ENTER+, the program resumes and +readline+ returns what the user typed as a string.
+Julia tiene una función incorporada llamada +readline+ que detiene el programa y espera a que el usuario escriba algo. Cuando el usuario presiona +RETURN+ o +ENTER+, el programa se reanuda y +readline+ devuelve lo que el usuario escribió como una cadena.
 (((readline)))((("function", "Base", "readline", see="readline")))
 
 [source,jlcon]
 ----
 julia> text = readline()
-What are you waiting for?
-"What are you waiting for?"
+Qué estás esperando?
+"Qué estás esperando?"
 ----
 
 Before getting input from the user, it is a good idea to print a prompt telling the user what to type:
