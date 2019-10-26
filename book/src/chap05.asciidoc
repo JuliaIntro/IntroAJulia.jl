@@ -407,18 +407,18 @@ Veremos qué hacer con este tipo de error más adelante.
 (((ArgumentError)))
 
 
-=== Debugging
+=== Depuración
 
-When a syntax or runtime error occurs, the error message contains a lot of information, but it can be overwhelming. The most useful parts are usually:
+Cuando se produce un error de sintaxis o de tiempo de ejecución, el mensaje de error contiene mucha información, lo cual puede ser abrumador. Las partes más útiles suelen ser:
 (((debugging)))
 
-* What kind of error it was, and
+* Qué tipo de error fue, y
 
-* Where it occurred.
+* Donde ocurrió.
 
-Syntax errors are usually easy to find, but there are a few gotchas. In general, error messages indicate where the problem was discovered, but the actual error might be earlier in the code, sometimes on a previous line.
+Los errores de sintaxis suelen ser fáciles de encontrar, pero hay algunos trucos. En general, los mensajes de error indican dónde se descubrió el problema, pero el error real podría estar antes en el código, a veces en una línea anterior.
 
-The same is true of runtime errors. Suppose you are trying to compute a signal-to-noise ratio in decibels. The formula is
+Lo mismo aplica para los errores de tiempo de ejecución. Suponga que está tratando de calcular una relación señal/ruido en decibelios. La formula es
 
 [latexmath]
 ++++
@@ -427,7 +427,7 @@ The same is true of runtime errors. Suppose you are trying to compute a signal-t
 \end{equation}
 ++++
 
-In Julia, you might write something like this:
+En Julia, se podría escribir algo como esto:
 
 [source,julia]
 ----
