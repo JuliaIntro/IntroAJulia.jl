@@ -396,14 +396,14 @@ Pero si el usuario no escribe una cadena, obtendrá un error:
 ----
 julia> println("¿Cuántos dejaron su casa, su tierra o su posesión?"); numero = readline()
 ¿Cuántos dejaron su casa, su tierra o su posesión?
-En aquel día en la puente que pasa el río Arlanzón júntanse muchos guerreros, mas de ciento quince son.
-"En aquel día en la puente que pasa el río Arlanzón júntanse muchos guerreros, mas de ciento quince son."
+Más de ciento quince son.
+"Más de ciento quince son."
 julia> parse(Int64, speed)
-ERROR: ArgumentError: invalid base 10 digit 'E' in "En aquel día en la puente que pasa el río Arlanzón júntanse muchos guerreros, mas de ciento quince son."
+ERROR: ArgumentError: invalid base 10 digit 'M' in "Más de ciento quince son."
 [...]
 ----
 
-We will see how to handle this kind of error later.
+Veremos qué hacer con este tipo de error más adelante.
 (((ArgumentError)))
 
 
