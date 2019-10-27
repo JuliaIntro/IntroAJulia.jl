@@ -390,35 +390,35 @@ El valor de retorno +2+ se multiplica por +n+, que es +3+, y el resultado, +6+, 
 image::images/fig61.svg[]
 
 
-<<fig06-1>> shows what the stack diagram looks like for this sequence of function calls.
+<<fig06-1>>  muestra cómo se ve el diagrama de pila para esta secuencia de llamadas a funciones.
 (((stack diagram)))
 
-The return values are shown being passed back up the stack. In each frame, the return value is the value of +result+, which is the product of +n+ and +recurse+.
+Los valores de retorno se pasan de nuevo a la pila. En cada marco, el valor de retorno es el valor de +resultado+, que es el producto de +n+ y +recursion+.
 
-In the last frame, the local variables +recurse+ and +result+ do not exist, because the branch that creates them does not run.
+En el último marco, las variables locales +recursion+ y +resultado+ no existen, porque la rama que las crea no se ejecuta.
 
 [TIP]
 ====
-Julia provides the function +factorial+ to calculate the factorial of an integer number.
+Julia tiene la función +factorial+ para calcular el factorial de un número entero.
 (((factorial)))((("function", "Base", "factorial", see="factorial")))
 ====
 
 
-=== Leap of Faith
+=== Salto de fe
 
-Following the flow of execution is one way to read programs, but it can quickly become overwhelming. An alternative is what I call the “leap of faith”. When you come to a function call, instead of following the flow of execution, you _assume_ that the function works correctly and returns the right result.
+Seguir el flujo de ejecución es una forma de leer programas, pero puede llegar a ser abrumador. Una alternativa es lo que llamamos el "salto de fe". Cuando llega a una llamada de función, en lugar de seguir el flujo de ejecución, asume que la función funciona correctamente y devuelve el resultado correcto.
 (((leap of faith)))
 
-In fact, you are already practicing this leap of faith when you use built-in functions. When you call +cos+ or +exp+, you don’t examine the bodies of those functions. You just assume that they work because the people who wrote the built-in functions were good programmers.
+De hecho, ya estás haciendo este salto de fe cuando usas funciones integradas de Julia. Cuando llamas a +cos+ o +exp+, no examinas los cuerpos de esas funciones. Simplemente asumes que funcionan porque las personas que las escribieron eran buenos programadores.
 
-The same is true when you call one of your own functions. For example, in <<boolean_functions>>, we wrote a function called +isdivisible+ that determines whether one number is divisible by another. Once we have convinced ourselves that this function is correct—by examining the code and testing—we can use the function without looking at the body again.
+Lo mismo ocurre cuando llamas a una de tus propias funciones. Por ejemplo, en <<boolean_functions>>, escribimos una función llamada +esdivisible+ que determina si un número es divisible por otro. Una vez que nos hayamos convencido de que esta función es correcta —al examinar y probar el código—, podemos usar la función sin mirar nuevamente el cuerpo.
 
-The same is true of recursive programs. When you get to the recursive call, instead of following the flow of execution, you should assume that the recursive call works (returns the correct result) and then ask yourself, “Assuming that I can find the factorial of latexmath:[\(n-1\)], can I compute the factorial of latexmath:[\(n\)]?” It is clear that you can, by multiplying by latexmath:[\(n\)].
+Lo mismo aplica a los programas recursivos. Cuando llegue a la llamada recursiva, en lugar de seguir el flujo de ejecución, debe suponer que la llamada recursiva funciona (devuelve el resultado correcto) y luego preguntarse: "Suponiendo que pueda encontrar el factorial de latexmath:[\(n-1\)], ¿puedo calcular el factorial de latexmath:[\(n\)]? ”Está claro que puedes, multiplicando por latexmath:[\(n\)].
 
-Of course, it’s a bit strange to assume that the function works correctly when you haven’t finished writing it, but that’s why it’s called a leap of faith!
+Por supuesto, es un poco extraño suponer que la función funciona correctamente cuando no ha terminado de escribirla, ¡pero por eso se llama un salto de fe!
 
 [[one_more_example]]
-=== One More Example
+=== Un Ejemplo Más
 
 After factorial, the most common example of a recursively defined mathematical function is fibonacci, which has the following definition (see https://en.wikipedia.org/wiki/Fibonacci_number):
 (((fibonnaci function)))
