@@ -309,11 +309,11 @@ Solo hemos cubierto una pequeña parte de Julia, pero le puede interesar saber q
 Probar esa afirmación es un ejercicio no trivial realizado por primera vez por Alan Turing, uno de los primeros científicos de la computación (algunos argumentarían que era matemático, pero muchos de los primeros científicos informáticos comenzaron como matemáticos). En consecuencia, esto se conoce como la Tesis de Turing. Para una discusión más completa (y precisa) de la Tesis de Turing, se recomienda el libro de Michael Sipser _Introducción a la Teoría de la Computación_.
 (((Turing, Alan)))(((Turing thesis)))
 
-To give you an idea of what you can do with the tools you have learned so far, we’ll evaluate a few recursively defined mathematical functions. A recursive definition is similar to a circular definition, in the sense that the definition contains a reference to the thing being defined. A truly circular definition is not very useful:
+Para darle una idea de lo que puede hacer con las herramientas que ha aprendido hasta ahora, evaluaremos algunas funciones matemáticas definidas recursivamente. Una definición recursiva es similar a una definición circular, en el sentido de que la definición contiene una referencia a lo que está siendo definido. Una definición verdaderamente circular no es muy útil:
 (((recursive definition)))(((circular definition)))
 
 vorpal::
-An adjective used to describe something that is vorpal.
+Un adjetivo usado para describir algo que es vorpal.
 
 If you saw that definition in the dictionary, you might be annoyed. On the other hand, if you looked up the definition of the factorial function, denoted with the symbol latexmath:[\(!\)], you might get something like this:
 (((factorial function)))
