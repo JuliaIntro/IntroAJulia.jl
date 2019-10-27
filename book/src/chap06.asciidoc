@@ -239,14 +239,14 @@ end
 
 
 [[boolean_functions]]
-=== Boolean Functions
+=== Funciones Booleanas
 
-Functions can return booleans, which is often convenient for hiding complicated tests inside functions. For example:
+Las funciones pueden devolver valores booleanos, lo que a menudo es conveniente para ocultar complicadas comprobaciones dentro de funciones. Por ejemplo:
 (((boolean function)))(((isdivisible)))((("function", "programmer-defined", "isdivisible", see="isdivisible")))
 
 [source,@julia-setup chap06]
 ----
-function isdivisible(x, y)
+function esdivisible(x, y)
     if x % y == 0
         return true
     else
@@ -254,51 +254,50 @@ function isdivisible(x, y)
     end
 end
 ----
+Es común dar a las funciones booleanas nombres que suenan como preguntas que tienen como respuesta un si ó un no; es_divisible devuelve +true+ o +false+ para indicar si +x+ es o no divisible por +y+.
 
-It is common to give boolean functions names that sound like yes/no questions; +isdivisible+ returns either +true+ or +false+ to indicate whether +x+ is divisible by +y+.
-
-Here is an example:
+Por ejemplo:
 
 [source,@julia-repl-test chap06]
 ----
-julia> isdivisible(6, 4)
+julia> esdivisible(6, 4)
 false
-julia> isdivisible(6, 3)
+julia> esdivisible(6, 3)
 true
 ----
 
-The result of the +==+ operator is a boolean, so we can write the function more concisely by returning it directly:
+El resultado del operador +==+ es booleano, por lo tanto podemos escribir la función de una manera más concisa devolviendo el resultado directamente:
 (((==)))
 
 [source,@julia-setup]
 ----
-function isdivisible(x, y)
+function esdivisible(x, y)
     x % y == 0
 end
 ----
 
-Boolean functions are often used in conditional statements:
+Las funciones booleanas se usan a menudo en las sentencias condicionales:
 (((conditional statement)))
 
 [source,julia]
 ----
-if isdivisible(x, y)
-    println("x is divisible by y")
+if esdivisible(x, y)
+    println("x es divisible por y")
 end
 ----
 
-It might be tempting to write something like:
+Puede parecer tentador escribir algo como:
 
 [source,julia]
 ----
-if isdivisible(x, y) == true
-    println("x is divisible by y")
+if esdivisible(x, y) == true
+    println("x es divisible por y")
 end
 ----
 
-But the extra comparison with +true+ is unnecessary.
+Pero la comparación extra con +true+ es innecesaria.
 
-===== Exercise 6-3
+===== Ejercicio 6-3
 
 Write a function +isbetween(x, y, z)+ that returns +true+ if +x ≤ y ≤ z+ or +false+ otherwise.
 
