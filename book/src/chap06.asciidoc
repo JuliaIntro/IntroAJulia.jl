@@ -305,6 +305,7 @@ Escriba la función +entremedio(x,y,z)+ que devuelva +true+ si +x ≤ y ≤ z+, 
 
 Solo hemos cubierto una pequeña parte de Julia, pero le puede interesar saber que esta parte ya es un lenguaje de programación _completo_, lo que significa que cualquier cómputo puede expresarse en este lenguaje. Cualquier programa que se haya escrito podría reescribirse usando solo lo que ha aprendido hasta ahora (en realidad, necesitaría algunos comandos para controlar dispositivos como el mouse, discos, etc., pero eso es todo).
 (((recursion)))(((complete programming language)))((("programming language", "complete", see="complete programming language")))
+
 Probar esa afirmación es un ejercicio no trivial realizado por primera vez por Alan Turing, uno de los primeros científicos de la computación (algunos argumentarían que era matemático, pero muchos de los primeros científicos informáticos comenzaron como matemáticos). En consecuencia, esto se conoce como la Tesis de Turing. Para una discusión más completa (y precisa) de la Tesis de Turing, se recomienda el libro de Michael Sipser _Introducción a la Teoría de la Computación_.
 (((Turing, Alan)))(((Turing thesis)))
 
