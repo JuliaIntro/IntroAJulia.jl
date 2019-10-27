@@ -512,10 +512,10 @@ En <<catching_exceptions>> veremos una alternativa más flexible para imprimir u
 [[deb06]]
 === Debugging
 
-Dividir un código extenso en pequeñas funciones crea de manera natural puntos de control para la depuración. Si un programa no está funcionando, existen tres posibilidades a considerar:
+Dividir un código extenso en pequeñas funciones crea naturalmente puntos de control para la depuración. Si un programa no está funcionando, existen tres posibilidades a considerar:
 (((debugging)))
 
-* Hay algo incorrecto en los argumentos que obtiene la función; se viola una condición previa.
+* Hay algo incorrecto en los argumentos de la función; se viola una condición previa.
 (((precondition)))
 
 * Hay algo incorrecto en la función; se viola una condición posterior.
@@ -523,13 +523,13 @@ Dividir un código extenso en pequeñas funciones crea de manera natural puntos 
 
 * Hay algo incorrecto en el valor de retorno o la forma en que se está utilizando.
 
-Para descartar la primera posibilidad, puedes agregar una sentencia print al comienzo de la función para mostrar los valores de los parámetros (y tal vez sus tipos). O puedes escribir líneas de código que verifiquen las condiciones previas explícitamente.
+Para descartar la primera posibilidad, puedes agregar una sentencia de impresión al comienzo de la función para mostrar los valores de los parámetros (y tal vez sus tipos). O puedes escribir líneas de código que verifiquen las condiciones previas de manera explícita.
 
-Si los parámetros están bien, agregue una sentencia print antes de cada sentencia de retorno y muestre el valor de retorno. Si es posible, verifique el resultado a mano. Considere llamar a la función con valores que faciliten la verificación del resultado (como en <<incremental_development>>).
+Si los parámetros están bien, agregue una sentencia de impresión antes de cada sentencia return y muestre el valor de retorno. Si es posible, verifique el resultado a mano. Considere llamar a la función con valores que faciliten la verificación del resultado (como en <<incremental_development>>).
 
-Si la función parece estar funcionando, mire la llamada a función para asegurarse de que el valor de retorno se está utilizando correctamente (¡o siquiera si se está utilizando!).
+Si la función parece estar funcionando, revise la llamada a función para asegurarse de que el valor de retorno se está utilizando correctamente (¡o incluso si se está utilizando!).
 
-Agregar sentencias de impresión al principio y al final de una función puede ayudar a que el flujo de ejecución sea más visible. Por ejemplo, aquí hay una versión de +fact+ con sentencias de impresión:
+Agregar sentencias de impresión al principio y al final de una función puede ayudar a que el flujo de ejecución sea más transparente. Por ejemplo, aquí hay una versión de +fact+ con sentencias de impresión:
 (((fact)))(((flow of execution)))(((print statement)))
 
 [source,@julia-setup chap06]
@@ -549,15 +549,14 @@ function fact(n)
 end
 ----
 
-+space+ is a string of space characters that controls the indentation of the output:
++espacio+ es una cadena de caracteres de espacio que permite generar sangría en la salida:
 
 [source,@julia-repl chap06]
 ----
 fact(4)
 ----
 
-If you are confused about the flow of execution, this kind of output can be helpful. It takes some time to develop effective scaffolding, but a little bit of scaffolding can save a lot of debugging.
-
+Si estás confundido con el flujo de ejecución, este tipo de salida puede ser útil. Desarrollar un buen andamiaje toma tiempo, pero un poco de andamiaje puede evitarnos mucha depuración.
 
 === Glossary
 
