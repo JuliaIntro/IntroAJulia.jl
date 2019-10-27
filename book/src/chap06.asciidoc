@@ -420,7 +420,7 @@ Por supuesto, es un poco extraño suponer que la función funciona correctamente
 [[one_more_example]]
 === Un Ejemplo Más
 
-After factorial, the most common example of a recursively defined mathematical function is fibonacci, which has the following definition (see https://en.wikipedia.org/wiki/Fibonacci_number):
+Después de los factoriales, el ejemplo más común de una función matemática definida de manera recursiva es fibonacci, que tiene la siguiente definición (ver https://en.wikipedia.org/wiki/Fibonacci_number):
 (((fibonnaci function)))
 
 [latexmath]
@@ -435,7 +435,7 @@ After factorial, the most common example of a recursively defined mathematical f
 \end{equation}
 ++++
 
-Translated into Julia, it looks like this:
+Traducido a Julia, se ve así:
 (((fib)))((("function", "programmer-defined", "fib", see="fib")))
 
 [source,@julia-setup chap06]
@@ -451,10 +451,9 @@ function fib(n)
 end
 ----
 
-If you try to follow the flow of execution here, even for fairly small values of +n+, your head explodes. But according to the leap of faith, if you assume that the two recursive calls work correctly, then it is clear that you get the right result by adding them together.
+Si intentas seguir el flujo de ejecución en esta función, incluso para valores bastante pequeños de +n+, su cabeza podría estallar. Haciendo un salto de fe, es decir, asumiendo que las dos llamadas recursivas funcionan correctamente, entonces está claro que se obtiene el resultado correcto al sumarlas.
 
-
-=== Checking Types
+=== Tipos de Comprobación
 
 What happens if we call +fact+ and give it +1.5+ as an argument?
 (((StackOverflowError)))
@@ -467,15 +466,15 @@ Stacktrace:
  [1] fact(::Float64) at ./REPL[3]:2
 ----
 
-It looks like an infinite recursion. How can that be? The function has a base case—when +n == 0+. But if +n+ is not an integer, we can _miss_ the base case and recurse forever.
+Parece una recursión infinita. ¿Como es esto posible? La función tiene un caso base (cuando +n == 0+). Pero si +n+ no es un número entero, podemos _perdernos_ el caso base y hacer recursión para siempre.
 (((infinite recursion)))
 
-In the first recursive call, the value of +n+ is +0.5+. In the next, it is +-0.5+. From there, it gets smaller (more negative), but it will never be +0+.
+En la primera llamada recursiva, el valor de +n+ es +0.5+. En el siguiente, es +-0.5+. A partir de ahí, se vuelve más pequeño (más negativo), pero nunca será +0+.
 
-We have two choices. We can try to generalize the factorial function to work with floating-point numbers, or we can make +fact+ check the type of its argument. The first option is called the gamma function and it’s a little beyond the scope of this book. So we’ll go for the second.
+Tenemos dos opciones. Podemos intentar generalizar la función factorial para trabajar con números de punto flotante, o podemos hacer que +fact+ verifique el tipo del argumento. La primera opción se llama función gamma, y está un poco más allá del alcance de este libro. Entonces intentaremos con la segunda.
 (((gamma function)))
 
-We can use the built-in operator +isa+ to verify the type of the argument. While we’re at it, we can also make sure the argument is positive:
+Podemos usar el operador integrado +isa+ para verificar el tipo de argumento. También podemos asegurarnos de que el argumento sea positivo:
 (((isa)))(((fact)))
 
 [source,@julia-setup chap06]
@@ -493,7 +492,7 @@ function fact(n)
 end
 ----
 
-The first base case handles nonintegers; the second handles negative integers. In both cases, the program prints an error message and returns +nothing+ to indicate that something went wrong:
+El primer caso base maneja números no enteros; el segundo maneja enteros negativos. En ambos casos, el programa imprime un mensaje de error y devuelve +nothing+ para indicar que algo salió mal:
 
 [source,@julia-repl-test chap06]
 ----
