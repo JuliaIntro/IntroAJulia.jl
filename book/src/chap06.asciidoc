@@ -560,33 +560,33 @@ Si estás confundido con el flujo de ejecución, este tipo de salida puede ser �
 
 === Glossary
 
-temporary variable::
-A variable used to store an intermediate value in a complex calculation.
+variable temporal::
+Variable usada para almacenar un valor intermedio en un cálculo complejo.
 (((temporary variable)))
 
-dead code::
-Part of a program that can never run, often because it appears after a return statement.
+código muerto::
+Parte de un programa que nunca puede ser ejecutado, a menudo porque aparece después de una sentencia return.
 (((dead code)))
 
-incremental development::
-A program development plan intended to avoid debugging by adding and testing only a small amount of code at a time.
+desarrollo incremental::
+Plan de desarrollo de un programa que intenta evitar la depuración agregando y probando solamente una pequeña porción de código a la vez.
 (((incremental development)))(((program development plan)))
 
-scaffolding::
-Code that is used during program development but is not part of the final version.
+andamiaje::
+Código que se usa durante el desarrollo de un programa pero que no es parte de la versión final del mismo.
 (((scaffolding)))
 
-guardian::
-A programming pattern that uses a conditional statement to check for and handle circumstances that might cause an error.
+guardián::
+Un patrón de programación que usa una sentencia condicional para verificar y manejar circunstancias que puedan causar un error.
 (((guardian)))
 
 
-=== Exercises
+=== Ejercicios
 
 [[ex06-1]]
-===== Exercise 6-4
+===== Ejercicio 6-4
 
-Draw a stack diagram for the following program. What does the program print?
+Dibuje un diagrama de pila para el siguiente programa. ¿Qué imprime el programa?
 
 [source,@julia-setup]
 ----
