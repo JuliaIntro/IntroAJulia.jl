@@ -134,14 +134,14 @@ Para probar la nueva función, la llamamos con una muestra de valores:
 distance(1, 2, 4, 6)
 ----
 
-I chose these values so that the horizontal distance is 3 and the vertical distance is 4; that way, the result is 5, the hypotenuse of a 3-4-5 triangle. When testing a function, it is useful to know the right answer.
+Se eligen estos valores de tal forma que la distancia horizontal sea igual a 3 y la distancia vertical sea igual a 4; de esa manera el resultado es 5 (la hipotenusa del triángulo 3-4-5). Cuando se comprueba una función, es útil conocer la respuesta correcta.
 
-At this point we have confirmed that the function is syntactically correct, and we can start adding code to the body. A reasonable next step is to find the differences latexmath:[\(x_2 - x_1\)] and latexmath:[\(y_2 - y_1\)]. The next version stores those values in temporary variables and prints them with the +@show+ macro.
+Hasta el momento hemos confirmado que la función es sintácticamente correcta, por lo que podemos empezar a agregar líneas de código. El paso lógico siguiente es encontrar las diferencias latexmath:[\(x_2 - x_1\)] y latexmath:[\(y_2 - y_1\)]. En la siguiente versión de la función almacenaremos estos valores en variables temporales y las mostraremos con el macro +@show+.
 ((("@show")))((("macro", "Base", "@show", see="@show")))
 
 [source,@julia-setup]
 ----
-function distance(x₁, y₁, x₂, y₂)
+function distancia(x₁, y₁, x₂, y₂)
     dx = x₂ - x₁
     dy = y₂ - y₁
     @show dx dy
@@ -149,9 +149,9 @@ function distance(x₁, y₁, x₂, y₂)
 end
 ----
 
-If the function is working, it should display +dx = 3+ and +dy = 4+. If so, we know that the function is getting the right arguments and performing the first computation correctly. If not, there are only a few lines to check.
+Si la función trabaja bien, las salidas deben ser +dx = 3+ y +dy = 4+. Si es así, sabemos que la función está obteniendo los parámetros correctos y realizando el primer cálculo correctamente. Si no, entonces sólo hay unas pocas líneas que revisar.
 
-Next we compute the sum of squares of +dx+ and +dy+:
+A continuación calculamos la suma de los cuadrados de +dx+ y +dy+:
 
 [source,@julia-setup]
 ----
@@ -164,12 +164,12 @@ function distance(x₁, y₁, x₂, y₂)
 end
 ----
 
-Again, you would run the program at this stage and check the output (which should be 25). Superscript numbers are also available (*+\^2 TAB+*). Finally, you can use +sqrt+ to compute and return the result:
+De nuevo queremos ejecutar el programa en esta etapa y comprobar la salida (que debería ser 25). Los números en superíndice también están disponibles (*+\^2 TAB+*). Finalmente, se puede usar +sqrt+ para calcular y devolver el resultado:
 (((sqrt)))
 
 [source,@julia-setup]
 ----
-function distance(x₁, y₁, x₂, y₂)
+function distancia(x₁, y₁, x₂, y₂)
     dx = x₂ - x₁
     dy = y₂ - y₁
     d² = dx^2 + dy^2
@@ -177,22 +177,22 @@ function distance(x₁, y₁, x₂, y₂)
 end
 ----
 
-If that works correctly, you are done. Otherwise, you might want to print the value of +sqrt(d²)+ before the +return+ statement.
+Si esto funciona correctamente, habremos terminado. Si no, podríamos mostrar el valor de la variable resultado antes de la sentencia de retorno.
 
-The final version of the function doesn’t display anything when it runs; it only returns a value. The print statements we wrote are useful for debugging, but once you get the function working, you should remove them. Code like that is called _scaffolding_ because it is helpful for building the program but is not part of the final product.
+La versión final de la función no muestra nada cuando se ejecuta; sólo retorna un valor. Las sentencias print que escribimos son útiles para la depuración, pero una vez que la función esté funcionando correctamente, se deben eliminar. El código eliminado se llama _andamiaje_ porque es útil para construir el programa pero no es parte del producto final.
 (((scaffolding)))
 
-When you start out, you should add only a line or two of code at a time. As you gain more experience, you might find yourself writing and debugging bigger chunks. Either way, incremental development can save you a lot of debugging time.
+Al principio, debería añadir solamente una o dos líneas de código cada vez. Conforme vaya ganando experiencia, puede que se encuentre escribiendo y depurando fragmentos mayores de código. Sin embargo, el proceso de desarrollo incremental puede ahorrarle mucho tiempo de depuración.
 
-The key aspects of the process are:
+Los aspectos clave del proceso son:
 
-. Start with a working program and make small incremental changes. At any point, if there is an error, you should have a good idea where it is.
+. Inicie con un programa que funcione y hágale pequeños cambios incrementales. En cualquier momento, si hay un error, sabrá exactamente dónde está.
 
-. Use variables to hold intermediate values so you can display and check them.
+. Use variables temporales para guardar valores intermedios para que pueda mostrarlos y verificarlos.
 
-. Once the program is working, you might want to remove some of the scaffolding or consolidate multiple statements into compound expressions, but only if it does not make the program difficult to read.
+. Una vez que el programa está funcionando, tal vez prefiera eliminar parte del andamiaje o consolidar múltiples sentencias en expresiones compuestas, pero sólo si eso no hace que el programa sea difícil de leer.
 
-===== Exercise 6-2
+===== Ejercicio 6-2
 
 Use incremental development to write a function called +hypotenuse+ that returns the length of the hypotenuse of a right triangle given the lengths of the other two legs as arguments. Record each stage of the development process as you go.
 
