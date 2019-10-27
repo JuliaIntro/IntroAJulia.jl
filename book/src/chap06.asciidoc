@@ -603,8 +603,8 @@ end
 
 function c(x, y, z)
     total = x + y + z
-    square = b(total)^2
-    square
+    cuadrado = b(total)^2
+    cuadrado
 end
 
 x = 1
@@ -613,9 +613,9 @@ println(c(x, y+3, x+y))
 ----
 
 [[ex06-2]]
-===== Exercise 6-5
+===== Ejercicio 6-5
 
-The Ackermann function, latexmath:[\(A(m, n)\)], is defined:
+La función de Ackermann, latexmath:[\(A(m, n)\)], se define:
 (((Ackermann function)))
 
 [latexmath]
@@ -623,70 +623,71 @@ The Ackermann function, latexmath:[\(A(m, n)\)], is defined:
 \begin{equation}
 {A(m, n) =
 \begin{cases}
-              n+1& \textrm{if}\ m = 0 \\
-        A(m-1, 1)& \textrm{if}\ m > 0\ \textrm{and}\ n = 0 \\
-A(m-1, A(m, n-1))& \textrm{if}\ m > 0\ \textrm{and}\ n > 0.
+              n+1& \textrm{si}\ m = 0 \\
+        A(m-1, 1)& \textrm{si}\ m > 0\ \textrm{y}\ n = 0 \\
+A(m-1, A(m, n-1))& \textrm{si}\ m > 0\ \textrm{y}\ n > 0.
 \end{cases}}
 \end{equation}
 ++++
-See https://en.wikipedia.org/wiki/Ackermann_function. Write a function named +ack+ that evaluates the Ackermann function. Use your function to evaluate +ack(3, 4)+, which should be 125. What happens for larger values of +m+ and +n+?
+
+Vea https://en.wikipedia.org/wiki/Ackermann_function. Escriba una función llamada +ack+ que evalúe la función de Ackermann. Use su función para evaluar +ack(3, 4)+, que debería ser 125. ¿Qué sucede para valores mayores de +m+ y +n+?
 (((ack)))((("function", "programmer-defined", "ack", see="ack")))
 
 [[ex06-3]]
-===== Exercise 6-6
+===== Ejercicio 6-6
 
-A palindrome is a word that is spelled the same backward and forward, like “noon” and “redivider”. Recursively, a word is a palindrome if the first and last letters are the same and the middle is a palindrome.
+Un palíndromo es una palabra que se escribe igual en un sentido que en otro, como "ana" y "radar". De manera recursiva, una palabra es un palíndromo si la primera y la última letra son iguales y lo que está entre ellas es un palíndromo.
 (((palindrome)))
 
-The following are functions that take a string argument and return the first, last, and middle letters:
+Las siguientes son funciones que toman un argumento de tipo cadena y devuelven la primera letra, la última, y las intermedias:
 (((first)))((("function", "programmer-defined", "first", see="first")))(((last)))((("function", "programmer-defined", "last", see="last")))(((middle)))((("function", "programmer-defined", "middle", see="middle")))
 
 [source,@julia-setup]
 ----
-function first(word)
-    first = firstindex(word)
-    word[first]
+function primera(palabra)
+    primera = firstindex(palabra)
+    palabra[primera]
 end
 
-function last(word)
-    last = lastindex(word)
-    word[last]
+function ultima(palabra)
+    ultima = lastindex(palabra)
+    palabra[ultima]
 end
 
-function middle(word)
-    first = firstindex(word)
-    last = lastindex(word)
-    word[nextind(word, first) : prevind(word, last)]
+function medio(palabra)
+    primera = firstindex(palabra)
+    ultima = lastindex(palabra)
+    palabra[nextind(palabra, primera) : prevind(palabra, ultima)]
 end
 ----
 
-We’ll see how they work in <<chap08>>
+Veremos cómo funcionan en <<chap08>>.
 
-. Test these functions out. What happens if you call middle with a string with two letters? One letter? What about the empty string, which is written +""+ and contains no letters?
+. Prueba estas funciones. ¿Qué sucede si llamas a la función medio con una cadena de dos letras? ¿Y con una cadena de una letra? ¿Qué pasa con la cadena vacía +""+, que no contiene letras?
 
-. Write a function called +ispalindrome+ that takes a string argument and returns +true+ if it is a palindrome and +false+ otherwise. Remember that you can use the built-in function +length+ to check the length of a string.
+. Escriba una función llamada +espalindromo+ que tome un argumento de tipo cadena y devuelva +true+ si es un palíndromo y +false+ de lo contrario. Recuerde que puede usar la función integrada +length+ para verificar la longitud de una cadena.
 (((ispalindrome)))((("function", "programmer-defined", "ispalindrome", see="ispalindrome")))(((length)))
 
 [[ex06-4]]
-===== Exercise 6-7
+===== Ejercicio 6-7
 
-A number, latexmath:[\(a\)], is a power of latexmath:[\(b\)] if it is divisible by latexmath:[\(b\)] and latexmath:[\(\frac{a}{b}\)] is a power of latexmath:[\(b\)]. Write a function called +ispower+ that takes parameters +a+ and +b+ and returns +true+ if +a+ is a power of +b+.
+Un número, latexmath:[\(a\)], es una potencia de latexmath:[\(b\)] si es divisible por latexmath:[\(b\)] y latexmath:[\(\frac{a}{b}\)] es una potencia de latexmath:[\(b\)]. Escriba una función llamada +espotencia+ que tome los parámetros +a+ y +b+ y devuelva +true+ si +a+ es una potencia de +b+.
 (((ispower)))((("function", "programmer-defined", "ispower", see="ispower")))
 
 [TIP]
 ====
-You will have to think about the base case.
+Tendrás que pensar en el caso base.
 ====
 
 [[ex06-5]]
-===== Exercise 6-8
+===== Ejercicio 6-8
 
-The greatest common divisor (GCD) of latexmath:[\(a\)] and latexmath:[\(b\)] is the largest number that divides both of them with no remainder.
+El máximo común divisor (MCD) de latexmath:[\(a\)] y latexmath:[\(b\)] es el número más grande que los divide a ambos con resto 0.
 
-One way to find the GCD of two numbers is based on the observation that if latexmath:[\(r\)] is the remainder when latexmath:[\(a\)] is divided by latexmath:[\(b\)], then +gcd(a, b) = gcd(b, r)+. As a base case, we can use +gcd(a, 0) = a+.
+Una forma de encontrar el MCD de dos números se basa en la observación de que si latexmath:[\(r\)] es el resto cuando latexmath:[\(a\)] se divide por latexmath:[\(b\)], entonces +mcd(a, b) = mcd(b, r)+. Como caso base, podemos usar +mcd(a, 0) = a+.
 
-Write a function called +gcd+ that takes parameters +a+ and +b+ and returns their greatest common divisor.
+Escriba una función llamada +mcd+ que tome los parámetros +a+ y +b+ y devuelva su máximo divisor común.
 (((gcd)))((("function", "programmer-defined", "gcd", see="gcd")))
 
-Credit: This exercise is based on an example from Abelson and Sussman’s _Structure and Interpretation of Computer Programs_.
+Créditos: Este ejercicio se basa en un ejemplo del libro _Estructura e interpretación de programas informáticos_ de Abelson y Sussman.
 
