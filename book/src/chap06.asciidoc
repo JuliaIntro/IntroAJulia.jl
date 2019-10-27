@@ -179,7 +179,7 @@ end
 
 Si esto funciona correctamente, habremos terminado. Si no, podríamos mostrar el valor de la variable resultado antes de la sentencia de retorno.
 
-La versión final de la función no muestra nada cuando se ejecuta; sólo retorna un valor. Las sentencias print que escribimos son útiles para la depuración, pero una vez que la función esté funcionando correctamente, se deben eliminar. El código eliminado se llama _andamiaje_ porque es útil para construir el programa pero no es parte del producto final.
+La versión final de la función no muestra nada cuando se ejecuta; sólo retorna un valor. Las sentencias print que escribimos son útiles para la depuración, pero una vez que el programa esté funcionando correctamente, se deben eliminar. El código eliminado se llama _andamiaje_ porque es útil para construir el programa pero no es parte del producto final.
 (((scaffolding)))
 
 Al principio, debería añadir solamente una o dos líneas de código cada vez. Conforme vaya ganando experiencia, puede que se encuentre escribiendo y depurando fragmentos mayores de código. Sin embargo, el proceso de desarrollo incremental puede ahorrarle mucho tiempo de depuración.
@@ -194,47 +194,46 @@ Los aspectos clave del proceso son:
 
 ===== Ejercicio 6-2
 
-Use incremental development to write a function called +hypotenuse+ that returns the length of the hypotenuse of a right triangle given the lengths of the other two legs as arguments. Record each stage of the development process as you go.
+Use la técnica de desarrollo incremental para escribir una función llamada +hipotenusa+ que retorne el largo de la hipotenusa de un triángulo rectángulo dado el largo de las otras dos aristas. Registre cada etapa del proceso de desarrollo.
 
+=== Composición
 
-=== Composition
-
-As you should expect by now, you can call one function from within another. As an example, we’ll write a function that takes two points, the center of the circle and a point on the perimeter, and computes the area of the circle.
+Ahora, como usted esperaría, se puede llamar a una función desde otra. Como ejemplo, escribiremos una función que tome dos puntos, el centro del círculo y un punto del perímetro, y calcule el área del círculo.
 (((composition)))
 
-Assume that the center point is stored in the variables +xc+ and +yc+, and the perimeter point is in +xp+ and +yp+. The first step is to find the radius of the circle, which is the distance between the two points. We just wrote a function, distance, that does that:
+Suponga que el punto central está almacenado en las variables +xc+ y +yc+, y que el punto del perímetro lo está en +xp+ y +yp+. El primer paso es hallar el radio del círculo, que es la distancia entre los dos puntos. Hemos escrito la función distancia que realiza esta tarea:
 
 [source,julia]
 ----
-radius = distance(xc, yc, xp, yp)
+radio = distancia(xc, yc, xp, yp)
 ----
 
-The next step is to find the area of a circle with that radius; we just wrote that, too:
+El siguiente paso es encontrar el área del círculo usando este radio. De nuevo usaremos una de las funciones definidas previamente:
 
 [source,julia]
 ----
-result = area(radius)
+resultado = area(radio)
 ----
 
-Encapsulating these steps in a function, we get:
+Envolviendo todo en una función, obtenemos:
 (((circlearea)))((("function", "programmer-defined", "circlearea", see="circlearea")))
 
 [source,@julia-setup]
 ----
-function circlearea(xc, yc, xp, yp)
-    radius = distance(xc, yc, xp, yp)
-    result = area(radius)
-    return result
+function areacirculo(xc, yc, xp, yp)
+    radio = distancia(xc, yc, xp, yp)
+    resultado = area(radio)
+    return resultado
 end
 ----
 
-The temporary variables +radius+ and +result+ are useful for development and debugging, but once the program is working, we can make it more concise by composing the function calls:
+Las variables temporales +radio+ y +resultado+ son útiles para el desarrollo y la depuración, pero una vez que el programa está funcionando, podemos hacerlo más conciso componiendo las llamadas a función:
 (((temporary variable)))
 
 [source,@julia-setup]
 ----
-function circlearea(xc, yc, xp, yp)
-    area(distance(xc, yc, xp, yp))
+function areacirculo(xc, yc, xp, yp)
+    area(distancia(xc, yc, xp, yp))
 end
 ----
 
