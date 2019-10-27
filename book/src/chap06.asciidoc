@@ -492,7 +492,7 @@ function fact(n)
 end
 ----
 
-El primer caso base maneja números no enteros; el segundo maneja enteros negativos. En ambos casos, el programa imprime un mensaje de error y devuelve +nothing+ para indicar que algo salió mal:
+El primer caso base se hace cargo de números no enteros; el segundo de enteros negativos. En ambos casos, el programa imprime un mensaje de error y devuelve +nothing+ para indicar que algo salió mal:
 
 [source,@julia-repl-test chap06]
 ----
@@ -502,49 +502,49 @@ julia> fact(-2)
 ERROR: Factorial is not defined for negative integers.
 ----
 
-If we get past both checks, we know that +n+ is positive or zero, so we can prove that the recursion terminates.
+Si superamos ambas verificaciones, sabemos que +n+ es positivo o cero, por lo que podemos probar que la recursión termina.
 
-This program demonstrates a pattern sometimes called a _guardian_. The first two conditionals act as guardians, protecting the code that follows from values that might cause an error. The guardians make it possible to prove the correctness of the code.
+Este programa muestra un patrón a veces llamado _guardian_. Los dos primeros condicionales actúan como guardianes, protegiendo el código que sigue de los valores que pueden causar un error. Los guardianes hacen posible demostrar que el código es correcto.
 (((guardian)))
 
-In <<catching_exceptions>> we will see a more flexible alternative to printing an error message: raising an exception.
+En <<catching_exceptions>> veremos una alternativa más flexible para imprimir un mensaje de error: generar una excepción.
 
 [[deb06]]
 === Debugging
 
-Breaking a large program into smaller functions creates natural checkpoints for debugging. If a function is not working, there are three possibilities to consider:
+Dividir un código extenso en pequeñas funciones crea de manera natural puntos de control para la depuración. Si un programa no está funcionando, existen tres posibilidades a considerar:
 (((debugging)))
 
-* There is something wrong with the arguments the function is getting; a precondition is violated.
+* Hay algo incorrecto en los argumentos que obtiene la función; se viola una condición previa.
 (((precondition)))
 
-* There is something wrong with the function; a postcondition is violated.
+* Hay algo incorrecto en la función; se viola una condición posterior.
 (((postcondition)))
 
-* There is something wrong with the return value or the way it is being used.
+* Hay algo incorrecto en el valor de retorno o la forma en que se está utilizando.
 
-To rule out the first possibility, you can add a print statement at the beginning of the function and display the values of the parameters (and maybe their types). Or you can write code that checks the preconditions explicitly.
+Para descartar la primera posibilidad, puedes agregar una sentencia print al comienzo de la función para mostrar los valores de los parámetros (y tal vez sus tipos). O puedes escribir líneas de código que verifiquen las condiciones previas explícitamente.
 
-If the parameters look good, add a print statement before each return statement and display the return value. If possible, check the result by hand. Consider calling the function with values that make it easy to check the result (as in <<incremental_development>>).
+Si los parámetros están bien, agregue una sentencia print antes de cada sentencia de retorno y muestre el valor de retorno. Si es posible, verifique el resultado a mano. Considere llamar a la función con valores que faciliten la verificación del resultado (como en <<incremental_development>>).
 
-If the function seems to be working, look at the function call to make sure the return value is being used correctly (or used at all!).
+Si la función parece estar funcionando, mire la llamada a función para asegurarse de que el valor de retorno se está utilizando correctamente (¡o siquiera si se está utilizando!).
 
-Adding print statements at the beginning and end of a function can help make the flow of execution more visible. For example, here is a version of +fact+ with print statements:
+Agregar sentencias de impresión al principio y al final de una función puede ayudar a que el flujo de ejecución sea más visible. Por ejemplo, aquí hay una versión de +fact+ con sentencias de impresión:
 (((fact)))(((flow of execution)))(((print statement)))
 
 [source,@julia-setup chap06]
 ----
 function fact(n)
-    space = " " ^ (4 * n)
-    println(space, "factorial ", n)
+    espacio = " " ^ (4 * n)
+    println(espacio, "factorial ", n)
     if n == 0
-        println(space, "returning 1")
+        println(espacio, "returning 1")
         return 1
     else
-        recurse = fact(n-1)
-        result = n * recurse
-        println(space, "returning ", result)
-        return result
+        recursion = fact(n-1)
+        resultado = n * recursion
+        println(espacio, "devolviendo ", resultado)
+        return resultado
     end
 end
 ----
