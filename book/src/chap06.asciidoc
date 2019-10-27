@@ -1,9 +1,8 @@
 [[chap06]]
 == Funciones productivas
 
-Muchas de las funciones de Julia que hemos utilizado; como las funciones matemáticas, producen valores de retorno. Todas las funciones que hemos escrito son nulas, es decir, tienen un efecto, como imprimir un valor, pero devuelven el valor +nothing+. En este capítulo aprenderá a escribir funciones productivas.
+Muchas de las funciones de Julia que hemos utilizado, como las funciones matemáticas, producen valores de retorno. Todas las funciones que hemos escrito hasta ahora son nulas, es decir, tienen un efecto, como imprimir un valor, pero devuelven el valor +nothing+. En este capítulo aprenderemos a escribir funciones productivas.
 (((fruitful function)))
-
 
 === Valores de retorno
 
@@ -15,7 +14,7 @@ e = exp(1.0)
 altura = radio * sin(radio)
 ----
 
-Las funciones que hemos escrito hasta ahora son nulas. Hablando informalmente, no tienen valor de retorno; más precisamente, su valor de retorno es +nothing+. En este capítulo, (finalmente) vamos a escribir funciones productivas. El primer ejemplo es +area+, que devuelve el área de un círculo dado un radio:
+Las funciones que hemos escrito hasta ahora son nulas. Coloquialmente hablando, no tienen valor de retorno; de manera formal, su valor de retorno es +nothing+. En este capítulo, (finalmente) vamos a escribir funciones productivas. El primer ejemplo es +area+, que devuelve el área de un círculo dado un radio:
 (((nothing)))(((area)))((("function", "programmer-defined", "area", see="area")))
 
 [source,@julia-setup]
@@ -84,25 +83,24 @@ nothing
 
 [TIP]
 ====
-Julia provides a built-in function called +abs+ that computes absolute values.
+Julia tiene una función incorporada llamada +abs+ que calcula los valores absolutos.
 (((abs)))((("function", "Base", "abs", see="abs")))
 ====
 
-===== Exercise 6-1
+===== Ejercicio 6-1
 
-Write a +compare+ function takes two values, +x+ and +y+, and returns +1+ if +x > y+, +0+ if +x == y+, and +-1+ if +x < y+.
-
+Escriba la función +comparar+ que tome dos valores, +x+ y +y+, y que devuelva +1+ si +x > y+, +0+ si +x == y+, y +-1+ si +x < y+.
 
 [[incremental_development]]
-=== Incremental Development
+=== Desarrollo incremental
 
-As you write larger functions, you might find yourself spending more time debugging.
+Conforme vaya escribiendo funciones más extensas puede empezar a dedicar más tiempo a la depuración.
 (((debugging)))
 
-To deal with increasingly complex programs, you might want to try a process called _incremental development_. The goal of incremental development is to avoid long debugging sessions by adding and testing only a small amount of code at a time.
+Para lidiar con programas de complejidad creciente, se sugiere una técnica llamada desarrollo incremental. El objetivo del desarrollo incremental es evitar largas sesiones de depuración, adicionando y probando solamente pequeñas porciones de código cada vez.
 (((incremental development)))
 
-As an example, suppose you want to find the distance between two points, given by the coordinates latexmath:[\(\left(x_1, y_1\right)\)] and latexmath:[\(\left(x_2, y_2\right)\)]. By the Pythagorean theorem, the distance is:
+Por ejemplo, suponga que desea encontrar la distancia entre dos puntos dados por las coordenadas latexmath:[\(\left(x_1, y_1\right)\)] y latexmath:[\(\left(x_2, y_2\right)\)]. Por el teorema de Pitágoras, la distancia es:
 (((Pythagorean theorem)))
 
 [latexmath]
@@ -112,11 +110,11 @@ As an example, suppose you want to find the distance between two points, given b
 \end{equation}
 ++++
 
-The first step is to consider what a distance function should look like in Julia. In other words, what are the inputs (parameters) and what is the output (return value)?
+El primer paso es considerar qué aspecto tendría la función distancia en Julia. En otras palabras, ¿cuáles son las entradas (parámetros) y cuál es la salida (valor de retorno)?
 
-In this case, the inputs are two points, which you can represent using four numbers. The return value is the distance represented by a floating-point value.
+En este caso las entradas son los dos puntos, que podemos representar usando cuatro números. El valor devuelto es la distancia, que es un valor de punto flotante.
 
-Immediately you can write an outline of the function:
+Escribamos una primera versión de la función:
 (((distance)))((("function", "programmer-defined", "distance", see="distance")))
 
 [source,@julia-setup chap06]
@@ -126,10 +124,10 @@ function distance(x₁, y₁, x₂, y₂)
 end
 ----
 
-Obviously, this version doesn’t compute distances; it always returns zero. But it is syntactically correct, and it runs, which means that you can test it before you make it more complicated. The subscript numbers are available in the Unicode character encoding (*+\_1 TAB+*, *+\_2 TAB+*, etc.).
+Obviamente esta versión de la función no calcula distancias; siempre devuelve cero. Pero es correcta sintácticamente y se ejecutará, lo que implica que la podemos probar antes de hacerla más compleja. Los números de subíndice están disponibles en la codificación de caracteres Unicode (*+\_1 TAB+*, *+\_2 TAB+*, etc.).
 (((Unicode character)))
 
-To test the new function, call it with sample arguments:
+Para probar la nueva función, la llamamos con una muestra de valores:
 
 [source,@julia-repl-test chap06]
 ----
