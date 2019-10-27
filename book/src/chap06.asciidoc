@@ -1,7 +1,7 @@
 [[chap06]]
 == Funciones productivas
 
-Muchas de las funciones de Julia que hemos utilizado, como las funciones matemáticas, producen valores de retorno. Todas las funciones que hemos escrito hasta ahora son nulas, es decir, tienen un efecto, como imprimir un valor, pero devuelven el valor +nothing+. En este capítulo aprenderemos a escribir funciones productivas.
+Muchas de las funciones de Julia que hemos utilizado, como las funciones matemáticas, producen valores de retorno. Todas las funciones que hemos escrito hasta ahora son nulas, es decir, tienen un efecto (como imprimir un valor) pero devuelven el valor +nothing+. En este capítulo aprenderemos a escribir funciones productivas.
 (((fruitful function)))
 
 === Valores de retorno
