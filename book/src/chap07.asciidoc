@@ -4,7 +4,6 @@
 Este capítulo se centra en la iteración, que es la capacidad de ejecutar repetidamente un bloque de sentencias. Hemos visto dos tipos de iteración: usando recursión en <<recursion>>, y usando ciclos +for+, en <<simple_repetition>>. En este capítulo veremos otro tipo más: usando sentencias +while+. Primeramente, se introducirán algunos términos sobre asignación de variables.
 (((iteration)))(((recursion)))(((for statement)))
 
-
 === Asignación múltiple
 
 Puede que ya haya descubierto que está permitido realizar más de una asignación a la misma variable. Una nueva asignación hace que la variable existente se refiera a un nuevo valor (y deje de referirse al viejo valor).
@@ -49,7 +48,7 @@ La tercera línea cambia el valor de +a+ pero no cambia el valor de +b+, por lo 
 
 [WARNING]
 ====
-Reasignar variables puede ser útil, pero se debe hacer con precaución. Si los valores cambian frecuentemente, puede hacer que el código sea difícil de leer y depurar.
+Reasignar variables puede ser útil, pero se debe tener precaución. Si los valores cambian frecuentemente, la reasignación puede hacer que el código sea difícil de leer y depurar.
 
 Está permitido definir una función con el mismo nombre de una variable definida anteriormente.
 ====
@@ -92,25 +91,25 @@ Actualizar una variable sumándole 1 de denomina un _incremento_; y restándole 
 (((increment)))(((decrement)))
 
 
-=== The +while+ Statement
+=== La Sentencia +while+
 
-Computers are often used to automate repetitive tasks. Repeating identical or similar tasks without making errors is something that computers do well and people do poorly. In a computer program, repetition is also called _iteration_.
+Las computadoras se usan a menudo para automatizar tareas repetitivas. Realizar repetidamente tareas idénticas o similares sin cometer errores es algo que las computadoras hacen bien y que los seres humanos hacemos limitadamente. La ejecución repetida de un conjunto de sentencias se llama _iteración_. 
 (((iteration)))
 
-We have already seen two functions, +countdown+ and +printn+, that iterate using recursion. Because iteration is so common, Julia provides language features to make it easier. One is the +for+ statement we saw in <<simple_repetition>>. We’ll get back to that later.
+Ya hemos visto dos funciones, +cuenta regresiva+ y +printn+, que iteran usando recursividad. Por ser la iteración tan común, Julia proporciona varias características que la hacen más fácil. Una es la sentencia +for+ que vimos en <<simple_repetition>>, a la cual volveremos después. 
 (((recursion)))(((for statement)))
 
-Another is the +while+ _statement_. Here is a version of +countdown+ that uses a +while+ statement:
+Otra característica es la _sentencia_ +while+. Aquí hay una versión de +cuentaregresiva+ que muestra el uso de la sentencia +while+:
 (((while)))((("keyword", "while", see="while")))(((while statement)))((("statement", "while", see="while statement")))
 
 [source,@julia-setup]
 ----
-function countdown(n)
+function cuentaregresiva(n)
     while n > 0
         print(n, " ")
         n = n - 1
     end
-    println("Blastoff!")
+    println("Despegue!")
 end
 ----
 
