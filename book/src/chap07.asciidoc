@@ -339,7 +339,7 @@ Cada vez que realiza una verificación como esta, reduce a la mitad el número d
 
 En la práctica, no siempre se conoce dónde está la "mitad del programa", y no siempre es posible verificarlo. No tiene sentido contar líneas y encontrar el punto medio exacto. En su lugar, piense en los lugares del programa donde puede haber errores y en los lugares donde es fácil verificar. Luego, elija un lugar en donde usted crea que las posibilidades de encontrar un error antes o después de esta verificación son más o menos las mismas.
 
-=== Glossary
+=== Glosario
 
 asignación múltiple::
 Asignar un nuevo valor a una variable que ya existe.
@@ -387,15 +387,15 @@ Proceso general para resolver una categoría de problemas.
 (((algorithm)))
 
 
-=== Exercises
+=== Ejercicios
 
 [[ex07-1]]
-===== Exercise 7-2
+===== Ejercicio 7-2
 
-Copy the loop from <<square_roots>> and encapsulate it in a function called +mysqrt+ that takes +a+ as a parameter, chooses a reasonable value of +x+, and returns an estimate of the square root of +a+.
+Copie el bucle de <<square_roots>> e insértelo en una función llamada +miraiz+, que tome +a+ como parámetro, elija un valor razonable de +x+ y devuelva una estimación de la raíz cuadrada de +a+.
 (((mysqrt)))((("function", "programmer-defined", "mysqrt", see="mysqrt")))
 
-To test it, write a function named +testsquareroot+ that prints a table like this:
+Para probarla, escriba una función llamada +probarraiz+ que imprima una tabla como esta:
 (((testsquareroot)))((("function", "programmer-defined", "testsquareroot", see="testsquareroot")))
 
 [source,@julia-eval]
@@ -407,12 +407,12 @@ out = String(take!(io))
 println(out)
 ----
 
-The first column is a number, +a+; the second column is the square root of a computed with +mysqrt+; the third column is the square root computed by +sqrt+; the fourth column is the absolute value of the difference between the two estimates.
+La primera columna es un número, +a+; la segunda columna es la raíz cuadrada de +a+ calculada con +miraiz+; la tercera columna es la raíz cuadrada calculada con la función integrada +sqrt+; la cuarta columna es el valor absoluto de la diferencia entre las dos estimaciones.
 
 [[ex07-2]]
 ===== Exercise 7-3
 
-The built-in function +Meta.parse+ takes a string and transforms it into an expression. This expression can be evaluated in Julia with the function +Core.eval+. For example:
+La función integrada +Meta.parse+ toma una cadena y la transforma en una expresión. Esta expresión se puede evaluar en Julia con la función +Core.eval+. Por ejemplo:
 (((parse)))((("function", "Meta", "parse", see="parse")))(((eval)))((("function", "Core", "eval", see="eval")))
 
 [source,@julia-eval chap07]
@@ -432,14 +432,13 @@ julia> eval(expr)
 1.7724538509055159
 ----
 
-Write a function called +evalloop+ that iteratively prompts the user, takes the resulting input and evaluates it using +eval+, and prints the result. It should continue until the user enters +done+, and then return the value of the last expression it evaluated.
-
+Escriba una función llamada +evalbucle+ que iterativamente solicite una entrada al usuario, tome la entrada resultante y la evalúe usando +eval+, pasa posteriormente imprimir el resultado. Debe continuar hasta que el usuario ingrese +listo+, y luego devolver el valor de la última expresión que evaluó.
 (((evalloop)))((("function", "programmer-defined", "evalloop", see="evalloop")))
 
 [[ex07-3]]
 ===== Exercise 7-4
 
-The mathematician Srinivasa Ramanujan found an infinite series that can be used to generate a numerical approximation of latexmath:[\(\frac{1}{\pi}\)]:
+El matemático Srinivasa Ramanujan encontró una serie infinita que puede usarse para generar una aproximación numérica de latexmath:[\(\frac{1}{\pi}\)]:
 
 [latexmath]
 ++++
@@ -448,5 +447,5 @@ The mathematician Srinivasa Ramanujan found an infinite series that can be used 
 \end{equation}
 ++++
 
-Write a function called +estimatepi+ that uses this formula to compute and return an estimate of π. It should use a while loop to compute terms of the summation until the last term is smaller than +1e-15+ (which is Julia notation for latexmath:[\(10^{-15}\)]). You can check the result by comparing it to +π+.
+Escriba una función llamada +estimarpi+ que utilice esta fórmula para calcular y devolver una estimación de π. Debe usar un ciclo while para calcular los términos de la suma hasta que el último término sea menor que +1e-15+ (que es la notación de Julia para latexmath:[\(10^{-15}\)]). Puede verificar el resultado comparándolo con +π+.
 (((estimatepi)))((("function", "programmer-defined", "estimatepi", see="estimatepi")))
