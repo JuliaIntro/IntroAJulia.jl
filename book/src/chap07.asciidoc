@@ -1,5 +1,5 @@
 [[chap07]]
-== Iteration
+== Iteración
 
 Este capítulo se centra en la iteración, que es la capacidad de ejecutar repetidamente un bloque de sentencias. Hemos visto dos tipos de iteración: usando recursión en <<recursion>>, y usando ciclos +for+, en <<simple_repetition>>. En este capítulo veremos otro tipo más: usando sentencias +while+. Primeramente, se introducirán algunos términos sobre asignación de variables.
 (((iteration)))(((recursion)))(((for statement)))
