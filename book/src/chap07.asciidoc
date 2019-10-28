@@ -164,39 +164,38 @@ Reescribe la función +printn+ de <<recursion>> utilizando iteración en vez de 
 
 === +break+
 
-Sometimes you don’t know it’s time to end a loop until you get half way through the body. In that case you can use the _break statement_ to jump out of the loop.
+A veces no se sabe que un ciclo debe terminar hasta que se llega a la mitad del cuerpo. En ese caso, se puede usar la _sentencia break_ para salir del bucle.
 (((break)))((("keyword", "break", see="break")))(((break statement)))((("statement", "break", see="break statement")))
 
-For example, suppose you want to take input from the user until they type done. You could write:
+Por ejemplo, suponga que se desea recibir entradas del usuario hasta que este escriba "listo". Podríamos escribir:
 (((readline)))
 
 [source,julia]
 ----
 while true
     print("> ")
-    line = readline()
-    if line == "done"
+    linea = readline()
+    if line == "listo"
         break
     end
-    println(line)
+    println(linea)
 end
-println("Done!")
+println("¡Listo!")
 ----
 
-The loop condition is +true+, which is always true, so the loop runs until it hits the break statement.
+La condición del bucle es +true+, que siempre es verdadero, por lo que el bucle se ejecuta hasta que llega a la sentencia break.
 
-Each time through, it prompts the user with an angle bracket. If the user types +done+, the break statement exits the loop. Otherwise the program echoes whatever the user types and goes back to the top of the loop. Here’s a sample run:
+En cada iteración, se le pide al usuario una entrada con el símbolo ">". Si el usuario escribe +listo+, la sentencia break sale del bucle. De lo contrario, el programa repite lo que escriba el usuario y vuelve a la parte superior del bucle. A continuación se muestra su ejecución:
 
 [source]
 ----
-> not done
-not done
-> done
-Done!
+> no listo
+no listo
+> listo
+¡Listo!
 ----
 
-This way of writing while loops is common because you can check the condition anywhere in the loop (not just at the top) and you can express the stop condition affirmatively (“stop when this happens”) rather than negatively (“keep going until that happens”).
-
+Esta forma de escribir bucles while es común porque permite verificar la condición en cualquier parte del bucle (no solo en la parte superior) y puede expresar la condición de término de manera afirmativa ("detenerse cuando esto suceda"), en vez de negativamente ("continuar hasta que esto suceda").
 
 === +continue+
 
