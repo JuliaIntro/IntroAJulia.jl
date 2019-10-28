@@ -217,9 +217,9 @@ Si +i+ es divisible por 3, la sentencia continue detiene la iteración actual y 
 [[square_roots]]
 === Raíces Cuadradas
 
-Los bucles se usan a menudo en programas que calculan resultados numéricos empezando con una respuesta aproximada, mejorando iterativamente.
+Los bucles son comúnmente utilizados en programas que calculan resultados numéricos, que comienzan con una respuesta aproximada, y que es iterativamente mejorada.
 
-Por ejemplo, una forma de calcular raíces cuadradas es el método de Newton. Suponga que desea conocer la raíz cuadrada de latexmath:[\(a\)]. Si comienza con casi cualquier estimación latexmath:[\(x\)], se puede obtener una mejora con la siguiente fórmula:
+Por ejemplo, una forma de calcular raíces cuadradas es el método de Newton. Suponga que desea conocer la raíz cuadrada de latexmath:[\(a\)]. Si comienza con casi cualquier estimación latexmath:[\(x\)], puede calcular una mejor aproximación con la siguiente fórmula:
 (((Newton's method)))
 
 [latexmath]
@@ -265,7 +265,7 @@ julia> y = (x + a/x) / 2
 2.0000000000262146
 ----
 
-En general, no sabemos de antemano cuántos pasos se necesitan para llegar a la respuesta correcta, pero sabemos cuándo hemos llegado a ella pues la estimación deja de cambiar:
+En general, no sabemos de antemano cuántos pasos se necesitan para llegar a la respuesta correcta, pero sabemos que hemos llegado a ella cuando la estimación deja de cambiar:
 
 [source,@julia-repl-test chap07]
 ----
@@ -279,7 +279,7 @@ julia> y = (x + a/x) / 2
 2.0
 ----
 
-When +y == x+, we can stop. Here is a loop that starts with an initial estimate, +x+, and improves it until it stops changing:
+Cuando +y == x+, podemos detenernos. A continuación se muestra un ciclo que comienza con una estimación inicial, +x+, la cual mejora hasta que deja de cambiar:
 
 [source,julia]
 ----
@@ -293,9 +293,9 @@ while true
 end
 ----
 
-For most values of a this works fine, but in general it is dangerous to test float equality. Floating-point values are only approximately right: most rational numbers, like latexmath:[\(\frac{1}{3}\)], and irrational numbers, like latexmath:[\(\sqrt 2\)], can’t be represented exactly with a +Float64+.
+Para la mayoría de los valores de a esto funciona bien, aunque en general no se recomienda probar igualdad entre números de punto flotante. Los números de punto flotante son aproximadamente correctos: la mayoría de los números racionales, como latexmath:[\(\frac{1}{3}\)], e irracionales, como latexmath:[\(\sqrt 2\)], no pueden ser representados exactamente con un +Float64+.
 
-Rather than checking whether +x+ and +y+ are exactly equal, it is safer to use the built-in function +abs+ to compute the absolute value, or magnitude, of the difference between them:
+En lugar de verificar si +x+ e +y+ son exactamente iguales, es más seguro usar la función integrada +abs+ para calcular el valor absoluto o la magnitud de la diferencia entre ellos:
 (((abs)))
 
 [source,julia]
@@ -305,87 +305,85 @@ if abs(y-x) < ε
 end
 ----
 
-Where +ε+ (*+\varepsilon TAB+*) has a value like +0.0000001+ that determines how close is close enough.
+Donde +ε+ (*+\varepsilon TAB+*) toma un valor como +0.0000001+, y representa el error que estamos dispuestos a aceptar entre la estimación y el valor real.
 
+=== Algoritmos
 
-=== Algorithms
-
-Newton’s method is an example of an _algorithm_: it is a mechanical process for solving a category of problems (in this case, computing square roots).
+El método de Newton es un ejemplo de un _algoritmo_: es un proceso mecánico que permite resolver una categoría de problemas (en este caso, el cálculo de raíces cuadradas).
 (((algorithm)))
 
-To understand what an algorithm is, it might help to start with something that is not an algorithm. When you learned to multiply single-digit numbers, you probably memorized the multiplication table. In effect, you memorized 100 specific solutions. That kind of knowledge is not algorithmic.
+Para comprender qué es un algoritmo, podría ayudar empezar con algo que no es un algoritmo. Cuando aprendiste a multiplicar números de un solo dígito, probablemente memorizaste la tabla de multiplicar. En efecto, memorizaste 100 soluciones específicas. Ese tipo de conocimiento no es un algoritmo.
 
-But if you were “lazy”, you might have learned a few tricks. For example, to find the product of latexmath:[\(n\)] and 9, you can write latexmath:[\(n-1\)] as the first digit and latexmath:[\(10-n\)] as the second digit. This trick is a general solution for multiplying any single-digit number by 9. That’s an algorithm!
+Pero si fueras "flojo", podrías haber aprendido algunos trucos. Por ejemplo, para encontrar el producto de latexmath:[\(n\)] y 9, puedes escribir latexmath:[\(n-1\)] como el primer dígito y latexmath:[\(10-n\)] como el segundo dígito. Este truco es una solución general para multiplicar cualquier número de un solo dígito por 9. ¡Este es un algoritmo!
 
-Similarly, the techniques you learned for addition with carrying, subtraction with borrowing, and long division are all algorithms. One of the characteristics of algorithms is that they do not require any intelligence to carry out. They are mechanical processes where each step follows from the last according to a simple set of rules.
+Del mismo modo, las técnicas que aprendió para la suma con “llevamos tanto”, la resta con “pedimos prestado tanto”, y la división “larga o con galera o de casita” son todas ellas algoritmos. Una de las características de los algoritmos es que no requieren inteligencia para realizarlos. Son procesos mecánicos donde cada paso se sigue de acuerdo com un conjunto simple de reglas.
 
-Executing algorithms is boring, but designing them is interesting, intellectually challenging, and a central part of computer science.
+Ejecutar algoritmos es aburrido, pero diseñarlos es interesante, intelectualmente desafiante y son una parte central de la informática.
 
-Some of the things that people do naturally, without difficulty or conscious thought, are the hardest to express algorithmically. Understanding natural language is a good example. We all do it, but so far no one has been able to explain _how_ we do it, at least not in the form of an algorithm.
+Algunas de las cosas que las personas hacen naturalmente, sin dificultad o conscientemente, son las más difíciles de expresar en algoritmos. Comprender el lenguaje natural es un buen ejemplo. Todos lo hacemos, pero hasta ahora nadie ha podido explicar _cómo_ lo hacemos, al menos no en forma de algoritmo.
 
+=== Depuración
 
-=== Debugging
-
-As you start writing bigger programs, you might find yourself spending more time debugging. More code means more chances to make an error and more places for bugs to hide.
+A medida que comienzas a escribir programas más extensos, es posible que pases más tiempo depurando. Más código significa más posibilidades de cometer un error y más lugares en dónde se pueden esconder los errores.
 (((debugging)))
 
-One way to cut your debugging time is “debugging by bisection”. For example, if there are 100 lines in your program and you check them one at a time, it would take 100 steps.
+Una forma de reducir el tiempo de depuración es "depurar por bisección". Por ejemplo, si hay 100 líneas en su programa y las revisas una a la vez, serían 100 revisiones.
 (((debugging by bisection)))
 
-Instead, try to break the problem in half. Look at the middle of the program, or near it, for an intermediate value you can check. Add a print statement (or something else that has a verifiable effect) and run the program.
+Es mejor tratar de dividir el problema en dos. Busque en la mitad del programa, o cerca, un valor intermedio que pueda verificar. Agregue una sentencia de impresión (o algo que permita verificar) y ejecute el programa.
 (((print statement)))
 
-If the mid-point check is incorrect, there must be a problem in the first half of the program. If it is correct, the problem is in the second half.
+Si esta verificación es incorrecta, debe haber un problema en la primera mitad del programa. Si es correcta, el problema está en la segunda mitad.
 
-Every time you perform a check like this, you halve the number of lines you have to search. After six steps (which is fewer than 100), you would be down to one or two lines of code, at least in theory.
+Cada vez que realiza una verificación como esta, reduce a la mitad el número de líneas que debe revisar. Después de seis pasos (que es mucho menos que 100), se reduciría a una o dos líneas de código, al menos en teoría.
 
-In practice it is not always clear what the “middle of the program” is and not always possible to check it. It doesn’t make sense to count lines and find the exact midpoint. Instead, think about places in the program where there might be errors and places where it is easy to put a check. Then choose a spot where you think the chances are about the same that the bug is before or after the check.
-
+En la práctica, no siempre se conoce dónde está la "mitad del programa", y no siempre es posible verificarlo. No tiene sentido contar líneas y encontrar el punto medio exacto. En su lugar, piense en los lugares del programa donde puede haber errores y en los lugares donde es fácil verificar. Luego, elija un lugar en donde usted crea que las posibilidades de encontrar un error antes o después de esta verificación son más o menos las mismas.
 
 === Glossary
 
-reassignment::
-Assigning a new value to a variable that already exists.
+asignación múltiple::
+Asignar un nuevo valor a una variable que ya existe.
 (((reassignment)))
 
-update::
-An assignment where the new value of the variable depends on the old.
+actualización::
+Asignación donde el nuevo valor de la variable depende del antiguo.
 (((update)))
 
-initialization::
+inicialización::
+Asignación que le da un valor inicial a una variable que será actualizada.
 An assignment that gives an initial value to a variable that will be updated.
 (((initialization)))
 
-increment::
-An update that increases the value of a variable (often by one).
+incremento::
+Actualización que incrementa el valor de la variable (usualmente en 1)
 (((increment)))
 
-decrement::
-An update that decreases the value of a variable.
+decremento::
+Actualización que disminuye el valor de la variable.
 (((decrement)))
 
-iteration::
-Repeated execution of a set of statements using either a recursive function call or a loop.
+iteración::
+Ejecución repetida de un conjunto de sentencias, usando una función recursiva o un bucle.
 (((iteration)))
 
-while statement::
-Statement that allows iterations controlled by a condition.
+sentencia while::
+Sentencia que permite iteraciones controladas por una condición.
 (((while statement)))
 
-break statement::
-Statement allowing to jump out of a loop.
+sentencia break::
+Sentencia que permite salir de un bucle.
 (((break statement)))
 
-continue statement::
-Statement inside a loop that jumps to the beginning of the loop for the next iteration.
+sentencia continue::
+Sentencia localizada dentro de un bucle, que obliga a iniciar una nueva iteración desde el inicio del bucle.
 (((continue statement)))
 
-infinite loop::
-A loop in which the terminating condition is never satisfied.
+bucle infinito::
+Un bucle cuya condición de término no es satisfecha.
 (((infinite loop)))
 
-algorithm::
-A general process for solving a category of problems.
+algoritmo::
+Proceso general para resolver una categoría de problemas.
 (((algorithm)))
 
 
