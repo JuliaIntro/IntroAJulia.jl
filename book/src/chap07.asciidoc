@@ -25,7 +25,7 @@ image::images/fig71.svg[]
 <<fig07-1>> muestra el aspecto de una _asignación múltiple_ en un diagrama de estado.
 (((reassignment)))(((state diagram)))
 
-Es necesario aclarar algo que puede causar confusión. Puesto que Julia usa el signo igual (+=+) para la asignación, es tentador interpretar una sentencia como +a = b+ como una sentencia de igualdad. Pero esta interpretación es incorrecta.
+Es necesario aclarar algo que puede causar confusión. Puesto que Julia usa el signo igual (+=+) para la asignación, es tentador interpretar una sentencia +a = b+ como una sentencia de igualdad. Pero esta interpretación es incorrecta.
 (((assignment statement)))
 
 Para empezar, la igualdad es simétrica y la asignación no lo es. Por ejemplo, en matemáticas, si latexmath:[\(a=7\)] entonces latexmath:[\(7=a\)]. Pero en Julia la sentencia +a = 7+ es válida, y +7 = a+ no lo es.
@@ -90,13 +90,12 @@ julia> y = y + 1
 Actualizar una variable sumándole 1 de denomina un _incremento_; y restándole 1 de llama un _decremento_.
 (((increment)))(((decrement)))
 
-
 === La Sentencia +while+
 
 Las computadoras se usan a menudo para automatizar tareas repetitivas. Realizar repetidamente tareas idénticas o similares sin cometer errores es algo que las computadoras hacen bien y que los seres humanos hacemos limitadamente. La ejecución repetida de un conjunto de sentencias se llama _iteración_. 
 (((iteration)))
 
-Ya hemos visto dos funciones, +cuenta regresiva+ y +printn+, que iteran usando recursividad. Por ser la iteración tan común, Julia proporciona varias características que la hacen más fácil. Una es la sentencia +for+ que vimos en <<simple_repetition>>, a la cual volveremos después. 
+Ya hemos visto dos funciones, +cuenta regresiva+ y +printn+, que iteran usando recursividad. Por ser la iteración tan común, Julia proporciona varias características que la hacen más fácil. Una es la sentencia +for+ que vimos en <<simple_repetition>>, a la cual volveremos más adelante. 
 (((recursion)))(((for statement)))
 
 Otra característica es la _sentencia_ +while+. Aquí hay una versión de +cuentaregresiva+ que muestra el uso de la sentencia +while+:
@@ -113,7 +112,7 @@ function cuentaregresiva(n)
 end
 ----
 
-Casi podría leer la sentencia while como en lenguaje natural. La función anterior significa: “Mientras +n+ sea mayor que 0, continúe mostrando el valor de +n+ y luego reduciendo el valor de +n+ en 1. Cuando llegue a 0, muestre la palabra ¡Despegue!“
+Casi podría leer la sentencia while como si fuera Español. La función anterior significa: “Mientras +n+ sea mayor que 0, continúe mostrando el valor de +n+ y luego reduciendo el valor de +n+ en 1. Cuando llegue a 0, muestre la palabra ¡Despegue!“
 (((countdown)))
 
 Más formalmente, el flujo de ejecución de una sentencia +while+ es el siguiente:
@@ -125,7 +124,7 @@ Más formalmente, el flujo de ejecución de una sentencia +while+ es el siguient
 
 . Si es verdadera, ejecuta cada una de las sentencias en el cuerpo y regresa al paso 1.
 
-Este tipo de flujo de llama bucle porque el tercer paso vuelve arriba.
+Este tipo de flujo de llama bucle porque el tercer paso vuelve a la parte superior.
 (((loop)))
 
 El cuerpo del bucle debería cambiar el valor de una o más variables de manera que, en algún momento, la condición sea falsa y el bucle termine. En caso contrario, el bucle se repetirá indefinidamente, lo cual se llama _bucle infinito_. Una interminable fuente de diversión para los informáticos es la observación de que las instrucciones del champú “Enjabone, enjuague, repita”, son un bucle infinito.
@@ -150,19 +149,18 @@ function seq(n)
 end
 ----
 
-The condition for this loop is +n != 1+, so the loop will continue until +n+ is 1, which makes the condition false.
+La condición de este bucle es +n != 1+, de manera que el bucle continuará hasta que +n+ sea 1, que hará que la condición sea falsa.
 
-Each time through the loop, the program outputs the value of +n+ and then checks whether it is even or odd. If it is even, +n+ is divided by 2. If it is odd, the value of +n+ is replaced with +pass:[n*3 + 1]+. For example, if the argument passed to sequence is 3, the resulting values of +n+ are 3, 10, 5, 16, 8, 4, 2, 1.
+Cada vez que pasa por el bucle, el programa muestra como salida el valor de +n+ y luego comprueba si es par o impar. Si es par, el valor de +n+ se divide por dos. Si es impar, el valor de +n+ se sustituye por +pass:[n*3 + 1]+. Por ejemplo, si el argumento pasado a la función seq es 3, los valores resultantes +n+ son 3, 10, 5, 16, 8, 4, 2, 1.
 
-Since +n+ sometimes increases and sometimes decreases, there is no obvious proof that +n+ will ever reach 1, or that the program terminates. For some particular values of +n+, we can prove termination. For example, if the starting value is a power of two, +n+ will be even every time through the loop until it reaches 1. The previous example ends with such a sequence, starting with 16.
+Puesto que n a veces aumenta y a veces disminuye, no hay una prueba obvia de que +n+ alcanzará alguna vez el valor 1, o de que el programa vaya a terminar. Para algunos valores particulares de +n+, podemos probar que sí termina. Por ejemplo, si el valor de inicio es una potencia de dos, entonces el valor de +n+ será par cada vez que se pasa por el bucle, hasta que llegue a 1. El ejemplo anterior produce dicha secuencia si se inicia con 16.
 
-The hard question is whether we can prove that this program terminates for all positive values of +n+. So far, no one has been able to prove it or disprove it! (See https://en.wikipedia.org/wiki/Collatz_conjecture.)
+Lo díficil es preguntarnos si se puede probar que este programa termina para todos los valores positivos de +n+. Hasta ahora, nadie ha sido capaz de probar que lo hace o ¡que no lo hace! (Vea https://en.wikipedia.org/wiki/Collatz_conjecture.)
 (((Collatz conjecture)))
 
-===== Exercise 7-1
+===== Ejercicio 7-1
 
-Rewrite the function +printn+ from <<recursion>> using iteration instead of recursion.
-
+Reescribe la función +printn+ de <<recursion>> utilizando iteración en vez de recursión.
 
 === +break+
 
