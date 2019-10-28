@@ -109,26 +109,26 @@ function cuentaregresiva(n)
         print(n, " ")
         n = n - 1
     end
-    println("Despegue!")
+    println("¡Despegue!")
 end
 ----
 
-You can almost read the +while+ statement as if it were English. It means, “While +n+ is greater than 0, display the value of +n+ and then decrement +n+. When you get to 0, display the word Blastoff!”
+Casi podría leer la sentencia while como en lenguaje natural. La función anterior significa: “Mientras +n+ sea mayor que 0, continúe mostrando el valor de +n+ y luego reduciendo el valor de +n+ en 1. Cuando llegue a 0, muestre la palabra ¡Despegue!“
 (((countdown)))
 
-More formally, here is the flow of execution for a +while+ statement:
+Más formalmente, el flujo de ejecución de una sentencia +while+ es el siguiente:
 (((flow of execution)))
 
-. Determine whether the condition is true or false.
+. Se determina si la condición es verdadera o falsa.
 
-. If false, exit the while statement and continue execution at the next statement.
+. Si es falsa, se sale de la sentencia while y continúa la ejecución con la siguiente sentencia.
 
-. If the condition is true, run the body and then go back to step 1.
+. Si es verdadera, ejecuta cada una de las sentencias en el cuerpo y regresa al paso 1.
 
-This type of flow is called a loop because the third step loops back around to the top.
+Este tipo de flujo de llama bucle porque el tercer paso vuelve arriba.
 (((loop)))
 
-The body of the loop should change the value of one or more variables so that the condition becomes false eventually and the loop terminates. Otherwise the loop will repeat forever, which is called an _infinite loop_. An endless source of amusement for computer scientists is the observation that the directions on shampoo bottles, “Lather, rinse, repeat”, are an infinite loop.
+El cuerpo del bucle debería cambiar el valor de una o más variables de manera que, en algún momento, la condición sea falsa y el bucle termine. En caso contrario, el bucle se repetirá indefinidamente, lo cual se llama _bucle infinito_. Una interminable fuente de diversión para los informáticos es la observación de que las instrucciones del champú “Enjabone, enjuague, repita”, son un bucle infinito.
 (((infinite loop)))
 
 In the case of +countdown+, we can prove that the loop terminates: if +n+ is zero or negative, the loop never runs. Otherwise, +n+ gets smaller each time through the loop, so eventually we have to get to 0.
