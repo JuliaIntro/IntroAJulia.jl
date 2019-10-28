@@ -164,7 +164,7 @@ Reescribe la función +printn+ de <<recursion>> utilizando iteración en vez de 
 
 === +break+
 
-A veces no se sabe que un ciclo debe terminar hasta que se llega a la mitad del cuerpo. En ese caso, se puede usar la _sentencia break_ para salir del bucle.
+A veces no se sabe que un ciclo debe terminar hasta que se llega al cuerpo. En ese caso, se puede usar la _sentencia break_ para salir del bucle.
 (((break)))((("keyword", "break", see="break")))(((break statement)))((("statement", "break", see="break statement")))
 
 Por ejemplo, suponga que se desea recibir entradas del usuario hasta que este escriba "listo". Podríamos escribir:
@@ -185,7 +185,7 @@ println("¡Listo!")
 
 La condición del bucle es +true+, que siempre es verdadero, por lo que el bucle se ejecuta hasta que llega a la sentencia break.
 
-En cada iteración, se le pide al usuario una entrada con el símbolo ">". Si el usuario escribe +listo+, la sentencia break sale del bucle. De lo contrario, el programa repite lo que escriba el usuario y vuelve a la parte superior del bucle. A continuación se muestra su ejecución:
+En cada iteración, se le pide al usuario (con el símbolo "> ") una entrada. Si el usuario escribe +listo+, la sentencia break sale del bucle. De lo contrario, el programa repite lo que escriba el usuario y vuelve a la parte superior del bucle. A continuación se muestra cómo funciona este programa:
 
 [source]
 ----
@@ -199,7 +199,9 @@ Esta forma de escribir bucles while es común porque permite verificar la condic
 
 === +continue+
 
-The break statement exits the loop. When a _continue statement_ is encountered inside a loop, control jumps to the beginning of the loop for the next iteration, skipping the execution of statements inside the body of the loop for the current iteration. For example:
+Al aparecer un Continue en Python, este regresa al comienzo del bucle, ignorando todos los estamentos que quedan en la iteración actual del bucle e inicia la siguiente iteración. Queda más claro con un ejemplo:
+
+La sentencia break permite terminar el bucle. Cuando aparece una _sentencia continue_ dentro de un bucle, se regresa al comienzo del bucle, ignorando todos las sentencias que quedan en la iteración actual del bucle e inicia la siguiente iteración. Por ejemplo:
 (((continue)))((("keyword", "continue", see="continue")))(((continue statement)))((("statement", "continue", see="continue statement")))
 
 [source,@julia]
@@ -212,14 +214,14 @@ for i in 1:10
 end
 ----
 
-If +i+ is divisible by 3, the continue statement stops the current iteration and the next iteration starts. Only the numbers in the range 1 to 10 not divisible by 3 are printed.
+Si +i+ es divisible por 3, la sentencia continue detiene la iteración actual y comienza la siguiente iteración. Solo se imprimen los números en el rango de 1 a 10 no divisibles por 3.
 
 [[square_roots]]
-=== Square Roots
+=== Raíces Cuadradas
 
-Loops are often used in programs that compute numerical results by starting with an approximate answer and iteratively improving it.
+Los bucles se usan a menudo en programas que calculan resultados numéricos que comienzan con una respuesta aproximada y mejoran iterativamente.
 
-For example, one way of computing square roots is Newton’s method. Suppose that you want to know the square root of latexmath:[\(a\)]. If you start with almost any estimate, latexmath:[\(x\)], you can compute a better estimate with the following formula:
+Por ejemplo, una forma de calcular las raíces cuadradas es el método de Newton. Suponga que desea conocer la raíz cuadrada de latexmath:[\(a\)]. Si comienza con casi cualquier estimación latexmath:[\(x\)], se puede calcular una mejor estimación con la siguiente fórmula:
 (((Newton's method)))
 
 [latexmath]
