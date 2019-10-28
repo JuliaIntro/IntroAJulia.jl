@@ -131,9 +131,9 @@ Este tipo de flujo de llama bucle porque el tercer paso vuelve arriba.
 El cuerpo del bucle debería cambiar el valor de una o más variables de manera que, en algún momento, la condición sea falsa y el bucle termine. En caso contrario, el bucle se repetirá indefinidamente, lo cual se llama _bucle infinito_. Una interminable fuente de diversión para los informáticos es la observación de que las instrucciones del champú “Enjabone, enjuague, repita”, son un bucle infinito.
 (((infinite loop)))
 
-In the case of +countdown+, we can prove that the loop terminates: if +n+ is zero or negative, the loop never runs. Otherwise, +n+ gets smaller each time through the loop, so eventually we have to get to 0.
+En el caso de +cuentaregresiva+, podemos probar que el bucle termina: si +n+ es cero o negativo, el ciclo no se produce. En otro caso, el valor de +n+ se hace más pequeño cada vez que pasa por el bucle, así en cierto momento llegaremos a 0. 
 
-For some other loops, it is not so easy to tell. For example:
+En otros casos no es tan fácil decirlo. Por ejemplo:
 (((seq)))((("function", "programmer-defined", "seq", see="seq")))
 
 [source,@julia-setup]
@@ -141,9 +141,9 @@ For some other loops, it is not so easy to tell. For example:
 function seq(n)
     while n != 1
         println(n)
-        if n % 2 == 0        # n is even
+        if n % 2 == 0        # n is par
             n = n / 2
-        else                 # n is odd
+        else                 # n is impar
             n = n*3 + 1
         end
     end
