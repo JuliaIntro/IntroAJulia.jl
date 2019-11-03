@@ -109,7 +109,7 @@ function <(c1::Card, c2::Card)
 end
 ----
 
-===== Exercise 18-1
+==== Exercise 18-1
 
 Write a +<+ method for +MyTime+ objects. You can use tuple comparison, but you also might consider comparing integers.
 
@@ -226,7 +226,7 @@ function Random.shuffle!(deck::Deck)
 end
 ----
 
-===== Exercise 18-2
+==== Exercise 18-2
 
 Write a function named +sort!+ that uses the function +sort!+ to sort the cards in a Deck. +sort!+ uses the +isless+ method we defined to determine the order.
 (((sort!)))
@@ -475,7 +475,7 @@ The previous chapters demonstrate a development plan we might call “type-orien
 But sometimes it is less obvious what objects you need and how they should interact. In that case you need a different development plan. In the same way that we discovered function interfaces by encapsulation and generalization, we can discover type interfaces by _data encapsulation_.
 (((data encapsulation)))
 
-Markov analysis, from <<markov_analysis>>, provides a good example. If you download my code from https://github.com/BenLauwens/ThinkJulia.jl/blob/master/src/solutions/chap13.jl, you’ll see that it uses two global variables—+suffixes+ and +prefix+—that are read and written from several functions.
+Markov analysis, from <<markov_analysis>>, provides a good example. If you download code from https://github.com/PiensaEnJulia/PiensaEnJulia.jl/blob/master/src/solutions/chap13.jl, you’ll see that it uses two global variables—+suffixes+ and +prefix+—that are read and written from several functions.
 
 [source,@julia-setup]
 ----
@@ -531,9 +531,9 @@ This example suggests a development plan for designing types:
 
 * Transform the associated functions into methods with as argument objects of the new type.
 
-===== Exercise 18-3
+==== Exercise 18-3
 
-Download my Markov code from https://github.com/BenLauwens/ThinkJulia.jl/blob/master/src/solutions/chap13.jl, and follow the steps described above to encapsulate the global variables as attributes of a new struct called +Markov+.
+Download Markov code from https://github.com/PiensaEnJulia/PiensaEnJulia.jl/blob/master/src/solutions/chap13.jl, and follow the steps described above to encapsulate the global variables as attributes of a new struct called +Markov+.
 
 
 === Glossary
@@ -598,7 +598,7 @@ A program development plan that involves a prototype using global variables and 
 === Exercises
 
 [[ex18-1]]
-===== Exercise 18-4
+==== Exercise 18-4
 
 For the following program, draw a type diagram that shows these types and the relationships among them.
 
@@ -628,13 +628,13 @@ addping(pong, ping)
 ----
 
 [[ex18-2]]
-===== Exercise 18-5
+==== Exercise 18-5
 
 Write a method called +deal!+ that takes three parameters, a +Deck+, the number of hands and the number of cards per hand. It should create the appropriate number of +Hand+ objects, deal the appropriate number of cards per hand, and return an array of +Hand+s.
 (((deal!)))((("function", "programmer-defined", "deal!", see="deal!")))
 
 [[ex18-3]]
-===== Exercise 18-6
+==== Exercise 18-6
 
 The following are the possible hands in poker, in increasing order of value and decreasing order of probability:
 

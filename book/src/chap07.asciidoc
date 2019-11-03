@@ -158,7 +158,7 @@ Puesto que n a veces aumenta y a veces disminuye, no hay una prueba obvia de que
 Lo díficil es preguntarnos si se puede probar que este programa termina para todos los valores positivos de +n+. Hasta ahora, nadie ha sido capaz de probar que lo hace o ¡que no lo hace! (Vea https://en.wikipedia.org/wiki/Collatz_conjecture.)
 (((Collatz conjecture)))
 
-===== Ejercicio 7-1
+==== Ejercicio 7-1
 
 Reescribe la función +printn+ de <<recursion>> utilizando iteración en vez de recursión.
 
@@ -390,7 +390,7 @@ Proceso general para resolver una categoría de problemas.
 === Ejercicios
 
 [[ex07-1]]
-===== Ejercicio 7-2
+==== Ejercicio 7-2
 
 Copie el bucle de <<square_roots>> e insértelo en una función llamada +miraiz+, que tome +a+ como parámetro, elija un valor razonable de +x+ y devuelva una estimación de la raíz cuadrada de +a+.
 (((mysqrt)))((("function", "programmer-defined", "mysqrt", see="mysqrt")))
@@ -400,7 +400,7 @@ Para probarla, escriba una función llamada +probarraiz+ que imprima una tabla c
 
 [source,@julia-eval]
 ----
-using ThinkJulia
+using PiensaEnJulia
 io = IOBuffer()
 testsquareroot(io)
 out = String(take!(io))
@@ -410,7 +410,7 @@ println(out)
 La primera columna es un número, +a+; la segunda columna es la raíz cuadrada de +a+ calculada con +miraiz+; la tercera columna es la raíz cuadrada calculada con la función integrada +sqrt+; la cuarta columna es el valor absoluto de la diferencia entre las dos estimaciones.
 
 [[ex07-2]]
-===== Exercise 7-3
+==== Exercise 7-3
 
 La función integrada +Meta.parse+ toma una cadena y la transforma en una expresión. Esta expresión se puede evaluar en Julia con la función +Core.eval+. Por ejemplo:
 (((parse)))((("function", "Meta", "parse", see="parse")))(((eval)))((("function", "Core", "eval", see="eval")))
@@ -436,7 +436,7 @@ Escriba una función llamada +evalbucle+ que iterativamente solicite una entrada
 (((evalloop)))((("function", "programmer-defined", "evalloop", see="evalloop")))
 
 [[ex07-3]]
-===== Exercise 7-4
+==== Exercise 7-4
 
 El matemático Srinivasa Ramanujan encontró una serie infinita que puede usarse para generar una aproximación numérica de latexmath:[\(\frac{1}{\pi}\)]:
 

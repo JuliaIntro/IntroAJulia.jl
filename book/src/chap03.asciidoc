@@ -11,7 +11,7 @@ Ya hemos visto un ejemplo de una llamada a función:
 
 [source,@julia-repl-test]
 ----
-julia> println("¡Hola, mundo!")
+julia> println("¡Hola, Mundo!")
 ¡Hola, Mundo!
 ----
 
@@ -30,9 +30,10 @@ julia> parse(Int64, "32")
 32
 julia> parse(Float64, "3.14159")
 3.14159
-julia> parse(Int64, "Hello")
-ERROR: ArgumentError: invalid base 10 digit 'H' in "Hello" (ERROR: ArgumentError: base inválida de 10 dígitos 'H' en "Hola")
+julia> parse(Int64, "Hola")
+ERROR: ArgumentError: invalid base 10 digit 'H' in "Hola"
 ----
+(ERROR: ArgumentError: base inválida de 10 dígitos 'H' en "Hola")
 
 +trunc+ puede convertir valores de punto flotante a enteros, pero no redondea; sino que trunca:
 (((trunc)))((("función", "Base", "trunc", see="trunc")))
@@ -51,7 +52,7 @@ julia> trunc(Int64, -2.3)
 [source,@julia-repl-test]
 ----
 julia> float(32)
-32,0
+32.0
 ----
 
 Finalmente, +string+ convierte el argumento en una cadena:
@@ -145,8 +146,9 @@ horas = 2;
 julia> minutos = horas * 60 # derecha
 120
 julia> horas * 60 = minutos # malo!
-ERROR: syntax: "60" is not a valid function argument name (ERROR: sintaxis: "60" no es un nombre de argumento de función válido)
+ERROR: syntax: "60" is not a valid function argument name 
 ----
+(ERROR: sintaxis: "60" no es un nombre de argumento de función válido)
 
 === Agregar nuevas funciones
 
@@ -198,7 +200,7 @@ Una vez que haya definido una función, puede usarla dentro de otra función. Po
 
 [source,@julia-setup chap03]
 ----
-función repetirletras()
+function repetirletras()
     imprimirletras()
     imprimirletras()
 end
@@ -206,9 +208,9 @@ end
 
 Y luego llamamos a +repetirletras+:
 
-[fuente, @ julia-repl-test chap03]
+[source, @ julia-repl-test chap03]
 ----
-julia> repeatlyrics ()
+julia> repetirletras()
 Jueguemos en el bosque
 mientras el lobo no está.
 Jueguemos en el bosque
@@ -239,7 +241,7 @@ Este programa contiene dos definiciones de función: +imprimirletras+ y +repetir
 
 Como es de esperar, debe crear una función antes de poder ejecutarla. En otras palabras, la definición de la función tiene que ejecutarse antes de que se llame a la función.
 
-===== Ejercicio 3-1
+==== Ejercicio 3-1
 
 Mueva la última línea de este programa a la parte superior, de modo que la llamada a función aparezca antes de las definiciones. Ejecute el programa y vea qué mensaje de error obtiene.
 
@@ -315,10 +317,10 @@ El argumento se evalúa antes de llamar a la función, por lo que en los ejemplo
 
 También puede usar una variable como argumento:
 
-[source,@julia-repl-test chap03]
+[source, @julia-repl-test chap03]
 ----
-julia> michael = "La vida es bella".
-"La vida es bella".
+julia> michael = "La vida es bella."
+"La vida es bella."
 julia> imprimirdosveces(michael)
 La vida es bella.
 La vida es bella.
@@ -581,14 +583,14 @@ Estos ejercicios deben realizarse utilizando sólo lo que hemos aprendido hasta 
 ====
 
 [[ex03-1]]
-===== Ejercicio 3-2
+==== Ejercicio 3-2
 
 Escriba una función llamada +justificar_a_la_derecha+ que tome una cadena +s+ como parámetro y que imprima la cadena con suficientes espacios en blanco para que la última letra de la cadena se encuentre en la columna 70 de la pantalla.
 (((justificar_a_la_derecha))) ((("función", "definido por el programador", "justificar_a_la_derecha", see = "justificar_a_la_derecha")))
 
 [source, @julia-eval chap03-ex]
 ----
-using ThinkJulia
+using PiensaEnJulia
 ----
 
 [source, @julia-repl chap03-ex]
@@ -603,7 +605,7 @@ Use concatenación de cadenas y repetición. Además, Julia tiene integrada una 
 ====
 
 [[ex03-2]]
-===== Ejercicio 3-3
+==== Ejercicio 3-3
 
 Un objeto de función es un valor que se puede asignar a una variable o ser pasado como argumento. Por ejemplo, +dosveces+ es una función que toma un objeto de función como argumento y lo llama dos veces:
 (((objeto de función))) (((dosveces))) ((("función", "definido por el programador", "dosveces", see = "dosveces")))
@@ -640,7 +642,7 @@ dosveces(imprimirpalabra)
 (((cuatroveces))) ((("función", "definido por el programador", "cuatroveces", see = "cuatroveces")))
 
 [[ex03-3]]
-===== Ejercicio 3-4
+==== Ejercicio 3-4
 
 . Escriba la función +imprimircuadricula+ que dibuje una cuadrícula como la siguiente:
 (((imprimircuadricula))) ((("función", "definida por el programador", "imprimircuadricula", ver = "imprimircuadricula")))

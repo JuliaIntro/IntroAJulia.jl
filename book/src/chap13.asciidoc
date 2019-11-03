@@ -11,7 +11,7 @@ This chapter presents a case study with exercises that let you think about choos
 As usual, you should at least attempt the exercises before you read my solutions.
 
 [[ex13-1]]
-===== Exercise 13-1
+==== Exercise 13-1
 
 Write a program that reads a file, breaks each line into words, strips whitespace and punctuation from the words, and converts them to lowercase.
 
@@ -22,7 +22,7 @@ The function +isletter+ tests whether a character is alphabetic.
 ====
 
 [[ex13-2]]
-===== Exercise 13-2
+==== Exercise 13-2
 
 Go to Project Gutenberg (https://gutenberg.org) and download your favorite out-of-copyright book in plain text format.
 (((Project Gutenberg)))
@@ -34,12 +34,12 @@ Then modify the program to count the total number of words in the book, and the 
 Print the number of different words used in the book. Compare different books by different authors, written in different eras. Which author uses the most extensive vocabulary?
 
 [[ex13-3]]
-===== Exercise 13-3
+==== Exercise 13-3
 
 Modify the program from the previous exercise to print the 20 most frequently used words in the book.
 
 [[ex13-4]]
-===== Exercise 13-4
+==== Exercise 13-4
 
 Modify the previous program to read a word list and then print all the words in the book that are not in the word list. How many of them are typos? How many of them are common words that should be in the word list, and how many of them are really obscure?
 
@@ -74,7 +74,7 @@ end
 ----
 
 [[ex13-5]]
-===== Exercise 13-5
+==== Exercise 13-5
 
 Write a function named +choosefromhist+ that takes a histogram as defined in <<dictionary_collection_counters>> and returns a random value from the histogram, chosen with probability in proportion to frequency. For example, for this histogram:
 (((choosefromhist)))((("function", "programmer-defined", "choosefromhist", see="choosefromhist")))
@@ -94,7 +94,7 @@ your function should return +pass:['a']+ with probability latexmath:[\(\frac{2}{
 
 === Word Histogram
 
-You should attempt the previous exercises before you go on. You will also need https://github.com/BenLauwens/ThinkJulia.jl/blob/master/data/emma.txt.
+You should attempt the previous exercises before you go on. You will also need https://github.com/PiensaEnJulia/PiensaEnJulia.jl/blob/master/data/DonQuijote.txt.
 
 Here is a program that reads a file and builds a histogram of the words in the file:
 (((processfile)))((("function", "programmer-defined", "processfile", see="processfile")))(((processline)))((("function", "programmer-defined", "processline", see="processline")))
@@ -121,15 +121,15 @@ end;
 
 [source,@julia-eval chap13]
 ----
-hist = processfile(joinpath("..", "data", "emma.txt"));
+hist = processfile(joinpath("..", "data", "DonQuijote.txt"));
 ----
 
 [source,julia]
 ----
-hist = processfile("emma.txt");
+hist = processfile("DonQuijote.txt");
 ----
 
-This program reads _emma.txt_, which contains the text of _Emma_ by Jane Austen.
+This program reads _DonQuijote.txt_, which contains the text of _Don Quijote_ by  Miguel de Cervantes.
 (((Austen, Jane)))
 
 +processfile+ loops through the lines of the file, passing them one at a time to +processline+. The histogram +hist+ is being used as an accumulator.
@@ -165,10 +165,10 @@ Here is some code to print the results:
 [source,@julia-repl-test chap13]
 ----
 julia> println("Total number of words: ", totalwords(hist))
-Total number of words: 162742
+Total number of words: 385925
 
 julia> println("Number of different words: ", differentwords(hist))
-Number of different words: 7380
+Number of different words: 23607
 ----
 
 
@@ -199,7 +199,7 @@ for (freq, word) in t[1:10]
 end
 ----
 
-I use a tab character (+pass:['\t']+) as a “separator”, rather than a space, so the second column is lined up. Here are the results from _Emma_:
+I use a tab character (+pass:['\t']+) as a “separator”, rather than a space, so the second column is lined up. Here are the results from _Don Quijote_:
 (((separator)))(((\t)))
 
 [source,@julia-eval chap13]
@@ -258,7 +258,7 @@ If a function has both required and optional parameters, all the required parame
 [[dictionary_subtraction]]
 === Dictionary Subtraction
 
-Finding the words from the book that are not in the word list from +words.txt+ is a problem you might recognize as set subtraction; that is, we want to find all the words from one set (the words in the book) that are not in the other (the words in the list).
+Finding the words from the book that are not in the word list from +palabras.txt+ is a problem you might recognize as set subtraction; that is, we want to find all the words from one set (the words in the book) that are not in the other (the words in the list).
 
 +subtract+ takes dictionaries +d1+ and +d2+ and returns a new dictionary that contains all the keys from +d1+ that are not in +d2+. Since we don’t really care about the values, we set them all to +nothing+.
 (((subtract)))((("function", "programmer-defined", "subtract", see="subtract")))(((nothing)))(((∩)))((("operator", "Base", "∩", see="∩")))
@@ -276,11 +276,11 @@ function subtract(d1, d2)
 end
 ----
 
-To find the words in the book that are not in +words.txt+, we can use +processfile+ to build a histogram for +words.txt+, and then +subtract+:
+To find the words in the book that are not in +palabras.txt+, we can use +processfile+ to build a histogram for +palabras.txt+, and then +subtract+:
 
 [source,julia]
 ----
-words = processfile("words.txt")
+words = processfile("palabras.txt")
 diff = subtract(hist, words)
 
 println("Words in the book that aren't in the word list:")
@@ -289,7 +289,7 @@ for word in keys(diff)
 end
 ----
 
-Here are some of the results from _Emma_:
+Here are some of the results from _Don Quijote_:
 
 [source]
 ----
@@ -300,7 +300,7 @@ outree quicksighted outwardly adelaide rencontre jeffereys unreserved dixons bet
 Some of these words are names and possessives. Others, like “rencontre”, are no longer in common use. But a few are common words that should really be in the list!
 
 [[ex13-6]]
-===== Exercise 13-6
+==== Exercise 13-6
 
 Julia provides a data structure called +Set+ that provides many common set operations. You can read about them in <<collections_and_data_structures>>, or read the documentation at https://docs.julialang.org/en/v1/base/collections/#Set-Like-Collections-1.
 
@@ -340,7 +340,7 @@ An alternative is:
 
 
 [[ex13-7]]
-===== Exercise 13-7
+==== Exercise 13-7
 
 Write a program that uses this algorithm to choose a random word from the book.
 
@@ -384,13 +384,13 @@ For example, if you start with the prefix “Half a”, then the next word has t
 In this example the length of the prefix is always two, but you can do Markov analysis with any prefix length.
 
 [[ex13-8]]
-===== Exercise 13-8
+==== Exercise 13-8
 
 Markov analysis:
 
 . Write a program to read a text from a file and perform Markov analysis. The result should be a dictionary that maps from prefixes to a collection of possible suffixes. The collection might be an array, tuple, or dictionary; it is up to you to make an appropriate choice. You can test your program with prefix length two, but you should write the program in a way that makes it easy to try other lengths.
 
-. Add a function to the previous program to generate random text based on the Markov analysis. Here is an example from Emma with prefix length 2:
+. Add a function to the previous program to generate random text based on the Markov analysis. Here is an example from Don Quijote with prefix length 2:
 +
 [quote]
 ____
@@ -517,7 +517,7 @@ Debugging by explaining your problem to an inanimate object such as a rubber duc
 === Exercises
 
 [[ex13-9]]
-===== Exercise 13-9
+==== Exercise 13-9
 
 The “rank” of a word is its position in an array of words sorted by frequency: the most common word has rank 1, the second most common has rank 2, etc.
 

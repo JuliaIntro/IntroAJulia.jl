@@ -1,5 +1,33 @@
-= Think Julia: How to Think Like a Computer Scientist
-Ben Lauwens <ben.lauwens@gmail.com>; Allen Downey <allendowney@gmail.com>
+// See https://github.com/asciidoctor/asciidoctor/blob/master/data/locale/attributes-es.adoc
+:appendix-caption: Apéndice
+:appendix-refsig: {appendix-caption}
+:caution-caption: Precaución
+//:chapter-label: ???
+//:chapter-refsig: {chapter-label}
+:example-caption: Ejemplo
+:figure-caption: Figura
+:important-caption: Importante
+:last-update-label: Ultima actualización
+ifdef::listing-caption[:listing-caption: Lista]
+ifdef::manname-title[:manname-title: Nombre]
+:note-caption: Nota
+//:part-refsig: ???
+ifdef::preface-title[:preface-title: Prefacio]
+//:section-refsig: ???
+:table-caption: Tabla
+//:tip-caption: Sugerencia
+:tip-caption: Observación
+:toc-title: Tabla de Contenido
+:untitled-label: Sin título
+:version-label: Versión
+:warning-caption: Aviso
+
+= Piensa en Julia: Cómo Pensar como un Informático
+Ben Lauwens y Allen Downey; Traducido por Pamela Alejandra Bustamante Faúndez
+
+Este libro no está completo. Algunos de los primeros capítulos están traducidos al español, pero la mayor parte del libro permanece en inglés.
+
+This book is not complete. A few of the early chapters are translated into Spanish, yet most of the book remains in English.
 
 include::colophon.asciidoc[]
 

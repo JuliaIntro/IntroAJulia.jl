@@ -322,7 +322,7 @@ Como siempre, la parte superior de la pila es el marco para +Main+. Está vacío
 Los cuatro marcos de +cuentaregresiva+ tienen diferentes valores del parámetro +n+. La parte inferior del diagrama de pila, donde +n = 0+, es llamado _caso base_. No hace una llamada recursiva, así que no hay más marcos.
 (((base case)))
 
-===== Ejercicio 5-1
+==== Ejercicio 5-1
 
 Como ejercicio, dibuje un diagrama de pila para +printn+, llamada con +s = "Hola"+ y +n = 2+. Luego escriba una función llamada +hacer_n+, que tome como argumentos una función y un número +n+, y que luego llame a la función dada latexmath:[\(n\)] veces.
 
@@ -521,7 +521,7 @@ Una recursión que no tiene un caso base, o que nunca llega a él. Eventualmente
 === Ejercicios
 
 [[ex05-1]]
-===== Ejercicio 5-2
+==== Ejercicio 5-2
 
 La función +time+ devuelve el tiempo medio de Greenwich actual en segundos desde "la época", que es un tiempo arbitrario utilizado como punto de referencia. En sistemas UNIX, la época es el 1 de enero de 1970.
 (((time)))((("function", "Base", "time", see="time")))
@@ -534,7 +534,7 @@ time()
 Escriba un script que lea la hora actual y la convierta a una hora del día en horas, minutos y segundos, más el número de días transcurridos desde la época.
 
 [[ex05-2]]
-===== Ejercicio 5-3
+==== Ejercicio 5-3
 
 El último teorema de Fermat dice que no hay enteros positivos latexmath:[\(a\)], latexmath:[\(b\)], and latexmath:[\(c\)] tal que
 (((Fermat's last theorem)))
@@ -554,7 +554,7 @@ para cualquier valor de latexmath: [\ (n \)] mayor que 2.
 . Escriba una función que solicite al usuario ingresar valores para +a+, +b+, +c+ and +n+, que los convierta en enteros y que use +verificarfermat+ para verificar si violan el teorema de Fermat.
 
 [[ex05-3]]
-===== Ejercicio 5-4
+==== Ejercicio 5-4
 
 Si tienes tres barras, estas podrían o no formar un triángulo. Por ejemplo, si una de las barras tiene 12 centimetros de largo y las otras dos tienen un centimetro de largo, no es posible que las barras pequeñas puedan juntarse al medio. Para cualquier trío de longitudes, hay una prueba simple para ver si es posible formar un triángulo:
 
@@ -569,7 +569,7 @@ Si cualquiera de las tres longitudes es mayor que la suma de las otras dos, ento
 . Escriba una función que solicite al usuario ingresar tres longitudes de barras, que las convierta en enteros y use +estriangulo+ para verificar si las barras con las longitudes dadas pueden formar un triángulo.
 
 [[ex05-4]]
-===== Ejercicio 5-5
+==== Ejercicio 5-5
 
 ¿Cuál es el resultado del siguiente programa? Dibuje un diagrama de pila que muestre el estado del programa cuando imprime el resultado.
 (((stack diagram)))(((recurse)))
@@ -593,7 +593,7 @@ recursion(3, 0)
 Los siguientes ejercicios utilizan el módulo +ThinkJulia+, descrito en <<chap04>>:
 
 [[ex05-5]]
-===== Ejercicio 5-6
+==== Ejercicio 5-6
 
 Lea la siguiente función y vea si puede averiguar qué hace (vea los ejemplos en <<chap04>>). Luego ejecútelo y vea si lo hizo bien.
 
@@ -615,7 +615,7 @@ end
 ----
 
 [[ex05-6]]
-===== Ejercicio 5-7
+==== Ejercicio 5-7
 
 [[fig05-2]]
 .Una curva de Koch

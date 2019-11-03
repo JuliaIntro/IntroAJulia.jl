@@ -70,7 +70,7 @@ If multiple arguments are provided, the result is a tuple with the given argumen
 [source,@julia-repl-test]
 ----
 julia> t3 = tuple(1, 'a', pi)
-(1, 'a', π = 3.1415926535897...)
+(1, 'a', π)
 ----
 
 Because tuple is the name of a built-in function, you should avoid using it as a variable name.
@@ -269,7 +269,7 @@ julia> sum(1, 2, 3)
 ERROR: MethodError: no method matching sum(::Int64, ::Int64, ::Int64)
 ----
 
-===== Exercise 12-1
+==== Exercise 12-1
 
 Write a function called +sumall+ that takes any number of arguments and returns their sum.
 (((sumall)))((("function", "programmer-defined", "sumall", see="sumall")))
@@ -536,13 +536,13 @@ An error caused because a value has the wrong shape; that is, the wrong type or 
 === Exercises
 
 [[ex12-1]]
-===== Exercise 12-2
+==== Exercise 12-2
 
 Write a function called +mostfrequent+ that takes a string and prints the letters in decreasing order of frequency. Find text samples from several different languages and see how letter frequency varies between languages. Compare your results with the tables at https://en.wikipedia.org/wiki/Letter_frequencies.
 (((mostfrequent)))((("function", "programmer-defined", "mostfrequent", see="mostfrequent")))
 
 [[ex12-2]]
-===== Exercise 12-3
+==== Exercise 12-3
 
 More anagrams!
 
@@ -568,7 +568,7 @@ You might want to build a dictionary that maps from a collection of letters to a
 . In Scrabble a “bingo” is when you play all seven tiles in your rack, along with a letter on the board, to form an eight-letter word. What collection of 8 letters forms the most possible bingos?
 
 [[ex12-3]]
-===== Exercise 12-4
+==== Exercise 12-4
 
 Two words form a “metathesis pair” if you can transform one into the other by swapping two letters; for example, “converse” and “conserve”. Write a program that finds all of the metathesis pairs in the dictionary.
 (((metathesis pair)))
@@ -581,7 +581,7 @@ Don’t test all pairs of words, and don’t test all possible swaps.
 Credit: This exercise is inspired by an example at http://puzzlers.org.
 
 [[ex12-4]]
-===== Exercise 12-5
+==== Exercise 12-5
 
 Here’s another Car Talk Puzzler (https://www.cartalk.com/puzzler/browse):
 (((Car Talk)))
@@ -603,10 +603,8 @@ This exercise is a little more challenging than most, so here are some suggestio
 
 . You might want to write a function that takes a word and computes an array of all the words that can be formed by removing one letter. These are the “children” of the word.
 
-. Recursively, a word is reducible if any of its children are reducible. As a base case, you can consider the empty string reducible.
+. Recursively, a word is reducible if any of its children are reducible. As a base case, you can consider the empty string reducible. The word list provided, _palabras.txt_, doesn’t the empty string. So you might want to add the empty string.
 (((reducible)))
-
-. The word list I provided, _words.txt_, doesn’t contain single letter words. So you might want to add “I”, “a”, and the empty string.
 
 . To improve the performance of your program, you might want to memoize the words that are known to be reducible.
 (((memo)))

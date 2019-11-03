@@ -87,7 +87,8 @@ Julia tiene una función incorporada llamada +abs+ que calcula los valores absol
 (((abs)))((("function", "Base", "abs", see="abs")))
 ====
 
-===== Ejercicio 6-1
+
+==== Ejercicio 6-1
 
 Escriba la función +comparar+ que tome dos valores, +x+ y +y+, y que devuelva +1+ si +x > y+, +0+ si +x == y+, y +-1+ si +x < y+.
 
@@ -192,7 +193,7 @@ Los aspectos clave del proceso son:
 
 . Una vez que el programa está funcionando, tal vez prefiera eliminar parte del andamiaje o consolidar múltiples sentencias en expresiones compuestas, pero sólo si eso no hace que el programa sea difícil de leer.
 
-===== Ejercicio 6-2
+==== Ejercicio 6-2
 
 Use la técnica de desarrollo incremental para escribir una función llamada +hipotenusa+ que retorne el largo de la hipotenusa de un triángulo rectángulo dado el largo de las otras dos aristas. Registre cada etapa del proceso de desarrollo.
 
@@ -297,7 +298,7 @@ end
 
 Pero la comparación extra con +true+ es innecesaria.
 
-===== Ejercicio 6-3
+==== Ejercicio 6-3
 
 Escriba la función +entremedio(x,y,z)+ que devuelva +true+ si +x ≤ y ≤ z+, o +false+ en otro caso.
 
@@ -584,7 +585,7 @@ Un patrón de programación que usa una sentencia condicional para verificar y m
 === Ejercicios
 
 [[ex06-1]]
-===== Ejercicio 6-4
+==== Ejercicio 6-4
 
 Dibuje un diagrama de pila para el siguiente programa. ¿Qué imprime el programa?
 
@@ -613,7 +614,7 @@ println(c(x, y+3, x+y))
 ----
 
 [[ex06-2]]
-===== Ejercicio 6-5
+==== Ejercicio 6-5
 
 La función de Ackermann, latexmath:[\(A(m, n)\)], se define:
 (((Ackermann function)))
@@ -634,7 +635,7 @@ Vea https://en.wikipedia.org/wiki/Ackermann_function. Escriba una función llama
 (((ack)))((("function", "programmer-defined", "ack", see="ack")))
 
 [[ex06-3]]
-===== Ejercicio 6-6
+==== Ejercicio 6-6
 
 Un palíndromo es una palabra que se escribe igual en un sentido que en otro, como "ana" y "radar". De manera recursiva, una palabra es un palíndromo si la primera y la última letra son iguales y lo que está entre ellas es un palíndromo.
 (((palindrome)))
@@ -669,7 +670,7 @@ Veremos cómo funcionan en <<chap08>>.
 (((ispalindrome)))((("function", "programmer-defined", "ispalindrome", see="ispalindrome")))(((length)))
 
 [[ex06-4]]
-===== Ejercicio 6-7
+==== Ejercicio 6-7
 
 Un número, latexmath:[\(a\)], es una potencia de latexmath:[\(b\)] si es divisible por latexmath:[\(b\)] y latexmath:[\(\frac{a}{b}\)] es una potencia de latexmath:[\(b\)]. Escriba una función llamada +espotencia+ que tome los parámetros +a+ y +b+ y devuelva +true+ si +a+ es una potencia de +b+.
 (((ispower)))((("function", "programmer-defined", "ispower", see="ispower")))
@@ -680,7 +681,7 @@ Tendrás que pensar en el caso base.
 ====
 
 [[ex06-5]]
-===== Ejercicio 6-8
+==== Ejercicio 6-8
 
 El máximo común divisor (MCD) de latexmath:[\(a\)] y latexmath:[\(b\)] es el número más grande que los divide a ambos con resto 0.
 

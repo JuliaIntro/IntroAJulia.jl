@@ -201,17 +201,12 @@ julia> fin = open("bad_file")
 ERROR: SystemError: opening file "bad_file": No such file or directory
 ----
 
-If you don’t have permission to access a file:
-
-[source,@julia-repl-test]
-----
-julia> fout = open("/etc/passwd", "w")
-ERROR: SystemError: opening file "/etc/passwd": Permission denied
-----
+Also, if you try to open a file you don’t have permission to access,
+you get a "Permission denied" system error.
 
 To avoid these errors, you could use functions like +ispath+ and +isfile+, but it would take a lot of time and code to check all the possibilities.
 
-It is easier to go ahead and try—and deal with problems if they happen—which is exactly what the +try+ statement does. The syntax is similar to an +if+ statement:
+It is easier to go ahead and try—to deal with problems as they happen—which is exactly what the +try+ statement does. The syntax is similar to an +if+ statement:
 (((try statement)))((("statement", "try", see="try statement")))(((try)))((("keyword", "try", see="try")))(((catch)))((("keyword", "catch", see="catch")))(((end)))
 
 [source,julia]
@@ -250,15 +245,15 @@ The function +close+ will always be executed.
 A _database_ is a file that is organized for storing data. Many databases are organized like a dictionary in the sense that they map from keys to values. The biggest difference between a database and a dictionary is that the database is on disk (or other permanent storage), so it persists after the program ends.
 (((database)))
 
-ThinkJulia provides an interface to +GDBM+ (GNU dbm) for creating and updating database files. As an example, I’ll create a database that contains captions for image files.
+PiensaEnJulia provides an interface to +GDBM+ (GNU dbm) for creating and updating database files. As an example, I’ll create a database that contains captions for image files.
 (((GDBM)))
 
 Opening a database is similar to opening other files:
-(((DBM)))((("type", "ThinkJulia", "DBM", see="DBM")))
+(((DBM)))((("type", "PiensaEnJulia", "DBM", see="DBM")))
 
 [source,@julia-repl-test chap14]
 ----
-julia> using ThinkJulia
+julia> using PiensaEnJulia
 
 julia> db = DBM("captions", "c")
 DBM(<captions>)
@@ -332,7 +327,7 @@ julia> t = [1, 2, 3];
 julia> serialize(io, t)
 24
 julia> print(take!(io))
-UInt8[0x37, 0x4a, 0x4c, 0x07, 0x04, 0x00, 0x00, 0x00, 0x15, 0x00, 0x08, 0xe2, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
+UInt8[0x37, 0x4a, 0x4c, 0x08, 0x04, 0x00, 0x00, 0x00, 0x15, 0x00, 0x08, 0xe2, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
 ----
 
 The format isn’t obvious to human readers; it is meant to be easy for Julia to interpret. +deserialize+ reconstitutes the object:
@@ -498,7 +493,7 @@ julia> linecount("wc.jl")
 11
 ----
 
-===== Exercise 14-1
+==== Exercise 14-1
 
 Type this example into a file named _wc.jl_, include it into the REPL and enter +using LineCount+.
 
@@ -597,7 +592,7 @@ An object that represents a shell command, allowing a Julia program to run comma
 === Exercises
 
 [[ex14-1]]
-===== Exercise 14-2
+==== Exercise 14-2
 
 Write a function called +sed+ that takes as arguments a pattern string, a replacement string, and two filenames; it should read the first file and write the contents into the second file (creating it if necessary). If the pattern string appears anywhere in the file, it should be replaced with the replacement string.
 (((sed)))((("function", "programmer-defined", "sed", see="sed")))
@@ -605,7 +600,7 @@ Write a function called +sed+ that takes as arguments a pattern string, a replac
 If an error occurs while opening, reading, writing or closing files, your program should catch the exception, print an error message, and exit.
 
 [[ex14-2]]
-===== Exercise 14-3
+==== Exercise 14-3
 
 If you have done <<ex12-2>>, you’ll see that a dictionary is created that maps from a sorted string of letters to the array of words that can be spelled with those letters. For example, +"opst"+ maps to the array +["opts", "post", "pots", "spot", "stop", "tops"]+.
 
@@ -613,7 +608,7 @@ Write a module that imports +anagramsets+ and provides two new functions: +store
 (((storeanagrams)))((("function", "programmer-defined", "storeanagrams", see="storeanagrams")))(((readanagrams)))((("function", "programmer-defined", "readanagrams", see="readanagrams")))
 
 [[ex14-3]]
-===== Exercise 14-4
+==== Exercise 14-4
 
 In a large collection of MP3 files, there may be more than one copy of the same song, stored in different directories or with different file names. The goal of this exercise is to search for duplicates.
 

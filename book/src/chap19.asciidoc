@@ -695,7 +695,7 @@ A dbm object has a field +handle+ of +Ptr{Cvoid}+ type. This field holds a C poi
 
 * the argument values: +handle+.
 
-The complete mapping of the GDBM library can be found as an example in the ThinkJulia sources.
+The complete mapping of the GDBM library can be found as an example in the PiensaEnJulia sources.
 
 === Glossary
 
