@@ -1,16 +1,20 @@
 [[chap08]]
-== Strings
+== Cadenas
 
-Strings are not like integers, floats, and booleans. A string is a _sequence_, which means it is an ordered collection of other values. In this chapter you’ll see how to access the characters that make up a string, and you’ll learn about some of the string helper functions provided by Julia.
+Las cadenas son diferentes a los números enteros, flotantes y booleanos. Una cadena es una _secuencia_, es decir, es una colección ordenada de otros valores. En este capítulo veremos cómo acceder a los caracteres que forman una cadena, y aprenderemos sobre algunas  funciones relacionadas con cadenas proporcionadas por Julia.
 (((string)))(((sequence)))
 
 [[characters]]
 === Characters
 
-English language speakers are familiar with characters such as the letters of the alphabet (A, B, C, ...), numerals, and common punctuation. These characters are standardized and mapped to integer values between 0 and 127 by the _ASCII standard_ (American Standard Code for Information Interchange).
+Los hispanohablantes están familiarizados con algunos caracteres, tales como las letras del alfabeto (A, B, C, ...), números y signos de puntuación comunes. Estos caracteres están estandarizados en el código _ASCII estándar_ (Código Estándar Estadounidense para el Intercambio de Información).
 (((ASCII standard)))
 
+Por supuesto hay muchos otros caracteres utilizados en idiomas distintos del español que no están en el código _ASCII estándar_, tales como aquellos usados en otros idiomas, tales como árabe, chino, Hebreo, hindi, japonés y coreano.
+
 There are, of course, many other characters used in non-English languages, including variants of the ASCII characters with accents and other modifications, related scripts such as Cyrillic and Greek, and scripts completely unrelated to ASCII and English, including Arabic, Chinese, Hebrew, Hindi, Japanese, and Korean.
+
+El _Unicode standard_ aborda las complejidades de qué es exactamente un personaje, y generalmente se acepta como el estándar definitivo para abordar este problema. Proporciona un número único para cada personaje a escala mundial.
 
 The _Unicode standard_ tackles the complexities of what exactly a character is, and is generally accepted as the definitive standard addressing this problem.  It provides a unique number for every character on a world-wide scale.
 (((Unicode standard)))
