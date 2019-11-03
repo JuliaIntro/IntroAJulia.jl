@@ -1,52 +1,50 @@
 [[chap06]]
-== Fruitful Functions
+== Funciones productivas
 
-Many of the Julia functions we have used, such as the math functions, produce return values. But the functions we’ve written are all void: they have an effect, like printing a value or moving a turtle, but they return +nothing+. In this chapter you will learn to write fruitful functions.
+Muchas de las funciones de Julia que hemos utilizado, como las funciones matemáticas, producen valores de retorno. Todas las funciones que hemos escrito hasta ahora son nulas, es decir, tienen un efecto (como imprimir un valor) pero devuelven el valor +nothing+. En este capítulo aprenderemos a escribir funciones productivas.
 (((fruitful function)))
 
+=== Valores de retorno
 
-=== Return Values
-
-Calling the function generates a return value, which we usually assign to a variable or use as part of an expression.
+Llamar a la función genera un valor de retorno, que generalmente asignamos a una variable o usamos como parte de una expresión.
 
 [source,julia]
 ----
 e = exp(1.0)
-height = radius * sin(radians)
+altura = radio * sin(radio)
 ----
 
-The functions we have written so far are void. Speaking casually, they have no return value; more precisely, their return value is +nothing+. In this chapter, we are (finally) going to write fruitful functions. The first example is +area+, which returns the area of a circle with the given radius:
+Las funciones que hemos escrito hasta ahora son nulas. Coloquialmente hablando, no tienen valor de retorno; de manera formal, su valor de retorno es +nothing+. En este capítulo, (finalmente) vamos a escribir funciones productivas. El primer ejemplo es +area+, que devuelve el área de un círculo dado un radio:
 (((nothing)))(((area)))((("function", "programmer-defined", "area", see="area")))
 
 [source,@julia-setup]
 ----
-function area(radius)
-    a = π * radius^2
+function area(radio)
+    a = π * radio^2
     return a
 end
 ----
-
-We have seen the +return+ statement before, but in a fruitful function the +return+ statement includes an expression. This statement means: “Return immediately from this function and use the following expression as a return value.” The expression can be arbitrarily complicated, so we could have written this function more concisely:
+Hemos visto la sentencia +return+ antes, pero en una función productiva la sentencia +return+ incluye una expresión. Esta sentencia significa: "Retorne inmediatamente de esta función y use la siguiente expresión como valor de retorno". La expresión dada puede ser arbitrariamente complicada; así pues, podríamos haber escrito esta función más concisamente:
 (((return statement)))
 
 [source,@julia-setup]
 ----
-function area(radius)
-    π * radius^2
+function area(radio)
+    π * radio^2
 end
 ----
 
-The value returned by a function is the value of the last expression evaluated, which, by default, is the last expression in the body of the function definition.
+El valor devuelto por una función es el valor de la última expresión evaluada, que, por defecto, es la última expresión en el cuerpo de la definición de la función.
 
-On the other hand, _temporary variables_ like +a+ and explicit +return+ statements can make debugging easier.
+Por otro lado, las _variables temporales_ como +a+, y las sentencias +return+ explícitas pueden facilitar la depuración.
 (((temporary variable)))
 
-Sometimes it is useful to have multiple +return+ statements, one in each branch of a conditional:
+A veces es útil tener múltiples sentencias +return+, una en cada rama de una sentencia condicional:
 (((absvalue)))((("function", "programmer-defined", "absvalue", see="absvalue")))
 
 [source,@julia-setup chap06]
 ----
-function absvalue(x)
+function valorabsoluto(x)
     if x < 0
         return -x
     else
@@ -55,17 +53,17 @@ function absvalue(x)
 end
 ----
 
-Since these return statements are in an alternative conditional, only one runs.
+Dado que estas sentencias return están en una condicional alternativa, solo se ejecuta una.
 (((alternative conditional)))
 
-As soon as a +return+ statement runs, the function terminates without executing any subsequent statements. Code that appears after a +return+ statement, or any other place the flow of execution can never reach, is called _dead code_.
+En cuanto se ejecuta una sentencia return, la función termina sin ejecutar ninguna de las sentencias siguientes. El código que aparezca después de la sentencia return, o en cualquier otro lugar al que el flujo de ejecución nunca llegará, se llama código muerto.
 (((flow of execution)))(((dead code)))
 
-In a fruitful function, it is a good idea to ensure that every possible path through the program hits a return statement. For example:
+En una función productiva, es una buena idea asegurarse que cualquier posible recorrido del programa llegue a una sentencia return. Por ejemplo:
 
 [source,@julia-setup chap06]
 ----
-function absvalue(x)
+function valorabsoluto(x)
     if x < 0
         return -x
     end
@@ -75,35 +73,35 @@ function absvalue(x)
 end
 ----
 
-This function is incorrect because if +x+ happens to be 0, neither condition is true, and the function ends without hitting a +return+ statement. If the flow of execution gets to the end of a function, the return value is +nothing+, which is not the absolute value of 0.
+Esta versión no es correcta porque si +x+ es igual a 0, ninguna de las condiciones es verdadera, y la función termina sin alcanzar una sentencia return. Si el flujo de ejecución llega al final de la función, el valor de retorno es +nothing+, que claramente no es el valor absoluto de 0.
 
 [source,@julia-repl-test chap06]
 ----
-julia> show(absvalue(0))
+julia> show(valorabsoluto(0))
 nothing
 ----
 
 [TIP]
 ====
-Julia provides a built-in function called +abs+ that computes absolute values.
+Julia tiene una función incorporada llamada +abs+ que calcula los valores absolutos.
 (((abs)))((("function", "Base", "abs", see="abs")))
 ====
 
-==== Exercise 6-1
 
-Write a +compare+ function takes two values, +x+ and +y+, and returns +1+ if +x > y+, +0+ if +x == y+, and +-1+ if +x < y+.
+==== Ejercicio 6-1
 
+Escriba la función +comparar+ que tome dos valores, +x+ y +y+, y que devuelva +1+ si +x > y+, +0+ si +x == y+, y +-1+ si +x < y+.
 
 [[incremental_development]]
-=== Incremental Development
+=== Desarrollo incremental
 
-As you write larger functions, you might find yourself spending more time debugging.
+Conforme vaya escribiendo funciones más extensas puede empezar a dedicar más tiempo a la depuración.
 (((debugging)))
 
-To deal with increasingly complex programs, you might want to try a process called _incremental development_. The goal of incremental development is to avoid long debugging sessions by adding and testing only a small amount of code at a time.
+Para lidiar con programas de complejidad creciente, se sugiere una técnica llamada desarrollo incremental. El objetivo del desarrollo incremental es evitar largas sesiones de depuración, adicionando y probando solamente pequeñas porciones de código cada vez.
 (((incremental development)))
 
-As an example, suppose you want to find the distance between two points, given by the coordinates latexmath:[\(\left(x_1, y_1\right)\)] and latexmath:[\(\left(x_2, y_2\right)\)]. By the Pythagorean theorem, the distance is:
+Por ejemplo, suponga que desea encontrar la distancia entre dos puntos dados por las coordenadas latexmath:[\(\left(x_1, y_1\right)\)] y latexmath:[\(\left(x_2, y_2\right)\)]. Por el teorema de Pitágoras, la distancia es:
 (((Pythagorean theorem)))
 
 [latexmath]
@@ -113,11 +111,11 @@ As an example, suppose you want to find the distance between two points, given b
 \end{equation}
 ++++
 
-The first step is to consider what a distance function should look like in Julia. In other words, what are the inputs (parameters) and what is the output (return value)?
+El primer paso es considerar qué aspecto tendría la función distancia en Julia. En otras palabras, ¿cuáles son las entradas (parámetros) y cuál es la salida (valor de retorno)?
 
-In this case, the inputs are two points, which you can represent using four numbers. The return value is the distance represented by a floating-point value.
+En este caso las entradas son los dos puntos, que podemos representar usando cuatro números. El valor devuelto es la distancia, que es un valor de punto flotante.
 
-Immediately you can write an outline of the function:
+Escribamos una primera versión de la función:
 (((distance)))((("function", "programmer-defined", "distance", see="distance")))
 
 [source,@julia-setup chap06]
@@ -127,24 +125,24 @@ function distance(x₁, y₁, x₂, y₂)
 end
 ----
 
-Obviously, this version doesn’t compute distances; it always returns zero. But it is syntactically correct, and it runs, which means that you can test it before you make it more complicated. The subscript numbers are available in the Unicode character encoding (*+\_1 TAB+*, *+\_2 TAB+*, etc.).
+Obviamente esta versión de la función no calcula distancias; siempre devuelve cero. Pero es correcta sintácticamente y se ejecutará, lo que implica que la podemos probar antes de hacerla más compleja. Los números de subíndice están disponibles en la codificación de caracteres Unicode (*+\_1 TAB+*, *+\_2 TAB+*, etc.).
 (((Unicode character)))
 
-To test the new function, call it with sample arguments:
+Para probar la nueva función, la llamamos con una muestra de valores:
 
 [source,@julia-repl-test chap06]
 ----
 distance(1, 2, 4, 6)
 ----
 
-I chose these values so that the horizontal distance is 3 and the vertical distance is 4; that way, the result is 5, the hypotenuse of a 3-4-5 triangle. When testing a function, it is useful to know the right answer.
+Se eligen estos valores de tal forma que la distancia horizontal sea igual a 3 y la distancia vertical sea igual a 4; de esa manera el resultado es 5 (la hipotenusa del triángulo 3-4-5). Cuando se comprueba una función, es útil conocer la respuesta correcta.
 
-At this point we have confirmed that the function is syntactically correct, and we can start adding code to the body. A reasonable next step is to find the differences latexmath:[\(x_2 - x_1\)] and latexmath:[\(y_2 - y_1\)]. The next version stores those values in temporary variables and prints them with the +@show+ macro.
+Hasta el momento hemos confirmado que la función es sintácticamente correcta, por lo que podemos empezar a agregar líneas de código. El paso lógico siguiente es encontrar las diferencias latexmath:[\(x_2 - x_1\)] y latexmath:[\(y_2 - y_1\)]. En la siguiente versión de la función almacenaremos estos valores en variables temporales y las mostraremos con el macro +@show+.
 ((("@show")))((("macro", "Base", "@show", see="@show")))
 
 [source,@julia-setup]
 ----
-function distance(x₁, y₁, x₂, y₂)
+function distancia(x₁, y₁, x₂, y₂)
     dx = x₂ - x₁
     dy = y₂ - y₁
     @show dx dy
@@ -152,9 +150,9 @@ function distance(x₁, y₁, x₂, y₂)
 end
 ----
 
-If the function is working, it should display +dx = 3+ and +dy = 4+. If so, we know that the function is getting the right arguments and performing the first computation correctly. If not, there are only a few lines to check.
+Si la función trabaja bien, las salidas deben ser +dx = 3+ y +dy = 4+. Si es así, sabemos que la función está obteniendo los parámetros correctos y realizando el primer cálculo correctamente. Si no, entonces sólo hay unas pocas líneas que revisar.
 
-Next we compute the sum of squares of +dx+ and +dy+:
+A continuación calculamos la suma de los cuadrados de +dx+ y +dy+:
 
 [source,@julia-setup]
 ----
@@ -167,12 +165,12 @@ function distance(x₁, y₁, x₂, y₂)
 end
 ----
 
-Again, you would run the program at this stage and check the output (which should be 25). Superscript numbers are also available (*+\^2 TAB+*). Finally, you can use +sqrt+ to compute and return the result:
+De nuevo queremos ejecutar el programa en esta etapa y comprobar la salida (que debería ser 25). Los números en superíndice también están disponibles (*+\^2 TAB+*). Finalmente, se puede usar +sqrt+ para calcular y devolver el resultado:
 (((sqrt)))
 
 [source,@julia-setup]
 ----
-function distance(x₁, y₁, x₂, y₂)
+function distancia(x₁, y₁, x₂, y₂)
     dx = x₂ - x₁
     dy = y₂ - y₁
     d² = dx^2 + dy^2
@@ -180,77 +178,76 @@ function distance(x₁, y₁, x₂, y₂)
 end
 ----
 
-If that works correctly, you are done. Otherwise, you might want to print the value of +sqrt(d²)+ before the +return+ statement.
+Si esto funciona correctamente, habremos terminado. Si no, podríamos mostrar el valor de la variable resultado antes de la sentencia de retorno.
 
-The final version of the function doesn’t display anything when it runs; it only returns a value. The print statements we wrote are useful for debugging, but once you get the function working, you should remove them. Code like that is called _scaffolding_ because it is helpful for building the program but is not part of the final product.
+La versión final de la función no muestra nada cuando se ejecuta; sólo retorna un valor. Las sentencias print que escribimos son útiles para la depuración, pero una vez que el programa esté funcionando correctamente, se deben eliminar. El código eliminado se llama _andamiaje_ porque es útil para construir el programa pero no es parte del producto final.
 (((scaffolding)))
 
-When you start out, you should add only a line or two of code at a time. As you gain more experience, you might find yourself writing and debugging bigger chunks. Either way, incremental development can save you a lot of debugging time.
+Al principio, debería añadir solamente una o dos líneas de código cada vez. Conforme vaya ganando experiencia, puede que se encuentre escribiendo y depurando fragmentos mayores de código. Sin embargo, el proceso de desarrollo incremental puede ahorrarle mucho tiempo de depuración.
 
-The key aspects of the process are:
+Los aspectos clave del proceso son:
 
-. Start with a working program and make small incremental changes. At any point, if there is an error, you should have a good idea where it is.
+. Inicie con un programa que funcione y hágale pequeños cambios incrementales. En cualquier momento, si hay un error, sabrá exactamente dónde está.
 
-. Use variables to hold intermediate values so you can display and check them.
+. Use variables temporales para guardar valores intermedios para que pueda mostrarlos y verificarlos.
 
-. Once the program is working, you might want to remove some of the scaffolding or consolidate multiple statements into compound expressions, but only if it does not make the program difficult to read.
+. Una vez que el programa está funcionando, tal vez prefiera eliminar parte del andamiaje o consolidar múltiples sentencias en expresiones compuestas, pero sólo si eso no hace que el programa sea difícil de leer.
 
-==== Exercise 6-2
+==== Ejercicio 6-2
 
-Use incremental development to write a function called +hypotenuse+ that returns the length of the hypotenuse of a right triangle given the lengths of the other two legs as arguments. Record each stage of the development process as you go.
+Use la técnica de desarrollo incremental para escribir una función llamada +hipotenusa+ que retorne el largo de la hipotenusa de un triángulo rectángulo dado el largo de las otras dos aristas. Registre cada etapa del proceso de desarrollo.
 
+=== Composición
 
-=== Composition
-
-As you should expect by now, you can call one function from within another. As an example, we’ll write a function that takes two points, the center of the circle and a point on the perimeter, and computes the area of the circle.
+Ahora, como usted esperaría, se puede llamar a una función desde otra. Como ejemplo, escribiremos una función que tome dos puntos, el centro del círculo y un punto del perímetro, y calcule el área del círculo.
 (((composition)))
 
-Assume that the center point is stored in the variables +xc+ and +yc+, and the perimeter point is in +xp+ and +yp+. The first step is to find the radius of the circle, which is the distance between the two points. We just wrote a function, distance, that does that:
+Suponga que el punto central está almacenado en las variables +xc+ y +yc+, y que el punto del perímetro lo está en +xp+ y +yp+. El primer paso es hallar el radio del círculo, que es la distancia entre los dos puntos. Hemos escrito la función distancia que realiza esta tarea:
 
 [source,julia]
 ----
-radius = distance(xc, yc, xp, yp)
+radio = distancia(xc, yc, xp, yp)
 ----
 
-The next step is to find the area of a circle with that radius; we just wrote that, too:
+El siguiente paso es encontrar el área del círculo usando este radio. De nuevo usaremos una de las funciones definidas previamente:
 
 [source,julia]
 ----
-result = area(radius)
+resultado = area(radio)
 ----
 
-Encapsulating these steps in a function, we get:
+Envolviendo todo en una función, obtenemos:
 (((circlearea)))((("function", "programmer-defined", "circlearea", see="circlearea")))
 
 [source,@julia-setup]
 ----
-function circlearea(xc, yc, xp, yp)
-    radius = distance(xc, yc, xp, yp)
-    result = area(radius)
-    return result
+function areacirculo(xc, yc, xp, yp)
+    radio = distancia(xc, yc, xp, yp)
+    resultado = area(radio)
+    return resultado
 end
 ----
 
-The temporary variables +radius+ and +result+ are useful for development and debugging, but once the program is working, we can make it more concise by composing the function calls:
+Las variables temporales +radio+ y +resultado+ son útiles para el desarrollo y la depuración, pero una vez que el programa está funcionando, podemos hacerlo más conciso componiendo las llamadas a función:
 (((temporary variable)))
 
 [source,@julia-setup]
 ----
-function circlearea(xc, yc, xp, yp)
-    area(distance(xc, yc, xp, yp))
+function areacirculo(xc, yc, xp, yp)
+    area(distancia(xc, yc, xp, yp))
 end
 ----
 
 
 [[boolean_functions]]
-=== Boolean Functions
+=== Funciones Booleanas
 
-Functions can return booleans, which is often convenient for hiding complicated tests inside functions. For example:
+Las funciones pueden devolver valores booleanos, lo que a menudo es conveniente para ocultar complicadas comprobaciones dentro de funciones. Por ejemplo:
 (((boolean function)))(((isdivisible)))((("function", "programmer-defined", "isdivisible", see="isdivisible")))
 
 [source,@julia-setup chap06]
 ----
-function isdivisible(x, y)
+function esdivisible(x, y)
     if x % y == 0
         return true
     else
@@ -258,70 +255,68 @@ function isdivisible(x, y)
     end
 end
 ----
+Es común dar a las funciones booleanas nombres que suenan como preguntas que tienen como respuesta un si ó un no; es_divisible devuelve +true+ o +false+ para indicar si +x+ es o no divisible por +y+.
 
-It is common to give boolean functions names that sound like yes/no questions; +isdivisible+ returns either +true+ or +false+ to indicate whether +x+ is divisible by +y+.
-
-Here is an example:
+Por ejemplo:
 
 [source,@julia-repl-test chap06]
 ----
-julia> isdivisible(6, 4)
+julia> esdivisible(6, 4)
 false
-julia> isdivisible(6, 3)
+julia> esdivisible(6, 3)
 true
 ----
 
-The result of the +==+ operator is a boolean, so we can write the function more concisely by returning it directly:
+El resultado del operador +==+ es booleano, por lo tanto podemos escribir la función de una manera más concisa devolviendo el resultado directamente:
 (((==)))
 
 [source,@julia-setup]
 ----
-function isdivisible(x, y)
+function esdivisible(x, y)
     x % y == 0
 end
 ----
 
-Boolean functions are often used in conditional statements:
+Las funciones booleanas se usan a menudo en las sentencias condicionales:
 (((conditional statement)))
 
 [source,julia]
 ----
-if isdivisible(x, y)
-    println("x is divisible by y")
+if esdivisible(x, y)
+    println("x es divisible por y")
 end
 ----
 
-It might be tempting to write something like:
+Puede parecer tentador escribir algo como:
 
 [source,julia]
 ----
-if isdivisible(x, y) == true
-    println("x is divisible by y")
+if esdivisible(x, y) == true
+    println("x es divisible por y")
 end
 ----
 
-But the extra comparison with +true+ is unnecessary.
+Pero la comparación extra con +true+ es innecesaria.
 
-==== Exercise 6-3
+==== Ejercicio 6-3
 
-Write a function +isbetween(x, y, z)+ that returns +true+ if +x ≤ y ≤ z+ or +false+ otherwise.
+Escriba la función +entremedio(x,y,z)+ que devuelva +true+ si +x ≤ y ≤ z+, o +false+ en otro caso.
 
+=== Más recursividad
 
-=== More Recursion
-
-We have only covered a small subset of Julia, but you might be interested to know that this subset is a _complete_ programming language, which means that anything that can be computed can be expressed in this language. Any program ever written could be rewritten using only the language features you have learned so far (actually, you would need a few commands to control devices like the mouse, disks, etc., but that’s all).
+Solo hemos cubierto una pequeña parte de Julia, pero le puede interesar saber que esta parte ya es un lenguaje de programación _completo_, lo que significa que cualquier cómputo puede expresarse en este lenguaje. Cualquier programa que se haya escrito podría reescribirse usando solo lo que ha aprendido hasta ahora (en realidad, necesitaría algunos comandos para controlar dispositivos como el mouse, discos, etc., pero eso es todo).
 (((recursion)))(((complete programming language)))((("programming language", "complete", see="complete programming language")))
 
-Proving that claim is a nontrivial exercise first accomplished by Alan Turing, one of the first computer scientists (some would argue that he was a mathematician, but a lot of early computer scientists started as mathematicians). Accordingly, it is known as the Turing Thesis. For a more complete (and accurate) discussion of the Turing Thesis, I recommend Michael Sipser’s book _Introduction to the Theory of Computation_.
+Probar esa afirmación es un ejercicio no trivial realizado por primera vez por Alan Turing, uno de los primeros científicos de la computación (algunos argumentarían que era matemático, pero muchos de los primeros científicos informáticos comenzaron como matemáticos). En consecuencia, esto se conoce como la Tesis de Turing. Para una discusión más completa (y precisa) de la Tesis de Turing, se recomienda el libro de Michael Sipser _Introducción a la Teoría de la Computación_.
 (((Turing, Alan)))(((Turing thesis)))
 
-To give you an idea of what you can do with the tools you have learned so far, we’ll evaluate a few recursively defined mathematical functions. A recursive definition is similar to a circular definition, in the sense that the definition contains a reference to the thing being defined. A truly circular definition is not very useful:
+Para darle una idea de lo que puede hacer con las herramientas que ha aprendido hasta ahora, evaluaremos algunas funciones matemáticas definidas recursivamente. Una definición recursiva es similar a una definición circular, en el sentido de que la definición contiene una referencia a lo que está siendo definido. Una definición verdaderamente circular no es muy útil:
 (((recursive definition)))(((circular definition)))
 
 vorpal::
-An adjective used to describe something that is vorpal.
+Un adjetivo usado para describir algo que es vorpal.
 
-If you saw that definition in the dictionary, you might be annoyed. On the other hand, if you looked up the definition of the factorial function, denoted with the symbol latexmath:[\(!\)], you might get something like this:
+Si ves esta definición en el diccionario, podrías molestarte. Por otro lado, si buscas la definición de la función factorial, denotada con el símbolo latexmath:[\(!\)], podrías encontrar algo como esto:
 (((factorial function)))
 
 [latexmath]
@@ -334,11 +329,11 @@ If you saw that definition in the dictionary, you might be annoyed. On the other
 \end{cases}}
 \end{equation}
 ++++
-This definition says that the factorial of 0 is 1, and the factorial of any other value, latexmath:[\(n\)], is latexmath:[\(n\)] multiplied by the factorial of latexmath:[\(n-1\)].
+Esta definición dice que el factorial de 0 es 1, y el factorial de cualquier otro valor latexmath:[\(n\)], es latexmath:[\(n\)]  multiplicado por el factorial de latexmath:[\(n-1\)].
 
-So latexmath:[\(3!\)] is 3 times latexmath:[\(2!\)], which is 2 times latexmath:[\(1!\)], which is 1 times latexmath:[\(0!\)]. Putting it all together, latexmath:[\(3!\)] equals 3 times 2 times 1 times 1, which is 6.
+Entonces latexmath:[\(3!\)] es 3 veces latexmath:[\(2!\)], que es 2 veces latexmath:[\(1!\)], que es 1 vez latexmath:[\(0!\)]. Es decir, latexmath:[\(3!\)] es igual a 3 por 2 por 1 por 1, que es 6.
 
-If you can write a recursive definition of something, you can write a Julia program to evaluate it. The first step is to decide what the parameters should be. In this case it should be clear that factorial takes an integer:
+Si se puede escribir una definición recursiva, se puede escribir un programa de Julia para evaluarlo. El primer paso es decidir cuáles deberían ser los parámetros. En este caso, debe quedar claro que factorial toma valores enteros:
 (((fact)))((("function", "programmer-defined", "fact", see="fact")))
 
 [source,@julia-setup]
@@ -346,7 +341,7 @@ If you can write a recursive definition of something, you can write a Julia prog
 function fact(n) end
 ----
 
-If the argument happens to be +0+, all we have to do is return +1+:
+Si el argumento es +0+, la función debe devolver +1+:
 
 [source,@julia-setup]
 ----
@@ -357,7 +352,7 @@ function fact(n)
 end
 ----
 
-Otherwise, and this is the interesting part, we have to make a recursive call to find the factorial of +n-1+ and then multiply it by +n+:
+De lo contrario, y esto es lo interesante, tenemos que hacer una llamada recursiva para encontrar el factorial de +n-1+ y luego multiplicarlo por +n+:
 
 [source,@julia-setup]
 ----
@@ -365,31 +360,30 @@ function fact(n)
     if n == 0
         return 1
     else
-        recurse = fact(n-1)
-        result = n * recurse
-        return result
+        recursion = fact(n-1)
+        resultado = n * recursion
+        return resultado
     end
 end
 ----
-
-The flow of execution for this program is similar to the flow of +countdown+ in <<recursion>>. If we call +fact+ with the value +3+:
+El flujo de ejecución de este programa es similar al flujo de +cuentaregresiva+ en <<recursion>>. Si llamamos a +fact+ con el valor +3+:
 (((flow of execution)))
 
 [small]
 --
-Since +3+ is not +0+, we take the second branch and calculate the factorial of +n-1+ ...
+Como +3+ no es +0+, tomamos la segunda rama y calculamos el factorial de +n-1+ ...
 
-pass:[&#8193;]Since +2+ is not +0+, we take the second branch and calculate the factorial of +n-1+ ...
+pass:[&#8193;]Como +2+ no es +0+, tomamos la segunda rama y calculamos el factorial de +n-1+ ...
 
-pass:[&#8193;&#8193;]Since +1+ is not +0+, we take the second branch and calculate the factorial of +n-1+ ...
+pass:[&#8193;&#8193;]Como +1+ no es +0+, tomamos la segunda rama y calculamos el factorial de + n-1 + ...
 
-pass:[&#8193;&#8193;&#8193;]Since +0+ equals +0+, we take the first branch and return +1+ without making any pass:[<br/>&#8193;&#8193;&#8193;&#8193;]more recursive calls.
+pass:[&#8193;&#8193;&#8193;]Como +0+ es igual a +0+, tomamos la primera rama y devolvemos +1+ sin realizar pass:[<br/>&#8193;&#8193;&#8193;&#8193;] más llamadas recursivas.
 
-pass:[&#8193;&#8193;]The return value, +1+, is multiplied by +n+, which is +1+, and the +result+ is returned.
+pass:[&#8193;&#8193;]El valor de retorno, +1+, se multiplica por +n+, que es +1+, y se devuelve el +resultado+.
 
-pass:[&#8193;]The return value, +1+, is multiplied by +n+, which is +2+, and the +result+ is returned.
+pass:[&#8193;]El valor de retorno, +1+, se multiplica por +n+, que es +2+, y se devuelve el +resultado+.
 
-The return value +2+ is multiplied by +n+, which is +3+, and the result, +6+, becomes the return value of the function call that started the whole process.
+El valor de retorno +2+ se multiplica por +n+, que es +3+, y el resultado, +6+, se convierte en el valor de retorno de la llamada a  función que inició todo el proceso.
 --
 
 [[fig06-1]]
@@ -397,37 +391,37 @@ The return value +2+ is multiplied by +n+, which is +3+, and the result, +6+, be
 image::images/fig61.svg[]
 
 
-<<fig06-1>> shows what the stack diagram looks like for this sequence of function calls.
+<<fig06-1>>  muestra cómo se ve el diagrama de pila para esta secuencia de llamadas a funciones.
 (((stack diagram)))
 
-The return values are shown being passed back up the stack. In each frame, the return value is the value of +result+, which is the product of +n+ and +recurse+.
+Los valores de retorno se pasan de nuevo a la pila. En cada marco, el valor de retorno es el valor de +resultado+, que es el producto de +n+ y +recursion+.
 
-In the last frame, the local variables +recurse+ and +result+ do not exist, because the branch that creates them does not run.
+En el último marco, las variables locales +recursion+ y +resultado+ no existen, porque la rama que las crea no se ejecuta.
 
 [TIP]
 ====
-Julia provides the function +factorial+ to calculate the factorial of an integer number.
+Julia tiene la función +factorial+ para calcular el factorial de un número entero.
 (((factorial)))((("function", "Base", "factorial", see="factorial")))
 ====
 
 
-=== Leap of Faith
+=== Salto de fe
 
-Following the flow of execution is one way to read programs, but it can quickly become overwhelming. An alternative is what I call the “leap of faith”. When you come to a function call, instead of following the flow of execution, you _assume_ that the function works correctly and returns the right result.
+Seguir el flujo de ejecución es una forma de leer programas, pero puede llegar a ser abrumador. Una alternativa es lo que llamamos el "salto de fe". Cuando llega a una llamada de función, en lugar de seguir el flujo de ejecución, asume que la función funciona correctamente y devuelve el resultado correcto.
 (((leap of faith)))
 
-In fact, you are already practicing this leap of faith when you use built-in functions. When you call +cos+ or +exp+, you don’t examine the bodies of those functions. You just assume that they work because the people who wrote the built-in functions were good programmers.
+De hecho, ya estás haciendo este salto de fe cuando usas funciones integradas de Julia. Cuando llamas a +cos+ o +exp+, no examinas los cuerpos de esas funciones. Simplemente asumes que funcionan porque las personas que las escribieron eran buenos programadores.
 
-The same is true when you call one of your own functions. For example, in <<boolean_functions>>, we wrote a function called +isdivisible+ that determines whether one number is divisible by another. Once we have convinced ourselves that this function is correct—by examining the code and testing—we can use the function without looking at the body again.
+Lo mismo ocurre cuando llamas a una de tus propias funciones. Por ejemplo, en <<boolean_functions>>, escribimos una función llamada +esdivisible+ que determina si un número es divisible por otro. Una vez que nos hayamos convencido de que esta función es correcta —al examinar y probar el código—, podemos usar la función sin mirar nuevamente el cuerpo.
 
-The same is true of recursive programs. When you get to the recursive call, instead of following the flow of execution, you should assume that the recursive call works (returns the correct result) and then ask yourself, “Assuming that I can find the factorial of latexmath:[\(n-1\)], can I compute the factorial of latexmath:[\(n\)]?” It is clear that you can, by multiplying by latexmath:[\(n\)].
+Lo mismo aplica a los programas recursivos. Cuando llegue a la llamada recursiva, en lugar de seguir el flujo de ejecución, debe suponer que la llamada recursiva funciona (devuelve el resultado correcto) y luego preguntarse: "Suponiendo que pueda encontrar el factorial de latexmath:[\(n-1\)], ¿puedo calcular el factorial de latexmath:[\(n\)]? ”Está claro que puedes, multiplicando por latexmath:[\(n\)].
 
-Of course, it’s a bit strange to assume that the function works correctly when you haven’t finished writing it, but that’s why it’s called a leap of faith!
+Por supuesto, es un poco extraño suponer que la función funciona correctamente cuando no ha terminado de escribirla, ¡pero por eso se llama un salto de fe!
 
 [[one_more_example]]
-=== One More Example
+=== Un Ejemplo Más
 
-After factorial, the most common example of a recursively defined mathematical function is fibonacci, which has the following definition (see https://en.wikipedia.org/wiki/Fibonacci_number):
+Después de los factoriales, el ejemplo más común de una función matemática definida de manera recursiva es fibonacci, que tiene la siguiente definición (ver https://en.wikipedia.org/wiki/Fibonacci_number):
 (((fibonnaci function)))
 
 [latexmath]
@@ -442,7 +436,7 @@ After factorial, the most common example of a recursively defined mathematical f
 \end{equation}
 ++++
 
-Translated into Julia, it looks like this:
+Traducido a Julia, se ve así:
 (((fib)))((("function", "programmer-defined", "fib", see="fib")))
 
 [source,@julia-setup chap06]
@@ -458,10 +452,9 @@ function fib(n)
 end
 ----
 
-If you try to follow the flow of execution here, even for fairly small values of +n+, your head explodes. But according to the leap of faith, if you assume that the two recursive calls work correctly, then it is clear that you get the right result by adding them together.
+Si intentas seguir el flujo de ejecución en esta función, incluso para valores bastante pequeños de +n+, su cabeza podría estallar. Haciendo un salto de fe, es decir, asumiendo que las dos llamadas recursivas funcionan correctamente, entonces está claro que se obtiene el resultado correcto al sumarlas.
 
-
-=== Checking Types
+=== Tipos de Comprobación
 
 What happens if we call +fact+ and give it +1.5+ as an argument?
 (((StackOverflowError)))
@@ -474,15 +467,15 @@ Stacktrace:
  [1] fact(::Float64) at ./REPL[3]:2
 ----
 
-It looks like an infinite recursion. How can that be? The function has a base case—when +n == 0+. But if +n+ is not an integer, we can _miss_ the base case and recurse forever.
+Parece una recursión infinita. ¿Como es esto posible? La función tiene un caso base (cuando +n == 0+). Pero si +n+ no es un número entero, podemos _perdernos_ el caso base y hacer recursión para siempre.
 (((infinite recursion)))
 
-In the first recursive call, the value of +n+ is +0.5+. In the next, it is +-0.5+. From there, it gets smaller (more negative), but it will never be +0+.
+En la primera llamada recursiva, el valor de +n+ es +0.5+. En el siguiente, es +-0.5+. A partir de ahí, se vuelve más pequeño (más negativo), pero nunca será +0+.
 
-We have two choices. We can try to generalize the factorial function to work with floating-point numbers, or we can make +fact+ check the type of its argument. The first option is called the gamma function and it’s a little beyond the scope of this book. So we’ll go for the second.
+Tenemos dos opciones. Podemos intentar generalizar la función factorial para trabajar con números de punto flotante, o podemos hacer que +fact+ verifique el tipo del argumento. La primera opción se llama función gamma, y está un poco más allá del alcance de este libro. Entonces intentaremos con la segunda.
 (((gamma function)))
 
-We can use the built-in operator +isa+ to verify the type of the argument. While we’re at it, we can also make sure the argument is positive:
+Podemos usar el operador integrado +isa+ para verificar el tipo de argumento. También podemos asegurarnos de que el argumento sea positivo:
 (((isa)))(((fact)))
 
 [source,@julia-setup chap06]
@@ -500,7 +493,7 @@ function fact(n)
 end
 ----
 
-The first base case handles nonintegers; the second handles negative integers. In both cases, the program prints an error message and returns +nothing+ to indicate that something went wrong:
+El primer caso base se hace cargo de números no enteros; el segundo de enteros negativos. En ambos casos, el programa imprime un mensaje de error y devuelve +nothing+ para indicar que algo salió mal:
 
 [source,@julia-repl-test chap06]
 ----
@@ -510,92 +503,91 @@ julia> fact(-2)
 ERROR: Factorial is not defined for negative integers.
 ----
 
-If we get past both checks, we know that +n+ is positive or zero, so we can prove that the recursion terminates.
+Si superamos ambas verificaciones, sabemos que +n+ es positivo o cero, por lo que podemos probar que la recursión termina.
 
-This program demonstrates a pattern sometimes called a _guardian_. The first two conditionals act as guardians, protecting the code that follows from values that might cause an error. The guardians make it possible to prove the correctness of the code.
+Este programa muestra un patrón a veces llamado _guardian_. Los dos primeros condicionales actúan como guardianes, protegiendo el código que sigue de los valores que pueden causar un error. Los guardianes hacen posible demostrar que el código es correcto.
 (((guardian)))
 
-In <<catching_exceptions>> we will see a more flexible alternative to printing an error message: raising an exception.
+En <<catching_exceptions>> veremos una alternativa más flexible para imprimir un mensaje de error: generar una excepción.
 
 [[deb06]]
 === Debugging
 
-Breaking a large program into smaller functions creates natural checkpoints for debugging. If a function is not working, there are three possibilities to consider:
+Dividir un código extenso en pequeñas funciones crea naturalmente puntos de control para la depuración. Si un programa no está funcionando, existen tres posibilidades a considerar:
 (((debugging)))
 
-* There is something wrong with the arguments the function is getting; a precondition is violated.
+* Hay algo incorrecto en los argumentos de la función; se viola una condición previa.
 (((precondition)))
 
-* There is something wrong with the function; a postcondition is violated.
+* Hay algo incorrecto en la función; se viola una condición posterior.
 (((postcondition)))
 
-* There is something wrong with the return value or the way it is being used.
+* Hay algo incorrecto en el valor de retorno o la forma en que se está utilizando.
 
-To rule out the first possibility, you can add a print statement at the beginning of the function and display the values of the parameters (and maybe their types). Or you can write code that checks the preconditions explicitly.
+Para descartar la primera posibilidad, puedes agregar una sentencia de impresión al comienzo de la función para mostrar los valores de los parámetros (y tal vez sus tipos). O puedes escribir líneas de código que verifiquen las condiciones previas de manera explícita.
 
-If the parameters look good, add a print statement before each return statement and display the return value. If possible, check the result by hand. Consider calling the function with values that make it easy to check the result (as in <<incremental_development>>).
+Si los parámetros están bien, agregue una sentencia de impresión antes de cada sentencia return y muestre el valor de retorno. Si es posible, verifique el resultado a mano. Considere llamar a la función con valores que faciliten la verificación del resultado (como en <<incremental_development>>).
 
-If the function seems to be working, look at the function call to make sure the return value is being used correctly (or used at all!).
+Si la función parece estar funcionando, revise la llamada a función para asegurarse de que el valor de retorno se está utilizando correctamente (¡o incluso si se está utilizando!).
 
-Adding print statements at the beginning and end of a function can help make the flow of execution more visible. For example, here is a version of +fact+ with print statements:
+Agregar sentencias de impresión al principio y al final de una función puede ayudar a que el flujo de ejecución sea más transparente. Por ejemplo, aquí hay una versión de +fact+ con sentencias de impresión:
 (((fact)))(((flow of execution)))(((print statement)))
 
 [source,@julia-setup chap06]
 ----
 function fact(n)
-    space = " " ^ (4 * n)
-    println(space, "factorial ", n)
+    espacio = " " ^ (4 * n)
+    println(espacio, "factorial ", n)
     if n == 0
-        println(space, "returning 1")
+        println(espacio, "returning 1")
         return 1
     else
-        recurse = fact(n-1)
-        result = n * recurse
-        println(space, "returning ", result)
-        return result
+        recursion = fact(n-1)
+        resultado = n * recursion
+        println(espacio, "devolviendo ", resultado)
+        return resultado
     end
 end
 ----
 
-+space+ is a string of space characters that controls the indentation of the output:
++espacio+ es una cadena de caracteres de espacio que permite generar sangría en la salida:
 
 [source,@julia-repl chap06]
 ----
 fact(4)
 ----
 
-If you are confused about the flow of execution, this kind of output can be helpful. It takes some time to develop effective scaffolding, but a little bit of scaffolding can save a lot of debugging.
-
+Si estás confundido con el flujo de ejecución, este tipo de salida puede ser útil. Desarrollar un buen andamiaje toma tiempo, pero un poco de andamiaje puede evitarnos mucha depuración.
 
 === Glossary
 
-temporary variable::
-A variable used to store an intermediate value in a complex calculation.
+variable temporal::
+Variable usada para almacenar un valor intermedio en un cálculo complejo.
 (((temporary variable)))
 
-dead code::
-Part of a program that can never run, often because it appears after a return statement.
+código muerto::
+Parte de un programa que nunca puede ser ejecutado, a menudo porque aparece después de una sentencia return.
 (((dead code)))
 
-incremental development::
-A program development plan intended to avoid debugging by adding and testing only a small amount of code at a time.
+desarrollo incremental::
+Plan de desarrollo de un programa que intenta evitar la depuración agregando y probando solamente una pequeña porción de código a la vez.
 (((incremental development)))(((program development plan)))
 
-scaffolding::
-Code that is used during program development but is not part of the final version.
+andamiaje::
+Código que se usa durante el desarrollo de un programa pero que no es parte de la versión final del mismo.
 (((scaffolding)))
 
-guardian::
-A programming pattern that uses a conditional statement to check for and handle circumstances that might cause an error.
+guardián::
+Un patrón de programación que usa una sentencia condicional para verificar y manejar circunstancias que puedan causar un error.
 (((guardian)))
 
 
-=== Exercises
+=== Ejercicios
 
 [[ex06-1]]
-==== Exercise 6-4
+==== Ejercicio 6-4
 
-Draw a stack diagram for the following program. What does the program print?
+Dibuje un diagrama de pila para el siguiente programa. ¿Qué imprime el programa?
 
 [source,@julia-setup]
 ----
@@ -612,8 +604,8 @@ end
 
 function c(x, y, z)
     total = x + y + z
-    square = b(total)^2
-    square
+    cuadrado = b(total)^2
+    cuadrado
 end
 
 x = 1
@@ -622,9 +614,9 @@ println(c(x, y+3, x+y))
 ----
 
 [[ex06-2]]
-==== Exercise 6-5
+==== Ejercicio 6-5
 
-The Ackermann function, latexmath:[\(A(m, n)\)], is defined:
+La función de Ackermann, latexmath:[\(A(m, n)\)], se define:
 (((Ackermann function)))
 
 [latexmath]
@@ -632,70 +624,71 @@ The Ackermann function, latexmath:[\(A(m, n)\)], is defined:
 \begin{equation}
 {A(m, n) =
 \begin{cases}
-              n+1& \textrm{if}\ m = 0 \\
-        A(m-1, 1)& \textrm{if}\ m > 0\ \textrm{and}\ n = 0 \\
-A(m-1, A(m, n-1))& \textrm{if}\ m > 0\ \textrm{and}\ n > 0.
+              n+1& \textrm{si}\ m = 0 \\
+        A(m-1, 1)& \textrm{si}\ m > 0\ \textrm{y}\ n = 0 \\
+A(m-1, A(m, n-1))& \textrm{si}\ m > 0\ \textrm{y}\ n > 0.
 \end{cases}}
 \end{equation}
 ++++
-See https://en.wikipedia.org/wiki/Ackermann_function. Write a function named +ack+ that evaluates the Ackermann function. Use your function to evaluate +ack(3, 4)+, which should be 125. What happens for larger values of +m+ and +n+?
+
+Vea https://en.wikipedia.org/wiki/Ackermann_function. Escriba una función llamada +ack+ que evalúe la función de Ackermann. Use su función para evaluar +ack(3, 4)+, que debería ser 125. ¿Qué sucede para valores mayores de +m+ y +n+?
 (((ack)))((("function", "programmer-defined", "ack", see="ack")))
 
 [[ex06-3]]
-==== Exercise 6-6
+==== Ejercicio 6-6
 
-A palindrome is a word that is spelled the same backward and forward, like “noon” and “redivider”. Recursively, a word is a palindrome if the first and last letters are the same and the middle is a palindrome.
+Un palíndromo es una palabra que se escribe igual en un sentido que en otro, como "ana" y "radar". De manera recursiva, una palabra es un palíndromo si la primera y la última letra son iguales y lo que está entre ellas es un palíndromo.
 (((palindrome)))
 
-The following are functions that take a string argument and return the first, last, and middle letters:
+Las siguientes son funciones que toman un argumento de tipo cadena y devuelven la primera letra, la última, y las intermedias:
 (((first)))((("function", "programmer-defined", "first", see="first")))(((last)))((("function", "programmer-defined", "last", see="last")))(((middle)))((("function", "programmer-defined", "middle", see="middle")))
 
 [source,@julia-setup]
 ----
-function first(word)
-    first = firstindex(word)
-    word[first]
+function primera(palabra)
+    primera = firstindex(palabra)
+    palabra[primera]
 end
 
-function last(word)
-    last = lastindex(word)
-    word[last]
+function ultima(palabra)
+    ultima = lastindex(palabra)
+    palabra[ultima]
 end
 
-function middle(word)
-    first = firstindex(word)
-    last = lastindex(word)
-    word[nextind(word, first) : prevind(word, last)]
+function medio(palabra)
+    primera = firstindex(palabra)
+    ultima = lastindex(palabra)
+    palabra[nextind(palabra, primera) : prevind(palabra, ultima)]
 end
 ----
 
-We’ll see how they work in <<chap08>>
+Veremos cómo funcionan en <<chap08>>.
 
-. Test these functions out. What happens if you call middle with a string with two letters? One letter? What about the empty string, which is written +""+ and contains no letters?
+. Prueba estas funciones. ¿Qué sucede si llamas a la función medio con una cadena de dos letras? ¿Y con una cadena de una letra? ¿Qué pasa con la cadena vacía +""+, que no contiene letras?
 
-. Write a function called +ispalindrome+ that takes a string argument and returns +true+ if it is a palindrome and +false+ otherwise. Remember that you can use the built-in function +length+ to check the length of a string.
+. Escriba una función llamada +espalindromo+ que tome un argumento de tipo cadena y devuelva +true+ si es un palíndromo y +false+ de lo contrario. Recuerde que puede usar la función integrada +length+ para verificar la longitud de una cadena.
 (((ispalindrome)))((("function", "programmer-defined", "ispalindrome", see="ispalindrome")))(((length)))
 
 [[ex06-4]]
-==== Exercise 6-7
+==== Ejercicio 6-7
 
-A number, latexmath:[\(a\)], is a power of latexmath:[\(b\)] if it is divisible by latexmath:[\(b\)] and latexmath:[\(\frac{a}{b}\)] is a power of latexmath:[\(b\)]. Write a function called +ispower+ that takes parameters +a+ and +b+ and returns +true+ if +a+ is a power of +b+.
+Un número, latexmath:[\(a\)], es una potencia de latexmath:[\(b\)] si es divisible por latexmath:[\(b\)] y latexmath:[\(\frac{a}{b}\)] es una potencia de latexmath:[\(b\)]. Escriba una función llamada +espotencia+ que tome los parámetros +a+ y +b+ y devuelva +true+ si +a+ es una potencia de +b+.
 (((ispower)))((("function", "programmer-defined", "ispower", see="ispower")))
 
 [TIP]
 ====
-You will have to think about the base case.
+Tendrás que pensar en el caso base.
 ====
 
 [[ex06-5]]
-==== Exercise 6-8
+==== Ejercicio 6-8
 
-The greatest common divisor (GCD) of latexmath:[\(a\)] and latexmath:[\(b\)] is the largest number that divides both of them with no remainder.
+El máximo común divisor (MCD) de latexmath:[\(a\)] y latexmath:[\(b\)] es el número más grande que los divide a ambos con resto 0.
 
-One way to find the GCD of two numbers is based on the observation that if latexmath:[\(r\)] is the remainder when latexmath:[\(a\)] is divided by latexmath:[\(b\)], then +gcd(a, b) = gcd(b, r)+. As a base case, we can use +gcd(a, 0) = a+.
+Una forma de encontrar el MCD de dos números se basa en la observación de que si latexmath:[\(r\)] es el resto cuando latexmath:[\(a\)] se divide por latexmath:[\(b\)], entonces +mcd(a, b) = mcd(b, r)+. Como caso base, podemos usar +mcd(a, 0) = a+.
 
-Write a function called +gcd+ that takes parameters +a+ and +b+ and returns their greatest common divisor.
+Escriba una función llamada +mcd+ que tome los parámetros +a+ y +b+ y devuelva su máximo divisor común.
 (((gcd)))((("function", "programmer-defined", "gcd", see="gcd")))
 
-Credit: This exercise is based on an example from Abelson and Sussman’s _Structure and Interpretation of Computer Programs_.
+Créditos: Este ejercicio se basa en un ejemplo del libro _Estructura e interpretación de programas informáticos_ de Abelson y Sussman.
 

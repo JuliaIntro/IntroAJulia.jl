@@ -1,59 +1,59 @@
 [[chap05]]
-== Conditionals and Recursion
+== Condicionales y recursividad
 
-The main topic of this chapter is the +if+ statement, which executes different code depending on the state of the program. But first I want to introduce two new operators: floor division and modulus.
+El tema principal de este capítulo es la sentencia +if+, la cual permite ejecutar diferentes acciones dependiendo del estado del programa. Inicialmente se presentan dos nuevos operadores: división entera de tipo piso y módulo.
 
 
-=== Floor Division and Modulus
+=== División entera de tipo piso y Módulo
 
-The _floor division_ operator, +÷+ (*+\div TAB+*), divides two numbers and rounds down to an integer. For example, suppose the run time of a movie is 105 minutes. You might want to know how long that is in hours. Conventional division returns a floating-point number:
-(((floor division operator)))((("operator", "Base", "÷", see="floor division operator")))((("÷", see="floor division operator")))
+El operador _división entera de tipo piso_, +÷+ (*+\div TAB+*), divide dos números y redondea hacia abajo el resultado. Por ejemplo, suponga que la duración de una película es de 105 minutos. Es posible que desee saber la duración en horas. La división convencional devuelve un número de punto flotante:
+(((operador de división entera de tipo piso))) ((("operador", "Base", "÷", see = "operador división entera de tipo piso"))) ((("÷", see="operador división entera de tipo piso")))
 
 [source,@julia-repl-test chap05]
 ----
-julia> minutes = 105
+julia> minutos = 105
 105
-julia> minutes / 60
+julia> minutos / 60
 1.75
 ----
 
-But we don’t normally write hours with decimal points. Floor division returns the integer number of hours, rounding down:
+Pero normalmente las horas no se escriben con decimales. La división entera de tipo piso devuelve el número entero de horas, redondeado hacia abajo:
 
 [source,@julia-repl-test chap05]
 ----
-julia> hours = minutes ÷ 60
+julia> horas = minutos ÷ 60
 1
 ----
 
-To get the remainder, you could subtract off one hour in minutes:
+Para obtener el resto de la división, se puede restar una hora (en minutos) a la duración total de la película:
 
 [source,@julia-repl-test chap05]
 ----
-julia> remainder = minutes - hours * 60
+julia> resto = minutos - horas * 60
 45
 ----
 
-An alternative is to use the _modulus operator_, +%+, which divides two numbers and returns the remainder.
-(((modulus operator)))((("operator", "Base", "%", see="modulus operator")))((("%", see="modulus operator)))
+Otra alternativa es usar el _operador módulo_, +%+, que divide dos números y devuelve el resto.
+(((operador módulo)))((("operator", "Base", "%", see="operador módulo")))((("%", see="operador módulo")))
 
 [source,@julia-repl-test chap05]
 ----
-julia> remainder = minutes % 60
+julia> resto = minutos % 60
 45
 ----
 
 [TIP]
 ====
-The modulus operator is more useful than it seems. For example, you can check whether one number is divisible by another—if +x % y+ is zero, then +x+ is divisible by +y+.
+El operador módulo es más útil de lo que parece. Por ejemplo, permite verificar si un número es divisible por otro: si +x%y+ es cero, entonces +x+ es divisible por +y+.
 
-Also, you can extract the right-most digit or digits from a number. For example, +x % 10+ yields the right-most digit of an integer +x+ (in base 10). Similarly +x % 100+ yields the last two digits.
+Además, puede extraer el (o los) dígito(s) más a la derecha de un número. Por ejemplo, +x%10+ devuelve el dígito más a la derecha de un entero +x+ (en base 10). Del mismo modo, +x%100+ devuelve los dos últimos dígitos.
+
 ====
 
+=== Expresiones booleanas
 
-=== Boolean Expressions
-
-A _boolean expression_ is an expression that is either true or false. The following examples use the operator +==+, which compares two operands and produces +true+ if they are equal and +false+ otherwise:
-(((boolean expression)))(((true)))(((false)))
+Una _expresión booleana_ es una expresión que es verdadera o falsa. Los siguientes ejemplos usan el operador +==+, que compara dos operandos, y devuelve el valor +true+ (verdadero en español) si son iguales, y el valor +false+ (falso) de lo contrario.
+(((expresión booleana)))(((true)))(((false)))
 
 [source,@julia-repl-test]
 ----
@@ -63,7 +63,7 @@ julia> 5 == 6
 false
 ----
 
-+true+ and +false+ are special values that belong to the type +Bool+; they are not strings:
++true+ y +false+ son valores especiales que pertenecen al tipo +Bool+; no son cadenas:
 (((Bool)))((("type", "Base", "Bool", see="Bool")))
 
 [source,@julia-repl-test]
@@ -74,220 +74,216 @@ julia> typeof(false)
 Bool
 ----
 
-The +==+ operator is one of the relational operators; the others are:
-(((relational operator)))(((==)))((("operator", "Base", "==", see="==")))
+El operador +==+ es un operador relacional. El resto de operadores relacionales son:
+(((operador relacional)))(((==)))((("operador", "Base", "==", see="==")))
 
 [source,julia]
 ----
-      x != y               # x is not equal to y
+      x != y               # x no es igual a y 
       x ≠ y                # (\ne TAB)
-      x > y                # x is greater than y
-      x < y                # x is less than y
-      x >= y               # x is greater than or equal to y
+      x > y                # x es mayor que y
+      x < y                # x es menor que y
+      x >= y               # x es mayor o igual que y
       x ≥ y                # (\ge TAB)
-      x <= y               # x is less than or equal to y
+      x <= y               # x es menor o igual que y
       x ≤ y                # (\le TAB)
 ----
 
 [WARNING]
 ====
-Although these operations are probably familiar to you, the Julia symbols are different from the mathematical symbols. A common error is to use a single equal sign (+=+) instead of a double equal sign (+==+). Remember that +=+ is an assignment operator and +==+ is a relational operator. There is no such thing as +=<+ or +pass:[=>]+.
-(((≠)))((("operator", "Base", "≠", see="≠")))((("!=", see="≠")))((("operator", "Base", "!=", see="≠")))(((>)))((("operator", "Base", ">", see=">")))(((<)))((("operator", "Base", "<", see="<")))(((≥)))((("operator", "Base", "≥", see="≥")))(((">=", see="≥")))((("operator", "Base", ">=", see="≥")))(((≤)))((("operator", "Base", "≤", see="≤")))((("pass:[&lt;=]", see="≤")))((("operator", "Base", "pass:[&lt;=]", see="≤")))
+Aunque estas operaciones probablemente le sean familiares, los símbolos de Julia son diferentes de los símbolos matemáticos. Un error común es usar un solo signo igual (+=+) en vez de un doble signo igual (+==+). Recuerde que +=+ es un operador de asignación y +==+ es un operador relacional. No existe +=<+ o +pass:[=>]+.
+(((≠)))((("operador", "Base", "≠", see="≠")))((("!=", see="≠")))((("operador", "Base", "!=", see="≠")))(((>)))((("operador", "Base", ">", see=">")))(((<)))((("operador", "Base", "<", see="<")))(((≥)))((("operador", "Base", "≥", see="≥")))(((">=", see="≥")))((("operador", "Base", ">=", see="≥")))(((≤)))((("operador", "Base", "≤", see="≤")))((("pass:[&lt;=]", see="≤")))((("operador", "Base", "pass:[&lt;=]", see="≤")))
 ====
 
 
-=== Logical Operators
+=== Operadores Lógicos
 
-There are three _logical operators_: +&&+ (and), +||+ (or), and +!+ (not). The semantics (meaning) of these operators is similar to their meaning in English. For example, +x > 0 && x < 10+ is true only if +x+ is greater than +0+ _and_ less than +10+.
-(((logical operator)))(((&&)))(((||)))(((!)))
+Hay tres operadores lógicos: +&&+ (y), +||+ (o) y +!+ (no). La semántica (significado) de estos operadores es similar a su significado en español. Por ejemplo, +x>0 && x<10+ es verdadero solo si +x+ es mayor que +0+ _y_ menor que +10+.
+(((operador lógico)))(((&&)))(((||)))(((!)))
 
-+n % 2 == 0 || n % 3 == 0+ is true if _either or both_ of the conditions is true, that is, if the number is divisible by 2 _or_ 3.
++n%2==0 || n%3 == 0+ es verdadero si _una o ambas_ condiciones son verdaderas, es decir, si el número es divisible por 2 _o_ por 3.
 
-Both +&&+ and +||+ associate to the right, but +&&+ has higher precedence than +||+ does.
+Tanto +&&+ como +||+ se asocian en primer lugar con el objeto a su derecha, pero +&&+ tiene preferencia por sobre +||+.
 
-Finally, the +!+ operator negates a boolean expression, so +!(x > y)+ is true if +x > y+ is false, that is, if +x+ is less than or equal to +y+.
+Finalmente, el operador +!+ niega una expresión booleana, entonces +!(x>y)+ es verdadero si +x>y+ es falso, es decir, si +x+ es menor o igual que +y+.
 
+=== Ejecución Condicional
 
-=== Conditional Execution
-
-In order to write useful programs, we almost always need the ability to check conditions and change the behavior of the program accordingly. _Conditional statements_ give us this ability. The simplest form is the +if+ statement:
-(((conditional statement)))(((if)))((("keyword", "if", see="if")))(((if statement)))((("statement", "if", see="if statement")))
+Para escribir programas útiles, generalmente necesitamos poder verificar condiciones y cambiar el comportamiento del programa acorde a ellas. Las sentencias condicionales nos permiten hacer esto. La forma más simple es la sentencia +if+ ("si" en inglés):
+(((sentencia condicional)))(((if)))((("keyword", "if", see="if")))(((sentencia if)))((("sentencia", "if", see="sentencia if")))
 
 [source,julia]
 ----
 if x > 0
-    println("x is positive")
+    println("x es positivo")
 end
 ----
 
-The boolean expression after +if+ is called the _condition_. If it is true, the indented statement runs. If not, nothing happens.
+La expresión booleana después de +if+ se llama _condición_. Si es verdadera, se ejecuta la instrucción con sangría. Si no, nada ocurre.
 (((condition)))
 
-+if+ statements have the same structure as function definitions: a header followed by body terminated with the keyword +end+. Statements like this are called _compound statements_.
-(((compound statement)))(((end)))
+Las sentencias +if+ tienen la misma estructura que las definiciones de función: un encabezado seguido del cuerpo, terminado con la palabra reservada +end+ (en español "fin"). Las sentencias como este se denominan _sentencias compuestas_.
+(((sentencia compuesta)))(((end)))
 
-There is no limit on the number of statements that can appear in the body. Occasionally, it is useful to have a body with no statements (usually as a place keeper for code you haven’t written yet).
+No hay límite en el número de sentencias que pueden aparecer en el cuerpo. A veces es útil tener un cuerpo sin sentencias (por lo general, como un marcador de posición para el código que aún no se ha escrito).
 
 [source,julia]
 ----
 if x < 0
-    # TODO: need to handle negative values!
+    # TODO: se necesita realizar alguna acción con los valores negativos!
 end
 ----
 
 
-=== Alternative Execution
+=== Ejecución alternativa
 
-A second form of the +if+ statement is “alternative execution”, in which there are two possibilities and the condition determines which one runs. The syntax looks like this:
-(((alternative execution)))(((else)))((("keyword", "else", see="else")))
+Una segunda forma de la sentencia +if+ es la "ejecución alternativa", en la que hay dos posibilidades y la condición determina cuál se ejecuta. La sintaxis se ve así:
+(((ejecución alternativa)))(((else)))((("keyword", "else", see="else")))
 
 [source,julia]
 ----
 if x % 2 == 0
-    println("x is even")
+    println("x es par")
 else
-    println("x is odd")
+    println("x es impar")
 end
 ----
-
-If the remainder when +x+ is divided by 2 is 0, then we know that +x+ is even, and the program displays an appropriate message. If the condition is false, the second set of statements runs. Since the condition must be true or false, exactly one of the alternatives will run. The alternatives are called _branches_, because they are branches in the flow of execution.
+Si el resto de +x+ dividido por 2 es 0, entonces +x+ es par, y el programa muestra un mensaje acorde. Si la condición es falsa, se ejecuta el segundo conjunto de sentencias. Como la condición debe ser verdadera o falsa, se ejecutará exactamente una de las alternativas. Las alternativas se llaman _ramas_, porque son ramas en el flujo de ejecución.
 (((branch)))
 
+=== Condicionales encadenadas
 
-=== Chained Conditionals
-
-Sometimes there are more than two possibilities and we need more than two branches. One way to express a computation like that is a _chained conditional_:
-(((chained conditional)))(((elseif)))((("keyword", "elseif", see="elseif")))
+A veces hay más de dos posibilidades y necesitamos más de dos ramas. Una manera de expresar este cómputo es a través de una _condicional encadenada_:
+(((condicional encadenada)))(((elseif)))((("palabra reservada", "elseif", see="elseif")))
 
 [source,julia]
 ----
 if x < y
-    println("x is less than y")
+    println("x es menor que y")
 elseif x > y
-    println("x is greater than y")
+    println("x es mayor que y")
 else
-    println("x and y are equal")
+    println("x e y son iguales")
 end
 ----
 
-Again, exactly one branch will run. There is no limit on the number of +elseif+ statements. If there is an +else+ clause, it has to be at the end, but there doesn’t have to be one.
+De nuevo, sólo se ejecutará una rama. No hay límite al número de sentencias +elseif+. Si hay una sentencia +else+, debe estar al final (aunque no es necesario que esté).
 
 [source,julia]
 ----
-if choice == "a"
-    draw_a()
-elseif choice == "b"
-    draw_b()
-elseif choice == "c"
-    draw_c()
+if alternativa == "a"
+    dibujar_a()
+elseif alternativa == "b"
+    dibujar_b()
+elseif alternativa == "c"
+    dibujar_c()
 end
 ----
 
-Each condition is checked in order. If the first is false, the next is checked, and so on. If one of them is true, the corresponding branch runs and the statement ends. Even if more than one condition is true, only the first true branch runs.
+Cada condición se comprueba en orden. Si la primera es falsa, se comprueba la siguiente, y así se sigue con las demás. Si una de ellas es verdadera, se ejecuta la rama correspondiente y la sentencia se termina. Si es verdadera más de una condición, sólo se ejecuta la primera rama verdadera.
 
+=== Condicionales anidadas
 
-=== Nested Conditionals
-
-One conditional can also be nested within another. We could have written the example in the previous section like this:
-(((nested conditional)))
+Una condicional puede estar anidada dentro de otra. Podríamos haber escrito el ejemplo de la sección anterior de la siguiente manera: 
+(((condicional anidada)))
 
 [source,julia]
 ----
 if x == y
-    println("x and y are equal")
+    println("x e y son iguales")
 else
     if x < y
-        println("x is less than y")
+        println("x es menor a y")
     else
-        println("x is greater than y")
+        println("x es mayor a y")
     end
 end
 ----
 
-The outer conditional contains two branches. The first branch contains a simple statement. The second branch contains another +if+ statement, which has two branches of its own. Those two branches are both simple statements, although they could have been conditional statements as well.
+La condicional externa contiene dos ramas. La primera rama contiene una sentencia simple. La segunda rama contiene otra sentencia if, que tiene dos ramas propias. Estas dos ramas son ambas sentencias simples, aunque podrían ser sentencias condicionales.
 
-Although the non-compulsory indentation of the statements makes the structure apparent, _nested conditionals_ become difficult to read very quickly. It is a good idea to avoid them when you can.
-(((indentation)))
+Aunque la sangría no obligatoria de las sentencias hace evidente su estructura, las condicionales anidadas muy pronto se vuelven difíciles de leer. Se recomienda evitarlas cuando pueda.
+(((sangría)))
 
-Logical operators often provide a way to simplify nested conditional statements. For example, we can rewrite the following code using a single conditional:
+Los operadores lógicos a menudo proporcionan una forma de simplificar las sentencias condicionales anidadas. Por ejemplo, podemos reescribir el siguiente código usando un solo condicional:
 
 [source,julia]
 ----
 if 0 < x
     if x < 10
-        println("x is a positive single-digit number.")
+        println("x es un número positivo de un solo dígito.")
     end
 end
 ----
 
-The +print+ statement runs only if we make it past both conditionals, so we can get the same effect with the +&&+ operator:
+La sentencia +print+ sólo se ejecuta si conseguimos superar ambas condicionales, de modo que podemos obtener el mismo efecto con el operador +&&+:
 
 [source,julia]
 ----
 if 0 < x && x < 10
-    println("x is a positive single-digit number.")
+    println("x es un número positivo de un solo dígito.")
 end
 ----
 
-For this kind of condition, Julia provides a more concise syntax:
+Para este tipo de condición, Julia proporciona una sintaxis más concisa:
 
 [source,julia]
 ----
 if 0 < x < 10
-    println("x is a positive single-digit number.")
+    println("x es un número positivo de un solo dígito.")
 end
 ----
 
 
-[[recursion]]
-=== Recursion
+[[recursividad]]
+=== Recursividad
 
-It is legal for one function to call another; it is also legal for a function to call itself. It may not be obvious why that is a good thing, but it turns out to be one of the most magical things a program can do. For example, look at the following function:
-(((countdown)))((("function", "programmer-defined", "countdown", see="countdown")))
+Está permitido que una función llame a otra; también está permitido que una función se llame a si misma. Puede no parecer útil, pero resulta que sí lo es. Por ejemplo, mira la siguiente función:
+(((cuenta regresiva)))((("función", "definida por el programador", "cuenta regresiva", see="cuenta regresiva")))
 
 [source,@julia-setup chap05]
 ----
-function countdown(n)
+function cuentaregresiva(n)
     if n ≤ 0
-        println("Blastoff!")
+        println("Despegue!")
     else
         print(n, " ")
-        countdown(n-1)
+        cuentaregresiva(n-1)
     end
 end
 ----
 
-If +n+ is 0 or negative, it outputs the word, +"Blastoff!"+ Otherwise, it outputs +n+ and then calls a function named +countdown+—itself—passing +n-1+ as an argument.
+Si +n+ es 0 o negativo, muestra la palabra +"Despegue!"+. En otro caso, muestra el valor +n+ y luego llama a la función +cuentaregresiva+, pasándole +n-1+ como argumento.
 
-What happens if we call this function like this?
+Qué sucede si llamamos a una función como esta?
 
 [source,@julia-repl-test chap05]
 ----
-julia> countdown(3)
-3 2 1 Blastoff!
+julia> cuentaregresiva(3)
+3 2 1 Despegue!
 ----
 
-The execution of +countdown+ begins with +n = 3+, and since +n+ is greater than 0, it outputs the value 3, and then calls itself ...
+La ejecución de +cuentaregresiva+ empieza con +n = 3+, y como +n+ es mayor que 0, muestra el valor 3, y luego se llama a si misma...
 
-pass:[&#8193;]The execution of +countdown+ begins with +n = 2+, and since +n+ is greater than 0, pass:[<br/>&#8193;&#8193;]it outputs the value 2, and then calls itself ...
+pass:[&#8193;]La ejecución de +cuentaregresiva+ empieza con +n = 2+, y como +n+ es mayor que 0, pass:[<br/>&#8193;&#8193;]muestra el valor 2, y luego se llama a si misma...
 
-pass:[&#8193;&#8193;]The execution of +countdown+ begins with +n = 1+, and since +n+ is greater than 0, pass:[<br/>&#8193;&#8193;&#8193;]it outputs the value 1, and then calls itself ...
+pass:[&#8193;&#8193;]La ejecución de +cuentaregresiva+ empieza con +n = 1+, y como +n+ es mayor que 0, pass:[<br/>&#8193;&#8193;&#8193;]muestra el valor 1, y luego se llama a si misma...
 
-pass:[&#8193;&#8193;&#8193;]The execution of +countdown+ begins with +n = 0+, and since +n+ is not greater than pass:[<br/>&#8193;&#8193;&#8193;&#8193;]0, it outputs the word, +"Blastoff!"+ and then returns.
+pass:[&#8193;&#8193;&#8193;]La ejecución de +cuentaregresiva+ empieza con +n = 0+, y como +n+ no es mayor que 0, pass:[<br/>&#8193;&#8193;&#8193;&#8193;]muestra la palabra +"Despegue!"+, y luego termina.
 
-pass:[&#8193;&#8193;]The countdown that got +n = 1+ returns.
+pass:[&#8193;&#8193;]La +cuentaregresiva+ cuyo argumento es +n = 1+ termina.
 
-pass:[&#8193;]The countdown that got +n = 2+ returns.
+pass:[&#8193;]La +cuentaregresiva+ cuyo argumento es +n = 2+ termina.
 
-The countdown that got +n = 3+ returns.
+La +cuentaregresiva+ cuyo argumento es +n = 3+ termina.
 
-And then you’re back in +Main+.
+Y volvemos a +Main+.
 
-A function that calls itself is _recursive_; the process of executing it is called _recursion_.
-(((recursive function)))(((recursion)))
+Una función que se llama a si misma es _recursiva_; el proceso de ejecución se llama _recursividad_.
+(((función recursiva)))(((recursividad)))
 
-As another example, we can write a function that prints a string latexmath:[\(n\)] times.
-(((printn)))((("function", "programmer-defined", "printn", see="printn")))
+Como otro ejemplo, podemos escribir una función que imprima una cadena latexmath:[\(n\)] veces.
+(((printn)))((("función", "definida por el programador", "printn", see="printn")))
 
 [source,julia]
 ----
@@ -300,239 +296,234 @@ function printn(s, n)
 end
 ----
 
-If +n pass:[&lt;]= 0+ the +return+ statement exits the function. The flow of execution immediately returns to the caller, and the remaining lines of the function don’t run.
-(((return)))((("keyword", "return", see="return")))(((return statement)))((("statement", "return", see="return statement")))
+Si +n pass:[&lt;]= 0+, se usa la sentencia +return+ para salir de la función. El flujo de la ejecución vuelve inmediatamente a la sentencia de llamada a función y no se ejecutan las líneas restantes de la función.
+(((return)))((("palabra reservada", "return", see="return")))(((sentencia return)))((("sentencia", "return", see="return statement")))
 
-The rest of the function is similar to +countdown+: it displays +s+ and then calls itself to display +s+ latexmath:[\(n-1\)] additional times. So the number of lines of output is latexmath:[\(1 + (n - 1)\)], which adds up to latexmath:[\(n\)].
+El resto de la función es similar a +cuenta regresiva+: muestra +s+ y luego se llama a si mismo para mostrar +s+ latexmath:[\(n-1\)] veces más. Así que el número de lineas mostradas es latexmath:[\(1 + (n - 1)\)], es decir latexmath:[\(n\)].
 
-For simple examples like this, it is probably easier to use a +for+ loop. But we will see examples later that are hard to write with a +for+ loop and easy to write with recursion, so it is good to start early.
+Para ejemplos simples como este, es más fácil usar un ciclo +for+. Veremos ejemplos que son difíciles de escribir con un ciclo +for+, y fáciles de escribir con recursividad.
 
-=== Stack Diagrams for Recursive Functions
+=== Diagramas de pila para funciones recursivas
 
-In <<stack_diagrams>>, we used a stack diagram to represent the state of a program during a function call. The same kind of diagram can help interpret a recursive function.
+En <<stack_diagrams>>, se usó un diagrama de pila para representar el estado de un programa durante una llamada de función. El mismo tipo de diagrama puede ser de utilidad para interpretar una función recursiva.
 (((stack diagram)))
 
-Every time a function gets called, Julia creates a frame to contain the function’s local variables and parameters. For a recursive function, there might be more than one frame on the stack at the same time.
+Cada vez que se llama a una función, Julia crea un marco que contiene las variables locales de la función y los parámetros. En una función recursiva, puede haber más de un marco en el diagrama de pila al mismo tiempo.
 (((frame)))
 
 [[fig05-1]]
 .Stack diagram
 image::images/fig51.svg[]
 
+<<fig05-1>> muestra un diagrama de pila para +cuentaregresiva+ utilizando +n=3+. 
 
-<<fig05-1>> shows a stack diagram for +countdown+ called with +n = 3+.
+Como siempre, la parte superior de la pila es el marco para +Main+. Está vacío pues no se crearon variables en +Main+, ni tampoco se pasaron argumentos.
 
-As usual, the top of the stack is the frame for +Main+. It is empty because we did not create any variables in +Main+ or pass any arguments to it.
-
-The four +countdown+ frames have different values for the parameter +n+. The bottom of the stack, where +n = 0+, is called the _base case_. It does not make a recursive call, so there are no more frames.
+Los cuatro marcos de +cuentaregresiva+ tienen diferentes valores del parámetro +n+. La parte inferior del diagrama de pila, donde +n = 0+, es llamado _caso base_. No hace una llamada recursiva, así que no hay más marcos.
 (((base case)))
 
-==== Exercise 5-1
+==== Ejercicio 5-1
 
-As an exercise, draw a stack diagram for +printn+ called with +s = "Hello"+ and +n = 2+. Then write a function called +do_n+ that takes a function object and a number, +n+, as arguments, and that calls the given function latexmath:[\(n\)] times.
+Como ejercicio, dibuje un diagrama de pila para +printn+, llamada con +s = "Hola"+ y +n = 2+. Luego escriba una función llamada +hacer_n+, que tome como argumentos una función y un número +n+, y que luego llame a la función dada latexmath:[\(n\)] veces.
 
-=== Infinite Recursion
-
-If a recursion never reaches a base case, it goes on making recursive calls forever, and the program never terminates. This is known as _infinite recursion_, and it is generally not a good idea. Here is a minimal program with an infinite recursion:
+=== Recursión infinita
+Si una recursión nunca alcanza un caso base, continúa haciendo llamadas recursivas para siempre, y el programa nunca termina. Esto se conoce como _recursión infinita_, y generalmente no es una buena idea. Aquí hay un código con una recursión infinita:
 (((infinite recursion)))(((recurse)))((("function", "programmer-defined", "recurse", see="recurse")))
 
 [source,julia]
 ----
-function recurse()
-    recurse()
+function recursion()
+    recursion()
 end
 ----
 
-In most programming environments, a program with infinite recursion does not really run forever. Julia reports an error message when the maximum recursion depth is reached:
+En la mayoría de los entornos de programación, un programa con recursión infinita realmente no se ejecuta para siempre. Julia entrega un mensaje de error cuando se alcanza la profundidad de recursión máxima:
 
 [source,jlcon]
 ----
-julia> recurse()
+julia> recursion()
 ERROR: StackOverflowError:
 Stacktrace:
- [1] recurse() at ./REPL[1]:2 (repeats 80000 times)
+ [1] recursion() at ./REPL[1]:2 (repeats 80000 times)
 ----
 
-This stacktrace is a little bigger than the one we saw in the previous chapter. When the error occurs, there are 80000 +recurse+ frames on the stack!
+Este stacktrace es un poco más grande que el que vimos en el capítulo anterior. Cuando se produce el error, ¡hay 80000 marcos de +recurse+ en el diagrama de pila!
 (((stacktrace)))(((StackOverflowError)))((("error", "Core", "StackOverflowError", see="StackOverflowError")))
 
-If you encounter an infinite recursion by accident, review your function to confirm that there is a base case that does not make a recursive call. And if there is a base case, check whether you are guaranteed to reach it.
+Si por accidente encuentra una recursión infinita en su código, revise su función para confirmar que hay un caso base que no realiza una llamada recursiva. Si hay un caso base, verifique si realmente puede ocurrir.
 
+=== Entrada por teclado
 
-=== Keyboard Input
+Los programas que hemos escrito hasta ahora no aceptan entradas del usuario. Simplemente hacen lo mismo cada vez.
 
-The programs we have written so far accept no input from the user. They just do the same thing every time.
-
-Julia provides a built-in function called +readline+ that stops the program and waits for the user to type something. When the user presses +RETURN+ or +ENTER+, the program resumes and +readline+ returns what the user typed as a string.
+Julia tiene una función incorporada llamada +readline+ que detiene el programa y espera a que el usuario escriba algo. Cuando el usuario presiona +RETURN+ o +ENTER+, el programa se reanuda y +readline+ devuelve lo que el usuario escribió como una cadena.
 (((readline)))((("function", "Base", "readline", see="readline")))
 
 [source,jlcon]
 ----
 julia> text = readline()
-What are you waiting for?
-"What are you waiting for?"
+¿Qué estás esperando?
+"¿Qué estás esperando?"
 ----
-
-Before getting input from the user, it is a good idea to print a prompt telling the user what to type:
+Antes de recibir una entrada por teclado del usuario, es una buena idea imprimir un mensaje que le diga al usuario qué escribir:
 (((prompt)))
 
 [source,jlcon]
 ----
-julia> print("What...is your name? "); readline()
-What...is your name? Arthur, King of the Britons!
-"Arthur, King of the Britons!"
+julia> print("¿Cuál... es tu nombre? "); readline()
+¿Cuál... es tu nombre? ¡Arturo, Rey de los Bretones!
+"¡Arturo, Rey de los Bretones!"
 ----
 
-A semi-colon +;+ allows to put multiple statements on the same line. In the REPL only the last statement returns its value.
+Un punto y coma +;+ permite colocar varias sentencias en la misma línea. En el REPL solo la última sentencia devuelve su valor.
 (((;)))
 
-If you expect the user to type an integer, you can try to convert the return value to +Int64+:
+Si espera que el usuario escriba un número entero, puede intentar convertir el valor de retorno a +Int64+:
 
 [source,jlcon]
 ----
-julia> println("What...is the airspeed velocity of an unladen swallow?"); speed = readline()
-What...is the airspeed velocity of an unladen swallow?
-42
-"42"
-julia> parse(Int64, speed)
-42
+julia> println("¿Cuántos dejaron su casa, su tierra o su posesión?"); numero = readline()
+¿Cuántos dejaron su casa, su tierra o su posesión?
+115
+"115"
+julia> parse(Int64, numero)
+115
 ----
-
-But if the user types something other than a string of digits, you get an error:
+Pero si el usuario no escribe una cadena, obtendrá un error:
 (((parse)))
 
 [source,jlcon]
 ----
-julia> println("What...is the airspeed velocity of an unladen swallow? "); speed = readline()
-What...is the airspeed velocity of an unladen swallow?
-What do you mean, an African or a European swallow?
-"What do you mean, an African or a European swallow?"
+julia> println("¿Cuántos dejaron su casa, su tierra o su posesión?"); numero = readline()
+¿Cuántos dejaron su casa, su tierra o su posesión?
+Más de ciento quince son.
+"Más de ciento quince son."
 julia> parse(Int64, speed)
-ERROR: ArgumentError: invalid base 10 digit 'W' in "What do you mean, an African or a European swallow?"
+ERROR: ArgumentError: invalid base 10 digit 'M' in "Más de ciento quince son."
 [...]
 ----
 
-We will see how to handle this kind of error later.
+Veremos qué hacer con este tipo de error más adelante.
 (((ArgumentError)))
 
 
-=== Debugging
+=== Depuración
 
-When a syntax or runtime error occurs, the error message contains a lot of information, but it can be overwhelming. The most useful parts are usually:
+Cuando se produce un error de sintaxis o de tiempo de ejecución, el mensaje de error contiene mucha información, lo cual puede ser abrumador. Las partes más útiles suelen ser:
 (((debugging)))
 
-* What kind of error it was, and
+* Qué tipo de error fue, y
 
-* Where it occurred.
+* Dónde ocurrió.
 
-Syntax errors are usually easy to find, but there are a few gotchas. In general, error messages indicate where the problem was discovered, but the actual error might be earlier in the code, sometimes on a previous line.
+Los errores de sintaxis suelen ser fáciles de encontrar, pero hay algunos trucos. En general, los mensajes de error indican dónde se descubrió el problema, pero el error real podría estar antes en el código, a veces en una línea anterior.
 
-The same is true of runtime errors. Suppose you are trying to compute a signal-to-noise ratio in decibels. The formula is
+Lo mismo aplica para los errores de tiempo de ejecución. Suponga que está tratando de calcular una relación señal/ruido en decibelios. La formula es
 
 [latexmath]
 ++++
 \begin{equation}
-{SNR_{\mathrm{db}} = 10 \log_{10} \frac{P_{\mathrm{signal}}}{P_{\mathrm{noise}}}\ .}
+{S/R_{\mathrm{db}} = 10 \log_{10} \frac{P_{\mathrm{señal}}}{P_{\mathrm{ruido}}}\ .}
 \end{equation}
 ++++
 
-In Julia, you might write something like this:
+En Julia, se podría escribir algo como esto:
 
 [source,julia]
 ----
-signal_power = 9
-noise_power = 10
-ratio = signal_power ÷ noise_power
-decibels = 10 * log10(ratio)
-print(decibels)
+intensidad_señal = 9
+intendidad_ruido = 10
+relacion = intensidad_señal ÷ intendidad_ruido
+decibeles = 10 * log10(relacion)
+print(decibeles)
 ----
 
-And you get:
+Obteniendo:
 
 [source,julia]
 ----
 -Inf
 ----
+Este no es el resultado que esperábamos.
 
-This is not the result you expected.
-
-To find the error, it might be useful to print the value of ratio, which turns out to be 0. The problem is in line 3, which uses floor division instead of floating-point division.
+Para encontrar el error, puede ser útil imprimir el valor de la variable "relacion", que resulta ser 0. El problema está en la línea 3, que usa la división de tipo piso en lugar de la división de punto flotante.
 
 [WARNING]
 ====
-You should take the time to read error messages carefully, but don’t assume that everything they say is correct.
+Debes tomarte el tiempo de leer los mensajes de error cuidadosamente, pero no asumas que todo lo que dicen es correcto.
 ====
 
 
-=== Glossary
+=== Glosario
 
-floor division::
-An operator, denoted +÷+, that divides two numbers and rounds down (toward negative infinity) to an integer.
+División de tipo piso::
+Un operador, denotado por +÷+, que divide dos números y redondea hacia abajo (hacia el infinito negativo) a un entero.
 (((floor division)))
 
-modulus operator::
-An operator, denoted with a percent sign (%), that works on integers and returns the remainder when one number is divided by another.
+operador módulo::
+Un operador, denotado con el signo de porcentaje (%), que se utiliza con enteros y devuelve el resto cuando un número se divide por otro.
 (((modulus operator)))
 
-boolean expression::
-An expression whose value is either +true+ or +false+.
+expresión booleana::
+Una expresión cuyo valor es +verdadero+ o +falso+.
 (((boolean expression)))
 
-relational operator::
-One of the operators that compares its operands: +==+, +≠+ (+!=+), +>+, +<+, +≥+ (+>=+), and +≤+ (+pass:[&lt;=]+).
+operador relacional::
+Uno de los operadores que compara sus operandos: +==+, +≠+ (+!=+), +>+, +<+, +≥+ (+>=+), and +≤+ (+pass:[&lt;=]+).
 (((relational operator)))
 
-logical operator::
-One of the operators that combines boolean expressions: +&&+ (and), +||+ (or), and +!+ (not).
+operador lógico::
+Uno de los operadores que combina expresiones booleanas: +&&+ (and), +||+ (or), and +!+ (not).
 (((logical operator)))
 
-conditional statement::
-A statement that controls the flow of execution depending on some condition.
+sentencia condicional::
+Una sentencia que controla el flujo de ejecución dependiendo de alguna condición.
 (((conditional statement)))
 
-condition::
-The boolean expression in a conditional statement that determines which branch runs.
+condición::
+La expresión booleana en una sentencia condicional que determina qué rama se ejecuta.
 (((condition)))
 
-compound statement::
-A statement that consists of a header and a body. The body is terminated with the keyword +end+.
+sentencia compuesta::
+Una sentencia que consta de un encabezado y un cuerpo. El cuerpo termina con la palabra reservada +end+.
 (((compound statement)))
 
-branch::
-One of the alternative sequences of statements in a conditional statement.
+rama::
+Una de las secuencias alternativas de sentencias en una sentencia condicional.
 (((branch)))
 
-chained conditional::
+condicional encadenada::
+Una sentencia condicional con una serie de ramas alternativas.
 A conditional statement with a series of alternative branches.
 (((chained conditional)))
 
-nested conditional::
-A conditional statement that appears in one of the branches of another conditional statement.
+condicional anidada::
+Una sentencia condicional que aparece en una de las ramas de otra sentencia condicional.
 (((nested conditional)))
 
-return statement::
-A statement that causes a function to end immediately and return to the caller.
+sentencia return::
+Una sentencia que hace que una función finalice de inmediato y que vuelva a la sentencia de llamada a función.
 (((return statement)))
 
-recursion::
-The process of calling the function that is currently executing.
+recursividad o recursión::
+El proceso de llamar a la función que se está ejecutando actualmente.
 (((recursion)))
 
-base case::
-A conditional branch in a recursive function that does not make a recursive call.
+caso base::
+Una rama condicional en una función recursiva que no realiza una llamada recursiva.
 (((base case)))
 
-infinite recursion::
-A recursion that doesn’t have a base case, or never reaches it. Eventually, an infinite recursion causes a runtime error.
+recursividad infinita::
+Una recursión que no tiene un caso base, o que nunca llega a él. Eventualmente, una recursión infinita provoca un error de tiempo de ejecución.
 (((infinite recursion)))
 
 
-=== Exercises
+=== Ejercicios
 
 [[ex05-1]]
-==== Exercise 5-2
+==== Ejercicio 5-2
 
-The function +time+ returns the current Greenwich Mean Time in seconds since “the epoch”, which is an arbitrary time used as a reference point. On UNIX systems, the epoch is 1 January 1970.
+La función +time+ devuelve el tiempo medio de Greenwich actual en segundos desde "la época", que es un tiempo arbitrario utilizado como punto de referencia. En sistemas UNIX, la época es el 1 de enero de 1970.
 (((time)))((("function", "Base", "time", see="time")))
 
 [source,@julia-repl]
@@ -540,12 +531,12 @@ The function +time+ returns the current Greenwich Mean Time in seconds since “
 time()
 ----
 
-Write a script that reads the current time and converts it to a time of day in hours, minutes, and seconds, plus the number of days since the epoch.
+Escriba un script que lea la hora actual y la convierta a una hora del día en horas, minutos y segundos, más el número de días transcurridos desde la época.
 
 [[ex05-2]]
-==== Exercise 5-3
+==== Ejercicio 5-3
 
-Fermat’s Last Theorem says that there are no positive integers latexmath:[\(a\)], latexmath:[\(b\)], and latexmath:[\(c\)] such that
+El último teorema de Fermat dice que no hay enteros positivos latexmath:[\(a\)], latexmath:[\(b\)], and latexmath:[\(c\)] tal que
 (((Fermat's last theorem)))
 
 [latexmath]
@@ -555,107 +546,105 @@ Fermat’s Last Theorem says that there are no positive integers latexmath:[\(a\
 \end{equation}
 ++++
 
-for any value of latexmath:[\(n\)] greater than 2.
+para cualquier valor de latexmath: [\ (n \)] mayor que 2.
 
-. Write a function named +checkfermat+ that takes four parameters—+a+, +b+, +c+ and +n+—and checks to see if Fermat’s theorem holds. If +n+ is greater than 2 and +pass:[a^n + b^n == c^n]+ the program should print, “Holy smokes, Fermat was wrong!” Otherwise the program should print, “No, that doesn’t work.”
+. Escriba una función llamada +verificarfermat+ que tome cuatro parámetros—+a+, +b+, +c+ and +n+— y que verifique si el teorema de Fermat es válido. Si +n+ es mayor que 2 y +pass:[a^n + b^n == c^n]+ el programa debería imprimir, "¡Santo cielo, Fermat estaba equivocado!" De lo contrario, el programa debería imprimir, "No, eso no funciona".
 (((checkfermat)))((("function", "programmer-defined", "checkfermat", see="checkfermat")))
 
-. Write a function that prompts the user to input values for +a+, +b+, +c+ and +n+, converts them to integers, and uses +checkfermat+ to check whether they violate Fermat’s theorem.
+. Escriba una función que solicite al usuario ingresar valores para +a+, +b+, +c+ and +n+, que los convierta en enteros y que use +verificarfermat+ para verificar si violan el teorema de Fermat.
 
 [[ex05-3]]
-==== Exercise 5-4
+==== Ejercicio 5-4
 
-If you are given three sticks, you may or may not be able to arrange them in a triangle. For example, if one of the sticks is 12 inches long and the other two are one inch long, you will not be able to get the short sticks to meet in the middle. For any three lengths, there is a simple test to see if it is possible to form a triangle:
+Si tienes tres barras, estas podrían o no formar un triángulo. Por ejemplo, si una de las barras tiene 12 centimetros de largo y las otras dos tienen un centimetro de largo, no es posible que las barras pequeñas puedan juntarse al medio. Para cualquier trío de longitudes, hay una prueba simple para ver si es posible formar un triángulo:
 
 [TIP]
 ====
-If any of the three lengths is greater than the sum of the other two, then you cannot form a triangle. Otherwise, you can. (If the sum of two lengths equals the third, they form what is called a “degenerate” triangle.)
+Si cualquiera de las tres longitudes es mayor que la suma de las otras dos, entonces no se puede formar un triángulo. De lo contrario, se puede. (Si la suma de dos longitudes es igual a la tercera, forman lo que se llama un triángulo "degenerado").
 ====
 
-. Write a function named +istriangle+ that takes three integers as arguments, and that prints either “Yes” or “No”, depending on whether you can or cannot form a triangle from sticks with the given lengths.
+. Escriba una función llamada +estriangulo+ que tome tres enteros como argumentos, y que imprima “Sí” o “No”, dependiendo de si se puede o no formar un triángulo a partir de barras de las longitudes dadas.
 (((istriangle)))((("function", "programmer-defined", "istriangle", see="istriangle")))
 
-. Write a function that prompts the user to input three stick lengths, converts them to integers, and uses +istriangle+ to check whether sticks with the given lengths can form a triangle.
+. Escriba una función que solicite al usuario ingresar tres longitudes de barras, que las convierta en enteros y use +estriangulo+ para verificar si las barras con las longitudes dadas pueden formar un triángulo.
 
 [[ex05-4]]
-==== Exercise 5-5
+==== Ejercicio 5-5
 
-What is the output of the following program? Draw a stack diagram that shows the state of the program when it prints the result.
+¿Cuál es el resultado del siguiente programa? Dibuje un diagrama de pila que muestre el estado del programa cuando imprime el resultado.
 (((stack diagram)))(((recurse)))
 
 [source,julia]
 ----
-function recurse(n, s)
+function recursion(n, s)
     if n == 0
         println(s)
     else
-        recurse(n-1, n+s)
+        recursion(n-1, n+s)
     end
 end
 
-recurse(3, 0)
+recursion(3, 0)
 ----
+. ¿Qué pasaría si llamaras a esta función así: +recursion(-1, 0)+?
 
-. What would happen if you called this function like this: +recurse(-1, 0)+?
+. Escriba una documento que explique todo lo que alguien necesitaría saber para usar esta función (y nada más).
 
-. Write a docstring that explains everything someone would need to know in order to use this function (and nothing else).
-
-The following exercises use the +PiensaEnJulia+ module, described in <<chap04>>:
+Los siguientes ejercicios utilizan el módulo +ThinkJulia+, descrito en <<chap04>>:
 
 [[ex05-5]]
-==== Exercise 5-6
+==== Ejercicio 5-6
 
-Read the following function and see if you can figure out what it does (see the examples in <<chap04>>). Then run it and see if you got it right.
+Lea la siguiente función y vea si puede averiguar qué hace (vea los ejemplos en <<chap04>>). Luego ejecútelo y vea si lo hizo bien.
 
 [source,julia]
 ----
-function draw(t, length, n)
+function dibujar(t, distancia, n)
     if n == 0
         return
     end
-    angle = 50
-    forward(t, length*n)
-    turn(t, -angle)
-    draw(t, length, n-1)
-    turn(t, 2*angle)
-    draw(t, length, n-1)
-    turn(t, -angle)
-    forward(t, -length*n)
+    angulo = 50
+    adelante(t, distancia*n)
+    girar(t, -angulo)
+    dibujar(t, distancia, n-1)
+    girar(t, 2*angulo)
+    dibujar(t, distancia, n-1)
+    girar(t, -angulo)
+    adelante(t, -distancia*n)
 end
 ----
 
 [[ex05-6]]
-==== Exercise 5-7
+==== Ejercicio 5-7
 
 [[fig05-2]]
-.A Koch curve
+.Una curva de Koch
 image::images/fig52.svg[]
 
-
-The Koch curve is a fractal that looks something like <<fig05-2>>. To draw a Koch curve with length latexmath:[\(x\)], all you have to do is
+La curva de Koch es un fractal que luce como <<fig05-2>>. Para dibujar una curva de Koch con longitud latexmath: [\(x\)], todo lo que tiene que hacer es
 (((Koch curve)))(((fractal)))
 
-. Draw a Koch curve with length latexmath:[\(\frac{x}{3}\)].
+. Dibuje una curva de Koch con longitud latexmath:[\(\frac{x}{3}\)].
 
-. Turn left 60 degrees.
+. Gire a la izquierda 60 grados.
 
-. Draw a Koch curve with length latexmath:[\(\frac{x}{3}\)].
+. Dibuje una curva de Koch con longitud latexmath:[\(\frac{x}{3}\)].
 
-. Turn right 120 degrees.
+. Gire a la derecha 120 grados.
 
-. Draw a Koch curve with length latexmath:[\(\frac{x}{3}\)].
+. Dibuje una curva de Koch con longitud latexmath:[\(\frac{x}{3}\)].
 
-. Turn left 60 degrees.
+. Gire a la izquierda 60 grados.
 
-. Draw a Koch curve with length latexmath:[\(\frac{x}{3}\)].
+. Dibuje una curva de Koch con longitud latexmath:[\(\frac{x}{3}\)].
 
-The exception is if latexmath:[\(x\)] is less than 3: in that case, you can just draw a straight line with length latexmath:[\(x\)].
+La excepción es cuando latexmath:[\(x\)] es menor que 3: en ese caso, puede dibujar una línea recta con una longitud latexmath:[\(x\)].
 
-. Write a function called +koch+ that takes a turtle and a length as parameters, and that uses the turtle to draw a Koch curve with the given length.
+. Escribe una función llamada +koch+ que tome una tortuga y una longitud como parámetros, y que use la tortuga para dibujar una curva de Koch con la longitud dada.
 (((koch)))((("function", "programmer-defined", "koch", see="koch")))
 
-. Write a function called +snowflake+ that draws three Koch curves to make the outline of a snowflake.
+. Escriba una función llamada +copodenieve+ que dibuje tres curvas de Koch para hacer el contorno de un copo de nieve.
 (((snowflake)))((("function", "programmer-defined", "snowflake", see="snowflake")))
 
-. The Koch curve can be generalized in several ways. See https://en.wikipedia.org/wiki/Koch_snowflake for examples and implement your favorite.
+. La curva de Koch se puede generalizar de varias maneras. Consulte https://en.wikipedia.org/wiki/Koch_snowflake para ver ejemplos e implementar su favorito.
 
