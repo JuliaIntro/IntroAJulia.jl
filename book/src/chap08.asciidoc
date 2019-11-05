@@ -1,18 +1,18 @@
 [[chap08]]
 == Cadenas
 
-Las cadenas son diferentes a los números enteros, flotantes y booleanos. Una cadena es una _secuencia_, es decir, es una colección ordenada de otros valores. En este capítulo veremos cómo acceder a los caracteres que forman una cadena, y aprenderemos sobre algunas  funciones relacionadas con cadenas proporcionadas por Julia.
+Las cadenas son diferentes de los números enteros, flotantes y booleanos. Una cadena es una _secuencia_, es decir, es una colección ordenada de valores. En este capítulo veremos cómo acceder a los caracteres que forman una cadena, y aprenderemos algunas funciones integradas en Julia relacionadas con cadenas.
 (((string)))(((sequence)))
 
 [[characters]]
 === Caracteres
 
-Los hispanohablantes están familiarizados con algunos caracteres, tales como las letras del alfabeto (A, B, C, ...), números y signos de puntuación comunes. Estos caracteres están estandarizados en el código _ASCII_ (Código Estándar Estadounidense para el Intercambio de Información).
+Los hispanohablantes están familiarizados con algunos caracteres, tales como las letras del alfabeto (A, B, C, ...), los números y los signos de puntuación comunes. Estos caracteres están estandarizados en el código _ASCII_ (Código Estándar Estadounidense para el Intercambio de Información).
 (((ASCII standard)))
 
-Por supuesto hay muchos otros caracteres utilizados en idiomas distintos del español que no están en el código _ASCII_, tales como aquellos usados en otros idiomas, tales como árabe, chino, Hebreo, hindi, japonés y coreano.
+Por supuesto hay muchos otros caracteres utilizados en idiomas distintos del español que no están en el código _ASCII_, tales como aquellos usados en los idiomas cirilico, griego, árabe, chino, hebreo, hindi, japonés y coreano.
 
-La _norma Unicode_ permite enfrentar la complejidad de lo que significa un carácter, y generalmente se acepta como el estándar definitivo para abordar este problema. Proporciona un número único para cada caracter a escala mundial.
+Definir lo que significa un carácter es altamente complejo. La _norma Unicode_ permite abordar este problema, y se considera como el estándar definitivo para ello. Esto se hace a través de la asignación de un número único para cada carácter a nivel mundial.
 (((Unicode standard)))
 
 Un valor +Char+ representa un único carácter y está entre comillas simples:
@@ -34,23 +34,23 @@ Incluso los emojis son parte del estándar Unicode. (*+\:banana: TAB+*)
 
 === Una Cadena es una Secuencia
 
-Una cadena es una secuencia de caracteres. Puede acceder a los caracteres de uno en uno con el operador paréntesis:
+Una cadena es una secuencia de caracteres. Puede acceder a un carácter con el operador corchete:
 (((string)))(((String)))(((sequence)))(((bracket operator)))((("[]", see="bracket operator")))((("operator", "Base", "[]", see="bracket operator")))
 
 [source,@julia-repl-test chap08]
 ----
-julia> fruit = "banana"
+julia> fruta = "banana"
 "banana"
-julia> letter = fruit[1]
+julia> letra = fruit[1]
 'b': ASCII/Unicode U+0062 (category Ll: Letter, lowercase)
 ----
 
-The second statement selects character number 1 from +fruit+ and assigns it to +letter+.
+La segunda sentencia selecciona el carácter número 1 de +fruta+ y la asigna a la variable +letra+. 
 
-The expression in brackets is called an _index_. The index indicates which character in the sequence you want (hence the name).
+La expresión entre corchetes se llama _indice_. El índice indica cuál carácter de la secuencia quiere usted (de ahí el nombre).
 (((index)))
 
-All indexing in Julia is 1-based—the first element of any integer-indexed object is found at index 1 and the last element at index +end+:
+La indexación en Julia es basada en 1, es decir, el primer elemento de cualquier objeto indexado con enteros se encuentra en el índice 1, y el último en el índice +end+:
 (((end)))
 
 [source,@julia-repl-test chap08]
