@@ -10,7 +10,7 @@ Las cadenas son diferentes de los números enteros, flotantes y booleanos. Una c
 Los hispanohablantes están familiarizados con algunos caracteres, tales como las letras del alfabeto (A, B, C, ...), los números y los signos de puntuación comunes. Estos caracteres están estandarizados en el código _ASCII_ (Código Estándar Estadounidense para el Intercambio de Información).
 (((ASCII standard)))
 
-Por supuesto hay muchos otros caracteres utilizados en idiomas distintos del español que no están en el código _ASCII_, tales como aquellos usados en los idiomas cirilico, griego, árabe, chino, hebreo, hindi, japonés y coreano.
+Por supuesto hay muchos otros caracteres utilizados en idiomas distintos del español que no están en el código _ASCII_, tales como aquellos usados en los idiomas griego, árabe, chino, hebreo, hindi, japonés y coreano.
 
 Definir lo que significa un carácter es altamente complejo. La _norma Unicode_ permite abordar este problema, y se considera como el estándar definitivo para ello. La _norma Unicode_ funciona asignando un número único para cada carácter a nivel global.
 (((Unicode standard)))
