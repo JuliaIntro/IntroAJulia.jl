@@ -12,7 +12,7 @@ Los hispanohablantes están familiarizados con algunos caracteres, tales como la
 
 Por supuesto hay muchos otros caracteres utilizados en idiomas distintos del español que no están en el código _ASCII_, tales como aquellos usados en los idiomas cirilico, griego, árabe, chino, hebreo, hindi, japonés y coreano.
 
-Definir lo que significa un carácter es altamente complejo. La _norma Unicode_ permite abordar este problema, y se considera como el estándar definitivo para ello. Esto se hace a través de la asignación de un número único para cada carácter a nivel mundial.
+Definir lo que significa un carácter es altamente complejo. La _norma Unicode_ permite abordar este problema, y se considera como el estándar definitivo para ello. La _norma Unicode_ funciona asignando un número único para cada carácter a nivel global.
 (((Unicode standard)))
 
 Un valor +Char+ representa un único carácter y está entre comillas simples:
@@ -34,7 +34,7 @@ Incluso los emojis son parte del estándar Unicode. (*+\:banana: TAB+*)
 
 === Una Cadena es una Secuencia
 
-Una cadena es una secuencia de caracteres. Puede acceder a un carácter con el operador corchete:
+Una cadena es una secuencia de caracteres. Se puede acceder a un carácter con el operador corchete:
 (((string)))(((String)))(((sequence)))(((bracket operator)))((("[]", see="bracket operator")))((("operator", "Base", "[]", see="bracket operator")))
 
 [source,@julia-repl-test chap08]
@@ -50,12 +50,12 @@ La segunda sentencia selecciona el carácter número 1 de +fruta+ y la asigna a 
 La expresión entre corchetes se llama _indice_. El índice indica cuál carácter de la secuencia quiere usted (de ahí el nombre).
 (((index)))
 
-La indexación en Julia es basada en 1, es decir, el primer elemento de cualquier objeto indexado con enteros se encuentra en el índice 1, y el último en el índice +end+:
+La indexación en Julia es base 1, es decir, el primer elemento de cualquier objeto indexado con enteros se encuentra en el índice 1, y el último en el índice +end+:
 (((end)))
 
 [source,@julia-repl-test chap08]
 ----
-julia> fruit[end]
+julia> fruta[end]
 'a': ASCII/Unicode U+0061 (category Ll: Letter, lowercase)
 ----
 
@@ -71,7 +71,7 @@ julia> fruta[end-1]
 'n': ASCII/Unicode U+006e (category Ll: Letter, lowercase)
 ----
 
-Pero el valor del índice tiene que ser un número entero. De lo contrario, se obtiene:
+Pero el valor del índice tiene que ser un número entero. De lo contrario se obtiene:
 (((MethodError)))((("error", "Core", "MethodError", see="MethodError")))
 
 [source,@julia-repl-test chap08]
@@ -94,7 +94,7 @@ julia> len = length(frutas)
 5
 ----
 
-Para obtener la última letra de una cadena, podrías querer intentar algo como esto:
+Para obtener la última letra de una cadena, puede sentirse tentado a probar algo como esto:
 
 [source,@julia-repl-test chap08]
 ----
@@ -102,12 +102,12 @@ julia> last = frutas[len]
 ' ': ASCII/Unicode U+0020 (category Zs: Separator, space)
 ----
 
-But you might not get what you expect.
+Pero con esto no obtendrás el resultado que esperabas.
 
-Strings are encoded using the _UTF-8 encoding_. UTF-8 is a variable-width encoding, meaning that not all characters are encoded in the same number of bytes.
+Las cadenas se codifican usando _codificación UTF-8_. UTF-8 es una codificación de longitud variable, lo que significa que no todos los caracteres están codificados con el mismo número de bytes.
 (((UTF-8 encoding)))
 
-The function +sizeof+ gives the number of bytes in a string:
+La función +sizeof+ devuelve el número de bytes de una cadena:
 (((sizeof)))((("function", "Base", "sizeof", see="sizeof")))
 
 [source,@julia-repl-test chap08]
@@ -116,53 +116,53 @@ julia> sizeof("🍌")
 4
 ----
 
-Because an emoji is encoded in 4 bytes and string indexing is byte based, the 5th element of +fruits+ is a +SPACE+.
+Dado que un emoji está codificado en 4 bytes y la indexación de cadenas está basada en bytes, el quinto elemento de +frutas+ es un +ESPACIO+.
 (((emoji)))
 
-This means also that not every byte index into a UTF-8 string is necessarily a valid index for a character. If you index into a string at such an invalid byte index, an error is thrown:
+Esto significa que no todos los índices de byte de una cadena UTF-8 son necesariamente índices válidos para un carácter. Si en una cadena se indexa con un índice de bytes no válido, se genera un error:
 (((StringIndexError)))((("error", "Base", "StringIndexError", see="StringIndexError")))
 
 [source,@julia-repl-test chap08]
 ----
-julia> fruits[2]
+julia> frutas[2]
 ERROR: StringIndexError("🍌 🍎 🍐", 2)
 ----
 
-In the case of +fruits+, the character +🍌+ is a four-byte character, so the indices 2, 3 and 4 are invalid and the next character's index is 5; this next valid index can be computed by +nextind(fruits, 1)+, and the next index after that by +nextind(fruits, 5)+ and so on.
+En el caso de +frutas+, el carácter +🍌+ es un carácter de cuatro bytes, por lo que los índices 2, 3 y 4 no son válidos y el índice del siguiente carácter es 5; el siguiente índice válido se puede calcular con +nextind(frutas, 1)+, y el subsiguiente con +nextind(frutas,5)+ y así sucesivamente.
 (((nextind)))((("function", "Base", "nextind", see="nextind")))
 
 
-=== Traversal
+=== Recorrido
 
-A lot of computations involve processing a string one character at a time. Often they start at the beginning, select each character in turn, do something to it, and continue until the end. This pattern of processing is called a _traversal_. One way to write a traversal is with a +while+ loop:
+Muchos cálculos implican procesar una cadena carácter por carácter. A menudo empiezan por el principio, seleccionan cada carácter uno a uno, hacen algo con él y continúan hasta el final. Este patrón de proceso se llama _recorrido_. Una forma de escribir un recorrido es con una sentencia while:
 (((traversal)))(((while statement)))
 
 [source,@julia-setup chap08]
 ----
-index = firstindex(fruits)
-while index <= sizeof(fruits)
-    letter = fruits[index]
-    println(letter)
-    global index = nextind(fruits, index)
+indice = primerindice(frutas)
+while indice <= sizeof(frutas)
+    letra = frutas[indice]
+    println(letra)
+    global indice = nextind(frutas, indice)
 end
 ----
 
-This loop traverses the string and displays each letter on a line by itself. The loop condition is +index pass:[&lt;=] sizeof(fruit)+, so when index is larger than the number of bytes in the string, the condition is +false+, and the body of the loop doesn’t run. 
+Este bucle recorre la cadena y muestra cada letra en una línea distinta. La condición del bucle es +index pass:[&lt;=] sizeof(fruta)+, de modo que cuando el indice es mayor al número de bytes en la cadena, la condición es +falsa+, y no se ejecuta el cuerpo del bucle.
 
-The function +firstindex+ returns the first valid byte index. The keyword +global+ before +index+ indicates that we want to reassign the variable +index+ defined in +Main+ (see <<global_variables>>).
+La función +primerindice+ devuelve el primer índice de bytes válido. La palabra reservada +global+ antes de +indice+ indica que queremos reasignar la variable +indice+ definida en +Main+ (ver <<variables_globales>>).
 (((global)))(((firstindex)))((("function", "Base", "firstindex", see="firstindex")))
 
-==== Exercise 8-1
+==== Ejercicio 8-1
 
-Write a function that takes a string as an argument and displays the letters backward, one per line.
+Escriba una función que tome una cadena como argumento y muestre las letras hacia atrás, una por línea.
 
-Another way to write a traversal is with a +for+ loop:
+Otra forma de escribir un recorrido es con un bucle +for+:
 (((for statement)))(((in)))
 
 [source,@julia-setup chap08]
 ----
-for letter in fruits
-    println(letter)
+for letra in frutas
+    println(letra)
 end
 ----
 
