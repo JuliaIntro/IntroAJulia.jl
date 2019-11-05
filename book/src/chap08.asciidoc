@@ -12,7 +12,7 @@ Los hispanohablantes están familiarizados con algunos caracteres, tales como la
 
 Por supuesto hay muchos otros caracteres utilizados en idiomas distintos del español que no están en el código _ASCII_, tales como aquellos usados en los idiomas griego, árabe, chino, hebreo, hindi, japonés y coreano.
 
-Definir lo que significa un carácter es altamente complejo. La _norma Unicode_ permite abordar este problema, y se considera como el estándar definitivo para ello. La _norma Unicode_ funciona asignando un número único para cada carácter a nivel global.
+Definir qué es un carácter es altamente complejo. La _norma Unicode_ permite abordar este problema, y se considera como el estándar definitivo para ello. Esta norma funciona asignando un número único para cada carácter a nivel global.
 (((Unicode standard)))
 
 Un valor +Char+ representa un único carácter y está entre comillas simples:
