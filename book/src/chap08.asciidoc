@@ -102,7 +102,7 @@ julia> last = frutas[len]
 ' ': ASCII/Unicode U+0020 (category Zs: Separator, space)
 ----
 
-Pero con esto no obtendrás el resultado que esperabas.
+Pero con esto no se obtendrá el resultado esperado.
 
 Las cadenas se codifican usando _codificación UTF-8_. UTF-8 es una codificación de longitud variable, lo que significa que no todos los caracteres están codificados con el mismo número de bytes.
 (((UTF-8 encoding)))
