@@ -166,53 +166,52 @@ for letra in frutas
 end
 ----
 
-Each time through the loop, the next character in the string is assigned to the variable +letter+. The loop continues until no characters are left.
+Cada vez que recorremos el bucle, se asigna a la variable +letra+ el siguiente carácter de la cadena. El bucle continúa hasta que no quedan más caracteres.
 
-The following example shows how to use concatenation (string multiplication) and a +for+ loop to generate an abecedarian series (that is, in alphabetical order). In Robert McCloskey’s book _Make Way for Ducklings_, the names of the ducklings are Jack, Kack, Lack, Mack, Nack, Ouack, Pack, and Quack. This loop outputs these names in order:
+El ejemplo siguiente muestra cómo usar la concatenación (multiplicación de cadenas) y un bucle for para generar una serie abecedaria (es decir, una serie con elementos en orden alfabético). Por ejemplo, en el libro de Robert McCloskey _Make Way for Ducklings_, los nombres de los patitos son Jack, Kack, Lack, Mack, Nack, Ouack, Pack, y Quack. Este bucle muestra esos nombres en orden:
 
 [source,@julia chap08-3]
 ----
-prefixes = "JKLMNOPQ"
-suffix = "ack"
+prefijos = "JKLMNOPQ"
+sufijos = "ack"
 
-for letter in prefixes
-    println(letter * suffix)
+for letra in prefijos
+    println(letra * sufijo)
 end
 ----
 
-Of course, that’s not quite right because “Ouack” and “Quack” are misspelled. 
+Por supuesto, esto no es del todo correcto, porque “Ouack” y “Quack” no están correctamente escritos.
 
-==== Exercise 8-2
+==== Ejercicio 8-2
 
-Modify the program to fix this error.
+Modifique este programa para solucionar este error.
 
+=== Porciones de Cadenas
 
-=== String Slices
-
-A segment of a string is called a _slice_. Selecting a slice is similar to selecting a character:
+A la subcadena de una cadena se le llama _porción_. La selección de una porción es similar a la selección un carácter:
 (((slice)))
 
 [source,@julia-repl-test chap08]
 ----
-julia> str = "Julius Caesar";
+julia> str = "Julio Cesar";
 
 julia> str[1:6]
-"Julius"
+"Julio"
 ----
 
-The operator +[n:m]+ returns the part of the string from the +n+-th byte to the +m+-th byte. So the same caution is needed as for simple indexing.
+El operador +[n:m]+ devuelve la parte de la cadena desde el +n+-ésimo byte hasta el +m+-ésimo. Por lo tanto, se necesita el mismo cuidado que para la indexación simple.
 (((bracket operator)))
 
-The +end+ keyword can be used to indicate the last byte of the string:
+La palabra reservada +end+ se puede usar para indicar al último byte de la cadena:
 (((end)))
 
 [source,@julia-repl-test chap08]
 ----
 julia> str[8:end]
-"Caesar"
+"Cesar"
 ----
 
-If the first index is greater than the second the result is an _empty string_, represented by two quotation marks:
+Si el primer índice es mayor que el segundo, el resultado es una _cadena vacía_, representada por dos comillas:
 (((empty string)))((("&quot;&quot;", see="empty string")))
 
 [source,@julia-repl-test chap08]
@@ -221,51 +220,50 @@ julia> str[8:7]
 ""
 ----
 
-An empty string contains no characters and has length 0, but other than that, it is the same as any other string.
+Una cadena vacía no contiene caracteres y tiene una longitud de 0, pero aparte de eso es igual a cualquier otra cadena.
 
-==== Exercise 8-3
+==== Ejercicio 8-3
 
-Continuing this example, what do you think +str[:]+ means? Try it and see.
+Continuando este ejemplo, ¿qué crees que significa +str[:]+? Prueba y verás.
 
+=== Las Cadenas son Inmutables
 
-=== Strings Are Immutable
-
-It is tempting to use the +[]+ operator on the left side of an assignment, with the intention of changing a character in a string. For example:
+Es tentador usar el operador +[]+ en el lado izquierdo de una asignación, con la intención de cambiar un carácter en una cadena. Por ejemplo:
 (((bracket operator)))(((MethodError)))
 
 [source,@julia-repl-test chap08]
 ----
-julia> greeting = "Hello, world!"
-"Hello, world!"
-julia> greeting[1] = 'J'
+julia> saludo = "¡Hola, mundo!"
+"¡Hola, mundo!"
+julia> saludo[2] = 'J'
 ERROR: MethodError: no method matching setindex!(::String, ::Char, ::Int64)
 ----
+Nota del traductor: De acuerdo con la codificación de caracteres en utf-8 ó latin-1, el carácter de exclamación ‘¡’, en la variable saludo ocupa dos posiciones, de ahí que la letra ‘H’ esté localizada en el índice 2.
 
-The reason for the error is that strings are _immutable_, which means you can’t change an existing string. The best you can do is create a new string that is a variation on the original:
+La razón del error es que las cadenas son _inmutables_, lo que significa que no puede cambiar una cadena existente. Lo más que puedes hacer es crear una nueva cadena que sea una variación de la original:
 (((immutable)))
 
 [source,@julia-repl-test chap08]
 ----
-julia> greeting = "J" * greeting[2:end]
-"Jello, world!"
+julia> saludo = "J" * saludo[2:end]
+"¡Jola, mundo!"
 ----
 
-This example concatenates a new first letter onto a slice of greeting. It has no effect on the original string.
+Este ejemplo concatena la apertura del signo de exclamación y una nueva primera letra a una porción de saludo. Esta operación no tiene efecto sobre la cadena original.
 
+=== Interpolación de Cadenas
 
-=== String Interpolation
-
-Constructing strings using concatenation can become a bit cumbersome. To reduce the need for these verbose calls to +string+ or repeated multiplications, Julia allows _string interpolation_ using +$+:
+Construir cadenas usando concatenación puede ser un poco engorroso. Para disminuir la necesidad de estas llamadas a +string+ o multiplicaciones repetidas, Julia permite la _interpolación de cadenas_ usando +$+:
 (((string interpolation)))((("$", see="string interpolation")))
 
 [source,@julia-repl-test]
 ----
-julia> greet = "Hello"
+julia> saludo = "Hola"
 "Hello"
-julia> whom = "World"
+julia> paraquien = "mundo"
 "World"
-julia> "$greet, $(whom)!"
-"Hello, World!"
+julia> "$¡saludo, $(paraquien)!"
+"¡Hola, mundo!"
 ----
 
 This is more readable and convenient than string concatenation: +pass:[greet * ", " * whom * "!"]+
