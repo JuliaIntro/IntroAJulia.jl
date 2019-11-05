@@ -59,46 +59,46 @@ julia> fruit[end]
 'a': ASCII/Unicode U+0061 (category Ll: Letter, lowercase)
 ----
 
-As an index you can use an expression that contains variables and operators:
+Como índice se pueden usar expresiones que contengan variables y operadores:
 
 [source,@julia-repl-test chap08]
 ----
 julia> i = 1
 1
-julia> fruit[i+1]
+julia> fruta[i+1]
 'a': ASCII/Unicode U+0061 (category Ll: Letter, lowercase)
-julia> fruit[end-1]
+julia> fruta[end-1]
 'n': ASCII/Unicode U+006e (category Ll: Letter, lowercase)
 ----
 
-But the value of the index has to be an integer. Otherwise you get:
+Pero el valor del índice tiene que ser un número entero. De lo contrario, se obtiene:
 (((MethodError)))((("error", "Core", "MethodError", see="MethodError")))
 
 [source,@julia-repl-test chap08]
 ----
-julia> letter = fruit[1.5]
+julia> letra = fruta[1.5]
 ERROR: MethodError: no method matching getindex(::String, ::Float64)
 ----
 
 
 === +length+
 
-+length+ is a built-in function that returns the number of characters in a string:
++length+ es una función integrada que devuelve el número de caracteres de una cadena:
 (((length)))
 
 [source,@julia-repl-test chap08]
 ----
-julia> fruits = "🍌 🍎 🍐"
+julia> frutas = "🍌 🍎 🍐"
 "🍌 🍎 🍐"
-julia> len = length(fruits)
+julia> len = length(frutas)
 5
 ----
 
-To get the last letter of a string, you might be tempted to try something like this:
+Para obtener la última letra de una cadena, podrías querer intentar algo como esto:
 
 [source,@julia-repl-test chap08]
 ----
-julia> last = fruits[len]
+julia> last = frutas[len]
 ' ': ASCII/Unicode U+0020 (category Zs: Separator, space)
 ----
 
