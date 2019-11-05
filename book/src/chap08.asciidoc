@@ -128,7 +128,7 @@ julia> frutas[2]
 ERROR: StringIndexError("🍌 🍎 🍐", 2)
 ----
 
-En el caso de +frutas+, el carácter +🍌+ es un carácter de cuatro bytes, por lo que los índices 2, 3 y 4 no son válidos y el índice del siguiente carácter es 5; el siguiente índice válido se puede calcular con +nextind(frutas, 1)+, y el subsiguiente con +nextind(frutas,5)+ y así sucesivamente.
+En el caso de +frutas+, el carácter +🍌+ es un carácter de cuatro bytes, por lo que los índices 2, 3 y 4 no son válidos y el índice del siguiente carácter es 5; el siguiente índice válido se puede calcular con +nextind(frutas, 1)+, el subsiguiente con +nextind(frutas,5)+ y así sucesivamente.
 (((nextind)))((("function", "Base", "nextind", see="nextind")))
 
 
@@ -154,7 +154,7 @@ La función +primerindice+ devuelve el primer índice de bytes válido. La palab
 
 ==== Ejercicio 8-1
 
-Escriba una función que tome una cadena como argumento y muestre las letras hacia atrás, una por línea.
+Escriba una función que tome una cadena como argumento y que muestre las letras desde la última a la primera, una por línea.
 
 Otra forma de escribir un recorrido es con un bucle +for+:
 (((for statement)))(((in)))
