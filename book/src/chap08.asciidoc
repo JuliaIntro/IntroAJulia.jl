@@ -50,7 +50,7 @@ La segunda sentencia selecciona el carácter número 1 de +fruta+ y la asigna a 
 La expresión entre corchetes se llama _indice_. El índice indica el carácter de la secuencia a obtener (de ahí el nombre).
 (((index)))
 
-La indexación en Julia es base 1, es decir, el primer elemento de cualquier objeto indexado con enteros se encuentra en el índice 1, y el último en el índice +end+:
+La indexación en Julia es base 1, es decir, el primer elemento de cualquier objeto indexado con enteros está en el índice 1, y el último en el índice +end+:
 (((end)))
 
 [source,@julia-repl-test chap08]
