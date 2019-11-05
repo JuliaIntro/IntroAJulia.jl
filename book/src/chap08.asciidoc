@@ -266,7 +266,9 @@ julia> "$¡saludo, $(paraquien)!"
 "¡Hola, mundo!"
 ----
 
-This is more readable and convenient than string concatenation: +pass:[greet * ", " * whom * "!"]+
+Esto es más entendible y conveniente que la concatenación de cadenas: +pass:[greet * ", " * whom * "!"]+
+
+La expresión completa más corta después de +$+ se toma como la expresión cuyo valor se va a interpolar en la cadena. Por lo tanto, puede interpolar cualquier expresión en una cadena usando paréntesis:
 
 The shortest complete expression after the +$+ is taken as the expression whose value is to be interpolated into the string. Thus, you can interpolate any expression into a string using parentheses:
 
