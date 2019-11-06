@@ -188,7 +188,7 @@ Modifique este programa para solucionar este error.
 
 === Porciones de Cadenas
 
-A la subcadena de una cadena se le llama _porción_. La selección de una porción es similar a la selección un carácter:
+A la subcadena de una cadena se le llama _porción_. La selección de una porción es similar a la selección de un carácter:
 (((slice)))
 
 [source,@julia-repl-test chap08]
@@ -199,7 +199,7 @@ julia> str[1:6]
 "Julio"
 ----
 
-El operador +[n:m]+ devuelve la parte de la cadena desde el +n+-ésimo byte hasta el +m+-ésimo. Por lo tanto, se necesita el mismo cuidado que para la indexación simple.
+El operador +[n:m]+ devuelve la parte de la cadena desde el +n+-ésimo byte hasta el +m+-ésimo. Por lo tanto, se siguen las mismas reglas que para la indexación simple.
 (((bracket operator)))
 
 La palabra reservada +end+ se puede usar para indicar al último byte de la cadena:
@@ -253,24 +253,22 @@ Este ejemplo concatena la apertura del signo de exclamación y una nueva primera
 
 === Interpolación de Cadenas
 
-Construir cadenas usando concatenación puede ser un poco engorroso. Para disminuir la necesidad de estas llamadas a +string+ o multiplicaciones repetidas, Julia permite la _interpolación de cadenas_ usando +$+:
+Construir cadenas usando concatenación puede ser un poco engorroso. Para disminuir la necesidad de las llamadas a +string+ o multiplicaciones repetidas, Julia permite la _interpolación de cadenas_ usando +$+:
 (((string interpolation)))((("$", see="string interpolation")))
 
 [source,@julia-repl-test]
 ----
-julia> saludo = "Hola"
+julia> saludo = "¡Hola"
 "Hello"
 julia> paraquien = "mundo"
 "World"
-julia> "$¡saludo, $(paraquien)!"
+julia> "$saludo, $(paraquien)!"
 "¡Hola, mundo!"
 ----
 
 Esto es más entendible y conveniente que la concatenación de cadenas: +pass:[greet * ", " * whom * "!"]+
 
-La expresión completa más corta después de +$+ se toma como la expresión cuyo valor se va a interpolar en la cadena. Por lo tanto, puede interpolar cualquier expresión en una cadena usando paréntesis:
-
-The shortest complete expression after the +$+ is taken as the expression whose value is to be interpolated into the string. Thus, you can interpolate any expression into a string using parentheses:
+La expresión inmediatamente siguiente a +$+ se toma como la expresión cuyo valor se va a interpolar en la cadena. Por lo tanto, puedes interpolar cualquier expresión en una cadena usando paréntesis:
 
 [source,@julia-repl-test]
 ----
@@ -281,30 +279,30 @@ julia> "1 + 2 = $(1 + 2)"
 [[searching]]
 === Searching
 
-What does the following function do?
+¿Qué hace la siguiente función?
 (((find)))((("function", "programmer-defined", "find", see="find")))
 
 [source,@julia-setup]
 ----
-function find(word, letter)
-    index = firstindex(word)
-    while index <= sizeof(word)
-        if word[index] == letter
-            return index
+function encontrar(palabra, letra)
+    indice = primerindice(palabra)
+    while indice <= sizeof(palabra)
+        if palabra[indice] == letra
+            return indice
         end
-        index = nextind(word, index)
+        indice = nextind(palabra, indice)
     end
     -1
 end
 ----
 
-In a sense, find is the inverse of the +[]+ operator. Instead of taking an index and extracting the corresponding character, it takes a character and finds the index where that character appears. If the character is not found, the function returns -1.
+En cierto sentido, encontrar es lo contrario del operador +[]+. En lugar de tomar un índice y extraer el carácter correspondiente, toma un carácter y encuentra el índice donde aparece el carácter. Si el carácter no se encuentra, la función devuelve -1.
 
-This is the first example we have seen of a return statement inside a loop. If +word[index] == letter+, the function breaks out of the loop and returns immediately.
+Este es el primer ejemplo que hemos visto de una sentencia return dentro de un bucle. Si +palabra[indice] == letra+, la función devuelve inmediatamente el índice, escapando del bucle prematuramente.
 
-If the character doesn’t appear in the string, the program exits the loop normally and returns -1.
+Si el carácter no aparece en la cadena, entonces el programa sale del bucle normalmente y devuelve -1.
 
-This pattern of computation—traversing a sequence and returning when we find what we are looking for—is called a _search_.
+Este patrón de computación se llama a veces un recorrido _eureka_ porque tan pronto como encontramos lo que buscamos, podemos gritar “¡Eureka! ” y dejar de buscar.
 (((search)))
 
 ==== Exercise 8-4
