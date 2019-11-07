@@ -518,7 +518,7 @@ function esreverso(palabra1, palabra2)
         i = nextind(palabra1, i)
     end
     true
-end
+end;
 ----
 
 Ahora, al ejecutar el programa, se obtiene más información:
@@ -531,27 +531,25 @@ j = 3
 false
 ----
 
-En la primera iteración del bucle, el valor de +j+ es 3, pero tiene que ser 4. Esto se puede solucionar moviendo + j = prevind (palabra2, j) + al final del ciclo + while +.
+En la primera iteración del bucle, el valor de +j+ es 3, pero tendría que ser 4. Esto se puede solucionar trasladando la línea +j = prevind (palabra2, j)+ al final del ciclo +while+.
 
-The first time through the loop, the value of +j+ is 3, which has to be 4. This can be fixed by moving +j = prevind(word2, j)+ to the end of the +while+ loop.
-
-If I fix that error and run the program again, I get:
+Si se soluciona ese error y se ejecuta el programa nuevamente, se obtiene:
 
 [source,@julia-eval chap08]
 ----
-function isreverse(word1, word2)
-    if length(word1) != length(word2)
+function esreverso(palabra1, palabra2)
+    if length(palabra1) != length(palabra2)
         return false
     end
-    i = firstindex(word1)
-    j = lastindex(word2)
+    i = firstindex(palabra1)
+    j = lastindex(palabra2)
     while j >= 0
         @show i j
-        if word1[i] != word2[j]
+        if palabra1[i] != palabra2[j]
             return false
         end
-        i = nextind(word1, i)
-        j = prevind(word2, j)
+        i = nextind(palabra1, i)
+        j = prevind(palabra2, j)
     end
     true
 end;
@@ -559,7 +557,7 @@ end;
 
 [source,@julia-repl-test chap08]
 ----
-julia> isreverse("pots", "stop")
+julia> esreverso("amor", "roma")
 i = 1
 j = 4
 i = 2
@@ -570,10 +568,11 @@ i = 4
 j = 1
 i = 5
 j = 0
-ERROR: BoundsError: attempt to access "pots"
+ERROR: BoundsError: attempt to access "amor"
   at index [5]
 ----
 
+Esta vez se ha producido un + BoundsError +. El valor de + i + es 5, que está fuera del rango de la cadena + "potes" +.
 This time a +BoundsError+ has been thrown. The value of +i+ is 5, which is out a range for the string +"pots"+.
 (((BoundsError)))((("error", "Core", "BoundsError", see="BoundsError")))
 
