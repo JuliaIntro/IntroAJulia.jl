@@ -134,7 +134,7 @@ En el caso de +frutas+, el carácter +🍌+ es un carácter de cuatro bytes, por
 
 === Recorrido
 
-Muchos cálculos implican procesar una cadena carácter por carácter. A menudo empiezan por el principio, seleccionan cada carácter uno a uno, hacen algo con él y continúan hasta el final. Este patrón de proceso se llama _recorrido_. Una forma de escribir un recorrido es con una sentencia while:
+Muchos cálculos implican procesar una cadena carácter por carácter. A menudo empiezan por el principio, seleccionan cada carácter por turno, hacen algo con él y continúan hasta el final. Este patrón de proceso se llama _recorrido_. Una forma de escribir un recorrido es con una sentencia while:
 (((traversal)))(((while statement)))
 
 [source,@julia-setup chap08]
