@@ -284,7 +284,7 @@ julia> "1 + 2 = $(1 + 2)"
 
 [source,@julia-setup]
 ----
-function encontrar(palabra, letra)
+function buscar(palabra, letra)
     indice = primerindice(palabra)
     while indice <= sizeof(palabra)
         if palabra[indice] == letra
@@ -296,7 +296,7 @@ function encontrar(palabra, letra)
 end
 ----
 
-En cierto sentido, encontrar es lo contrario del operador +[]+. En lugar de tomar un índice y extraer el carácter correspondiente, toma un carácter y encuentra el índice donde aparece el carácter. Si el carácter no se encuentra, la función devuelve -1.
+En cierto sentido, la funcion buscar es lo contrario del operador +[]+. En lugar de tomar un índice y extraer el carácter correspondiente, toma un carácter y encuentra el índice donde aparece el carácter. Si el carácter no se encuentra, la función devuelve -1.
 
 Este es el primer ejemplo que hemos visto de una sentencia return dentro de un bucle. Si +palabra[indice] == letra+, la función devuelve inmediatamente el índice, escapando del bucle prematuramente.
 
@@ -307,45 +307,43 @@ Este patrón de computación se llama a veces un recorrido _eureka_ porque tan p
 
 ==== Exercise 8-4
 
-Modify +find+ so that it has a third parameter, the index in +word+ where it should start looking.
-
+Modifique +buscar+ para que tenga un tercer parámetro: el índice de +palabra+ donde debería comenzar a buscar.
 
 [[looping_and_counting]]
 === Looping and Counting
 
-The following program counts the number of times the letter +a+ appears in a string:
+El siguiente programa cuenta el número de veces que aparece la letra +a+ en una cadena:
 
 [source,@julia-setup]
 ----
-word = "banana"
-counter = 0
-for letter in word
-    if letter == 'a'
-        global counter = counter + 1
+palabra = "banana"
+contador = 0
+for letra in palabra
+    if letra == 'a'
+        global contador = contador + 1
     end
 end
-println(counter)
+println(contador)
 ----
 
-This program demonstrates another pattern of computation called a _counter_. The variable +counter+ is initialized to 0 and then incremented each time an +a+ is found. When the loop exits, +counter+ contains the result—the total number of +a+’s.
+Este programa es otro ejemplo del patrón de computación llamada _conteo_.  La variable +contador+ se inicializa en 0 y se incrementa cada vez que encuentra la letra +a+. Cuando termina el bucle, +contador+ contiene el resultado (el número total de letras +a+).
 (((counter)))
 
 ==== Exercise 8-5
 
-Encapsulate this code in a function named +count+, and generalize it so that it accepts the string and the letter as arguments.
+Coloque este código en una función llamada +conteo+, y generalícelo de tal manera que tome como argumentos una cadena y una letra.
 
-Then rewrite the function so that instead of traversing the string, it uses the three-parameter version of +find+ from the previous section.
-
+Luego, vuelva a escribir la función para que, en vez de revisar toda la cadena, utilice la función +buscar+ de tres parámetros de la sección anterior.
 
 === String Library
 
-Julia provides functions that perform a variety of useful operations on strings. For example, the function +uppercase+ takes a string and returns a new string with all uppercase letters.
+Julia tiene funciones integradas que realizan una variedad de operaciones útiles en cadenas. Por ejemplo, la función +uppercase+ toma una cadena y devuelve una nueva cadena con todas las letras mayúsculas.
 (((uppercase)))((("function", "Base", "uppercase", see="uppercase")))
 
 [source,@julia-repl-test]
 ----
-julia> uppercase("Hello, World!")
-"HELLO, WORLD!"
+julia> uppercase("¡Hola, mundo!")
+"¡HOLA, MUNDO!"
 ----
 
 As it turns out, there is a function named +findfirst+ that is remarkably similar to the function +find+ we wrote:
