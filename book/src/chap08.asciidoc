@@ -245,7 +245,7 @@ La razón del error es que las cadenas son _inmutables_, lo que significa que no
 
 [source,@julia-repl-test chap08]
 ----
-julia> saludo = "J" * saludo[2:end]
+julia> saludo = "J" * saludo[4:end]
 "¡Jola, mundo!"
 ----
 
