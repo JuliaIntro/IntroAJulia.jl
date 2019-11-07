@@ -41,7 +41,7 @@ Una cadena es una secuencia de caracteres. Se puede acceder a un carácter con e
 ----
 julia> fruta = "banana"
 "banana"
-julia> letra = fruit[1]
+julia> letra = fruta[1]
 'b': ASCII/Unicode U+0062 (category Ll: Letter, lowercase)
 ----
 
