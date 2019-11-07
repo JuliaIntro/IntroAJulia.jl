@@ -1,7 +1,7 @@
 [[chap08]]
 == Cadenas
 
-Las cadenas son diferentes de los números enteros, flotantes y booleanos. Una cadena es una _secuencia_, es decir, es una colección ordenada de valores. En este capítulo veremos cómo acceder a los caracteres que forman una cadena, y aprenderemos algunas funciones integradas en Julia relacionadas con cadenas.
+Las cadenas son diferentes de los números enteros, flotantes y booleanos. Una cadena es una _secuencia_, es decir, es una colección ordenada de valores. En este capítulo veremos cómo acceder a los caracteres que forman una cadena, y conoceremos algunas funciones integradas en Julia relacionadas con cadenas.
 (((string)))(((sequence)))
 
 [[characters]]
