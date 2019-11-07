@@ -511,7 +511,7 @@ Este programa muestra un patrón a veces llamado _guardian_. Los dos primeros co
 En <<catching_exceptions>> veremos una alternativa más flexible para imprimir un mensaje de error: generar una excepción.
 
 [[deb06]]
-=== Debugging
+=== Depuración
 
 Dividir un código extenso en pequeñas funciones crea naturalmente puntos de control para la depuración. Si un programa no está funcionando, existen tres posibilidades a considerar:
 (((debugging)))
