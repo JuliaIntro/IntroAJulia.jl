@@ -235,10 +235,10 @@ Es tentador usar el operador +[]+ en el lado izquierdo de una asignación, con l
 ----
 julia> saludo = "¡Hola, mundo!"
 "¡Hola, mundo!"
-julia> saludo[2] = 'J'
+julia> saludo[3] = 'J'
 ERROR: MethodError: no method matching setindex!(::String, ::Char, ::Int64)
 ----
-Nota del traductor: De acuerdo con la codificación de caracteres en utf-8 ó latin-1, el carácter de exclamación ‘¡’, en la variable saludo ocupa dos posiciones, de ahí que la letra ‘H’ esté localizada en el índice 2.
+Nota del traductor: De acuerdo con la codificación de caracteres en utf-8 ó latin-1, el carácter de exclamación ‘¡’, en la variable saludo ocupa dos posiciones, de ahí que la letra ‘H’ esté localizada en el índice 3.
 
 La razón del error es que las cadenas son _inmutables_, lo que significa que no puede cambiar una cadena existente. Lo más que puedes hacer es crear una nueva cadena que sea una variación de la original:
 (((immutable)))
