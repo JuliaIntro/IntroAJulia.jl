@@ -277,7 +277,7 @@ julia> "1 + 2 = $(1 + 2)"
 ----
 
 [[searching]]
-=== Searching
+=== Buscar
 
 ¿Qué hace la siguiente función?
 (((find)))((("function", "programmer-defined", "find", see="find")))
@@ -305,12 +305,12 @@ Si el carácter no aparece en la cadena, entonces el programa sale del bucle nor
 Este patrón de computación se llama a veces un recorrido _eureka_ porque tan pronto como encontramos lo que buscamos, podemos gritar “¡Eureka! ” y dejar de buscar.
 (((search)))
 
-==== Exercise 8-4
+==== Ejercicio 8-4
 
 Modifique +buscar+ para que tenga un tercer parámetro: el índice de +palabra+ donde debería comenzar a buscar.
 
 [[looping_and_counting]]
-=== Looping and Counting
+=== Iterando y contando
 
 El siguiente programa cuenta el número de veces que aparece la letra +a+ en una cadena:
 
@@ -329,13 +329,13 @@ println(contador)
 Este programa es otro ejemplo del patrón de computación llamada _conteo_.  La variable +contador+ se inicializa en 0 y se incrementa cada vez que encuentra la letra +a+. Cuando termina el bucle, +contador+ contiene el resultado (el número total de letras +a+).
 (((counter)))
 
-==== Exercise 8-5
+==== Ejercicio 8-5
 
 Coloque este código en una función llamada +conteo+, y generalícelo de tal manera que tome como argumentos una cadena y una letra.
 
 Luego, vuelva a escribir la función para que, en vez de revisar toda la cadena, utilice la función +buscar+ de tres parámetros de la sección anterior.
 
-=== String Library
+=== Librería con cadenas
 
 Julia tiene funciones integradas que realizan una variedad de operaciones útiles en cadenas. Por ejemplo, la función +uppercase+ toma una cadena y devuelve una nueva cadena con todas las letras mayúsculas.
 (((uppercase)))((("function", "Base", "uppercase", see="uppercase")))
@@ -346,7 +346,7 @@ julia> uppercase("¡Hola, mundo!")
 "¡HOLA, MUNDO!"
 ----
 
-As it turns out, there is a function named +findfirst+ that is remarkably similar to the function +find+ we wrote:
+Existe una función llamada +findfirst+ que es notablemente similar a la función +buscar+ que escribimos:
 (((findfirst)))((("function", "programmer-defined", "findfirst", see="findfirst")))
 
 [source,@julia-repl-test]
@@ -355,7 +355,7 @@ julia> findfirst("a", "banana")
 2:2
 ----
 
-Actually, the +findfirst+ function is more general than our function; it can find substrings, not just characters:
+La función +findfirst+ es más general que nuestra función; puede encontrar subcadenas, no solo caracteres:
 
 [source,@julia-repl-test]
 ----
@@ -363,7 +363,7 @@ julia> findfirst("na", "banana")
 3:4
 ----
 
-By default, +findfirst+ starts at the beginning of the string, but the function +findnext+ takes a third argument, the +index+ where it should start:
+Por defecto, +findfirst+ comienza la búsqueda al comienzo de la cadena, pero la función +findnext+ toma un tercer argumento: el +indice+ donde debería comenzar:
 (((findnext)))((("function", "programmer-defined", "findnext", see="findnext")))
 
 [source,@julia-repl-test]
@@ -373,14 +373,14 @@ julia> findnext("na", "banana", 4)
 ----
 
 
-=== The +∈+ Operator
+===  El operador +∈+
 
-The operator +∈+ (*+\in TAB+*) is a boolean operator that takes a character and a string and returns +true+ if the first appears in the second:
+El operador +∈+ (*+\in TAB+*) es un operador booleano que toma un carácter y una cadena, y devuelve +true+ si el primero aparece en el segundo:
 ((("∈", see="in")))((("operator", "Base", "in", see="in")))((("operator", "Base", "∈", see="in")))
 
 [source,@julia-repl-test]
 ----
-julia> 'a' ∈ "banana"    # 'a' in "banana"
+julia> 'a' ∈ "banana"    # 'a' en "banana"
 true
 ----
 
