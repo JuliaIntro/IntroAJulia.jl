@@ -306,8 +306,9 @@ Este patrón de computación se llama a veces un recorrido _eureka_ porque tan p
 (((search)))
 
 ==== Ejercicio 8-4
+Para encontrar las posiciones de la segunda o tercera ocurrencia de un carácter en una cadena, podemos modificar la función encuentra, agregando un tercer parámetro para la posición inicial en la cadena de búsqueda:
 
-Modifique +buscar+ para que tenga un tercer parámetro: el índice de +palabra+ donde debería comenzar a buscar.
+Modifique la función +buscar+ para que tenga un tercer parámetro: el índice de +palabra+ donde debería comenzar a buscar.
 
 [[looping_and_counting]]
 === Iterando y contando
@@ -452,83 +453,85 @@ Una forma común de abordar este problema es convertir las cadenas a un formato 
 
 
 [[deb08]]
-=== Debugging
+=== Depuración
 
-When you use indices to traverse the values in a sequence, it is tricky to get the beginning and end of the traversal right. Here is a function that is supposed to compare two words and return +true+ if one of the words is the reverse of the other, but it contains two errors:
+Cuando se usan índices para recorrer los valores en una secuencia, es difícil acceder al principio y al final del recorrido. Aquí hay una función que compara dos palabras y devuelve +true+ si una de las palabras es el reverso de la otra, pero contiene dos errores:
 (((debugging)))(((traversal)))(((isreverse)))((("function", "programmer-defined", "isreverse", see="isreverse")))
 
 [source,@julia-setup chap08]
 ----
-function isreverse(word1, word2)
-    if length(word1) != length(word2)
+function esreverso(palabra1, palabra2)
+    if length(palabra1) != length(palabra2)
         return false
     end
-    i = firstindex(word1)
-    j = lastindex(word2)
+    i = firstindex(palabra1)
+    j = lastindex(palabra2)
     while j >= 0
-        j = prevind(word2, j)
-        if word1[i] != word2[j]
+        j = prevind(palabra2, j)
+        if palabra1[i] != palabra2[j]
             return false
         end
-        i = nextind(word1, i)
+        i = nextind(palabra1, i)
     end
     true
 end
 ----
 
-The first +if+ statement checks whether the words are the same length. If not, we can return +false+ immediately. Otherwise, for the rest of the function, we can assume that the words are the same length. This is an example of the guardian pattern.
+La primera sentencia +if+ verifica si las palabras tienen la misma longitud. Si no, se devuelve +false+ inmediatamente. De lo contrario, para el resto de la función, podemos suponer que las palabras tienen la misma longitud. Este es un ejemplo del patrón guardián.
 
-+i+ and +j+ are indices: +i+ traverses +word1+ forward while +j+ traverses +word2+ backward. If we find two letters that don’t match, we can return +false+ immediately. If we get through the whole loop and all the letters match, we return +true+.
++i+ y +j+ son índices: +i+ recorre +palabra1+ hacia adelante mientras que +j+ recorre +palabra2+ hacia atrás. Si dos letras no coinciden, se devuelve +false+ inmediatamente. Si el ciclo termina y todas las letras coinciden, se devuelve +true+.
 
-The function +lastindex+ returns the last valid byte index of a string and +prevind+ the previous valid index of a character.
+La función +lastindex+ devuelve el último índice de bytes válido de una cadena y +prevind+ el índice válido anterior a un carácter.
 
-If we test this function with the words "pots" and "stop", we expect the return value +true+, but we get +false+:
+Si probamos esta función con las palabras "amor" y "roma", esperamos el valor de retorno +true+, pero obtenemos +false+:
 
 [source,@julia-repl-test chap08]
 ----
-julia> isreverse("pots", "stop")
+julia> esreverso("amor", "roma")
 false
 ----
 
-For debugging this kind of error, my first move is to print the values of the indices:
+Para depurar este tipo de error, primeramente imprimamos los valores de los índices:
 
 [source,julia]
 ----
     while j >= 0
-        j = prevind(word2, j)
+        j = prevind(palabra2, j)
         @show i j
-        if word1[i] != word2[j]
+        if palabra1[i] != palabra2[j]
 ----
 
 [source,@julia-eval chap08]
 ----
-function isreverse(word1, word2)
-    if length(word1) != length(word2)
+function esreverso(palabra1, palabra2)
+    if length(palabra1) != length(palabra2)
         return false
     end
-    i = firstindex(word1)
-    j = lastindex(word2)
+    i = firstindex(palabra1)
+    j = lastindex(palabra2)
     while j >= 0
-        j = prevind(word2, j)
+        j = prevind(palabra2, j)
         @show i j
-        if word1[i] != word2[j]
+        if palabra1[i] != palabra2[j]
             return false
         end
-        i = nextind(word1, i)
+        i = nextind(palabra1, i)
     end
     true
-end;
+end
 ----
 
-Now when I run the program again, I get more information:
+Ahora, al ejecutar el programa, se obtiene más información:
 
 [source,@julia-repl-test chap08]
 ----
-julia> isreverse("pots", "stop")
+julia> esreverso("amor", "roma")
 i = 1 
 j = 3
 false
 ----
+
+En la primera iteración del bucle, el valor de +j+ es 3, pero tiene que ser 4. Esto se puede solucionar moviendo + j = prevind (palabra2, j) + al final del ciclo + while +.
 
 The first time through the loop, the value of +j+ is 3, which has to be 4. This can be fixed by moving +j = prevind(word2, j)+ to the end of the +while+ loop.
 
