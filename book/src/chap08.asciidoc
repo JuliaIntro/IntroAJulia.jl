@@ -266,7 +266,7 @@ julia> "$saludo, $(paraquien)!"
 "¡Hola, mundo!"
 ----
 
-Esto es más entendible y conveniente que la concatenación de cadenas: +pass:[greet * ", " * whom * "!"]+
+Esto es más entendible y conveniente que la concatenación de cadenas: +pass:[saludo * ", " * paraquien * "!"]+
 
 La expresión inmediatamente siguiente a +$+ se toma como la expresión cuyo valor se va a interpolar en la cadena. Por lo tanto, puedes interpolar cualquier expresión en una cadena usando paréntesis:
 
