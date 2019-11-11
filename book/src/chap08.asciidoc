@@ -423,7 +423,7 @@ if palabra == "banana"
 end
 ----
 
-Otras operaciones de comparación son útiles para poner palabras en orden alfabético:
+Otras operaciones de comparación son útiles para ordenar alfabeticamente palabras:
 (((alphabetical order)))
 
 [source,@julia-setup chap08]
