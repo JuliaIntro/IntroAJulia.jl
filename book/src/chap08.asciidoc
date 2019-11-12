@@ -596,9 +596,8 @@ Un estándar en la industria informática para la codificación, representación
 Un valor entero usado para seleccionar un miembro de un conjunto ordenado, como puede ser un carácter de una cadena. En Julia los índices comienzan en 1.
 (((index)))
 
-UTF-8 encoding::
-Co
-A variable width character encoding capable of encoding all 1112064 valid code points in Unicode using one to four 8-bit bytes.
+codificación UTF-8::
+Una codificación de caracteres de longitud variable capaz de codificar todos los 1112064 puntos de código válidos en Unicode utilizando de uno a cuatro bytes de 8 bits.
 (((UTF-8 encoding)))
 
 recorrer::
@@ -630,35 +629,33 @@ Una variable utilizada para contar algo, generalmente inicializada en cero y lue
 (((counter)))
 
 
-=== Exercises
+=== Ejercicios
 
 [[ex08-1]]
 ==== Ejercicio 8-7
 
-Lea la documentación de las funciones relacionadas con cadenas en https://docs.julialang.org/en/v1/manual/strings/. Es posible que desee experimentar con algunos de ellos para asegurarse de comprender cómo funcionan. + strip + y + replace + son particularmente útiles.
+Lea la documentación de las funciones relacionadas con cadenas en https://docs.julialang.org/en/v1/manual/strings/. Es posible que desee probar algunas de ellas para asegurarse de comprender cómo funcionan. +strip+ y +replace+ son particularmente útiles.
 
-Read the documentation of the string functions at https://docs.julialang.org/en/v1/manual/strings/. You might want to experiment with some of them to make sure you understand how they work. +strip+ and +replace+ are particularly useful.
-
-The documentation uses a syntax that might be confusing. For example, in +search(string::AbstractString, chars::Chars, [start::Integer])+, the brackets indicate optional arguments. So +string+ and +chars+ are required, but +start+ is optional.
+La documentación utiliza una sintaxis que puede ser confusa. Por ejemplo, en +search(cadena::AbstractString, caracter::Chars, [comienzo::Integer])+, los corchetes indican argumentos opcionales. Por lo tanto, +cadena+ y +caracter+ son obligatorios, pero +comienzo+ es opcional.
 (((search)))((("function", "Base", "search", see="search")))
 
 [[ex08-2]]
-==== Exercise 8-8
+==== Ejercicio 8-8
 
-There is a built-in function called +count+ that is similar to the function in <<looping_and_counting>>. Read the documentation of this function and use it to count the number of +a+’s in "banana".
+Hay una función integrada llamada +count+ que es similar a la función en <<looping_and_counting>>. Lea la documentación de esta función y úsela para contar el número de letras +a+ en "banana".
 (((count)))((("function","Base", "count", see="count")))
 
 [[ex08-3]]
-==== Exercise 8-9
+==== Ejercicio 8-9
 
-A string slice can take a third index. The first specifies the start, the third the end and the second the “step size”; that is, the number of spaces between successive characters. A step size of 2 means every other character; 3 means every third, etc.
+Una porción de cadena puede tomar un tercer índice. El primero especifica el inicio, el tercero el final y el segundo el "tamaño del paso"; es decir, el número de espacios entre caracteres sucesivos. Un tamaño de paso de 2 significa cada un caracter; 3 significa cada dos, etc.
 (((slice)))
 
 [source,@julia-repl-test]
 ----
-julia> fruit = "banana"
+julia> fruta = "banana"
 "banana"
-julia> fruit[1:2:6]
+julia> fruta[1:2:6]
 "bnn"
 ----
 
@@ -674,7 +671,7 @@ The following functions are all _intended_ to check whether a string contains an
 
 [source,@julia-setup]
 ----
-function anylowercase1(s)
+function cualquierminuscula1(s)
     for c in s
         if islowercase(c)
             return true
@@ -684,7 +681,7 @@ function anylowercase1(s)
     end
 end
 
-function anylowercase2(s)
+function cualquierminuscula2(s)
     for c in s
         if islowercase('c')
             return "true"
@@ -694,22 +691,22 @@ function anylowercase2(s)
     end
 end
 
-function anylowercase3(s)
+function cualquierminuscula3(s)
     for c in s
-        flag = islowercase(c)
+        bandera = islowercase(c)
     end
     flag
 end
 
-function anylowercase4(s)
-    flag = false
+function cualquierminuscula4(s)
+    bandera = false
     for c in s
-        flag = flag || islowercase(c)
+        bandera = bandera || islowercase(c)
     end
     flag
 end
 
-function anylowercase5(s)
+function cualquierminuscula5(s)
     for c in s
         if !islowercase(c)
             return false
