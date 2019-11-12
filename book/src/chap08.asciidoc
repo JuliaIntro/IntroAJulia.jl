@@ -306,7 +306,6 @@ Este patrón de computación se llama a veces un recorrido _eureka_ porque tan p
 (((search)))
 
 ==== Ejercicio 8-4
-Para encontrar las posiciones de la segunda o tercera ocurrencia de un carácter en una cadena, podemos modificar la función buscar, agregando un tercer parámetro para la posición inicial en la cadena de búsqueda:
 
 Modifique la función +buscar+ para que tenga un tercer parámetro: el índice de +palabra+ donde debería comenzar a buscar.
 
