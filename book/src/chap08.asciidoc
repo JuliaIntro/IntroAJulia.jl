@@ -576,10 +576,9 @@ Esta vez se ha producido un +BoundsError+. El valor de +i+ es 5, que está fuera
 
 ==== Ejercicio 8-6
 
-Run the program on paper, changing the values of +i+ and +j+ during each iteration. Find and fix the second error in this function.
+Ejecute el programa en papel, cambiando los valores de +i+ y +j+ durante cada iteración. Encuentre y arregle el segundo error en esta función.
 
-
-=== Glossary
+=== Glosario
 
 secuencia::
 Una colección ordenada de valores donde cada valor se identifica mediante un índice entero.
@@ -594,7 +593,7 @@ Un estándar en la industria informática para la codificación, representación
 (((Unicode standard)))
 
 índice::
-Una valor entero usado para seleccionar un miembro de un conjunto ordenado, como puede ser un carácter de una cadena. En Julia los índices comienzan en 1.
+Un valor entero usado para seleccionar un miembro de un conjunto ordenado, como puede ser un carácter de una cadena. En Julia los índices comienzan en 1.
 (((index)))
 
 UTF-8 encoding::
@@ -602,7 +601,7 @@ Co
 A variable width character encoding capable of encoding all 1112064 valid code points in Unicode using one to four 8-bit bytes.
 (((UTF-8 encoding)))
 
-recorrido::
+recorrer::
 Iterar sobre los elementos de un conjunto, realizando una operación similar en cada uno de ellos.
 (((traversal)))
 
@@ -615,7 +614,7 @@ Una cadena sin caracteres y longitud 0, representada por dos comillas.
 (((empty string)))
 
 immutable::
-La propiedad de un conjunto ordenado que hace que a sus elementos no se les pueda asignar nuevos valores.
+La propiedad de una secuencia que hace que a sus elementos no se les pueda asignar nuevos valores.
 (((immutable)))
 
 interpolación de cadenas::
