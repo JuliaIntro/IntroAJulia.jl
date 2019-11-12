@@ -478,7 +478,7 @@ end
 
 La primera sentencia +if+ verifica si las palabras tienen la misma longitud. Si no, se devuelve +false+ inmediatamente. De lo contrario, para el resto de la función, podemos suponer que las palabras tienen la misma longitud. Este es un ejemplo del patrón guardián.
 
-+i+ y +j+ son índices: +i+ recorre +palabra1+ hacia adelante mientras que +j+ recorre +palabra2+ hacia atrás. Si dos letras no coinciden, se devuelve +false+ inmediatamente. Si el ciclo termina y todas las letras coinciden, se devuelve +true+.
++i+ y +j+ son índices: +i+ recorre +palabra1+ de derecha a izquierda mientras que +j+ recorre +palabra2+ de izquierda a derecha. Si dos letras no coinciden, se devuelve +false+ inmediatamente. Si el ciclo termina y todas las letras coinciden, se devuelve +true+.
 
 La función +lastindex+ devuelve el último índice de bytes válido de una cadena y +prevind+ el índice válido anterior a un carácter.
 
