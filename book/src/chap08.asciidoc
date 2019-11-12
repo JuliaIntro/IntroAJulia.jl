@@ -659,15 +659,15 @@ julia> fruta[1:2:6]
 "bnn"
 ----
 
-A step size of -1 goes through the word backwards, so the slice +[end:-1:1]+ generates a reversed string.
+Un tamaño de paso de -1 recorre la palabra hacia la izquierda, por lo que la porción +[end:-1:1]+ genera una cadena invertida.
 
-Use this idiom to write a one-line version of +ispalindrome+ from <<ex06-3>>.
+Use esto para escribir una versión de una línea de código de +espalindrome+ de <<ex06-3>>.
 (((ispalindrome)))
 
 [[ex08-4]]
 ==== Exercise 8-10
 
-The following functions are all _intended_ to check whether a string contains any lowercase letters, but at least some of them are wrong. For each function, describe what the function actually does (assuming that the parameter is a string).
+Las siguientes funciones están _destinadas_ a verificar si una cadena contiene letras minúsculas, pero algunas de ellas son incorrectas. Para cada función, describa qué hace realmente la función (suponiendo que el parámetro es una cadena).
 
 [source,@julia-setup]
 ----
@@ -718,6 +718,15 @@ end
 
 [[ex08-5]]
 ==== Exercise 8-11
+En criptografía, el cifrado César, también conocido como cifrado por desplazamiento, código de César o desplazamiento de César, es una de las técnicas de cifrado más simples y más usadas. Es un tipo de cifrado por sustitución en el que una letra en el texto original es reemplazada por otra letra que se encuentra un número fijo de posiciones más adelante en el alfabeto. Por ejemplo, con un desplazamiento de 3, la A sería sustituida por la D (situada 3 lugares a la derecha de la A), la B sería reemplazada por la E, etc. Este método debe su nombre a Julio César, que lo usaba para comunicarse con sus generales.
+
+Un cifrado César es una forma simple de cifrado que implica desplazar cada letra un número fijo de lugares. Girar una letra significa desplazarla a través del alfabeto, envolviéndola hasta el principio si es necesario, por lo que +'A'+ girado por 3 es + 'D' + y + 'Z' + girado por 1 es + 'A' + .
+(((César cypher)))
+
+Para rotar una palabra, rote cada letra en la misma cantidad. Por ejemplo, +"alegría"+ rotada por 7 es + "alegre" + y + "melón" + rotada por -10 es + "en cubos" +. En la película _2001: A Space Odyssey, la computadora de la nave_ se llama HAL, que es IBM girada por -1.
+
+Escriba una función llamada + rotateword + que tome una cadena y un número entero como parámetros, y devuelva una nueva cadena que contenga las letras de la cadena original rotadas por la cantidad dada.
+
 
 A Caesar cypher is a weak form of encryption that involves “rotating” each letter by a fixed number of places. To rotate a letter means to shift it through the alphabet, wrapping around to the beginning if necessary, so +’A’+ rotated by 3 is +’D’+ and +’Z’+ rotated by 1 is +’A’+.
 (((Caesar cypher)))
