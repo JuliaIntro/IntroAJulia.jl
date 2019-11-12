@@ -436,7 +436,7 @@ else
 end
 ----
 
-Julia no maneja las letras mayúsculas y minúsculas como lo hace la gente. Todas las letras mayúsculas van antes de las letras minúsculas. Por lo tanto:
+Julia no maneja las letras mayúsculas y minúsculas como nosotros. Todas las letras mayúsculas van antes de las letras minúsculas. Por lo tanto:
 
 [source,@julia-eval chap08]
 ----
