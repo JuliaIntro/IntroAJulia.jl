@@ -326,7 +326,7 @@ end
 println(contador)
 ----
 
-Este programa es otro ejemplo del patrón de computación llamada _conteo_.  La variable +contador+ se inicializa en 0 y se incrementa cada vez que encuentra la letra +a+. Cuando termina el bucle, +contador+ contiene el resultado (el número total de letras +a+).
+Este programa es otro ejemplo del patrón de computación llamado _conteo_.  La variable +contador+ se inicializa en 0 y se incrementa cada vez que encuentra la letra +a+. Cuando termina el bucle, +contador+ contiene el resultado (el número total de letras +a+).
 (((counter)))
 
 ==== Ejercicio 8-5
