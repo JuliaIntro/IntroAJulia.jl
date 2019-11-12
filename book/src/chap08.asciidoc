@@ -572,70 +572,72 @@ ERROR: BoundsError: attempt to access "amor"
   at index [5]
 ----
 
-Esta vez se ha producido un + BoundsError +. El valor de + i + es 5, que está fuera del rango de la cadena + "potes" +.
-This time a +BoundsError+ has been thrown. The value of +i+ is 5, which is out a range for the string +"pots"+.
+Esta vez se ha producido un +BoundsError+. El valor de +i+ es 5, que está fuera del rango de la cadena +"amor"+.
 (((BoundsError)))((("error", "Core", "BoundsError", see="BoundsError")))
 
-==== Exercise 8-6
+==== Ejercicio 8-6
 
 Run the program on paper, changing the values of +i+ and +j+ during each iteration. Find and fix the second error in this function.
 
 
 === Glossary
 
-sequence::
-An ordered collection of values where each value is identified by an integer index.
+secuencia::
+Una colección ordenada de valores donde cada valor se identifica mediante un índice entero.
 (((sequence)))
 
-ASCII standard::
-A character encoding standard for electronic communication specifying 128 characters.
+código ASCII::
+Código de caracteres estándar para el intercambio de información.
 (((ASCII standard)))
 
-Unicode standard::
-A computing industry standard for the consistent encoding, representation, and handling of text expressed in most of the world's writing systems.
+norma Unicode::
+Un estándar en la industria informática para la codificación, representación y manejo consistentes de texto en la mayoría de los sistemas de escritura del mundo.
 (((Unicode standard)))
 
-index::
-An integer value used to select an item in a sequence, such as a character in a string. In Julia indices start from 1.
+índice::
+Una valor entero usado para seleccionar un miembro de un conjunto ordenado, como puede ser un carácter de una cadena. En Julia los índices comienzan en 1.
 (((index)))
 
 UTF-8 encoding::
+Co
 A variable width character encoding capable of encoding all 1112064 valid code points in Unicode using one to four 8-bit bytes.
 (((UTF-8 encoding)))
 
-traverse::
-To iterate through the items in a sequence, performing a similar operation on each.
+recorrido::
+Iterar sobre los elementos de un conjunto, realizando una operación similar en cada uno de ellos.
 (((traversal)))
 
-slice::
-A part of a string specified by a range of indices.
+porción::
+Una parte de una cadena especificada mediante un rango de índices.
 (((slice)))
 
-empty string::
-A string with no characters and length 0, represented by two quotation marks.
+cadena vacía::
+Una cadena sin caracteres y longitud 0, representada por dos comillas.
 (((empty string)))
 
 immutable::
-The property of a sequence whose items cannot be changed.
+La propiedad de un conjunto ordenado que hace que a sus elementos no se les pueda asignar nuevos valores.
 (((immutable)))
 
-string interpolation::
-The process of evaluating a string containing one or more placeholders, yielding a result in which the placeholders are replaced with their corresponding values.
+interpolación de cadenas::
+El proceso de evaluar una cadena que contiene uno o más marcadores de posición, produciendo un resultado en el que los marcadores de posición se reemplazan con sus valores correspondientes.
 (((string interpolation)))
 
-search::
-A pattern of traversal that stops when it finds what it is looking for.
+búsqueda::
+Un patrón de recorrido que se detiene cuando encuentra lo que está buscando.
 (((search)))
 
-counter::
-A variable used to count something, usually initialized to zero and then incremented.
+contador::
+Una variable utilizada para contar algo, generalmente inicializada en cero y luego incrementada.
 (((counter)))
 
 
 === Exercises
 
 [[ex08-1]]
-==== Exercise 8-7
+==== Ejercicio 8-7
+
+Lea la documentación de las funciones relacionadas con cadenas en https://docs.julialang.org/en/v1/manual/strings/. Es posible que desee experimentar con algunos de ellos para asegurarse de comprender cómo funcionan. + strip + y + replace + son particularmente útiles.
 
 Read the documentation of the string functions at https://docs.julialang.org/en/v1/manual/strings/. You might want to experiment with some of them to make sure you understand how they work. +strip+ and +replace+ are particularly useful.
 
