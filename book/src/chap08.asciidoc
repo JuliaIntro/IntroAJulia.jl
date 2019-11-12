@@ -139,7 +139,7 @@ Muchos cálculos implican procesar una cadena carácter por carácter. A menudo 
 
 [source,@julia-setup chap08]
 ----
-indice = primerindice(frutas)
+indice = firstindex(frutas)
 while indice <= sizeof(frutas)
     letra = frutas[indice]
     println(letra)
@@ -149,7 +149,7 @@ end
 
 Este bucle recorre la cadena y muestra cada letra en una línea distinta. La condición del bucle es +index pass:[&lt;=] sizeof(fruta)+, de modo que cuando el indice es mayor al número de bytes en la cadena, la condición es +falsa+, y no se ejecuta el cuerpo del bucle.
 
-La función +primerindice+ devuelve el primer índice de bytes válido. La palabra reservada +global+ antes de +indice+ indica que queremos reasignar la variable +indice+ definida en +Main+ (ver <<variables_globales>>).
+La función +firstindex+ devuelve el primer índice de bytes válido. La palabra reservada +global+ antes de +indice+ indica que queremos reasignar la variable +indice+ definida en +Main+ (ver <<variables_globales>>).
 (((global)))(((firstindex)))((("function", "Base", "firstindex", see="firstindex")))
 
 ==== Ejercicio 8-1
