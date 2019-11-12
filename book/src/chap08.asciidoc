@@ -446,7 +446,7 @@ Su palabra, Piña, va antes de banana.
 [TIP]
 ====
 
-Una forma común de abordar este problema es convertir las cadenas a un formato estándar, como pueden ser las minúsculas, antes de realizar la comparación. 
+Una forma común de abordar este problema es convertir las cadenas a un formato estándar, como por ejemplo a minúsculas, antes de realizar la comparación. 
 
 ====
 
