@@ -747,4 +747,4 @@ julia> Char(Int('A') + 32)
 ----
 ====
 
-Algunos chistes ofensivos en Internet están codificados en ROT13, que es un cifrado César con desplazamiento 13. Si no te ofendes fácilmente, encuentre y decodifique algunos de ellos.
+Algunos chistes ofensivos en Internet están codificados en ROT13, que es un cifrado César con desplazamiento 13. Si no te ofendes fácilmente, encuentra y decodifica algunos de ellos.
