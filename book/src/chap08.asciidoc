@@ -718,27 +718,18 @@ end
 
 [[ex08-5]]
 ==== Exercise 8-11
-En criptografía, el cifrado César, también conocido como cifrado por desplazamiento, código de César o desplazamiento de César, es una de las técnicas de cifrado más simples y más usadas. Es un tipo de cifrado por sustitución en el que una letra en el texto original es reemplazada por otra letra que se encuentra un número fijo de posiciones más adelante en el alfabeto. Por ejemplo, con un desplazamiento de 3, la A sería sustituida por la D (situada 3 lugares a la derecha de la A), la B sería reemplazada por la E, etc. Este método debe su nombre a Julio César, que lo usaba para comunicarse con sus generales.
 
-Un cifrado César es una forma simple de cifrado que implica desplazar cada letra un número fijo de lugares. Girar una letra significa desplazarla a través del alfabeto, envolviéndola hasta el principio si es necesario, por lo que +'A'+ girado por 3 es + 'D' + y + 'Z' + girado por 1 es + 'A' + .
+Un cifrado César es una forma simple de cifrado que implica desplazar cada letra un número fijo de lugares. Desplazar una letra significa reemplazarla por otra letra que se encuentra un número fijo de posiciones más adelante en el alfabeto. Es posible desplazarse hasta el principio del abecedario si fuera necesario. De esta manera, con un desplazamiento de 3, +'A'+ es +'D'+, y con un desplazamiento de 1, +'Z'+ es +'A'+ .
 (((César cypher)))
 
-Para rotar una palabra, rote cada letra en la misma cantidad. Por ejemplo, +"alegría"+ rotada por 7 es + "alegre" + y + "melón" + rotada por -10 es + "en cubos" +. En la película _2001: A Space Odyssey, la computadora de la nave_ se llama HAL, que es IBM girada por -1.
+Para desplazar una palabra, desplace cada letra en la misma cantidad. Por ejemplo, con un desplazamiento de 6, +"ABCDEF"+ es +"GHIJKL"+ y con un desplazamiento de -6, +"BCDE"+ es +"VWXY"+. En la película _2001: Una odisea del espacio_, la computadora de la nave se llama HAL, que es IBM desplazada por -1.
 
-Escriba una función llamada + rotateword + que tome una cadena y un número entero como parámetros, y devuelva una nueva cadena que contenga las letras de la cadena original rotadas por la cantidad dada.
-
-
-A Caesar cypher is a weak form of encryption that involves “rotating” each letter by a fixed number of places. To rotate a letter means to shift it through the alphabet, wrapping around to the beginning if necessary, so +’A’+ rotated by 3 is +’D’+ and +’Z’+ rotated by 1 is +’A’+.
-(((Caesar cypher)))
-
-To rotate a word, rotate each letter by the same amount. For example, +"cheer"+ rotated by 7 is +"jolly"+ and +"melon"+ rotated by -10 is +"cubed"+. In the movie _2001: A Space Odyssey, the ship computer_ is called HAL, which is IBM rotated by -1.
-
-Write a function called +rotateword+ that takes a string and an integer as parameters, and returns a new string that contains the letters from the original string rotated by the given amount.
+Escriba una función llamada +desplazarpalabra+ que tome una cadena y un número entero como parámetros, y devuelva una nueva cadena que contenga las letras de la cadena original desplazadas por la cantidad dada.
 (((rotateword)))((("function","programmer-defined", "rotateword", see="rotateword")))
 
 [TIP]
 ====
-You might want to use the built-in function +Int+, which converts a character to a numeric code, and +Char+, which converts numeric codes to characters. Letters of the alphabet are encoded in alphabetical order, so for example:
+Es posible que desee utilizar la función integrada +Int+, que convierte un carácter en un código numérico, y +Char+, que convierte los códigos numéricos en caracteres. Las letras del alfabeto están codificadas en orden alfabético, por ejemplo:
 (((Int)))(((Char)))
 
 [source,@julia-repl-test]
@@ -747,7 +738,7 @@ julia> Int('c') - Int('a')
 2
 ----
 
-Because +'c'+ is the third letter of the alphabet. But beware: the numeric codes for uppercase letters are different.
+Porque +'c'+ es la tercera letra del alfabeto. Pero cuidado: los códigos numéricos para las letras mayúsculas son diferentes.
 
 [source,@julia-repl-test]
 ----
@@ -756,4 +747,4 @@ julia> Char(Int('A') + 32)
 ----
 ====
 
-Potentially offensive jokes on the Internet are sometimes encoded in ROT13, which is a Caesar cypher with rotation 13. If you are not easily offended, find and decode some of them.
+Algunos chistes ofensivos en Internet están codificados en ROT13, que es un cifrado César con desplazamiento 13. Si no te ofendes fácilmente, encuentre y decodifique algunos de ellos.
