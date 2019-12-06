@@ -1,13 +1,15 @@
 [[chap09]]
-== Case Study: Word Play
+== Estudio de Caso: Juego de Palabras
 
-This chapter presents the second case study, which involves solving word puzzles by searching for words that have certain properties. For example, we’ll find the longest palindromes in English and search for words whose letters appear in alphabetical order. And I will present another program development plan: reduction to a previously solved problem.
+Este capítulo presenta un segundo estudio de caso, que consiste en resolver sopas de letras buscando palabras que tengan ciertas propiedades. Por ejemplo, encontraremos los palíndromos más largos en inglés y buscaremos palabras cuyas letras aparezcan en orden alfabético. Además, se presentará otro plan de desarrollo de programas: la reducción a un problema previamente resuelto.
 
 [[reading_word_lists]]
-=== Reading Word Lists
+=== Leer listas de palabras
 
-For the exercises in this chapter we need a list of Spanish words. There are lots of word lists available on the Web, but the one most suitable for our purpose is one of the word lists collected and contributed to the public domain by Ismael Olea (see http://olea.org/proyectos/lemarios/). It is a list of 87900 words; in the Olea collection, the filename is _lemario-general-del-espanol.txt_; you can download a copy, with the simpler name _palabras.txt_, from https://github.com/PiensaEnJulia/PiensaEnJulia.jl/blob/master/data/palabras.txt.
+Para los ejercicios de este capítulo necesitamos una lista de palabras en español. Hay muchas listas de palabras disponibles en la Web, pero la más adecuada para nuestro propósito es una de las listas de palabras recopiladas y contribuidas al dominio público por Ismael Olea (see http://olea.org/proyectos/lemarios/). Es una lista de 87900 palabras; en la colección Olea, el nombre del archivo es _lemario-general-del-espanol.txt. Puedes descargar una copia, con el nombre _palabras.txt_, desde https://github.com/PiensaEnJulia/PiensaEnJulia.jl/blob/master/data/palabras.txt.
 (((lemario)))
+
+Este archivo es un texto sin formato, por lo que puedes abrirlo con un editor de texto, o también puedes leerlo de Julia. La función incorporada +open+ toma el nombre del archivo como parámetro y devuelve una secuencia de archivos que puede usar para leer el archivo.
 
 This file is in plain text, so you can open it with a text editor, but you can also read it from Julia. The built-in function +open+ takes the name of the file as a parameter and returns a _file stream_ you can use to read the file.
 (((open)))((("function", "Base", "open", see="open")))
