@@ -24,9 +24,9 @@ julia> fin = open("palabras.txt")
 IOStream(<file palabras.txt>)
 ----
 
-+fin+ es un objeto archivo que puede ser utilizado como entrada y cuando ya no se necesita, debe cerrarse con +close(fin)+.
++fin+ es un objeto archivo que puede ser utilizado como entrada y cuando se deja de utilizar, debe cerrarse con +close(fin)+.
 
-Julia tiene integrada varias funciones de lectura, incluyendo +readline+, que lee los caracteres del archivo hasta que llega a un +salto de línea+ y devuelve el resultado como una cadena:
+Julia tiene integrada varias funciones de lectura, entre ellas +readline+, que lee los caracteres del archivo hasta que llega a un +salto de línea+, devolviendo el resultado como una cadena:
 (((file stream)))(((input)))(((readline)))((("function", "Base", "readline", see="readline")))(((close)))
 
 [source,@julia-repl chap09]
@@ -34,18 +34,18 @@ Julia tiene integrada varias funciones de lectura, incluyendo +readline+, que le
 readline(fin)
 ----
 
-The first word in this particular list is “aa”, which is a kind of lava.
+La primera palabra en esta lista particular es "a", que indica dirección, intervalo de tiempo, finalidad, entre otros.
 
-The file stream keeps track of where it is in the file, so if you call readline again, you get the next word:
+El objeto archivo lleva registro de dónde quedó en el archivo, por lo que si llama a readline nuevamente, obtendrá la siguiente palabra:
 
 [source,@julia-repl chap09]
 ----
 readline(fin)
 ----
 
-The next word is “aah”, which is a perfectly legitimate word, so stop looking at me like that.
+La siguiente palabra es "a-", que es un prefijo que significa privación.
 
-You can also use a file as part of a +for+ loop. This program reads +palabras.txt+ and prints each word, one per line:
+También se puede usar un archivo como parte de un bucle +for+. El siguiente programa lee +palabras.txt+ e imprime cada palabra, una por línea:
 (((for statement)))(((eachline)))((("function", "Base", "eachline", see="eachline")))
 
 [source,julia]
@@ -56,27 +56,27 @@ end
 ----
 
 
-=== Exercises
+=== Ejercicios
 
 [[ex09-1]]
-==== Exercise 9-1
+==== Ejercicio 9-1
 
-Write a program that reads +palabras.txt+ and prints only the words with more than 20 characters (not counting whitespace).
+Escriba un programa que lea +palabras.txt+ e imprima solo las palabras con más de 20 caracteres (sin contar espacios en blanco).
 
 [[ex09-2]]
-==== Exercise 9-2
+==== Ejercicio 9-2
 
-In 1927 Enrique Jardiel Poncela published five short stories, each ommiting a vowel. They include "El Chofer Nuevo", without the letter +'a'+, and "Un marido sin vocación", without the letter +'e'+. Since +'e'+ is the most common letter in Spanish, that’s not easy to do.
+En 1927 Enrique Jardiel Poncela publicó cinco historias cortas, omitiendo en cada una de ellas una vocal. Estas historias incluyen "El Chofer Nuevo", narración escrita sin la letra +'a'+, y "Un marido sin vocación", sin la letra +'e'+. Dado que la letra +'e'+ es la más frecuente del español, esto no es fácil de conseguir.
 (((Poncela, Enrique Jardiel)))
 
-In fact, it is difficult to construct a solitary thought without using that most common symbol. It is slow going at first, but with caution and hours of training you can gradually gain facility.
+De hecho, es difícil pensar oraciones que no utilicen esta letra. Intentar esto es complicado inicialmente, pero con práctica se vuelve más fácil.
 
-All right, I’ll stop now.
+Está bien, está bien. Pasemos a otra cosa.
 
-Write a function called +hasno_e+ that returns +true+ if the given word doesn’t have the letter +'e'+ in it.
+Escriba una función llamada +notiene_e+ que devuelva +true+ si una palabra dada no tiene la letra +'e'+.
 (((hasno_e)))((("function", "programmer-defined", "hasno_e", see="hasno_e")))
 
-Modify your program from the previous section to print only the words that have no +'e'+ and compute the percentage of the words in the list that have no +'e'+.
+Modifique su programa de la sección anterior para que imprima solo las palabras que no tienen +'e'+, y que calcule el porcentaje de palabras en la lista que no tengan +'e'+.
 
 [[ex09-3]]
 ==== Exercise 9-3
