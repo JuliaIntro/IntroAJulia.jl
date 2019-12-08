@@ -6,7 +6,7 @@ Este capítulo presenta un segundo estudio de caso, que consiste en resolver sop
 [[reading_word_lists]]
 === Leer listas de palabras
 
-Para los ejercicios de este capítulo necesitamos una lista de palabras en español. Hay muchas listas de palabras disponibles en la Web, pero la más adecuada para nuestro propósito es una de las listas de palabras recopiladas y contribuidas al dominio público por Ismael Olea (see http://olea.org/proyectos/lemarios/). Es una lista de 87900 palabras; en la colección Olea, el nombre del archivo es _lemario-general-del-espanol.txt. Puedes descargar una copia, con el nombre _palabras.txt_, desde https://github.com/PiensaEnJulia/PiensaEnJulia.jl/blob/master/data/palabras.txt.
+Para los ejercicios de este capítulo necesitamos una lista de palabras en español. Hay muchas listas de palabras disponibles en la Web, pero la más adecuada para nuestro propósito es una de las listas de palabras recopiladas y contribuidas al dominio público por Ismael Olea (see http://olea.org/proyectos/lemarios/). Es una lista de 87900 palabras. En la página de Olea el nombre del archivo es _lemario-general-del-espanol.txt. También es posible descargar una copia desde https://github.com/PiensaEnJulia/PiensaEnJulia.jl/blob/master/data/palabras.txt.
 (((lemario)))
 
 Este archivo es un archivo de texto simple, por lo que puede ser abierto con un editor de texto o leído con Julia. La función integrada +open+ toma el nombre del archivo como parámetro y devuelve un objeto archivo que puede ser usado para leer el archivo.
