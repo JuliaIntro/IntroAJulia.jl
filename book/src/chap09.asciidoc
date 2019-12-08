@@ -6,7 +6,7 @@ Este capítulo presenta un segundo estudio de caso, que consiste en resolver sop
 [[reading_word_lists]]
 === Leer listas de palabras
 
-Para los ejercicios de este capítulo necesitamos una lista de palabras en español. Hay muchas listas de palabras disponibles en la Web, pero la más adecuada para nuestro propósito es una de las listas de palabras recopiladas y contribuidas al dominio público por Ismael Olea (see http://olea.org/proyectos/lemarios/). Es una lista de 87900 palabras. En la página de Olea el nombre del archivo es _lemario-general-del-espanol.txt. También es posible descargar una copia desde https://github.com/PiensaEnJulia/PiensaEnJulia.jl/blob/master/data/palabras.txt.
+Para los ejercicios de este capítulo necesitamos una lista de palabras en español. Hay muchas listas de palabras disponibles en la Web, pero la más adecuada para nuestro propósito es una de las listas de palabras recopiladas y contribuidas al dominio público por Ismael Olea (see http://olea.org/proyectos/lemarios/). Esta lista de 87900 palabras se encuentra en la página de Olea con el nombre de archivo _lemario-general-del-espanol.txt. También es posible descargar una copia desde https://github.com/PiensaEnJulia/PiensaEnJulia.jl/blob/master/data/palabras.txt.
 (((lemario)))
 
 Este archivo es un archivo de texto simple, por lo que puede ser abierto con un editor de texto o leído con Julia. La función integrada +open+ toma el nombre del archivo como parámetro y devuelve un objeto archivo que puede ser usado para leer el archivo.
@@ -26,7 +26,7 @@ IOStream(<file palabras.txt>)
 
 +fin+ es un objeto archivo que puede ser utilizado como entrada y cuando se deja de utilizar, debe cerrarse con +close(fin)+.
 
-Julia tiene integrada varias funciones de lectura, entre ellas +readline+, que lee los caracteres del archivo hasta que llega a un +salto de línea+, devolviendo el resultado como una cadena:
+Julia tiene integrada varias funciones de lectura, entre ellas +readline+, que lee los caracteres del archivo hasta que llega a un +salto de línea+, y devuelve el resultado como una cadena:
 (((file stream)))(((input)))(((readline)))((("function", "Base", "readline", see="readline")))(((close)))
 
 [source,@julia-repl chap09]
@@ -36,7 +36,7 @@ readline(fin)
 
 La primera palabra en esta lista particular es "a", que indica dirección, intervalo de tiempo, finalidad, entre otros.
 
-El objeto archivo lleva registro de dónde quedó en el archivo, por lo que si llama a readline nuevamente, obtendrá la siguiente palabra:
+El objeto archivo lleva registro de dónde quedó por última vez, por lo que si llama a readline nuevamente, obtendrá la siguiente palabra:
 
 [source,@julia-repl chap09]
 ----
@@ -66,10 +66,10 @@ Escriba un programa que lea +palabras.txt+ e imprima solo las palabras con más 
 [[ex09-2]]
 ==== Ejercicio 9-2
 
-En 1927 Enrique Jardiel Poncela publicó cinco historias cortas, omitiendo en cada una de ellas una vocal. Estas historias incluyen "El Chofer Nuevo", narración escrita sin la letra +'a'+, y "Un marido sin vocación", sin la letra +'e'+. Dado que la letra +'e'+ es la más frecuente del español, esto no es fácil de conseguir.
+En 1927 Enrique Jardiel Poncela publicó cinco historias cortas, omitiendo en cada una de ellas una vocal. Estas historias incluyen "El Chofer Nuevo", narración escrita sin la letra +'a'+, y "Un marido sin vocación", sin la letra +'e'+. Dado que la letra +'e'+ es la más frecuente del español, esto no es fácil de lograr.
 (((Poncela, Enrique Jardiel)))
 
-De hecho, es difícil pensar oraciones que no utilicen esta letra. Intentar esto es complicado inicialmente, pero con práctica se vuelve más fácil.
+De hecho, es difícil pensar oraciones que no utilicen esta letra. Intentarlo es complicado inicialmente, pero con práctica se vuelve más fácil.
 
 Está bien, está bien. Pasemos a otra cosa.
 
@@ -81,40 +81,40 @@ Modifique su programa de la sección anterior para que imprima solo las palabras
 [[ex09-3]]
 ==== Exercise 9-3
 
-Write a function named +avoids+ that takes a word and a string of forbidden letters, and that returns +true+ if the word doesn’t use any of the forbidden letters.
+Escriba una función llamada +evitar+ que tome como argumentos una palabra y una cadena de letras prohibidas, y que devuelva +true+ si la palabra no usa ninguna de las letras prohibidas.
 (((avoids)))((("function", "programmer-defined", "avoids", see="avoids")))
 
-Modify your program to prompt the user to enter a string of forbidden letters and then print the number of words that don’t contain any of them. Can you find a combination of 5 forbidden letters that excludes the smallest number of words?
+Modifique su programa para solicitar al usuario que ingrese una cadena de letras prohibidas, y que luego imprima el número de palabras que no contengan ninguna de ellas. ¿Es posible encontrar una combinación de 5 letras prohibidas que excluya la menor cantidad de palabras?
 
 [[ex09-4]]
 ==== Exercise 9-4
 
-Write a function named +usesonly+ that takes a word and a string of letters, and that returns +true+ if the word contains only letters in the list. Can you make a sentence using only the letters +acefhlo+? Other than +"Hoe alfalfa?"+
+Escriba una función llamada +usasolo+ que tome una palabra y una cadena de letras, y que devuelva +true+ si la palabra contiene solo letras de la lista. ¿Puedes hacer una oración usando solo las letras +arefhlo+? Aparte de +"¿Hola fer?"+
 (((usesonly)))((("function", "programmer-defined", "usesonly", see="usesonly")))
 
 [[ex09-5]]
 ==== Exercise 9-5
 
-Write a function named +usesall+ that takes a word and a string of required letters, and that returns +true+ if the word uses all the required letters at least once. How many words are there that use all the vowels +aeiou+? How about +aeiouy+?
+Escriba una función llamada +usatodo+ que tome una palabra y una cadena de letras, y que devuelva +true+ si la palabra usa todas las letras requeridas al menos una vez. ¿Cuántas palabras usan todas las vocales +aeiou+? 
 (((usesall)))((("function", "programmer-defined", "usesall", see="usesall")))
 
 [[ex09-6]]
 ==== Exercise 9-6
 
-Write a function called +isabecedarian+ that returns +true+ if the letters in a word appear in alphabetical order (double letters are ok). How many abecedarian words are there?
+Escriba una función llamada +esabecedaria+ que devuelva +true+ si las letras de una palabra aparecen en orden alfabético. ¿Cuántas palabras abecedarias hay?
 (((isabecedarian)))((("function", "programmer-defined", "isabecedarian", see="isabecedarian")))
 
 [[search]]
 === Search
 
-All of the exercises in the previous section have something in common; they can be solved with the search pattern. The simplest example is:
+Todos los ejercicios en la sección anterior tienen algo en común: se pueden resolver con el patrón de búsqueda. El ejemplo más simple es:
 (((search)))(((hasno_e)))
 
 [source,@julia-setup chap09]
 ----
-function hasno_e(word)
-    for letter in word
-        if letter == 'e'
+function notiene_e(palabra)
+    for letra in palabra
+        if letra == 'e'
             return false
         end
     end
