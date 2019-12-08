@@ -84,7 +84,7 @@ Modifique su programa de la sección anterior para que imprima solo las palabras
 Escriba una función llamada +evitar+ que tome como argumentos una palabra y una cadena de letras prohibidas, y que devuelva +true+ si la palabra no usa ninguna de las letras prohibidas.
 (((avoids)))((("function", "programmer-defined", "avoids", see="avoids")))
 
-Modifique su programa para solicitar al usuario que ingrese una cadena de letras prohibidas, y que luego imprima el número de palabras que no contengan ninguna de ellas. ¿Es posible encontrar una combinación de 5 letras prohibidas que excluya la menor cantidad de palabras?
+Modifique su programa de la sección anterior para solicitar al usuario que ingrese una cadena de letras prohibidas, y que luego imprima el número de palabras que no contengan ninguna de ellas. ¿Es posible encontrar una combinación de 5 letras prohibidas que excluya la menor cantidad de palabras?
 
 [[ex09-4]]
 ==== Exercise 9-4
@@ -122,19 +122,19 @@ function notiene_e(palabra)
 end
 ----
 
-The +for+ loop traverses the characters in word. If we find the letter +'e'+, we can immediately return +false+; otherwise we have to go to the next letter. If we exit the loop normally, that means we didn’t find an +'e'+, so we return +true+.
+El bucle +for+ recorre los caracteres de palabra. Si encontramos la letra +'e'+, podemos devolver inmediatamente +false+; de lo contrario tenemos que pasar a la siguiente letra. Si salimos del bucle normalmente, eso significa que no encontramos una +'e'+, por lo que devolvemos +true+.
 
-You could write this function more concisely using the +∉+ (*+\notin TAB+*) operator, but I started with this version because it demonstrates the logic of the search pattern.
+Esta función podría ser escrita de manera más concisa usando el operador +∉+ (*+\notin TAB+*), pero se comienza con esta versión porque demuestra la lógica del patrón de búsqueda.
 (((∉)))((("operator", "Base", "∉", see="∉")))
 
-+avoids+ is a more general version of +hasno_e+ but it has the same structure:
++evita+ es una versión más general de +notiene_e+ pero tiene la misma estructura:
 (((avoids)))
 
 [source,@julia-setup chap09]
 ----
-function avoids(word, forbidden)
-    for letter in word
-        if letter ∈ forbidden
+function evita(palabra, prohibidas)
+    for letra in palabra
+        if letter ∈ prohibidas
             return false
         end
     end
@@ -142,16 +142,16 @@ function avoids(word, forbidden)
 end
 ----
 
-We can return +false+ as soon as we find a forbidden letter; if we get to the end of the loop, we return +true+.
+Se devuelve +false+ tan pronto como se encuentre una letra prohibida; si llegamos al final del ciclo, se devuelve +true+.
 
-+usesonly+ is similar except that the sense of the condition is reversed:
++usasolo+ es similar, excepto que el sentido de la condición se invierte:
 (((usesonly)))
 
 [source,@julia-setup chap09]
 ----
-function usesonly(word, available)
-    for letter in word
-        if letter ∉ available
+function usasolo(palabra, disponibles)
+    for letra in palabra
+        if letra ∉ disponibles
             return false
         end
     end
