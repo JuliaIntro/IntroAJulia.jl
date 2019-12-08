@@ -76,7 +76,7 @@ Está bien, está bien. Pasemos a otra cosa.
 Escriba una función llamada +notiene_e+ que devuelva +true+ si una palabra dada no tiene la letra +'e'+.
 (((hasno_e)))((("function", "programmer-defined", "hasno_e", see="hasno_e")))
 
-Modifique su programa de la sección anterior para que imprima solo las palabras que no tienen +'e'+, y que calcule el porcentaje de palabras en la lista que no tengan +'e'+.
+Modifique su programa de la sección anterior para que imprima solo las palabras que no tienen +'e'+, y que además calcule el porcentaje de palabras en la lista que no tengan +'e'+.
 
 [[ex09-3]]
 ==== Exercise 9-3
