@@ -43,7 +43,7 @@ El objeto archivo lleva registro de dónde quedó por última vez, por lo que si
 readline(fin)
 ----
 
-La siguiente palabra es "a-", que es un prefijo que significa privación.
+La siguiente palabra es "a-", que es un prefijo que indica privación.
 
 También se puede usar un archivo como parte de un bucle +for+. El siguiente programa lee +palabras.txt+ e imprime cada palabra, una por línea:
 (((for statement)))(((eachline)))((("function", "Base", "eachline", see="eachline")))
