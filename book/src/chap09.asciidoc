@@ -9,9 +9,7 @@ Este capítulo presenta un segundo estudio de caso, que consiste en resolver sop
 Para los ejercicios de este capítulo necesitamos una lista de palabras en español. Hay muchas listas de palabras disponibles en la Web, pero la más adecuada para nuestro propósito es una de las listas de palabras recopiladas y contribuidas al dominio público por Ismael Olea (see http://olea.org/proyectos/lemarios/). Es una lista de 87900 palabras; en la colección Olea, el nombre del archivo es _lemario-general-del-espanol.txt. Puedes descargar una copia, con el nombre _palabras.txt_, desde https://github.com/PiensaEnJulia/PiensaEnJulia.jl/blob/master/data/palabras.txt.
 (((lemario)))
 
-Este archivo es un texto sin formato, por lo que puedes abrirlo con un editor de texto, o también puedes leerlo de Julia. La función incorporada +open+ toma el nombre del archivo como parámetro y devuelve una secuencia de archivos que puede usar para leer el archivo.
-
-This file is in plain text, so you can open it with a text editor, but you can also read it from Julia. The built-in function +open+ takes the name of the file as a parameter and returns a _file stream_ you can use to read the file.
+Este archivo es un archivo de texto simple, por lo que puede ser abierto con un editor de texto o leído con Julia. La función integrada +open+ toma el nombre del archivo como parámetro y devuelve un objeto archivo que puede ser usado para leer el archivo.
 (((open)))((("function", "Base", "open", see="open")))
 
 [source,@julia-eval chap09]
@@ -26,7 +24,7 @@ julia> fin = open("palabras.txt")
 IOStream(<file palabras.txt>)
 ----
 
-+fin+ is a file stream used for input and when it is no longer needed, it has to be closed with +close(fin)+.
++fin+ es un objeto archivo que puede ser utilizado como entrada y cuando ya no se necesita, debe cerrarse con +close(fin)+.
 
 Julia provides several function for reading, including +readline+, which reads characters from the file until it gets to a +NEWLINE+ and returns the result as a string:
 (((file stream)))(((input)))(((readline)))((("function", "Base", "readline", see="readline")))(((close)))
