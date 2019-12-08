@@ -36,7 +36,7 @@ readline(fin)
 
 La primera palabra en esta lista particular es "a", que indica dirección, intervalo de tiempo, finalidad, entre otros.
 
-El objeto archivo lleva registro de dónde quedó por última vez, por lo que si llama a readline nuevamente, obtendrá la siguiente palabra:
+El objeto archivo lleva registro de dónde quedó por última vez, por lo que si llama a readline nuevamente, se obtendrá la siguiente palabra:
 
 [source,@julia-repl chap09]
 ----
