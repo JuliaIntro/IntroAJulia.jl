@@ -178,7 +178,7 @@ end
 
 En lugar de recorrer las letras de la palabra, el bucle recorre las letras requeridas. Si alguna de las letras requeridas no aparece en la palabra, se devuelve +false+.
 
-Si hubieras estado pensando como un informático, habrías reconocido que +usatodo+ es una instancia de un problema previamente resuelto, y hubieras escrito:
+Si pensáramos como un informático reconoceríamos que +usatodo+ es una instancia de un problema previamente resuelto, y podríamos haber escrito:
 
 [source,@julia-setup chap09]
 ----
@@ -187,103 +187,101 @@ function usatodo(palabra, requeridas)
 end
 ----
 
-Este es un ejemplo de un plan de desarrollo de programa llamado _reducción a un problema resuelto previamente_, lo que significa que se reconoce el problema en el que se está trabajando como una instancia de un problema resuelto y aplica una solución existente.
-
-This is an example of a program development plan called _reduction to a previously solved problem_, which means that you recognize the problem you are working on as an instance of a solved problem and apply an existing solution.
+Este es un ejemplo de una forma de desarrollar programas llamada _reducción a un problema resuelto previamente_, lo que significa que se reconoce el problema en el que se está trabajando como una instancia de un problema ya resuelto y se aplica la solución existente.
 (((program development plan)))(((reduction to a previously solved problem)))
 
 
-=== Looping with Indices
+=== Bucle con índices
 
-I wrote the functions in the previous section with +for+ loops because I only needed the characters in the strings; I didn’t have to do anything with the indices.
+Las funciones de la sección anterior fueron escritas con ciclos +for+ porque solo se necesitaban los caracteres en las cadenas, no hubo necesidad de trabajar con los índices. 
 
-For +isabecedarian+ we have to compare adjacent letters, which is a little tricky with a +for+ loop:
+Para +esabecedaria+ tenemos que comparar letras adyacentes, lo cual es un poco complicado con un ciclo +for+:
 (((isabecedarian)))(((for statement)))
 
 [source,@julia-setup chap09]
 ----
-function isabecedarian(word)
-    i = firstindex(word)
-    previous = word[i]
-    j = nextind(word, i)
-    for c in word[j:end]
-        if c < previous
+function esabecedaria(palabra)
+    i = firstindex(palabra)
+    previa = palabra[i]
+    j = nextind(palabra, i)
+    for c in palabra[j:end]
+        if c < previa
             return false
         end
-        previous = c
+        previa = c
     end
     true
 end
 ----
 
-An alternative is to use recursion:
+Otra alternativa es usar recursividad:
 (((recursion)))
 
 [source,@julia-setup chap09]
 ----
-function isabecedarian(word)
-    if length(word) <= 1
+function esabecedaria(palabra)
+    if length(palabra) <= 1
         return true
     end
-    i = firstindex(word)
-    j = nextind(word, i)
-    if word[i] > word[j]
+    i = firstindex(palabra)
+    j = nextind(palabra, i)
+    if palabra[i] > palabra[j]
         return false
     end
-    isabecedarian(word[j:end])
+    esabecedaria(palabra[j:end])
 end
 ----
 
-Another option is to use a +while+ loop:
+Otra opción es usar un ciclo +while+:
 (((while statement)))
 
 [source,@julia-setup chap09]
 ----
-function isabecedarian(word)
-    i = firstindex(word)
-    j = nextind(word, 1)
-    while j <= sizeof(word)
-        if word[j] < word[i]
+function esabecedaria(palabra)
+    i = firstindex(palabra)
+    j = nextind(palabra, 1)
+    while j <= sizeof(palabra)
+        if palabra[j] < palabra[i]
             return false
         end
         i = j
-        j = nextind(word, i)
+        j = nextind(palabra, i)
     end
     true
 end
 ----
 
-The loop starts at +i=1+ and +j=nextind(word, 1)+ and ends when +j>sizeof(word)+. Each time through the loop, it compares the ++i++th character (which you can think of as the current character) to the ++j++th character (which you can think of as the next).
+El ciclo comienza en +i=1+ y +j=nextind(palabra, 1)+ y termina cuando +j>sizeof(palabra)+. En cada iteración, se compara el carácter ++i++ésimo (que se puede considerar como el carácter actual) con el carácter ++j++ésimo (que se puede considerar como el siguiente).
 
-If the next character is less than (alphabetically before) the current one, then we have discovered a break in the abecedarian trend, and we return +false+.
+Si el siguiente carácter es menor (va antes en el alfabeto) que el actual, entonces la palabra no tiene sus letras en orden alfabético, y se devuelve +false+.
 
-If we get to the end of the loop without finding a fault, then the word passes the test. To convince yourself that the loop ends correctly, consider an example like +"flossy"+.
+Si llegamos al final del ciclo sin encontrar letras que imposibiliten el orden alfabético, entonces la palabra pasa la prueba. Para convencerse de que el ciclo termina correctamente, considere como ejemplo la palabra +"Abel"+.
 
-Here is a version of +ispalindrome+ that uses two indices; one starts at the beginning and goes up; the other starts at the end and goes down.
+A continuación se muestra una versión de +espalindromo+ que usa dos índices; uno comienza al principio de la palabra y aumenta su valor; el otro comienza al final y disminuye su valor.
 (((ispalindrome)))
 
 [source,@julia-setup chap09]
 ----
-function ispalindrome(word)
-    i = firstindex(word)
-    j = lastindex(word)
+function espalindromo(palabra)
+    i = firstindex(palabra)
+    j = lastindex(palabra)
     while i<j
-        if word[i] != word[j]
+        if palabra[i] != palabra[j]
             return false
         end
-        i = nextind(word, i)
-        j = prevind(word, j)
+        i = nextind(palabra, i)
+        j = prevind(palabra, j)
     end
     true
 end
 ----
 
-Or we could reduce to a previously solved problem and write:
+O podríamos reducir este problema a uno previamente resuelto y escribir:
 
 [source,@julia-setup chap08]
 ----
-function ispalindrome(word)
-    isreverse(word, word)
+function espalindromo(palabra)
+    isreverse(palabra, palabra)
 end
 ----
 
