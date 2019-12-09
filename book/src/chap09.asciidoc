@@ -232,7 +232,7 @@ function esabecedaria(palabra)
 end
 ----
 
-Otra opción es usar un ciclo +while+:
+Una tercera opción es usar un ciclo +while+:
 (((while statement)))
 
 [source,@julia-setup chap09]
