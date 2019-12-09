@@ -71,7 +71,7 @@ En 1927 Enrique Jardiel Poncela publicó cinco historias cortas, omitiendo en ca
 
 De hecho, es difícil pensar oraciones que no utilicen esta letra. Intentarlo es complicado, pero con la práctica se vuelve más fácil.
 
-Está bien, está bien. Pasemos a otra cosa.
+Bueno, a lo que vinimos.
 
 Escriba una función llamada +notiene_e+ que devuelva +true+ si una palabra dada no tiene la letra +'e'+.
 (((hasno_e)))((("function", "programmer-defined", "hasno_e", see="hasno_e")))
