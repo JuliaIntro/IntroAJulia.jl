@@ -294,21 +294,19 @@ Usando +esreverso+ de <<deb08>>.
 Comprobar el correcto funcionamiento de los programas es difícil. Las funciones de este capítulo son relativamente fáciles de probar porque se pueden verificar los resultados a mano. Aun así, es casi imposible elegir un conjunto de palabras que permitan evaluar todos los posibles errores.
 (((debugging)))
 
-Tomando +notiene_e+ como ejemplo, hay dos casos obvios que verificar: las palabras que tienen una +'e'+ deberían devolver +false+, y las palabras que no deberían devolver +true+. No deberían haber problemas para encontrar un ejemplo de cada uno.
+Tomando +notiene_e+ como ejemplo, hay dos casos obvios que verificar: las palabras que tienen una +'e'+ deberían devolver +false+, y las palabras que no, deberían devolver +true+. No deberían haber problemas para encontrar un ejemplo de cada uno.
 
 Dentro de cada caso, hay algunos subcasos menos obvios. Entre las palabras que tienen una "e", se deben probar las palabras con una "e" al principio, al final y al medio. Además, se deben probar palabras largas, cortas y muy cortas, como una cadena vacía. La cadena vacía es un ejemplo de un "caso especial" no obvio donde pueden originarse errores.
 (((special case)))
 
 Además de las instancias de prueba generadas, también puede probar su programa con una lista de palabras como +palabras.txt+. Al escanear el resultado, es posible que pueda detectar errores, pero tenga cuidado: puede detectar un tipo de error (palabras que no deberían incluirse, pero lo están) y no otro (palabras que deberían incluirse, pero no lo están).
 
-In addition to the test cases you generate, you can also test your program with a word list like +palabras.txt+. By scanning the output, you might be able to catch errors, but be careful: you might catch one kind of error (words that should not be included, but are) and not another (words that should be included, but aren’t).
-
-In general, testing can help you find bugs, but it is not easy to generate a good set of test cases, and even if you do, you can’t be sure your program is correct. According to a legendary computer scientist:
+Por lo general, las pruebas pueden ayudarlo a encontrar errores, pero no es fácil generar un buen conjunto de instancias de prueba, e incluso si lo hace, no puede estar seguro de que su programa sea correcto. Según un legendario informático:
 (((Dijkstra, Edsger W.)))
 
 [quote,  Edsger W. Dijkstra]
 ____
-Program testing can be used to show the presence of bugs, but never to show their absence!
+Las pruebas de programa se pueden usar para mostrar la presencia de errores, ¡pero nunca para mostrar su ausencia!
 ____
 
 === Glosario
@@ -317,19 +315,19 @@ objeto archivo::
 Un valor que representa un archivo abierto.
 (((file stream)))
 
-reduction to a previously solved problem::
+reducción a un problema previamente resuelto::
 Una manera de resolver un problema expresándolo como una instancia de un problema previamente resuelto.
 (((reduction to a previously solved problem)))
 
-special case::
-A test case that is atypical or non-obvious (and less likely to be handled correctly).
+caso especial::
+Una instancia de prueba que es atípica o no obvia (y por lo tanto, menos probable que se maneje correctamente).
 (((special case)))
 
 
-=== Exercises
+=== Ejercicios
 
 [[ex09-7]]
-==== Exercise 9-7
+==== Ejercicio 9-7
 
 This question is based on a Puzzler that was broadcast on the radio program _Car Talk_ (https://www.cartalk.com/puzzler/browse):
 (((Car Talk)))
@@ -342,40 +340,40 @@ ____
 Write a program to find it.
 
 [[ex09-8]]
-==== Exercise 9-8
+==== Ejercicio 9-8
 
-Here’s another _Car Talk_ Puzzler (https://www.cartalk.com/puzzler/browse):
+A continuación se muestra un puzzle de _Car Talk_ (https://www.cartalk.com/puzzler/browse):
 
 [quote]
 ____
-I was driving on the highway the other day and I happened to notice my odometer. Like most odometers, it shows six digits, in whole miles only. So, if my car had 300000 miles, for example, I’d see 3-0-0-0-0-0.
+Estaba conduciendo por la autopista el otro día y vi mi odómetro. Como la mayoría de los odómetros, muestra seis dígitos y solo en kilómetros enteros. Entonces, si mi automóvil tuviera un kilometraje de 300000, por ejemplo, sería 3-0-0-0-0-0.
 
-Now, what I saw that day was very interesting. I noticed that the last 4 digits were palindromic; that is, they read the same forward as backward. For example, 5-4-4-5 is a palindrome, so my odometer could have read 3-1-5-4-4-5.
+Ahora, lo que vi ese día fue muy interesante. Noté que los últimos 4 dígitos eran palindrómicos; es decir, se leían igual hacia adelante que hacia atrás. Por ejemplo, 5-4-4-5 es un palíndromo, por lo que mi odómetro podría haberse leído 3-1-5-4-4-5.
 
-One mile later, the last 5 numbers were palindromic. For example, it could have read 3-6-5-4-5-6. One mile after that, the middle 4 out of 6 numbers were palindromic. And you ready for this? One mile later, all 6 were palindromic!
+Un kilómetro después, los últimos 5 números fueron palindrómicos. Por ejemplo, podría haberse leído 3-6-5-4-5-6. Un kilómetro después de eso, los 4 números del medio eran palindrómicos. ¿Y... estás listo para esto? ¡Un kilómetro después, los 6 eran palindrómicos!
 
-The question is, what was on the odometer when I first looked?
+La pregunta es, ¿qué número estaba en el odómetro cuando miré por primera vez?
 ____
 
-Write a Julia program that tests all the six-digit numbers and prints any numbers that satisfy these requirements.
+Escriba un programa de Julia que pruebe todos los números de seis dígitos e imprima cualquier número que satisfaga estos requisitos.
 
 [[ex09-9]]
-==== Exercise 9-9
+==== Ejercicio 9-9
 
-Here’s another _Car Talk_ Puzzler you can solve with a search (https://www.cartalk.com/puzzler/browse):
+Aquí hay otro puzzle de _Car Talk_ que puede resolver con una búsqueda (https://www.cartalk.com/puzzler/browse):
 
 [quote]
 ____
-Recently I had a visit with my mom and we realized that the two digits that make up my age when reversed resulted in her age. For example, if she’s 73, I’m 37. We wondered how often this has happened over the years but we got sidetracked with other topics and we never came up with an answer.
+Hace poco visité a mi madre y nos dimos cuenta de que los dos dígitos que componen mi edad cuando se invertían daban como resultado su edad. Por ejemplo, si tiene 73 años, yo tengo 37. Nos preguntamos con qué frecuencia esto ha sucedido a lo largo de los años, pero nos desviamos de otros temas y nunca obtuvimos una respuesta.
 
-When I got home I figured out that the digits of our ages have been reversible six times so far. I also figured out that if we’re lucky it would happen again in a few years, and if we’re really lucky it would happen one more time after that. In other words, it would have happened 8 times over all. So the question is, how old am I now?
+Cuando llegué a casa descubrí que los dígitos de nuestras edades han sido reversibles seis veces hasta ahora. También descubrí que si teníamos suerte, volvería a suceder en unos años, y si tenemos mucha suerte, sucedería una vez más después de eso. En otras palabras, habría sucedido 8 veces. Entonces la pregunta es, ¿cuántos años tengo ahora?
 ____
 
-Write a Julia program that searches for solutions to this Puzzler.
+Escriba un programa de Julia que busque soluciones para este puzzle.
 
 [TIP]
 ====
-You might find the function +lpad+ useful.
+Puede encontrar la función +lpad+ útil.
 (((lpad)))((("function", "Base", "lpad", see="lpad")))
 ====
 
