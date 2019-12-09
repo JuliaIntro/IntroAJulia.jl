@@ -301,7 +301,7 @@ Dentro de cada caso, hay algunos subcasos menos obvios. Entre las palabras que t
 
 Además de las instancias de prueba generadas, también puede probar su programa con una lista de palabras como +palabras.txt+. Al escanear el resultado, es posible que pueda detectar errores, pero tenga cuidado: puede detectar un tipo de error (palabras que no deberían incluirse, pero lo están) y no otro (palabras que deberían incluirse, pero no lo están).
 
-Por lo general, las pruebas pueden ayudarlo a encontrar errores, pero no es fácil generar un buen conjunto de instancias de prueba, e incluso si lo hace, no puede estar seguro de que su programa sea correcto. Según un legendario informático:
+Por lo general, las pruebas pueden ayudarlo a encontrar errores, pero no es fácil generar un buen conjunto de instancias de prueba, e incluso si lo hace, no puede estar seguro de que su programa sea correcto. Según un informático muy famoso:
 (((Dijkstra, Edsger W.)))
 
 [quote,  Edsger W. Dijkstra]
