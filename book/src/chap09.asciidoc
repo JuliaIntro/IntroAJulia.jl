@@ -69,7 +69,7 @@ Escriba un programa que lea +palabras.txt+ e imprima solo las palabras con más 
 En 1927 Enrique Jardiel Poncela publicó cinco historias cortas, omitiendo en cada una de ellas una vocal. Estas historias incluyen "El Chofer Nuevo", narración escrita sin la letra +'a'+, y "Un marido sin vocación", sin la letra +'e'+. Dado que la letra +'e'+ es la más frecuente del español, esto no es fácil de lograr.
 (((Poncela, Enrique Jardiel)))
 
-De hecho, es difícil pensar oraciones que no utilicen esta letra. Intentarlo es complicado, pero con práctica se vuelve más fácil.
+De hecho, es difícil pensar oraciones que no utilicen esta letra. Intentarlo es complicado, pero con la práctica se vuelve más fácil.
 
 Está bien, está bien. Pasemos a otra cosa.
 
