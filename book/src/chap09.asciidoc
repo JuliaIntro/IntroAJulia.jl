@@ -79,7 +79,7 @@ Escriba una función llamada +notiene_e+ que devuelva +true+ si una palabra dada
 Modifique su programa de la sección anterior para que imprima solo las palabras que no tienen +'e'+, y que además calcule el porcentaje de palabras en la lista que no tengan +'e'+.
 
 [[ex09-3]]
-==== Exercise 9-3
+==== Ejercicio 9-3
 
 Escriba una función llamada +evitar+ que tome como argumentos una palabra y una cadena de letras prohibidas, y que devuelva +true+ si la palabra no usa ninguna de las letras prohibidas.
 (((avoids)))((("function", "programmer-defined", "avoids", see="avoids")))
@@ -87,19 +87,19 @@ Escriba una función llamada +evitar+ que tome como argumentos una palabra y una
 Modifique su programa de la sección anterior para solicitar al usuario que ingrese una cadena de letras prohibidas, y que luego imprima el número de palabras que no contengan ninguna de ellas. ¿Es posible encontrar una combinación de 5 letras prohibidas que excluya la menor cantidad de palabras?
 
 [[ex09-4]]
-==== Exercise 9-4
+==== Ejercicio 9-4
 
 Escriba una función llamada +usasolo+ que tome una palabra y una cadena de letras, y que devuelva +true+ si la palabra contiene solo letras de la lista. ¿Puedes hacer una oración usando solo las letras +arefhlo+? Aparte de +"¿Hola fer?"+
 (((usesonly)))((("function", "programmer-defined", "usesonly", see="usesonly")))
 
 [[ex09-5]]
-==== Exercise 9-5
+==== Ejercicio 9-5
 
 Escriba una función llamada +usatodo+ que tome una palabra y una cadena de letras, y que devuelva +true+ si la palabra usa todas las letras requeridas al menos una vez. ¿Cuántas palabras usan todas las vocales +aeiou+? 
 (((usesall)))((("function", "programmer-defined", "usesall", see="usesall")))
 
 [[ex09-6]]
-==== Exercise 9-6
+==== Ejercicio 9-6
 
 Escriba una función llamada +esabecedaria+ que devuelva +true+ si las letras de una palabra aparecen en orden alfabético. ¿Cuántas palabras abecedarias hay?
 (((isabecedarian)))((("function", "programmer-defined", "isabecedarian", see="isabecedarian")))
@@ -124,7 +124,7 @@ end
 
 El bucle +for+ recorre los caracteres de palabra. Si encontramos la letra +'e'+, podemos devolver inmediatamente +false+; de lo contrario tenemos que pasar a la siguiente letra. Si salimos del bucle normalmente, eso significa que no encontramos una +'e'+, por lo que devolvemos +true+.
 
-Esta función podría ser escrita de manera más concisa usando el operador +∉+ (*+\notin TAB+*), pero se comienza con esta versión porque demuestra la lógica del patrón de búsqueda.
+Esta función podría ser escrita de manera más concisa usando el operador +∉+ (*+\notin TAB+*), pero se comienza con esta versión porque muestra la lógica del patrón de búsqueda.
 (((∉)))((("operator", "Base", "∉", see="∉")))
 
 +evita+ es una versión más general de +notiene_e+ pero tiene la misma estructura:
@@ -159,16 +159,16 @@ function usasolo(palabra, disponibles)
 end
 ----
 
-Instead of an array of forbidden letters, we have an array of available letters. If we find a letter in +word+ that is not in +available+, we can return +false+.
+En vez de un conjunto de letras prohibidas, se tiene un conjunto de letras disponibles. Si encontramos una letra en +palabra+ que no está en +disponible+, se devuelve +false+.
 
-+usesall+ is similar except that we reverse the role of the word and the string of letters:
++usatodo+ es similar, excepto que se invierte el papel de la palabra y la cadena de letras:
 (((usesall)))
 
 [source,@julia-setup chap09]
 ----
-function usesall(word, required)
-    for letter in required
-        if letter ∉ word
+function usatodo(palabra, requeridas)
+    for letra in requeridas 
+        if letra ∉ palabra
             return false
         end
     end
@@ -176,16 +176,18 @@ function usesall(word, required)
 end
 ----
 
-Instead of traversing the letters in word, the loop traverses the required letters. If any of the required letters do not appear in the word, we can return +false+.
+En lugar de recorrer las letras de la palabra, el bucle recorre las letras requeridas. Si alguna de las letras requeridas no aparece en la palabra, se devuelve +false+.
 
-If you were really thinking like a computer scientist, you would have recognized that +usesall+ was an instance of a previously solved problem, and you would have written:
+Si hubieras estado pensando como un informático, habrías reconocido que +usatodo+ es una instancia de un problema previamente resuelto, y hubieras escrito:
 
 [source,@julia-setup chap09]
 ----
-function usesall(word, required)
-    usesonly(required, word)
+function usatodo(palabra, requeridas)
+    usasolo(requeridas, palabra)
 end
 ----
+
+Este es un ejemplo de un plan de desarrollo de programa llamado _reducción a un problema resuelto previamente_, lo que significa que se reconoce el problema en el que se está trabajando como una instancia de un problema resuelto y aplica una solución existente.
 
 This is an example of a program development plan called _reduction to a previously solved problem_, which means that you recognize the problem you are working on as an instance of a solved problem and apply an existing solution.
 (((program development plan)))(((reduction to a previously solved problem)))
