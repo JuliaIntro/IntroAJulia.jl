@@ -89,7 +89,7 @@ Modifique su programa de la sección anterior para solicitar al usuario que ingr
 [[ex09-4]]
 ==== Ejercicio 9-4
 
-Escriba una función llamada +usasolo+ que tome una palabra y una cadena de letras, y que devuelva +true+ si la palabra contiene solo letras de la lista. ¿Puedes hacer una oración usando solo las letras +arefhlo+? Aparte de +"¿Hola fer?"+
+Escriba una función llamada +usasolo+ que tome una palabra y una cadena de letras, y que devuelva +true+ si la palabra contiene solo letras de la lista. ¿Puedes hacer una oración usando solo las letras +oneacmil+? Aparte de +"¿El camino?"+
 (((usesonly)))((("function", "programmer-defined", "usesonly", see="usesonly")))
 
 [[ex09-5]]
@@ -101,7 +101,7 @@ Escriba una función llamada +usatodo+ que tome una palabra y una cadena de letr
 [[ex09-6]]
 ==== Ejercicio 9-6
 
-Escriba una función llamada +esabecedaria+ que devuelva +true+ si las letras de una palabra aparecen en orden alfabético. ¿Cuántas palabras abecedarias hay?
+Escriba una función llamada +esabecedaria+ que devuelva +true+ si las letras de una palabra aparecen en orden alfabético. ¿Cuántas palabras de este tipo hay?
 (((isabecedarian)))((("function", "programmer-defined", "isabecedarian", see="isabecedarian")))
 
 [[search]]
