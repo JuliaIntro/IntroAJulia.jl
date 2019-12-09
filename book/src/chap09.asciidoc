@@ -1,7 +1,7 @@
 [[chap09]]
 == Estudio de Caso: Juego de Palabras
 
-Este capítulo presenta un segundo estudio de caso, que consiste en resolver sopas de letras buscando palabras que tengan ciertas propiedades. Por ejemplo, buscaremos palabras cuyas letras aparezcan en orden alfabético. Además, se presentará otra forma de desarrollar programas: la reducción a un problema previamente resuelto.
+Este capítulo presenta un segundo estudio de caso, que consiste en resolver puzzles buscando palabras que tengan ciertas propiedades. Por ejemplo, buscaremos palabras cuyas letras aparezcan en orden alfabético. Además, se presentará otra forma de desarrollar programas: la reducción a un problema previamente resuelto.
 
 [[reading_word_lists]]
 === Leer listas de palabras
