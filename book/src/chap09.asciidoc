@@ -105,7 +105,7 @@ Escriba una función llamada +esabecedaria+ que devuelva +true+ si las letras de
 (((isabecedarian)))((("function", "programmer-defined", "isabecedarian", see="isabecedarian")))
 
 [[search]]
-=== Search
+=== Búsqueda
 
 Todos los ejercicios en la sección anterior tienen algo en común: se pueden resolver con el patrón de búsqueda. El ejemplo más simple es:
 (((search)))(((hasno_e)))
