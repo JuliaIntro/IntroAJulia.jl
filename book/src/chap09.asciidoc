@@ -1,7 +1,7 @@
 [[chap09]]
 == Estudio de Caso: Juego de Palabras
 
-Este capítulo presenta un segundo estudio de caso, que consiste en resolver sopas de letras buscando palabras que tengan ciertas propiedades. Por ejemplo, encontraremos los palíndromos más largos en inglés y buscaremos palabras cuyas letras aparezcan en orden alfabético. Además, se presentará otro plan de desarrollo de programas: la reducción a un problema previamente resuelto.
+Este capítulo presenta un segundo estudio de caso, que consiste en resolver sopas de letras buscando palabras que tengan ciertas propiedades. Por ejemplo, encontraremos los palíndromos más largos en inglés y buscaremos palabras cuyas letras aparezcan en orden alfabético. Además, se presentará otra forma de desarrollar programas: la reducción a un problema previamente resuelto.
 
 [[reading_word_lists]]
 === Leer listas de palabras
@@ -285,19 +285,21 @@ function espalindromo(palabra)
 end
 ----
 
-Using +isreverse+ from <<deb08>>.
+Usando +esreverso+ de <<deb08>>.
 (((isreverse)))
 
 
-=== Debugging
+=== Depuración
 
-Testing programs is hard. The functions in this chapter are relatively easy to test because you can check the results by hand. Even so, it is somewhere between difficult and impossible to choose a set of words that test for all possible errors.
+Comprobar el correcto funcionamiento de los programas es difícil. Las funciones de este capítulo son relativamente fáciles de probar porque se pueden verificar los resultados a mano. Aun así, es casi imposible elegir un conjunto de palabras que permitan evaluar todos los posibles errores.
 (((debugging)))
 
-Taking +hasno_e+ as an example, there are two obvious cases to check: words that have an +'e'+ should return +false+, and words that don’t should return +true+. You should have no trouble coming up with one of each.
+Tomando +notiene_e+ como ejemplo, hay dos casos obvios que verificar: las palabras que tienen una +'e'+ deberían devolver +false+, y las palabras que no deberían devolver +true+. No deberían haber problemas para encontrar un ejemplo de cada uno.
 
-Within each case, there are some less obvious subcases. Among the words that have an “e”, you should test words with an “e” at the beginning, the end, and somewhere in the middle. You should test long words, short words, and very short words, like the empty string. The empty string is an example of a _special case_, which is one of the non-obvious cases where errors often lurk.
+Dentro de cada caso, hay algunos subcasos menos obvios. Entre las palabras que tienen una "e", se deben probar las palabras con una "e" al principio, al final y al medio. Además, se deben probar palabras largas, cortas y muy cortas, como una cadena vacía. La cadena vacía es un ejemplo de un "caso especial" no obvio donde pueden originarse errores.
 (((special case)))
+
+Además de las instancias de prueba generadas, también puede probar su programa con una lista de palabras como +palabras.txt+. Al escanear el resultado, es posible que pueda detectar errores, pero tenga cuidado: puede detectar un tipo de error (palabras que no deberían incluirse, pero lo están) y no otro (palabras que deberían incluirse, pero no lo están).
 
 In addition to the test cases you generate, you can also test your program with a word list like +palabras.txt+. By scanning the output, you might be able to catch errors, but be careful: you might catch one kind of error (words that should not be included, but are) and not another (words that should be included, but aren’t).
 
@@ -309,14 +311,14 @@ ____
 Program testing can be used to show the presence of bugs, but never to show their absence!
 ____
 
-=== Glossary
+=== Glosario
 
-file stream::
-A value that represents an open file.
+objeto archivo::
+Un valor que representa un archivo abierto.
 (((file stream)))
 
 reduction to a previously solved problem::
-A way of solving a problem by expressing it as an instance of a previously solved problem.
+Una manera de resolver un problema expresándolo como una instancia de un problema previamente resuelto.
 (((reduction to a previously solved problem)))
 
 special case::
