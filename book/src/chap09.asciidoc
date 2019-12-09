@@ -26,7 +26,7 @@ IOStream(<file palabras.txt>)
 
 +fin+ es un objeto archivo que puede ser utilizado como entrada y cuando se deja de utilizar, debe cerrarse con +close(fin)+.
 
-Julia tiene integrada varias funciones de lectura, entre ellas +readline+, que lee los caracteres del archivo hasta que llega a un +salto de línea+, y devuelve el resultado como una cadena:
+Julia tiene integrada varias funciones de lectura, entre ellas +readline+, que lee los caracteres del archivo hasta que llega a un +salto de línea+, devolviendo el resultado como una cadena:
 (((file stream)))(((input)))(((readline)))((("function", "Base", "readline", see="readline")))(((close)))
 
 [source,@julia-repl chap09]
