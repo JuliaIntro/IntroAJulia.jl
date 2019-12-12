@@ -1,9 +1,9 @@
-function linecount(filename)
-    count = 0
-    for line in eachline(filename)
-        count += 1
+function contarlineas(nombrearchivo)
+    conteo = 0
+    for linea in eachline(nombrearchivo)
+        conteo += 1
     end
-    count
+    conteo
 end
 
-print(linecount("wc.jl"))
+print(contarlineas("wc.jl"))

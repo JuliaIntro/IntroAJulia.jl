@@ -208,7 +208,7 @@ El _operador ternario_, +?:+, puede utilizarse en vez de una sentencia +if-elsei
 julia> a = 150
 150
 julia> a % 2 == 0 ? println("par") : println("impar")
-even
+par
 ----
 
 La expresión que va antes de +?+ es una expresión de condición. Si la condición es +true+, se evalúa la expresión que va antes de +:+; de lo contrario, se evalúa la expresión que va después de +:+.
@@ -394,7 +394,7 @@ struct Polinomio{R}
 end
 
 function (p::Polinomio)(x)
-    val = p.coeff[end]
+    val = p.coef[end]
     for coef in p.coef[end-1:-1:1]
         val = val * x + coef
     end
@@ -419,11 +419,11 @@ Los tipos paramétricos se pueden construir explícita o implícitamente:
 [source,@julia-repl-test chap19]
 ----
 julia> Punto(1,2)         # T implicito
-Point{Int64}(1, 2)
+Punto{Int64}(1, 2)
 julia> Punto{Int64}(1, 2) # T explicito
-Point{Int64}(1, 2)
+Punto{Int64}(1, 2)
 julia> Punto(1,2.5)       # T implicito
-ERROR: MethodError: no method matching Point(::Int64, ::Float64)
+ERROR: MethodError: no method matching Punto(::Int64, ::Float64)
 ----
 
 Se generan constructores internos y externos por defecto para cada +T+:

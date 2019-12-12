@@ -105,7 +105,7 @@ Con esa decisión tomada, podemos escribir +<+:
 import Base.<
 
 function <(c1::Naipe, c2::Naipe)
-    (c1.palo, c1.rvalor) < (c2.palo, c2.valor)
+    (c1.palo, c1.valor) < (c2.palo, c2.valor)
 end
 ----
 
@@ -151,13 +151,13 @@ struct Mazo
 end
 
 function Mazo()
-    mazo = Mazo(Card[])
+    mazo = Mazo(Naipe[])
     for palo in 1:4
         for valor in 1:13
             push!(mazo.naipes, Naipe(palo, valor))
         end
     end
-    deck
+    mazo
 end
 ----
 
@@ -205,7 +205,7 @@ Para añadir un naipe, podemos usar la función +push!+:
 ----
 function Base.push!(mazo::Mazo, naipe::Naipe)
     push!(mazo.naipes, naipe)
-    deck
+    mazo
 end
 ----
 
@@ -284,7 +284,7 @@ function Mazo()
             push!(mazo.naipes, Naipe(palo, valor))
         end
     end
-    deck
+    mazo
 end
 ----
 
