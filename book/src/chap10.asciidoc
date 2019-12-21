@@ -8,7 +8,7 @@ Este capítulo presenta uno de los tipos más útiles de Julia: las matrices. Ta
 Al igual que una cadena, un _array_ es una secuencia de valores. En una cadena los valores son caracteres, en una matriz pueden ser de cualquier tipo. Los valores en una matriz se denominan _elementos_ o, a veces, _items_.
 (((array)))(((element)))(((item)))
 
-Hay varias formas de crear una nueva matriz; lo más simple es encerrar los elementos entre corchetes (+[ ]+):
+Hay varias formas de crear una nueva matriz; lo más simple es poner los elementos entre corchetes (+[ ]+):
 (((bracket operator)))
 
 [source,julia]
