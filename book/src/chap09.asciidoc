@@ -329,12 +329,18 @@ Una instancia de prueba que es atípica o no obvia (y por lo tanto, menos probab
 [[ex09-7]]
 ==== Ejercicio 9-7
 
-This question is based on a Puzzler that was broadcast on the radio program _Car Talk_ (https://www.cartalk.com/puzzler/browse):
+Esta pregunta se basa en un Puzzle que se transmitió en el programa de radio _Car Talk_ (https://www.cartalk.com/puzzler/browse):
 (((Car Talk)))
 
 [quote]
 ____
-Give me a word with three consecutive double letters. I’ll give you a couple of words that almost qualify, but don’t. For example, the word committee, c-o-m-m-i-t-t-e-e. It would be great except for the 'i' that sneaks in there. Or Mississippi: M-i-s-s-i-s-s-i-p-p-i. If you could take out those i’s it would work. But there is a word that has three consecutive pairs of letters and to the best of my knowledge this may be the only word. Of course there are probably 500 more but I can only think of one. What is the word?
+
+Se tiene una secuencia de números y se desea saber cuál es el siguiente. Los números son: 4, 6, 12, 18, 30, 42, 60 y luego X.
+
+Pista 1: Todos los números de la secuencia son pares.
+Pista 2: El número que va después del que estoy buscando es 102.
+
+¿Cuál es el número?
 ____
 
 Write a program to find it.
@@ -342,7 +348,7 @@ Write a program to find it.
 [[ex09-8]]
 ==== Ejercicio 9-8
 
-A continuación se muestra un puzzle de _Car Talk_ (https://www.cartalk.com/puzzler/browse):
+A continuación se muestra otro puzzle de _Car Talk_ (https://www.cartalk.com/puzzler/browse):
 
 [quote]
 ____
