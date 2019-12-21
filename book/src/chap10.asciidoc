@@ -1,60 +1,59 @@
 [[chap10]]
 == Arrays
 
-This chapter presents one of Julia’s most useful built-in types, arrays. You will also learn about objects and what can happen when you have more than one name for the same object.
+Este capítulo presenta uno de los tipos integrados más útiles de Julia: las matrices. También aprenderemos sobre objetos y lo que puede suceder cuando se tiene más de un nombre para el mismo objeto.
 
+=== Una matriz es una secuencia
 
-=== An Array is a Sequence
-
-Like a string, an _array_ is a sequence of values. In a string, the values are characters; in an array, they can be any type. The values in an array are called _elements_ or sometimes _items_.
+Al igual que una cadena, un _array_ es una secuencia de valores. En una cadena los valores son caracteres, en una matriz pueden ser de cualquier tipo. Los valores en una matriz se denominan _elementos_ o, a veces, _items_.
 (((array)))(((element)))(((item)))
 
-There are several ways to create a new array; the simplest is to enclose the elements in square brackets (+[ ]+):
+Hay varias formas de crear una nueva matriz; lo más simple es encerrar los elementos entre corchetes (+[ ]+):
 (((bracket operator)))
 
 [source,julia]
 ----
 [10, 20, 30, 40]
-["crunchy frog", "ram bladder", "lark vomit"]
+["abadejo", "falsía", "estrambote"]
 ----
 
-The first example is an array of four integers. The second is an array of three strings. The elements of an array don’t have to be the same type. The following array contains a string, a float, an integer, and another array:
+El primer ejemplo es una matriz de cuatro enteros. El segundo es una matriz de tres cadenas. Los elementos de una matriz no tienen que ser del mismo tipo. La siguiente matriz contiene una cadena, un número de punto flotante, un entero y otra matriz:
 
 [source,julia]
 ----
 ["spam", 2.0, 5, [10, 20]]
 ----
 
-An array within another array is _nested_.
+Una matriz dentro de otra matriz se dice _anidada_.
 (((nested)))
 
-An array that contains no elements is called an empty array; you can create one with empty brackets, +[]+.
+Una matriz que no contiene elementos se llama matriz vacía; se puede crear una con corchetes vacíos, +[]+.
 (((empty array)))
 
-As you might expect, you can assign array values to variables:
+Como es de esperar, se pueden asignar valores de matriz a variables:
 
 [source,@julia-repl-test chap10]
 ----
-julia> cheeses = ["Cheddar", "Edam", "Gouda"];
+julia> quesos = ["Cheddar", "Edam", "Gouda"];
 
-julia> numbers = [42, 123];
+julia> numeros = [42, 123];
 
-julia> empty = [];
+julia> vacio = [];
 
-julia> print(cheeses, " ", numbers, " ", empty)
+julia> print(quesos, " ", numeros, " ", vacio)
 ["Cheddar", "Edam", "Gouda"] [42, 123] Any[]
 ----
 
-The function +typeof+ can be used to find out the kind of the array:
+La función +typeof+ se puede usar para conocer el tipo de la matriz:
 (((typeof)))
 
 [source,@julia-repl-test chap10]
 ----
-julia> typeof(cheeses)
+julia> typeof(quesos)
 Array{String,1}
-julia> typeof(numbers)
+julia> typeof(numeros)
 Array{Int64,1}
-julia> typeof(empty)
+julia> typeof(vacio)
 Array{Any,1}
 ----
 
