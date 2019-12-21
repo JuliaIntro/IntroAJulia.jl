@@ -5,7 +5,7 @@ Este capítulo presenta uno de los tipos más útiles de Julia: las matrices. Ta
 
 === Una matriz es una secuencia
 
-Al igual que una cadena, una _matriz_ es una secuencia de valores. En una cadena los valores son caracteres, en una matriz pueden ser de cualquier tipo. Los valores en una matriz se denominan _elementos_ o, a veces, _items_.
+Al igual que una cadena de texto, una _matriz_ es una secuencia de valores. En una cadena los valores son caracteres, en una matriz pueden ser de cualquier tipo. Los valores en una matriz se denominan _elementos_ o, a veces, _items_.
 (((array)))(((element)))(((item)))
 
 Hay varias formas de crear una nueva matriz; la más sencilla es encerrar los elementos entre corchetes (+[ ]+):
