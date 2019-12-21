@@ -351,9 +351,9 @@ Operaciones como +solomayusculas+ se llaman _filtro_ porque seleccionan solo alg
 Las operaciones de matriz más comunes son una combinación de mapeo, filtro y reducción.
 
 
-=== Dot Syntax
+=== Sintaxis de punto
 
-Para cada operador binario, como por ejemplo +pass:[^]+, existe un _operador punto_ correspondiente pass:[<code>.^</code>] que automaticamente define +pass:[^]+ para cada elemento de una matriz. Por ejemplo, pass:[<code>&#91;1, 2, 3&#93; ^ 3</code>] no está definido, pero pass:[<code>&#91;1, 2, 3&#93; .^ 3</code>] se define como pass:[<code>&#91;1^3, 2^3, 3^3&#93;</code>]:
+Para cada operador binario, como por ejemplo +pass:[^]+, existe un _operador punto_ correspondiente pass:[<code>.^</code>] que automaticamente define que se realice +pass:[^]+ para cada elemento de una matriz. Por ejemplo, pass:[<code>&#91;1, 2, 3&#93; ^ 3</code>] no está definido, pero pass:[<code>&#91;1, 2, 3&#93; .^ 3</code>] se define como el resultado de realizar la operación elemento a elemento +pass:[^]+ para cada punto pass:[<code>&#91;1^3, 2^3, 3^3&#93;</code>]:
 
 For every binary operator like +pass:[^]+, there is a corresponding _dot operator_ pass:[<code>.^</code>] that is automatically defined to perform +pass:[^]+ element-by-element on arrays. For example, pass:[<code>&#91;1, 2, 3&#93; ^ 3</code>] is not defined, but pass:[<code>&#91;1, 2, 3&#93; .^ 3</code>] is defined as computing the elementwise result pass:[<code>&#91;1^3, 2^3, 3^3&#93;</code>]:
 (((dot operator)))((("operator", "Base", ".", see="dot operator")))(((".", see="dot operator")))
