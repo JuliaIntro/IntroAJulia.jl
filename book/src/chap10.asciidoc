@@ -92,7 +92,7 @@ El segundo elemento de +numeros+, que era 123, ahora es 5.
 .State diagram
 image::images/fig101.svg[]
 
-Las matrices son representadas mediante cuadros con elementos de la matriz en su interior. +quesos+ hace referencia a una matriz con tres elementos indexados +1+, +2+ y +3+. +numeros+ contiene dos elementos. El diagrama muestra que el valor del segundo elemento de +numeros+ se ha reasignado de +123+ a +5+. +vacio+ hace referencia a una matriz sin elementos.
+Las matrices son representadas mediante cuadros con elementos de la matriz en su interior. La matriz +quesos+ hace referencia a una matriz con tres elementos indexados +1+, +2+ y +3+. La matriz +numeros+ contiene dos elementos. El diagrama muestra que el valor del segundo elemento de +numeros+ se ha reasignado de +123+ a +5+. Finalmente, +vacio+ hace referencia a una matriz sin elementos.
 
 Los índices de una matriz funcionan de la misma manera que los índices de una cadena (pero sin los problemas generados por la codificación UTF-8):
 
@@ -127,7 +127,7 @@ for queso in quesos
 end
 ----
 
-Esto funciona bien si solo se necesita leer los elementos de la matriz. Pero si se desea escribir o actualizar los elementos, se necesitan índices. Una forma común de hacerlo es usando la función integrada +eachindex+:
+Esto funciona bien si solo se necesita leer los elementos de la matriz. Pero si se desea escribir o actualizar los elementos es necesario utilizar índices. Una forma común de hacerlo es usando la función integrada +eachindex+:
 (((eachindex)))((("function", "Base", "eachindex", see="eachindex")))
 
 [source,@julia-setup chap10]
@@ -137,7 +137,9 @@ for i in eachindex(numeros)
 end
 ----
 
-Este bucle recorre la matriz y actualiza cada elemento. +length+ devuelve el número de elementos en la matriz. En cada iteración del ciclo, +i+ representa el índice del elemento actual. La sentencia de asignación usa +numeros[i]+ para leer el valor original del elemento y asignar el nuevo valor.
+Este bucle recorre la matriz y actualiza cada elemento. En cada iteración del ciclo, +i+ representa el índice del elemento actual. La sentencia de asignación usa +numeros[i]+ para leer el valor original del elemento y asignar el nuevo valor.
+
+Por otra parte, +length+ devuelve el número de elementos en la matriz.
 
 Un ciclo +for+ sobre una matriz vacía nunca ejecuta el cuerpo del bucle:
 (((empty array)))
@@ -149,7 +151,7 @@ for x in []
 end
 ----
 
-Aunque una matriz puede contener otra matriz, esta matriz anidada cuenta como un elemento único. La longitud de esta matriz es cuatro:
+Aunque una matriz puede contener otra matriz, esta matriz anidada cuenta como un elemento único. Por ejemplo, la longitud de esta matriz es cuatro:
 
 [source,@julia-setup]
 ----
@@ -172,7 +174,7 @@ julia> print(t[3:end])
 ['c', 'd', 'e', 'f']
 ----
 
-El operador porción +[:]+, hace una copia de toda la matriz:
+El operador porción +[:]+ hace una copia de toda la matriz:
 (((copy)))
 
 [source,@julia-repl-test chap10]
@@ -209,7 +211,7 @@ julia> print(t)
 ['a', 'b', 'c', 'd']
 ----
 
-+append!+ agrega elementos de una segunda matriz al final de la primera:
++append!+ agrega elementos de una matriz al final de otra:
 (((append!)))((("function", "Base", "append!", see="append!")))
 
 [source,@julia-repl-test chap10]
@@ -239,7 +241,7 @@ julia> print(t)
 ['a', 'b', 'c', 'd', 'e']
 ----
 
-+sort+ devuelve una copia de los elementos de la matriz en orden:
++sort+ devuelve una copia ordenada de los elementos de la matriz:
 (((sort)))((("function", "Base", "sort", see="sort")))
 
 [source,@julia-repl-test chap10]
@@ -324,9 +326,9 @@ function todoenmayusculas(t)
 end
 ----
 
-+res+ se inicializa con una matriz vacía. Y en cada iteración se agrega un nuevo elemento. De esta manera, +res+ es otro tipo de acumulador.
++res+ se inicializa con una matriz vacía, y en cada iteración se agrega un nuevo elemento. De esta manera, +res+ es otro tipo de acumulador.
 
-Una operación como +todoenmayusculas+ a veces se denomina _mapeo_ porque se "asigna" una función (en este caso +uppercase+) a cada uno de los elementos en una secuencia.
+Una operación como +todoenmayusculas+ a veces se denomina _mapeo_ porque "asigna" una función (en este caso +uppercase+) a cada uno de los elementos en una secuencia.
 (((map)))
 
 Otra operación común es seleccionar algunos de los elementos de una matriz y devolver una submatriz. Por ejemplo, la siguiente función toma una matriz de cadenas y devuelve una matriz que contiene solo las cadenas en mayúsculas:
