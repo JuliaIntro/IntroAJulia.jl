@@ -57,7 +57,7 @@ julia> typeof(vacio)
 Array{Any,1}
 ----
 
-El tipo de matriz se especifica entre llaves, y se compone de un tipo y un número. El número indica las dimensiones. El conjunto +vacío+ contiene valores de tipo +Any+, es decir, puede contener valores de todos los tipos.
+El tipo de la matriz se especifica entre llaves, y se compone de un tipo y un número. El número indica las dimensiones. El conjunto +vacío+ contiene valores de tipo +Any+, es decir, puede contener valores de todos los tipos.
 (((Array)))((("type", "Base", "Array", see="Array")))(((Any)))((("type", "Base", "Any", see="Any")))
 
 
