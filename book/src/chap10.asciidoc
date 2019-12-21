@@ -8,7 +8,7 @@ Este capítulo presenta uno de los tipos más útiles de Julia: las matrices. Ta
 Al igual que una cadena, un _array_ es una secuencia de valores. En una cadena los valores son caracteres, en una matriz pueden ser de cualquier tipo. Los valores en una matriz se denominan _elementos_ o, a veces, _items_.
 (((array)))(((element)))(((item)))
 
-Hay varias formas de crear una nueva matriz; lo más simple es poner los elementos entre corchetes (+[ ]+):
+Hay varias formas de crear una nueva matriz; la más sencilla es encerrar los elementos entre corchetes (+[ ]+):
 (((bracket operator)))
 
 [source,julia]
@@ -17,20 +17,20 @@ Hay varias formas de crear una nueva matriz; lo más simple es poner los element
 ["abadejo", "falsía", "estrambote"]
 ----
 
-El primer ejemplo es una matriz de cuatro enteros. El segundo es una matriz de tres cadenas. Los elementos de una matriz no tienen que ser del mismo tipo. La siguiente matriz contiene una cadena, un número de punto flotante, un entero y otra matriz:
+El primer ejemplo es una matriz de cuatro enteros. El segundo es una matriz de tres cadenas de texto. Los elementos de una matriz no tienen por qué ser del mismo tipo. La siguiente matriz contiene una cadena, un número de punto flotante, un entero y otra matriz:
 
 [source,julia]
 ----
 ["spam", 2.0, 5, [10, 20]]
 ----
 
-Una matriz dentro de otra matriz se dice _anidada_.
+Se dice que una matriz dentro de otra matriz está _anidada_.
 (((nested)))
 
 Una matriz que no contiene elementos se llama matriz vacía; se puede crear una con corchetes vacíos, +[]+.
 (((empty array)))
 
-Como es de esperar, se pueden asignar valores de una matriz a una variable:
+Como es de esperar, se pueden asignar valores de matrices a variables:
 
 [source,@julia-repl-test chap10]
 ----
@@ -63,7 +63,7 @@ El tipo de la matriz se especifica entre llaves, y se compone de un tipo y un n�
 
 === Las matrices son mutables
 
-La sintaxis para acceder a los elementos de una matriz es la misma que para acceder a los caracteres de una cadena: el operador corchete. La expresión dentro de los corchetes especifica el índice. Recuerde que los índices comienzan en 1:
+La sintaxis para acceder a los elementos de una matriz es la misma que para acceder a los caracteres de una cadena: el operador corchetes. La expresión dentro de los corchetes especifica el índice. Recuerde que los índices comienzan en 1:
 (((bracket operator)))(((index)))
 
 [source,@julia-repl-test chap10]
@@ -72,7 +72,8 @@ julia> quesos[1]
 "Cheddar"
 ----
 
-A diferencia de las cadenas, las matrices son _mutables_. Cuando el operador corchete aparece en el lado izquierdo de una asignación, identifica el elemento de la matriz que será asignado:
+A diferencia de las cadenas, las matrices son _mutables_. Podemos modificar uno de sus elementos usando el operador corchetes en el lado izquierdo de una asignación:
+
 (((mutable)))(((assignment statement)))
 
 [source,@julia-repl-test chap10]
