@@ -100,59 +100,56 @@ Los índices de una matriz funcionan de la misma manera que los índices de una 
 
 * Si se intenta leer o escribir un elemento que no existe, se obtiene un +BoundsError+.
 
-* La palabra reservada +end+ apunta al último índice de la matriz.
-
-
-* The keyword +end+ points to the last index of the array.
+* La palabra reservada +end+ indica el último índice de la matriz.
 (((end)))
 
-The +∈+ operator also works on arrays:
+El operador +∈+ también funciona en matrices:
 (((in)))
 
 [source,@julia-repl-test chap10]
 ----
-julia> "Edam" ∈ cheeses
+julia> "Edam" ∈ quesos
 true
-julia> "Brie" in cheeses
+julia> "Brie" in quesos
 false
 ----
 
 
-=== Traversing an Array
+=== Recorriendo una Matriz
 
-The most common way to traverse the elements of an array is with a +for+ loop. The syntax is the same as for strings:
+La forma más común de recorrer los elementos de una matriz es con un ciclo +for+. La sintaxis es la misma que para las cadenas:
 (((traversal)))(((for statement)))
 
 [source,@julia-setup chap10]
 ----
-for cheese in cheeses
-    println(cheese)
+for queso in quesos
+    println(queso)
 end
 ----
 
-This works well if you only need to read the elements of the array. But if you want to write or update the elements, you need the indices. A common way to do that is to use the built-in function +eachindex+:
+Esto funciona bien si solo se necesita leer los elementos de la matriz. Pero si se desea escribir o actualizar los elementos, se necesitan índices. Una forma común de hacerlo es usando la función integrada +eachindex+:
 (((eachindex)))((("function", "Base", "eachindex", see="eachindex")))
 
 [source,@julia-setup chap10]
 ----
-for i in eachindex(numbers)
-    numbers[i] = numbers[i] * 2
+for i in eachindex(numeros)
+    numeros[i] = numeros[i] * 2
 end
 ----
 
-This loop traverses the array and updates each element. +length+ returns the number of elements in the array. Each time through the loop +i+ gets the index of the next element. The assignment statement in the body uses +i+ to read the old value of the element and to assign the new value.
+Este bucle recorre la matriz y actualiza cada elemento. +length+ devuelve el número de elementos en la matriz. En cada iteración del ciclo, +i+ representa el índice del elemento actual. La sentencia de asignación usa +numeros[i]+ para leer el valor original del elemento y asignar el nuevo valor.
 
-A +for+ loop over an empty array never runs the body:
+Un ciclo +for+ sobre una matriz vacía nunca ejecuta el cuerpo del bucle:
 (((empty array)))
 
 [source,@julia-setup]
 ----
 for x in []
-    println("This can never happens.")
+    println("Esto nunca pasa.")
 end
 ----
 
-Although an array can contain another array, the nested array still counts as a single element. The length of this array is four:
+Aunque una matriz puede contener otra matriz, esta matriz anidada cuenta como un elemento único. La longitud de esta matriz es cuatro:
 
 [source,@julia-setup]
 ----
@@ -160,9 +157,9 @@ Although an array can contain another array, the nested array still counts as a 
 ----
 
 
-=== Array Slices
+=== Porciones de matrices
 
-The slice operator also works on arrays:
+El operador porción también funciona en matrices:
 (((slice operator)))((("operator", "Base", "[:]", see="slice operator")))((("[:]", see="slice operator")))
 
 [source,@julia-repl-test chap10]
@@ -175,7 +172,7 @@ julia> print(t[3:end])
 ['c', 'd', 'e', 'f']
 ----
 
-The slice operator +[:]+, makes a copy of the whole array:
+El operador porción +[:]+, hace una copia de toda la matriz:
 (((copy)))
 
 [source,@julia-repl-test chap10]
@@ -184,9 +181,9 @@ julia> print(t[:])
 ['a', 'b', 'c', 'd', 'e', 'f']
 ----
 
-Since arrays are mutable, it is often useful to make a copy before performing operations that modify arrays.
+Como las matrices son mutables, es útil hacer una copia antes de realizar operaciones que las modifiquen.
 
-A slice operator on the left side of an assignment can update multiple elements:
+Un operador porción en el lado izquierdo de una asignación puede actualizar varios elementos:
 
 [source,@julia-repl-test chap10]
 ----
@@ -197,9 +194,9 @@ julia> print(t)
 ----
 
 
-=== Array Library
+=== Librería de Matrices
 
-Julia provides functions that operate on arrays. For example, +push!+ adds a new element to the end of an array:
+Julia tiene funciones integradas que operan en matrices. Por ejemplo, +push!+ agrega un nuevo elemento al final de una matriz:
 (((push!)))((("function", "Base", "push!", see="push!")))
 
 [source,@julia-repl-test chap10]
@@ -212,7 +209,7 @@ julia> print(t)
 ['a', 'b', 'c', 'd']
 ----
 
-+append!+ add the elements of the second array to the end of the first:
++append!+ agrega elementos de una segunda matriz al final de la primera:
 (((append!)))((("function", "Base", "append!", see="append!")))
 
 [source,@julia-repl-test chap10]
@@ -227,9 +224,9 @@ julia> print(t1)
 ['a', 'b', 'c', 'd', 'e']
 ----
 
-This example leaves +t2+ unmodified.
+En este ejemplo +t2+ no es modificado.
 
-+sort!+ arranges the elements of the array from low to high:
++sort!+ ordena los elementos de una matriz de menor a mayor:
 (((sort!)))((("function", "Base", "sort!", see="sort!")))
 
 [source,@julia-repl-test chap10]
@@ -242,7 +239,7 @@ julia> print(t)
 ['a', 'b', 'c', 'd', 'e']
 ----
 
-+sort+ returns a copy of the elements of the array in order:
++sort+ devuelve una copia de los elementos de la matriz en orden:
 (((sort)))((("function", "Base", "sort", see="sort")))
 
 [source,@julia-repl-test chap10]
@@ -259,18 +256,18 @@ julia> print(t2)
 
 [NOTE]
 ====
-As a style convention in Julia, +!+ is appended to names of functions that modify their arguments.
+Como convención en Julia, se agrega +!+ a los nombres de las funciones que modifican sus argumentos.
 (((!)))
 ====
 
 
-=== Map, Filter and Reduce
+=== Mapear, Filtrar y Reducir
 
-To add up all the numbers in an array, you can use a loop like this:
+Para sumar todos los números en una matriz, se puede usar un ciclo como este:
 
 [source,@julia-setup]
 ----
-function addall(t)
+function sumartodo(t)
     total = 0
     for x in t
         total += x
