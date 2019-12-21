@@ -263,7 +263,7 @@ Como convención en Julia, se agrega +!+ a los nombres de las funciones que modi
 
 === Mapear, Filtrar y Reducir
 
-Para sumar todos los números en una matriz, se puede usar un ciclo como este:
+Para sumar todos los números en una matriz se puede usar un ciclo como este:
 
 [source,@julia-setup]
 ----
@@ -276,7 +276,7 @@ function sumartodo(t)
 end
 ----
 
-+total+ is initialized to 0. Each time through the loop, +pass:[+=]+ gets one element from the array. The +pass:[+=]+ operator provides a short way to update a variable. This _augmented assignment statement_,
++total+ se inicializa en 0. En cada iteración, con +pass:[+=]+ se añade un elemento de la matriz a la suma total. El operador +pass:[+=]+ es una forma simple de actualizar esta variable. Esta _sentencia de asignación aumentada_,
 (((augmented assignment statement)))(((pass:[+=])))((("operator", "Base", "pass:[+=]", see="pass:[+=]")))
 
 [source,julia]
@@ -284,17 +284,17 @@ end
 total += x
 ----
 
-is equivalent to
+es equivalente a 
 
 [source,julia]
 ----
 total = total + x
 ----
 
-As the loop runs, +total+ accumulates the sum of the elements; a variable used this way is sometimes called an _accumulator_.
+A medida que se ejecuta el ciclo, +total+ acumula la suma de los elementos. A veces se denomina _acumulador_ a una variable utilizada de esta manera.
 (((accumulator)))
 
-Adding up the elements of an array is such a common operation that Julia provides it as a built-in function, +sum+:
+Sumar los elementos de una matriz es una operación tan común que Julia tiene una función integrada para ello, +sum+:
 (((sum)))((("function", "Base", "sum", see="sum")))
 
 [source,@julia-repl-test]
@@ -305,15 +305,17 @@ julia> sum(t)
 10
 ----
 
+Una operación como esta que combina una secuencia de elementos en un solo valor a veces se denomina _operación de reducción_.
+
 An operation like this that combines a sequence of elements into a single value is sometimes called a _reduce operation_.
 (((reduce operation)))
 
-Often you want to traverse one array while building another. For example, the following function takes an array of strings and returns a new array that contains capitalized strings:
+Es común querer recorrer una matriz mientras se construye otra. Por ejemplo, la siguiente función toma una matriz de cadenas y devuelve una nueva matriz que contiene las mismas cadenas pero en mayúsculas:
 (((capitalizeall)))((("function", "programmer-defined", "capitalizeall", see="capitalizeall")))(((uppercase)))
 
 [source,@julia-setup]
 ----
-function capitalizeall(t)
+function todoenmayusculas(t)
     res = []
     for s in t
         push!(res, uppercase(s))
@@ -322,17 +324,17 @@ function capitalizeall(t)
 end
 ----
 
-+res+ is initialized with an empty array; each time through the loop, we append the next element. So +res+ is another kind of accumulator.
++res+ se inicializa con una matriz vacía. Y en cada iteración se agrega un nuevo elemento. De esta manera, +res+ es otro tipo de acumulador.
 
-An operation like +capitalizeall+ is sometimes called a _map_ because it “maps” a function (in this case +uppercase+) onto each of the elements in a sequence.
+Una operación como +todoenmayusculas+ a veces se denomina _mapeo_ porque se "asigna" una función (en este caso +uppercase+) a cada uno de los elementos en una secuencia.
 (((map)))
 
-Another common operation is to select some of the elements from an array and return a subarray. For example, the following function takes an array of strings and returns an array that contains only the uppercase strings:
+Otra operación común es seleccionar algunos de los elementos de una matriz y devolver una submatriz. Por ejemplo, la siguiente función toma una matriz de cadenas y devuelve una matriz que contiene solo las cadenas en mayúsculas:
 (((onlyupper)))((("function", "programmer-defined", "onlyupper", see="onlyupper")))
 
 [source,@julia-setup]
 ----
-function onlyupper(t)
+function solomayusculas(t)
     res = []
     for s in t
         if s == uppercase(s)
