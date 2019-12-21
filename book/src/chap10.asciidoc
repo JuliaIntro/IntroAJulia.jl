@@ -1,5 +1,5 @@
 [[chap10]]
-== Arrays
+== Matrices
 
 Este capítulo presenta uno de los tipos más útiles de Julia: las matrices. También aprenderemos sobre objetos y lo que puede suceder cuando se tiene más de un nombre para el mismo objeto.
 
