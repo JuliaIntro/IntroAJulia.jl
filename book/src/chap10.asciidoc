@@ -30,7 +30,7 @@ Una matriz dentro de otra matriz se dice _anidada_.
 Una matriz que no contiene elementos se llama matriz vacía; se puede crear una con corchetes vacíos, +[]+.
 (((empty array)))
 
-Como es de esperar, se pueden asignar valores de matriz a variables:
+Como es de esperar, se pueden asignar valores de una matriz a una variable:
 
 [source,@julia-repl-test chap10]
 ----
