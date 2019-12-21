@@ -1,15 +1,15 @@
 [[chap09]]
-== Case Study: Word Play
+== Estudio de Caso: Juego de Palabras
 
-This chapter presents the second case study, which involves solving word puzzles by searching for words that have certain properties. For example, we’ll find the longest palindromes in English and search for words whose letters appear in alphabetical order. And I will present another program development plan: reduction to a previously solved problem.
+Este capítulo presenta un segundo estudio de caso, que consiste en resolver puzzles buscando palabras que tengan ciertas propiedades. Por ejemplo, buscaremos palabras cuyas letras aparezcan en orden alfabético. Además, se presentará otra forma de desarrollar programas: la reducción a un problema previamente resuelto.
 
 [[reading_word_lists]]
-=== Reading Word Lists
+=== Leer listas de palabras
 
-For the exercises in this chapter we need a list of Spanish words. There are lots of word lists available on the Web, but the one most suitable for our purpose is one of the word lists collected and contributed to the public domain by Ismael Olea (see http://olea.org/proyectos/lemarios/). It is a list of 87900 words; in the Olea collection, the filename is _lemario-general-del-espanol.txt_; you can download a copy, with the simpler name _palabras.txt_, from https://github.com/PiensaEnJulia/PiensaEnJulia.jl/blob/master/data/palabras.txt.
+Para los ejercicios de este capítulo necesitamos una lista de palabras en español. Hay muchas listas de palabras disponibles en la Web, pero la más adecuada para nuestro propósito es una de las listas de palabras recopiladas y contribuidas al dominio público por Ismael Olea (see http://olea.org/proyectos/lemarios/). Esta lista de 87900 palabras se encuentra en la página de Olea con el nombre de archivo _lemario-general-del-espanol.txt_. También es posible descargar una copia desde https://github.com/PiensaEnJulia/PiensaEnJulia.jl/blob/master/data/palabras.txt.
 (((lemario)))
 
-This file is in plain text, so you can open it with a text editor, but you can also read it from Julia. The built-in function +open+ takes the name of the file as a parameter and returns a _file stream_ you can use to read the file.
+Este archivo es un archivo de texto simple, por lo que puede ser abierto con un editor de texto o leído con Julia. La función integrada +open+ toma el nombre del archivo como parámetro y devuelve un objeto archivo que puede ser usado para la lectura del archivo.
 (((open)))((("function", "Base", "open", see="open")))
 
 [source,@julia-eval chap09]
@@ -24,9 +24,9 @@ julia> fin = open("palabras.txt")
 IOStream(<file palabras.txt>)
 ----
 
-+fin+ is a file stream used for input and when it is no longer needed, it has to be closed with +close(fin)+.
++fin+ es un objeto archivo que puede ser utilizado como entrada y cuando se deja de utilizar, debe cerrarse con +close(fin)+.
 
-Julia provides several function for reading, including +readline+, which reads characters from the file until it gets to a +NEWLINE+ and returns the result as a string:
+Julia tiene integrada varias funciones de lectura, entre ellas +readline+, que lee los caracteres del archivo hasta que llega a un +salto de línea+, devolviendo el resultado como una cadena:
 (((file stream)))(((input)))(((readline)))((("function", "Base", "readline", see="readline")))(((close)))
 
 [source,@julia-repl chap09]
@@ -34,18 +34,18 @@ Julia provides several function for reading, including +readline+, which reads c
 readline(fin)
 ----
 
-The first word in this particular list is “aa”, which is a kind of lava.
+La primera palabra en esta lista particular es "a", que indica dirección, intervalo de tiempo, finalidad, entre otros.
 
-The file stream keeps track of where it is in the file, so if you call readline again, you get the next word:
+El objeto archivo lleva registro de dónde quedó por última vez, por lo que si llama a readline nuevamente, se obtendrá la siguiente palabra:
 
 [source,@julia-repl chap09]
 ----
 readline(fin)
 ----
 
-The next word is “aah”, which is a perfectly legitimate word, so stop looking at me like that.
+La siguiente palabra es "a-", que es un prefijo que indica privación.
 
-You can also use a file as part of a +for+ loop. This program reads +palabras.txt+ and prints each word, one per line:
+También se puede usar un archivo como parte de un bucle +for+. El siguiente programa lee +palabras.txt+ e imprime cada palabra, una por línea:
 (((for statement)))(((eachline)))((("function", "Base", "eachline", see="eachline")))
 
 [source,julia]
@@ -56,65 +56,65 @@ end
 ----
 
 
-=== Exercises
+=== Ejercicios
 
 [[ex09-1]]
-==== Exercise 9-1
+==== Ejercicio 9-1
 
-Write a program that reads +palabras.txt+ and prints only the words with more than 20 characters (not counting whitespace).
+Escriba un programa que lea +palabras.txt+ e imprima solo las palabras con más de 20 caracteres (sin contar espacios en blanco).
 
 [[ex09-2]]
-==== Exercise 9-2
+==== Ejercicio 9-2
 
-In 1927 Enrique Jardiel Poncela published five short stories, each ommiting a vowel. They include "El Chofer Nuevo", without the letter +'a'+, and "Un marido sin vocación", without the letter +'e'+. Since +'e'+ is the most common letter in Spanish, that’s not easy to do.
+En 1927 Enrique Jardiel Poncela publicó cinco historias cortas, omitiendo en cada una de ellas una vocal. Estas historias incluyen "El Chofer Nuevo", narración escrita sin la letra +'a'+, y "Un marido sin vocación", sin la letra +'e'+. Dado que la letra +'e'+ es la más frecuente del español, esto no es fácil de lograr.
 (((Poncela, Enrique Jardiel)))
 
-In fact, it is difficult to construct a solitary thought without using that most common symbol. It is slow going at first, but with caution and hours of training you can gradually gain facility.
+De hecho, es difícil pensar oraciones que no utilicen esta letra. Intentarlo es complicado, pero con la práctica se vuelve más fácil.
 
-All right, I’ll stop now.
+Bueno, a lo que vinimos.
 
-Write a function called +hasno_e+ that returns +true+ if the given word doesn’t have the letter +'e'+ in it.
+Escriba una función llamada +notiene_e+ que devuelva +true+ si una palabra dada no tiene la letra +'e'+.
 (((hasno_e)))((("function", "programmer-defined", "hasno_e", see="hasno_e")))
 
-Modify your program from the previous section to print only the words that have no +'e'+ and compute the percentage of the words in the list that have no +'e'+.
+Modifique su programa de la sección anterior para que imprima solo las palabras que no tienen +'e'+, y que además calcule el porcentaje de palabras en la lista que no tengan +'e'+.
 
 [[ex09-3]]
-==== Exercise 9-3
+==== Ejercicio 9-3
 
-Write a function named +avoids+ that takes a word and a string of forbidden letters, and that returns +true+ if the word doesn’t use any of the forbidden letters.
+Escriba una función llamada +evitar+ que tome como argumentos una palabra y una cadena de letras prohibidas, y que devuelva +true+ si la palabra no usa ninguna de las letras prohibidas.
 (((avoids)))((("function", "programmer-defined", "avoids", see="avoids")))
 
-Modify your program to prompt the user to enter a string of forbidden letters and then print the number of words that don’t contain any of them. Can you find a combination of 5 forbidden letters that excludes the smallest number of words?
+Modifique su programa de la sección anterior para solicitar al usuario que ingrese una cadena de letras prohibidas, y que luego imprima el número de palabras que no contengan ninguna de ellas. ¿Es posible encontrar una combinación de 5 letras prohibidas que excluya la menor cantidad de palabras?
 
 [[ex09-4]]
-==== Exercise 9-4
+==== Ejercicio 9-4
 
-Write a function named +usesonly+ that takes a word and a string of letters, and that returns +true+ if the word contains only letters in the list. Can you make a sentence using only the letters +acefhlo+? Other than +"Hoe alfalfa?"+
+Escriba una función llamada +usasolo+ que tome una palabra y una cadena de letras, y que devuelva +true+ si la palabra contiene solo letras de la lista. ¿Puedes hacer una oración usando solo las letras +oneacmil+? Aparte de +"¿El camino?"+
 (((usesonly)))((("function", "programmer-defined", "usesonly", see="usesonly")))
 
 [[ex09-5]]
-==== Exercise 9-5
+==== Ejercicio 9-5
 
-Write a function named +usesall+ that takes a word and a string of required letters, and that returns +true+ if the word uses all the required letters at least once. How many words are there that use all the vowels +aeiou+? How about +aeiouy+?
+Escriba una función llamada +usatodo+ que tome una palabra y una cadena de letras, y que devuelva +true+ si la palabra usa todas las letras requeridas al menos una vez. ¿Cuántas palabras usan todas las vocales +aeiou+? 
 (((usesall)))((("function", "programmer-defined", "usesall", see="usesall")))
 
 [[ex09-6]]
-==== Exercise 9-6
+==== Ejercicio 9-6
 
-Write a function called +isabecedarian+ that returns +true+ if the letters in a word appear in alphabetical order (double letters are ok). How many abecedarian words are there?
+Escriba una función llamada +esabecedaria+ que devuelva +true+ si las letras de una palabra aparecen en orden alfabético. ¿Cuántas palabras de este tipo hay?
 (((isabecedarian)))((("function", "programmer-defined", "isabecedarian", see="isabecedarian")))
 
 [[search]]
-=== Search
+=== Búsqueda
 
-All of the exercises in the previous section have something in common; they can be solved with the search pattern. The simplest example is:
+Todos los ejercicios en la sección anterior tienen algo en común: se pueden resolver con el patrón de búsqueda. El ejemplo más simple es:
 (((search)))(((hasno_e)))
 
 [source,@julia-setup chap09]
 ----
-function hasno_e(word)
-    for letter in word
-        if letter == 'e'
+function notiene_e(palabra)
+    for letra in palabra
+        if letra == 'e'
             return false
         end
     end
@@ -122,19 +122,19 @@ function hasno_e(word)
 end
 ----
 
-The +for+ loop traverses the characters in word. If we find the letter +'e'+, we can immediately return +false+; otherwise we have to go to the next letter. If we exit the loop normally, that means we didn’t find an +'e'+, so we return +true+.
+El bucle +for+ recorre los caracteres de palabra. Si encontramos la letra +'e'+, podemos devolver inmediatamente +false+; de lo contrario tenemos que pasar a la siguiente letra. Si salimos del bucle normalmente, eso significa que no encontramos una +'e'+, por lo que devolvemos +true+.
 
-You could write this function more concisely using the +∉+ (*+\notin TAB+*) operator, but I started with this version because it demonstrates the logic of the search pattern.
+Esta función podría ser escrita de manera más concisa usando el operador +∉+ (*+\notin TAB+*), pero se comienza con esta versión porque muestra la lógica del patrón de búsqueda.
 (((∉)))((("operator", "Base", "∉", see="∉")))
 
-+avoids+ is a more general version of +hasno_e+ but it has the same structure:
++evita+ es una versión más general de +notiene_e+ pero tiene la misma estructura:
 (((avoids)))
 
 [source,@julia-setup chap09]
 ----
-function avoids(word, forbidden)
-    for letter in word
-        if letter ∈ forbidden
+function evita(palabra, prohibidas)
+    for letra in palabra
+        if letter ∈ prohibidas
             return false
         end
     end
@@ -142,16 +142,16 @@ function avoids(word, forbidden)
 end
 ----
 
-We can return +false+ as soon as we find a forbidden letter; if we get to the end of the loop, we return +true+.
+Se devuelve +false+ tan pronto como se encuentre una letra prohibida; si llegamos al final del ciclo, se devuelve +true+.
 
-+usesonly+ is similar except that the sense of the condition is reversed:
++usasolo+ es similar, excepto que el sentido de la condición se invierte:
 (((usesonly)))
 
 [source,@julia-setup chap09]
 ----
-function usesonly(word, available)
-    for letter in word
-        if letter ∉ available
+function usasolo(palabra, disponibles)
+    for letra in palabra
+        if letra ∉ disponibles
             return false
         end
     end
@@ -159,16 +159,16 @@ function usesonly(word, available)
 end
 ----
 
-Instead of an array of forbidden letters, we have an array of available letters. If we find a letter in +word+ that is not in +available+, we can return +false+.
+En vez de un conjunto de letras prohibidas, se tiene un conjunto de letras disponibles. Si encontramos una letra en +palabra+ que no está en +disponible+, se devuelve +false+.
 
-+usesall+ is similar except that we reverse the role of the word and the string of letters:
++usatodo+ es similar, excepto que se invierte el papel de la palabra y la cadena de letras:
 (((usesall)))
 
 [source,@julia-setup chap09]
 ----
-function usesall(word, required)
-    for letter in required
-        if letter ∉ word
+function usatodo(palabra, requeridas)
+    for letra in requeridas 
+        if letra ∉ palabra
             return false
         end
     end
@@ -176,204 +176,210 @@ function usesall(word, required)
 end
 ----
 
-Instead of traversing the letters in word, the loop traverses the required letters. If any of the required letters do not appear in the word, we can return +false+.
+En lugar de recorrer las letras de la palabra, el bucle recorre las letras requeridas. Si alguna de las letras requeridas no aparece en la palabra, se devuelve +false+.
 
-If you were really thinking like a computer scientist, you would have recognized that +usesall+ was an instance of a previously solved problem, and you would have written:
+Si pensáramos como un informático reconoceríamos que +usatodo+ es una instancia de un problema previamente resuelto, y podríamos haber escrito:
 
 [source,@julia-setup chap09]
 ----
-function usesall(word, required)
-    usesonly(required, word)
+function usatodo(palabra, requeridas)
+    usasolo(requeridas, palabra)
 end
 ----
 
-This is an example of a program development plan called _reduction to a previously solved problem_, which means that you recognize the problem you are working on as an instance of a solved problem and apply an existing solution.
+Este es un ejemplo de una forma de desarrollar programas llamada _reducción a un problema resuelto previamente_, lo que significa que se reconoce el problema en el que se está trabajando como una instancia de un problema ya resuelto y se aplica la solución existente.
 (((program development plan)))(((reduction to a previously solved problem)))
 
 
-=== Looping with Indices
+=== Bucle con índices
 
-I wrote the functions in the previous section with +for+ loops because I only needed the characters in the strings; I didn’t have to do anything with the indices.
+Las funciones de la sección anterior fueron escritas con ciclos +for+ porque solo se necesitaban los caracteres en las cadenas, no hubo necesidad de trabajar con los índices. 
 
-For +isabecedarian+ we have to compare adjacent letters, which is a little tricky with a +for+ loop:
+Para +esabecedaria+ tenemos que comparar letras adyacentes, lo cual es un poco complicado con un ciclo +for+:
 (((isabecedarian)))(((for statement)))
 
 [source,@julia-setup chap09]
 ----
-function isabecedarian(word)
-    i = firstindex(word)
-    previous = word[i]
-    j = nextind(word, i)
-    for c in word[j:end]
-        if c < previous
+function esabecedaria(palabra)
+    i = firstindex(palabra)
+    previa = palabra[i]
+    j = nextind(palabra, i)
+    for c in palabra[j:end]
+        if c < previa
             return false
         end
-        previous = c
+        previa = c
     end
     true
 end
 ----
 
-An alternative is to use recursion:
+Otra alternativa es usar recursividad:
 (((recursion)))
 
 [source,@julia-setup chap09]
 ----
-function isabecedarian(word)
-    if length(word) <= 1
+function esabecedaria(palabra)
+    if length(palabra) <= 1
         return true
     end
-    i = firstindex(word)
-    j = nextind(word, i)
-    if word[i] > word[j]
+    i = firstindex(palabra)
+    j = nextind(palabra, i)
+    if palabra[i] > palabra[j]
         return false
     end
-    isabecedarian(word[j:end])
+    esabecedaria(palabra[j:end])
 end
 ----
 
-Another option is to use a +while+ loop:
+Una tercera opción es usar un ciclo +while+:
 (((while statement)))
 
 [source,@julia-setup chap09]
 ----
-function isabecedarian(word)
-    i = firstindex(word)
-    j = nextind(word, 1)
-    while j <= sizeof(word)
-        if word[j] < word[i]
+function esabecedaria(palabra)
+    i = firstindex(palabra)
+    j = nextind(palabra, 1)
+    while j <= sizeof(palabra)
+        if palabra[j] < palabra[i]
             return false
         end
         i = j
-        j = nextind(word, i)
+        j = nextind(palabra, i)
     end
     true
 end
 ----
 
-The loop starts at +i=1+ and +j=nextind(word, 1)+ and ends when +j>sizeof(word)+. Each time through the loop, it compares the ++i++th character (which you can think of as the current character) to the ++j++th character (which you can think of as the next).
+El ciclo comienza en +i=1+ y +j=nextind(palabra, 1)+ y termina cuando +j>sizeof(palabra)+. En cada iteración, se compara el carácter ++i++ésimo (que se puede considerar como el carácter actual) con el carácter ++j++ésimo (que se puede considerar como el siguiente).
 
-If the next character is less than (alphabetically before) the current one, then we have discovered a break in the abecedarian trend, and we return +false+.
+Si el siguiente carácter es menor (va antes en el alfabeto) que el actual, entonces la palabra no tiene sus letras en orden alfabético, y se devuelve +false+.
 
-If we get to the end of the loop without finding a fault, then the word passes the test. To convince yourself that the loop ends correctly, consider an example like +"flossy"+.
+Si llegamos al final del ciclo sin encontrar letras que imposibiliten el orden alfabético, entonces la palabra pasa la prueba. Para convencerse de que el ciclo termina correctamente, considere como ejemplo la palabra +"Abel"+.
 
-Here is a version of +ispalindrome+ that uses two indices; one starts at the beginning and goes up; the other starts at the end and goes down.
+A continuación se muestra una versión de +espalindromo+ que usa dos índices; uno comienza al principio de la palabra y aumenta su valor; el otro comienza al final y disminuye su valor.
 (((ispalindrome)))
 
 [source,@julia-setup chap09]
 ----
-function ispalindrome(word)
-    i = firstindex(word)
-    j = lastindex(word)
+function espalindromo(palabra)
+    i = firstindex(palabra)
+    j = lastindex(palabra)
     while i<j
-        if word[i] != word[j]
+        if palabra[i] != palabra[j]
             return false
         end
-        i = nextind(word, i)
-        j = prevind(word, j)
+        i = nextind(palabra, i)
+        j = prevind(palabra, j)
     end
     true
 end
 ----
 
-Or we could reduce to a previously solved problem and write:
+O podríamos reducir este problema a uno previamente resuelto y escribir:
 
 [source,@julia-setup chap08]
 ----
-function ispalindrome(word)
-    isreverse(word, word)
+function espalindromo(palabra)
+    isreverse(palabra, palabra)
 end
 ----
 
-Using +isreverse+ from <<deb08>>.
+Usando +esreverso+ de <<deb08>>.
 (((isreverse)))
 
 
-=== Debugging
+=== Depuración
 
-Testing programs is hard. The functions in this chapter are relatively easy to test because you can check the results by hand. Even so, it is somewhere between difficult and impossible to choose a set of words that test for all possible errors.
+Comprobar el correcto funcionamiento de los programas es difícil. Las funciones de este capítulo son relativamente fáciles de probar porque se pueden verificar los resultados a mano. Aun así, es casi imposible elegir un conjunto de palabras que permitan evaluar todos los posibles errores.
 (((debugging)))
 
-Taking +hasno_e+ as an example, there are two obvious cases to check: words that have an +'e'+ should return +false+, and words that don’t should return +true+. You should have no trouble coming up with one of each.
+Tomando +notiene_e+ como ejemplo, hay dos casos obvios que verificar: las palabras que tienen una +'e'+ deberían devolver +false+, y las palabras que no, deberían devolver +true+. No deberían haber problemas para encontrar un ejemplo de cada uno.
 
-Within each case, there are some less obvious subcases. Among the words that have an “e”, you should test words with an “e” at the beginning, the end, and somewhere in the middle. You should test long words, short words, and very short words, like the empty string. The empty string is an example of a _special case_, which is one of the non-obvious cases where errors often lurk.
+Dentro de cada caso, hay algunos subcasos menos obvios. Entre las palabras que tienen una "e", se deben probar las palabras con una "e" al principio, al final y al medio. Además, se deben probar palabras largas, cortas y muy cortas, como una cadena vacía. La cadena vacía es un ejemplo de un "caso especial" no obvio donde pueden originarse errores.
 (((special case)))
 
-In addition to the test cases you generate, you can also test your program with a word list like +palabras.txt+. By scanning the output, you might be able to catch errors, but be careful: you might catch one kind of error (words that should not be included, but are) and not another (words that should be included, but aren’t).
+Además de las instancias de prueba generadas, también puede probar su programa con una lista de palabras como +palabras.txt+. Al escanear el resultado, es posible que pueda detectar errores, pero tenga cuidado: puede detectar un tipo de error (palabras que no deberían incluirse, pero lo están) y no otro (palabras que deberían incluirse, pero no lo están).
 
-In general, testing can help you find bugs, but it is not easy to generate a good set of test cases, and even if you do, you can’t be sure your program is correct. According to a legendary computer scientist:
+Por lo general, las pruebas pueden ayudarlo a encontrar errores, pero no es fácil generar un buen conjunto de instancias de prueba, e incluso si lo hace, no puede estar seguro de que su programa sea correcto. Según un informático muy famoso:
 (((Dijkstra, Edsger W.)))
 
 [quote,  Edsger W. Dijkstra]
 ____
-Program testing can be used to show the presence of bugs, but never to show their absence!
+Las pruebas de programa se pueden usar para mostrar la presencia de errores, ¡pero nunca para mostrar su ausencia!
 ____
 
-=== Glossary
+=== Glosario
 
-file stream::
-A value that represents an open file.
+objeto archivo::
+Un valor que representa un archivo abierto.
 (((file stream)))
 
-reduction to a previously solved problem::
-A way of solving a problem by expressing it as an instance of a previously solved problem.
+reducción a un problema previamente resuelto::
+Una manera de resolver un problema expresándolo como una instancia de un problema previamente resuelto.
 (((reduction to a previously solved problem)))
 
-special case::
-A test case that is atypical or non-obvious (and less likely to be handled correctly).
+caso especial::
+Una instancia de prueba que es atípica o no obvia (y por lo tanto, menos probable que se maneje correctamente).
 (((special case)))
 
 
-=== Exercises
+=== Ejercicios
 
 [[ex09-7]]
-==== Exercise 9-7
+==== Ejercicio 9-7
 
-This question is based on a Puzzler that was broadcast on the radio program _Car Talk_ (https://www.cartalk.com/puzzler/browse):
+Esta pregunta se basa en un Puzzle que se transmitió en el programa de radio _Car Talk_ (https://www.cartalk.com/puzzler/browse):
 (((Car Talk)))
 
 [quote]
 ____
-Give me a word with three consecutive double letters. I’ll give you a couple of words that almost qualify, but don’t. For example, the word committee, c-o-m-m-i-t-t-e-e. It would be great except for the 'i' that sneaks in there. Or Mississippi: M-i-s-s-i-s-s-i-p-p-i. If you could take out those i’s it would work. But there is a word that has three consecutive pairs of letters and to the best of my knowledge this may be the only word. Of course there are probably 500 more but I can only think of one. What is the word?
+
+Se tiene una secuencia de números y se desea saber cuál es el siguiente. Los números son: 4, 6, 12, 18, 30, 42, 60 y luego X.
+
+Pista 1: Todos los números de la secuencia son pares.
+Pista 2: El número que va después del que estoy buscando es 102.
+
+¿Cuál es el número?
 ____
 
-Write a program to find it.
+Primero, piense el patrón que busca, y luego escriba un programa que le permita encontrar el número que sigue este patrón, que se encuentra entre 60 y 102.
 
 [[ex09-8]]
-==== Exercise 9-8
+==== Ejercicio 9-8
 
-Here’s another _Car Talk_ Puzzler (https://www.cartalk.com/puzzler/browse):
+A continuación se muestra otro puzzle de _Car Talk_ (https://www.cartalk.com/puzzler/browse):
 
 [quote]
 ____
-I was driving on the highway the other day and I happened to notice my odometer. Like most odometers, it shows six digits, in whole miles only. So, if my car had 300000 miles, for example, I’d see 3-0-0-0-0-0.
+Estaba conduciendo por la autopista el otro día y vi mi odómetro. Como la mayoría de los odómetros, muestra seis dígitos y solo en kilómetros enteros. Entonces, si mi automóvil tuviera un kilometraje de 300000, por ejemplo, sería 3-0-0-0-0-0.
 
-Now, what I saw that day was very interesting. I noticed that the last 4 digits were palindromic; that is, they read the same forward as backward. For example, 5-4-4-5 is a palindrome, so my odometer could have read 3-1-5-4-4-5.
+Ahora, lo que vi ese día fue muy interesante. Noté que los últimos 4 dígitos eran palindrómicos; es decir, se leían igual hacia adelante que hacia atrás. Por ejemplo, 5-4-4-5 es un palíndromo, por lo que mi odómetro podría haberse leído 3-1-5-4-4-5.
 
-One mile later, the last 5 numbers were palindromic. For example, it could have read 3-6-5-4-5-6. One mile after that, the middle 4 out of 6 numbers were palindromic. And you ready for this? One mile later, all 6 were palindromic!
+Un kilómetro después, los últimos 5 números fueron palindrómicos. Por ejemplo, podría haberse leído 3-6-5-4-5-6. Un kilómetro después de eso, los 4 números del medio eran palindrómicos. ¿Y... estás listo para esto? ¡Un kilómetro después, los 6 eran palindrómicos!
 
-The question is, what was on the odometer when I first looked?
+La pregunta es, ¿qué número estaba en el odómetro cuando miré por primera vez?
 ____
 
-Write a Julia program that tests all the six-digit numbers and prints any numbers that satisfy these requirements.
+Escriba un programa de Julia que pruebe todos los números de seis dígitos e imprima cualquier número que satisfaga estos requisitos.
 
 [[ex09-9]]
-==== Exercise 9-9
+==== Ejercicio 9-9
 
-Here’s another _Car Talk_ Puzzler you can solve with a search (https://www.cartalk.com/puzzler/browse):
+Aquí hay otro puzzle de _Car Talk_ que puede resolver con una búsqueda (https://www.cartalk.com/puzzler/browse):
 
 [quote]
 ____
-Recently I had a visit with my mom and we realized that the two digits that make up my age when reversed resulted in her age. For example, if she’s 73, I’m 37. We wondered how often this has happened over the years but we got sidetracked with other topics and we never came up with an answer.
+Hace poco visité a mi madre y nos dimos cuenta de que los dos dígitos que componen mi edad cuando se invertían daban como resultado su edad. Por ejemplo, si tiene 73 años, yo tengo 37. Nos preguntamos con qué frecuencia esto ha sucedido a lo largo de los años, pero nos desviamos de otros temas y nunca obtuvimos una respuesta.
 
-When I got home I figured out that the digits of our ages have been reversible six times so far. I also figured out that if we’re lucky it would happen again in a few years, and if we’re really lucky it would happen one more time after that. In other words, it would have happened 8 times over all. So the question is, how old am I now?
+Cuando llegué a casa descubrí que los dígitos de nuestras edades han sido reversibles seis veces hasta ahora. También descubrí que si teníamos suerte, volvería a suceder en unos años, y si tenemos mucha suerte, sucedería una vez más después de eso. En otras palabras, habría sucedido 8 veces. Entonces la pregunta es, ¿cuántos años tengo ahora?
 ____
 
-Write a Julia program that searches for solutions to this Puzzler.
+Escriba un programa de Julia que busque soluciones para este puzzle.
 
 [TIP]
 ====
-You might find the function +lpad+ useful.
+Puede encontrar la función +lpad+ útil.
 (((lpad)))((("function", "Base", "lpad", see="lpad")))
 ====
 
