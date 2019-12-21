@@ -307,9 +307,7 @@ julia> sum(t)
 10
 ----
 
-Una operación como esta que combina una secuencia de elementos en un solo valor a veces se denomina _operación de reducción_.
-
-An operation like this that combines a sequence of elements into a single value is sometimes called a _reduce operation_.
+Una operación como esta, que combina una secuencia de elementos en un solo valor a veces se denomina _operación de reducción_.
 (((reduce operation)))
 
 Es común querer recorrer una matriz mientras se construye otra. Por ejemplo, la siguiente función toma una matriz de cadenas y devuelve una nueva matriz que contiene las mismas cadenas pero en mayúsculas:
@@ -326,12 +324,12 @@ function todoenmayusculas(t)
 end
 ----
 
-+res+ se inicializa con una matriz vacía, y en cada iteración se agrega un nuevo elemento. De esta manera, +res+ es otro tipo de acumulador.
++res+ se inicializa con una matriz vacía, y en cada iteración se le agrega un nuevo elemento. De esta manera, +res+ es otro tipo de acumulador.
 
-Una operación como +todoenmayusculas+ a veces se denomina _mapeo_ porque "asigna" una función (en este caso +uppercase+) a cada uno de los elementos en una secuencia.
+Una operación como +todoenmayusculas+ a veces se denomina _mapeo_ porque "asigna" una función (en este caso +uppercase+) a cada uno de los elementos de una secuencia.
 (((map)))
 
-Otra operación común es seleccionar algunos de los elementos de una matriz y devolver una submatriz. Por ejemplo, la siguiente función toma una matriz de cadenas y devuelve una matriz que contiene solo las cadenas en mayúsculas:
+Otra operación común es seleccionar solo algunos de los elementos de una matriz y devolver una submatriz. Por ejemplo, la siguiente función toma una matriz de cadenas y devuelve una matriz que contiene solamente las cadenas en mayúsculas:
 (((onlyupper)))((("function", "programmer-defined", "onlyupper", see="onlyupper")))
 
 [source,@julia-setup]
@@ -347,13 +345,15 @@ function solomayusculas(t)
 end
 ----
 
-An operation like +onlyupper+ is called a _filter_ because it selects some of the elements and filters out the others.
+Operaciones como +solomayusculas+ se llaman _filtro_ porque seleccionan solo algunos elementos, filtrando otros.
 (((filter)))
 
-Most common array operations can be expressed as a combination of map, filter and reduce.
+Las operaciones de matriz más comunes son una combinación de mapeo, filtro y reducción.
 
 
 === Dot Syntax
+
+Para cada operador binario como +pass:[^]+, existe un _operador punto_ pass:[<code>.^</code>]
 
 For every binary operator like +pass:[^]+, there is a corresponding _dot operator_ pass:[<code>.^</code>] that is automatically defined to perform +pass:[^]+ element-by-element on arrays. For example, pass:[<code>&#91;1, 2, 3&#93; ^ 3</code>] is not defined, but pass:[<code>&#91;1, 2, 3&#93; .^ 3</code>] is defined as computing the elementwise result pass:[<code>&#91;1^3, 2^3, 3^3&#93;</code>]:
 (((dot operator)))((("operator", "Base", ".", see="dot operator")))(((".", see="dot operator")))
