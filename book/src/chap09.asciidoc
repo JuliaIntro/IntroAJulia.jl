@@ -343,7 +343,7 @@ Pista 2: El número que va después del que estoy buscando es 102.
 ¿Cuál es el número?
 ____
 
-Write a program to find it.
+Primero, piense el patrón que busca, y luego escriba un programa que le permita encontrar el número que sigue este patrón, que se encuentra entre 60 y 102.
 
 [[ex09-8]]
 ==== Ejercicio 9-8
