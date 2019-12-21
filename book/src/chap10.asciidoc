@@ -1,7 +1,7 @@
 [[chap10]]
 == Arrays
 
-Este capítulo presenta uno de los tipos integrados más útiles de Julia: las matrices. También aprenderemos sobre objetos y lo que puede suceder cuando se tiene más de un nombre para el mismo objeto.
+Este capítulo presenta uno de los tipos más útiles de Julia: las matrices. También aprenderemos sobre objetos y lo que puede suceder cuando se tiene más de un nombre para el mismo objeto.
 
 === Una matriz es una secuencia
 
