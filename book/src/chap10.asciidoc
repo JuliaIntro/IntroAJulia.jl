@@ -480,7 +480,7 @@ julia> print(t)
 SubString{String}["En", "un", "lugar", "de", "la", "Mancha"]
 ----
 
-Un _argumento opcional_ llamado _delimitador_ especifica qué caracteres usar como límites de las palabras. El siguiente ejemplo usa un guión como delimitador:
+Un _argumento opcional_ llamado _delimitador_ especifica qué caracteres usar como límites de palabra. El siguiente ejemplo usa un guión como delimitador:
 (((optional argument)))(((delimiter)))
 
 [source,@julia-repl-test]
@@ -502,14 +502,14 @@ julia> s = join(t, ' ')
 "En un lugar de la Mancha"
 ----
 
-En este caso, el delimitador es un carácter de espacio. Para concatenar cadenas sin espacios, no especifique un delimitador.
+En este caso, el delimitador es un carácter de espacio en blanco. Para concatenar cadenas sin espacios, no especifique un delimitador.
 
-=== Objects and Values
+=== Objeto y Valores 
 
-An _object_ is something a variable can refer to. Until now, you could use “object” and “value” interchangeably.
+Un _objeto_ es algo a lo que una variable puede referirse. Hasta ahora, podría usar "objeto" y "valor" indistintamente.
 (((object)))(((variable)))(((value)))
 
-If we run these assignment statements:
+Si ejecutamos estas sentencias de asignación:
 
 [source,julia]
 ----
@@ -517,16 +517,16 @@ a = "banana"
 b = "banana"
 ----
 
-We know that +a+ and +b+ both refer to a string, but we don’t know whether they refer to the _same_ string. There are two possible states, shown in Figure 10-2.
+Sabemos que +a+ y +b+ apuntan a una cadena, pero no sabemos si están apuntando a la _misma_ cadena. Hay dos estados posibles, los cuales se muestran en la Figura 10-2.
 (((state diagram)))
 
 .State diagrams.
 image::images/fig102.svg[]
 
 
-In one case, +a+ and +b+ refer to two different objects that have the same value. In the second case, they refer to the same object.
+En un caso, +a+ y +b+ se refieren a dos objetos diferentes que tienen el mismo valor. En el segundo caso, se refieren al mismo objeto. 
 
-To check whether two variables refer to the same object, you can use the +≡+ (*+\equiv TAB+*) or +===+ operator.
+Para verificar si dos variables se refieren al mismo objeto, se puede usar el operador +≡+ (*+\equiv TAB+*)) o +===+.
 (((≡)))((("operator", "Base", "≡", see="≡")))((("===", see="≡")))
 
 [source,@julia-repl-test]
@@ -539,7 +539,7 @@ julia> a ≡ b
 true
 ----
 
-In this example, Julia only created one string object, and both +a+ and +b+ refer to it. But when you create two arrays, you get two objects:
+En este ejemplo, Julia solo creó un objeto de cadena, y ambas variables +a+ y +b+ apuntan a ella. Pero cuando crea dos matrices, obtiene dos objetos:
 
 [source,@julia-repl-test]
 ----
