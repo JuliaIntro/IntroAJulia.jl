@@ -385,7 +385,7 @@ end
 ----
 
 
-=== Deleting (Inserting) Elements
+=== Borrando (Insertando) Elementos
 
 Hay varias formas de eliminar elementos de una matriz. Si se conoce el índice del elemento que se desea eliminar, se puede usar +splice!+:
 (((splice!)))((("function", "Base", "splice!", see="splice!")))
@@ -400,9 +400,9 @@ julia> print(t)
 ['a', 'c']
 ----
 
-+splice!+ modifies the array and returns the element that was removed.
++splice!+ modifica la matriz y devuelve el elemento que se eliminó.
 
-+pop!+ deletes and returns the last element:
++pop!+ elimina y devuelve el último elemento:
 (((pop!)))((("function", "Base", "pop!", see="pop!")))
 
 [source,@julia-repl-test]
@@ -415,7 +415,7 @@ julia> print(t)
 ['a', 'b']
 ----
 
-+popfirst!+ deletes and returns the first element:
++popfirst!+ elimina y devuelve el primer elemento:
 (((popfirst!)))((("function", "Base", "popfirst!", see="popfirst!")))
 
 [source,@julia-repl-test]
@@ -428,10 +428,10 @@ julia> print(t)
 ['b', 'c']
 ----
 
-The functions +pushfirst!+ and +push!+ insert an element at the beginning, respectively at the end of the array.
+Las funciones +pushfirst!+ y +push!+ insertan un elemento al principio y al final de la matriz, respectivamente.
 (((pushfirst!)))((("function", "Base", "pushfirst!", see="pushfirst!")))(((push!)))
 
-If you don’t need the removed value, you can use the function +deleteat!+:
+Si no se necesita el valor eliminado, se puede usar la función +deleteat!+:
 (((deleteat!)))((("function", "Base", "deleteat!", see="deleteat!")))
 
 [source,@julia-repl-test]
@@ -442,7 +442,7 @@ julia> print(deleteat!(t, 2))
 ['a', 'c']
 ----
 
-The function +insert!+ inserts an element at a given index:
+La función +insert!+ inserta un elemento en un índice dado:
 (((insert!)))((("function", "Base", "insert!", see="insert!")))
 
 [source,@julia-repl-test]
