@@ -63,7 +63,7 @@ El tipo de la matriz se especifica entre llaves, y se compone de un tipo y un n�
 
 === Las matrices son mutables
 
-La sintaxis para acceder a los elementos de una matriz es la misma que para acceder a los caracteres de una cadena: el operador corchetes. La expresión dentro de los corchetes especifica el índice. Recuerde que los índices comienzan en 1:
+La sintaxis para acceder a los elementos de una matriz es la misma que para acceder a los caracteres de una cadena: el operador corchetess, lo que significa que podemos cambiar sus elementos. La expresión dentro de los corchetes especifica el índice. Recuerde que los índices comienzan en 1:
 (((bracket operator)))(((index)))
 
 [source,@julia-repl-test chap10]
