@@ -363,7 +363,7 @@ julia> print([1, 2, 3] .^ 3)
 [1, 8, 27]
 ----
 
-Cualquier función +f+ de Julia puede ser aplicada en cada elemento de cualquier matriz con la _sintaxis de punto_. Por ejemplo, para poner en mayúsculas una matriz de cadenas, no se necesita un bucle explícito:
+Cualquier función +f+ de Julia puede ser aplicada a cada elemento de cualquier matriz con la _sintaxis de punto_. Por ejemplo, para poner en mayúsculas una matriz de cadenas, no es necesario un bucle explícito:
 (((dot syntax)))
 
 [source,@julia-repl-test]
