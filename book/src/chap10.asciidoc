@@ -819,12 +819,12 @@ julia> println(t2)
 
 === Glossary
 
-array::
-A sequence of values.
+matriz::
+Secuencia de valores.
 (((array)))
 
-element::
-One of the values in an array (or other sequence), also called items.
+Elemento::
+Uno de los valores en una matriz (u otra secuencia), también llamados items.
 (((element)))
 
 nested array::
