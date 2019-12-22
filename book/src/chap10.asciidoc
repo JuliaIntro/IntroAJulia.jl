@@ -551,7 +551,7 @@ julia> a ≡ b
 false
 ----
 
-So the state diagram looks like <<fig10-3>>.
+Entonces el diagrama de estado se ve así <<fig10-3>>.
 (((state diagram)))
 
 [[fig10-3]]
@@ -559,10 +559,10 @@ So the state diagram looks like <<fig10-3>>.
 image::images/fig103.svg[]
 
 
-In this case we would say that the two arrays are _equivalent_, because they have the same elements, but not _identical_, because they are not the same object. If two objects are identical, they are also equivalent, but if they are equivalent, they are not necessarily identical.
+En este caso, diríamos que las dos matrices son _equivalentes_, porque tienen los mismos elementos, pero no _idénticos_, porque no son el mismo objeto. Si dos objetos son idénticos, también son equivalentes, pero si son equivalentes, no son necesariamente idénticos.
 (((equivalent)))(((identical)))
 
-To be precise an object has a value. If you evaluate +[1, 2, 3]+, you get an array object whose value is a sequence of integers. If another array has the same elements, we say it has the same value, but it is not the same object.
+Para ser precisos, un objeto tiene un valor. Si se evalúa +[1, 2, 3]+, se obtendrá un objeto de matriz cuyo valor es una secuencia de enteros. Si otra matriz tiene los mismos elementos, decimos que tiene el mismo valor, pero no es el mismo objeto.
 
 
 === Aliasing
