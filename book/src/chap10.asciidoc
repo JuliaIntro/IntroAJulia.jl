@@ -454,9 +454,9 @@ julia> print(insert!(t, 2, 'x'))
 ----
 
 
-=== Arrays and Strings
+=== Matrices y Cadenas
 
-A string is a sequence of characters and an array is a sequence of values, but an array of characters is not the same as a string. To convert from a string to an array of characters, you can use the function +collect+:
+Una cadena es una secuencia de caracteres y una matriz es una secuencia de valores, pero una matriz de caracteres no es lo mismo que una cadena. Para convertir una cadena a una matriz de caracteres, se puede usar la función +collect+:
 (((collect)))((("function", "Base", "collect", see="collect")))
 
 [source,@julia-repl-test]
@@ -467,43 +467,42 @@ julia> print(t)
 ['s', 'p', 'a', 'm']
 ----
 
-The +collect+ function breaks a string or another sequence into individual elements.
+La función +collect+ divide una cadena u otra secuencia en elementos individuales.
 
-If you want to break a string into words, you can use the +split+ function:
+Si desea dividir una cadena en palabras, puede usar la función +split+:
 (((split)))((("function", "Base", "split", see="split")))
 
 [source,@julia-repl-test]
 ----
-julia> t = split("pining for the fjords");
+julia> t = split("En un lugar de la Mancha");
 
 julia> print(t)
-SubString{String}["pining", "for", "the", "fjords"]
+SubString{String}["En", "un", "lugar", "de", "la", "Mancha"]
 ----
 
-An _optional argument_ called a _delimiter_ specifies which characters to use as word boundaries. The following example uses a hyphen as a delimiter:
+Un _argumento opcional_ llamado _delimitador_ especifica qué caracteres usar como límites de las palabras. El siguiente ejemplo usa un guión como delimitador:
 (((optional argument)))(((delimiter)))
 
 [source,@julia-repl-test]
 ----
-julia> t = split("spam-spam-spam", '-');
+julia> t = split("hola-hola-hola", '-');
 
 julia> print(t)
-SubString{String}["spam", "spam", "spam"]
+SubString{String}["hola", "hola", "hola"]
 ----
 
-+join+ is the inverse of +split+. It takes an array of strings and concatenates the elements:
++join+ es el inverso de +split+. Toma una matriz de cadenas y concatena los elementos:
 (((join)))((("function", "Base", "join", see="join")))
 
 [source,@julia-repl-test]
 ----
-julia> t = ["pining", "for", "the", "fjords"];
+julia> t = ["En", "un", "lugar", "de", "la", "Mancha"];
 
 julia> s = join(t, ' ')
-"pining for the fjords"
+"En un lugar de la Mancha"
 ----
 
-In this case the delimiter is a space character. To concatenate strings without spaces, you don't specify a delimiter.
-
+En este caso, el delimitador es un carácter de espacio. Para concatenar cadenas sin espacios, no especifique un delimitador.
 
 === Objects and Values
 
