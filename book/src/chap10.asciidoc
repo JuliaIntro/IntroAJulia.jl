@@ -839,19 +839,20 @@ asignación aumentada::
 Una sentencia que actualiza el valor de una variable usando un operador como ++=+.
 (((augmented assignment)))
 
-dot operator::
-Binary operator that is applied element-by-element to arrays.
+operador punto::
+Operador binario que se aplica a cada elemento de una matriz.
 (((dot operator)))
 
-dot syntax::
-Syntax used to apply a function elementwise to any array.
+sintaxis de punto::
+Sintaxis utilizada para aplicar una función a todos los elementos de cualquier matriz.
 (((dot syntax)))
 
-reduce operation::
+operación de reducción::
 A processing pattern that traverses a sequence and accumulates the elements into a single result.
 (((reduce operation)))
 
-map::
+mapear::
+Un patrón de procesamiento que recorre una secuencia y realiza una operación en cada elemento.
 A processing pattern that traverses a sequence and performs an operation on each element.
 (((map)))
 
