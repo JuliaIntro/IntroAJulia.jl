@@ -755,7 +755,7 @@ Puede parecer tentador escribir código con matrices como este:
 t2 = sort!(t1)
 ----
 +
-Como +sort!+ devuelve la matriz original +t1+ modificada, +t2+ es un alias de +t1+.
+Pero como +sort!+ devuelve la matriz original +t1+ modificada, +t2+ es un alias de +t1+.
 +
 [TIP]
 ====
@@ -783,9 +783,9 @@ push!(t, [x])              # MALO!
 vcat(t, [x])               # MALO!
 ----
 
-* Haga copias para evitar alias.
+* Haga copias para evitar usar alias.
 +
-If you want to use a function like +sort!+ that modifies the argument, but you need to keep the original array as well, you can make a copy:
+Si se desea utilizar una función como +sort!+ que modifica el argumento, pero también se necesita mantener la matriz original, es posible hacer una copia:
 (((sort!)))
 +
 [source,@julia-repl-test chap10]
@@ -802,7 +802,7 @@ julia> print(t2)
 [1, 2, 3]
 ----
 +
-In this example you could also use the built-in function +sort+, which returns a new, sorted array and leaves the original alone:
+En este ejemplo, también podría usar la función incorporada +sort+, que devuelve una nueva matriz ordenada y no modifica el original:
 (((sort)))
 +
 [source,@julia-repl-test chap10]
@@ -818,16 +818,17 @@ julia> println(t2)
 
 === Glossary
 
-array::
-A sequence of values.
+matriz::
+Una secuencia de valores.
 (((array)))
 
-element::
-One of the values in an array (or other sequence), also called items.
+elemento::
+Uno de los valores de una matriz (u otra secuencia), también llamado items.
+
 (((element)))
 
-nested array::
-An array that is an element of another array.
+lista anidada::
+Una matriz que es elemento de otra matriz.
 (((nested array)))
 
 accumulator::
@@ -858,8 +859,8 @@ filter::
 A processing pattern that traverses a sequence and selects the elements that satisfy some criterion.
 (((filter)))
 
-object::
-Something a variable can refer to. An object has a type and a value.
+objeto::
+Una cosa a la que se puede referir una variable. Un objeto tiene tipo y valor.
 (((object)))
 
 equivalent::
@@ -874,16 +875,16 @@ reference::
 The association between a variable and its value.
 (((reference)))
 
-aliasing::
-A circumstance where two or more variables refer to the same object.
+alias::
+Multiples variables que contienen referencias al mismo objeto.
 (((aliasing)))
 
 optional arguments::
 arguments that are not required.
 (((optional arguments)))
 
-delimiter::
-A character or string used to indicate where a string should be split.
+delimitador::
+Un carácter o cadena utilizado para indicar donde debe cortarse una cadena.
 (((delimiter)))
 
 
