@@ -816,7 +816,7 @@ julia> println(t2)
 ----
 
 
-=== Glossary
+=== Glosario
 
 matriz::
 Una secuencia de valores.
@@ -831,12 +831,12 @@ lista anidada::
 Una matriz que es elemento de otra matriz.
 (((nested array)))
 
-accumulator::
-A variable used in a loop to add up or accumulate a result.
+acumulador::
+Una variable utilizada en un ciclo para sumar o acumular un resultado.
 (((accumulator)))
 
-augmented assignment::
-A statement that updates the value of a variable using an operator like +=+.
+asignación aumentada::
+Una sentencia que actualiza el valor de una variable usando un operador como ++=+.
 (((augmented assignment)))
 
 dot operator::
