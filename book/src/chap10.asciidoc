@@ -652,10 +652,10 @@ image::images/fig105.svg[]
 
 Como la matriz está compartida por dos marcos, la dibujamos entre ambos.
 
-It is important to distinguish between operations that modify arrays and operations that create new arrays. For example, +push!+ modifies an array, but +vcat+ creates a new array.
+Es importante distinguir entre operaciones que modifiquen matrices y operaciones que creen nuevas matrices. Por ejemplo, +push!+ modifica una matriz, pero +vcat+ crea una nueva matriz.
 (((push!)))(((vcat)))((("function", "Base", "vcat", see="vcat")))
 
-Here’s an example using +push!+:
+Aquí hay un ejemplo de +push!+:
 
 [source,@julia-repl-test chap10]
 ----
@@ -667,9 +667,9 @@ julia> print(t1)
 [1, 2, 3]
 ----
 
-+t2+ is an alias of +t1+.
++t2+ es un alias de +t1+.
 
-Here’s an example using +vcat+:
+Aquí hay un ejemplo de +vcat+:
 
 [source,@julia-repl-test chap10]
 ----
@@ -681,26 +681,26 @@ julia> print(t3)
 [1, 2, 3, 4]
 ----
 
-The result of +vcat+ is a new array, and the original array is unchanged.
+El resultado de +vcat+ es una nueva matriz. La matriz original no ha sufrido cambios.
 
-This difference is important when you write functions that are supposed to modify arrays.
+Esta diferencia es importante al momento de escribir funciones que modifican matrices.
 
-For example, this function _does not_ delete the head of a array:
+Por ejemplo, esta función _no_ elimina el primer elemento de una matriz:
 (((baddeletehead)))((("function", "programmer-defined", "baddeletehead", see="baddeletehead")))
 
 [source,@julia-setup chap10]
 ----
-function baddeletehead(t)
-    t = t[2:end]                # WRONG!
+function noborrarprimero(t)
+    t = t[2:end]                # MALO!
 end
 ----
 
-The slice operator creates a new array and the assignment makes +t+ refer to it, but that doesn’t affect the caller.
+El operador porción crea una nueva matriz y la asignación hace que +t+ se refiera a ella, pero eso no afecta a la matriz +t+ fuera de la función.
 (((slice operator)))
 
 [source,@julia-repl-test chap10]
 ----
-julia> t4 = baddeletehead(t3);
+julia> t4 = noborrarprimero(t3);
 
 julia> print(t3)
 [1, 2, 3, 4]
@@ -708,35 +708,37 @@ julia> print(t4)
 [2, 3, 4]
 ----
 
-At the beginning of +baddeletehead+, +t+ and +t3+ refer to the same array. At the end, +t+ refers to a new array, but +t3+ still refers to the original, unmodified array.
+Al comienzo de +noborrarprimero+, +t+ y +t3+ se refieren a la misma matriz. Al final, +t+ se refiere a una nueva matriz, pero +t3+ todavía se refiere a la matriz original no modificada.
 
-An alternative is to write a function that creates and returns a new array. For example, +tail+ returns all but the first element of an array:
+Una alternativa es escribir una función que cree y devuelva una nueva matriz. Por ejemplo, la función +cola+ devuelve todos menos el primer elemento de una matriz:
 (((tail)))((("function", "programmer-defined", "tail", see="tail")))
 
 [source,@julia-setup chap10]
 ----
-function tail(t)
+function cola(t)
     t[2:end]
 end
 ----
 
-This function leaves the original array unmodified. Here’s how it is used:
+Esta función no modifica la matriz original, y se usa de la siguiente manera:
 
 [source,@julia-repl-test chap10]
 ----
-julia> letters = ['a', 'b', 'c'];
+julia> letras = ['a', 'b', 'c'];
 
-julia> rest = tail(letters);
+julia> rest = cola(letters);
 
 julia> print(rest)
 ['b', 'c']
 ----
 
 
-=== Debugging
+=== Depuración
 
-Careless use of arrays (and other mutable objects) can lead to long hours of debugging. Here are some common pitfalls and ways to avoid them:
+Un uso descuidado de las matrices (y otros objetos mutables) puede llevarnos a largas horas de depuración. A continuación se muestran algunos errores comunes y cómo evitarlos:
 (((debugging)))
+funciones integradas que operan en matrices
+* La mayoría de las funciones de matriz modifican el argumento. Esto es lo opuesto a las funciones de cadena, que devuelven una nueva cadena y dejan el original solo.
 
 * Most array functions modify the argument. This is the opposite of the string functions, which return a new string and leave the original alone.
 +
