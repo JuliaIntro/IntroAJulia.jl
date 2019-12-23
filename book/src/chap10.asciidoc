@@ -737,6 +737,7 @@ julia> print(rest)
 
 Un uso inadecuado de las matrices (y otros objetos mutables) puede llevarnos a largas horas de depuración. A continuación se muestran algunos errores comunes y cómo evitarlos:
 (((debugging)))
+
 * La mayoría de las funciones que operan en matrices modifican el argumento. Esto es lo opuesto a lo que ocurre en las funciones que operan en cadenas de texto, que devuelven una nueva cadena y dejan la original sin modificaciones.
 +
 Si está acostumbrado a escribir código con cadenas de texto como este:
