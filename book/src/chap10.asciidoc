@@ -847,40 +847,39 @@ Sintaxis utilizada para aplicar una función a todos los elementos de cualquier 
 (((dot syntax)))
 
 operación de reducción::
-A processing pattern that traverses a sequence and accumulates the elements into a single result.
+Un patrón de procesamiento que recorre una secuencia y acumula los elementos en un solo resultado.
 (((reduce operation)))
 
-mapear::
+mapeo::
 Un patrón de procesamiento que recorre una secuencia y realiza una operación en cada elemento.
-A processing pattern that traverses a sequence and performs an operation on each element.
 (((map)))
 
-filter::
-A processing pattern that traverses a sequence and selects the elements that satisfy some criterion.
+filtro::
+Un patrón de procesamiento que recorre una secuencia y selecciona los elementos que satisfacen algún criterio.
 (((filter)))
 
 objeto::
 Una cosa a la que se puede referir una variable. Un objeto tiene tipo y valor.
 (((object)))
 
-equivalent::
-Having the same value.
+equivalente::
+Tener el mismo valor.
 (((equivalent)))
 
-identical::
-Being the same object (which implies equivalence).
+idéntico::
+Ser el mismo objeto (lo que implica equivalencia).
 (((identical)))
 
-reference::
-The association between a variable and its value.
+referencia::
+La asociación entre una variable y su valor.
 (((reference)))
 
 alias::
 Multiples variables que contienen referencias al mismo objeto.
 (((aliasing)))
 
-optional arguments::
-arguments that are not required.
+argumentos opcionales::
+argumentos que no son necesarios.
 (((optional arguments)))
 
 delimitador::
