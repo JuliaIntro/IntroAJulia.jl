@@ -1033,40 +1033,35 @@ Escriba una función que lea el archivo +palabras.txt+ y construya una matriz co
 
 Para verificar si una palabra está en la matriz de palabras se puede usar el operador +∈+. Esto sería lento pues este operador busca las palabras en orden.
 
-Debido a que las palabras están en orden alfabético, podemos acelerar búsqueda de bisección (también conocida como búsqueda binaria), que es similar a lo que haces cuando buscas una palabra en el diccionario. Usted comienza en el medio y verifica si la palabra que está buscando va antes que la palabra en el medio de la matriz. Si es así, busca la primera mitad de la matriz de la misma manera. De lo contrario, busca la segunda mitad.
+Debido a que las palabras están en orden alfabético, podemos acelerar la verificación con una búsqueda de bisección (también conocida como búsqueda binaria), que es similar a lo que haces cuando buscas una palabra en el diccionario. Comienzas en el medio y verificas si la palabra que estás buscando va antes que la palabra localizada en el medio. Si es así, se busca en la primera mitad de la matriz de la misma manera. De lo contrario, se busca en la segunda mitad.
 
-De cualquier manera, cortas el espacio de búsqueda restante a la mitad. Si la matriz de palabras tiene 113,809 palabras, se necesitarán unos 17 pasos para encontrar la palabra o concluir que no está allí.
+En ambos casos se reduce el espacio de búsqueda restante a la mitad. Si la matriz de palabras tiene 113,809 palabras, se necesitarán unos 17 pasos para encontrar la palabra o concluir que no está allí.
 
-Escriba una función llamada + inbisect + que tome una matriz ordenada y un valor objetivo y devuelva + verdadero + si la palabra está en la matriz y + falso + si no lo está.
-
-
-Because the words are in alphabetical order, we can speed things up with a bisection search (also known as binary search), which is similar to what you do when you look a word up in the dictionary. You start in the middle and check to see whether the word you are looking for comes before the word in the middle of the array. If so, you search the first half of the array the same way. Otherwise you search the second half.
-
-Either way, you cut the remaining search space in half. If the word array has 113,809 words, it will take about 17 steps to find the word or conclude that it’s not there.
-
-Write a function called +inbisect+ that takes a sorted array and a target value and returns +true+ if the word is in the array and +false+ if it’s not.
+Escriba una función llamada +enbiseccion+ que tome una matriz ordenada y un valor objetivo, y devuelva +true+ si la palabra está en la matriz y +false+ si no lo está.
 (((inbisect)))((("function", "programmer-defined", "inbisect", see="inbisect")))
 
 [[ex10-11]]
 ==== Ejercicio 10-11
 
-Two words are a “reverse pair” if each is the reverse of the other. Write a program +reversepairs+ that finds all the reverse pairs in the word array.
+Dos palabras son un "par inverso" si cada una es la inversa de la otra. Escriba un programa llamado +parinverso+ que encuentre todos los pares inversos en la matriz de palabras.
 (((reversepairs)))((("function", "programmer-defined", "reversepairs", see="reversepairs")))
 
 [[ex10-12]]
 ==== Ejercicio 10-12
 
-Two words “interlock” if taking alternating letters from each forms a new word. For example, “shoe” and “cold” interlock to form “schooled”.
+Dos palabras se "entrelazan" si al unir las letras de cada una se forma una nueva palabra. Por ejemplo, "gama" y "rana" se entrelazan para formar "anagrama".
 (((interlock)))
 
-Credit: This exercise is inspired by an example at http://puzzlers.org.
+Credito: Este ejercicio está inspirado en un ejemplo de http://puzzlers.org.
 
-. Write a program that finds all pairs of words that interlock.
+. Escriba un programa que encuentre todos los pares de palabras que se entrelazan.
+
 +
 [TIP]
 ====
-Don’t enumerate all pairs!
+¡No enumeres todos los pares!
 ====
 
 . Can you find any words that are three-way interlocked; that is, every third letter forms a word, starting from the first, second or third?
+. ¿Puedes encontrar alguna palabra que esté entrelazada en tres direcciones? es decir, cada tercera letra forma una palabra, comenzando por la primera, segunda o tercera.
 
