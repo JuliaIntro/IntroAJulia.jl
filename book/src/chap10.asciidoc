@@ -539,7 +539,7 @@ julia> a ≡ b
 true
 ----
 
-En este ejemplo, Julia solo creó un objeto de cadena, y ambas variables +a+ y +b+ apuntan a ella. Pero cuando crea dos matrices, obtiene dos objetos:
+En este ejemplo, Julia solo creó un objeto de cadena, y ambas variables +a+ y +b+ apuntan a ella. Pero cuando se crean dos matrices, se obtienen dos objetos:
 
 [source,@julia-repl-test]
 ----
@@ -565,9 +565,9 @@ En este caso, diríamos que las dos matrices son _equivalentes_, porque tienen l
 Para ser precisos, un objeto tiene un valor. Si se evalúa +[1, 2, 3]+, se obtendrá un objeto de matriz cuyo valor es una secuencia de enteros. Si otra matriz tiene los mismos elementos, decimos que tiene el mismo valor, pero no es el mismo objeto.
 
 
-=== Aliasing
+=== Alias (poner sobrenombres)
 
-If +a+ refers to an object and you assign +b = a+, then both variables refer to the same object:
+Si +a+ apunta a un objeto, y asignas +b = a+, entonces ambas variables se refieren al mismo objeto:
 
 [source,@julia-repl-test chap10]
 ----
@@ -579,20 +579,20 @@ julia> b ≡ a
 true
 ----
 
-The state diagram looks like <<fig10-4>>.
+El diagrama de estado sería como este <<fig10-4>>.
 
 [[fig10-4]]
 .State diagram
 image::images/fig104.svg[]
 
 
-The association of a variable with an object is called a _reference_. In this example, there are two references to the same object.
+La asociación de una variable con un objeto se llama _referencia_. En este ejemplo, hay dos referencias al mismo objeto.
 (((reference)))
 
-An object with more than one reference has more than one name, so we say that the object is _aliased_.
+Un objeto con más de una referencia tiene más de un nombre, por lo que decimos que el objeto tiene un _alias_.
 (((aliased)))
 
-If the aliased object is mutable, changes made with one alias affect the other:
+Si el objeto con alias es mutable, los cambios hechos a un alias afectan al otro:
 (((mutable)))
 
 [source,@julia-repl-test chap10]
@@ -605,10 +605,10 @@ julia> print(a)
 
 [WARNING]
 ====
-Although this behavior can be useful, it is error-prone. In general, it is safer to avoid aliasing when you are working with mutable objects.
-====
+Aunque este comportamiento puede ser util, a veces puede inducir a errores. En general, es ms seguro evitar los alias cuando trabajemos con objetos mutables.
+==== 
 
-For immutable objects like strings, aliasing is not as much of a problem. In this example:
+No hay problema con los alias al trabajar con objetos inmutables, tales como cadenas de texto. En este ejemplo: 
 
 [source,@julia-setup]
 ----
@@ -616,7 +616,7 @@ a = "banana"
 b = "banana"
 ----
 
-It almost never makes a difference whether +a+ and +b+ refer to the same string or not.
+Casi nunca es relevante que +a+ y +b+ se refieran a la misma cadena o no.
 
 
 === Array Arguments
