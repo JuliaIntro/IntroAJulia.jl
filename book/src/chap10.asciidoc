@@ -735,38 +735,35 @@ julia> print(rest)
 
 === Depuración
 
-Un uso descuidado de las matrices (y otros objetos mutables) puede llevarnos a largas horas de depuración. A continuación se muestran algunos errores comunes y cómo evitarlos:
+Un uso inadecuado de las matrices (y otros objetos mutables) puede llevarnos a largas horas de depuración. A continuación se muestran algunos errores comunes y cómo evitarlos:
 (((debugging)))
-funciones integradas que operan en matrices
-* La mayoría de las funciones de matriz modifican el argumento. Esto es lo opuesto a las funciones de cadena, que devuelven una nueva cadena y dejan el original solo.
-
-* Most array functions modify the argument. This is the opposite of the string functions, which return a new string and leave the original alone.
+* La mayoría de las funciones que operan en matrices modifican el argumento. Esto es lo opuesto a lo que ocurre en las funciones que operan en cadenas de texto, que devuelven una nueva cadena y dejan la original sin modificaciones.
 +
-If you are used to writing string code like this:
+Si está acostumbrado a escribir código con cadenas de texto como este:
 (((strip)))(((sort!)))
 +
 [source,julia]
 ----
-new_word = strip(word)
+nueva_palabra = strip(palabra)
 ----
 +
-It is tempting to write array code like this:
+Puede parecer tentador escribir código con matrices como este:
 +
 [source,julia]
 ----
 t2 = sort!(t1)
 ----
 +
-Because +sort!+ returns the modified original array +t1+, +t2+ is an alias of +t1+.
+Como +sort!+ devuelve la matriz original +t1+ modificada, +t2+ es un alias de +t1+.
 +
 [TIP]
 ====
-Before using array functions and operators, you should read the documentation carefully and then test them in interactive mode.
+Antes de utilizar funciones y operadores de matrices, debes leer la documentación detenidamente y luego probarla en modo interactivo.
 ====
 
-* Pick an idiom and stick with it.
+* Escoge una expresión y quédate con ella.
 +
-Part of the problem with arrays is that there are too many ways to do things. For example, to remove an element from an array, you can use +pop!+, +popfirst!+, +delete_at+, or even a slice assignment. To add an element, you can use +push!+, +pushfirst!+, +insert!+ or +vcat+. Assuming that +t+ is an array and +x+ is an array element, these are correct:
+Parte del problema con las matrices es que hay demasiadas formas de hacer las cosas. Por ejemplo, para eliminar un elemento de una matriz se puede usar +pop!+, +popfirst!+, +delete_at+, o incluso una asignación de porción. Para agregar un elemento se puede usar +push!+, +pushfirst!+, +insert!+ or +vcat+. Suponiendo que +t+ es una matriz y +x+, es un elemento, estas formas son correctas: 
 (((push!)))(((pushfirst!)))(((insert!)))(((vcat)))
 +
 [source,julia]
@@ -776,16 +773,16 @@ push!(t, x)
 append!(t, [x])
 ----
 +
-And these are wrong:
+Y estos incorrectas:
 +
 [source,julia]
 ----
-insert!(t, 4, [x])         # WRONG!
-push!(t, [x])              # WRONG!
-vcat(t, [x])               # WRONG!
+insert!(t, 4, [x])         # MALO!
+push!(t, [x])              # MALO!
+vcat(t, [x])               # MALO!
 ----
 
-* Make copies to avoid aliasing.
+* Haga copias para evitar alias.
 +
 If you want to use a function like +sort!+ that modifies the argument, but you need to keep the original array as well, you can make a copy:
 (((sort!)))
