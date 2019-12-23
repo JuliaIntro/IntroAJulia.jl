@@ -619,38 +619,38 @@ b = "banana"
 Casi nunca es relevante que +a+ y +b+ se refieran a la misma cadena o no.
 
 
-=== Array Arguments
+=== Matrices como argumentos
 
-When you pass an array to a function, the function gets a reference to the array. If the function modifies the array, the caller sees the change. For example, +deletehead!+ removes the first element from an array:
+Cuando se pasa una matriz como argumento de una función, en realidad se pasa una referencia a ella. Si la función modifica la matriz, el que hizo la llamada verá el cambio. Por ejemplo, la función +borrarprimero+ elimina el primer elemento de una matriz:
 (((deletehead!)))((("function", "programmer-defined", "deletehead!", see="deletehead!")))(((popfirst!)))
 
 [source,@julia-setup chap10]
 ----
-function deletehead!(t)
+function borrarprimero(t)
     popfirst!(t)
 end
 ----
 
-Here’s how it is used:
+Aquí vemos el uso de borrarprimero:
 
 [source,@julia-repl-test chap10]
 ----
-julia> letters = ['a', 'b', 'c'];
+julia> letras = ['a', 'b', 'c'];
 
-julia> deletehead!(letters);
+julia> deletehead!(letras);
 
-julia> print(letters)
+julia> print(letras)
 ['b', 'c']
 ----
 
-The parameter +t+ and the variable +letters+ are aliases for the same object. The stack diagram looks like <<fig10-5>>.
+El parámetro +t+ y la variable +letras+ son alias de un mismo objeto. El diagrama de estado es así <<fig10-5>>.
 (((stack diagram)))
 
 [[fig10-5]]
 .Stack diagram
 image::images/fig105.svg[]
 
-Since the array is shared by two frames, I drew it between them.
+Como la matriz está compartida por dos marcos, la dibujamos entre ambos.
 
 It is important to distinguish between operations that modify arrays and operations that create new arrays. For example, +push!+ modifies an array, but +vcat+ creates a new array.
 (((push!)))(((vcat)))((("function", "Base", "vcat", see="vcat")))
