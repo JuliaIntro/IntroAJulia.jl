@@ -823,8 +823,7 @@ Una secuencia de valores.
 (((array)))
 
 elemento::
-Uno de los valores de una matriz (u otra secuencia), también llamado items.
-
+Uno de los valores de una matriz (u otra secuencia), también llamado item.
 (((element)))
 
 lista anidada::
