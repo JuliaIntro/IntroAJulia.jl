@@ -925,37 +925,37 @@ end;
 ----
 
 [[ex10-1]]
-==== Exercise 10-1
+==== Ejercicio 10-1
 
-Write a function called +nestedsum+ that takes an array of arrays of integers and adds up the elements from all of the nested arrays. For example:
+Escriba una función llamada +sumaanidada+ que tome una matriz de matrices de enteros y sume los elementos de todas las matrices anidadas. Por ejemplo:
 (((nestedsum)))((("function", "programmer-defined", "nestedsum", see="nestedsum")))
 
 [source,@julia-repl-test chap10]
 ----
 julia> t = [[1, 2], [3], [4, 5, 6]];
 
-julia> nestedsum(t)
+julia> umaanidada(t)
 21
 ----
 
 [[ex10-2]]
-==== Exercise 10-2
+==== Ejercicio 10-2
 
-Write a function called +cumulsum+ that takes an array of numbers and returns the cumulative sum; that is, a new array where the latexmath:[\(i\)]th element is the sum of the first latexmath:[\(i\)] elements from the original array. For example:
+Escriba una función llamada +sumaacumulada+ que tome una matriz de números y devuelva la suma acumulativa; es decir, una nueva matriz donde el latexmath:[\(i\)]ésimo elemento es la suma de los primeros latexmath:[\(i\)] elementos de la matriz original. Por ejemplo:
 (((cumulsum)))((("function", "programmer-defined", "cumulsum", see="cumulsum")))
 
 [source,@julia-repl-test chap10]
 ----
 julia> t = [1, 2, 3];
 
-julia> print(cumulsum(t))
+julia> print(sumaacumulada(t))
 Any[1, 3, 6]
 ----
 
 [[ex10-3]]
-==== Exercise 10-3
+==== Ejercicio 10-3
 
-Write a function called +interior+ that takes an array and returns a new array that contains all but the first and last elements. For example:
+Escriba una función llamada +interior+ que tome una matriz y devuelva una nueva matriz que contenga todos los elementos excepto el primero y el último. Por ejemplo:
 (((interior)))((("function", "programmer-defined", "interior", see="interior")))
 
 [source,@julia-repl-test chap10]
@@ -967,9 +967,9 @@ julia> print(interior(t))
 ----
 
 [[ex10-4]]
-==== Exercise 10-4
+==== Ejercicio 10-4
 
-Write a function called +interior!+ that takes an array, modifies it by removing the first and last elements, and returns +nothing+. For example:
+Escriba una función llamada +interior!+ que tome una matriz, la modifique eliminando el primer y el último elemento, y que no devuelva un valor. Por ejemplo:
 (((interior!)))((("function", "programmer-defined", "interior!", see="interior!")))
 
 [source,@julia-repl-test chap10]
@@ -983,9 +983,9 @@ julia> print(t)
 ----
 
 [[ex10-5]]
-==== Exercise 10-5
+==== Ejercicio 10-5
 
-Write a function called +issort+ that takes an array as a parameter and returns +true+ if the array is sorted in ascending order and +false+ otherwise. For example:
+Escriba una función llamada +estaordenada+ que tome una matriz como parámetro y devuelva +true+ si la matriz se ordena en orden ascendente y +false+ de lo contrario. Por ejemplo:
 (((issort)))((("function", "programmer-defined", "issort", see="issort")))
 
 [source,@julia-repl-test chap10]
@@ -997,41 +997,48 @@ false
 ----
 
 [[ex10-6]]
-==== Exercise 10-6
+==== Ejercicio 10-6
 
-Two words are anagrams if you can rearrange the letters from one to spell the other. Write a function called +isanagram+ that takes two strings and returns +true+ if they are anagrams.
+Dos palabras son anagramas si se pueden ordenar las letras de una para escribir la otra. Escriba una función llamada +esanagrama+ que tome dos cadenas y devuelva +true+ si son anagramas.
 (((isanagram)))((("function", "programmer-defined", "isanagram", see="isanagram")))
 
 [[ex10-7]]
-==== Exercise 10-7
+==== Ejercicio 10-7
 
-Write a function called +hasduplicates+ that takes an array and returns +true+ if there is any element that appears more than once. It should not modify the original array.
+Escriba una función llamada +repetido+ que tome una matriz y devuelva +true+ si hay algún elemento que aparece más de una vez. No debe modificar la matriz original.
 (((hasduplicates)))((("function", "programmer-defined", "hasduplicates", see="hasduplicates")))
 
 [[ex10-8]]
-==== Exercise 10-8
+==== Ejercicio 10-8
 
-This exercise pertains to the so-called Birthday Paradox, which you can read about at https://en.wikipedia.org/wiki/Birthday_paradox.
+Este ejercicio se relaciona con la llamada paradoja del cumpleaños, sobre la cual puede leer en https://en.wikipedia.org/wiki/Birthday_paradox
 (((Birthday paradox)))
 
-If there are 23 students in your class, what are the chances that two of you have the same birthday? You can estimate this probability by generating random samples of 23 birthdays and checking for matches.
+Si hay 23 estudiantes en su clase, ¿cuáles son las posibilidades de que dos de ustedes tengan el mismo cumpleaños? Puede estimar esta probabilidad generando muestras aleatorias de 23 cumpleaños y buscando coincidencias.
 (((rand)))((("function", "Base", "rand", see="rand")))
 
 [TIP]
 ====
-You can generate random birthdays with +rand(1:365)+.
+Puede generar cumpleaños aleatorios con +rand(1:365)+.
 ====
 
 [[ex10-9]]
-==== Exercise 10-9
+==== Ejercicio 10-9
 
-Write a function that reads the file +palabras.txt+ and builds an array with one element per word. Write two versions of this function, one using +push!+ and the other using the idiom +t = [pass:[t...], x]+. Which one takes longer to run? Why?
+Escriba una función que lea el archivo +palabras.txt+ y construya una matriz con un elemento por palabra. Escriba dos versiones de esta función, una con +push!+ y la otra con la expresión +t = [pass:[t...], x]+. ¿Cuál tarda más en ejecutarse? ¿Por qué?
 (((push!)))
 
 [[ex10-10]]
-==== Exercise 10-10
+==== Ejercicio 10-10
 
-To check whether a word is in the word array, you could use the +∈+ operator, but it would be slow because it searches through the words in order.
+Para verificar si una palabra está en la matriz de palabras se puede usar el operador +∈+. Esto sería lento pues este operador busca las palabras en orden.
+
+Debido a que las palabras están en orden alfabético, podemos acelerar búsqueda de bisección (también conocida como búsqueda binaria), que es similar a lo que haces cuando buscas una palabra en el diccionario. Usted comienza en el medio y verifica si la palabra que está buscando va antes que la palabra en el medio de la matriz. Si es así, busca la primera mitad de la matriz de la misma manera. De lo contrario, busca la segunda mitad.
+
+De cualquier manera, cortas el espacio de búsqueda restante a la mitad. Si la matriz de palabras tiene 113,809 palabras, se necesitarán unos 17 pasos para encontrar la palabra o concluir que no está allí.
+
+Escriba una función llamada + inbisect + que tome una matriz ordenada y un valor objetivo y devuelva + verdadero + si la palabra está en la matriz y + falso + si no lo está.
+
 
 Because the words are in alphabetical order, we can speed things up with a bisection search (also known as binary search), which is similar to what you do when you look a word up in the dictionary. You start in the middle and check to see whether the word you are looking for comes before the word in the middle of the array. If so, you search the first half of the array the same way. Otherwise you search the second half.
 
@@ -1041,13 +1048,13 @@ Write a function called +inbisect+ that takes a sorted array and a target value 
 (((inbisect)))((("function", "programmer-defined", "inbisect", see="inbisect")))
 
 [[ex10-11]]
-==== Exercise 10-11
+==== Ejercicio 10-11
 
 Two words are a “reverse pair” if each is the reverse of the other. Write a program +reversepairs+ that finds all the reverse pairs in the word array.
 (((reversepairs)))((("function", "programmer-defined", "reversepairs", see="reversepairs")))
 
 [[ex10-12]]
-==== Exercise 10-12
+==== Ejercicio 10-12
 
 Two words “interlock” if taking alternating letters from each forms a new word. For example, “shoe” and “cold” interlock to form “schooled”.
 (((interlock)))
