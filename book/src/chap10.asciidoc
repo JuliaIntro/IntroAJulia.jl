@@ -72,7 +72,7 @@ julia> quesos[1]
 "Cheddar"
 ----
 
-A diferencia de las cadenas, las matrices son _mutables_, lo que significa que podemos cambiar sus elementos. Podemos modificar uno de sus elementos usando el operador corchetes en el lado izquierdo de una asignación:
+A diferencia de las cadenas, las matrices son _mutables_, lo que significa que podemos cambiar sus elementos. Se puede modificar uno de sus elementos usando el operador corchetes en el lado izquierdo de una asignación:
 
 (((mutable)))(((assignment statement)))
 
