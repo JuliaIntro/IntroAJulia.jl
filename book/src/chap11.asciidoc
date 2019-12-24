@@ -4,37 +4,42 @@
 This chapter presents another built-in type called a dictionary.
 
 
-=== A Dictionary Is a Mapping
+=== Un Diccionario es un Mapeo 
 
-A _dictionary_ is like an array, but more general. In an array, the indices have to be integers; in a dictionary they can be (almost) any type.
+Un _diccionario_ es como una matriz, pero más general. En una matriz, los índices tienen que ser enteros; en un diccionario pueden ser (casi) de cualquier tipo.
 (((dictionary)))
 
-A dictionary contains a collection of indices, which are called _keys_, and a collection of values. Each key is associated with a single value. The association of a key and a value is called a _key-value pair_ or sometimes an item.
+Un diccionario contiene una colección de índices, llamados _claves_, y una colección de valores. Cada clave está asociada a un solo valor. La asociación entre una clave y un valor se denomina _par clave-valor_ o, a veces, item.
 (((key)))(((value)))(((key-value pair)))(((item)))
 
-In mathematical language, a dictionary represents a _mapping_ from keys to values, so you can also say that each key “maps to” a value. As an example, we’ll build a dictionary that maps from English to Spanish words, so the keys and the values are all strings.
+En lenguaje matemático, un diccionario representa un _mapeo_ de las claves a los valores, es decir, cada clave se asigna a un valor. A modo de ejemplo, crearemos un diccionario que asigne palabras en español a palabras en inglés. En este diccionario, las claves y los valores son todas cadenas.
 (((mapping)))
 
-The function +Dict+ creates a new dictionary with no items. Because +Dict+ is the name of a built-in function, you should avoid using it as a variable name.
+A modo de ejemplo, crearemos un diccionario que traduzca palabras inglesas al espanol. En este diccionario, los
+´ındices son strings (cadenas).
+
+La función +Dict+ crea un nuevo diccionario sin elementos. Como +Dict+ es el nombre de una función integrada, debe evitar usarla como un nombre de variable.
 (((Dict)))((("type", "Base", "Dict", see="Dict")))
 
 [source,@julia-repl-test chap11]
 ----
-julia> eng2sp = Dict()
+julia> ing_a_esp = Dict()
 Dict{Any,Any} with 0 entries
 ----
 
-The kind of dictionary is surrounded by curly braces: the keys are of type +Any+ and also the values are of type +Any+.
+El tipo de este diccionario está compuesto por el tipo de las llaves y de los valores. En este caso, las llaves y los valores son de tipo +Any+.
 (((curly braces)))((("{}", see="curly braces")))(((Any)))((("type", "Base", "Any", see="Any")))
 
-The dictionary is empty. To add items to the dictionary, you can use square brackets:
+El diccionario está vacio. Para agregar elementos al diccionario, se puede usar corchetes:
 (((square brackets)))
 
 [source,@julia-repl-test chap11]
 ----
-julia> eng2sp["one"] = "uno";
+julia> ing_a_esp["one"] = "uno";
 
 ----
+
+Esta línea crea un elemento que asigna la clave "one" al valor "uno". Si imprimimos el diccionario nuevamente, vemos un par clave-valor con una flecha + pase: [= & gt;] + entre la clave y el valor:
 
 This line creates an item that maps from the key "one" to the value "uno". If we print the dictionary again, we see a key-value pair with an arrow +pass:[=&gt;]+ between the key and value:
 (((pass:[=&gt;])))
