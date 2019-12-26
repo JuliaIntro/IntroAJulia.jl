@@ -404,107 +404,105 @@ Si ejecuta esta versión de +fibonacci+ y la compara con la original, se dará c
 En el ejemplo anterior, el diccionario anteriores se crea fuera de la función, por lo que pertenece al marco especial llamado +Main+. Las variables en +Main+ a veces son llamadas _globales_ porque se puede acceder a ellas desde cualquier función. A diferencia de las variables locales, que desaparecen cuando finaliza su función, las variables globales existen de una llamada de función a la siguiente.
 (((global)))((("keyword", "global", see="global")))(((global variable)))
 
-Es común usar variables globales como _flags_ o _banderas_; es decir, variables booleanas que indican si una condición es verdadera. Por ejemplo, algunos programas usan una bandera llamada +verbose+ para controlar el nivel de detalle en la salida:
-
-It is common to use global variables for _flags_; that is, boolean variables that indicate (“flag”) whether a condition is true. For example, some programs use a flag named +verbose+ to control the level of detail in the output:
+Es común usar variables globales como _flags_ o _banderas_; es decir, variables booleanas que indican si una condición es verdadera. Por ejemplo, algunos programas usan una bandera llamada +verbosa+ para controlar el nivel de detalle en la salida:
 (((flag)))
 
 [source,@julia-setup]
 ----
 verbose = true
 
-function example1()
-    if verbose
-        println("Running example1")
+function ejemplo1()
+    if verbosa
+        println("Ejecutando ejemplo1")
     end
 end
 ----
 
-If you try to reassign a global variable, you might be surprised. The following example is supposed to keep track of whether the function has been called:
+Si intentas reasignar una variable global, te sorprenderás. El siguiente ejemplo trata de llevar registro sobre si se ha llamado o no a una función:
 
 [source,@julia-setup]
 ----
-been_called = false
+ha_sido_llamada = false
 
-function example2()
-    been_called = true         # WRONG
+function ejemplo2()
+    ha_sido_llamada = true         # MALO
 end
 ----
 
-But if you run it you will see that the value of +been_called+ doesn’t change. The problem is that +example2+ creates a new local variable named +been_called+. The local variable goes away when the function ends, and has no effect on the global variable.
+Pero si lo ejecutas, verás que el valor de +ha_sido_llamada+ no cambia. El problema es que +ejemplo2 + crea una nueva variable local llamada +ha_sido_llamada+. La variable local desaparece cuando finaliza la función y no tiene efecto en la variable global.
 
-To reassign a global variable inside a function you have to _declare_ the variable global before you use it:
+Para reasignar una variable global dentro de una función, debe _declarar_ la variable global antes de usarla:
 (((declaration)))(((reassignment)))
 
 [source,@julia-setup]
 ----
 been_called = false
 
-function example2()
-    global been_called
-    been_called = true
+function ejemplo2()
+    global ha_sido_llamada
+    ha_sido_llamada = true
 end
 ----
 
-The _global statement_ tells the interpreter something like, “In this function, when I say +been_called+, I mean the global variable; don’t create a local one.”
+La _sentencia global_ le dice al intérprete algo como esto: “En esta función, cuando digo +ha_sido_llamada+, me refiero a la variable global; así que no crees una variable local".
 (((global statement)))((("statement", "global", see="global statement")))
 
-Here’s an example that tries to update a global variable:
+A continuación se muestra un ejemplo que intenta actualizar una variable global:
 
 [source,@julia-setup chap11]
 ----
-count = 0
+conteo = 0
 
-function example3()
-    count = count + 1          # WRONG
+function ejemplo3()
+    conteo = conteo + 1          # MALO
 end
 ----
 
-If you run it you get:
+Si lo ejecutas obtienes:
 (((UndefVarError)))
 
 [source,@julia-repl-test chap11]
 ----
-julia> example3()
+julia> ejemplo3()
 ERROR: UndefVarError: count not defined
 ----
 
-Julia assumes that +count+ is local, and under that assumption you are reading it before writing it. The solution, again, is to declare +count+ global.
+Julia asume que +conteo+ es local, y bajo esa suposición lo estás leyendo antes de escribirlo. La solución, nuevamente, es declarar +conteo+ como global.
 
 [source,@julia-setup]
 ----
-count = 0
+conteo = 0
 
-function example3()
-    global count
-    count += 1
+function ejemplo3()
+    global conteo
+    conteo += 1
 end
 ----
 
-If a global variable refers to a mutable value, you can modify the value without declaring the variable global:
+Si una variable global se refiere a un valor mutable, puedes modificar el valor sin declarar la variable global:
 
 [source,@julia-setup]
 ----
-known = Dict(0=>0, 1=>1)
+anteriores = Dict(0=>0, 1=>1)
 
-function example4()
-    known[2] = 1
+function ejemplo4()
+    anteriores[2] = 1
 end
 ----
 
-So you can add, remove and replace elements of a global array or dictionary, but if you want to reassign the variable, you have to declare it global:
+Por lo tanto, puede agregar, eliminar y reemplazar elementos de una matriz global o diccionario, pero si desea reasignar la variable, debe declararla global:
 
 [source,@julia-setup]
 ----
-known = Dict(0=>0, 1=>1)
+anteriores = Dict(0=>0, 1=>1)
 
-function example5()
-    global known
-    known = Dict()
+function ejemplo5()
+    global anteriores
+    anteriores = Dict()
 end
 ----
 
-For performance reasons, you should declare a global variable constant. You can no longer reassign the variable but if it refers to a mutable value, you can modify the value. 
+Para mejorar el rendimiento, puedes declarar la variable global como constante. Con esto, ya no se puede reasignar la variable, pero si se refiere a un valor mutable, sí se puede modificar el valor.
 (((const)))((("keyword", "const", see="const")))(((constant global variable)))
 
 [source,@julia-setup]
@@ -518,7 +516,7 @@ end
 
 [WARNING]
 ====
-Global variables can be useful, but if you have a lot of them, and you modify them frequently, they can make programs hard to debug and perform badly.
+Las variables globales pueden ser útiles, pero si tiene muchas de ellas y las modifica con frecuencia, pueden dificultar la depuración y empeorar el desempeño de los programas.
 ====
 
 === Debugging
