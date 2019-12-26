@@ -521,7 +521,7 @@ Las variables globales pueden ser útiles, pero si tiene muchas de ellas y las m
 
 === Depuración
 
-A medida que trabaja con conjuntos de datos más grandes, la depuración imprimiendo y verificando la salida de manera manual puede tornarse difícil. Aquí hay algunas sugerencias para depurar grandes conjuntos de datos:
+A medida que trabaja con conjuntos de datos más grandes, la depuración mediante la impresió y verificación de la salida de manera manual puede tornarse difícil. Aquí hay algunas sugerencias para depurar grandes conjuntos de datos:
 (((debugging)))
 
 * Reduzca la entrada:
@@ -531,32 +531,31 @@ Si es posible, reduzca el tamaño del conjunto de datos. Por ejemplo, si el prog
 +
 Si hay un error, puede reducir latexmath:[\(n\)] al valor más pequeño que manifieste el error, y luego aumentarlo gradualmente a medida que encuentre y corrija errores.
 
-* Consultar resúmenes y tipos
-* Check summaries and types:
+* Revisar resúmenes y tipos
 +
-Instead of printing and checking the entire dataset, consider printing summaries of the data: for example, the number of items in a dictionary or the total of an array of numbers.
+En lugar de imprimir y verificar todo el conjunto de datos, considere imprimir resúmenes de los datos: por ejemplo, el número de elementos en un diccionario o el total de una serie de números.
 (((check)))
 +
-A common cause of runtime errors is a value that is not the right type. For debugging this kind of error, it is often enough to print the type of a value.
+Una causa común de los errores de tiempo de ejecución son los valores de tipo incorrecto. Para depurar este tipo de error, generalmente es suficiente imprimir el tipo de un valor.
 
-* Write self-checks:
+* Escribir autocomprobaciones:
 +
-Sometimes you can write code to check for errors automatically. For example, if you are computing the average of an array of numbers, you could check that the result is not greater than the largest element in the array or less than the smallest. This is called a “sanity check”.
+Puede escribir código que verifique errores automáticamente. Por ejemplo, si está calculando el promedio de una matriz de números, puede verificar que el resultado no sea mayor que el elemento más grande de la matriz o menor que el más pequeño. Esto se llama "prueba de cordura".
 (((self-check)))(((sanity check)))
 +
-Another kind of check compares the results of two different computations to see if they are consistent. This is called a “consistency check”.
+Otro tipo de verificación compara los resultados de dos cálculos diferentes para ver si son consistentes. Esta se llama "prueba de consistencia".
 (((consistency check)))
 
-* Format the output:
+* Formatear la salida:
 +
-Formatting debugging output can make it easier to spot an error. We saw an example in <<deb06>>.
+Formatear la salida de depuración puede hacer que sea más fácil detectar un error. Vimos un ejemplo en <<deb06>>.
 (((formatting)))
 +
-Again, time you spend building scaffolding can reduce the time you spend debugging.
+Nuevamente, el tiempo que dedica a construir andamiaje puede reducir el tiempo que dedica en la depuración
 (((scaffolding)))(((debugging)))
 
 
-=== Glossary
+=== Glosario
 
 mapping::
 A relationship in which each element of one set corresponds to an element of another set.
@@ -614,8 +613,8 @@ call graph::
 A diagram that shows every frame created during the execution of a program, with an arrow from each caller to each callee.
 (((call graph)))
 
-memo::
-A computed value stored to avoid unnecessary future computation.
+pista::
+Valor precalculado y almacenado temporalmente para evitar cálculos redundantes.
 (((memo)))
 
 global variable::
