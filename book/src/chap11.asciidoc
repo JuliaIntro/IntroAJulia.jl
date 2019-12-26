@@ -404,6 +404,8 @@ Si ejecuta esta versión de +fibonacci+ y la compara con la original, se dará c
 En el ejemplo anterior, el diccionario anteriores se crea fuera de la función, por lo que pertenece al marco especial llamado +Main+. Las variables en +Main+ a veces son llamadas _globales_ porque se puede acceder a ellas desde cualquier función. A diferencia de las variables locales, que desaparecen cuando finaliza su función, las variables globales existen de una llamada de función a la siguiente.
 (((global)))((("keyword", "global", see="global")))(((global variable)))
 
+Es común usar variables globales como _flags_ o _banderas_; es decir, variables booleanas que indican si una condición es verdadera. Por ejemplo, algunos programas usan una bandera llamada +verbose+ para controlar el nivel de detalle en la salida:
+
 It is common to use global variables for _flags_; that is, boolean variables that indicate (“flag”) whether a condition is true. For example, some programs use a flag named +verbose+ to control the level of detail in the output:
 (((flag)))
 
