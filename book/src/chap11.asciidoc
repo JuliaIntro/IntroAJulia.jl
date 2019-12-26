@@ -519,18 +519,19 @@ end
 Las variables globales pueden ser útiles, pero si tiene muchas de ellas y las modifica con frecuencia, pueden dificultar la depuración y empeorar el desempeño de los programas.
 ====
 
-=== Debugging
+=== Depuración
 
-As you work with bigger datasets it can become unwieldy to debug by printing and checking the output by hand. Here are some suggestions for debugging large datasets:
+A medida que trabaja con conjuntos de datos más grandes, la depuración imprimiendo y verificando la salida de manera manual puede tornarse difícil. Aquí hay algunas sugerencias para depurar grandes conjuntos de datos:
 (((debugging)))
 
-* Scale down the input:
+* Reduzca la entrada:
 +
-If possible, reduce the size of the dataset. For example if the program reads a text file, start with just the first 10 lines, or with the smallest example you can find which errors. You sould not edit the files themselves, but rather modify the program so it reads only the first latexmath:[\(n\)] lines.
+Si es posible, reduzca el tamaño del conjunto de datos. Por ejemplo, si el programa lee un archivo de texto, comience con solo las primeras 10 líneas, o con el ejemplo más pequeño que pueda encontrar que produzca errores. No debe editar los archivos, sino modificar el programa para que solo lea las primeras latexmath:[\(n\)] líneas.
 (((scale down)))
 +
-If there is an error, you can reduce latexmath:[\(n\)] to the smallest value that manifests the error, and then increase it gradually as you find and correct errors.
+Si hay un error, puede reducir latexmath:[\(n\)] al valor más pequeño que manifieste el error, y luego aumentarlo gradualmente a medida que encuentre y corrija errores.
 
+* Consultar resúmenes y tipos
 * Check summaries and types:
 +
 Instead of printing and checking the entire dataset, consider printing summaries of the data: for example, the number of items in a dictionary or the total of an array of numbers.
