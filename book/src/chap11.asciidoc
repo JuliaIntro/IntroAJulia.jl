@@ -1,7 +1,7 @@
 [[chap11]]
 == Diccionarios
 
-This chapter presents another built-in type called a dictionary.
+Este capítulo presenta otro tipo integrado llamado diccionario.
 
 
 === Un Diccionario es un Mapeo 
@@ -293,18 +293,21 @@ julia> key = busquedainversa(h, 3)
 ERROR: Error de Busqueda
 ----
 
-The effect when you generate an exception is the same as when Julia throws one: it prints a stacktrace and an error message.
+El efecto cuando generamos una excepción es el mismo que cuando Julia genera una: se imprime un trazado inverso y un mensaje de error.
 
-Julia provides an optimized way to do a reverse lookup: +findall(isequal(3), h)+.
+Julia proporciona una forma optimizada de hacer una búsqueda inversa: +findall(isequal(3),h)+.
 (((findall)))((("function", "Base", "findall", see="findall")))(((isequal)))((("function", "Base", "isequal", see="isequal")))
 
 [WARNING]
 ====
-A reverse lookup is much slower than a forward lookup; if you have to do it often, or if the dictionary gets big, the performance of your program will suffer.
+Una búsqueda inversa es mucho más lenta que una búsqueda directa. Si tiene que hacer búsquedas inversas con frecuencia, o si el diccionario es muy grande, el rendimiento de su programa se verá afectado.
 ====
 
 
-=== Dictionaries and Arrays
+=== Diccionarios y Matrices
+
+Las matrices pueden aparecer como valores en un diccionario. Por ejemplo, si le dan un diccionario que asigna de letras a frecuencias, es posible que desee invertirlo; es decir, cree un diccionario que mapee de frecuencias a letras. Dado que puede haber varias letras con la misma frecuencia, cada valor en el diccionario invertido debe ser una matriz de letras.
+
 
 Arrays can appear as values in a dictionary. For example, if you are given a dictionary that maps from letters to frequencies, you might want to invert it; that is, create a dictionary that maps from frequencies to letters. Since there might be several letters with the same frequency, each value in the inverted dictionary should be an array of letters.
 
