@@ -125,23 +125,23 @@ julia> "uno" ∈ vs
 true
 ----
 
-El operador +∈+ utiliza diferentes algoritmos para matrices y diccionarios. Para las matrices, busca los elementos de la matriz en orden, como en <<searching>>. A medida que la matriz se alarga, el tiempo de búsqueda se alarga en proporción directa.
+El operador +∈+ utiliza diferentes algoritmos para matrices y diccionarios. Para las matrices, busca los elementos de la matriz en orden, como en <<searching>>. El tiempo de búsqueda es directamente proporcional al largo de la matriz.
 
-Para los diccionarios, Julia usa un algoritmo llamado _hash table_ que tiene una propiedad notable: el operador +∈+ toma aproximadamente la misma cantidad de tiempo sin importar cuántos elementos haya en el diccionario.
+Para los diccionarios, Julia usa un algoritmo llamado _tabla hash_ que tiene una propiedad importante: el operador +∈+ toma aproximadamente la misma cantidad de tiempo sin importar cuántos elementos haya en el diccionario.
 (((hash table)))
 
 [[dictionary_collection_counters]]
-=== Dictionary as a Collection of Counters
+=== Diccionario como una Colección de Frecuencias
 
-Suponga que recibes una cadena y deseas contar cuántas veces aparece cada letra. Hay varias formas de hacerlo:
+Suponga que tienes una cadena y deseas contar cuántas veces aparece cada letra. Hay varias formas de hacerlo:
 
-* Podrías crear 26 variables, una para cada letra del alfabeto. Luego, recorrer la cadena y, para cada carácter, incrementar el contador correspondiente, probablemente utilizando condiciones encadenadas.
+* Podrías crear 27 variables, una para cada letra del alfabeto. Luego, recorrer la cadena y, para cada carácter, incrementar el contador correspondiente, probablemente utilizando condiciones encadenadas.
 
-* Podrías crear una matriz con 26 elementos. Luego, podrías convertir cada carácter en un número (usando la función integrada +Int+), usar el número como índice en la matriz e incrementar el contador apropiado.
+* Podrías crear una matriz con 27 elementos. Luego, podrías convertir cada carácter en un número (usando la función integrada +Int+), usar el número como índice en la matriz e incrementar el contador apropiado.
 
 * Puedes crear un diccionario con caracteres como claves y contadores como los valores correspondientes. La primera vez que veas un carácter, agregarías un elemento al diccionario. Después de eso, incrementarías el valor de un elemento existente.
 
-Cada una de estas opciones realiza el mismo cálculo, pero la implementación de este cálculo es diferente.
+Cada una de estas opciones realiza el mismo cálculo, pero la implementación es diferente.
 
 Una _implementación_ es una forma de realizar un cálculo. Algunas implementaciones son mejores que otras, por ejemplo, una ventaja de la implementación del diccionario es que no tenemos que saber de antemano qué letras aparecen en la cadena y solo tenemos que agregar las letras que aparecen.
 (((implementation)))
@@ -253,7 +253,7 @@ s 1
 Dado un diccionario +d+ y una clave +k+, es fácil encontrar el valor correspondiente +v = d[k]+. Esta operación se llama _búsqueda_.
 (((lookup)))
 
-Pero, ¿qué pasa si tenemos +v+ y queremos encontrar +k+? Existen dos problemas: primeramente, puede haber más de una clave asignada al valor +v+. Dependiendo de lo que queramos, es posible que podamos elegir una de ellas, o que tengamos que hacer una matriz que las contenga a todas. En segundo lugar, no hay una sintaxis simple para hacer una búsqueda inversa; tienes que buscar.
+Pero, ¿qué pasa si tenemos +v+ y queremos encontrar +k+? Existen dos problemas: primeramente, puede haber más de una clave asignada al valor +v+. Dependiendo de lo que queramos, es posible que podamos elegir una de estas claves, o que tengamos que hacer una matriz que las contenga a todas. En segundo lugar, no hay una sintaxis simple para hacer una búsqueda inversa; solo debemos buscar.
 (((reverse lookup)))
 
 A continuación se muestra una función que toma un valor y que devuelve la primera clave asignada a ese valor:
@@ -270,7 +270,7 @@ function busquedainversa(d, v)
 end
 ----
 
-Esta función es otro ejemplo del patrón de búsqueda, pero utiliza una función que no hemos visto antes: +error+. La función +error+ se usa para producir un +ErrorException+ que interrumpe el flujo normal de control. En este caso tiene el mensaje +"Error de Busqueda"+, que indica que no existe una clave.
+Esta función es otro ejemplo del patrón de búsqueda, pero utiliza una función que no hemos visto antes: +error+. La función +error+ se usa para producir un +ErrorException+ que interrumpe el flujo normal. En este caso tiene el mensaje +"Error de Busqueda"+, que indica que no existe una clave.
 (((error)))((("function", "Base", "error", see="error")))
 
 Si llega al final del ciclo, eso significa que +v+ no aparece en el diccionario como un valor, por lo que se produce una excepción.
@@ -306,7 +306,7 @@ Una búsqueda inversa es mucho más lenta que una búsqueda directa. Si tiene qu
 
 === Diccionarios y Matrices
 
-Las matrices pueden aparecer como valores en un diccionario. Por ejemplo, si tenemos un diccionario que asigna frecuencias a letras, es posible que desee invertirlo; es decir, tener un diccionario que asigne letras a frecuencias. Dado que pueden haber varias letras con la misma frecuencia, cada valor en el diccionario invertido debería ser una matriz de letras.
+Las matrices pueden aparecer como valores en un diccionario. Por ejemplo, si tenemos un diccionario que asigna frecuencias a letras, y queremos invertirlo; es decir, tener un diccionario que asigne letras a frecuencias. Dado que pueden haber varias letras con la misma frecuencia, cada valor en el diccionario invertido debería ser una matriz de letras.
 
 Aquí hay una función que invierte un diccionario:
 (((invertdict)))((("function", "programmer-defined", "invertdict", see="invertdict")))
@@ -323,7 +323,7 @@ function invertirdic(d)
             push!(inverso[val], clave)
         end
     end
-    inverse
+    inverso
 end
 ----
 
@@ -339,33 +339,32 @@ julia> hist = histograma("perros");
 julia> inverso = invertirdic(hist)
 Dict{Any,Any} with 2 entries:
   2 => ['r']
-  1 => ['a', 'p', 'o', 't']
+  1 => ['s', 'e', 'p', 'o']
 ----
 
 [[fig11-1]]
 .State diagram
 image::images/fig111.svg[]
 
-<<fig11-1>> es un diagrama de estado que muestra +hist+ e +inverso+. Un diccionario se representa como un cuadro con los pares clave-valor dentro. En este libro, si los valores son enteros, números de punto flotante o cadenas de texto, se dibujan dentro del cuadro, y las matrices generalmente se dibujan fuera del cuadro, solo para mantener el diagrama simple.
+<<fig11-1>> es un diagrama de estado que muestra +hist+ e +inverso+. Un diccionario se representa como un cuadro con los pares clave-valor dentro. En este libro, si los valores son enteros, números de punto flotante o cadenas de texto, se dibujan dentro del cuadro, y las matrices (generalmente) se dibujan fuera del cuadro, solo para mantener el diagrama simple.
 (((state diagram)))
 
 [NOTE]
 ====
-Anteriormente se mencionó que un diccionario se implementa usando una tabla hash (también llamada matriz asociativa, hashing, mapa hash, tabla de dispersión o tabla fragmentada) y eso significa que las claves deben ser _hashable_.
-I mentioned earlier that a dictionary is implemented using a hash table and that means that the keys have to be _hashable_.
+Anteriormente se mencionó que un diccionario se implementa usando una tabla hash (también llamada matriz asociativa, hashing, mapa hash, tabla de dispersión o tabla fragmentada), lo cual significa que las claves deben ser _hashable_.
 (((hashable)))
 
-A _hash_ is a function that takes a value (of any kind) and returns an integer. Dictionaries use these integers, called hash values, to store and look up key-value pairs.
+Un _hash_ es una función que toma un valor (de cualquier tipo) y devuelve un entero. Los diccionarios usan estos enteros, llamados valores hash, para almacenar y buscar pares clave-valor.
 (((hash)))
 ====
 
 [[memos]]
 === Memos
 
-If you played with the +fibonacci+ function from <<one_more_example>>, you might have noticed that the bigger the argument you provide, the longer the function takes to run. Furthermore, the run time increases quickly.
+Si jugaste con la función +fibonacci+ de <<one_more_example>>, es posible que hayas notado que cuanto más grande el argumento proporcionado, más tiempo tarda la función en ejecutarse. Además, el tiempo de ejecución aumenta rápidamente.
 (((fibonnaci)))
 
-To understand why, consider <<fig11-2>>, which shows the _call graph_ for +fibonacci+ with +n = 4+:
+Para entender por qué, considere <<fig11-2>>, que muestra el _call graph_ para la función +fibonacci+ con +n = 4+:
 (((call graph)))((("diagram", "call graph", see="call graph")))
 
 [[fig11-2]]
