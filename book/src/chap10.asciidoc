@@ -1048,12 +1048,6 @@ Dos palabras son un "par inverso" si cada una es la inversa de la otra. Escriba 
 
 [[ex10-12]]
 ==== Ejercicio 10-12
-mi 
-palloe
-
-paella
-
-aloe
 
 Dos palabras se "entrelazan" si al tomar letras alternando entre cada palabra se forma una nueva palabra. Por ejemplo, "pi" y "as" se entrelazan para formar "pais".
 (((interlock)))
