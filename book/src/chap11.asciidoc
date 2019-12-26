@@ -119,7 +119,7 @@ Para ver si algo es un valor en un diccionario, se puede usar la función +value
 
 [source,@julia-repl-test chap11]
 ----
-julia> vs = values(eng2sp);
+julia> vs = values(ing_a_esp);
 
 julia> "uno" ∈ vs
 true
