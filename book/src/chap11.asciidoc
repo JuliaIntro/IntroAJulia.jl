@@ -663,25 +663,23 @@ Use pistas en la función de Ackermann de <<ex06-2>> y vea si esto permite evalu
 [[ex11-4]]
 ==== Ejercicio 11-5
 
-Si hizo <<ex10-7>>, ya tiene una función llamada + hasduplicates + que toma una matriz como parámetro y devuelve + true + si hay algún objeto que aparece más de una vez en la matriz.
-
-If you did <<ex10-7>>, you already have a function named +hasduplicates+ that takes an array as a parameter and returns +true+ if there is any object that appears more than once in the array.
+Si hizo <<ex10-7>>, ya tiene una función llamada +repetido+ que toma una matriz como parámetro y devuelve +true+ si hay algún objeto que aparece más de una vez en la matriz.
 (((hasduplicates)))
 
-Use a dictionary to write a faster, simpler version of +hasduplicates+.
+Use un diccionario para escribir una versión más rápida y simple de +repetido+.
 
 [[ex11-5]]
-==== Exercise 11-6
+==== Ejercicio 11-6
 
-Two words are “rotate pairs” if you can rotate one of them and get the other (see +rotateword+ in <<ex08-5>>).
+Dos palabras son "pares rotados" si puede rotar una de ellas y obtener la otra (vea +rotateword+ en <<ex08-5>>).
 (((rotateword)))
 
-Write a program that reads a word array and finds all the rotate pairs.
+Escriba un programa que lea una matriz de palabras y encuentre todos los pares rotados.
 
 [[ex11-6]]
-==== Exercise 11-7
+==== Ejercicio 11-7
 
-Here’s another Puzzler from Car Talk (https://www.cartalk.com/puzzler/browse):
+Aquí hay otro Puzzle de Car Talk (https://www.cartalk.com/puzzler/browse):
 (((Car Talk)))
 
 [quote]
