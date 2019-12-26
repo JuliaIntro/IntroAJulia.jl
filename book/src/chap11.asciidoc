@@ -551,65 +551,66 @@ Otro tipo de verificación compara los resultados de dos cálculos diferentes pa
 Formatear la salida de depuración puede hacer que sea más fácil detectar un error. Vimos un ejemplo en <<deb06>>.
 (((formatting)))
 +
-Nuevamente, el tiempo que dedica a construir andamiaje puede reducir el tiempo que dedica en la depuración
+Nuevamente, el tiempo que dedica a construir andamiaje puede reducir el tiempo que dedica a la depuración
 (((scaffolding)))(((debugging)))
 
 
 === Glosario
 
-mapping::
-A relationship in which each element of one set corresponds to an element of another set.
+mapeo::
+Una relación en la que cada elemento de un conjunto corresponde a un elemento de otro conjunto.
 (((mapping)))
 
-dictionary::
-A mapping from keys to their corresponding values.
+diccionario::
+Una asignación de claves a sus valores correspondientes.
 (((dictionary)))
 
-key-value pair::
-The representation of the mapping from a key to a value.
+par clave-valor::
+La representación de la asignación de una clave a un valor.
 (((key-value pair)))
 
 item::
-In a dictionary, another name for a key-value pair.
+En un diccionario, otro nombre para un par clave-valor.
 (((item)))
 
-key::
-An object that appears in a dictionary as the first part of a key-value pair.
+clave::
+Un objeto que aparece en un diccionario como la primera parte de un par clave-valor.
 (((key)))
 
-value::
-An object that appears in a dictionary as the second part of a key-value pair. This is more specific than our previous use of the word “value”.
+valor::
+Un objeto que aparece en un diccionario como la segunda parte de un par clave-valor. Este término es más específico que nuestro uso previo de la palabra "valor".
 (((value)))
 
-implementation::
-A way of performing a computation.
+implementación::
+Una forma de realizar un cálculo.
 (((implementation)))
 
-hash table::
-The algorithm used to implement Julia dictionaries.
+tabla hash::
+El algoritmo utilizado para implementar los diccionarios de Julia.
 (((hash table)))
 
-hash function::
-A function used by a hash table to compute the location for a key.
+función hash::
+Una función utilizada por una tabla hash para calcular la ubicación de una clave.
 (((hash function)))
 
 hashable::
-A type that has a hash function.
+Un tipo que tiene una función hash.
 (((hashable)))
 
-lookup::
-A dictionary operation that takes a key and finds the corresponding value.
+búsqueda::
+Una operación sobre un diccionario que toma una clave y encuentra el valor correspondiente.
 (((lookup)))
 
-reverse lookup::
-A dictionary operation that takes a value and finds one or more keys that map to it.
+búsqueda inversa::
+Una operación sobre un diccionario que toma un valor y encuentra una o más claves que se asignan a él.
 (((reverse lookup)))
 
 singleton::
-An array (or other sequence) with a single element.
+Una matriz (u otra secuencia) con un solo elemento.
 (((singleton)))
 
-call graph::
+gráfico de llamada::
+Un diagrama que muestra cada cuadro creado durante la ejecución de un programa, con una flecha de cada persona que llama a cada persona que llama.
 A diagram that shows every frame created during the execution of a program, with an arrow from each caller to each callee.
 (((call graph)))
 
