@@ -15,7 +15,7 @@ Un diccionario contiene una colección de índices, llamados _claves_, y una col
 En lenguaje matemático, un diccionario representa un _mapeo_ de las claves a los valores, es decir, cada clave se asigna a un valor. A modo de ejemplo, crearemos un diccionario que asigne palabras en español a palabras en inglés. En este diccionario, las claves y los valores son cadenas.
 (((mapping)))
 
-La función +Dict+ crea un nuevo diccionario sin elementos. Como +Dict+ es el nombre de una función integrada de Julia, debe evitar usarla como un nombre de variable.
+La función +Dict+ crea un nuevo diccionario sin elementos. Como +Dict+ es el nombre de una función integrada de Julia, debe evitar usarla como nombre de variable.
 (((Dict)))((("type", "Base", "Dict", see="Dict")))
 
 [source,@julia-repl-test chap11]
