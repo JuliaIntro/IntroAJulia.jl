@@ -24,7 +24,7 @@ julia> ing_a_esp = Dict()
 Dict{Any,Any} with 0 entries
 ----
 
-El tipo de este diccionario está compuesto por el tipo de las llaves y de los valores. En este caso, las llaves y los valores son de tipo +Any+.
+El tipo de este diccionario está compuesto por el tipo de las claves y de los valores. En este caso, las claves y los valores son de tipo +Any+.
 (((curly braces)))((("{}", see="curly braces")))(((Any)))((("type", "Base", "Any", see="Any")))
 
 El diccionario está vacio. Para agregar elementos al diccionario, se pueden usar corchetes:
