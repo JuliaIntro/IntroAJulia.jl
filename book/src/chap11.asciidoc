@@ -610,59 +610,60 @@ Una matriz (u otra secuencia) con un solo elemento.
 (((singleton)))
 
 gráfico de llamada::
-Un diagrama que muestra cada cuadro creado durante la ejecución de un programa, con una flecha de cada persona que llama a cada persona que llama.
-A diagram that shows every frame created during the execution of a program, with an arrow from each caller to each callee.
+Un diagrama que muestra cada cuadro creado durante la ejecución de un programa, con una flecha entre cada función y sus respectivas funciones llamadas. 
 (((call graph)))
 
 pista::
 Valor precalculado y almacenado temporalmente para evitar cálculos redundantes.
 (((memo)))
 
-global variable::
-A variable defined outside a function. Global variables can be accessed from any function.
+variable global::
+Una variable definida fuera de una función. Se puede acceder a las variables globales desde cualquier función.
 (((global variable)))
 
-global statement::
-A statement that declares a variable name global.
+sentencia global::
+Una sentencia que declara un nombre de variable global.
 (((global statement)))
 
-flag::
-A boolean variable used to indicate whether a condition is true.
+bandera::
+Una variable booleana utilizada para indicar si una condición es verdadera.
 (((flag)))
 
-declaration::
-A statement like +global+ that tells the interpreter something about a variable.
+declaración::
+Una sentencia como +global+ que le dice al intérprete algo sobre una variable.
 (((declaration)))
 
-constant global variable::
-A global variable that can not be reassigned.
+variable global constante::
+Una variable global que no se puede reasignar.
 (((constant global variable)))
 
 
-=== Exercises
+=== Ejercicios
 
 [[ex11-1]]
-==== Exercise 11-2
+==== Ejercicio 11-2
 
-Write a function that reads the words in _palabras.txt_ and stores them as keys in a dictionary. It doesn’t matter what the values are. Then you can use the +∈+ operator as a fast way to check whether a string is in the dictionary.
+Escriba una función que lea las palabras en _palabras.txt_ y las almacene como claves en un diccionario. No importa cuáles sean los valores. Luego puede usar el operador +∈+ como una forma rápida de verificar si una cadena está en el diccionario.
 (((in)))
 
-If you did <<ex10-10>>, you can compare the speed of this implementation with the array +∈+ operator and the bisection search.
+Si hizo <<ex10-10>>, puede comparar la velocidad de esta implementación con el operador array +∈+ y la búsqueda binaria.
 
 [[ex11-2]]
-==== Exercise 11-3
+==== Ejercicio 11-3
 
-Read the documentation of the dictionary function +get!+ and use it to write a more concise version of +invertdict+.
+Lea la documentación de la función que opera sobre diccionarios +get!+ y úsela para escribir una versión más concisa de +invertirdic+.
 (((get!)))((("function", "Base", "get!", see="get!")))
 
 [[ex11-3]]
-==== Exercise 11-4
+==== Ejercicio 11-4
 
-Memoize the Ackermann function from <<ex06-2>> and see if memoization makes it possible to evaluate the function with bigger arguments.
+Use pistas en la función de Ackermann de <<ex06-2>> y vea si esto permite evaluar la función con argumentos de mayor tamaño.
 (((memo)))(((Ackermann function)))
 
 [[ex11-4]]
-==== Exercise 11-5
+==== Ejercicio 11-5
+
+Si hizo <<ex10-7>>, ya tiene una función llamada + hasduplicates + que toma una matriz como parámetro y devuelve + true + si hay algún objeto que aparece más de una vez en la matriz.
 
 If you did <<ex10-7>>, you already have a function named +hasduplicates+ that takes an array as a parameter and returns +true+ if there is any object that appears more than once in the array.
 (((hasduplicates)))
