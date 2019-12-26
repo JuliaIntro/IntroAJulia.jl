@@ -64,7 +64,7 @@ Todas las claves y valores iniciales son cadenas, por lo que se crea un +Dict{St
 El orden de los pares clave-valor podría no ser el mismo. Si escribe el mismo ejemplo en su computadora, podría obtener un resultado diferente. En general, el orden de los elementos en un diccionario es impredecible.
 ====
 
-But that’s not a problem because the elements of a dictionary are never indexed with integer indices. Instead, you use the keys to look up the corresponding values:
+Esto no es un problema ya que los elementos de un diccionario nunca se indexan con índices enteros. En lugar de eso, se utilizan las claves para buscar los valores correspondientes:
 
 [source,@julia-repl-test chap11]
 ----
@@ -72,9 +72,9 @@ julia> eng2sp["two"]
 "dos"
 ----
 
-The key "two" always maps to the value "dos" so the order of the items doesn’t matter.
+La clave "two" nos da el valor "dos", así que el orden de los items no importa.
 
-If the key isn’t in the dictionary, you get an exception:
+Si la clave no está en el diccionario, recibimos un mensaje de error:
 (((KeyError)))((("error", "Base", "KeyError", see="KeyError")))
 
 [source,@julia-repl-test chap11]
@@ -83,7 +83,7 @@ julia> eng2sp["four"]
 ERROR: KeyError: key "four" not found
 ----
 
-The +length+ function works on dictionaries; it returns the number of key-value pairs:
+La función +length+ también funciona con diccionarios; devuelve el número de pares clave-valor:
 (((length)))
 
 [source,@julia-repl-test chap11]
@@ -92,7 +92,7 @@ julia> length(eng2sp)
 3
 ----
 
-The function +keys+ returns a collection with the keys of the dictionary:
+La función +keys+ devuelve una colección con las claves del diccionario:
 (((keys)))((("function", "Base", "keys", see="keys")))
 
 [source,@julia-repl-test chap11]
@@ -103,7 +103,7 @@ julia> print(ks)
 ["two", "one", "three"]
 ----
 
-Now you can use the +∈+ operator to see whether something appears as a _key_ in the dictionary:
+También se puede usar el operador +∈+ para ver si algo es una _clave_ en un diccionario:
 (((in)))
 
 [source,@julia-repl-test chap11]
@@ -114,7 +114,7 @@ julia> "uno" ∈ ks
 false
 ----
 
-To see whether something appears as a value in a dictionary, you can use the function +values+, which returns a collection of values, and then use the +∈+ operator:
+Para ver si algo es un valor en un diccionario, se puede usar la función +values+, que devuelve una colección de valores, y luego usar el operador +∈+:
 (((values)))((("function", "Base", "values", see="values")))
 
 [source,@julia-repl-test chap11]
@@ -125,9 +125,9 @@ julia> "uno" ∈ vs
 true
 ----
 
-The +∈+ operator uses different algorithms for arrays and dictionaries. For arrays, it searches the elements of the array in order, as in <<searching>>. As the array gets longer, the search time gets longer in direct proportion.
+El operador +∈+ utiliza diferentes algoritmos para matrices y diccionarios. Para las matrices, busca los elementos de la matriz en orden, como en <<searching>>. A medida que la matriz se alarga, el tiempo de búsqueda se alarga en proporción directa.
 
-For dictionaries, Julia uses an algorithm called a _hash table_ that has a remarkable property: the +∈+ operator takes about the same amount of time no matter how many items are in the dictionary.
+Para los diccionarios, Julia usa un algoritmo llamado _hash table_ que tiene una propiedad notable: el operador +∈+ toma aproximadamente la misma cantidad de tiempo sin importar cuántos elementos haya en el diccionario.
 (((hash table)))
 
 [[dictionary_collection_counters]]
