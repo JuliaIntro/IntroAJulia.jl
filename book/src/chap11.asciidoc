@@ -27,7 +27,7 @@ Dict{Any,Any} with 0 entries
 El tipo de este diccionario está compuesto por el tipo de las claves y de los valores. En este caso, las claves y los valores son de tipo +Any+.
 (((curly braces)))((("{}", see="curly braces")))(((Any)))((("type", "Base", "Any", see="Any")))
 
-El diccionario está vacio. Para agregar elementos al diccionario, se pueden usar corchetes:
+El diccionario está vacio. Para agregar elementos a él, se pueden usar corchetes:
 (((square brackets)))
 
 [source,@julia-repl-test chap11]
@@ -46,7 +46,7 @@ Dict{Any,Any} with 1 entry:
   "one" => "uno"
 ----
 
-Este formato de salida también es un formato de entrada. Por ejemplo, puedes crear un nuevo diccionario con tres items:
+Este formato de salida también es un formato de entrada. Por ejemplo, puedes crear un nuevo diccionario con tres items de la siguiente manera:
 
 [source,@julia-repl-test chap11]
 ----
@@ -64,7 +64,7 @@ Todas las claves y valores iniciales son cadenas, por lo que se crea un +Dict{St
 El orden de los pares clave-valor podría no ser el mismo. Si escribe el mismo ejemplo en su computadora, podría obtener un resultado diferente. En general, el orden de los elementos en un diccionario es impredecible.
 ====
 
-Esto no es un problema ya que los elementos de un diccionario nunca se indexan con índices enteros. En lugar de eso, se utilizan las claves para buscar los valores correspondientes:
+Esto no significa un problema ya que los elementos de un diccionario nunca se indexan con índices enteros. En lugar de ello, se utilizan las claves para buscar los valores correspondientes:
 
 [source,@julia-repl-test chap11]
 ----
@@ -133,24 +133,24 @@ Para los diccionarios, Julia usa un algoritmo llamado _hash table_ que tiene una
 [[dictionary_collection_counters]]
 === Dictionary as a Collection of Counters
 
-Suppose you are given a string and you want to count how many times each letter appears. There are several ways you could do it:
+Suponga que recibes una cadena y deseas contar cuántas veces aparece cada letra. Hay varias formas de hacerlo:
 
-* You could create 26 variables, one for each letter of the alphabet. Then you could traverse the string and, for each character, increment the corresponding counter, probably using a chained conditional.
+* Podrías crear 26 variables, una para cada letra del alfabeto. Luego, recorrer la cadena y, para cada carácter, incrementar el contador correspondiente, probablemente utilizando condiciones encadenadas.
 
-* You could create an array with 26 elements. Then you could convert each character to a number (using the built-in function +Int+), use the number as an index into the array, and increment the appropriate counter.
+* Podrías crear una matriz con 26 elementos. Luego, podrías convertir cada carácter en un número (usando la función integrada +Int+), usar el número como índice en la matriz e incrementar el contador apropiado.
 
-* You could create a dictionary with characters as keys and counters as the corresponding values. The first time you see a character, you would add an item to the dictionary. After that you would increment the value of an existing item.
+* Puedes crear un diccionario con caracteres como claves y contadores como los valores correspondientes. La primera vez que veas un carácter, agregarías un elemento al diccionario. Después de eso, incrementarías el valor de un elemento existente.
 
-Each of these options performs the same computation, but each of them implements that computation in a different way.
+Cada una de estas opciones realiza el mismo cálculo, pero la implementación de este cálculo es diferente.
 
-An _implementation_ is a way of performing a computation; some implementations are better than others. For example, an advantage of the dictionary implementation is that we don’t have to know ahead of time which letters appear in the string and we only have to make room for the letters that do appear.
+Una _implementación_ es una forma de realizar un cálculo. Algunas implementaciones son mejores que otras, por ejemplo, una ventaja de la implementación del diccionario es que no tenemos que saber de antemano qué letras aparecen en la cadena y solo tenemos que agregar las letras que aparecen.
 (((implementation)))
 
-Here is what the code might look like:
+Así es como se vería el código:
 
 [source,@julia-setup chap11]
 ----
-function histogram(s)
+function histograma(s)
     d = Dict()
     for c in s
         if c ∉ keys(d)
@@ -163,16 +163,16 @@ function histogram(s)
 end
 ----
 
-The name of the function is +histogram+, which is a statistical term for a collection of counters (or frequencies).
+La función se llama +histograma+, que es un término en estadística para una colección de frecuencias (o conteos).
 (((histogram)))((("function", "programmer-defined", "histogram", see="histogram")))
 
-The first line of the function creates an empty dictionary. The +for+ loop traverses the string. Each time through the loop, if the character +c+ is not in the dictionary, we create a new item with key +c+ and the initial value +1+ (since we have seen this letter once). If +c+ is already in the dictionary we increment +d[c]+.
+La primera línea de la función crea un diccionario vacío. El ciclo +for+ recorre la cadena +s+. En cada iteración de este ciclo, si el carácter +c+ no está en el diccionario, se crea un nuevo elemento con la clave +c+ y el valor inicial +1+ (ya que hemos visto esta letra una vez). Si +c+ ya está en el diccionario, se incrementa +d[c]+.
 
-Here’s how it works:
+Así es como funciona:
 
 [source,@julia-repl-test chap11]
 ----
-julia> h = histogram("brontosaurus")
+julia> h = histograma("brontosaurus")
 Dict{Any,Any} with 8 entries:
   'n' => 1
   's' => 2
@@ -184,14 +184,14 @@ Dict{Any,Any} with 8 entries:
   'b' => 1
 ----
 
-The histogram indicates that the letters +'a'+ and +'b'+ appear once; +'o'+ appears twice, and so on.
+El histograma indica que las letras +'a'+ y +'b'+ aparecen una vez; +'o'+ aparece dos veces, y así sucesivamente.
 
-Dictionaries have a function called +get+ that takes a key and a default value. If the key appears in the dictionary, +get+ returns the corresponding value; otherwise it returns the default value. For example:
+Los diccionarios tienen una función llamada +get+ que toma como argumentos un diccionario, una clave y un valor predeterminado. Si la clave aparece en el diccionario, +get+ devuelve el valor correspondiente; de lo contrario, devuelve el valor predeterminado. Por ejemplo:
 (((get)))((("function", "Base", "get", see="get")))
 
 [source,@julia-repl-test chap11]
 ----
-julia> h = histogram("a")
+julia> h = histograma("a")
 Dict{Any,Any} with 1 entry:
   'a' => 1
 julia> get(h, 'a', 0)
@@ -200,40 +200,39 @@ julia> get(h, 'b', 0)
 0
 ----
 
-==== Exercise 11-1
+==== Ejercicio 11-1
 
-Use +get+ to write +histogram+ more concisely. You should be able to eliminate the +if+ statement.
+Use +get+ para escribir la función +histograma+ de manera más concisa. Debería poder eliminar la declaración +if+.
 
+=== Iteración y Diccionarios 
 
-=== Looping and Dictionaries
-
-You can traverse the keys of the dictionary in a +for+ statement. For example, +printhist+ prints each key and the corresponding value:
+Es posible recorrer las claves del diccionario con un ciclo +for+. Por ejemplo, +imprimirhist+ imprime cada clave y su valor correspondiente:
 (((printhist)))((("function", "programmer-defined", "printhist", see="printhist")))
 
 [source,@julia-setup chap11]
 ----
-function printhist(h)
+function imprimirhist(h)
     for c in keys(h)
         println(c, " ", h[c])
     end
 end
 ----
 
-Here’s what the output looks like:
+Así es como se ve la salida:
 
 [source,@julia-repl-test chap11]
 ----
-julia> h = histogram("parrot");
+julia> h = histograma("perros");
 
-julia> printhist(h)
-a 1
+julia> imprimirhist(h)
+e 1
 r 2
 p 1
 o 1
-t 1
+s 1
 ----
 
-Again, the keys are in no particular order. To traverse the keys in sorted order, you can combine +sort+ and +collect+:
+Nuevamente, las claves no están en un orden particular. Para recorrer las claves en orden, puede usar +sort+ y +collect+:
 (((sort)))(((collect)))
 
 [source,@julia-repl-test chap11]
@@ -241,11 +240,11 @@ Again, the keys are in no particular order. To traverse the keys in sorted order
 julia> for c in sort(collect(keys(h)))
            println(c, " ", h[c])
        end
-a 1
+e 1
 o 1
 p 1
 r 2
-t 1
+s 1
 ----
 
 
