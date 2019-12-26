@@ -306,40 +306,37 @@ Una búsqueda inversa es mucho más lenta que una búsqueda directa. Si tiene qu
 
 === Diccionarios y Matrices
 
-Las matrices pueden aparecer como valores en un diccionario. Por ejemplo, si le dan un diccionario que asigna de letras a frecuencias, es posible que desee invertirlo; es decir, cree un diccionario que mapee de frecuencias a letras. Dado que puede haber varias letras con la misma frecuencia, cada valor en el diccionario invertido debe ser una matriz de letras.
+Las matrices pueden aparecer como valores en un diccionario. Por ejemplo, si tenemos un diccionario que asigna frecuencias a letras, es posible que desee invertirlo; es decir, tener un diccionario que asigne letras a frecuencias. Dado que pueden haber varias letras con la misma frecuencia, cada valor en el diccionario invertido debería ser una matriz de letras.
 
-
-Arrays can appear as values in a dictionary. For example, if you are given a dictionary that maps from letters to frequencies, you might want to invert it; that is, create a dictionary that maps from frequencies to letters. Since there might be several letters with the same frequency, each value in the inverted dictionary should be an array of letters.
-
-Here is a function that inverts a dictionary:
+Aquí hay una función que invierte un diccionario:
 (((invertdict)))((("function", "programmer-defined", "invertdict", see="invertdict")))
 
 [source,@julia-setup chap11]
 ----
-function invertdict(d)
-    inverse = Dict()
-    for key in keys(d)
-        val = d[key]
-        if val ∉ keys(inverse)
-            inverse[val] = [key]
+function invertirdic(d)
+    inverso = Dict()
+    for clave in keys(d)
+        val = d[clave]
+        if val ∉ keys(inverso)
+            inverso[val] = [clave]
         else
-            push!(inverse[val], key)
+            push!(inverso[val], clave)
         end
     end
     inverse
 end
 ----
 
-Each time through the loop, +key+ gets a key from +d+ and +val+ gets the corresponding value. If +val+ is not in +inverse+, that means we haven’t seen it before, so we create a new item and initialize it with a _singleton_ (an array that contains a single element). Otherwise we have seen this value before, so we append the corresponding key to the array.
+Cada vez que recorremos el bucle, se asigna a la variable +clave+ una clave de +d+, y a +val+ el valor correspondiente. Si +val+ no está en el diccionario +inverso+, significa que no hemos visto este valor antes, por lo que creamos un nuevo item y lo inicializamos con un _singleton_ (una matriz que contiene un solo elemento). De lo contrario, hemos visto este valor antes, por lo que agregamos la clave correspondiente a la matriz.
 (((singleton)))
 
-Here is an example:
+Aquí hay un ejemplo:
 
 [source,@julia-repl-test chap11]
 ----
-julia> hist = histogram("parrot");
+julia> hist = histograma("perros");
 
-julia> inverse = invertdict(hist)
+julia> inverso = invertirdic(hist)
 Dict{Any,Any} with 2 entries:
   2 => ['r']
   1 => ['a', 'p', 'o', 't']
@@ -349,12 +346,12 @@ Dict{Any,Any} with 2 entries:
 .State diagram
 image::images/fig111.svg[]
 
-
-<<fig11-1>> is a state diagram showing +hist+ and +inverse+. A dictionary is represented as a box with the key-value pairs inside. If the values are integers, floats or strings, I draw them inside the box, but I usually draw arrays outside the box, just to keep the diagram simple.
+<<fig11-1>> es un diagrama de estado que muestra +hist+ e +inverso+. Un diccionario se representa como un cuadro con los pares clave-valor dentro. En este libro, si los valores son enteros, números de punto flotante o cadenas de texto, se dibujan dentro del cuadro, y las matrices generalmente se dibujan fuera del cuadro, solo para mantener el diagrama simple.
 (((state diagram)))
 
 [NOTE]
 ====
+Anteriormente se mencionó que un diccionario se implementa usando una tabla hash (también llamada matriz asociativa, hashing, mapa hash, tabla de dispersión o tabla fragmentada) y eso significa que las claves deben ser _hashable_.
 I mentioned earlier that a dictionary is implemented using a hash table and that means that the keys have to be _hashable_.
 (((hashable)))
 
