@@ -359,24 +359,23 @@ Un _hash_ es una función que toma un valor (de cualquier tipo) y devuelve un en
 ====
 
 [[memos]]
-=== Memos
+=== Pistas
 
-Si jugaste con la función +fibonacci+ de <<one_more_example>>, es posible que hayas notado que cuanto más grande el argumento proporcionado, más tiempo tarda la función en ejecutarse. Además, el tiempo de ejecución aumenta rápidamente.
+Si estuvo jugando con la función +fibonacci+ de <<one_more_example>>, es posible que haya notado que cuanto más grande el argumento que le da, más tiempo tarda la función en ejecutarse. Más aún, el tiempo de ejecución aumenta muy rápidamente.
 (((fibonnaci)))
 
-Para entender por qué, considere <<fig11-2>>, que muestra el _call graph_ para la función +fibonacci+ con +n = 4+:
+Para entender por qué, considere <<fig11-2>>, que muestra el _gráfico de llamadas_ para la función +fibonacci+ con +n = 4+:
 (((call graph)))((("diagram", "call graph", see="call graph")))
 
 [[fig11-2]]
 .Call graph
 image::images/fig112.svg[]
 
+Un gráfico de llamadas muestra un conjunto de cuadros de funciones, con líneas que conectan cada cuadro con los cuadros de las funciones a las que llama. En la parte superior del gráfico, +fibonacci+ con +n = 4+ llama a +fibonacci+ con +n = 3+ y +n = 2+. A su vez, +fibonacci+ con +n = 3+ llama a +fibonacci+ con +n = 2+ y +n = 1+. Y así sucesivamente.
 
-A call graph shows a set of function frames, with lines connecting each frame to the frames of the functions it calls. At the top of the graph, +fibonacci+ with +n = 4+ calls +fibonacci+ with  +n = 3+ and +n = 2+. In turn, +fibonacci+ with +n = 3+ calls +fibonacci+ with +n = 2+ and +n = 1+. And so on.
+Cuente cuántas veces se llama a +fibonacci(0)+ y +fibonacci(1)+. Esta es una solución ineficiente al problema, y empeora a medida que el argumento aumenta en tamaño.
 
-Count how many times +fibonacci(0)+ and +fibonacci(1)+ are called. This is an inefficient solution to the problem, and it gets worse as the argument gets bigger.
-
-One solution is to keep track of values that have already been computed by storing them in a dictionary. A previously computed value that is stored for later use is called a _memo_. Here is a “memoized” version of fibonacci:
+Una solución es llevar un registro de los valores que ya se han calculado almacenándolos en un diccionario. Un valor que ya ha sido calculado y almacenado para un uso posterior se le denomina _pista_. Aquí hay una implementación de fibonacci con pistas:
 (((memo)))
 
 [source,@julia-setup]
@@ -384,20 +383,20 @@ One solution is to keep track of values that have already been computed by stori
 known = Dict(0=>0, 1=>1)
 
 function fibonacci(n)
-    if n ∈ keys(known)
-        return known[n]
+    if n ∈ keys(anteriores)
+        return anteriores[n]
     end
     res = fibonacci(n-1) + fibonacci(n-2)
-    known[n] = res
+    anteriores[n] = res
     res
 end
 ----
 
-+known+ is a dictionary that keeps track of the Fibonacci numbers we already know. It starts with two items: +0+ maps to +0+ and +1+ maps to +1+.
+El diccionario llamado +anteriores+ mantiene un registro de los valores de Fibonacci que ya conocemos. El programa comienza con dos pares: +0+ corresponde a +1+ y +1+ corresponde a +1+.
 
-Whenever +fibonacci+ is called, it checks +known+. If the result is already there, it can return immediately. Otherwise it has to compute the new value, add it to the dictionary, and return it.
+Siempre que se llama a +fibonacci+, se comprueba si el diccionario contiene el resultado ya calculado. Si está ahi, la función puede devolver el valor inmediatamente. Si no, tiene que calcular el nuevo valor, añadirlo al diccionario y devolverlo.
 
-If you run this version of +fibonacci+ and compare it with the original, you will find that it is much faster.
+Si ejecuta esta versión de +fibonacci+ y la compara con la original, se dará cuenta de que es mucho más rápida.
 
 [[global_variables]]
 === Global Variables
