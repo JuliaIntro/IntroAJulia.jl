@@ -1048,8 +1048,14 @@ Dos palabras son un "par inverso" si cada una es la inversa de la otra. Escriba 
 
 [[ex10-12]]
 ==== Ejercicio 10-12
+mi 
+palloe
 
-Dos palabras se "entrelazan" si al unir las letras de cada una se forma una nueva palabra. Por ejemplo, "gama" y "rana" se entrelazan para formar "anagrama".
+paella
+
+aloe
+
+Dos palabras se "entrelazan" si al tomar letras alternando entre cada palabra se forma una nueva palabra. Por ejemplo, "pi" y "as" se entrelazan para formar "pais".
 (((interlock)))
 
 Credito: Este ejercicio está inspirado en un ejemplo de http://puzzlers.org.
@@ -1062,5 +1068,5 @@ Credito: Este ejercicio está inspirado en un ejemplo de http://puzzlers.org.
 ¡No enumeres todos los pares!
 ====
 
-. Can you find any words that are three-way interlocked; that is, every third letter forms a word, starting from the first, second or third?
+. ¿Puedes encontrar tres palabras que se entrelacen, es decir, cada tercera letra forma una palabra, empezando de la primera, segunda o tercera letra de la palabra?
 
