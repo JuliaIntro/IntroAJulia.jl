@@ -46,7 +46,7 @@ Dict{Any,Any} with 1 entry:
   "one" => "uno"
 ----
 
-This output format is also an input format. For example, you can create a new dictionary with three items:
+Este formato de salida también es un formato de entrada. Por ejemplo, puedes crear un nuevo diccionario con tres items:
 
 [source,@julia-repl-test chap11]
 ----
@@ -57,11 +57,11 @@ Dict{String,String} with 3 entries:
   "three" => "tres"
 ----
 
-All the initial keys and values are strings, so a +Dict{String,String}+ is created. 
+Todas las claves y valores iniciales son cadenas, por lo que se crea un +Dict{String,String}+.
 
 [WARNING]
 ====
-The order of the key-value pairs might not be the same. If you type the same example on your computer, you might get a different result. In general, the order of items in a dictionary is unpredictable.
+El orden de los pares clave-valor podría no ser el mismo. Si escribe el mismo ejemplo en su computadora, podría obtener un resultado diferente. En general, el orden de los elementos en un diccionario es impredecible.
 ====
 
 But that’s not a problem because the elements of a dictionary are never indexed with integer indices. Instead, you use the keys to look up the corresponding values:
