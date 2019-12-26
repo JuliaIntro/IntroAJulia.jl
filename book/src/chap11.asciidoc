@@ -41,7 +41,7 @@ Esta línea de código crea un elemento que asigna la clave "one" al valor "uno"
 
 [source,@julia-repl-test chap11]
 ----
-julia> eng2sp
+julia> ing_a_esp
 Dict{Any,Any} with 1 entry:
   "one" => "uno"
 ----
@@ -50,7 +50,7 @@ Este formato de salida también es un formato de entrada. Por ejemplo, puedes cr
 
 [source,@julia-repl-test chap11]
 ----
-julia> eng2sp = Dict("one" => "uno", "two" => "dos", "three" => "tres")
+julia> ing_a_esp = Dict("one" => "uno", "two" => "dos", "three" => "tres")
 Dict{String,String} with 3 entries:
   "two"   => "dos"
   "one"   => "uno"
@@ -68,7 +68,7 @@ Esto no significa un problema ya que los elementos de un diccionario nunca se in
 
 [source,@julia-repl-test chap11]
 ----
-julia> eng2sp["two"]
+julia> ing_a_esp["two"]
 "dos"
 ----
 
@@ -79,7 +79,7 @@ Si la clave no está en el diccionario, recibimos un mensaje de error:
 
 [source,@julia-repl-test chap11]
 ----
-julia> eng2sp["four"]
+julia> ing_a_esp["four"]
 ERROR: KeyError: key "four" not found
 ----
 
@@ -88,7 +88,7 @@ La función +length+ también funciona con diccionarios; devuelve el número de 
 
 [source,@julia-repl-test chap11]
 ----
-julia> length(eng2sp)
+julia> length(ing_a_esp)
 3
 ----
 
@@ -97,7 +97,7 @@ La función +keys+ devuelve una colección con las claves del diccionario:
 
 [source,@julia-repl-test chap11]
 ----
-julia> ks = keys(eng2sp);
+julia> ks = keys(ing_a_esp);
 
 julia> print(ks)
 ["two", "one", "three"]
