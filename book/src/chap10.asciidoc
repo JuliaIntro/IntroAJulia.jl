@@ -891,7 +891,7 @@ Un carácter o cadena utilizado para indicar donde debe cortarse una cadena.
 
 [source,@julia-eval chap10]
 ----
-function nestedsum(t)
+function sumaanidada(t)
   total = 0
   for nested in t
     total += sum(nested)
@@ -899,7 +899,7 @@ function nestedsum(t)
   total
 end;
 
-function cumulsum(t)
+function sumaacumulada(t)
   total = 0
   res = []
   for x in t
@@ -919,7 +919,7 @@ function interior!(t)
   nothing
 end;
 
-function issort(t)
+function estaordenada(t)
   t == sort(t)
 end;
 ----
@@ -934,7 +934,7 @@ Escriba una función llamada +sumaanidada+ que tome una matriz de matrices de en
 ----
 julia> t = [[1, 2], [3], [4, 5, 6]];
 
-julia> umaanidada(t)
+julia> sumaanidada(t)
 21
 ----
 
@@ -990,9 +990,9 @@ Escriba una función llamada +estaordenada+ que tome una matriz como parámetro 
 
 [source,@julia-repl-test chap10]
 ----
-julia> issort([1, 2, 2])
+julia> estaordenada([1, 2, 2])
 true
-julia> issort(['b', 'a'])
+julia> estaordenada(['b', 'a'])
 false
 ----
 
