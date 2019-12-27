@@ -221,7 +221,7 @@ end
 
 El parámetro de recopilación puede tener cualquier nombre, pero +args+ es la convención. A continuación se muestra cómo funciona la función:
 
-[source,@julia-repl-test chap12
+[source,@julia-repl-test chap12]
 ----
 julia> printall(1, 2.0, '3')
 (1, 2.0, '3')
