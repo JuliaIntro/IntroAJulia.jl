@@ -1,20 +1,14 @@
 [[chap12]]
-== Tuples
+== Tuplas
 
-This chapter presents one more built-in type, the tuple, and then shows how arrays, dictionaries, and tuples work together. I also present a useful feature for variable-length argument arrays, the gather and scatter operators.
+Este capítulo presenta un tipo integrado más: la tupla, y luego muestra cómo las matrices, los diccionarios y las tuplas funcionan en conjunto. También se presenta una característica útil para las matrices de argumentos de longitud variable: los operadores de recopilación y dispersión.
 
-[NOTE]
-====
-There is no consensus on how to pronounce “tuple”. Some people say “tuh-ple”, which rhymes with “supple”. But in the context of programming, most people say “too-ple”, which rhymes with “quadruple”.
-====
+=== Las Tuples son Immutables
 
-
-=== Tuples Are Immutable
-
-A tuple is a sequence of values. The values can be of any type, and they are indexed by integers, so in that respect tuples are a lot like arrays. The important difference is that tuples are immutable and that each element can have its own type.
+Una tupla es una secuencia de valores. Los valores pueden ser de cualquier tipo, y están indexados por enteros, por lo que las tuplas son muy parecidas a las matrices. La diferencia más importante es que las tuplas son inmutables y que cada elemento puede tener su propio tipo.
 (((tuple)))(((immutable)))
 
-Syntactically, a tuple is a comma-separated list of values:
+Una tupla es una lista de valores separados por comas:
 
 [source,@julia-repl-test]
 ----
@@ -22,7 +16,7 @@ julia> t = 'a', 'b', 'c', 'd', 'e'
 ('a', 'b', 'c', 'd', 'e')
 ----
 
-Although it is not necessary, it is common to enclose tuples in parentheses:
+Aunque no es necesario, es común encerrar las tuplas entre paréntesis:
 (((parentheses)))
 
 [source,@julia-repl-test]
@@ -31,7 +25,7 @@ julia> t = ('a', 'b', 'c', 'd', 'e')
 ('a', 'b', 'c', 'd', 'e')
 ----
 
-To create a tuple with a single element, you have to include a final comma:
+Para crear una tupla con un solo elemento, se debe incluir una coma final:
 (((final comma)))(((typeof)))(((Tuple)))((("type", "Base", "Tuple", see="Tuple")))
 
 [source,@julia-repl-test]
@@ -44,7 +38,7 @@ Tuple{Char}
 
 [WARNING]
 ====
-A value in parentheses without comma is not a tuple:
+Un valor entre paréntesis sin coma no es una tupla:
 
 [source,@julia-repl-test]
 ----
@@ -56,7 +50,7 @@ Char
 
 ====
 
-Another way to create a tuple is the built-in function tuple. With no argument, it creates an empty tuple:
+Otra forma de crear una tupla es la función de tupla integrada en Julia. Sin argumento, esta función crea una tupla vacía:
 (((tuple)))((("function", "Base", "tuple", see="tuple")))
 
 [source,@julia-repl-test]
@@ -65,7 +59,7 @@ julia> tuple()
 ()
 ----
 
-If multiple arguments are provided, the result is a tuple with the given arguments:
+Si se tienen múltiples argumentos, el resultado es una tupla con los argumentos dados:
 
 [source,@julia-repl-test]
 ----
@@ -73,9 +67,9 @@ julia> t3 = tuple(1, 'a', pi)
 (1, 'a', π)
 ----
 
-Because tuple is the name of a built-in function, you should avoid using it as a variable name.
+Ya que tupla es el nombre de una función integrada, debe evitar usarla como nombre de variable.
 
-Most array operators also work on tuples. The bracket operator indexes an element:
+La mayoría de los operadores de matriz también sirven en las tuplas. El operador corchete indexa un elemento:
 (((bracket operator)))
 
 [source,@julia-repl-test chap12]
@@ -86,7 +80,7 @@ julia> t[1]
 'a': ASCII/Unicode U+0061 (category Ll: Letter, lowercase)
 ----
 
-And the slice operator selects a range of elements:
+Y el operador porción selecciona un rango de elementos:
 (((slice operator)))
 
 [source,@julia-repl-test chap12]
@@ -95,7 +89,7 @@ julia> t[2:4]
 ('b', 'c', 'd')
 ----
 
-But if you try to modify one of the elements of the tuple, you get an error:
+Pero si se intenta modificar uno de los elementos de la tupla, se obtendrá un error:
 (((MethodError)))
 
 [source,@julia-repl-test chap12]
@@ -104,7 +98,9 @@ julia> t[1] = 'A'
 ERROR: MethodError: no method matching setindex!(::NTuple{5,Char}, ::Char, ::Int64)
 ----
 
-Because tuples are immutable, you can’t modify the elements.
+Como las tuplas son inmutables, no se pueden modificar sus elementos.
+
+Los operadores relacionales trabajan con tuplas y otras secuencias; Julia comienza comparando el primer elemento de cada secuencia. Si son iguales, pasa a los siguientes elementos, y así sucesivamente, hasta que encuentra elementos que difieren. Los elementos posteriores no se consideran (incluso si son realmente grandes).
 
 The relational operators work with tuples and other sequences; Julia starts by comparing the first element from each sequence. If they are equal, it goes on to the next elements, and so on, until it finds elements that differ. Subsequent elements are not considered (even if they are really big).
 (((relational operator)))
