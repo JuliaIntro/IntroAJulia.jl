@@ -1,7 +1,7 @@
 [[chap12]]
 == Tuplas
 
-Este capítulo presenta un tipo integrado más: la tupla, y luego muestra cómo las matrices, los diccionarios y las tuplas funcionan en conjunto. También se presenta una característica útil para las matrices de argumentos de longitud variable: los operadores de recopilación y dispersión.
+Este capítulo presenta un tipo integrado más: las tuplas, y luego muestra cómo las matrices, los diccionarios y las tuplas funcionan en conjunto. También se presenta una característica útil para las matrices de argumentos de longitud variable: los operadores de recopilación y dispersión.
 
 === Las Tuples son Immutables
 
@@ -98,9 +98,9 @@ julia> t[1] = 'A'
 ERROR: MethodError: no method matching setindex!(::NTuple{5,Char}, ::Char, ::Int64)
 ----
 
-Como las tuplas son inmutables, no se pueden modificar sus elementos.
+Como las tuplas son inmutables, sus elementos no se pueden modificar.
 
-Los operadores relacionales trabajan con tuplas y otras secuencias; Julia comienza comparando el primer elemento de cada secuencia. Si son iguales, pasa a los siguientes elementos, y así sucesivamente, hasta que encuentra elementos que difieren. Los elementos posteriores no se consideran (incluso si son realmente grandes).
+Los operadores relacionales funcionan con las tuplas y otras secuencias; Julia comienza comparando el primer elemento de cada secuencia. Si son iguales, pasa a los siguientes elementos, y así sucesivamente, hasta que encuentra elementos que difieren. Los elementos posteriores no se consideran (incluso si son realmente grandes).
 (((relational operator)))
 
 [source,@julia-repl-test]
@@ -132,9 +132,9 @@ Esta solución resulta aparatosa. La asignación de tuplas soluciona este proble
 a, b = b, a
 ----
 
-El lado izquierdo es una tupla de variables; el lado derecho es una tupla de expresiones. Cada valor se asigna a su respectiva variable. Todas las expresiones en el lado derecho se evalúan antes de cualquiera de las asignaciones.
+El lado izquierdo es una tupla de variables; el lado derecho es una tupla de expresiones. Cada valor se asigna a su respectiva variable. Todas las expresiones del lado derecho se evalúan antes de las asignaciones.
 
-El número de variables de la izquierda tiene que ser menor que el número de valores a la derecha:
+El número de variables de la izquierda tiene que ser menor o igual que el número de valores a la derecha:
 (((BoundsError)))
 
 [source,@julia-repl-test]
@@ -146,34 +146,34 @@ ERROR: BoundsError: attempt to access (1, 2)
   at index [3]
 ----
 
-More generally, the right side can be any kind of sequence (string, array or tuple). For example, to split an email address into a user name and a domain, you could write:
+El lado derecho puede ser cualquier tipo de secuencia (cadena, matriz o tupla). Por ejemplo, para dividir una dirección de correo electrónico en nombre de usuario y dominio, se puede escribir:
 (((split)))
 
 [source,@julia-repl-test chap12]
 ----
-julia> addr = "julius.caesar@rome"
-"julius.caesar@rome"
-julia> uname, domain = split(addr, '@');
+julia> addr = "julio.cesar@roma"
+"julio.cesar@roma"
+julia> unombre, dominio = split(addr, '@');
 
 ----
 
-The return value from +split+ is an array with two elements; the first element is assigned to +uname+, the second to +domain+.
+El valor de retorno de +split+ es una matriz con dos elementos; el primer elemento se asigna a +unombre+, y el segundo a +dominio+.
 
 [source,@julia-repl-test chap12]
 ----
-julia> uname
-"julius.caesar"
-julia> domain
+julia> unombre
+"julio.cesar"
+julia> dominio
 "rome"
 ----
 
 
-=== Tuples as Return Values
+=== Tuplas como valor de retorno
 
-Strictly speaking, a function can only return one value, but if the value is a tuple, the effect is the same as returning multiple values. For example, if you want to divide two integers and compute the quotient and remainder, it is inefficient to compute +x ÷ y+ and then +x % y+. It is better to compute them both at the same time.
+Estrictamente hablando, una función solo puede devolver un valor, pero si el valor es una tupla, el efecto es el mismo que devolver múltiples valores. Por ejemplo, si desea dividir dos enteros y calcular el cociente y el resto, es ineficiente calcular +x ÷ y+ y luego +x % y+. Es mejor calcularlos a ambos al mismo tiempo.
 (((÷)))(((%)))
 
-The built-in function +divrem+ takes two arguments and returns a tuple of two values, the quotient and remainder. You can store the result as a tuple:
+La función integrada +divrem+ toma dos argumentos y devuelve una tupla de dos valores: el cociente y el resto. El resultado puede ser almacenado como una tupla:
 (((divrem)))((("function", "Base", "divrem", see="divrem")))
 
 [source,@julia-repl-test]
@@ -182,7 +182,7 @@ julia> t = divrem(7, 3)
 (2, 1)
 ----
 
-Or use tuple assignment to store the elements separately:
+También se puede utilizar asignación de tuplas para almacenar los elementos por separado:
 
 [source,@julia-repl-test]
 ----
@@ -193,7 +193,7 @@ q = 2
 r = 1
 ----
 
-Here is an example of a function that returns a tuple:
+Aquí hay un ejemplo de una función que devuelve una tupla:
 (((minmax)))((("function", "programmer-defined", "minmax", see="minmax")))
 
 [source,@julia-setup]
@@ -203,30 +203,31 @@ function minmax(t)
 end
 ----
 
-+maximum+ and +minimum+ are built-in functions that find the largest and smallest elements of a sequence. +minmax+ computes both and returns a tuple of two values. The built-in function +extrema+ is more efficient.
++máximo+ y +mínimo+ son funciones integradas que encuentran los elementos más grandes y más pequeños de una secuencia, respectivamente. +minmax+ calcula ambos y devuelve una tupla de dos valores. Otra opción para realizar esto, es utilizar la función integrada +extrema+, la cual es más eficiente.
 (((maximum)))(((minimum)))(((extrema)))((("function", "Base", "maximum", see="maximum")))((("function", "Base", "minimum", see="minimum")))((("function", "Base", "extrema", see="extrema")))
 
-=== Variable-length Argument Tuples
+=== Tuplas de argumento de longitud variable
+ Variable-length Argument Tuples
 
-Functions can take a variable number of arguments. A parameter name that ends with +pass:[...]+ _gathers_ arguments into a tuple. For example, +printall+ takes any number of arguments and prints them:
+Las funciones pueden tomar un número variable de argumentos. Un nombre de parámetro que termina con +pass:[...]+ _recopila_ argumentos en una tupla. Por ejemplo, +imprimirtodo+ toma cualquier número de argumentos y los imprime:
 (((gather)))(((...)))(((printall)))((("function", "programmer-defined", "printall", see="printall")))
 
 [source,@julia-setup chap12]
 ----
-function printall(args...)
+function imprimirtodo(args...)
     println(args)
 end
 ----
 
-The gather parameter can have any name you like, but +args+ is conventional. Here’s how the function works:
+El parámetro de recopilación puede tener cualquier nombre, pero +args+ es la convención. A continuación se muestra cómo funciona la función:
 
-[source,@julia-repl-test chap12]
+[source,@julia-repl-test chap12
 ----
 julia> printall(1, 2.0, '3')
 (1, 2.0, '3')
 ----
 
-The complement of gather is _scatter_. If you have a sequence of values and you want to pass it to a function as multiple arguments, you can use the +pass:[...]+ operator. For example, +divrem+ takes exactly two arguments; it doesn’t work with a tuple:
+El opuesto de la recopilación es la _dispersión_. Si tiene una secuencia de valores y desea pasarla a una función como argumento múltiple, puede usar el operador +pass:[...]+. Por ejemplo, +divrem+ toma exactamente dos argumentos; no funciona con tuplas:
 (((scatter)))(((MethodError)))
 
 [source,@julia-repl-test chap12]
@@ -237,13 +238,15 @@ julia> divrem(t)
 ERROR: MethodError: no method matching divrem(::Tuple{Int64,Int64})
 ----
 
-But if you scatter the tuple, it works:
+Pero si "dispersamos" la tupla, funciona:
 
 [source,@julia-repl-test chap12]
 ----
 julia> divrem(t...)
 (2, 1)
 ----
+
+Muchas de las funciones integradas usan tuplas de argumento de longitud variable. Por ejemplo, +max+ y +min+ pueden tomar cualquier número de argumentos:
 
 Many of the built-in functions use variable-length argument tuples. For example, +max+ and +min+ can take any number of arguments:
 (((max)))(((min)))((("function", "Base", "max", see="max")))((("function", "Base", "min", see="min")))
