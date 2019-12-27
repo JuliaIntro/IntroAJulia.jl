@@ -3,7 +3,7 @@
 
 Este capítulo presenta otro tipo integrado; las tuplas, y luego muestra cómo las matrices, los diccionarios y las tuplas funcionan en conjunto. También se presenta una característica útil para las matrices con argumentos de longitud variable: los operadores de recopilación y dispersión.
 
-=== Las Tuples son Immutables
+=== Las Tuplas son Immutables
 
 Una tupla es una secuencia de valores. Los valores pueden ser de cualquier tipo, y están indexados por enteros, por lo que las tuplas son muy parecidas a las matrices. La diferencia más importante es que las tuplas son inmutables y que cada elemento puede tener su propio tipo.
 (((tuple)))(((immutable)))
