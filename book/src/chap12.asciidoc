@@ -170,7 +170,7 @@ julia> dominio
 
 === Tuplas como valor de retorno
 
-Estrictamente hablando, una función solo puede devolver un valor, pero si el valor es una tupla, el efecto es el mismo que devolver múltiples valores. Por ejemplo, si desea dividir dos enteros y calcular el cociente y el resto, es ineficiente calcular +x ÷ y+ y luego +x % y+. Es mejor calcularlos a ambos al mismo tiempo.
+Estrictamente hablando, una función solo puede devolver un valor, pero si el valor es una tupla, el efecto es el mismo que devolver múltiples valores. Por ejemplo, si desea dividir dos enteros y calcular el cociente y el resto, es ineficiente calcular +x ÷ y+ y luego +x % y+. Es mejor calcular ambos al mismo tiempo.
 (((÷)))(((%)))
 
 La función integrada +divrem+ toma dos argumentos y devuelve una tupla de dos valores: el cociente y el resto. El resultado puede ser almacenado como una tupla:
