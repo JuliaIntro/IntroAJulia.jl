@@ -112,9 +112,9 @@ true
 ----
 
 
-=== Tuple Assignment
+=== Asignación de tupla
 
-It is often useful to swap the values of two variables. With conventional assignments, you have to use a temporary variable. For example, to swap a and b:
+De vez en cuando, es útil intercambiar los valores de dos variables. Para hacerlo con sentencias de asignación convencionales debemos usar una variable temporal. Por ejemplo, para intercambiar a y b:
 (((assignment)))
 
 [source,julia]
@@ -124,7 +124,7 @@ a = b
 b = temp
 ----
 
-This solution is cumbersome; tuple assignment is more elegant:
+Esta solución resulta aparatosa. La asignación de tuplas soluciona este problema elegantemente:
 (((tuple assignment)))
 
 [source,julia]
@@ -132,9 +132,9 @@ This solution is cumbersome; tuple assignment is more elegant:
 a, b = b, a
 ----
 
-The left side is a tuple of variables; the right side is a tuple of expressions. Each value is assigned to its respective variable. All the expressions on the right side are evaluated before any of the assignments.
+El lado izquierdo es una tupla de variables; el lado derecho es una tupla de expresiones. Cada valor se asigna a su respectiva variable. Todas las expresiones en el lado derecho se evalúan antes de cualquiera de las asignaciones.
 
-The number of variables on the left has to be fewer than the number of values on the right:
+El número de variables de la izquierda tiene que ser menor que el número de valores a la derecha:
 (((BoundsError)))
 
 [source,@julia-repl-test]
