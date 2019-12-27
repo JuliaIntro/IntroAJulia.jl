@@ -101,8 +101,6 @@ ERROR: MethodError: no method matching setindex!(::NTuple{5,Char}, ::Char, ::Int
 Como las tuplas son inmutables, no se pueden modificar sus elementos.
 
 Los operadores relacionales trabajan con tuplas y otras secuencias; Julia comienza comparando el primer elemento de cada secuencia. Si son iguales, pasa a los siguientes elementos, y así sucesivamente, hasta que encuentra elementos que difieren. Los elementos posteriores no se consideran (incluso si son realmente grandes).
-
-The relational operators work with tuples and other sequences; Julia starts by comparing the first element from each sequence. If they are equal, it goes on to the next elements, and so on, until it finds elements that differ. Subsequent elements are not considered (even if they are really big).
 (((relational operator)))
 
 [source,@julia-repl-test]
