@@ -1,7 +1,7 @@
 [[chap12]]
 == Tuplas
 
-Este capítulo presenta un tipo integrado más: las tuplas, y luego muestra cómo las matrices, los diccionarios y las tuplas funcionan en conjunto. También se presenta una característica útil para las matrices de argumentos de longitud variable: los operadores de recopilación y dispersión.
+Este capítulo presenta otro tipo integrado: las tuplas, y luego muestra cómo las matrices, los diccionarios y las tuplas funcionan en conjunto. También se presenta una característica útil para las matrices de argumentos de longitud variable: los operadores de recopilación y dispersión.
 
 === Las Tuples son Immutables
 
