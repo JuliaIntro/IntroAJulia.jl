@@ -203,7 +203,7 @@ function minmax(t)
 end
 ----
 
-+máximo+ y +mínimo+ son funciones integradas que encuentran los elementos más grandes y más pequeños de una secuencia, respectivamente. +minmax+ calcula ambos y devuelve una tupla de dos valores. Otra opción para realizar esto, es utilizar la función integrada +extrema+, la cual es más eficiente.
++máximo+ y +mínimo+ son funciones integradas que encuentran los elementos más grandes y más pequeños de una secuencia, respectivamente. La función +minmax+ calcula ambos y devuelve una tupla de dos valores. Otra alternativa es utilizar la función integrada +extrema+, lo cual es más eficiente.
 (((maximum)))(((minimum)))(((extrema)))((("function", "Base", "maximum", see="maximum")))((("function", "Base", "minimum", see="minimum")))((("function", "Base", "extrema", see="extrema")))
 
 === Tuplas de argumento de longitud variable
