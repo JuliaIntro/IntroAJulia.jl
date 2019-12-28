@@ -227,7 +227,7 @@ julia> printall(1, 2.0, '3')
 (1, 2.0, '3')
 ----
 
-El opuesto de la recopilación es la _dispersión_. Si tiene una secuencia de valores y desea pasarla a una función como argumento múltiple, puede usar el operador +pass:[...]+. Por ejemplo, +divrem+ toma exactamente dos argumentos; no funciona con tuplas:
+El opuesto de la recopilación es la _dispersión_. Si tiene una secuencia de valores y desea pasarla a una función como argumento múltiple, puede usar el operador +pass:[...]+ . Por ejemplo, +divrem+ toma exactamente dos argumentos; no funciona con tuplas:
 (((scatter)))(((MethodError)))
 
 [source,@julia-repl-test chap12]
