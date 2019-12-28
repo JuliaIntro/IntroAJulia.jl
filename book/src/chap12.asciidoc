@@ -246,9 +246,7 @@ julia> divrem(t...)
 (2, 1)
 ----
 
-Muchas de las funciones integradas usan tuplas de argumento de longitud variable. Por ejemplo, +max+ y +min+ pueden tomar cualquier número de argumentos:
-
-Many of the built-in functions use variable-length argument tuples. For example, +max+ and +min+ can take any number of arguments:
+Muchas de las funciones integradas usan tuplas de longitud variable como argumento. Por ejemplo, +max+ y +min+ pueden tomar cualquier número de argumentos:
 (((max)))(((min)))((("function", "Base", "max", see="max")))((("function", "Base", "min", see="min")))
 
 [source,@julia-repl-test]
@@ -257,7 +255,7 @@ julia> max(1, 2, 3)
 3
 ----
 
-But +sum+ does not:
+Pero +sum+ no:
 (((sum)))
 
 [source,@julia-repl-test]
@@ -266,20 +264,20 @@ julia> sum(1, 2, 3)
 ERROR: MethodError: no method matching sum(::Int64, ::Int64, ::Int64)
 ----
 
-==== Exercise 12-1
+==== Ejercicio 12-1
 
-Write a function called +sumall+ that takes any number of arguments and returns their sum.
+Escriba una función llamada +sumall+ que tome cualquier número de argumentos y devuelva su suma.
 (((sumall)))((("function", "programmer-defined", "sumall", see="sumall")))
 
 In the Julia world, gather is often called “slurp” and scatter “splat”.
 
 
-=== Arrays and Tuples
+=== Matrices y tuplas
 
-+zip+ is a built-in function that takes two or more sequences and returns a collection of tuples where each tuple contains one element from each sequence. The name of the function refers to a zipper, which joins and interleaves two rows of teeth.
++zip+ es una función integrada que toma dos o más secuencias y devuelve una colección de tuplas donde cada tupla contiene un elemento de cada secuencia. El nombre de la función se refiere a una cremallera, que une e intercala dos filas de dientes.
 (((zip)))((("function", "Base", "zip", see="zip")))
 
-This example zips a string and an array:
+Este ejemplo une e intercala una cadena y una matriz:
 
 [source,@julia-repl-test chap12]
 ----
@@ -291,12 +289,12 @@ julia> zip(s, t)
 Base.Iterators.Zip{Tuple{String,Array{Int64,1}}}(("abc", [1, 2, 3]))
 ----
 
-The result is a _zip object_ that knows how to iterate through the pairs. The most common use of +zip+ is in a +for+ loop:
+El resultado es un _objeto zip_ que permite iterar a través de los pares. El uso más común de +zip+ es en un bucle +for+:
 (((zip object)))(((for statement)))
 
 [source,@julia-repl-test chap12]
 ----
-julia> for pair in zip(s, t)
+julia> for par in zip(s, t)
            println(pair)
        end
 ('a', 1)
@@ -304,10 +302,10 @@ julia> for pair in zip(s, t)
 ('c', 3)
 ----
 
-A zip object is a kind of _iterator_, which is any object that iterates through a sequence. Iterators are similar to arrays in some ways, but unlike arrays, you can’t use an index to select an element from an iterator.
+Un objeto zip es un tipo de _iterador_, que es cualquier objeto que itera a través de una secuencia. Los iteradores son, de cierto modo, similares a las matrices, pero a diferencia de las matrices, no se puede usar un índice para seleccionar un elemento de un iterador.
 (((iterator)))
 
-If you want to use array operators and functions, you can use a zip object to make an array:
+Si desea usar operadores y funciones de matrices, puedes usar un objeto zip para hacer una matriz:
 (((collect)))
 
 [source,@julia-repl-test chap12]
@@ -319,9 +317,9 @@ julia> collect(zip(s, t))
  ('c', 3)
 ----
 
-The result is an array of tuples; in this example, each tuple contains a character from the string and the corresponding element from the array.
+El resultado es una serie de tuplas; en este ejemplo, cada tupla contiene un carácter de la cadena y el elemento correspondiente de la matriz.
 
-If the sequences are not the same length, the result has the length of the shorter one.
+Si las secuencias no tienen el mismo largo, el resultado tiene el largo de la más corta.
 
 [source,@julia-repl-test]
 ----
@@ -332,7 +330,7 @@ julia> collect(zip("Anne", "Elk"))
  ('n', 'k')
 ----
 
-You can use tuple assignment in a +for+ loop to traverse an array of tuples:
+Puede usar asignación de tuplas en un bucle +for+ para recorrer una matriz de tuplas:
 (((tuple assignment)))
 
 [source,@julia-repl-test]
