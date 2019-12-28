@@ -219,7 +219,7 @@ function imprimirtodo(args...)
 end
 ----
 
-El parámetro de recopilación puede tener cualquier nombre, pero +args+ es la convención. A continuación se muestra cómo funciona la función:
+El parámetro de recopilación puede tener cualquier nombre, pero la convención es llamarlo +args+. A continuación se muestra cómo funciona la función:
 
 [source,@julia-repl-test chap12]
 ----
