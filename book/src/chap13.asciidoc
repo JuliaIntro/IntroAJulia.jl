@@ -130,7 +130,7 @@ hist = procesararchivo("DonQuijote.txt");
 Este programa lee _DonQuijote.txt_, que contiene el texto de _Don Quijote_ de Miguel de Cervantes.
 (((Austen, Jane)))
 
-+procesararchivo+ recorre las líneas del archivo, pasando una a la vez a +procesarlinea+. El histograma +hist+ se está utilizando como acumulador.
++procesararchivo+ recorre las líneas del archivo, pasando una línea a la vez a +procesarlinea+. El histograma +hist+ se está utilizando como acumulador.
 (((accumulator)))
 
 +procesarlinea+ usa la función +replace+ para reemplazar los guiones por espacios antes de usar +split+ para dividir la línea en una matriz de cadenas. Recorre el conjunto de palabras y usa +filter+, +isletter+ y +lowercase+ para eliminar los signos de puntuación y convertir las palabras a minúsculas. (Decir que las cadenas se "convierten" es incorrecto; recuerde que las cadenas son inmutables, por lo que una función como +lowercase+ devuelve cadenas nuevas).
