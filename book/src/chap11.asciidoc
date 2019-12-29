@@ -12,7 +12,7 @@ Un _diccionario_ es como una matriz, pero más general. En una matriz, los índi
 Un diccionario contiene una colección de índices, llamados _claves_, y una colección de valores. Cada clave está asociada a un solo valor. La asociación entre una clave y un valor se denomina _par clave-valor_ o, a veces, item.
 (((key)))(((value)))(((key-value pair)))(((item)))
 
-En lenguaje matemático, un diccionario representa un _mapeo_ de las claves a los valores, es decir, cada clave se asigna a un valor. A modo de ejemplo, crearemos un diccionario que asigne palabras en español a palabras en inglés. En este diccionario, las claves y los valores son cadenas.
+En lenguaje matemático, un diccionario representa un _mapeo_ de las claves a los valores, es decir, cada clave apunta a un valor. A modo de ejemplo, crearemos un diccionario que asocie palabras en español con palabras en inglés. En este diccionario, las claves y los valores son cadenas.
 (((mapping)))
 
 La función +Dict+ crea un nuevo diccionario sin elementos. Como +Dict+ es el nombre de una función integrada de Julia, debe evitar usarla como nombre de variable.
@@ -36,7 +36,7 @@ julia> ing_a_esp["one"] = "uno";
 
 ----
 
-Esta línea de código crea un elemento que asigna la clave "one" al valor "uno". Si imprimimos el diccionario nuevamente, vemos un par clave-valor con una flecha +pass:[=&gt;]+ entre la clave y el valor:
+Esta línea de código crea un elemento con la clave "one" que apunta al valor "uno". Si imprimimos el diccionario nuevamente, vemos un par clave-valor con una flecha +pass:[=&gt;]+ entre la clave y el valor:
 (((pass:[=&gt;])))
 
 [source,@julia-repl-test chap11]
@@ -253,10 +253,10 @@ s 1
 Dado un diccionario +d+ y una clave +k+, es fácil encontrar el valor correspondiente +v = d[k]+. Esta operación se llama _búsqueda_.
 (((lookup)))
 
-Pero, ¿qué pasa si tenemos +v+ y queremos encontrar +k+? Existen dos problemas: primeramente, puede haber más de una clave asignada al valor +v+. Dependiendo de lo que queramos, es posible que podamos elegir una de estas claves, o que tengamos que hacer una matriz que las contenga a todas. En segundo lugar, no hay una sintaxis simple para hacer una búsqueda inversa; solo debemos buscar.
+Pero, ¿qué pasa si tenemos +v+ y queremos encontrar +k+? Existen dos problemas: primeramente, puede haber más de una clave que apunta al valor +v+. Dependiendo de lo que queramos, es posible que podamos elegir una de estas claves, o que tengamos que hacer una matriz que las contenga a todas. En segundo lugar, no hay una sintaxis simple para hacer una búsqueda inversa; solo debemos buscar.
 (((reverse lookup)))
 
-A continuación se muestra una función que toma un valor y que devuelve la primera clave asignada a ese valor:
+A continuación se muestra una función que toma un valor y que devuelve la primera clave que apunta a ese valor:
 
 [source,@julia-setup chap11]
 ----
@@ -566,7 +566,7 @@ Una asignación de claves a sus valores correspondientes.
 (((dictionary)))
 
 par clave-valor::
-La representación de la asignación de una clave a un valor.
+La representación de la asociación entre una clave y un valor.
 (((key-value pair)))
 
 item::

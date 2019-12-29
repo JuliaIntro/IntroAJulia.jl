@@ -306,4 +306,4 @@ Inicie el Julia REPL y úselo como una calculadora.
 Hay 1,61 kilómetros en una milla.
 ====
 
-. Si corres una carrera de 10 kilómetros en 37 minutos y 48 segundos, ¿cuál es tu ritmo promedio (tiempo por milla en minutos y segundos)? ¿Cuál es su velocidad promedio en millas por hora?
+. Si corres una carrera de 10 kilómetros en 37 minutos y 48 segundos, ¿cuál es tu ritmo promedio (tiempo por milla en minutos y segundos)? ¿Cuál es tu velocidad promedio en millas por hora?
