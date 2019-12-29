@@ -562,7 +562,7 @@ Es posible que desee crear un diccionario que asigne a una colección de letras 
 [[ex12-3]]
 ==== Ejercicio 12-4
 
-Dos palabras forman un "par de metátesis" si puede transformar una en la otra intercambiando dos letras; por ejemplo, "conversar" y "conservar". Escriba un programa que encuentre todos los pares de metátesis en el diccionario.
+Dos palabras metatizan si se puede transformar una en la otra intercambiando dos letras; por ejemplo, "conversar" y "conservar". Escriba un programa que encuentre todos los pares de metátesis en el diccionario.
 (((metathesis pair)))
 
 [TIP]
