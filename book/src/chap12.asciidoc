@@ -206,7 +206,7 @@ end
 +máximo+ y +mínimo+ son funciones integradas que encuentran los elementos más grandes y más pequeños de una secuencia, respectivamente. La función +minmax+ calcula ambos y devuelve una tupla de dos valores. Otra alternativa es utilizar la función integrada +extrema+, lo cual es más eficiente.
 (((maximum)))(((minimum)))(((extrema)))((("function", "Base", "maximum", see="maximum")))((("function", "Base", "minimum", see="minimum")))((("function", "Base", "extrema", see="extrema")))
 
-=== Tuplas de Longitud Variable como Argumento
+=== Tupla con Argumentos de Longitud Variable
 
 Las funciones pueden tomar un número variable de argumentos. Un nombre de parámetro que termina con +pass:[...]+ _recopila_ argumentos en una tupla. Por ejemplo, +imprimirtodo+ toma cualquier número de argumentos y los imprime:
 (((gather)))(((...)))(((printall)))((("function", "programmer-defined", "printall", see="printall")))
@@ -245,7 +245,7 @@ julia> divrem(t...)
 (2, 1)
 ----
 
-Muchas de las funciones integradas usan tuplas de longitud variable como argumento. Por ejemplo, +max+ y +min+ pueden tomar cualquier número de argumentos:
+Muchas de las funciones integradas usan tuplas con argumentos de longitud variable. Por ejemplo, +max+ y +min+ pueden tomar cualquier número de argumentos:
 (((max)))(((min)))((("function", "Base", "max", see="max")))((("function", "Base", "min", see="min")))
 
 [source,@julia-repl-test]
