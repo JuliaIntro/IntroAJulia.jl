@@ -75,9 +75,7 @@ end
 [[ex13-5]]
 ==== Ejercicio 13-5
 
-Escriba una función llamada +escogerdelhistograma+ que tome un histograma como se define en <<dictionary_collection_counters>> y devuelva un valor aleatorio del histograma, elegido con probabilidad en proporción a la frecuencia. Por ejemplo, para este histograma:
-
-Write a function named +choosefromhist+ that takes a histogram as defined in <<dictionary_collection_counters>> and returns a random value from the histogram, chosen with probability in proportion to frequency. For example, for this histogram:
+Escriba una función llamada +escogerdelhistograma+ que tome un histograma definido como en <<dictionary_collection_counters>> y devuelva un valor aleatorio del histograma, elegido con probabilidad proporcional a la frecuencia. Por ejemplo, para este histograma:
 (((choosefromhist)))((("function", "programmer-defined", "choosefromhist", see="choosefromhist")))
 
 [source,@julia-repl-test chap11]
@@ -90,86 +88,85 @@ Dict{Any,Any} with 2 entries:
   'b' => 1
 ----
 
-your function should return +pass:['a']+ with probability latexmath:[\(\frac{2}{3}\)] and +pass:['b']+ with probability latexmath:[\(\frac{1}{3}\)].
+su función debe devolver +pass:['a']+ con probabilidad latexmath:[\(\frac{2}{3}\)] y +pass:['b']+ con probabilidad latexmath:[\(\frac{1}{3}\)].
 
+=== Histograma de Palabras
 
-=== Word Histogram
+Debes hacer los ejercicios anteriores antes de continuar. También necesitarás https://github.com/PiensaEnJulia/PiensaEnJulia.jl/blob/master/data/DonQuijote.txt.
 
-You should attempt the previous exercises before you go on. You will also need https://github.com/PiensaEnJulia/PiensaEnJulia.jl/blob/master/data/DonQuijote.txt.
-
-Here is a program that reads a file and builds a histogram of the words in the file:
+Aquí hay un programa que lee un archivo y construye un histograma de las palabras en el archivo:
 (((processfile)))((("function", "programmer-defined", "processfile", see="processfile")))(((processline)))((("function", "programmer-defined", "processline", see="processline")))
 
 [source,@julia-setup chap13]
 ----
-function processfile(filename)
+function procesararchivo(nombrearchivo)
     hist = Dict()
-    for line in eachline(filename)
-        processline(line, hist)
+    for linea in eachline(nombrearchivo)
+        procesarlinea(linea, hist)
     end
     hist
 end;
 
-function processline(line, hist)
-    line = replace(line, '-' => ' ')
-    for word in split(line)
-        word = string(filter(isletter, [word...])...)
-        word = lowercase(word)
-        hist[word] = get!(hist, word, 0) + 1
+function procesarlinea(linea, hist)
+    linea = replace(linea, '-' => ' ')
+    for palabra in split(linea)
+        palabra = string(filter(isletter, [palabra...])...)
+        palabra = lowercase(palabra)
+        hist[palabra] = get!(hist, palabra, 0) + 1
     end
 end;
 ----
 
 [source,@julia-eval chap13]
 ----
-hist = processfile(joinpath("..", "data", "DonQuijote.txt"));
+hist = procesararchivo(joinpath("..", "data", "DonQuijote.txt"));
 ----
 
 [source,julia]
 ----
-hist = processfile("DonQuijote.txt");
+hist = procesararchivo("DonQuijote.txt");
 ----
 
-This program reads _DonQuijote.txt_, which contains the text of _Don Quijote_ by  Miguel de Cervantes.
+Este programa lee _DonQuijote.txt_, que contiene el texto de _Don Quijote_ de Miguel de Cervantes.
 (((Austen, Jane)))
 
-+processfile+ loops through the lines of the file, passing them one at a time to +processline+. The histogram +hist+ is being used as an accumulator.
++procesararchivo+ recorre las líneas del archivo, pasando una a la vez a +procesarlinea+. El histograma +hist+ se está utilizando como acumulador.
 (((accumulator)))
 
-+processline+ uses the function +replace+ to replace hyphens with spaces before using +split+ to break the line into an array of strings. It traverses the array of words and uses +filter+, +isletter+ and +lowercase+ to remove punctuation and convert to lower case. (It is a shorthand to say that strings are “converted”; remember that strings are immutable, so a function like +lowercase+ return new strings.)
++procesarlinea+ usa la función +replace+ para reemplazar los guiones por espacios antes de usar +split+ para dividir la línea en una matriz de cadenas. Recorre el conjunto de palabras y usa +filter+, +isletter+ y +lowercase+ para eliminar los signos de puntuación y convertir las palabras a minúsculas. (Decir que las cadenas se "convierten" es incorrecto; recuerde que las cadenas son inmutables, por lo que una función como +lowercase+ devuelve cadenas nuevas).
 (((replace)))(((split)))(((isletter)))(((lowercase)))(((get!)))(((filter)))((("function", "Base", "filter", see="filter")))
 
-Finally, +processline+ updates the histogram by creating a new item or incrementing an existing one.
+Finalmente, +procesarlinea+ actualiza el histograma creando un nuevo elemento o incrementando uno existente.
 
-To count the total number of words in the file, we can add up the frequencies in the histogram:
+Para contar el número total de palabras en el archivo, podemos sumar las frecuencias en el histograma:
 (((totalwords)))((("function", "programmer-defined", "totalswords", see="totalwords")))
 
 [source,@julia-setup chap13]
 ----
-function totalwords(hist)
+function palabrastotales(hist)
     sum(values(hist))
 end
 ----
 
-The number of different words is just the number of items in the dictionary:
+El número de palabras diferentes es el número de elementos en el diccionario:
 (((differentwords)))((("function", "programmer-defined", "differentwords", see="differentwords")))
 
 [source,@julia-setup chap13]
 ----
-function differentwords(hist)
+function palabrasdiferentes(hist)
     length(hist)
 end
 ----
 
-Here is some code to print the results:
+Para imprimir los resultados se puede usar el siguiente código:
 
 [source,@julia-repl-test chap13]
 ----
-julia> println("Total number of words: ", totalwords(hist))
-Total number of words: 385925
+julia> println("Número total de palabras: ", palabrastotales(hist))
+Número total de palabras: 385925
 
-julia> println("Number of different words: ", differentwords(hist))
-Number of different words: 23607
+julia> println("Número de palabras diferentes: ", palabrasdiferentes(hist))
+Número de palabras diferentes: 23607
 ----
 
 
