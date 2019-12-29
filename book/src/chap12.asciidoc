@@ -557,7 +557,7 @@ Es posible que desee crear un diccionario que asigne a una colección de letras 
 
 . Modifique el programa anterior para que imprima primero la matriz más larga de anagramas, seguida de la segunda más larga, y así sucesivamente.
 
-. En Scrabble, un "bingo" es cuando juegas las siete fichas de tu atril, junto con una letra del tablero, para formar una palabra de ocho letras. ¿Qué colección de 8 letras forman el bingo más posible?
+. En Scrabble, un "bingo" es cuando juegas las siete fichas de tu atril, junto con una letra del tablero, para formar una palabra de ocho letras. ¿Qué colección de 8 letras forman parte del bingo más probable?
 
 [[ex12-3]]
 ==== Ejercicio 12-4
