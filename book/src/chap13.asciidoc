@@ -445,10 +445,7 @@ Pero generalmente no se sabe de antemano qué implementación será más rápida
 
 El otro factor a considerar es el espacio de almacenamiento. Por ejemplo, usar un histograma para la colección de sufijos puede tomar menos espacio porque solo tiene que almacenar cada palabra una vez, sin importar cuántas veces aparezca en el texto. En algunos casos, ahorrar espacio también puede hacer que su programa se ejecute más rápido. En el peor de los casos, su programa podría no ejecutarse si se queda sin memoria. Pero para muchas aplicaciones, el espacio es una consideración secundaria después del tiempo de ejecución.
 
-Una última reflexión: en esta discusión, he dado a entender que deberíamos usar una estructura de datos para el análisis y la generación. Pero dado que estas son fases separadas, también sería posible usar una estructura para el análisis y luego convertirla en otra estructura para la generación. Esta sería una ganancia neta si el tiempo ahorrado durante la generación excede el tiempo dedicado a la conversión.
-
-
-One final thought: in this discussion, I have implied that we should use one data structure for both analysis and generation. But since these are separate phases, it would also be possible to use one structure for analysis and then convert to another structure for generation. This would be a net win if the time saved during generation exceeded the time spent in conversion.
+Una última reflexión: en esta discusión, he dado a entender que deberíamos usar una estructura de datos para el análisis y la generación. Pero dado que estas son fases separadas, también sería posible usar una estructura para el análisis y luego convertirla en otra estructura para la generación. Esto sería conveniente si el tiempo ahorrado durante la generación excede el tiempo dedicado a la conversión.
 
 [TIP]
 ====
