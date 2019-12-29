@@ -163,12 +163,13 @@ Para imprimir los resultados se puede usar el siguiente código:
 [source,@julia-repl-test chap13]
 ----
 julia> println("Número total de palabras: ", palabrastotales(hist))
-Número total de palabras: 385925
+Número total de palabras: 385819
 
 julia> println("Número de palabras diferentes: ", palabrasdiferentes(hist))
-Número de palabras diferentes: 23607
+Número de palabras diferentes: 23599
 ----
 
+Observación: No se considera el encabezado del archivo de texto, sólo el libro.
 
 === Palabras Más Comunes
 
@@ -180,7 +181,7 @@ Para encontrar las palabras más comunes, podemos hacer una matriz de tuplas, do
 function mascomun(hist)
     t = []
     for (clave, valor) in hist
-        push!(t, (clave, valor))
+        push!(t, (valor,clave))
     end
     reverse(sort(t))
 end
