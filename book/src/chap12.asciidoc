@@ -468,7 +468,7 @@ En muchos contextos, los diferentes tipos de secuencias (cadenas, matrices y tup
 Para comenzar con lo mas obvio, las cadenas son más limitadas que las demás secuencias, porque los elementos deben ser caracteres. Además son inmutables. Si necesitas poder cambiar los caracteres en una cadena (en vez de crear una nueva), puede que lo mas adecuado sea elegir una matriz de caracteres.
 (((immutable)))
 
-Las matrices se usan con mas frecuencia que las tuplas, principalmente porque son mutabless. Pero hay algunos casos donde es posible que prefieras usar tuplas:
+Las matrices se usan con mas frecuencia que las tuplas, principalmente porque son mutables. Pero hay algunos casos donde es posible que prefieras usar tuplas:
 (((mutable)))
 
 * En algunos contextos, como en una sentencia return, resulta sintácticamente más simple crear una tupla que una matriz.
