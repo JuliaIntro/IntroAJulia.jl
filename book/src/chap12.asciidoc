@@ -323,37 +323,38 @@ Si las secuencias no tienen el mismo largo, el resultado tiene el largo de la m�
 
 [source,@julia-repl-test]
 ----
-julia> collect(zip("Anne", "Elk"))
+julia> collect(zip("Juan", "Gabriel"))
 3-element Array{Tuple{Char,Char},1}:
- ('A', 'E')
- ('n', 'l')
- ('n', 'k')
+ ('J', 'G')
+ ('u', 'a')
+ ('a', 'b')
+ ('n', 'r')
 ----
 
-Puede usar asignación de tuplas en un bucle +for+ para recorrer una matriz de tuplas:
+Se puede usar asignación de tuplas en un bucle +for+ para recorrer una matriz de tuplas:
 (((tuple assignment)))
 
 [source,@julia-repl-test]
 ----
 julia> t = [('a', 1), ('b', 2), ('c', 3)];
 
-julia> for (letter, number) in t
-           println(number, " ", letter)
+julia> for (letra, numero) in t
+           println(numero, " ", letra)
        end
 1 a
 2 b
 3 c
 ----
 
-Each time through the loop, Julia selects the next tuple in the array and assigns the elements to letter and number. The parentheses around +(letter, number)+ are compulsory.
+En cada iteración del ciclo, Julia selecciona la siguiente tupla en la matriz y asigna estos elementos a letra y número. Los paréntesis de +(letra, número)+ son obligatorios.
 (((parentheses)))
 
-If you combine +zip+, +for+ and tuple assignment, you get a useful idiom for traversing two (or more) sequences at the same time. For example, +hasmatch+ takes two sequences, +t1+ and +t2+, and returns +true+ if there is an index +i+ such that +t1[i] == t2[i]+:
+Si combinamos +zip+, +for+ y asignación de tuplas, tendremos una forma para recorrer dos (o más) secuencias al mismo tiempo. Por ejemplo, la función +coinciden+ toma dos secuencias, +t1+ y +t2+, y devuelve +true+ si hay un índice +i+ tal que +t1[i] == t2[i]+:
 (((hasmatch)))((("function", "Base", "hasmatch", see="hasmatch")))
 
 [source,@julia-setup chap12]
 ----
-function hasmatch(t1, t2)
+function coinciden(t1, t2)
     for (x, y) in zip(t1, t2)
         if x == y
             return true
@@ -363,25 +364,25 @@ function hasmatch(t1, t2)
 end
 ----
 
-If you need to traverse the elements of a sequence and their indices, you can use the built-in function +enumerate+:
+Si se necesita recorrer los elementos de una secuencia y sus índices, se puede usar la función integrada +enumerate+:
 (((enumerate)))((("function", "Base", "enumerate", see="enumerate")))
 
 [source,@julia-repl-test chap12]
 ----
-julia> for (index, element) in enumerate("abc")
-           println(index, " ", element)
+julia> for (indice, elemento) in enumerate("abc")
+           println(indice, " ", elemento)
        end
 1 a
 2 b
 3 c
 ----
 
-The result from +enumerate+ is an enumerate object, which iterates a sequence of pairs; each pair contains an index (starting from 1) and an element from the given sequence.
+El resultado de +enumerate+ es un objeto enumerate, el cual hace una iteración sobre una secuencia de pares, donde cada par contiene un índice (a partir de 1) y un elemento de la secuencia dada.
 
 
-=== Dictionaries and Tuples
+=== Diccionarios y Tuplas
 
-Dictionaries can be used as iterators that iterate the key-value pairs. You can use it in a +for+ loop like this:
+Los diccionarios se pueden usar como iteradores que iteran sobre los pares clave-valor. Puede usarlos en un bucle +for+ como este:
 (((key-value pair)))(((for statement)))
 
 [source,@julia-repl-test]
@@ -396,9 +397,9 @@ c 3
 b 2
 ----
 
-As you should expect from a dictionary, the items are in no particular order.
+Como es de esperar, en un diccionario los elementos no están en un orden particular.
 
-Going in the other direction, you can use an array of tuples to initialize a new dictionary:
+Ahora, si queremos hacer lo contrario, podemos usar una serie de tuplas para inicializar un nuevo diccionario:
 
 [source,@julia-repl-test]
 ----
@@ -411,7 +412,7 @@ Dict{Char,Int64} with 3 entries:
   'b' => 2
 ----
 
-Combining +Dict+ with +zip+ yields a concise way to create a dictionary:
+Al combinar +Dict+ con +zip+, podemos crear un diccionario de una manera muy simple:
 (((zip)))
 
 [source,@julia-repl-test]
@@ -423,138 +424,138 @@ Dict{Char,Int64} with 3 entries:
   'b' => 2
 ----
 
-It is common to use tuples as keys in dictionaries. For example, a telephone directory might map from last-name, first-name pairs to telephone numbers. Assuming that we have defined +last+, +first+ and +number+, we could write:
+Es común usar tuplas como claves en los diccionarios. Por ejemplo, un directorio telefónico puede asignar números de teléfono a una tupla con apellido y nombre. Suponiendo que hemos definido +apellido+, +nombre+ y +numero+, podríamos escribir:
 
 [source,julia]
 ----
-directory[last, first] = number
+directorio[apellido, nombre] = numero
 ----
 
-The expression in brackets is a tuple. We could use tuple assignment to traverse this dictionary.
+La expresión entre paréntesis es una tupla. Podríamos usar asignación de tuplas para recorrer este diccionario.
 
 [source,julia]
 ----
-for ((last, first), number) in directory
-    println(first, " ", last, " ", number)
+for ((apellido, nombre), numero) in directorio
+    println(nombre, " ", apellido, " ", numero)
 end
 ----
 
-This loop traverses the key-value pairs in +directory+, which are tuples. It assigns the elements of the key in each tuple to +last+ and +first+, and the value to +number+, then prints the name and corresponding telephone number.
+Este bucle recorre los pares clave-valor en +directorio+, los cuales son tuplas. Asigna los elementos de la clave de cada tupla a +apellido+ y +nombre+, y el valor a +numero+, luego imprime el nombre y el número de teléfono correspondiente.
 
-There are two ways to represent tuples in a state diagram. The more detailed version shows the indices and elements just as they appear in an array. For example, the tuple +("Cleese", "John")+ would appear as in <<fig12-1>>.
+Hay dos formas de representar tuplas en un diagrama de estado. La versión más detallada muestra los índices y elementos tal como aparecen en una matriz. Por ejemplo, la tupla +("Cleese", "John")+ se vería como en <<fig12-1>>.
 (((state diagram)))
 
 [[fig12-1]]
 .State diagram
 image::images/fig121.svg[]
 
-
-But in a larger diagram you might want to leave out the details. For example, a diagram of the telephone directory might appear as in <<fig12-2>>.
+Pero en un diagrama más grande, es posible que desee omitir algunos detalles. Por ejemplo, un diagrama del directorio telefónico puede verse como en <<fig12-2>>.
 (((state diagram)))
 
 [[fig12-2]]
 .State diagram
 image::images/fig122.svg[]
 
+Aquí las tuplas se muestran usando la sintaxis de Julia para tener un esquema más simple. El número de teléfono del diagrama es el número de reclamos de la BBC, así que no intentes llamar.
 
-Here the tuples are shown using Julia syntax as a graphical shorthand. The telephone number in the diagram is the complaints line for the BBC, so please don’t call it.
 
+=== Secuencias de Secuencias
 
-=== Sequences of Sequences
-
-I have focused on arrays of tuples, but almost all of the examples in this chapter also work with arrays of arrays, tuples of tuples, and tuples of arrays. To avoid enumerating the possible combinations, it is sometimes easier to talk about sequences of sequences.
+Nos hemos centrado en las matrices de tuplas, pero casi todos los ejemplos de este capítulo también funcionan con matrices de matrices, tuplas de tuplas y tuplas de matrices. Para evitar enumerar todas las posibles combinaciones, a veces es más fácil hablar sobre secuencias de secuencias.
 (((sequence of sequences)))
 
-In many contexts, the different kinds of sequences (strings, arrays and tuples) can be used interchangeably. So how should you choose one over the others?
+En muchos contextos, los diferentes tipos de secuencias (cadenas, matrices y tuplas) se pueden usar indistintamente. Entonces, ¿cómo elegir uno u otro?
 (((string)))(((array)))(((tuple)))
 
-To start with the obvious, strings are more limited than other sequences because the elements have to be characters. They are also immutable. If you need the ability to change the characters in a string (as opposed to creating a new string), you might want to use an array of characters instead.
+Para comenzar con lo mas obvio, las cadenas son más limitadas que las demás secuencias, porque los elementos deben ser caracteres. Además son inmutables. Si necesitas poder cambiar los caracteres en una cadena (en vez de crear una nueva), puede que lo mas adecuado sea elegir una matriz de caracteres.
 (((immutable)))
 
-Arrays are more common than tuples, mostly because they are mutable. But there are a few cases where you might prefer tuples:
+Las matrices se usan con mas frecuencia que las tuplas, principalmente porque son mutabless. Pero hay algunos casos donde es posible que prefieras usar tuplas:
 (((mutable)))
 
-* In some contexts, like a return statement, it is syntactically simpler to create a tuple than an array.
+* En algunos contextos, como en una sentencia return, resulta sintácticamente más simple crear una tupla que una matriz.
 
-* If you are passing a sequence as an argument to a function, using tuples reduces the potential for unexpected behavior due to aliasing.
+*  Si estas pasando una secuencia como argumento de una función, el uso de tuplas reduce los comportamientos potencialmente indeseados debido a la creacion de alias. 
 (((aliasing)))
 
-* For performance reasons. The compiler can specialize on the type.
+* Por rendimiento. El compilador puede especializarse en este tipo.
 
-Because tuples are immutable, they don’t provide functions like +sort!+ and +reverse!+, which modify existing arrays. But Julia provides the built-in function +sort+, which takes an array and returns a new array with the same elements in sorted order, and +reverse+, which takes any sequence and returns a sequence of the same type in reverse order.
+Dado que las tuplas son inmutables, no tienen funciones como +sort!+ y +reverse!+, que modifican matrices ya existentes. Sin embargo, Julia proporciona las funciones integradas +sort+, que toma una matriz y devuelve una secuencia nueva con los mismos elementos ordenados, y +reverse+, que toma cualquier secuencia y devuelve una secuencia nueva del mismo tipo con los mismos elementos en el orden contrario.
 (((sort)))(((sort!)))(((reverse)))(((reverse!)))(((zip)))((("function", "Base", "reverse", see="reverse")))(((zip)))((("function", "Base", "reverse!", see="reverse!")))
 
 
-=== Debugging
+=== Depuración
 
-Arrays, dictionaries and tuples are examples of _data structures_; in this lecture we are starting to see compound data structures, like arrays of tuples, or dictionaries that contain tuples as keys and arrays as values. Compound data structures are useful, but they are prone to what I call _shape errors_; that is, errors caused when a data structure has the wrong type, size, or structure. For example, if you are expecting an array with one integer and I give you a plain old integer (not in an array), it won’t work.
+Las matrices, diccionarios y tuplas son ejemplos de _estructuras de datos_; en este capítulo estamos comenzando a ver estructuras de datos compuestas, como matrices o tuplas, y diccionarios que contienen tuplas como claves y matrices como valores. Las estructuras de datos compuestas son utiles, pero también resultan propensas a lo que yo llamo _errores de forma_; es decir, errores causados cuando una estructura de datos tiene el tipo, tamaño o estructura incorrecta. Por ejemplo, si estás esperando una lista con un entero y te paso simplemente un entero (no en una lista), no funcionará.
 (((debugging)))(((data structures)))(((shape error)))
 
-Julia allows to attach a type to elements of a sequence. How this is done is detailed in <<chap17>>. Specifying the type eliminates a lot of shape errors.
+Julia permite añadir el tipo a elementos de una secuencia. Esto se detalla en <<chap17>>. Especificar el tipo elimina muchos errores de forma.
 
 
-=== Glossary
+=== Glosario
 
-tuple::
-An immutable sequence of elements where every element can have its own type.
+tupla::
+Una secuencia inmutable de elementos donde cada elemento puede tener su propio tipo.
 (((tuple)))
 
-tuple assignment::
-An assignment with a sequence on the right side and a tuple of variables on the left. The right side is evaluated and then its elements are assigned to the variables on the left.
+asignación en tupla::
+Una asignacion con una secuencia en el lado derecho y una tupla de variables en el izquierdo. Primero se evalua el lado derecho y luego sus elementos son asignados a las variables de la izquierda.
 (((tuple assignment)))
 
-gather::
-The operation of assembling a variable-length argument tuple.
+reunir::
+La operacion de armar una tupla con argumentos de longitud variable.
 (((gather)))
 
-scatter::
-The operation of treating a sequence as a list of arguments.
+dispersar::
+La operacion de tratar una secuencia como una lista de argumentos. 
 (((scatter)))
 
-zip object::
-The result of calling a built-in function +zip+; an object that iterates through a sequence of tuples.
+objeto zip::
+El resultado de llamar a la función integrada +zip+; un objeto que itera a través de una secuencia de tuplas.
 (((zip object)))
 
-iterator::
-An object that can iterate through a sequence, but which does not provide array operators and functions.
+iterador::
+Un objeto que puede iterar a través de una secuencia, pero que no tiene los operadores y funciones de matriz.
 (((iterator)))
 
-data structure::
-A collection of related values, often organized in array, dictionaries, tuples, etc.
+estructura de datos::
+Una coleccion de valores relacionados, a menudo organizados en matrices, diccionarios, tuplas, etc.
 (((data structure)))
 
-shape error::
-An error caused because a value has the wrong shape; that is, the wrong type or size.
+error de forma::
+Un error causado porque un valor tiene la forma incorrecta; es decir, el tipo o tamaño incorrecto.
 (((shape error)))
 
 
-=== Exercises
+=== Ejercicios
 
 [[ex12-1]]
-==== Exercise 12-2
+==== Ejercicio 12-2
 
-Write a function called +mostfrequent+ that takes a string and prints the letters in decreasing order of frequency. Find text samples from several different languages and see how letter frequency varies between languages. Compare your results with the tables at https://en.wikipedia.org/wiki/Letter_frequencies.
+Escriba una función llamada +masfrecuente+ que tome una cadena e imprima las letras en orden decreciente de frecuencia. Encuentre muestras de texto de varios idiomas diferentes y vea cómo la frecuencia de las letras varía entre idiomas. Compare sus resultados con las tablas en https://en.wikipedia.org/wiki/Letter_frequencies.
 (((mostfrequent)))((("function", "programmer-defined", "mostfrequent", see="mostfrequent")))
 
 [[ex12-2]]
-==== Exercise 12-3
+==== Ejercicio 12-3
 
-More anagrams!
+¡Más anagramas!
 
-. Write a program that reads a word list from a file (see <<reading_word_lists>>) and prints all the sets of words that are anagrams.
+. Escriba un programa que lea una lista de palabras de un archivo (vea <<reading_word_lists>>) e imprima todos los conjuntos de palabras que son anagramas.
 +
-Here is an example of what the output might look like:
+Aquí hay un ejemplo de cómo se vería la salida:
 +
 [source,julia]
 ----
-["deltas", "desalt", "lasted", "salted", "slated", "staled"]
-["retainers", "ternaries"]
-["generating", "greatening"]
-["resmelts", "smelters", "termless"]
+["brazo", "zobra", "broza", "zarbo"]
+["palabra", "parlaba"]
+["vida", "diva"]
+["gato", "toga", "gota"]
 ----
 +
 [TIP]
 ====
+Es posible que desee crear un diccionario que asigne desde una colección de letras a una serie de palabras que se pueden deletrear con esas letras. La pregunta es, ¿cómo puede representar la colección de letras de una manera que pueda usarse como clave?
+
 You might want to build a dictionary that maps from a collection of letters to an array of words that can be spelled with those letters. The question is, how can you represent the collection of letters in a way that can be used as a key?
 ====
 
