@@ -283,7 +283,7 @@ palabras = procesararchivo("palabras.txt")
 dif = resta(hist, palabras)
 
 println("Palabras en el libro que no están en la lista de palabras:")
-for palabra in keys(diff)
+for palabra in keys(dif)
     print(palabra, " ")
 end
 ----
@@ -292,11 +292,12 @@ Estos son algunos de los resultados de _Don Quijote_:
 
 [source]
 ----
-Words in the book that aren't in the word list:
-outree quicksighted outwardly adelaide rencontre jeffereys unreserved dixons betweens ...
+Palabras en el libro que no están en la lista de palabras:
+enojó angosta coronan sirviesen solene enderécese rescatarlos embotó estime renovaban ...
 ----
 
-Some of these words are names and possessives. Others, like “rencontre”, are no longer in common use. But a few are common words that should really be in the list!
+Algunas de estas palabras son conjugaciones de verbos. Otros, como "solene", ya no son de uso común. ¡Pero algunas son palabras comunes que deberían estar en la lista!
+
 
 [[ex13-6]]
 ==== Exercise 13-6
