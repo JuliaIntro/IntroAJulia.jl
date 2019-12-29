@@ -67,7 +67,7 @@ julia> t3 = tuple(1, 'a', pi)
 (1, 'a', π)
 ----
 
-Ya que tupla es el nombre de una función integrada, debe evitar usarla como nombre de variable.
+Ya que tuple es el nombre de una función integrada, debe evitar usarla como nombre de variable.
 
 La mayoría de los operadores de matriz también sirven en las tuplas. El operador corchete indexa un elemento:
 (((bracket operator)))
