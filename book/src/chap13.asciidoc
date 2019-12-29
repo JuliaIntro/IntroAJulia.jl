@@ -546,9 +546,9 @@ donde latexmath:[\(s\)] y latexmath:[\(c\)] son parámetros que dependen del idi
 
 Entonces, si graficas latexmath:[\(\log f\)] versus latexmath:[\(\log r\)], debería obtener una línea recta con pendiente latexmath:[\(-s\)] e intercepto latexmath:[\(\log c\)].
 
-Write a program that reads a text from a file, counts word frequencies, and prints one line for each word, in descending order of frequency, with latexmath:[\(\log f\)] and latexmath:[\(\log r\)].
+Escriba un programa que lea un texto de un archivo, cuente las frecuencias de las palabras e imprima una línea para cada palabra, en orden descendente de frecuencia, con  latexmath:[\(\log f\)] y latexmath:[\(\log r\)].
 
-Install a plotting library:
+Instale una librería para graficar:
 (((Plots)))((("module", "Plots", see="Plots")))
 
 [source,jlcon]
@@ -556,7 +556,7 @@ Install a plotting library:
 (v1.0) pkg> add Plots
 ----
 
-Its usage is very easy:
+Su uso es muy sencillo:
 (((plot)))((("function", "Plots", "plot", see="plot")))
 
 [source,julia]
@@ -567,5 +567,4 @@ y = x.^2
 plot(x, y)
 ----
 
-Use the +Plots+ library to plot the results and check whether they form a straight line.
-
+Use la librería +Plots+ para graficar los resultados y verificar si forman una línea recta.
