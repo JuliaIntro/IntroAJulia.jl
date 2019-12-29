@@ -300,7 +300,7 @@ Algunas de estas palabras son conjugaciones de verbos. Otros, como "solene", ya 
 
 
 [[ex13-6]]
-==== Exercise 13-6
+==== Ejercicio 13-6
 
 Julia proporciona una estructura de datos llamada +Set+ que proporciona muchas operaciones comunes de conjuntos. Puede leer sobre ellas en <<collections_and_data_structures>>, o leer la documentación en https://docs.julialang.org/en/v1/base/collections/#Set-Like-Collections-1.
 
@@ -403,11 +403,13 @@ ____
 +
 For this example, I left the punctuation attached to the words. The result is almost syntactically correct, but not quite. Semantically, it almost makes sense, but not quite.
 +
-What happens if you increase the prefix length? Does the random text make more sense?
+¿Qué sucede si aumenta la longitud del prefijo? ¿El texto aleatorio tiene más sentido?
+
+. Una vez que su programa esté funcionando, podrías probar combinando texto de dos o más libros, el texto aleatorio que genere combinará el vocabulario y las frases de las fuentes de maneras interesantes.
 
 . Once your program is working, you might want to try a mash-up:  if you combine text from two or more books, the random text you generate will blend the vocabulary and phrases from the sources in interesting ways.
 
-Credit: This case study is based on an example from Kernighan and Pike, The Practice of Programming, Addison-Wesley, 1999.
+Crédito: Este estudio de caso se basa en un ejemplo de Kernighan y Pike, The Practice of Programming, Addison-Wesley, 1999.
 
 [TIP]
 =====
