@@ -197,7 +197,7 @@ for (frec, palabra) in t[1:10]
 end
 ----
 
-En este ejemplo utilizamos un carácter de tabulación (+pass:['\t']+) como "separador", en vez de un espacio, por lo que la segunda columna está alineada. Con el siguiente código se pueden mostrar los resultados de _Don Quijote_:
+En este ejemplo utilizamos un carácter de tabulación (+pass:['\t']+) como "separador", en vez de un espacio, por lo que la segunda columna está alineada. A continuación se muestran los resultados de _Don Quijote_:
 (((separator)))(((\t)))
 
 [source,@julia-eval chap13]
@@ -254,40 +254,40 @@ imprimirmascomun(hist, 20)
 Si una función tiene parámetros obligatorios y opcionales, los parámetros obligatorios deben ir primero, seguidos de los opcionales.
 
 [[dictionary_subtraction]]
-=== Dictionary Subtraction
+=== Resta de Diccionario
 
-Finding the words from the book that are not in the word list from +palabras.txt+ is a problem you might recognize as set subtraction; that is, we want to find all the words from one set (the words in the book) that are not in the other (the words in the list).
+Encontrar las palabras de un libro que no están en la lista de palabras de +palabras.txt+ es un problema similar a una resta de conjuntos; es decir, queremos encontrar todas las palabras de un conjunto (las palabras en el libro) que no están en el otro (las palabras en la lista).
 
-+subtract+ takes dictionaries +d1+ and +d2+ and returns a new dictionary that contains all the keys from +d1+ that are not in +d2+. Since we don’t really care about the values, we set them all to +nothing+.
++resta+ toma los diccionarios +d1+ y +d2+ y devuelve un nuevo diccionario que contiene todas las claves de +d1+ que no están en +d2+. Como realmente no nos importan los valores, los fijamos como +nothing+.
 (((subtract)))((("function", "programmer-defined", "subtract", see="subtract")))(((nothing)))(((∩)))((("operator", "Base", "∩", see="∩")))
 
 [source,@julia-setup chap13]
 ----
-function subtract(d1, d2)
+function resta(d1, d2)
     res = Dict()
-    for key in keys(d1)
-        if key ∉ keys(d2)
-            res[key] = nothing
+    for clave in keys(d1)
+        if clave ∉ keys(d2)
+            res[clave] = nothing
         end
     end
     res
 end
 ----
 
-To find the words in the book that are not in +palabras.txt+, we can use +processfile+ to build a histogram for +palabras.txt+, and then +subtract+:
+Para encontrar las palabras en el libro que no están en +palabras.txt+, podemos usar +procesararchivo+ para construir un histograma para +palabras.txt+, y luego la función +resta+:
 
 [source,julia]
 ----
-words = processfile("palabras.txt")
-diff = subtract(hist, words)
+palabras = procesararchivo("palabras.txt")
+dif = resta(hist, palabras)
 
-println("Words in the book that aren't in the word list:")
-for word in keys(diff)
-    print(word, " ")
+println("Palabras en el libro que no están en la lista de palabras:")
+for palabra in keys(diff)
+    print(palabra, " ")
 end
 ----
 
-Here are some of the results from _Don Quijote_:
+Estos son algunos de los resultados de _Don Quijote_:
 
 [source]
 ----
@@ -300,47 +300,45 @@ Some of these words are names and possessives. Others, like “rencontre”, are
 [[ex13-6]]
 ==== Exercise 13-6
 
-Julia provides a data structure called +Set+ that provides many common set operations. You can read about them in <<collections_and_data_structures>>, or read the documentation at https://docs.julialang.org/en/v1/base/collections/#Set-Like-Collections-1.
+Julia proporciona una estructura de datos llamada +Set+ que proporciona muchas operaciones comunes de conjuntos. Puede leer sobre ellas en <<collections_and_data_structures>>, o leer la documentación en https://docs.julialang.org/en/v1/base/collections/#Set-Like-Collections-1.
 
-Write a program that uses set subtraction to find words in the book that are not in the word list.
+Escriba un programa que use la resta de conjuntos para encontrar palabras en el libro que no están en la lista de palabras.
 
+=== Palabras al Azar
 
-=== Random Words
-
-To choose a random word from the histogram, the simplest algorithm is to build an array with multiple copies of each word, according to the observed frequency, and then choose from the array:
+Para elegir una palabra aleatoria del histograma, el algoritmo más simple es construir una matriz con múltiples copias de cada palabra, de acuerdo con la frecuencia observada, y luego elegir una palabra de la matriz:
 (((randomword)))((("function", "programmer-defined", "randomword", see="randomword")))
 
 [source,@julia-setup chap13]
 ----
-function randomword(h)
+function palabraalazar(h)
     t = []
-    for (word, freq) in h
-        for i in 1:freq
-            push!(t, word)
+    for (palabra, frec) in h
+        for i in 1:frec
+            push!(t, palabra)
         end
     end
     rand(t)
 end
 ----
 
-This algorithm works, but it is not very efficient; each time you choose a random word, it rebuilds the array, which is as big as the original book. An obvious improvement is to build the array once and then make multiple selections, but the array is still big.
+Este algoritmo funciona, pero no es muy eficiente; cada vez que elige una palabra aleatoria, reconstruye la matriz, que es tan grande como el libro original. Una mejora es construir la matriz una vez y luego hacer múltiples selecciones, pero la matriz sigue siendo grande.
 
-An alternative is:
+Una alternativa es:
 
-. Use +keys+ to get an array of the words in the book.
+. Use las +claves+ para obtener una matriz de palabras del libro.
 
-. Build an array that contains the cumulative sum of the word frequencies (see <<ex10-2>>). The last item in this array is the total number of words in the book, latexmath:[\(n\)].
+. Cree una matriz que contenga la suma acumulada de las frecuencias de palabras (vea <<ex10-2>>). El último elemento en esta matriz es el número total de palabras en el libro, latexmath:[\(n\)].
 
-. Choose a random number from 1 to latexmath:[\(n\)]. Use a bisection search (see <<ex10-10>>) to find the index where the random number would be inserted in the cumulative sum.
-(((bisection search)))
+. Elija un número aleatorio del 1 al latexmath:[\(n\)]. Use búsqueda binaria (vea <<ex10-10>>) para encontrar el índice donde se insertará el número aleatorio en la suma acumulada.
+(((búsqueda de bisección)))
 
-. Use the index to find the corresponding word in the word array.
-
+. Use el índice para encontrar la palabra correspondiente en la matriz de palabras.
 
 [[ex13-7]]
-==== Exercise 13-7
+==== Ejercicio 13-7
 
-Write a program that uses this algorithm to choose a random word from the book.
+Escriba un programa que use este algoritmo para elegir una palabra aleatoria del libro.
 
 [[markov_analysis]]
 === Markov Analysis
