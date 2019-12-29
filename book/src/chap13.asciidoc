@@ -343,30 +343,34 @@ Escriba un programa que use este algoritmo para elegir una palabra aleatoria del
 [[markov_analysis]]
 === Markov Analysis
 
-If you choose words from the book at random, you can get a sense of the vocabulary, but you probably won’t get a sentence:
+Si elige palabras del libro al azar, puedes tener una idea del vocabulario usado, pero probablemente no obtendremos una oración:
 
 [source]
 ----
-this the small regard harriet which knightley's it most things
+rocinante pláticas sazón ojos Dulcinea Dios
 ----
 
-A series of random words seldom makes sense because there is no relationship between successive words. For example, in a real sentence you would expect an article like “the” to be followed by an adjective or a noun, and probably not a verb or adverb.
+Una serie de palabras aleatorias rara vez tiene sentido porque no hay relación entre palabras sucesivas. Por ejemplo, en una oración real, esperaría que un artículo como "el" sea seguido por un sustantivo, y probablemente no un verbo o un adverbio.
 
-One way to measure these kinds of relationships is Markov analysis, which characterizes, for a given sequence of words, the probability of the words that might come next. For example, the song _Eric, the Half a Bee_ (by Monty Python) begins:
+Una forma de medir este tipo de relaciones es con el análisis de Markov, que define para una secuencia dada de palabras, la probabilidad de las palabras que podrían venir después. Por ejemplo, la canción _La vida es un carnaval_ (de Celiz Cruz) comienza:
 (((Markov analysis)))
 
 [verse]
 ____
-Half a bee, philosophically,
-Must, ipso facto, half not be.
-But half the bee has got to be
-Vis a vis, its entity. D’you see?
+Todo aquel
+Que piense que la vida siempre es cruel
+Tiene que saber que no es así
+Que tan solo hay momentos malos
+Y todo pasa
 
-But can a bee be said to be
-Or not to be an entire bee
-When half the bee is not a bee
-Due to some ancient injury?
+Todo aquel
+Que piense que esto nunca va cambiar
+Tiene que saber que no es así
+Que al mal tiempo, buena cara
+Y todo cambia
 ____
+
+En este texto, la frase "que piense" siempre va seguida de la palabra "que", pero la frase "piense que" puede ir seguida de "la" o "esto".
 
 In this text, the phrase “half the” is always followed by the word “bee”, but the phrase “the bee” might be followed by either “has” or “is”.
 
