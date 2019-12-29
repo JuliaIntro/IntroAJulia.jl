@@ -407,8 +407,6 @@ For this example, I left the punctuation attached to the words. The result is al
 
 . Una vez que su programa esté funcionando, podrías probar combinando texto de dos o más libros, el texto aleatorio que genere combinará el vocabulario y las frases de las fuentes de maneras interesantes.
 
-. Once your program is working, you might want to try a mash-up:  if you combine text from two or more books, the random text you generate will blend the vocabulary and phrases from the sources in interesting ways.
-
 Crédito: Este estudio de caso se basa en un ejemplo de Kernighan y Pike, The Practice of Programming, Addison-Wesley, 1999.
 
 [TIP]
