@@ -390,7 +390,7 @@ En este ejemplo, la longitud del prefijo siempre es dos, pero puede hacer análi
 
 Análisis de Markov:
 
-. Write a program to read a text from a file and perform Markov analysis. The result should be a dictionary that maps from prefixes to a collection of possible suffixes. The collection might be an array, tuple, or dictionary; it is up to you to make an appropriate choice. You can test your program with prefix length two, but you should write the program in a way that makes it easy to try other lengths.
+. Escriba un programa que lea un texto desde un archivo y realice análisis de Markov. El resultado debe ser un diccionario que asocie prefijos y una colección de posibles sufijos. La colección puede ser una matriz, tupla o diccionario; depende de usted hacer una elección adecuada. Puede probar su programa con una longitud de prefijo de dos, pero debe escribir el programa de manera tal que sea fácil probar con otras longitudes.
 
 . Add a function to the previous program to generate random text based on the Markov analysis. Here is an example from Don Quijote with prefix length 2:
 +
