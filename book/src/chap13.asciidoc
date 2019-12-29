@@ -170,88 +170,88 @@ Número de palabras diferentes: 23607
 ----
 
 
-=== Most Common Words
+=== Palabras Más Comunes
 
-To find the most common words, we can make an array of tuples, where each tuple contains a word and its frequency, and sort it. The following function takes a histogram and returns an array of word-frequency tuples:
+Para encontrar las palabras más comunes, podemos hacer una matriz de tuplas, donde cada tupla contiene una palabra y su frecuencia, y ordenarla. La siguiente función toma un histograma y devuelve una matriz de tuplas de frecuencia de palabras:
 (((mostcommon)))((("function", "programmer-defined", "mostcommon", see="mostcommon")))(((reverse)))(((sort)))
 
 [source,@julia-setup chap13]
 ----
-function mostcommon(hist)
+function mascomun(hist)
     t = []
-    for (key, value) in hist
-        push!(t, (value, key))
+    for (clave, valor) in hist
+        push!(t, (clave, valor))
     end
     reverse(sort(t))
 end
 ----
 
-In each tuple, the frequency appears first, so the resulting array is sorted by frequency. Here is a loop that prints the 10 most common words:
+En cada tupla, la frecuencia aparece primero, por lo que la matriz resultante se ordena por frecuencia. A continuación se muestra un bucle que imprime las 10 palabras más comunes:
 
 [source,julia]
 ----
-t = mostcommon(hist)
-println("The most common words are:")
-for (freq, word) in t[1:10]
-    println(word, "\t", freq)
+t = mascomun(hist)
+println("Las palabras más comunes son:")
+for (frec, palabra) in t[1:10]
+    println(palabra, "\t", frec)
 end
 ----
 
-I use a tab character (+pass:['\t']+) as a “separator”, rather than a space, so the second column is lined up. Here are the results from _Don Quijote_:
+En este ejemplo utilizamos un carácter de tabulación (+pass:['\t']+) como "separador", en vez de un espacio, por lo que la segunda columna está alineada. Con el siguiente código se pueden mostrar los resultados de _Don Quijote_:
 (((separator)))(((\t)))
 
 [source,@julia-eval chap13]
 ----
-t = mostcommon(hist)
-println("The most common words are:")
-for (freq, word) in t[1:10]
-    println(word, "\t", freq)
+t = mascomun(hist)
+println("Las palabras más comunes son:")
+for (frec, palabra) in t[1:10]
+    println(palabra, "\t", freq)
 end
 ----
 
 [TIP]
 ====
-This code can be simplified using the +rev+ keyword argument of the +sort+ function. You can read about it at https://docs.julialang.org/en/v1/base/sort/#Base.sort.
+Este código se puede simplificar usando como argumento la palabra reservada +rev+ de la función +sort+. Puede leer sobre esto en https://docs.julialang.org/en/v1/base/sort/#Base.sort.
 ====
 
 
-=== Optional Parameters
+=== Parametros Opcionales
 
-We have seen built-in functions that take optional arguments. It is possible to write programmer-defined functions with optional arguments, too. For example, here is a function that prints the most common words in a histogram:
+Hemos visto funciones integradas de Julia que toman argumentos opcionales. También es posible escribir funciones definidas por el programador con argumentos opcionales. Por ejemplo, aquí hay una función que imprime las palabras más comunes en un histograma:
 (((optional argument)))(((printmostcommon)))((("function", "programmer-defined", "printmostcommon", see="printmostcommon")))
 
 [source,@julia-setup chap13]
 ----
-function printmostcommon(hist, num=10)
-    t = mostcommon(hist)
-    println("The most common words are: ")
-    for (freq, word) in t[1:num]
-        println(word, "\t", freq)
+function imprimirmascomun(hist, num=10)
+    t = mascomun(hist)
+    println("Las palabras más comunes son: ")
+    for (frec, palabra) in t[1:num]
+        println(palabra, "\t", freq)
     end
 end
 ----
 
-The first parameter is required; the second is optional. The _default value_ of +num+ is +10+.
+El primer parámetro es obligatorio; el segundo es opcional. El _valor predeterminado_ de +num+ es +10+.
 (((default value)))
 
-If you only provide one argument:
+Si solo pasas un argumento:
 
 [source,@julia-setup chap13]
 ----
-printmostcommon(hist)
+imprimirmascomun(hist)
 ----
 
-+num+ gets the default value. If you provide two arguments:
++num+ toma el valor predeterminado. Si pasas dos argumentos:
 
 [source,@julia-setup chap13]
 ----
-printmostcommon(hist, 20)
+imprimirmascomun(hist, 20)
 ----
 
-+num+ gets the value of the argument instead. In other words, the optional argument _overrides_ the default value.
++num+ toma el valor del argumento. En otras palabras, el argumento opcional _anula_ el valor predeterminado.
 (((override)))
 
-If a function has both required and optional parameters, all the required parameters have to come first, followed by the optional ones.
+Si una función tiene parámetros obligatorios y opcionales, los parámetros obligatorios deben ir primero, seguidos de los opcionales.
 
 [[dictionary_subtraction]]
 === Dictionary Subtraction
