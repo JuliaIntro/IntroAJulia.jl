@@ -268,8 +268,7 @@ ERROR: MethodError: no method matching sum(::Int64, ::Int64, ::Int64)
 Escriba una función llamada +sumall+ que tome cualquier número de argumentos y devuelva su suma.
 (((sumall)))((("function", "programmer-defined", "sumall", see="sumall")))
 
-In the Julia world, gather is often called “slurp” and scatter “splat”.
-
+En el mundo de Julia, generalmente se le llama “slurp” ("sorber" en español) a reunir y "splat" ("plaf" en español, como el ruido cuando cae algo) a dispersar.
 
 === Matrices y tuplas
 
