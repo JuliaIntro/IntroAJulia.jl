@@ -401,7 +401,7 @@ ____
 “He was very clever, be it sweetness or be angry, ashamed or only amused, at such a stroke. She had never thought of Hannah till you were never meant for me?" "I cannot make speeches, Emma:" he soon cut it all himself.”
 ____
 +
-For this example, I left the punctuation attached to the words. The result is almost syntactically correct, but not quite. Semantically, it almost makes sense, but not quite.
+Para este ejemplo, se dejó la puntuación anexa a las palabras. El resultado es casi sintácticamente correcto, pero no del todo. Semánticamente, casi tiene sentido, pero no exactamente.
 +
 ¿Qué sucede si aumenta la longitud del prefijo? ¿El texto aleatorio tiene más sentido?
 
