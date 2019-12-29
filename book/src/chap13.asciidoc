@@ -341,7 +341,7 @@ Una alternativa es:
 Escriba un programa que use este algoritmo para elegir una palabra aleatoria del libro.
 
 [[markov_analysis]]
-=== Markov Analysis
+=== Análisis de Markov
 
 Si elige palabras del libro al azar, puedes tener una idea del vocabulario usado, pero probablemente no obtendremos una oración:
 
@@ -352,7 +352,7 @@ rocinante pláticas sazón ojos Dulcinea Dios
 
 Una serie de palabras aleatorias rara vez tiene sentido porque no hay relación entre palabras sucesivas. Por ejemplo, en una oración real, esperaría que un artículo como "el" sea seguido por un sustantivo, y probablemente no un verbo o un adverbio.
 
-Una forma de medir este tipo de relaciones es con el análisis de Markov, que define para una secuencia dada de palabras, la probabilidad de las palabras que podrían venir después. Por ejemplo, la canción _La vida es un carnaval_ (de Celiz Cruz) comienza:
+Una forma de medir este tipo de relaciones es con el análisis de Markov, que define para una secuencia dada de palabras, la probabilidad de las palabras que podrían venir después. Por ejemplo, en la canción _La vida es un carnaval_ (de Celiz Cruz):
 (((Markov analysis)))
 
 [verse]
@@ -368,25 +368,27 @@ Que piense que esto nunca va cambiar
 Tiene que saber que no es así
 Que al mal tiempo, buena cara
 Y todo cambia
+
+Ay, no hay que llorar (No hay que llorar)
+Que la vida es un carnaval
+Que es más bello vivir cantando
 ____
 
 En este texto, la frase "que piense" siempre va seguida de la palabra "que", pero la frase "piense que" puede ir seguida de "la" o "esto".
 
-In this text, the phrase “half the” is always followed by the word “bee”, but the phrase “the bee” might be followed by either “has” or “is”.
-
-The result of Markov analysis is a mapping from each prefix (like “half the” and “the bee”) to all possible suffixes (like “has” and “is”).
+El resultado del análisis de Markov es un mapeo de cada prefijo (como "que piense" y "piense que") a todos los sufijos posibles (como "la" y "esto").
 (((prefix)))(((suffix)))
 
-Given this mapping, you can generate a random text by starting with any prefix and choosing at random from the possible suffixes. Next, you can combine the end of the prefix and the new suffix to form the next prefix, and repeat.
+Dada esta asignación, puede generar un texto aleatorio comenzando con cualquier prefijo y eligiendo aleatoriamente entre los posibles sufijos. A continuación, puede combinar el final del prefijo y el nuevo sufijo para formar el siguiente prefijo y repetir.
 
-For example, if you start with the prefix “Half a”, then the next word has to be “bee”, because the prefix only appears once in the text. The next prefix is “a bee”, so the next suffix might be “philosophically”, “be” or “due”.
+Por ejemplo, si comienza con el prefijo "Que la", la siguiente palabra será "vida", porque el prefijo solo aparece dos veces en el texto y siempre está seguido de este sufijo. El siguiente prefijo es "la vida", por lo que el siguiente sufijo podría ser "siempre" o "es".
 
-In this example the length of the prefix is always two, but you can do Markov analysis with any prefix length.
+En este ejemplo, la longitud del prefijo siempre es dos, pero puede hacer análisis de Markov con un prefijo de cualquier longitud.
 
 [[ex13-8]]
-==== Exercise 13-8
+==== Ejercicio 13-8
 
-Markov analysis:
+Análisis de Markov:
 
 . Write a program to read a text from a file and perform Markov analysis. The result should be a dictionary that maps from prefixes to a collection of possible suffixes. The collection might be an array, tuple, or dictionary; it is up to you to make an appropriate choice. You can test your program with prefix length two, but you should write the program in a way that makes it easy to try other lengths.
 
