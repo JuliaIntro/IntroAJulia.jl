@@ -392,7 +392,7 @@ Análisis de Markov:
 
 . Escriba un programa que lea un texto desde un archivo y realice análisis de Markov. El resultado debe ser un diccionario que asocie prefijos y una colección de posibles sufijos. La colección puede ser una matriz, tupla o diccionario; depende de usted hacer una elección adecuada. Puede probar su programa con una longitud de prefijo de dos, pero debe escribir el programa de manera tal que sea fácil probar con otras longitudes.
 
-. Add a function to the previous program to generate random text based on the Markov analysis. Here is an example from Don Quijote with prefix length 2:
+. Agregue una función al programa anterior para generar texto aleatorio basado en análisis de Markov. Aquí hay un ejemplo de Don Quijote con longitud de prefijo 2:
 +
 [quote]
 ____
@@ -409,40 +409,42 @@ Credit: This case study is based on an example from Kernighan and Pike, The Prac
 
 [TIP]
 =====
-You should attempt this exercise before you go on.
+Debes hacer este ejercicio antes de continuar.
 =====
 
+=== Estructuras de Datos
 
-=== Data Structures
+Usar análisis de Markov para generar texto aleatorio es divertido, pero además, este ejercicio tiene un trasfondo: la selección de la estructura de datos. En los los ejercicios anteriores, tenía que elegir:
 
-Using Markov analysis to generate random text is fun, but there is also a point to this exercise: data structure selection. In your solution to the previous exercises, you had to choose:
+* Cómo representar los prefijos.
 
-* How to represent the prefixes.
+* Cómo representar la colección de los posibles sufijos.
 
-* How to represent the collection of possible suffixes.
+* Cómo representar la asociación de cada prefijo con la colección de posibles sufijos.
 
-* How to represent the mapping from each prefix to the collection of possible suffixes.
+El último es fácil: un diccionario es la opción obvia para una asociación entre claves y valores correspondientes.
 
-The last one is easy: a dictionary is the obvious choice for a mapping from keys to corresponding values.
+Para los prefijos, las opciones más obvias son cadena, matriz de cadenas o tupla de cadenas.
 
-For the prefixes, the most obvious options are string, array of strings, or tuple of strings.
+Para los sufijos, puede ser una matriz o un histograma (diccionario).
 
-For the suffixes, one option is an array; another is a histogram (dictionary).
+¿Cómo se elige? El primer paso es pensar en las operaciones que deberá implementar para cada estructura de datos. Para los prefijos, debemos ser capaces de eliminar palabras del principio y agregarlas al final. Por ejemplo, si el prefijo actual es "que piense" y la siguiente palabra es "que", debe poder formar el siguiente prefijo, "piense que".
 
-How should you choose? The first step is to think about the operations you will need to implement for each data structure. For the prefixes, we need to be able to remove words from the beginning and add to the end. For example, if the current prefix is “Half a”, and the next word is “bee”, you need to be able to form the next prefix, “a bee”.
+Para los prefijos, podría elegir una matriz, ya que en ella es fácil agregar y eliminar elementos.
 
-Your first choice might be an array, since it is easy to add and remove elements.
+Para la colección de sufijos, las operaciones que debemos realizar incluyen agregar un nuevo sufijo (o aumentar la frecuencia de uno existente) y elegir un sufijo aleatorio.
 
-For the collection of suffixes, the operations we need to perform include adding a new suffix (or increasing the frequency of an existing one), and choosing a random suffix.
+Agregar un nuevo sufijo es igualmente fácil para la implementación de la matriz o el histograma. Elegir un elemento aleatorio de una matriz es fácil; elegir eficientemente de un histograma es más difícil (ver <<ex13-7>>).
 
-Adding a new suffix is equally easy for the array implementation or the histogram. Choosing a random element from an array is easy; choosing from a histogram is harder to do efficiently (see <<ex13-7>>).
+Hasta ahora hemos hablado principalmente sobre la facilidad de implementación, pero hay otros factores a considerar al elegir las estructuras de datos. Uno es el tiempo de ejecución. A veces hay una razón teórica para esperar que una estructura de datos sea más rápida que otra; por ejemplo, anteriormente se mencionó que el operador +in+ es más rápido para los diccionarios que para las matrices, al menos cuando el número de elementos es grande.
 
-So far we have been talking mostly about ease of implementation, but there are other factors to consider in choosing data structures. One is run time. Sometimes there is a theoretical reason to expect one data structure to be faster than other; for example, I mentioned that the +in+ operator is faster for dictionaries than for arrays, at least when the number of elements is large.
-
-But often you don’t know ahead of time which implementation will be faster. One option is to implement both of them and see which is better. This approach is called _benchmarking_. A practical alternative is to choose the data structure that is easiest to implement, and then see if it is fast enough for the intended application. If so, there is no need to go on. If not, there are tools, like the +Profile+ module, that can identify the places in a program that take the most time.
+Pero generalmente no se sabe de antemano qué implementación será más rápida. Una opción es implementar ambos y ver cuál es mejor. Este enfoque se llama _benchmarking_. Una alternativa práctica es elegir la estructura de datos que sea más fácil de implementar y luego ver si es lo suficientemente rápida para la aplicación prevista. Si es así, no hay necesidad de continuar. Si no, hay herramientas, como el módulo +Profile+, que pueden identificar los lugares en un programa que toman más tiempo.
 (((benchmarking)))
 
-The other factor to consider is storage space. For example, using a histogram for the collection of suffixes might take less space because you only have to store each word once, no matter how many times it appears in the text. In some cases, saving space can also make your program run faster, and in the extreme, your program might not run at all if you run out of memory. But for many applications, space is a secondary consideration after run time.
+El otro factor a considerar es el espacio de almacenamiento. Por ejemplo, usar un histograma para la colección de sufijos puede tomar menos espacio porque solo tiene que almacenar cada palabra una vez, sin importar cuántas veces aparezca en el texto. En algunos casos, ahorrar espacio también puede hacer que su programa se ejecute más rápido. En el peor de los casos, su programa podría no ejecutarse si se queda sin memoria. Pero para muchas aplicaciones, el espacio es una consideración secundaria después del tiempo de ejecución.
+
+Una última reflexión: en esta discusión, he dado a entender que deberíamos usar una estructura de datos para el análisis y la generación. Pero dado que estas son fases separadas, también sería posible usar una estructura para el análisis y luego convertirla en otra estructura para la generación. Esta sería una ganancia neta si el tiempo ahorrado durante la generación excede el tiempo dedicado a la conversión.
+
 
 One final thought: in this discussion, I have implied that we should use one data structure for both analysis and generation. But since these are separate phases, it would also be possible to use one structure for analysis and then convert to another structure for generation. This would be a net win if the time saved during generation exceeded the time spent in conversion.
 
