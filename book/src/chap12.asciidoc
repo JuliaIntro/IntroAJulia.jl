@@ -553,24 +553,22 @@ Aquí hay un ejemplo de cómo se vería la salida:
 +
 [TIP]
 ====
-Es posible que desee crear un diccionario que asigne desde una colección de letras a una serie de palabras que se pueden deletrear con esas letras. La pregunta es, ¿cómo puede representar la colección de letras de una manera que pueda usarse como clave?
-
-You might want to build a dictionary that maps from a collection of letters to an array of words that can be spelled with those letters. The question is, how can you represent the collection of letters in a way that can be used as a key?
+Es posible que desee crear un diccionario que asigne a una colección de letras una serie de palabras que se puedan deletrear con esas letras. La pregunta es, ¿cómo representar la colección de letras de una manera que pueda usarse como clave?
 ====
 
-. Modify the previous program so that it prints the longest array of anagrams first, followed by the second longest, and so on.
+. Modifique el programa anterior para que imprima primero la matriz más larga de anagramas, seguida de la segunda más larga, y así sucesivamente.
 
-. In Scrabble a “bingo” is when you play all seven tiles in your rack, along with a letter on the board, to form an eight-letter word. What collection of 8 letters forms the most possible bingos?
+. En Scrabble, un "bingo" es cuando juegas las siete fichas de tu atril, junto con una letra del tablero, para formar una palabra de ocho letras. ¿Qué colección de 8 letras forman el bingo más posible?
 
 [[ex12-3]]
-==== Exercise 12-4
+==== Ejercicio 12-4
 
-Two words form a “metathesis pair” if you can transform one into the other by swapping two letters; for example, “converse” and “conserve”. Write a program that finds all of the metathesis pairs in the dictionary.
+Dos palabras forman un "par de metátesis" si puede transformar una en la otra intercambiando dos letras; por ejemplo, "conversar" y "conservar". Escriba un programa que encuentre todos los pares de metátesis en el diccionario.
 (((metathesis pair)))
 
 [TIP]
 ====
-Don’t test all pairs of words, and don’t test all possible swaps. 
+No pruebe con todos los pares de palabras, ni tampoco con todos los intercambios posibles.
 ====
 
 Credit: This exercise is inspired by an example at http://puzzlers.org.
