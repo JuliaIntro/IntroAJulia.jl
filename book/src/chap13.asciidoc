@@ -1,48 +1,47 @@
 [[chap13]]
-== Case Study: Data Structure Selection
+== Estudio de Caso: Selección de Estructura de Datos
 
-At this point you have learned about Julia’s core data structures, and you have seen some of the algorithms that use them.
+Hasta ahora hemos aprendido sobre las principales estructuras de datos de Julia y hemos visto algunos de los algoritmos que las utilizan.
 
-This chapter presents a case study with exercises that let you think about choosing data structures and practice using them.
+Este capítulo presenta un estudio de caso con ejercicios que le permiten practicar la elección de estructuras de datos y su uso.
 
 
-=== Word Frequency Analysis
+=== Análisis de Frecuencia de Palabras
 
-As usual, you should at least attempt the exercises before you read my solutions.
+Como de costumbre, se recomienda intentar resolver los ejercicios antes de leer las soluciones.
 
 [[ex13-1]]
-==== Exercise 13-1
+==== Ejercicio 13-1
 
-Write a program that reads a file, breaks each line into words, strips whitespace and punctuation from the words, and converts them to lowercase.
+Escriba un programa que lea un archivo, divida cada línea en palabras, elimine el espacio en blanco y la puntuación de las palabras, y luego las convierta en minúsculas.
 
 [TIP]
 ====
-The function +isletter+ tests whether a character is alphabetic.
+La función +isletter+ permite saber si un carácter pertenece al alfabeto.
 (((isletter)))((("function", "Base", "isletter", see="isletter")))
 ====
 
 [[ex13-2]]
-==== Exercise 13-2
+==== Ejercicio 13-2
 
-Go to Project Gutenberg (https://gutenberg.org) and download your favorite out-of-copyright book in plain text format.
+Vaya a la página de Proyecto Gutenberg (https://gutenberg.org) y descargue su libro favorito sin derechos de autor en formato de texto plano. La mayoría de los libros están en inglés, pero existen algunos en español.
 (((Project Gutenberg)))
 
-Modify your program from the previous exercise to read the book you downloaded, skip over the header information at the beginning of the file, and process the rest of the words as before.
+Modifique su programa del ejercicio anterior para leer el libro que descargó, omita la información del encabezado al comienzo del archivo y procese el resto de las palabras tal como en el ejercicio previo.
 
-Then modify the program to count the total number of words in the book, and the number of times each word is used.
+Luego, modifique el programa para contar la cantidad total de palabras en el libro y la cantidad de veces que se usa cada palabra.
 
-Print the number of different words used in the book. Compare different books by different authors, written in different eras. Which author uses the most extensive vocabulary?
+Imprima la cantidad de palabras diferentes que se usan en el libro. Compare diferentes libros de diferentes autores, escritos en diferentes épocas. ¿Qué autor usa el vocabulario más extenso?
 
 [[ex13-3]]
-==== Exercise 13-3
+==== Ejercicio 13-3
 
-Modify the program from the previous exercise to print the 20 most frequently used words in the book.
+Modifique el programa del ejercicio anterior para imprimir las 20 palabras más utilizadas en el libro.
 
 [[ex13-4]]
-==== Exercise 13-4
+==== Ejercicio 13-4
 
-Modify the previous program to read a word list and then print all the words in the book that are not in the word list. How many of them are typos? How many of them are common words that should be in the word list, and how many of them are really obscure?
-
+Modifique el programa anterior para que lea una lista de palabras y luego imprima todas las palabras del libro que no están en la lista de palabras. ¿Cuántos de ellos son errores tipográficos? ¿Cuántos de ellos son palabras comunes que deberían estar en la lista de palabras, y cuántos de ellos son términos realmente macabros?
 
 === Random Numbers
 
