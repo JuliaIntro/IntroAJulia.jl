@@ -452,48 +452,47 @@ One final thought: in this discussion, I have implied that we should use one dat
 
 [TIP]
 ====
-The Julia package +DataStructures+ (see https://github.com/JuliaCollections/DataStructures.jl) implements a variety of data structures.
+El paquete de Julia +DataStructures+ (ver https://github.com/JuliaCollections/DataStructures.jl) implementa una variedad de estructuras de datos.
 ====
 
 
-=== Debugging
+=== Depuración
 
-When you are debugging a program, and especially if you are working on a hard bug, there are five things to try:
+Cuando está depurando un programa, y especialmente si está tratando de resolver un error difícil, hay cinco cosas que puede probar:
 (((debugging)))
 
-Reading:: 
-Examine your code, read it back to yourself, and check that it says what you meant to say.
+Lea:: 
+Examina tu código, léelo y verifica que dice lo que querías decir.
 
-Running::
-Experiment by making changes and running different versions. Often if you display the right thing at the right place in the program, the problem becomes obvious, but sometimes you have to build scaffolding.
+Ejecute::
+Experimente haciendo cambios y ejecutando diferentes versiones. A menudo, si muestra lo correcto en el lugar correcto del programa, el problema se vuelve obvio, pero para ello a veces tiene que desarrollar andamiaje.
 
-Ruminating:: 
-Take some time to think! What kind of error is it: syntax, runtime, or semantic? What information can you get from the error messages, or from the output of the program? What kind of error could cause the problem you’re seeing? What did you change last, before the problem appeared?
+Reflexione:: 
+¡Tómese un tiempo para pensar! ¿Qué tipo de error es: de sintaxis, tiempo de ejecución o semántica? ¿Qué información puede obtener de los mensajes de error o de la salida del programa? ¿Qué tipo de error podría causar el problema que estás viendo? ¿Qué cambió antes de que apareciera el problema?
 
-Rubberducking:: 
-If you explain the problem to someone else, you sometimes find the answer before you finish asking the question. Often you don’t need the other person; you could just talk to a rubber duck. And that’s the origin of the well-known strategy called rubber duck debugging. I am not making this up; see https://en.wikipedia.org/wiki/Rubber_duck_debugging.
+Hable::
+Si le explica el problema a otra persona, a veces puede encontrar la respuesta incluso antes de terminar de hacer la pregunta. Generalmente no necesitas a otra persona; incluso podrías hablar con un pato de goma. Este es el origen de la conocida estrategia llamada depuración del pato de goma. Esto es real, vea https://en.wikipedia.org/wiki/Rubber_duck_debugging.
 (((rubber duck debugging)))
 
-Retreating:: 
-At some point, the best thing to do is back off, undoing recent changes, until you get back to a program that works and that you understand. Then you can start rebuilding.
+Vuelva atrás:: 
+En ocasiones, lo mejor que puede hacer es retroceder, deshacer los cambios recientes, hasta regresar a un programa que funcione y que comprenda. Una vez logrado esto, puedes comenzar a reconstruir.
 
-Beginning programmers sometimes get stuck on one of these activities and forget the others. Each activity comes with its own failure mode.
+Los programadores principiantes a veces se atascan en una de estas actividades y olvidan las otras. Cada actividad viene con su propia forma de fallar.
 
-For example, reading your code might help if the problem is a typographical error, but not if the problem is a conceptual misunderstanding. If you don’t understand what your program does, you can read it 100 times and never see the error, because the error is in your head.
+Por ejemplo, leer su código podría ayudar si el problema es un error tipográfico, pero no si el problema es un malentendido conceptual. Si no comprende lo que hace su programa, puede leerlo 100 veces y nunca ver el error, porque el error está en su cabeza.
 
-Running experiments can help, especially if you run small, simple tests. But if you run experiments without thinking or reading your code, you might fall into a pattern I call “random walk programming”, which is the process of making random changes until the program does the right thing. Needless to say, random walk programming can take a long time.
+Ejecutar experimentos puede ayudar, especialmente si ejecuta pruebas pequeñas y simples. Pero si ejecuta experimentos sin pensar o leer su código, puede caer en un patrón que llamo "programación de caminata aleatoria", que es el proceso de hacer cambios aleatorios hasta que el programa haga lo correcto. No hace falta decir que la programación de caminata aleatoria puede llevar mucho tiempo.
 (((random walk programming)))
 
-You have to take time to think. Debugging is like an experimental science. You should have at least one hypothesis about what the problem is. If there are two or more possibilities, try to think of a test that would eliminate one of them.
+Tienes que tomarte el tiempo para pensar. La depuración es como una ciencia experimental. Debes tener al menos una hipótesis sobre la causa del problema. Si hay dos o más opciones, trate de pensar en una prueba que elimine una de ellas.
 
-But even the best debugging techniques will fail if there are too many errors, or if the code you are trying to fix is too big and complicated. Sometimes the best option is to retreat, simplifying the program until you get to something that works and that you understand.
+Pero incluso las mejores técnicas de depuración fallarán si hay demasiados errores, o si el código que está tratando de corregir es demasiado grande y complicado. A veces, la mejor opción es volver atrás, simplificando el programa hasta que llegue a algo que funcione y que comprenda.
 
-Beginning programmers are often reluctant to retreat because they can’t stand to delete a line of code (even if it’s wrong). If it makes you feel better, copy your program into another file before you start stripping it down. Then you can copy the pieces back one at a time.
+Los programadores principiantes a menudo son reacios a volver atrás porque no pueden soportar eliminar una línea de código (incluso si es incorrecto). Si te hace sentir mejor, copia tu programa en otro archivo antes de comenzar a eliminarlo. Luego puedes copiar las piezas una por una.
 
-Finding a hard bug requires reading, running, ruminating, and sometimes retreating. If you get stuck on one of these activities, try the others.
+Encontrar un error difícil requiere leer, ejecutar, reflexionar y, a veces, volver atrás. Si te quedas atascado en una de estas actividades, prueba las otras.
 
-
-=== Glossary
+=== Glosario
 
 deterministic::
 Pertaining to a program that does the same thing each time it runs, given the same inputs.
