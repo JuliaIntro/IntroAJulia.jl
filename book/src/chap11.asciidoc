@@ -12,7 +12,7 @@ Un _diccionario_ es como una matriz, pero más general. En una matriz, los índi
 Un diccionario contiene una colección de índices, llamados _claves_, y una colección de valores. Cada clave está asociada a un solo valor. La asociación entre una clave y un valor se denomina _par clave-valor_ o, a veces, item.
 (((key)))(((value)))(((key-value pair)))(((item)))
 
-En lenguaje matemático, un diccionario representa un _mapeo_ de las claves a los valores, es decir, cada clave se asigna a un valor. A modo de ejemplo, crearemos un diccionario que asigne palabras en español a palabras en inglés. En este diccionario, las claves y los valores son cadenas.
+En lenguaje matemático, un diccionario representa un _mapeo_ de las claves a los valores, es decir, cada clave apunta a un valor. A modo de ejemplo, crearemos un diccionario que asocie palabras en español con palabras en inglés. En este diccionario, las claves y los valores son cadenas.
 (((mapping)))
 
 La función +Dict+ crea un nuevo diccionario sin elementos. Como +Dict+ es el nombre de una función integrada de Julia, debe evitar usarla como nombre de variable.
