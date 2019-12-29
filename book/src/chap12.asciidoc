@@ -573,16 +573,16 @@ No pruebe con todos los pares de palabras, ni tampoco con todos los intercambios
 Credit: This exercise is inspired by an example at http://puzzlers.org.
 
 [[ex12-4]]
-==== Exercise 12-5
+==== Ejercicio 12-5
 
-Here’s another Car Talk Puzzler (https://www.cartalk.com/puzzler/browse):
+Aquí hay otro Puzzle de Car Talk (https://www.cartalk.com/puzzler/browse):
 (((Car Talk)))
 
 [quote]
 ____
 ¿Cuál es la palabra en español más larga, que sigue siendo una palabra en español válida a medida que se eliminan sus letras una a una?
 
-Las letras se pueden eliminar de cualquier extremo o del medio, pero no se puede reordenar ninguna de ellas. Cada vez que eliminas una letra, te quedas con otra palabra en español. Eventualmente terminarás con una letra, la cual también será una palabra en español que puedes encontrar en el diccionario. Queremos saber cuál es la palabra más larga y cuántas letras tiene.
+Las letras se pueden eliminar de cualquier extremo o del medio, pero no se puede reordenar ninguna de ellas. Cada vez que eliminas una letra, te quedas con otra palabra en español. Eventualmente terminarás con una letra, la cual también será una palabra en español que puedes encontrar en el diccionario. Se desea saber cuál es la palabra más larga y cuántas letras tiene.
 
 A modo de ejemplo, pensemos en la palabra: Palote. ¿De acuerdo? Comienzas con palote, eliminas la letra p y queda alote, luego quitamos la t y nos quedamos con aloe, tomamos la e y tenemos alo, quitando la o tenemos al, y finalmente, eliminando la l nos queda a.
 ____
@@ -593,12 +593,12 @@ Escriba un programa que encuentre todas las palabras que se pueden reducir de es
 ====
 Este ejercicio es un poco más desafiante que el resto, así que aquí hay algunas sugerencias:
 
-. Es posible que desee escribir una función que tome una palabra y calcule una matriz de todas las palabras que se pueden formar al eliminar una letra. Estos son los "hijos" de la palabra.
+. Es posible que quieras escribir una función que tome una palabra y calcule una matriz de todas las palabras que se pueden formar al eliminar una letra. Estos son los "hijos" de la palabra.
 
 . De manera recursiva, una palabra es reducible si alguno de sus hijos es reducible. Como caso base, puede considerar la cadena vacía reducible. 
 (((reducible)))
 
-. La lista de palabras _palabras.txt_ no tiene la cadena vacía, por lo que tendrías que agregarla.
+. La lista de palabras _palabras.txt_ no tiene la cadena vacía, por lo que tendrás que agregarla.
 
 . Para mejorar el rendimiento de su programa, es posible que desee guardar las palabras que se sabe que son reducibles.
 (((memo)))
