@@ -1,59 +1,58 @@
 [[chap14]]
 == Files
 
-This chapter introduces the idea of “persistent” programs that keep data in permanent storage, and shows how to use different kinds of permanent storage, like files and databases.
+Este capítulo presenta la idea de programas "persistentes" que mantienen los datos en almacenamiento permanente, y muestra cómo usar diferentes tipos de almacenamiento permanente, tales como archivos y bases de datos..
 
+=== Persistencia
 
-=== Persistence
-
-Most of the programs we have seen so far are transient in the sense that they run for a short time and produce some output, but when they end, their data disappears. If you run the program again, it starts with a clean slate.
+La mayoría de los programas que hemos visto hasta ahora han sido transitorios, es decir se ejecutan por un corto tiempo y generan una de salida, pero cuando terminan, sus datos desaparecen. Si ejecuta el programa nuevamente, este comienza de cero.
 (((transient)))
 
-Other programs are _persistent_: they run for a long time (or all the time); they keep at least some of their data in permanent storage (a hard drive, for example); and if they shut down and restart, they pick up where they left off.
+Otros programas son _persistentes_; se ejecutan durante un largo período de tiempo (o todo el tiempo), mantienen al menos parte de sus datos en almacenamiento permanente (en un disco duro, por ejemplo), y si se apagan y vuelven a comenzar, retoman donde lo dejaron.
 (((persistent)))
 
-Examples of persistent programs are operating systems, which run pretty much whenever a computer is on, and web servers, which run all the time, waiting for requests to come in on the network.
+Ejemplos de programas persistentes son los sistemas operativos, que se ejecutan siempre que una computadora esté encendida, y los servidores web, que se ejecutan todo el tiempo, esperando que lleguen solicitudes a la red.
 
-One of the simplest ways for programs to maintain their data is by reading and writing _text files_. We have already seen programs that read text files; in this chapter we will see programs that write them.
+Una de las formas más simples para que los programas mantengan sus datos es leyendo y escribiendo _archivos de texto_. Ya hemos visto programas que leen archivos de texto; en este capítulo veremos programas que los escriben.
 
-An alternative is to store the state of the program in a database. In this chapter I will also present how to use a simple database.
+Otra alternativa es almacenar el estado del programa en una base de datos. En este capítulo también se presentará cómo usar una base de datos simple.
 
 [[reading_and_writing]]
-=== Reading and Writing
+=== Lectura y Escritura
 
-A text file is a sequence of characters stored on a permanent medium like a hard drive, or flash memory. We saw how to open and read a file in <<reading_word_lists>>.
+Un archivo de texto es una secuencia de caracteres almacenados en un medio permanente, como un disco duro o una memoria flash. Ya vimos cómo abrir y leer un archivo en <<reading_word_lists>>.
 
-To write a file, you have to open it with mode +"w"+ as a second parameter:
+Para escribir un archivo, debe abrirlo con el modo +"w"+ como segundo parámetro:
 (((open)))
 
 [source,@julia-repl-test chap14]
 ----
-julia> fout = open("output.txt", "w")
-IOStream(<file output.txt>)
+julia> fout = open("salida.txt", "w")
+IOStream(<file salida.txt>)
 ----
 
-If the file already exists, opening it in write mode clears out the old data and starts fresh, so be careful! If the file doesn’t exist, a new one is created. +open+ returns a file object and the +write+ function puts data into the file.
+Si el archivo ya existe, abrirlo en modo de escritura borra los datos antiguos y comienza de nuevo, ¡así que tenga cuidado!. Si el archivo no existe, se crea uno nuevo. +open+ devuelve un objeto de archivo y la función +write + coloca datos en el archivo.
 (((write)))((("function", "Base", "write", see="write")))
 
 [source,@julia-repl-test chap14]
 ----
-julia> line1 = "This here's the wattle,\n";
+julia> linea1 = "El Cid convoca a sus vasallos;\n";
 
-julia> write(fout, line1)
-24
+julia> write(fout, linea1)
+31
 ----
 
-The return value is the number of characters that were written. The file object keeps track of where it is, so if you call +write+ again, it adds the new data to the end of the file.
+El valor de retorno es el número de caracteres que se escribieron. El objeto de archivo lleva registro de dónde quedó por última vez, por lo que si llama +write+ nuevamente, agrega nuevos datos al final del archivo.
 
 [source,@julia-repl-test chap14]
 ----
-julia> line2 = "the emblem of our land.\n";
+julia> linea2 = "éstos se destierran con él.\n";
 
-julia> write(fout, line2)
-24
+julia> write(fout, linea2)
+30
 ----
 
-When you are done writing, you should close the file.
+Cuando termine de escribir, debe cerrar el archivo.
 (((close)))
 
 [source,@julia-repl-test chap14]
@@ -62,12 +61,12 @@ julia> close(fout)
 
 ----
 
-If you don’t close the file, it gets closed for you when the program ends.
+Si no cierra el archivo, se cierra cuando finaliza el programa.
 
 
-=== Formatting
+=== Formateo
 
-The argument of write has to be a string, so if we want to put other values in a file, we have to convert them to strings. The easiest way to do that is with +string+ or string interpolation:
+El argumento de write tiene que ser una cadena, por lo que si queremos poner otros valores en un archivo, tenemos que convertirlos en cadenas. La forma más fácil de hacerlo es con la función +string+, o con interpolación de cadenas:
 (((string)))(((string interpolation)))
 
 [source,@julia-repl-test chap14]
@@ -78,20 +77,20 @@ julia> write(fout, string(150))
 3
 ----
 
-An alternative is to use the +print(ln)+ family of functions.
+Otra alternativa es utilizar la familia de funciones de +print(ln)+.
 (((print)))(((println)))
 
 [source,@julia-repl-test chap14]
 ----
-julia> camels = 42
+julia> camellos = 42
 42
-julia> println(fout, "I have spotted $camels camels.")
+julia> println(fout, "He visto $camellos camellos.")
 
 ----
 
 [TIP]
 ====
-A more powerful alternative is the +@printf+ macro that prints using a C style format specification string, which you can read about at https://docs.julialang.org/en/v1/stdlib/Printf/
+Una alternativa más potente es la macro +@printf+, que imprime utilizando cadenas de especificación de formato al más puro estilo C, lo cual puede leer en https://docs.julialang.org/en/v1/stdlib/Printf/
 (((@printf)))((("macro", "Printf", "@printf", see="@printf")))(((formatting)))
 ====
 
