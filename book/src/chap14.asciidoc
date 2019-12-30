@@ -350,9 +350,7 @@ julia> print(t2)
 
 +serialize+ y +deserialize+ escriben y leen desde un objeto iobuffer que representa un I/O stream en memoria. La función +take!+ recupera el contenido del iobuffer como una matriz de bytes y reestablece el iobuffer a su estado inicial.
 
-+serialize+ and +deserialize+ write to and read from a iobuffer object which represents an in-memory I/O stream. The function +take!+ fetches the contents of the iobuffer as a byte array and resets the iobuffer to its initial state.
-
-Although the new object has the same value as the old, it is not (in general) the same object:
+Aunque el nuevo objeto tiene el mismo valor que el anterior, no es (en general) el mismo objeto:
 
 [source,@julia-repl-test chap14]
 ----
@@ -362,14 +360,14 @@ julia> t1 ≡ t2
 false
 ----
 
-In other words, serialization and then deserialization has the same effect as copying the object.
+En otras palabras, la serialización y luego la deserialización tienen el mismo efecto que copiar el objeto.
 (((copying)))
 
-You can use this to store non-strings in a database. 
+Puedes usar esto para almacenar no-cadenas en una base de datos.
 
 [TIP]
 ====
-In fact, the storage of non-string in a database is so common that it has been encapsulated in a package called +JLD2+ (see https://github.com/JuliaIO/JLD2.jl).
+De hecho, el almacenamiento de no-cadenas en una base de datos es tan común que se ha encapsulado en un paquete llamado + JLD2 + (consulte https://github.com/JuliaIO/JLD2.jl).
 ====
 
 
