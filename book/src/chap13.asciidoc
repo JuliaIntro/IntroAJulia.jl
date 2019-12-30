@@ -398,10 +398,10 @@ Análisis de Markov:
 +
 [quote]
 ____
-“He was very clever, be it sweetness or be angry, ashamed or only amused, at such a stroke. She had never thought of Hannah till you were never meant for me?" "I cannot make speeches, Emma:" he soon cut it all himself.”
+"Trifaldi, había de Troya, ni por la majestad real. Y con mis quejas. Desechásteme ¡oh estremo su frío del agravio a la espada, teniéndola por aca y más que sólo se trueca y con el cual encendía el ejemplo de aquellos cazadores"
 ____
 +
-Para este ejemplo, se dejó la puntuación anexa a las palabras. El resultado es casi sintácticamente correcto, pero no del todo. Semánticamente, casi tiene sentido, pero no exactamente.
+Para este ejemplo, se dejó la puntuación anexa a las palabras. El resultado es casi sintácticamente correcto. Semánticamente, casi tiene sentido, pero no del todo.
 +
 ¿Qué sucede si aumenta la longitud del prefijo? ¿El texto aleatorio tiene más sentido?
 
