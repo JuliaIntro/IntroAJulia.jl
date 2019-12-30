@@ -95,7 +95,7 @@ Una alternativa más potente es la macro +@printf+, que imprime utilizando caden
 ====
 
 
-=== Filenames and Paths
+=== Nombre de Archivo y Ruta
 
 Files are organized into _directories_ (also called “folders”). Every running program has a “current directory”, which is the default directory for most operations. For example, when you open a file for reading, Julia looks for it in the current directory.
 (((directory)))((("folder", see="directory")))
