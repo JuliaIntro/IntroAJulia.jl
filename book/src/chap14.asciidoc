@@ -1,5 +1,5 @@
 [[chap14]]
-== Files
+== Archivos
 
 Este capítulo presenta la idea de programas "persistentes" que mantienen los datos en almacenamiento permanente, y muestra cómo usar diferentes tipos de almacenamiento permanente, tales como archivos y bases de datos..
 
