@@ -90,7 +90,7 @@ julia> println(fout, "He visto $camellos camellos.")
 
 [TIP]
 ====
-Una alternativa más potente es la macro +@printf+, que imprime utilizando cadenas de especificación de formato al más puro estilo C, lo cual puede leer en https://docs.julialang.org/en/v1/stdlib/Printf/
+Una alternativa más potente es la macro +@printf+, que imprime utilizando cadenas con especificación de formato al más puro estilo C, lo cual puede leer en https://docs.julialang.org/en/v1/stdlib/Printf/
 (((@printf)))((("macro", "Printf", "@printf", see="@printf")))(((formatting)))
 ====
 
