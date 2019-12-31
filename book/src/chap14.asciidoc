@@ -614,5 +614,5 @@ En una gran colección de archivos MP3, puede haber más de una copia de la mism
 
 . Para reconocer duplicados, puede usar +md5sum+ o +md5+ para calcular una "suma de verificación" para cada archivo. Si dos archivos tienen la misma suma de verificación, probablemente tengan el mismo contenido.
 
-. Para verificar por segunda vez, puede usar el comando de Unix +diff+.
+. Para verificar, puede usar el comando de Unix +diff+.
 
