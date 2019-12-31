@@ -363,11 +363,11 @@ false
 En otras palabras, la serialización y luego la deserialización tienen el mismo efecto que copiar el objeto.
 (((copying)))
 
-Puedes usar esto para almacenar no-cadenas en una base de datos.
+Puedes usar esto para almacenar valores que no sean cadenas en una base de datos.
 
 [TIP]
 ====
-De hecho, el almacenamiento de no-cadenas en una base de datos es tan común que se ha encapsulado en un paquete llamado + JLD2 + (consulte https://github.com/JuliaIO/JLD2.jl).
+De hecho, el almacenamiento de valores que no son cadenas en una base de datos es tan común que se ha encapsulado en un paquete llamado +JLD2+ (consulte https://github.com/JuliaIO/JLD2.jl).
 ====
 
 
@@ -453,9 +453,7 @@ print(contarlineas("wc.jl"))""")
 close(archivo)
 ----
 
-Si ejecuta este programa, se lee solo e imprime el número de líneas en el archivo, que es 9. También puede incluirlo en REPL de esta manera:
-
-If you run this program, it reads itself and prints the number of lines in the file, which is 9. You can also include it in the REPL like this:
+Si ejecuta este programa, se leen las líneas de código y se imprime el número de líneas en el archivo, que es 9. También puede incluirlo en REPL de esta manera:
 (((include)))((("function", "Base", "include", see="include")))
 
 [source,jl-con]
@@ -464,52 +462,52 @@ julia> include("wc.jl")
 9
 ----
 
-Julia introduces modules to create separate variable workspace, i.e. new global scopes. 
+Julia presenta módulos para crear un espacio de trabajo variable separado, es decir, nuevos ámbitos globales (global scopes en inglés).
 
-A module starts with the keyword +module+ and ends with +end+. Naming conflicts are avoided between your own top-level definitions and those found in somebody else's code. +import+ allows to control which names from other modules are visible and +export+ specifies which of your names are public, i.e. can be used outside the module without being prefixed with the name of the module. 
+Un módulo comienza con la palabra reservada +module+ y termina con +end+. Se evitan los conflictos de nombres entre sus propias definiciones de nivel superior y las que se encuentran en el código de otra persona. +import+ permite controlar qué nombres de otros módulos están visibles y +export+ especifica cuáles de sus nombres son públicos, es decir, aquellos que se pueden usar fuera del módulo sin tener el prefijo del nombre del módulo.
 (((scope)))(((module)))((("keyword", "module", see="module")))(((end)))(((import)))((("keyword", "import", see="import")))(((export)))((("keyword", "export", see="export")))(((LineCount)))((("module", "LineCount", see="LineCount")))((("function", "LineCount", "linecount", see="linecount")))
 
 [source,julia]
 ----
-module LineCount
-    export linecount
+module ContarLineas
+    export contarlineas
 
-    function linecount(filename)
-        count = 0
-        for line in eachline(filename)
-            count += 1
+    function contarlineas(nombrearchivo)
+        conteo = 0
+        for linea in eachline(nombrearchivo)
+            conteo += 1
         end
-        count
+        conteo
     end
 end
 ----
 
-The module +LineCount+ object provides +linecount+:
+El módulo +ContarLineas+ object proporciona la función +contarlineas+:
 
 [source,julia]
 ----
-julia> using LineCount
+julia> using ContarLineas
 
-julia> linecount("wc.jl")
+julia> contarlineas("wc.jl")
 11
 ----
 
-==== Exercise 14-1
+==== Ejercicio 14-1
 
-Type this example into a file named _wc.jl_, include it into the REPL and enter +using LineCount+.
+Escriba este ejemplo en un archivo llamado _wc.jl_, inclúyalo en REPL (con include) y escriba +using LineCount+.
 
 
 [WARNING]
 ====
-If you import a module that has already been imported, Julia does nothing. It does not re-read the file, even if it has changed.
+Si importa un módulo que ya se ha importado, Julia no hace nada. No vuelve a leer el archivo, incluso si ha cambiado.
 
-If you want to reload a module, you have to restart the REPL. A package +Revise+ exists that can keep your sessions running longer (see https://github.com/timholy/Revise.jl).
+Si desea volver a cargar un módulo, debe reiniciar REPL. El paquete +Revise+ puede ayudarlo a no reiniciar tan seguido (consulte https://github.com/timholy/Revise.jl).
 ====
 
 
-=== Debugging
+=== Depuración
 
-When you are reading and writing files, you might run into problems with whitespace. These errors can be hard to debug because spaces, tabs and newlines are normally invisible:
+Al leer y escribir archivos, puedes tener problemas con los espacios en blanco. Estos errores pueden ser difíciles de depurar porque los espacios, las tabulaciones y las nuevas líneas son generalmente invisibles:
 (((\n)))(((\t)))
 
 [source,jlcon]
@@ -521,8 +519,7 @@ julia> println(s)
  4
 ----
 
-The built-in functions +repr+ or +dump+ can help. It takes any object as an argument and returns a string representation of the object.
-
+Las funciones integradas +repr+ o +dump+ pueden ser de ayuda. Toman cualquier objeto como argumento y devuelven una representación de tipo cadena del objeto.
 (((repr)))((("function", "Base", "repr", see="repr")))(((dump)))((("function", "Base", "dump", see="dump")))
 
 [source,@julia-eval chap14]
@@ -538,84 +535,84 @@ julia> dump(s)
 String "1 2\t 3\n 4"
 ----
 
-This can be helpful for debugging.
+Esto puede ser útil para la depuración.
 (((debugging)))
 
-One other problem you might run into is that different systems use different characters to indicate the end of a line. Some systems use a newline, represented +\n+. Others use a return character, represented +\r+. Some use both. If you move files between different systems, these inconsistencies can cause problems.
+Otro problema con el que te puedes encontrar es que en diferentes sistemas operativos se usan diferentes caracteres para indicar el final de una línea. Algunos sistemas usan una nueva línea, representada por +\n+. Otros usan un carácter de retorno +\r+. Algunos usan ambos. Si usas un archivo en diferentes sistemas, estas inconsistencias podrían causar problemas.
 (((\r)))
 
-For most systems, there are applications to convert from one format to another. You can find them (and read more about this issue) at https://en.wikipedia.org/wiki/Newline. Or, of course, you could write one yourself.
+Para la mayoría de los sistemas, hay aplicaciones para convertir de un formato a otro. Puede encontrarlas (y leer más sobre este tema) en https://en.wikipedia.org/wiki/Newline. O, por supuesto, podrías escribir una tú mismo.
 
 
-=== Glossary
+=== Glosario
 
-persistent::
-Pertaining to a program that runs indefinitely and keeps at least some of its data in permanent storage.
+persistente::
+Perteneciente a un programa que se ejecuta indefinidamente y mantiene al menos algunos de sus datos en almacenamiento permanente.
 (((persistent)))
 
-text file::
-A sequence of characters stored in permanent storage like a hard drive.
+archivo de texto::
+Una secuencia de caracteres almacenados en almacenamiento permanente, tal como en un disco duro.
 (((text file)))
 
-directory::
-A named collection of files, also called a folder.
+directorio::
+Una colección de archivos con nombre, también llamada carpeta.
 (((directory)))
 
-path::
-A string that identifies a file.
+ruta::
+Una cadena que identifica a un archivo.
 (((path)))
 
-relative path::
-A path that starts from the current directory.
+ruta relativa::
+Una ruta que comienza desde el directorio actual.
 (((relative path)))
 
-absolute path::
-A path that starts from the topmost directory in the file system.
+ruta absoluta::
+Una ruta que comienza desde el directorio superior del sistema de archivos.
 (((absolute path)))
 
-catch::
-To prevent an exception from terminating a program using the +try pass:[...] catch pass:[...] finally+ statements.
+captura o catch::
+Para evitar que una excepción termine un programa, utilizando las sentencias +try pass:[...] catch pass:[...] finally+.
 (((catching)))
 
-database::
-A file whose contents are organized like a dictionary with keys that correspond to values.
+base de datos::
+Un archivo cuyo contenido está organizado como un diccionario con claves que corresponden a valores.
 (((database)))
 
 shell::
-A program that allows users to type commands and then executes them by starting other programs.
+Un programa que permite a los usuarios escribir comandos y luego ejecutarlos iniciando otros programas.
 (((shell)))
 
-command object::
-An object that represents a shell command, allowing a Julia program to run commands and read the results.
+objeto de comando::
+Un objeto que representa un comando de shell. Esto permite que un programa de Julia ejecute comandos y lea los resultados.
 (((command object)))
 
 
 === Exercises
 
 [[ex14-1]]
-==== Exercise 14-2
+==== Ejercicio 14-2
 
-Write a function called +sed+ that takes as arguments a pattern string, a replacement string, and two filenames; it should read the first file and write the contents into the second file (creating it if necessary). If the pattern string appears anywhere in the file, it should be replaced with the replacement string.
+Escriba una función llamada +sed+ que tome como argumentos una cadena de patrones, una cadena de reemplazo y dos nombres de archivo. La función debe leer el primer archivo y escribir el contenido en el segundo archivo (creándolo si es necesario). Si la cadena de patrones aparece en algún lugar del archivo, debe reemplazarse con la cadena de reemplazo.
 (((sed)))((("function", "programmer-defined", "sed", see="sed")))
 
-If an error occurs while opening, reading, writing or closing files, your program should catch the exception, print an error message, and exit.
+Si se produce un error al abrir, leer, escribir o cerrar los archivos, su programa debe detectar la excepción, imprimir un mensaje de error y terminar.
 
 [[ex14-2]]
-==== Exercise 14-3
+==== Ejercicio 14-3
 
-If you have done <<ex12-2>>, you’ll see that a dictionary is created that maps from a sorted string of letters to the array of words that can be spelled with those letters. For example, +"opst"+ maps to the array +["opts", "post", "pots", "spot", "stop", "tops"]+.
+Si hizo <<ex12-2>>, recordará que debía crear un diccionario que asociaba una cadena ordenada de letras al conjunto de palabras que se podía deletrear con esas letras. Por ejemplo, +"cuarderno"+ estaba asociado a la matriz +["cuarderno", "educaron", "encuadro"]+.
 
-Write a module that imports +anagramsets+ and provides two new functions: +storeanagrams+ should store the anagram dictionary using +JLD2+; +readanagrams+ should look up a word and return an array of its anagrams.
+Escriba un módulo que importe +conjuntoanagramas+ y proporcione dos nuevas funciones: +almacenaranagramas+, que debería almacenar el diccionario de anagramas usando +JLD2+; y +leeranagramas+, que debería buscar una palabra y devolver una matriz de sus anagramas.
 (((storeanagrams)))((("function", "programmer-defined", "storeanagrams", see="storeanagrams")))(((readanagrams)))((("function", "programmer-defined", "readanagrams", see="readanagrams")))
 
 [[ex14-3]]
-==== Exercise 14-4
+==== Ejercicio 14-4
 
-In a large collection of MP3 files, there may be more than one copy of the same song, stored in different directories or with different file names. The goal of this exercise is to search for duplicates.
+En una gran colección de archivos MP3, puede haber más de una copia de la misma canción, almacenada en diferentes directorios o con diferentes nombres de archivo. El objetivo de este ejercicio es buscar duplicados.
 
-. Write a program that searches a directory and all of its subdirectories, recursively, and returns an array of complete paths for all files with a given suffix (like _.mp3_).
+. Escriba un programa que busque un directorio y todos sus subdirectorios, de forma recursiva, y devuelva una matriz de rutas completas para todos los archivos con un sufijo dado (como _.mp3_).
 
-. To recognize duplicates, you can use +md5sum+ or +md5+ to compute a “checksum” for each files. If two files have the same checksum, they probably have the same contents.
+. Para reconocer duplicados, puede usar +md5sum+ o +md5+ para calcular una "suma de verificación" para cada archivo. Si dos archivos tienen la misma suma de verificación, probablemente tengan el mismo contenido.
 
-. To double-check, you can use the Unix command +diff+.
+. Para verificar por segunda vez, puede usar el comando de Unix +diff+.
 
