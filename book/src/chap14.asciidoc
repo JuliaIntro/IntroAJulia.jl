@@ -42,7 +42,7 @@ julia> write(fout, linea1)
 31
 ----
 
-El valor de retorno es el número de caracteres que se escribieron. El objeto de archivo lleva registro de dónde quedó por última vez, por lo que si llama a +write+ nuevamente, esta agrega nuevos datos al final del archivo.
+El valor de retorno es el número de caracteres que se escribieron. El objeto de archivo _fout_ lleva registro de dónde quedó por última vez, por lo que si llama a +write+ nuevamente, esta agrega nuevos datos al final del archivo.
 
 [source,@julia-repl-test chap14]
 ----
