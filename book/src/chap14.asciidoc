@@ -31,7 +31,7 @@ julia> fout = open("salida.txt", "w")
 IOStream(<file salida.txt>)
 ----
 
-Si el archivo ya existe, abrirlo en modo de escritura borra los datos antiguos y comienza de nuevo, ¡así que tenga cuidado!. Si el archivo no existe, se crea uno nuevo. +open+ devuelve un objeto de archivo y la función +write + coloca datos en el archivo.
+Si el archivo ya existe, abrirlo en modo de escritura borra los datos antiguos y comienza de nuevo, ¡así que tenga cuidado!. Si el archivo no existe, se crea uno nuevo. +open+ devuelve un objeto de archivo y la función +write+ escribe datos en el archivo.
 (((write)))((("function", "Base", "write", see="write")))
 
 [source,@julia-repl-test chap14]
