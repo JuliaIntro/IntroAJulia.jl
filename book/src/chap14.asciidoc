@@ -52,7 +52,7 @@ julia> write(fout, linea2)
 30
 ----
 
-Cuando termine de escribir, debe cerrar el archivo.
+Cuando hayas terminado de escribir, debes cerrar el archivo.
 (((close)))
 
 [source,@julia-repl-test chap14]
