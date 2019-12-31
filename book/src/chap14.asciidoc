@@ -202,7 +202,7 @@ ERROR: SystemError: opening file "archivo_malo": No such file or directory
 
 Si intentas abrir un archivo pero no tienes permiso para acceder a él, obtienes el error de sistema "Permission denied" (Permiso denegado).
 
-Para evitar estos errores, se podrían usar funciones como +ispath+ y +isfile+, pero tomaría mucho tiempo y líneas de código verificar todas las posibilidades.
+Para evitar estos errores, se podrían usar funciones como +ispath+ e +isfile+, pero tomaría mucho tiempo y líneas de código verificar todas las posibilidades.
 
 Es más fácil intentar lidiar con los problemas a medida que ocurren, que es exactamente lo que hace la sentencia +try+. La sintaxis es similar a una sentencia +if+:
 (((try statement)))((("statement", "try", see="try statement")))(((try)))((("keyword", "try", see="try")))(((catch)))((("keyword", "catch", see="catch")))(((end)))
