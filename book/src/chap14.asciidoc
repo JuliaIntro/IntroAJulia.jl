@@ -312,7 +312,7 @@ julia> close(bd)
 
 Una limitación de +GDBM+ es que las claves y los valores deben ser cadenas o conjuntos de bytes. Si intenta utilizar cualquier otro tipo, se producirá un error.
 
-Las funciones +serialize+ y +deserialize+ pueden ayudar. Traducen casi cualquier tipo de objeto en una matriz de bytes (un iobuffer) adecuada para el almacenamiento en una base de datos, y luego traducen las matrices de bytes en objetos:
+Las funciones +serialize+ y +deserialize+ pueden ser útiles. Traducen casi cualquier tipo de objeto en una matriz de bytes (un iobuffer) adecuada para el almacenamiento en una base de datos, y luego traducen las matrices de bytes en objetos:
 (((Serialization)))((("module", "Serialization", see="Serialization")))(((serialize)))((("function", "Serialization", "serialize", see="serialize)))(((IOBuffer)))((("type", "Base", "IOBuffer", see="IOBuffer")))(((take!)))((("function", "Base", "take!", see="take!")))
 
 [source,@julia-repl-test chap14]
