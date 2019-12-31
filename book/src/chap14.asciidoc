@@ -570,8 +570,8 @@ ruta absoluta::
 Una ruta que comienza desde el directorio superior del sistema de archivos.
 (((absolute path)))
 
-captura o catch::
-Para evitar que una excepción termine un programa, utilizando las sentencias +try pass:[...] catch pass:[...] finally+.
+capturar (catch)::
+Evitar que una excepción haga terminar un programa, utilizando las sentencias +try pass:[...] catch pass:[...] finally+.
 (((catching)))
 
 base de datos::
