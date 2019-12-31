@@ -221,7 +221,7 @@ Julia comienza ejecutando el bloque +try+. Si todo resulta bien, se saltará el 
 Gestionar una excepcion con +try+ recibe el nombre de _capturar_ una excepcion. En este ejemplo, el bloque +catch+ muestra un mensaje de error que no es muy útil. En general, capturar una excepcion te da la oportunidad de corregir el problema, volverlo a intentar o, al menos, terminar el programa con elegancia.
 (((catching an exception)))
 
-Cuando el código realiza cambios de estado o usa recursos como archivos, generalmente se debe realizar un trabajo posterior (como cerrar archivos) al finalizar la programación del código. Las excepciones pueden complicar esta tarea, ya que se podría salir antes de lo esperado de un bloque de código. La palabra reservada +finally+ se constituye como una forma de ejecutar un código cuando se sale de un bloque de código determinado, independientemente de cómo lo haga:
+Cuando el código realiza cambios de estado o usa recursos, como archivos, generalmente se deben hacer ciertas cosas al finalizar la programación del código, como cerrar los archivos. Las excepciones pueden complicar esta tarea, ya que se podría salir antes de lo esperado de un bloque de código. La palabra reservada +finally+ permite ejecutar un código al salir de un bloque de código determinado, independientemente de cómo salga:
 (((finally)))((("keyword", "finally", see="finally")))
 
 [source,julia]
@@ -235,7 +235,7 @@ finally
 end
 ----
 
-La función +close+ siempre se ejecutará.
+En este ejemplo, la función +close+ siempre se ejecutará.
 
 
 [[databases]]
