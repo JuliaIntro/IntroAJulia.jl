@@ -1,11 +1,11 @@
 [[chap14]]
-== Files
+== Archivos
 
-Este capítulo presenta la idea de programas "persistentes" que mantienen los datos en almacenamiento permanente, y muestra cómo usar diferentes tipos de almacenamiento permanente, tales como archivos y bases de datos..
+Este capítulo presenta el concepto de persistencia, que alude a los programas que mantienen los datos en almacenamiento permanente, y muestra cómo usar diferentes tipos de almacenamiento permanente, tales como archivos y bases de datos.
 
 === Persistencia
 
-La mayoría de los programas que hemos visto hasta ahora han sido transitorios, es decir se ejecutan por un corto tiempo y generan una de salida, pero cuando terminan, sus datos desaparecen. Si ejecuta el programa nuevamente, este comienza de cero.
+La mayoría de los programas que hemos visto hasta ahora han sido transitorios, es decir se ejecutan por un corto tiempo y generan una salida, pero cuando finalizan, sus datos desaparecen. Si ejecuta el programa nuevamente, este comienza de cero.
 (((transient)))
 
 Otros programas son _persistentes_; se ejecutan durante un largo período de tiempo (o todo el tiempo), mantienen al menos parte de sus datos en almacenamiento permanente (en un disco duro, por ejemplo), y si se apagan y vuelven a comenzar, retoman donde lo dejaron.
@@ -22,7 +22,7 @@ Otra alternativa es almacenar el estado del programa en una base de datos. En es
 
 Un archivo de texto es una secuencia de caracteres almacenados en un medio permanente, como un disco duro o una memoria flash. Ya vimos cómo abrir y leer un archivo en <<reading_word_lists>>.
 
-Para escribir un archivo, debe abrirlo con el modo +"w"+ como segundo parámetro:
+Para escribir un archivo, debe abrirlo usando el modo +"w"+ (de write) como segundo parámetro:
 (((open)))
 
 [source,@julia-repl-test chap14]
@@ -31,7 +31,8 @@ julia> fout = open("salida.txt", "w")
 IOStream(<file salida.txt>)
 ----
 
-Si el archivo ya existe, abrirlo en modo de escritura borra los datos antiguos y comienza de nuevo, ¡así que tenga cuidado!. Si el archivo no existe, se crea uno nuevo. +open+ devuelve un objeto de archivo y la función +write + coloca datos en el archivo.
+Si el archivo ya existe, abrirlo en modo de escritura borra los datos antiguos y comienza de nuevo, ¡así que tenga cuidado!. Si el archivo no existe, se crea uno nuevo. +open+ devuelve un objeto de archivo y la función +write+ escribe datos en el archivo.
+
 (((write)))((("function", "Base", "write", see="write")))
 
 [source,@julia-repl-test chap14]
@@ -42,7 +43,7 @@ julia> write(fout, linea1)
 31
 ----
 
-El valor de retorno es el número de caracteres que se escribieron. El objeto de archivo lleva registro de dónde quedó por última vez, por lo que si llama +write+ nuevamente, agrega nuevos datos al final del archivo.
+El valor de retorno es el número de caracteres que se escribieron. El objeto de archivo _fout_ lleva registro de dónde quedó por última vez, por lo que si llama a +write+ nuevamente, esta agrega nuevos datos al final del archivo.
 
 [source,@julia-repl-test chap14]
 ----
@@ -52,7 +53,7 @@ julia> write(fout, linea2)
 30
 ----
 
-Cuando termine de escribir, debe cerrar el archivo.
+Cuando hayas terminado de escribir, debes cerrar el archivo.
 (((close)))
 
 [source,@julia-repl-test chap14]
@@ -64,43 +65,43 @@ julia> close(fout)
 Si no cierra el archivo, se cierra cuando finaliza el programa.
 
 
-=== Formatting
+=== Formateo
 
-The argument of write has to be a string, so if we want to put other values in a file, we have to convert them to strings. The easiest way to do that is with +string+ or string interpolation:
+El argumento de write tiene que ser una cadena, por lo que si queremos poner otros valores en un archivo, tenemos que convertirlos en cadenas. La forma más fácil de hacerlo es con la función +string+, o con interpolación de cadenas:
 (((string)))(((string interpolation)))
 
 [source,@julia-repl-test chap14]
 ----
-julia> fout = open("output.txt", "w")
-IOStream(<file output.txt>)
+julia> fout = open("salida.txt", "w")
+IOStream(<file salida.txt>)
 julia> write(fout, string(150))
 3
 ----
 
-An alternative is to use the +print(ln)+ family of functions.
+Otra alternativa es utilizar la familia de funciones de +print(ln)+.
 (((print)))(((println)))
 
 [source,@julia-repl-test chap14]
 ----
-julia> camels = 42
+julia> camellos = 42
 42
-julia> println(fout, "I have spotted $camels camels.")
+julia> println(fout, "He visto $camellos camellos.")
 
 ----
 
 [TIP]
 ====
-A more powerful alternative is the +@printf+ macro that prints using a C style format specification string, which you can read about at https://docs.julialang.org/en/v1/stdlib/Printf/
+Una alternativa más potente es la macro +@printf+, que imprime utilizando cadenas con especificación de formato al más puro estilo C, lo cual puede leer en https://docs.julialang.org/en/v1/stdlib/Printf/
 (((@printf)))((("macro", "Printf", "@printf", see="@printf")))(((formatting)))
 ====
 
 
-=== Filenames and Paths
+=== Nombre de Archivo y Ruta
 
-Files are organized into _directories_ (also called “folders”). Every running program has a “current directory”, which is the default directory for most operations. For example, when you open a file for reading, Julia looks for it in the current directory.
+Los archivos están organizados en _directorios_ (también llamados "carpetas"). Cada programa en ejecución tiene su propio "directorio actual", que es el directorio que usará por defecto para para la mayoría de las operaciones. Por ejemplo, cuando abre un archivo para leer, Julia lo busca en el directorio actual.
 (((directory)))((("folder", see="directory")))
 
-The function +pwd+ returns the name of the current directory:
+La función +pwd+ devuelve el nombre del directorio actual:
 (((pwd)))((("function", "Base", "pwd", see="pwd")))
 
 [source,jlcon]
@@ -109,15 +110,15 @@ julia> cwd = pwd()
 "/home/ben"
 ----
 
-+cwd+ stands for “current working directory”. The result in this example is +/home/ben+, which is the home directory of a user named +ben+.
++cwd+ significa "directorio del trabajo actual" (en inglés “current working directory”). El resultado en este ejemplo es +/home/ben+, que es el directorio de inicio de un usuario llamado +ben+.
 
-A string like +"/home/ben"+ that identifies a file or directory is called a _path_.
+Una cadena como +"/home/ben"+ que identifica un archivo o directorio se llama _ruta_ o _path_.
 (((path)))
 
-A simple filename, like +memo.txt+ is also considered a path, but it is a _relative path_ because it relates to the current directory. If the current directory is +/home/ben+, the filename +memo.txt+ would refer to +/home/ben/memo.txt+.
+Un nombre de archivo simple, como +memo.txt+ también se considera una ruta, pero es una _ruta relativa_ porque comienza en el directorio actual. Si el directorio actual es +/home/ben+, el nombre de archivo +memo.txt+ se referiría a +/home/ben/memo.txt+.
 (((relative path)))((("path", "relative", see="relative path")))
 
-A path that begins with +/+ does not depend on the current directory; it is called an _absolute path_. To find the absolute path to a file, you can use +abspath+:
+Una ruta que comienza con +/+ no depende del directorio actual. Este tipo de ruta se llama una ruta absoluta. Para encontrar la ruta absoluta de un archivo, puede usar +abspath+:
 (((absolute path)))((("path", "absolute", see="absolute path")))(((abspath)))((("function", "Base", "abspath", see="abspath")))
 
 [source,jlcon]
@@ -126,7 +127,7 @@ julia> abspath("memo.txt")
 "/home/ben/memo.txt"
 ----
 
-Julia provides other functions for working with filenames and paths. For example, +ispath+ checks whether a file or directory exists:
+Julia también tiene otras funciones para trabajar con nombres de archivo y rutas. Por ejemplo, +ispath+ comprueba si existe un archivo o directorio:
 (((ispath)))((("function", "Base", "ispath", see="ispath")))
 
 [source,jlcon]
@@ -135,7 +136,7 @@ julia> ispath("memo.txt")
 true
 ----
 
-If it exists, +isdir+ checks whether it’s a directory:
+Si existe, +isdir+ comprueba si es un directorio:
 (((isdir)))((("function", "Base", "isdir", see="isdir")))
 
 [source,jlcon]
@@ -146,10 +147,10 @@ julia> isdir("/home/ben")
 true
 ----
 
-Similarly, +isfile+ checks whether it’s a file.
+Del mismo modo, +isfile+ comprueba si se trata de un archivo.
 (((isfile)))((("function", "Base", "isfile", see="isfile")))
 
-+readdir+ returns an array of the files (and other directories) in the given directory:
++readdir+ devuelve una matriz de los archivos (y otros directorios) en el directorio dado:
 (((readdir)))((("function", "Base", "readdir", see="readdir")))
 
 [source,jlcon]
@@ -157,162 +158,162 @@ Similarly, +isfile+ checks whether it’s a file.
 julia> readdir(cwd)
 3-element Array{String,1}:
  "memo.txt"
- "music"
- "photos"
+ "musica"
+ "fotos"
 ----
 
-To demonstrate these functions, the following example “walks” through a directory, prints the names of all the files, and calls itself recursively on all the directories.
+Para mostrar el funcionamiento de estas funciones, el siguiente ejemplo "recorre" un directorio, imprime los nombres de todos los archivos y se llama a si misma, de manera recursiva, en todos los directorios.
 (((walk)))((("function", "programmer-defined", "walk", see="walk")))
 
 [source,@julia-setup chap14]
 ----
-function walk(dirname)
-    for name in readdir(dirname)
-        path = joinpath(dirname, name)
-        if isfile(path)
-            println(path)
+function recorrer(nombredir)
+    for nombre in readdir(nombredir)
+        ruta = joinpath(nombredir, nombre)
+        if isfile(ruta)
+            println(ruta)
         else
-            walk(path)
+            recorrer(ruta)
         end
     end
 end
 ----
 
-+joinpath+ takes a directory and a file name and joins them into a complete path.
++joinpath+ toma un directorio y un nombre de archivo, y los une en una ruta completa.
 (((joinpath)))((("function", "Base", "joinpath", see="joinpath")))
 
 [TIP]
 ====
-Julia provides a function called +walkdir+ (see https://docs.julialang.org/en/v1/base/file/#Base.Filesystem.walkdir) that is similar to this one but more versatile. As an exercise, read the documentation and use it to print the names of the files in a given directory and its subdirectories.
+Julia tiene una función integrada llamada +walkdir+ (vea https://docs.julialang.org/en/v1/base/file/#Base.Filesystem.walkdir) que es similar a esta pero más versátil. Como ejercicio, lea la documentación y úsela para imprimir los nombres de los archivos en un directorio dado y sus subdirectorios.
 (((walkdir)))((("function", "Base", "walkdir", see="walkdir")))
 ====
 
 
 [[catching_exceptions]]
-=== Catching Exceptions
+=== Captura de Excepciones
 
-A lot of things can go wrong when you try to read and write files. If you try to open a file that doesn’t exist, you get a +SystemError+:
+Muchas cosas pueden salir mal al intentar leer y escribir archivos. Al intentar abrir un archivo que no existe, se obtiene un +SystemError+:
 (((SystemError)))((("error", "Base", "SystemError", see="SystemError")))
 
 [source,@julia-repl-test]
 ----
-julia> fin = open("bad_file")
-ERROR: SystemError: opening file "bad_file": No such file or directory
+julia> fin = open("archivo_malo.txt")
+ERROR: SystemError: opening file "archivo_malo": No such file or directory
 ----
 
-Also, if you try to open a file you don’t have permission to access,
-you get a "Permission denied" system error.
+Si intentas abrir un archivo pero no tienes permiso para acceder a él, obtienes el error de sistema "Permission denied" (Permiso denegado).
 
-To avoid these errors, you could use functions like +ispath+ and +isfile+, but it would take a lot of time and code to check all the possibilities.
+Para evitar estos errores, se podrían usar funciones como +ispath+ e +isfile+, pero tomaría mucho tiempo y líneas de código verificar todas las posibilidades.
 
-It is easier to go ahead and try—to deal with problems as they happen—which is exactly what the +try+ statement does. The syntax is similar to an +if+ statement:
+Es más fácil intentar lidiar con los problemas a medida que ocurren, que es exactamente lo que hace la sentencia +try+. La sintaxis es similar a una sentencia +if+:
 (((try statement)))((("statement", "try", see="try statement")))(((try)))((("keyword", "try", see="try")))(((catch)))((("keyword", "catch", see="catch")))(((end)))
 
 [source,julia]
 ----
 try
-    fin = open("bad_file.txt")
+    fin = open("archivo_malo.txt")
 catch exc
-    println("Something went wrong: $exc")
+    println("Algo salió mal: $exc")
 end
 ----
 
-Julia starts by executing the +try+ clause. If all goes well, it skips the +catch+ clause and proceeds. If an exception occurs, it jumps out of the +try+ clause and runs the +catch+ clause.
+Julia comienza ejecutando el bloque +try+. Si todo resulta bien, se saltará el bloque +catch+ y finalizará. Si ocurre una excepción, Julia saltara fuera del bloque +try+ y ejecutará el bloque +catch+.
 
-Handling an exception with a +try+ statement is called _catching_ an exception. In this example, the except clause prints an error message that is not very helpful. In general, catching an exception gives you a chance to fix the problem, or try again, or at least end the program gracefully.
+Gestionar una excepcion con +try+ recibe el nombre de _capturar_ una excepcion. En este ejemplo, el bloque +catch+ muestra un mensaje de error que no es muy útil. En general, capturar una excepcion te da la oportunidad de corregir el problema, volverlo a intentar o, al menos, terminar el programa con elegancia.
 (((catching an exception)))
 
-In code that performs state changes or uses resources like files, there is typically clean-up work (such as closing files) that needs to be done when the code is finished. Exceptions potentially complicate this task, since they can cause a block of code to exit before reaching its normal end. The +finally+ keyword provides a way to run some code when a given block of code exits, regardless of how it exits:
+Cuando el código realiza cambios de estado o usa recursos, como archivos, generalmente se deben hacer ciertas cosas al finalizar la programación del código, como cerrar los archivos. Las excepciones pueden complicar esta tarea, ya que se podría salir antes de lo esperado de un bloque de código. La palabra reservada +finally+ permite ejecutar un código al salir de un bloque de código determinado, independientemente de cómo salga:
 (((finally)))((("keyword", "finally", see="finally")))
 
 [source,julia]
 ----
-f = open("output.txt")
+f = open("salida.txt")
 try
-    line = readline(f)
-    println(line)
+    linea = readline(f)
+    println(linea)
 finally
     close(f)
 end
 ----
 
-The function +close+ will always be executed.
+En este ejemplo, la función +close+ siempre se ejecutará.
+
 
 [[databases]]
-=== Databases
+=== Bases de datos
 
-A _database_ is a file that is organized for storing data. Many databases are organized like a dictionary in the sense that they map from keys to values. The biggest difference between a database and a dictionary is that the database is on disk (or other permanent storage), so it persists after the program ends.
+Una _base de datos_ es un archivo que esta organizado para almacenar datos. La mayoría de las bases de datos están organizadas como diccionarios, en el sentido de que realizan asociaciones entre claves y valores. La diferencia mas importante entre un diccionario y una base de datos, es que la base de datos se encuentra en el disco (u otro almacenamiento permanente), de modo que su contenido se conserva despues de que el programa finaliza. 
 (((database)))
 
-PiensaEnJulia provides an interface to +GDBM+ (GNU dbm) for creating and updating database files. As an example, I’ll create a database that contains captions for image files.
+PiensaEnJulia proporciona una interfaz para +GDBM+ (GNU dbm), que permite crear y actualizar archivos de base de datos. A modo de ejemplo, crearemos una base de datos que contenga pies de foto para archivos de imagen.
 (((GDBM)))
 
-Opening a database is similar to opening other files:
+Abrir una base de datos es similar a abrir otros archivos:
 (((DBM)))((("type", "PiensaEnJulia", "DBM", see="DBM")))
 
 [source,@julia-repl-test chap14]
 ----
 julia> using PiensaEnJulia
 
-julia> db = DBM("captions", "c")
-DBM(<captions>)
+julia> bd = DBM("piedefoto", "c")
+DBM(<piedefoto>)
 ----
 
-The mode "c" means that the database should be created if it doesn’t already exist. The result is a database object that can be used (for most operations) like a dictionary.
+El modo "c" significa que la base de datos debe crearse si no existe. El resultado es un objeto de base de datos que se puede usar (para la mayoría de las operaciones) como un diccionario.
 
-When you create a new item, +GDBM+ updates the database file:
+Cuando creas un nuevo elemento, +GDBM+ actualiza el archivo de base de datos:
 (((bracket operator)))
 
 [source,@julia-repl-test chap14]
 ----
-julia> db["cleese.png"] = "Photo of John Cleese."
-"Photo of John Cleese."
+julia> bd["luismi.png"] = "Foto de Luis Miguel."
+"Foto de Luis Miguel."
 ----
 
-When you access one of the items, +GDBM+ reads the file:
+Cuando accede a uno de los elementos, +GDBM+ lee el archivo:
 
 [source,@julia-repl-test chap14]
 ----
-julia> db["cleese.png"]
-"Photo of John Cleese."
+julia> bd["luismi.png"]
+"Foto de Luis Miguel."
 ----
 
-If you make another assignment to an existing key, +GDBM+ replaces the old value:
+Si realiza otra asignación a una clave existente, +GDBM+ reemplaza el valor anterior:
 (((assignment)))
 
 [source,@julia-repl-test chap14]
 ----
-julia> db["cleese.png"] = "Photo of John Cleese doing a silly walk."
-"Photo of John Cleese doing a silly walk."
-julia> db["cleese.png"]
-"Photo of John Cleese doing a silly walk."
+julia> bd["luismi.png"] = "Foto de Luis Miguel cantando."
+"Foto de Luis Miguel cantando."
+julia> bd["luismi.png"]
+"Foto de Luis Miguel cantando."
 ----
 
-Some functions having a dictionary as argument, like +keys+ and +values+, don’t work with database objects. But iteration with a +for+ loop works:
+Algunas funciones que tienen un diccionario como argumento, con +claves+ y +valores+, no funcionan con objetos de base de datos. Pero la iteración con un bucle +for+ sí:
 (((for statement)))(((iteration)))
 
 [source,julia]
 ----
-for (key, value) in db
-    println(key, ": ", value)
+for (clave, valor) in bd
+    println(clave, ": ", valor)
 end
 ----
 
-As with other files, you should close the database when you are done:
+Al igual que con otros archivos, debe cerrar la base de datos cuando haya terminado:
 (((close)))
 
 [source,@julia-repl-test chap14]
 ----
-julia> close(db)
+julia> close(bd)
 
 ----
 
 
-=== Serialization
+=== Serialización
 
-A limitation of +GDBM+ is that the keys and the values have to be strings or byte arrays. If you try to use any other type, you get an error.
+Una limitación de +GDBM+ es que las claves y los valores deben ser cadenas o conjuntos de bytes. Si intenta utilizar cualquier otro tipo, se producirá un error.
 
-The functions +serialize+ and +deserialize+ can help. They translate almost any type of object into a byte array (an iobuffer) suitable for storage in a database, and then translates byte arrays back into objects:
+Las funciones +serialize+ y +deserialize+ pueden ser útiles. Traducen casi cualquier tipo de objeto en una matriz de bytes (un iobuffer) adecuada para el almacenamiento en una base de datos, y luego traducen las matrices de bytes nuevamente en objetos:
 (((Serialization)))((("module", "Serialization", see="Serialization")))(((serialize)))((("function", "Serialization", "serialize", see="serialize)))(((IOBuffer)))((("type", "Base", "IOBuffer", see="IOBuffer")))(((take!)))((("function", "Base", "take!", see="take!")))
 
 [source,@julia-repl-test chap14]
@@ -329,7 +330,7 @@ julia> print(take!(io))
 UInt8[0x37, 0x4a, 0x4c, 0x08, 0x04, 0x00, 0x00, 0x00, 0x15, 0x00, 0x08, 0xe2, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
 ----
 
-The format isn’t obvious to human readers; it is meant to be easy for Julia to interpret. +deserialize+ reconstitutes the object:
+El formato no es obvio para nosotros; pero es fácil de interpretar para Julia. +deserialize+ reconstituye el objeto:
 (((deserialize)))((("function", "Serialization", "deserialize", see="deserialize)))
 
 [source,@julia-repl-test chap14]
@@ -348,9 +349,9 @@ julia> print(t2)
 [1, 2, 3]
 ----
 
-+serialize+ and +deserialize+ write to and read from a iobuffer object which represents an in-memory I/O stream. The function +take!+ fetches the contents of the iobuffer as a byte array and resets the iobuffer to its initial state.
++serialize+ y +deserialize+ escriben y leen desde un objeto iobuffer que representa un I/O stream en memoria. La función +take!+ recupera el contenido del iobuffer como una matriz de bytes y reestablece el iobuffer a su estado inicial.
 
-Although the new object has the same value as the old, it is not (in general) the same object:
+Aunque el nuevo objeto tiene el mismo valor que el anterior, no es (en general) el mismo objeto:
 
 [source,@julia-repl-test chap14]
 ----
@@ -360,45 +361,45 @@ julia> t1 ≡ t2
 false
 ----
 
-In other words, serialization and then deserialization has the same effect as copying the object.
+En otras palabras, la serialización y luego la deserialización tienen el mismo efecto que copiar el objeto.
 (((copying)))
 
-You can use this to store non-strings in a database. 
+Puedes usar esto para almacenar valores que no sean cadenas en una base de datos.
 
 [TIP]
 ====
-In fact, the storage of non-string in a database is so common that it has been encapsulated in a package called +JLD2+ (see https://github.com/JuliaIO/JLD2.jl).
+De hecho, el almacenamiento de valores que no son cadenas en una base de datos es tan común que se ha encapsulado en un paquete llamado +JLD2+ (consulte https://github.com/JuliaIO/JLD2.jl).
 ====
 
 
-=== Command Objects
+=== Objetos de Comando
 
-Most operating systems provide a command-line interface, also known as a _shell_. Shells usually provide commands to navigate the file system and launch applications. For example, in Unix you can change directories with +cd+, display the contents of a directory with +ls+, and launch a web browser by typing (for example) +firefox+.
+La mayoría de los sistemas operativos proporcionan una interfaz de línea de comandos, también conocida como _shell_. Las shells generalmente proporcionan comandos para navegar por el sistema de archivos y ejecutar aplicaciones. Por ejemplo, en Unix puede cambiar los directorios con +cd+, mostrar el contenido de un directorio con +ls+ e iniciar un navegador web escribiendo (por ejemplo) +firefox+.
 (((shell)))(((cd)))
 
-Any program that you can launch from the shell can also be launched from Julia using a _command object_:
+Cualquier programa que pueda iniciar desde la shell también puede iniciarse desde Julia usando un _objeto de comando_:
 (((command object)))(((backticks)))((("``", see="backticks")))
 
 [source,@julia-repl-test chap14]
 ----
-julia> cmd = `echo hello`
-`echo hello`
+julia> cmd = `echo hola`
+`echo hola`
 ----
 
-Backticks are used to delimit the command.
+Las comillas invertidas se usan para delimitar el comando.
 
-The function +run+ executes the command:
+La función +run+ ejecuta el comando:
 (((run)))((("function", "Base", "run", see="run"))))
 
 [source,@julia-repl-test chap14]
 ----
 julia> run(cmd);
-hello
+hola
 ----
 
-The +hello+ is the output of the echo command, sent to +STDOUT+. The +run+ function itself returns a process object, and throws an +ErrorException+ if the external command fails to run successfully.
++hola+ es la salida del comando echo, enviado a +STDOUT+. La función +run+ devuelve un objeto de proceso y genera un +ErrorException+ si el comando externo no se ejecuta correctamente.
 
-If you want to read the output of the external command, +read+ can be used instead:
+Si desea leer la salida del comando externo, se puede usar +read+ en su lugar:
 (((read)))
 
 [source,@julia-repl-test chap14]
@@ -407,53 +408,53 @@ julia> a = read(cmd, String)
 "hello\n"
 ----
 
-For example, most Unix systems provide a command called +md5sum+ or +md5+ that reads the contents of a file and computes a “checksum”. You can read about MD5 at https://en.wikipedia.org/wiki/Md5. This command provides an efficient way to check whether two files have the same contents. The probability that different contents yield the same checksum is very small (that is, unlikely to happen before the universe collapses).
+Por ejemplo, la mayoría de los sistemas Unix tienen un comando llamado +md5sum+ o +md5+ que lee el contenido de un archivo y calcula una "suma de verificación". Puede leer sobre Md5 en https://en.wikipedia.org/wiki/Md5. Este comando proporciona una manera eficiente de verificar si dos archivos tienen el mismo contenido. La probabilidad de que diferentes contenidos produzcan la misma suma de comprobación es muy pequeña.
 (((checksum)))(((md5)))(((md5sum)))
 
-You can use a command object to run +md5+ from Julia and get the result:
+Puede usar un objeto de comando para ejecutar +md5+ desde Julia y obtener el resultado:
 
 [source,@julia-repl]
 ----
-filename = "output.txt"
-cmd = `md5 $filename`
+nombrearchivo = "salida.txt"
+cmd = `md5 $nombrearchivo`
 res = read(cmd, String)
 ----
 
 
-=== Modules
+=== Modulos
 
-Suppose you have a file named +"wc.jl"+ with the following code:
+Supongamos que tenemos un archivo llamado +"wc.jl"+ con el siguiente código:
 (((linecount)))((("function", "programmer-defined", "linecount", see="linecount")))(((eachline)))
 
 [source,julia]
 ----
-function linecount(filename)
-    count = 0
-    for line in eachline(filename)
-        count += 1
+function contarlineas(nombrearchivo)
+    conteo = 0
+    for linea in eachline(nombrearchivo)
+        conteo += 1
     end
-    count
+    conteo
 end
 
-print(linecount("wc.jl"))
+print(contarlineas("wc.jl"))
 ----
 
 [source,@julia-eval]
 ----
-file = open("wc.jl", "w")
-print(file, """function linecount(filename)
-    count = 0
-    for line in eachline(filename)
-        count += 1
+archivo = open("wc.jl", "w")
+print(archivo, """function contarlineas(nombrearchivo)
+    conteo = 0
+    for linea in eachline(nombrearchivo)
+        conteo += 1
     end
-    count
+    conteo
 end
 
-print(linecount("wc.jl"))""")
-close(file)
+print(contarlineas("wc.jl"))""")
+close(archivo)
 ----
 
-If you run this program, it reads itself and prints the number of lines in the file, which is 9. You can also include it in the REPL like this:
+Si ejecuta este programa, se leen las líneas de código y se imprime el número de líneas en el archivo, que es 9. También puede incluirlo en REPL de esta manera:
 (((include)))((("function", "Base", "include", see="include")))
 
 [source,jl-con]
@@ -462,52 +463,53 @@ julia> include("wc.jl")
 9
 ----
 
-Julia introduces modules to create separate variable workspace, i.e. new global scopes. 
+Los módulos permiten crear espacios de trabajo separados, es decir, nuevos global scopes (ámbitos de tipo global). Una sentencia tiene 
+global scope si tiene efecto en todo el prorgama.
 
-A module starts with the keyword +module+ and ends with +end+. Naming conflicts are avoided between your own top-level definitions and those found in somebody else's code. +import+ allows to control which names from other modules are visible and +export+ specifies which of your names are public, i.e. can be used outside the module without being prefixed with the name of the module. 
+Un módulo comienza con la palabra reservada +module+ y termina con +end+. Al usar módulos, se evitan los conflictos de nombres entre sus propias definiciones de nivel superior y las que se encuentran en el código de otra persona. +import+ permite controlar qué nombres de otros módulos están visibles y +export+ especifica cuáles de sus nombres son públicos, es decir, aquellos que se pueden usar fuera del módulo sin tener el prefijo del nombre del módulo.
 (((scope)))(((module)))((("keyword", "module", see="module")))(((end)))(((import)))((("keyword", "import", see="import")))(((export)))((("keyword", "export", see="export")))(((LineCount)))((("module", "LineCount", see="LineCount")))((("function", "LineCount", "linecount", see="linecount")))
 
 [source,julia]
 ----
-module LineCount
-    export linecount
+module ContarLineas
+    export contarlineas
 
-    function linecount(filename)
-        count = 0
-        for line in eachline(filename)
-            count += 1
+    function contarlineas(nombrearchivo)
+        conteo = 0
+        for linea in eachline(nombrearchivo)
+            conteo += 1
         end
-        count
+        conteo
     end
 end
 ----
 
-The module +LineCount+ object provides +linecount+:
+El módulo +ContarLineas+ proporciona la función +contarlineas+:
 
 [source,julia]
 ----
-julia> using LineCount
+julia> using ContarLineas
 
-julia> linecount("wc.jl")
+julia> contarlineas("wc.jl")
 11
 ----
 
-==== Exercise 14-1
+==== Ejercicio 14-1
 
-Type this example into a file named _wc.jl_, include it into the REPL and enter +using LineCount+.
+Escriba este ejemplo en un archivo llamado _wc.jl_, inclúyalo en REPL (con include) y escriba +using ContarLineas+.
 
 
 [WARNING]
 ====
-If you import a module that has already been imported, Julia does nothing. It does not re-read the file, even if it has changed.
+Si importa un módulo que ya se ha importado, Julia no hace nada. No se vuelve a leer el archivo, incluso si ha cambiado.
 
-If you want to reload a module, you have to restart the REPL. A package +Revise+ exists that can keep your sessions running longer (see https://github.com/timholy/Revise.jl).
+Si desea volver a cargar un módulo, debe reiniciar REPL. El paquete +Revise+ puede ayudarlo a no reiniciar tan seguido (vea https://github.com/timholy/Revise.jl).
 ====
 
 
-=== Debugging
+=== Depuración
 
-When you are reading and writing files, you might run into problems with whitespace. These errors can be hard to debug because spaces, tabs and newlines are normally invisible:
+Al leer y escribir archivos, puedes tener problemas con los espacios en blanco. Estos errores pueden ser difíciles de depurar porque los espacios, las tabulaciones y las nuevas líneas son generalmente invisibles:
 (((\n)))(((\t)))
 
 [source,jlcon]
@@ -519,8 +521,7 @@ julia> println(s)
  4
 ----
 
-The built-in functions +repr+ or +dump+ can help. It takes any object as an argument and returns a string representation of the object.
-
+Las funciones integradas +repr+ o +dump+ pueden ser de ayuda. Toman cualquier objeto como argumento y devuelven una representación de tipo cadena del objeto.
 (((repr)))((("function", "Base", "repr", see="repr")))(((dump)))((("function", "Base", "dump", see="dump")))
 
 [source,@julia-eval chap14]
@@ -536,84 +537,84 @@ julia> dump(s)
 String "1 2\t 3\n 4"
 ----
 
-This can be helpful for debugging.
+Esto puede ser útil para la depuración.
 (((debugging)))
 
-One other problem you might run into is that different systems use different characters to indicate the end of a line. Some systems use a newline, represented +\n+. Others use a return character, represented +\r+. Some use both. If you move files between different systems, these inconsistencies can cause problems.
+Otro problema con el que te puedes encontrar es que en diferentes sistemas operativos se usan diferentes caracteres para indicar el final de una línea. Algunos sistemas usan una nueva línea, representada por +\n+. Otros usan un carácter de retorno +\r+. Algunos usan ambos. Si usas un archivo en diferentes sistemas, estas inconsistencias podrían causar problemas.
 (((\r)))
 
-For most systems, there are applications to convert from one format to another. You can find them (and read more about this issue) at https://en.wikipedia.org/wiki/Newline. Or, of course, you could write one yourself.
+Para la mayoría de los sistemas, hay aplicaciones para convertir de un formato a otro. Puede encontrarlas (y leer más sobre este tema) en https://en.wikipedia.org/wiki/Newline. O, por supuesto, podrías escribir una tú mismo.
 
 
-=== Glossary
+=== Glosario
 
-persistent::
-Pertaining to a program that runs indefinitely and keeps at least some of its data in permanent storage.
+persistente::
+Perteneciente a un programa que se ejecuta indefinidamente y mantiene al menos algunos de sus datos en almacenamiento permanente.
 (((persistent)))
 
-text file::
-A sequence of characters stored in permanent storage like a hard drive.
+archivo de texto::
+Una secuencia de caracteres almacenados en almacenamiento permanente, tal como en un disco duro.
 (((text file)))
 
-directory::
-A named collection of files, also called a folder.
+directorio::
+Una colección de archivos con nombre, también llamada carpeta.
 (((directory)))
 
-path::
-A string that identifies a file.
+ruta::
+Una cadena que identifica a un archivo.
 (((path)))
 
-relative path::
-A path that starts from the current directory.
+ruta relativa::
+Una ruta que comienza en el directorio actual.
 (((relative path)))
 
-absolute path::
-A path that starts from the topmost directory in the file system.
+ruta absoluta::
+Una ruta que comienza en el directorio superior del sistema de archivos.
 (((absolute path)))
 
-catch::
-To prevent an exception from terminating a program using the +try pass:[...] catch pass:[...] finally+ statements.
+capturar (catch)::
+Evitar que una excepción haga terminar un programa, utilizando las sentencias +try pass:[...] catch pass:[...] finally+.
 (((catching)))
 
-database::
-A file whose contents are organized like a dictionary with keys that correspond to values.
+base de datos::
+Un archivo cuyo contenido está organizado como un diccionario con claves que corresponden a valores.
 (((database)))
 
 shell::
-A program that allows users to type commands and then executes them by starting other programs.
+Un programa que permite a los usuarios escribir comandos y luego ejecutarlos iniciando otros programas.
 (((shell)))
 
-command object::
-An object that represents a shell command, allowing a Julia program to run commands and read the results.
+objeto de comando::
+Un objeto que representa un comando de shell. Esto permite que un programa de Julia ejecute comandos y lea los resultados.
 (((command object)))
 
 
 === Exercises
 
 [[ex14-1]]
-==== Exercise 14-2
+==== Ejercicio 14-2
 
-Write a function called +sed+ that takes as arguments a pattern string, a replacement string, and two filenames; it should read the first file and write the contents into the second file (creating it if necessary). If the pattern string appears anywhere in the file, it should be replaced with the replacement string.
+Escriba una función llamada +sed+ que tome como argumentos una cadena de patrones, una cadena de reemplazo y dos nombres de archivo. La función debe leer el primer archivo y escribir el contenido en el segundo archivo (creándolo si es necesario). Si la cadena de patrones aparece en algún lugar del archivo, debe reemplazarse con la cadena de reemplazo.
 (((sed)))((("function", "programmer-defined", "sed", see="sed")))
 
-If an error occurs while opening, reading, writing or closing files, your program should catch the exception, print an error message, and exit.
+Si se produce un error al abrir, leer, escribir o cerrar los archivos, su programa debe detectar la excepción, imprimir un mensaje de error y terminar.
 
 [[ex14-2]]
-==== Exercise 14-3
+==== Ejercicio 14-3
 
-If you have done <<ex12-2>>, you’ll see that a dictionary is created that maps from a sorted string of letters to the array of words that can be spelled with those letters. For example, +"opst"+ maps to the array +["opts", "post", "pots", "spot", "stop", "tops"]+.
+Si hizo <<ex12-2>>, recordará que debía crear un diccionario que asociaba una cadena ordenada de letras al conjunto de palabras que se podía deletrear con esas letras. Por ejemplo, +"cuarderno"+ estaba asociado a la matriz +["cuarderno", "educaron", "encuadro"]+.
 
-Write a module that imports +anagramsets+ and provides two new functions: +storeanagrams+ should store the anagram dictionary using +JLD2+; +readanagrams+ should look up a word and return an array of its anagrams.
+Escriba un módulo que importe +conjuntoanagramas+ y proporcione dos nuevas funciones: +almacenaranagramas+, que almacena el diccionario de anagramas usando +JLD2+ (vea https://github.com/JuliaIO/JLD2.jl); y +leeranagramas+, que busca una palabra y devuelve una matriz de sus anagramas.
 (((storeanagrams)))((("function", "programmer-defined", "storeanagrams", see="storeanagrams")))(((readanagrams)))((("function", "programmer-defined", "readanagrams", see="readanagrams")))
 
 [[ex14-3]]
-==== Exercise 14-4
+==== Ejercicio 14-4
 
-In a large collection of MP3 files, there may be more than one copy of the same song, stored in different directories or with different file names. The goal of this exercise is to search for duplicates.
+En una gran colección de archivos MP3, puede haber más de una copia de la misma canción, almacenada en diferentes directorios o con diferentes nombres de archivo. El objetivo de este ejercicio es buscar duplicados.
 
-. Write a program that searches a directory and all of its subdirectories, recursively, and returns an array of complete paths for all files with a given suffix (like _.mp3_).
+. Escriba un programa que busque un directorio y todos sus subdirectorios, de forma recursiva, y devuelva una matriz de rutas completas para todos los archivos con un sufijo dado (como _.mp3_).
 
-. To recognize duplicates, you can use +md5sum+ or +md5+ to compute a “checksum” for each files. If two files have the same checksum, they probably have the same contents.
+. Para reconocer duplicados, puede usar +md5sum+ o +md5+ para calcular una "suma de verificación" para cada archivo. Si dos archivos tienen la misma suma de verificación, probablemente tengan el mismo contenido.
 
-. To double-check, you can use the Unix command +diff+.
+. Para verificar, puede usar el comando de Unix +diff+.
 
