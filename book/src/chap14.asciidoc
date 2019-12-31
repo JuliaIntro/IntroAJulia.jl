@@ -183,7 +183,7 @@ end
 
 [TIP]
 ====
-Julia tiene una función integrada llamada +walkdir+ (consulte https://docs.julialang.org/en/v1/base/file/#Base.Filesystem.walkdir) que es similar a esta pero más versátil. Como ejercicio, lea la documentación y úsela para imprimir los nombres de los archivos en un directorio dado y sus subdirectorios.
+Julia tiene una función integrada llamada +walkdir+ (vea https://docs.julialang.org/en/v1/base/file/#Base.Filesystem.walkdir) que es similar a esta pero más versátil. Como ejercicio, lea la documentación y úsela para imprimir los nombres de los archivos en un directorio dado y sus subdirectorios.
 (((walkdir)))((("function", "Base", "walkdir", see="walkdir")))
 ====
 
