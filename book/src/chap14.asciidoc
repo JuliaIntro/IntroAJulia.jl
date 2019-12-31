@@ -97,7 +97,7 @@ Una alternativa más potente es la macro +@printf+, que imprime utilizando caden
 
 === Nombre de Archivo y Ruta
 
-Los archivos están organizados en _directorios_ (también llamados "carpetas"). Cada programa en ejecución tiene un "directorio actual", que es el directorio predeterminado para la mayoría de las operaciones. Por ejemplo, cuando abre un archivo para leer, Julia lo busca en el directorio actual.
+Los archivos están organizados en _directorios_ (también llamados "carpetas"). Cada programa en ejecución tiene su propio "directorio actual", que es el directorio que usará por defecto para para la mayoría de las operaciones. Por ejemplo, cuando abre un archivo para leer, Julia lo busca en el directorio actual.
 (((directory)))((("folder", see="directory")))
 
 La función +pwd+ devuelve el nombre del directorio actual:
@@ -114,7 +114,7 @@ julia> cwd = pwd()
 Una cadena como +"/home/ben"+ que identifica un archivo o directorio se llama _ruta_ o _path_.
 (((path)))
 
-Un nombre de archivo simple, como +memo.txt+ también se considera una ruta, pero es una _ruta relativa_ porque se relaciona con el directorio actual. Si el directorio actual es +/home/ben+, el nombre de archivo +memo.txt+ se referiría a +/home/ben/memo.txt+.
+Un nombre de archivo simple, como +memo.txt+ también se considera una ruta, pero es una _ruta relativa_ porque comienza en el directorio actual. Si el directorio actual es +/home/ben+, el nombre de archivo +memo.txt+ se referiría a +/home/ben/memo.txt+.
 (((relative path)))((("path", "relative", see="relative path")))
 
 Una ruta que comienza con +/+ no depende del directorio actual. Este tipo de ruta se llama una ruta absoluta. Para encontrar la ruta absoluta de un archivo, puede usar +abspath+:
@@ -563,11 +563,11 @@ Una cadena que identifica a un archivo.
 (((path)))
 
 ruta relativa::
-Una ruta que comienza desde el directorio actual.
+Una ruta que comienza en el directorio actual.
 (((relative path)))
 
 ruta absoluta::
-Una ruta que comienza desde el directorio superior del sistema de archivos.
+Una ruta que comienza en el directorio superior del sistema de archivos.
 (((absolute path)))
 
 capturar (catch)::
