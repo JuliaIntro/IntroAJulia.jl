@@ -1,7 +1,7 @@
 [[chap14]]
 == Archivos
 
-Este capítulo presenta la idea de programas "persistentes" que mantienen los datos en almacenamiento permanente, y muestra cómo usar diferentes tipos de almacenamiento permanente, tales como archivos y bases de datos.
+Este capítulo presenta el concepto de persistencia, que alude a los programas que mantienen los datos en almacenamiento permanente, y muestra cómo usar diferentes tipos de almacenamiento permanente, tales como archivos y bases de datos.
 
 === Persistencia
 
