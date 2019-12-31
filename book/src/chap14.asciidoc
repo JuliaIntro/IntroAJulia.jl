@@ -216,9 +216,9 @@ catch exc
 end
 ----
 
-Julia comienza ejecutando la secuencia de sentencias del bloque +try+. Si todo va bien, se saltará todo el bloque +catch+ y continuará. Si ocurre una excepción, Julia saltara fuera del bloque +try+ y ejecutará la secuencia de sentencias del bloque +catch+.
+Julia comienza ejecutando el bloque +try+. Si todo resulta bien, se saltará el bloque +catch+ y finalizará. Si ocurre una excepción, Julia saltara fuera del bloque +try+ y ejecutará el bloque +catch+.
 
-Gestionar una excepcion con una sentencia +try+ recibe el nombre de _capturar_ una excepcion. En este ejemplo, el bloque +catch+ muestra un mensaje de error que no es muy útil. En general, capturar una excepcion te da la oportunidad de corregir el problema, volverlo a intentar o, al menos, terminar el programa con elegancia.
+Gestionar una excepcion con +try+ recibe el nombre de _capturar_ una excepcion. En este ejemplo, el bloque +catch+ muestra un mensaje de error que no es muy útil. En general, capturar una excepcion te da la oportunidad de corregir el problema, volverlo a intentar o, al menos, terminar el programa con elegancia.
 (((catching an exception)))
 
 Cuando el código realiza cambios de estado o usa recursos como archivos, generalmente se debe realizar un trabajo posterior (como cerrar archivos) al finalizar la programación del código. Las excepciones pueden complicar esta tarea, ya que se podría salir antes de lo esperado de un bloque de código. La palabra reservada +finally+ se constituye como una forma de ejecutar un código cuando se sale de un bloque de código determinado, independientemente de cómo lo haga:
