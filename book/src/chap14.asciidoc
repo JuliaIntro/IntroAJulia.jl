@@ -22,7 +22,7 @@ Otra alternativa es almacenar el estado del programa en una base de datos. En es
 
 Un archivo de texto es una secuencia de caracteres almacenados en un medio permanente, como un disco duro o una memoria flash. Ya vimos cómo abrir y leer un archivo en <<reading_word_lists>>.
 
-Para escribir un archivo, debe abrirlo con el modo +"w"+ como segundo parámetro:
+Para escribir un archivo, debe abrirlo usando el modo +"w"+ (de write) como segundo parámetro:
 (((open)))
 
 [source,@julia-repl-test chap14]
