@@ -5,7 +5,7 @@ Este capítulo presenta el concepto de persistencia, que alude a los programas q
 
 === Persistencia
 
-La mayoría de los programas que hemos visto hasta ahora han sido transitorios, es decir se ejecutan por un corto tiempo y generan una salida, pero cuando terminan, sus datos desaparecen. Si ejecuta el programa nuevamente, este comienza de cero.
+La mayoría de los programas que hemos visto hasta ahora han sido transitorios, es decir se ejecutan por un corto tiempo y generan una salida, pero cuando finalizan, sus datos desaparecen. Si ejecuta el programa nuevamente, este comienza de cero.
 (((transient)))
 
 Otros programas son _persistentes_; se ejecutan durante un largo período de tiempo (o todo el tiempo), mantienen al menos parte de sus datos en almacenamiento permanente (en un disco duro, por ejemplo), y si se apagan y vuelven a comenzar, retoman donde lo dejaron.
