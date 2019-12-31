@@ -603,7 +603,7 @@ Si se produce un error al abrir, leer, escribir o cerrar los archivos, su progra
 
 Si hizo <<ex12-2>>, recordará que debía crear un diccionario que asociaba una cadena ordenada de letras al conjunto de palabras que se podía deletrear con esas letras. Por ejemplo, +"cuarderno"+ estaba asociado a la matriz +["cuarderno", "educaron", "encuadro"]+.
 
-Escriba un módulo que importe +conjuntoanagramas+ y proporcione dos nuevas funciones: +almacenaranagramas+, que debería almacenar el diccionario de anagramas usando +JLD2+ (vea https://github.com/JuliaIO/JLD2.jl); y +leeranagramas+, que debería buscar una palabra y devolver una matriz de sus anagramas.
+Escriba un módulo que importe +conjuntoanagramas+ y proporcione dos nuevas funciones: +almacenaranagramas+, que almacena el diccionario de anagramas usando +JLD2+ (vea https://github.com/JuliaIO/JLD2.jl); y +leeranagramas+, que busca una palabra y devuelve una matriz de sus anagramas.
 (((storeanagrams)))((("function", "programmer-defined", "storeanagrams", see="storeanagrams")))(((readanagrams)))((("function", "programmer-defined", "readanagrams", see="readanagrams")))
 
 [[ex14-3]]
