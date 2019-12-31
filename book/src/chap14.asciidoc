@@ -407,7 +407,7 @@ julia> a = read(cmd, String)
 "hello\n"
 ----
 
-Por ejemplo, la mayoría de los sistemas Unix tienen un comando llamado +md5sum+ o +md5+ que lee el contenido de un archivo y calcula una "suma de verificación". Puede leer sobre MD5 en https://en.wikipedia.org/wiki/Md5. Este comando proporciona una manera eficiente de verificar si dos archivos tienen el mismo contenido. La probabilidad de que diferentes contenidos produzcan la misma suma de comprobación es muy pequeña (es decir, es poco probable que suceda antes de que el universo colapse).
+Por ejemplo, la mayoría de los sistemas Unix tienen un comando llamado +md5sum+ o +md5+ que lee el contenido de un archivo y calcula una "suma de verificación". Puede leer sobre Md5 en https://en.wikipedia.org/wiki/Md5. Este comando proporciona una manera eficiente de verificar si dos archivos tienen el mismo contenido. La probabilidad de que diferentes contenidos produzcan la misma suma de comprobación es muy pequeña.
 (((checksum)))(((md5)))(((md5sum)))
 
 Puede usar un objeto de comando para ejecutar +md5+ desde Julia y obtener el resultado:
