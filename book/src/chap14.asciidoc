@@ -462,9 +462,10 @@ julia> include("wc.jl")
 9
 ----
 
-Julia presenta módulos para crear un espacio de trabajo variable separado, es decir, nuevos ámbitos globales (global scopes en inglés).
+Los módulos permiten crear espacios de trabajo separados, es decir, nuevos global scopes (ámbitos de tipo global). Una sentencia tiene 
+global scope si tiene efecto en todo el prorgama.
 
-Un módulo comienza con la palabra reservada +module+ y termina con +end+. Se evitan los conflictos de nombres entre sus propias definiciones de nivel superior y las que se encuentran en el código de otra persona. +import+ permite controlar qué nombres de otros módulos están visibles y +export+ especifica cuáles de sus nombres son públicos, es decir, aquellos que se pueden usar fuera del módulo sin tener el prefijo del nombre del módulo.
+Un módulo comienza con la palabra reservada +module+ y termina con +end+. Al usar módulos, se evitan los conflictos de nombres entre sus propias definiciones de nivel superior y las que se encuentran en el código de otra persona. +import+ permite controlar qué nombres de otros módulos están visibles y +export+ especifica cuáles de sus nombres son públicos, es decir, aquellos que se pueden usar fuera del módulo sin tener el prefijo del nombre del módulo.
 (((scope)))(((module)))((("keyword", "module", see="module")))(((end)))(((import)))((("keyword", "import", see="import")))(((export)))((("keyword", "export", see="export")))(((LineCount)))((("module", "LineCount", see="LineCount")))((("function", "LineCount", "linecount", see="linecount")))
 
 [source,julia]
@@ -482,7 +483,7 @@ module ContarLineas
 end
 ----
 
-El módulo +ContarLineas+ object proporciona la función +contarlineas+:
+El módulo +ContarLineas+ proporciona la función +contarlineas+:
 
 [source,julia]
 ----
@@ -494,14 +495,14 @@ julia> contarlineas("wc.jl")
 
 ==== Ejercicio 14-1
 
-Escriba este ejemplo en un archivo llamado _wc.jl_, inclúyalo en REPL (con include) y escriba +using LineCount+.
+Escriba este ejemplo en un archivo llamado _wc.jl_, inclúyalo en REPL (con include) y escriba +using ContarLineas+.
 
 
 [WARNING]
 ====
-Si importa un módulo que ya se ha importado, Julia no hace nada. No vuelve a leer el archivo, incluso si ha cambiado.
+Si importa un módulo que ya se ha importado, Julia no hace nada. No se vuelve a leer el archivo, incluso si ha cambiado.
 
-Si desea volver a cargar un módulo, debe reiniciar REPL. El paquete +Revise+ puede ayudarlo a no reiniciar tan seguido (consulte https://github.com/timholy/Revise.jl).
+Si desea volver a cargar un módulo, debe reiniciar REPL. El paquete +Revise+ puede ayudarlo a no reiniciar tan seguido (vea https://github.com/timholy/Revise.jl).
 ====
 
 
@@ -602,7 +603,7 @@ Si se produce un error al abrir, leer, escribir o cerrar los archivos, su progra
 
 Si hizo <<ex12-2>>, recordará que debía crear un diccionario que asociaba una cadena ordenada de letras al conjunto de palabras que se podía deletrear con esas letras. Por ejemplo, +"cuarderno"+ estaba asociado a la matriz +["cuarderno", "educaron", "encuadro"]+.
 
-Escriba un módulo que importe +conjuntoanagramas+ y proporcione dos nuevas funciones: +almacenaranagramas+, que debería almacenar el diccionario de anagramas usando +JLD2+; y +leeranagramas+, que debería buscar una palabra y devolver una matriz de sus anagramas.
+Escriba un módulo que importe +conjuntoanagramas+ y proporcione dos nuevas funciones: +almacenaranagramas+, que debería almacenar el diccionario de anagramas usando +JLD2+ (vea https://github.com/JuliaIO/JLD2.jl); y +leeranagramas+, que debería buscar una palabra y devolver una matriz de sus anagramas.
 (((storeanagrams)))((("function", "programmer-defined", "storeanagrams", see="storeanagrams")))(((readanagrams)))((("function", "programmer-defined", "readanagrams", see="readanagrams")))
 
 [[ex14-3]]
