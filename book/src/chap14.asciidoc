@@ -371,34 +371,34 @@ De hecho, el almacenamiento de no-cadenas en una base de datos es tan común que
 ====
 
 
-=== Command Objects
+=== Objetos de Comando
 
-Most operating systems provide a command-line interface, also known as a _shell_. Shells usually provide commands to navigate the file system and launch applications. For example, in Unix you can change directories with +cd+, display the contents of a directory with +ls+, and launch a web browser by typing (for example) +firefox+.
+La mayoría de los sistemas operativos proporcionan una interfaz de línea de comandos, también conocida como _shell_. Las shells generalmente proporcionan comandos para navegar por el sistema de archivos y ejecutar aplicaciones. Por ejemplo, en Unix puede cambiar los directorios con +cd+, mostrar el contenido de un directorio con +ls+ e iniciar un navegador web escribiendo (por ejemplo) +firefox+.
 (((shell)))(((cd)))
 
-Any program that you can launch from the shell can also be launched from Julia using a _command object_:
+Cualquier programa que pueda iniciar desde la shell también puede iniciarse desde Julia usando un _objeto de comando_:
 (((command object)))(((backticks)))((("``", see="backticks")))
 
 [source,@julia-repl-test chap14]
 ----
-julia> cmd = `echo hello`
-`echo hello`
+julia> cmd = `echo hola`
+`echo hola`
 ----
 
-Backticks are used to delimit the command.
+Las comillas invertidas se usan para delimitar el comando.
 
-The function +run+ executes the command:
+La función +run+ ejecuta el comando:
 (((run)))((("function", "Base", "run", see="run"))))
 
 [source,@julia-repl-test chap14]
 ----
 julia> run(cmd);
-hello
+hola
 ----
 
-The +hello+ is the output of the echo command, sent to +STDOUT+. The +run+ function itself returns a process object, and throws an +ErrorException+ if the external command fails to run successfully.
++hola+ es la salida del comando echo, enviado a +STDOUT+. La función +run+ devuelve un objeto de proceso y genera un +ErrorException+ si el comando externo no se ejecuta correctamente.
 
-If you want to read the output of the external command, +read+ can be used instead:
+Si desea leer la salida del comando externo, se puede usar +read+ en su lugar:
 (((read)))
 
 [source,@julia-repl-test chap14]
@@ -407,51 +407,53 @@ julia> a = read(cmd, String)
 "hello\n"
 ----
 
-For example, most Unix systems provide a command called +md5sum+ or +md5+ that reads the contents of a file and computes a “checksum”. You can read about MD5 at https://en.wikipedia.org/wiki/Md5. This command provides an efficient way to check whether two files have the same contents. The probability that different contents yield the same checksum is very small (that is, unlikely to happen before the universe collapses).
+Por ejemplo, la mayoría de los sistemas Unix tienen un comando llamado +md5sum+ o +md5+ que lee el contenido de un archivo y calcula una "suma de verificación". Puede leer sobre MD5 en https://en.wikipedia.org/wiki/Md5. Este comando proporciona una manera eficiente de verificar si dos archivos tienen el mismo contenido. La probabilidad de que diferentes contenidos produzcan la misma suma de comprobación es muy pequeña (es decir, es poco probable que suceda antes de que el universo colapse).
 (((checksum)))(((md5)))(((md5sum)))
 
-You can use a command object to run +md5+ from Julia and get the result:
+Puede usar un objeto de comando para ejecutar +md5+ desde Julia y obtener el resultado:
 
 [source,@julia-repl]
 ----
-filename = "output.txt"
-cmd = `md5 $filename`
+nombrearchivo = "salida.txt"
+cmd = `md5 $nombrearchivo`
 res = read(cmd, String)
 ----
 
 
-=== Modules
+=== Modulos
 
-Suppose you have a file named +"wc.jl"+ with the following code:
+Supongamos que tenemos un archivo llamado +"wc.jl"+ con el siguiente código:
 (((linecount)))((("function", "programmer-defined", "linecount", see="linecount")))(((eachline)))
 
 [source,julia]
 ----
-function linecount(filename)
-    count = 0
-    for line in eachline(filename)
-        count += 1
+function contarlineas(nombrearchivo)
+    conteo = 0
+    for linea in eachline(nombrearchivo)
+        conteo += 1
     end
-    count
+    conteo
 end
 
-print(linecount("wc.jl"))
+print(contarlineas("wc.jl"))
 ----
 
 [source,@julia-eval]
 ----
-file = open("wc.jl", "w")
-print(file, """function linecount(filename)
-    count = 0
-    for line in eachline(filename)
-        count += 1
+archivo = open("wc.jl", "w")
+print(archivo, """function contarlineas(nombrearchivo)
+    conteo = 0
+    for linea in eachline(nombrearchivo)
+        conteo += 1
     end
-    count
+    conteo
 end
 
-print(linecount("wc.jl"))""")
-close(file)
+print(contarlineas("wc.jl"))""")
+close(archivo)
 ----
+
+Si ejecuta este programa, se lee solo e imprime el número de líneas en el archivo, que es 9. También puede incluirlo en REPL de esta manera:
 
 If you run this program, it reads itself and prints the number of lines in the file, which is 9. You can also include it in the REPL like this:
 (((include)))((("function", "Base", "include", see="include")))
