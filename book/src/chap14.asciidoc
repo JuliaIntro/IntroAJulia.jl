@@ -244,7 +244,7 @@ En este ejemplo, la función +close+ siempre se ejecutará.
 Una _base de datos_ es un archivo que esta organizado para almacenar datos. La mayoría de las bases de datos están organizadas como diccionarios, en el sentido de que realizan asociaciones entre claves y valores. La diferencia mas importante entre un diccionario y una base de datos, es que la base de datos se encuentra en el disco (u otro almacenamiento permanente), de modo que su contenido se conserva despues de que el programa finaliza. 
 (((database)))
 
-PiensaEnJulia proporciona una interfaz para +GDBM+ (GNU dbm), que permite crear y actualizar archivos de base de datos. A modo de ejemplo, crearemos una base de datos que contenga títulos para archivos de imagen.
+PiensaEnJulia proporciona una interfaz para +GDBM+ (GNU dbm), que permite crear y actualizar archivos de base de datos. A modo de ejemplo, crearemos una base de datos que contenga pies de foto para archivos de imagen.
 (((GDBM)))
 
 Abrir una base de datos es similar a abrir otros archivos:
@@ -254,8 +254,8 @@ Abrir una base de datos es similar a abrir otros archivos:
 ----
 julia> using PiensaEnJulia
 
-julia> bd = DBM("titulo", "c")
-DBM(<titulo>)
+julia> bd = DBM("piedefoto", "c")
+DBM(<piedefoto>)
 ----
 
 El modo "c" significa que la base de datos debe crearse si no existe. El resultado es un objeto de base de datos que se puede usar (para la mayoría de las operaciones) como un diccionario.
