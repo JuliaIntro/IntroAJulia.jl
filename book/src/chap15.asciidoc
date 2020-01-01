@@ -14,11 +14,11 @@ Hay varias formas en que podríamos representar puntos del plano cartesiano en J
 
 * Podríamos almacenar las coordenadas por separado en dos variables, +x+ e +y+.
 
-* Podríamos almacenar las coordenadas como elementos en una matriz o tupla.
+* Podríamos almacenar las coordenadas como elementos de una matriz o tupla.
 
 * Podríamos crear un nuevo tipo para representar puntos como objetos.
 
-Crear un nuevo tipo es más complicado que las otras opciones, pero tiene algunas ventajas que veremos pronto.
+Crear un nuevo tipo exige un poco más de esfuerzo que las otras opciones, pero tiene algunas ventajas que veremos pronto.
 
 Un _tipo compuesto_ definido por el programador también se denomina _estructura_ (struct en inglés). La definición de +estructura+ de un punto se ve así:
 (((composite type)))(((struct)))((("keyword", "struct", see="struct")))(((end)))
