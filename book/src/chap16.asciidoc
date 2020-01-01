@@ -1,146 +1,148 @@
 [[chap16]]
 == Structs and Functions
 
-Now that we know how to create new composite types, the next step is to write functions that take programmer-defined objects as parameters and return them as results. In this chapter I also present “functional programming style” and two new program development plans.
+Ahora que sabemos cómo crear tipos compuestos, el siguiente paso es escribir funciones que tomen objetos definidos por el programador como parámetros, y que los devuelvan como resultados. En este capítulo también se presenta el "estilo de programación funcional" y dos nuevas formas de desarrollar programas.
 
 [[time]]
-=== Time
+=== Tiempo
 
-As another example of a composite type, we’ll define a +struct+ called +MyTime+ that records the time of day. The struct definition looks like this:
+Como otro ejemplo de tipo compuesto, definiremos una +estructura+ llamada +Hora+ que registra la hora del día. La definición de esta estructura se muestra a continuación:
 (((MyTime)))((("type", "programmer-defined", "MyTime", see="MyTime")))
 
 [source,@julia-setup chap16]
 ----
 """
-Represents the time of day.
+Representa la hora del día.
 
-fields: hour, minute, second
+atributos: hora, minuto, segundo
 """
-struct MyTime
-    hour
-    minute
-    second
+struct Hora
+    hora
+    minuto
+    segundo
 end
 ----
 
-The name +Time+ is already used in Julia and to avoid a name clash, I have chosen +MyTime+. We can create a new +MyTime+ object:
+Observación: El nombre +Time+ es una palabra reservada de Julia. 
 (((Time)))((("type", "Dates", "Time", see="Time")))
 
 [source,@julia-repl-test chap16]
 ----
-julia> time = MyTime(11, 59, 30)
-MyTime(11, 59, 30)
+julia> hora = Hora(11, 59, 30)
+Hora(11, 59, 30)
 ----
 
-The object diagram for the +MyTime+ object looks like <<fig16-1>>.
+El diagrama de objetos para el objeto +Hora+ luce así <<fig16-1>>.
 
 [[fig16-1]]
 .Object diagram
 image::images/fig161.svg[]
 
-==== Exercise 16-1
+==== Ejercicio 16-1
 
-Write a function called +printtime+ that takes a +MyTime+ object and prints it in the form +hour:minute:second+. The +@printf+ macro of the StdLib module +Printf+ prints an integer with the format sequence `"%02d"` using at least two digits, including a leading zero if necessary.
+Escriba una función llamada +imprimirhora+ que tome un objeto +Hora+ y lo imprima con el formato +hora:minuto:segundo+. +Printf+, de la macro +@printf+ del módulo StdLib, imprime un número entero con el formato `"%02d"` (utiliza al menos dos dígitos), incluido un cero inicial si es necesario.
 (((printtime)))((("function", "programmer-defined", "printtime", see="printtime")))
 
-==== Exercise 16-2
+==== Ejercicio 16-2
 
-Write a boolean function called +isafter+ that takes two +MyTime+ objects, +t1+ and +t2+, and returns +true+ if +t1+ follows +t2+ chronologically and +false+ otherwise. Challenge: don’t use an +if+ statement.
+Escriba una función booleana llamada +estadespues+ que tome dos objetos +Hora+: +t1+ y +t2+, y devuelva +true+ si la hora +t1+ es más tarde que +t2+, y +false+ de lo contrario. Desafío: no use una sentencia +if+.
 (((isafter)))((("function", "programmer-defined", "isafter", see="isafter")))
 
 
-=== Pure Functions
+=== Funciones Puras
 
-In the next few sections, we’ll write two functions that add time values. They demonstrate two kinds of functions: pure functions and modifiers. They also demonstrate a development plan I’ll call _prototype and patch_, which is a way of tackling a complex problem by starting with a simple prototype and incrementally dealing with the complications.
+En las siguientes secciones, escribiremos dos versiones de una función que calcula la suma de horas. A través de ellas se mostrarán dos tipos de funciones: funciones puras y modificadores. También permitirán mostrar un nuevo plan de desarrollo de programa que llamaremos _prototipo y parche_, que es una forma de abordar un problema complejo comenzando con un prototipo simple y lidiando gradualmente con las complicaciones.
 (((pure function)))(((prototype and patch)))
 
-Here is a simple prototype of +addtime+:
+Este es un esbozo de +sumahora+:
 (((addtime)))((("function", "programmer-defined", "addtime", see="addtime")))
 
 [source,@julia-setup chap16]
 ----
-function addtime(t1, t2)
-    MyTime(t1.hour + t2.hour, t1.minute + t2.minute, t1.second + t2.second)
+function sumahora(t1, t2)
+    Hora(t1.hora + t2.hora, t1.minuto + t2.minuto, t1.segundo + t2.segundo)
 end
 ----
 
-The function creates a new +MyTime+ object, initializes its fields, and returns a reference to the new object. This is called a _pure function_ because it does not modify any of the objects passed to it as arguments and it has no effect, like displaying a value or getting user input, other than returning a value.
+La función crea un nuevo objeto +Hora+, inicializa sus atributos y devuelve una referencia al nuevo objeto. A esto se le llama _función pura_ porque no modifica ninguno de los objetos que se le pasan como argumento, y no tiene efectos (como mostrar un valor o tomar una entrada del usuario) más que devolver un valor.
 
-To test this function, I’ll create two +MyTime+ objects: +start+ contains the start time of a movie, like _Monty Python and the Holy Grail_, and +duration+ contains the run time of the movie, which is one hour 35 minutes.
+Para probar esta función, crearemos dos objetos +Hora+: +inicio+, que contiene la hora de inicio de una película, como _Roma_, y +duracion+, que contiene el tiempo de ejecución de la película, que es dos horas y 15 minutos.
+
++sumahora+ calcula cuándo se terminará la película.
 
 +addtime+ figures out when the movie will be done.
 
 [source,@julia-eval chap16]
 ----
 using Printf
-function printtime(time::MyTime)
-    @printf("%02d:%02d:%02d", time.hour, time.minute, time.second)
+function imprimirhora(tiempo::Hora)
+    @printf("%02d:%02d:%02d", tiempo.hora, tiempo.minuto, tiempo.segundo)
 end;
 ----
 
 [source,@julia-repl-test chap16]
 ----
-julia> start = MyTime(9, 45, 0);
+julia> inicio = Hora(9, 50, 0);
 
-julia> duration = MyTime(1, 35, 0);
+julia> duracion = Hora(2, 15, 0);
 
-julia> done = addtime(start, duration);
+julia> finaliza = sumahora(inicio, duracion);
 
-julia> printtime(done)
-10:80:00
+julia> imprimirhora(finaliza)
+11:65:00
 ----
 
-The result, +10:80:00+ might not be what you were hoping for. The problem is that this function does not deal with cases where the number of seconds or minutes adds up to more than sixty. When that happens, we have to “carry” the extra seconds into the minute column or the extra minutes into the hour column. Here’s an improved version:
+El resultado +11:65:00+ no es lo que queríamos. El problema es que esta función no se ocupa de los casos en los que el número de segundos o minutos suma más que sesenta. Cuando ocurre eso, debemos tomar los segundos sobrantes y "llevarlos" a la columna de los minutos, o los minutos extras a la columna de las horas. He aquí una versión corregida de la función:
 
 [source,@julia-setup chap16]
 ----
-function addtime(t1, t2)
-    second = t1.second + t2.second
-    minute = t1.minute + t2.minute
-    hour = t1.hour + t2.hour
-    if second >= 60
-        second -= 60
-        minute += 1
+function sumahora(t1, t2)
+    segundo = t1.segundo + t2.segundo
+    minuto = t1.minuto + t2.minuto
+    hora = t1.hora + t2.hora
+    if segundo >= 60
+        segundo -= 60
+        minuto += 1
     end
-    if minute >= 60
-        minute -= 60
-        hour += 1
+    if minuto >= 60
+        minuto -= 60
+        hora += 1
     end
-    MyTime(hour, minute, second)
+    Hora(hora, minuto, segundo)
 end
 ----
 
-Although this function is correct, it is starting to get big. We will see a shorter alternative later.
+Aunque esta función es correcta, es muy larga. Más adelante veremos una alternativa más corta.
 
 [[modifiers]]
-=== Modifiers
+=== Modificadores
 
-Sometimes it is useful for a function to modify the objects it gets as parameters. In that case, the changes are visible to the caller. Functions that work this way are called _modifiers_.
+Hay veces en las que es útil que una función modifique uno o más de los objetos que recibe como parámetros. En ese caso, los cambios son visibles para el que hizo la llamada. Las funciones que trabajan así se llaman _modificadores_.
 (((modifier)))
 
-+increment!+, which adds a given number of seconds to a +MyTime+ object, can be written naturally as a modifier. Here is a rough draft:
+La función +incrementar!+, que agrega un número dado de segundos a un objeto +Hora+, puede escribirse naturalmente como un modificador. Aquí mostramos un esbozo rápido de la función:
 (((increment!)))((("function", "programmer-defined", "increment!", see="increment!")))
 
 [source,@julia-setup chap16]
 ----
-function increment!(time, seconds)
-    time.second += seconds
-    if time.second >= 60
-        time.second -= 60
-        time.minute += 1
+function incrementar!(tiempo, segundos)
+    tiempo.segundo += segundos
+    if tiempo.segundo >= 60
+        tiempo.segundo -= 60
+        tiempo.minute += 1
     end
-    if time.minute >= 60
-        time.minute -= 60
-        time.hour += 1
+    if tiempo.minuto >= 60
+        tiempo.minuto -= 60
+        tiempo.hora += 1
     end
 end
 ----
 
-The first line performs the basic operation; the remainder deals with the special cases we saw before.
+La primera línea realiza la operación de suma de los segundos; las restantes se ocupan de los casos especiales que vimos antes.
 
-Is this function correct? What happens if +seconds+ is much greater than 60?
+¿Es correcta esta función? ¿Qué ocurre si el parámetro +segundos+ es mucho mayor que sesenta?
 
-In that case, it is not enough to carry once; we have to keep doing it until +time.second+ is less than sixty. One solution is to replace the +if+ statements with +while+ statements. That would make the function correct, but not very efficient. 
+En tal caso, no es suficiente con acarrear una vez; debemos seguir haciéndolo hasta que +tiempo.segundo+ sea menor que sesenta. Una solución es sustituir las sentencias +if+ por sentencias +while+. Ahora esta función es correcta, pero no es la solución más eficiente.
 
 ==== Exercise 16-3
 
