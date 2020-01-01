@@ -1,12 +1,12 @@
 [[chap16]]
-== Structs and Functions
+== Estructuras y Funciones
 
 Ahora que sabemos cómo crear tipos compuestos, el siguiente paso es escribir funciones que tomen objetos definidos por el programador como parámetros, y que los devuelvan como resultados. En este capítulo también se presenta el "estilo de programación funcional" y dos nuevas formas de desarrollar programas.
 
 [[time]]
 === Tiempo
 
-Como otro ejemplo de tipo compuesto, definiremos una +estructura+ llamada +Hora+ que registra la hora del día. La definición de esta estructura se muestra a continuación:
+Como otro ejemplo más de tipo compuesto, definiremos una +estructura+ llamada +Hora+ que registra la hora del día. La definición de esta estructura se muestra a continuación:
 (((MyTime)))((("type", "programmer-defined", "MyTime", see="MyTime")))
 
 [source,@julia-setup chap16]
@@ -23,7 +23,7 @@ struct Hora
 end
 ----
 
-Observación: El nombre +Time+ es una palabra reservada de Julia. 
+Observación: +Time+ es una palabra reservada de Julia. 
 (((Time)))((("type", "Dates", "Time", see="Time")))
 
 [source,@julia-repl-test chap16]
