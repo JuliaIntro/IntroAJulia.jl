@@ -40,7 +40,7 @@ image::images/fig161.svg[]
 
 ==== Ejercicio 16-1
 
-Escriba una función llamada +imprimirhora+ que tome un objeto +Hora+ y lo imprima con el formato +hora:minuto:segundo+. +Printf+, de la macro +@printf+ del módulo StdLib, imprime un número entero con el formato `"%02d"` (utiliza al menos dos dígitos), incluido un cero inicial si es necesario.
+Escriba una función llamada +imprimirhora+ que tome un objeto +Hora+ y lo imprima con el formato +hora:minuto:segundo+. +Printf+, de la macro +@printf+ del módulo StdLib, permite imprimir un número entero con el formato `"%02d"`, es decir, utilizando al menos dos dígitos, incluido un cero inicial si es necesario.
 (((printtime)))((("function", "programmer-defined", "printtime", see="printtime")))
 
 ==== Ejercicio 16-2
