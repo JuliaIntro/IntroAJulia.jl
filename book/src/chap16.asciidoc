@@ -45,7 +45,7 @@ Escriba una función llamada +imprimirhora+ que tome un objeto +Hora+ y lo impri
 
 ==== Ejercicio 16-2
 
-Escriba una función booleana llamada +estadespues+ que tome dos objetos +Hora+: +t1+ y +t2+, y devuelva +true+ si la hora +t1+ es más tarde que +t2+, y +false+ de lo contrario. Desafío: no use una sentencia +if+.
+Escriba una función booleana llamada +estadespues+ que tome dos objetos +Hora+: +t1+ y +t2+, y devuelva +true+ si la hora +t1+ está después que +t2+, y +false+ de lo contrario. Desafío: no use una sentencia +if+.
 (((isafter)))((("function", "programmer-defined", "isafter", see="isafter")))
 
 
