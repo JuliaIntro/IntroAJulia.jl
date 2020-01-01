@@ -49,11 +49,11 @@ El valor de retorno es una referencia a un objeto +Punto+, el cual asignamos a +
 La creación de un nuevo objeto se llama _instanciación_, y el objeto creado es una _instancia_ del tipo.
 (((instatiation)))(((instance)))
 
-Cuando imprime una instancia, Julia le dice a qué tipo pertenece y cuáles son los valores de los atributos.
+Cuando imprimes una instancia, Julia te dice a qué tipo pertenece y cuáles son los valores de los atributos.
 
 Cada objeto es una instancia de algún tipo, por lo que "objeto" e "instancia" son intercambiables. Pero en este capítulo se utiliza "instancia" para indicar que hablamos de un tipo definido por el programador.
 
-Un diagrama de estado que muestra un objeto y sus campos se denomina _diagrama de objeto_; ver <<fig15-1>>.
+Un diagrama de estado que muestra un objeto y sus atributos se denomina _diagrama de objeto_; ver <<fig15-1>>.
 (((object diagram)))((("diagram", "object", see="object diagram")))
 
 [[fig15-1]]
@@ -74,7 +74,7 @@ julia> p.y
 4.0
 ----
 
-La expresión +p.x+ significa: "Ve al objeto al que se refiere +p+ y obtén el valor de +x+". En el ejemplo, asignamos ese valor a una variable llamada +x+. No hay conflicto entre la variable +x+ y el campo +x+.
+La expresión +p.x+ significa: "Ve al objeto al que se apunta +p+ y obtén el valor de +x+". En el ejemplo, asignamos ese valor a una variable llamada +x+. No hay conflicto entre la variable +x+ y el atributo +x+.
 
 Puede usar esa notación de punto como parte de cualquier expresión. Por ejemplo:
 
