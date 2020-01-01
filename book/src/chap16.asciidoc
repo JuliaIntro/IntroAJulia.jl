@@ -32,7 +32,7 @@ julia> hora = Hora(11, 59, 30)
 Hora(11, 59, 30)
 ----
 
-El diagrama de objetos para el objeto +Hora+ luce así <<fig16-1>>.
+El diagrama de objeto para el objeto +Hora+ luce así <<fig16-1>>.
 
 [[fig16-1]]
 .Object diagram
