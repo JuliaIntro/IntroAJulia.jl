@@ -149,7 +149,7 @@ Representa un rectángulo.
 
 atributos: ancho, alto, esquina. 
 """
-struct Rectangle
+struct Rectangulo
     ancho
     alto
     esquina
