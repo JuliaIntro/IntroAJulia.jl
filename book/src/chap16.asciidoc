@@ -194,23 +194,25 @@ function enteroahora(segundos)
 end
 ----
 
-You might have to think a bit, and run some tests, to convince yourself that these functions are correct. One way to test them is to check that +timetoint(inttotime(x)) == x+ for many values of +x+. This is an example of a consistency check.
+Puede que tenga que pensar un poco y ejecutar algunas pruebas para convencerse de que estas funciones son correctas. Una forma de probarlas es verificar que +horaaentero((enteroahora(x)) == x+ para muchos valores de +x+. Este es un ejemplo de prueba de consistencia.
 
-Once you are convinced they are correct, you can use them to rewrite +addtime+:
+Una vez que esté convencido, puede usar estas funciones para reescribir sumahora:
 
 [source,@julia-setup chap16]
 ----
-function addtime(t1, t2)
-    seconds = timetoint(t1) + timetoint(t2)
-    inttotime(seconds)
+function sumahora(t1, t2)
+    segundos = horaaentero(t1) + horaaentero(t2)
+    enteroahora(segundos)
 end
 ----
 
-This version is shorter than the original, and easier to verify. 
+Esta versión es más corta que la original y más fácil de verificar.
 
-==== Exercise 16-5
+==== Ejercicio 16-5
 
-Rewrite +increment!+ using +timetoint+ and +inttotime+.
+Reescriba +incrementar!+ usando +horaaentero+ y +enteroahora+.
+
+
 
 In some ways, converting from base 60 to base 10 and back is harder than just dealing with times. Base conversion is more abstract; our intuition for dealing with time values is better.
 
