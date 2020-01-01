@@ -8,7 +8,7 @@ A esta altura, ya debe saber cómo usar funciones para tener un código más org
 Hemos utilizado muchos tipos integrados en Julia; ahora vamos a definir un nuevo tipo. A modo de ejemplo, crearemos un tipo llamado +Punto+ que represente un punto en un espacio bidimensional.
 (((type)))(((Point)))((("type", "programmer-defined", "Point", see="Point")))
 
-En notación matemática, los puntos suelen escribirse entre paréntesis con una coma que separa las coordenadas. Por ejemplo, latexmath:[\(\left(0,0\right)\)] representa el origen, y latexmath:[\(\left(x,y\right)\)] representa el punto localizado latexmath:[\(x\)] unidades a la derecha y latexmath:[\(y\)] unidades hacia arriba del el origen.
+En notación matemática, los puntos suelen escribirse entre paréntesis con una coma que separa las coordenadas. Por ejemplo, latexmath:[\(\left(0,0\right)\)] representa el origen, y latexmath:[\(\left(x,y\right)\)] representa el punto localizado latexmath:[\(x\)] unidades a la derecha y latexmath:[\(y\)] unidades hacia arriba del origen.
 
 Hay varias formas en que podríamos representar puntos del plano cartesiano en Julia:
 
