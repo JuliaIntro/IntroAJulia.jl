@@ -1,7 +1,7 @@
 [[chap15]]
 == Estructuras y Objetos
 
-A esta altura, ya debe saber cómo usar funciones para tener un código más organizado, y los tipos integrados de Julia para organizar sus datos. El siguiente paso es aprender a construir sus propios tipos para organizar tanto el código como los datos. Este es un gran tema, y por lo tanto tomará un par de capítulos comprender todo.
+A esta altura, ya debe saber cómo usar funciones para tener un código más organizado, y los tipos integrados de Julia para organizar sus datos. El siguiente paso es aprender a construir sus propios tipos para organizar tanto el código como los datos. Este es un gran tema, y por lo tanto tomará un par de capítulos abarcar todo.
 
 === Tipos Compuestos
 
@@ -46,7 +46,7 @@ Punto(3.0, 4.0)
 El valor de retorno es una referencia a un objeto +Punto+, el cual asignamos a +p+.
 (((reference)))
 
-La creación de un nuevo objeto se llama _instanciación_, y el objeto creado es una _instancia_ del tipo Punto.
+La creación de un nuevo objeto se llama _instanciación_, y el objeto creado es una _instancia_ del tipo.
 (((instatiation)))(((instance)))
 
 Cuando imprime una instancia, Julia le dice a qué tipo pertenece y cuáles son los valores de los atributos.
@@ -61,9 +61,9 @@ Un diagrama de estado que muestra un objeto y sus campos se denomina _diagrama d
 image::images/fig151.svg[]
 
 
-=== Structs are Immutable
+=== Las Estructuras son Inmutables
 
-You can get the values of the fields using +.+ notation:
+Puede obtener los valores de los campos utilizando la notación +.+:
 (((.)))((("dot notation", see=".")))
 
 [source,@julia-repl-test chap15]
@@ -74,17 +74,17 @@ julia> p.y
 4.0
 ----
 
-The expression +p.x+ means, “Go to the object +p+ refers to and get the value of +x+.” In the example, we assign that value to a variable named +x+. There is no conflict between the variable +x+ and the field +x+.
+La expresión +p.x+ significa: "Ve al objeto al que se refiere +p+ y obtén el valor de +x+". En el ejemplo, asignamos ese valor a una variable llamada +x+. No hay conflicto entre la variable +x+ y el campo +x+.
 
-You can use dot notation as part of any expression. For example:
+Puede usar esa notación de punto como parte de cualquier expresión. Por ejemplo:
 
 [source,@julia-repl-test chap15]
 ----
-julia> distance = sqrt(p.x^2 + p.y^2)
+julia> distancia = sqrt(p.x^2 + p.y^2)
 5.0
 ----
 
-Structs are however by default immutable, after construction the fields can not change value:
+Sin embargo, las estructuras son inmutables por defecto, después de la construcción los campos no pueden cambiar su valor:
 (((immutable)))
 
 [source,@julia-repl-test chap15]
@@ -93,83 +93,85 @@ julia> p.y = 1.0
 ERROR: setfield! immutable struct of type Point cannot be changed
 ----
 
-This may seem odd at first, but it has several advantages:
+Esto puede parecer extraño al principio, pero tiene varias ventajas:
 
-* It can be more efficient.
+* Puede ser más eficiente.
 
-* It is not possible to violate the invariants provided by the type's constructors (see <<constructor>>).
+* No es posible violar las invariantes (requisitos que deberían cumplirse en todos los objetos, en todo momento) de los constructores de un tipo compuesto (ver <<constructor>>).
 
-* Code using immutable objects can be easier to reason about.
+* El código que usa objetos inmutables puede ser más fácil de entender.
 
 
-=== Mutable Structs
+=== Estructuras Mutables
 
-Where required, mutable composite types can be declared with the keyword +mutable struct+. Here is the definition of a mutable point:
+De ser necesario, se pueden declarar tipos compuestos mutables con la palabra reservada +mutable struct+. A continuación se muestra la definición de un punto mutable:
 (((mutable composite type)))(((mutable struct)))((("keyword", "mutable struct", see="mutable struct")))(((MPoint)))((("type", "programmer-defined", "MPoint", see="MPoint")))
 
 [source,@julia-setup chap15]
 ----
-mutable struct MPoint
+mutable struct MPunto
     x
     y
 end
 ----
 
-You can assign values to an instance of a mutable struct using dot notation:
+Puede asignar valores a una instancia de una estructura mutable utilizando notación de punto (.):
 (((.)))
 
 [source,@julia-repl-test chap15]
 ----
-julia> blank = MPoint(0.0, 0.0)
-MPoint(0.0, 0.0)
-julia> blank.x = 3.0
+julia> blanco = MPunto(0.0, 0.0)
+MPunto(0.0, 0.0)
+julia> blanco.x = 3.0
 3.0
-julia> blank.y = 4.0
+julia> blanco.y = 4.0
 4.0
 ----
 
 
-=== Rectangles
+=== Rectángulos
 
-Sometimes it is obvious what the fields of an object should be, but other times you have to make decisions. For example, imagine you are designing a type to represent rectangles. What fields would you use to specify the location and size of a rectangle? You can ignore angle; to keep things simple, assume that the rectangle is either vertical or horizontal.
+A veces, decidir cuáles deberían ser los campos de un objeto es fácil, pero en otros casos no. Por ejemplo, imagine que queremos un tipo que represente un rectángulo. ¿Qué campos usarías para especificar la ubicación y el tamaño de un rectángulo? Puedes ignorar el ángulo. Para simplificar las cosas, supongamos que el rectángulo es vertical u horizontal.
 
-There are at least two possibilities:
+Hay al menos dos posibilidades:
 
-* You could specify one corner of the rectangle (or the center), the width, and the height.
+* Puede especificar una esquina del rectángulo (o el centro), el ancho y la altura.
 
-* You could specify two opposing corners.
+* Podría especificar dos esquinas opuestas.
 
-At this point it is hard to say whether either is better than the other, so we’ll implement the first one, just as an example.
+Es difícil decir que una opción es mejor que la otra, por lo que implementaremos la primera, a modo de ejemplo.
 (((Rectangle)))((("type", "programmer-defined", "Rectangle", see="Rectangle")))
 
 [source,@julia-setup chap15]
 ----
 """
-Represents a rectangle.
+Representa un rectángulo.
 
-fields: width, height, corner.
+atributos: ancho, alto, esquina. 
 """
 struct Rectangle
-    width
-    height
-    corner
+    ancho
+    alto
+    esquina
 end
 ----
 
-The docstring lists the fields: width and height are numbers; corner is a +Point+ object that specifies the lower-left corner.
+El texto escrito entre triples comillas dentro del programa permite documentar, y es llamado cadena de documentación (o docstring). Por otra parte, la documentación es el acto de comentar convenientemente cada una de las partes que tiene el programa.
+
+En este ejemplo, la cadena de documentación (o docstring) enumera los atributos. Los atributos ancho y alto son números, y esquina es un objeto +Punto+ que especifica la esquina inferior izquierda.
 (((docstring)))
 
-To represent a rectangle, you have to instantiate a +Rectangle+ object:
+Para representar un rectángulo, debe crear una instancia del tipo +Rectangulo+:
 
 [source,@julia-repl-test chap15]
 ----
-julia> origin = MPoint(0.0, 0.0)
-MPoint(0.0, 0.0)
-julia> box = Rectangle(100.0, 200.0, origin)
-Rectangle(100.0, 200.0, MPoint(0.0, 0.0))
+julia> origen = MPunto(0.0, 0.0)
+MPunto(0.0, 0.0)
+julia> caja = Rectangulo(100.0, 200.0, origen)
+Rectangulo(100.0, 200.0, MPunto(0.0, 0.0))
 ----
 
-<<fig15-2>> shows the state of this object. An object that is a field of another object is _embedded_. Because the +corner+ attribute refers to a mutable object, the latter is drawn outside the +Rectangle+ object.
+<<fig15-2>> muestra el estado de este objeto. Un objeto es _embebido_ si es atributo de otro objeto. Debido a que el atributo +esquina+ se refiere a un objeto mutable, se dibuja fuera del objeto +Rectangulo+.
 (((embedded)))(((object diagram)))
 
 [[fig15-2]]
@@ -177,85 +179,87 @@ Rectangle(100.0, 200.0, MPoint(0.0, 0.0))
 image::images/fig152.svg[]
 
 
-=== Instances as Arguments
+=== Instancias como Argumentos
 
-You can pass an instance as an argument in the usual way. For example:
+Podemos pasar una instancia como argumento de la manera habitual. Por ejemplo:
 (((printpoint)))((("function", "programmer-defined", "printpoint", see="printpoint")))
 
 [source,@julia-setup chap15]
 ----
-function printpoint(p)
+function imprimirpunto(p)
     println("($(p.x), $(p.y))")
 end
 ----
 
-+printpoint+ takes a +Point+ as an argument and displays it in mathematical notation. To invoke it, you can pass +p+ as an argument:
++imprimirpunto+ toma un +Punto+ como argumento y lo muestra en notación matemática. Puede llamar a imprimirpunto con un argumento +p+:
 
 [source,@julia-repl-test chap15]
 ----
-julia> printpoint(blank)
+julia> imprimirpunto(blanco)
 (3.0, 4.0)
 ----
 
-==== Exercise 15-1
+==== Ejercicio 15-1
 
-Write a function called +distancebetweenpoints+ that takes two points as arguments and returns the distance between them.
+Escriba una función llamada +distanciaentrepuntos+ que tome dos puntos como argumentos y devuelva la distancia entre ellos.
 (((distancebetweenpoints)))((("function", "programmer-defined", "distancebetweenpoints", see="distancebetweenpoints")))
 
-If a mutable struct object is passed to a function as an argument, the function can modify the fields of the object. For example, +movepoint!+ takes a mutable +Point+ object and two numbers, +dx+ and +dy+, and adds the numbers to respectively the +x+ and the +y+ attribute of the +Point+:
+Si un objeto de estructura mutable se pasa a una función como argumento, la función puede modificar los campos del objeto. Por ejemplo, +moverpunto!+ toma un objeto mutable +Punto+ y dos números, +dx+ y +dy+, los cuales suma a los atributos +x+ e +y+ de +Punto+, respectivamente:
 (((movepoint!)))((("function", "programmer-defined", "movepoint!", see="movepoint!")))
 
 [source,@julia-setup chap15]
 ----
-function movepoint!(p, dx, dy)
+function moverpunto!(p, dx, dy)
     p.x += dx
     p.y += dy
     nothing
 end
 ----
 
-Here is an example that demonstrates the effect:
+Aquí hay un ejemplo que muestra como funciona:
 
 [source,@julia-repl-test chap15]
 ----
-julia> origin = MPoint(0.0, 0.0)
-MPoint(0.0, 0.0)
-julia> movepoint!(origin, 1.0, 2.0)
+julia> origen = MPunto(0.0, 0.0)
+MPunto(0.0, 0.0)
+julia> moverpunto!(origen, 1.0, 2.0)
 
-julia> origin
+julia> origen
 MPoint(1.0, 2.0)
 ----
 
-Inside the function, +p+ is an alias for +origin+, so when the function modifies +p+, +origin+ changes.
+Dentro de la función, +p+ es un alias de +origen+, por lo que cuando la función modifica +p+, +origen+ también cambia.
 (((aliasing)))
 
-Passing an immutable +Point+ object to +movepoint!+ causes an error:
+Al pasar un objeto inmutable +Punto+ a +moverpunto!+ se produce un error:
 
 [source,@julia-repl-test chap15]
 ----
-julia> movepoint!(p, 1.0, 2.0)
+julia> moverpunto!(p, 1.0, 2.0)
 ERROR: setfield! immutable struct of type Point cannot be changed
 ----
 
-You can however modify the value of a mutable attribute of an immutable object. For example, +moverectangle!+ has as arguments a +Rectangle+ object and two numbers, +dx+ and +dy+, and uses +movepoint!+ to move the corner of the rectangle:
+Sin embargo, puede modificar el valor de un atributo mutable de un objeto inmutable. Por ejemplo, +moverrectangulo!+ tiene como argumentos un objeto +Rectangulo+ y dos números, +dx+ y +dy+. Esta función usa +moverpunto!+ para mover la esquina del rectángulo:
 
 [source,@julia-setup chap15]
 ----
-function moverectangle!(rect, dx, dy)
-  movepoint!(rect.corner, dx, dy)
+function moverrectangulo!(rect, dx, dy)
+  moverpunto!(rect.esquina, dx, dy)
 end
 ----
+
+Ahora +p+ en +moverpunto!+ es un alias para +rect.esquina+, por lo que cuando +p+ se modifica, +rect.esquina+ también cambia:
 
 Now +p+ in +movepoint!+ is an alias for +rect.corner+, so when +p+ is modified, +rect.corner+ changes also:
 
 [source,@julia-repl-test chap15]
 ----
-julia> box
-Rectangle(100.0, 200.0, MPoint(0.0, 0.0))
-julia> moverectangle!(box, 1.0, 2.0)
+julia> caja
+Rectangulo(100.0, 200.0, MPunto(0.0, 0.0))
+julia> moverrectangulo!(caja, 1.0, 2.0)
 
-julia> box
-Rectangle(100.0, 200.0, MPoint(1.0, 2.0))
+julia> caja
+Rectangulo(100.0, 200.0, MPunto(1.0, 2.0))
 ----
 
 [WARNING]
