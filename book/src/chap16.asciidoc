@@ -159,43 +159,40 @@ Escriba una versión "pura" de +incrementar!+, que cree y devuelva un nuevo obje
 [[prototyping_versus_planning]]
 === Desarrollo de prototipos frente a la planificación
 
-El desarrollo de programas que veremos ahora se llama “desarrollo de prototipos”. En cada una de las funciones anteriores, escribimos un prototipo que realizaba el cálculo básico y luego lo probamos sobre unos cuantos casos, corrigiendo las fallas a medida que las encontrábamos.
+El desarrollo de programas que veremos ahora se llama “desarrollo de prototipos”. En cada una de las funciones anteriores, escribimos un prototipo que realizaba el cálculo básico, y luego lo probamos sobre unos cuantos casos, corrigiendo las fallas a medida que las encontrábamos.
 (((program development plan)))(((prototyping and patch)))
 
-Este enfoque puede ser efectivo, especialmente si aún no se tiene un conocimiento profundo del problema. Pero las correcciones incrementales pueden generar un código innecesariamente complicado (que considere muchos casos especiales) y poco confiable (es difícil saber si ha encontrado todos los errores).
+Este enfoque puede ser efectivo, especialmente si aún no tiene un conocimiento profundo del problema. Pero las correcciones incrementales pueden generar código innecesariamente complicado (que considere muchos casos especiales) y poco confiable (es difícil saber si ha encontrado todos los errores).
 
-This approach can be effective, especially if you don’t yet have a deep understanding of the problem. But incremental corrections can generate code that is unnecessarily complicated—since it deals with many special cases—and unreliable—since it is hard to know if you have found all the errors.
-
-An alternative is _designed development_, in which high-level insight into the problem can make the programming much easier. In this case, the insight is that a Time object is really a three-digit number in base 60 (see https://en.wikipedia.org/wiki/Sexagesimal)! The second attribute is the “ones column”, the minute attribute is the “sixties column”, and the hour attribute is the “thirty-six hundreds column”.
+Una alternativa es el _desarrollo planificado_, en el que la comprensión del problema en profundidad puede facilitar en gran medida la programación. En el caso de sumahora, podemos ver un objeto Hora como ¡un numero de tres dígitos en base 60 (vea https://en.wikipedia.org/wiki/Sexagesimal)!. El atributo segundo es la “columna de unidades”, el atributo minuto es la “columna de los sesentas” y el atributo hora es la “columna de los treinta y seis cientos”.
 (((designed development)))
 
-When we wrote +addtime+ and +increment!+, we were effectively doing addition in base 60, which is why we had to carry from one column to the next.
+Cuando escribimos +sumahora+ e +incrementar!+, efectivamente estábamos sumando en base 60, por eso tuvimos que "acarrear" de una columna a la siguiente.
 
-This observation suggests another approach to the whole problem—we can convert +MyTime+ objects to integers and take advantage of the fact that the computer knows how to do integer arithmetic.
+Esta observación sugiere otro enfoque para el problema: podemos convertir los objetos +Hora+ en enteros y aprovechar el hecho de que la computadora sabe realizar aritmética con enteros.
 
-Here is a function that converts mytimes to integers:
+La siguiente función convierte un objeto Hora en un entero:
 (((timetoint)))((("function", "programmer-defined", "timetoint", see="timetoint")))
 
 [source,@julia-setup chap16]
 ----
-function timetoint(time)
-    minutes = time.hour * 60 + time.minute
-    seconds = minutes * 60 + time.second
+function horaaentero(tiempo)
+    minutos = tiempo.hora * 60 + tiempo.minuto
+    segundos = minutos * 60 + tiempo.segundo
 end
 ----
 
-And here is a function that converts an integer to a +MyTime+ (recall that +divrem+ divides the first argument by the second and returns the quotient and remainder as a tuple):
+Ahora, para convertir un entero en un objeto +Hora+ (recuerde que +divrem+ divide el primer argumento por el segundo, y devuelve el cociente y el resto como una tupla):
 (((inttotime)))((("function", "programmer-defined", "inttotime", see="inttotime")))
 
 [source,@julia-setup chap16]
 ----
-function inttotime(seconds)
-    (minutes, second) = divrem(seconds, 60)
-    hour, minute = divrem(minutes, 60)
-    MyTime(hour, minute, second)
+function enteroahora(segundos)
+    (minutos, segundo) = divrem(segundos, 60)
+    hora, minuto = divrem(minutos, 60)
+    Hora(hora, minuto, segundo)
 end
 ----
-
 
 You might have to think a bit, and run some tests, to convince yourself that these functions are correct. One way to test them is to check that +timetoint(inttotime(x)) == x+ for many values of +x+. This is an example of a consistency check.
 
