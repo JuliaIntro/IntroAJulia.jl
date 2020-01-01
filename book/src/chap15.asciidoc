@@ -156,7 +156,7 @@ struct Rectangle
 end
 ----
 
-El texto escrito entre triples comillas dentro del programa permite documentar, y es llamado cadena de documentación (o docstring). Por otra parte, la documentación es el acto de comentar convenientemente cada una de las partes que tiene el programa.
+El texto escrito entre comillas triples es llamado cadena de documentación (o docstring), y permite documentar. La documentación es el acto de comentar convenientemente cada una de las partes que tiene el programa.
 
 En este ejemplo, la cadena de documentación (o docstring) enumera los atributos. Los atributos ancho y alto son números, y esquina es un objeto +Punto+ que especifica la esquina inferior izquierda.
 (((docstring)))
