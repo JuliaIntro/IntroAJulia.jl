@@ -1,7 +1,7 @@
 [[chap15]]
 == Estructuras y Objetos
 
-A esta altura, ya debe saber cómo usar funciones para tener un código más organizado, y los tipos integrados de Julia para organizar sus datos. El siguiente paso es aprender a construir sus propios tipos para organizar tanto el código como los datos. Este es un gran tema, y por lo tanto tomará un par de capítulos abarcar todo.
+A esta altura, ya debe saber cómo usar funciones para tener un código más organizado, y cómo usar los tipos integrados de Julia para organizar sus datos. El siguiente paso es aprender a construir sus propios tipos para organizar tanto el código como los datos. Este es un gran tema, y por lo tanto tomará un par de capítulos abarcar todo.
 
 === Tipos Compuestos
 
