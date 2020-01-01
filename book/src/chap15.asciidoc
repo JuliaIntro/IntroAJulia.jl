@@ -264,90 +264,90 @@ Rectangulo(100.0, 200.0, MPunto(1.0, 2.0))
 
 [WARNING]
 ====
-You cannot reassign a mutable attribute of an immutable object:
+No puede reasignar un atributo mutable de un objeto inmutable:
 (((reassignment)))
 
 [source,@julia-repl-test chap15]
 ----
-julia> box.corner = MPoint(1.0, 2.0)
+julia> caja.esquina = MPunto(1.0, 2.0)
 ERROR: setfield! immutable struct of type Rectangle cannot be changed
 ----
 ====
 
-=== Instances as Return Values
+=== Instancias como Valores de Retorno
 
-Functions can return instances. For example, +findcenter+ takes a +Rectangle+ as an argument and returns a +Point+ that contains the coordinates of the center of the rectangle:
+Las funciones pueden devolver instancias. Por ejemplo, +encontrarcentro+ toma un +Rectangulo+ como argumento y devuelve un +Punto+ que contiene las coordenadas del centro del rectángulo:
 (((findcenter)))((("function", "programmer-defined", "findcenter", see="findcenter")))
 
 [source,@julia-setup chap15]
 ----
-function findcenter(rect)
-    Point(rect.corner.x + rect.width / 2, rect.corner.y + rect.height / 2)
+function encontrarcentro(rect)
+    Punto(rect.esquina.x + rect.ancho / 2, rect.esquina.y + rect.altura / 2)
 end
 ----
 
-The expression +rect.corner.x+ means, “Go to the object +rect+ refers to and select the field named +corner+; then go to that object and select the field named +x+.”
+La expresión +rect.corner.x+ significa, “Ve al objeto al que +rect+ apunta y seleccione el atributo llamado +esquina+; luego vaya a ese objeto y seleccione el atributo llamado +x+".
 
-Here is an example that passes +box+ as an argument and assigns the resulting +Point+ to +center+:
+A continución vemos un ejemplo que toma +caja+ como argumento y asigna el +Punto+ resultante a +centro+:
 
 [source,@julia-repl-test chap15]
 ----
-julia> center = findcenter(box)
+julia> centro = encontrarcentro(caja)
 Point(51.0, 102.0)
 ----
 
 
-=== Copying
+=== Copiado
 
-Aliasing can make a program difficult to read because changes in one place might have unexpected effects in another place. It is hard to keep track of all the variables that might refer to a given object.
+El uso de alias puede hacer que un programa sea difícil de leer, ya que los cambios hechos en un lugar pueden tener efectos inesperados en otro lugar. Es difícil estar al tanto de todas las variables a las que puede apuntar un objeto dado.
 (((aliasing)))
 
-Copying an object is often an alternative to aliasing. Julia provides a function called +deepcopy+ that can duplicate any object:
+Copiar un objeto es, muchas veces, una alternativa a la creación de un alias. Julia provee una función llamada copy que puede duplicar cualquier objeto:
 (((copying)))(((deepcopy)))((("function", "Base", "deepcopy", see="deepcopy")))(((deep copy)))
 
 [source,@julia-repl-test chap15]
 ----
-julia> p1 = MPoint(3.0, 4.0)
-MPoint(3.0, 4.0)
+julia> p1 = MPunto(3.0, 4.0)
+MPunto(3.0, 4.0)
 julia> p2 = deepcopy(p1)
-MPoint(3.0, 4.0)
+MPunto(3.0, 4.0)
 julia> p1 ≡ p2
 false
 julia> p1 == p2
 false
 ----
 
-The +≡+ operator indicates that +p1+ and +p2+ are not the same object, which is what we expected. But you might have expected +==+ to yield +true+ because these points contain the same data. In that case, you will be disappointed to learn that for mutable objects, the default behavior of the +==+ operator is the same as the +===+ operator; it checks object identity, not object equivalence. That’s because for mutable composite types, Julia doesn’t know what should be considered equivalent. At least, not yet.
+El operador +≡+ indica que +p1+ y +p2+ no son el mismo objeto, lo cual es esperable. Lo que no es del todo esperable es que +==+ no devuelva +true+, aunque estos puntos contengan los mismos datos. Resulta que para los objetos mutables, el comportamiento predeterminado del operador +==+ es el mismo que el operador +===+, es decir, comprueba la identidad del objeto, no la equivalencia del objeto. Esto se debe a que Julia no sabe qué debería considerarse equivalente para los tipos compuestos mutables. Al menos no todavía.
 (((==)))(((≡)))
 
-==== Exercise 15-2
+==== Ejercicio 15-2
 
-Create a +Point+ instance, make a copy of it and check the equivalence and the egality of both. The result can surprise you but it explains why aliasing is a non issue for an immutable object.
+Cree una instancia de +Punto+, haga una copia y verifique la equivalencia y la igualdad de ambas. El resultado puede sorprenderlo, pero explica por qué el alias no es un problema para un objeto inmutable.
 
 
-=== Debugging
+=== Depuración
 
-When you start working with objects, you are likely to encounter some new exceptions. If you try to access a field that doesn’t exist, you get:
+Al comenzar a trabajar con objetos, es probable que encuentre algunas excepciones nuevas. Si intenta acceder a un campo que no existe, obtendrá:
 (((debugging)))
 
 [source,@julia-repl-test chap15]
 ----
-julia> p = Point(3.0, 4.0)
-Point(3.0, 4.0)
+julia> p = Punto(3.0, 4.0)
+Punto(3.0, 4.0)
 julia> p.z = 1.0
 ERROR: type Point has no field z
 ----
 
-If you are not sure what type an object is, you can ask:
+Si no está seguro del tipo de un objeto, puede saberlo de la siguiente manera:
 (((typeof)))
 
 [source,@julia-repl-test chap15]
 ----
 julia> typeof(p)
-Point
+Punto
 ----
 
-You can also use +isa+ to check whether an object is an instance of a type:
+También puede usar +isa+ para verificar si un objeto es una instancia de un tipo específico:
 (((isa)))((("operator", "Base", "isa", see="isa")))
 
 [source,@julia-repl-test chap15]
@@ -356,7 +356,7 @@ julia> p isa Point
 true
 ----
 
-If you are not sure whether an object has a particular attribute, you can use the built-in function +fieldnames+:
+Si no está seguro de si un objeto tiene un atributo particular, puede usar la función +fieldnames+:
 (((deepcopy)))((("function", "Base", "deepcopy", see="deepcopy")))
 
 [source,@julia-repl-test chap15]
@@ -365,7 +365,7 @@ julia> fieldnames(Point)
 (:x, :y)
 ----
 
-or the function +isdefined+:
+o la función +isdefined+:
 (((isdefined)))((("function", "Base", "isdefined", see="isdefined")))
 
 [source,@julia-repl-test chap15]
@@ -376,69 +376,69 @@ julia> isdefined(p, :z)
 false
 ----
 
-The first argument can be any object; the second argument is a symbol, +:+ followed by the name of the field.
+El primer argumento puede ser cualquier objeto; el segundo argumento es el símbolo +:+ seguido del nombre del atributo.
 (((:)))(((Symbol)))((("type", "Base", "Symbol", see="Symbol")))
 
-=== Glossary
+=== Glosario
 
-struct::
-A composite type. 
+estructura::
+Un tipo compuesto.
 (((struct)))
 
 constructor::
-A function with the same name as a type that creates instances of the type.
+Una función con el mismo nombre que un tipo, que crea instancias de este tipo.
 (((constructor)))
 
-instance::
-An object that belongs to a type.
+instancia::
+Un objeto que pertenece a un tipo.
 (((instance)))
 
-instantiate::
-To create a new object.
+instanciar::
+Crear un nuevo objeto.
 (((instantiate)))
 
-attribute or field::
-One of the named values associated with an object.
+atributo o campo::
+Un valor con nombre asociado un objeto.
 (((attribute)))
 
-embedded object::
-An object that is stored as a field of another object.
+objeto embebido::
+Un objeto que se almacena como atributo de otro objeto.
 (((embedded object)))
 
 deep copy::
-To copy the contents of an object as well as any embedded objects, and any objects embedded in them, and so on; implemented by the +deepcopy+ function.
+Copiar el contenido de un objeto, y cualquier objeto embebido en él, y a su vez, cualquier objeto embebido en ellos, y así sucesivamente. Implementado por la función +deepcopy+.
 (((deep copy)))
 
-object diagram::
-A diagram that shows objects, their fields, and the values of the fields.
+diagrama de objeto::
+Un diagrama que muestra objetos, sus atributos y valores de atributos.
 (((object diagram)))
 
 
-=== Exercises
+=== Ejercicios
 
 [[ex15-1]]
-==== Exercise 15-3
+==== Ejercicio 15-3
 
-. Write a definition for a type named +Circle+ with fields +center+ and +radius+, where +center+ is a +Point+ object and +radius+ is a number.
+. Escriba una definición de un tipo llamado +Circulo+, que tenga atributos +centro+ y +radio+, donde +centro+ es un objeto +Punto+ y +radio+ es un número.
 (((Circle)))((("type", "programmer-defined", "Circle", see="Circle")))
 
-. Instantiate a circle object that represents a circle with its center at latexmath:[\(\left(150, 100\right)\)] and radius 75.
+. Crear instancia de un objeto circulo, que represente a un círculo con centro en latexmath:[\(\left(150, 100\right)\)] y radio 75.
 
-. Write a function named +pointincircle+ that takes a +Circle+ object and a +Point+ object and returns +true+ if the point lies in or on the boundary of the circle.
+. Escriba una función llamada +puntoencirculo+ que tome un objeto +Circulo+ y un objeto +Punto+, y devuelva +true+ si el punto se encuentra dentro o en el límite del círculo.
 (((pointincircle)))((("function", "programmer-defined", "pointincircle", see="pointincircle")))
 
-. Write a function named +rectincircle+ that takes a +Circle+ object and a +Rectangle+ object and returns +true+ if the rectangle lies entirely in or on the boundary of the circle.
+. Escriba una función llamada +rectencirculo+ que tome un objeto +Circulo+ y un objeto +Rectangulo+ y devuelva +true+ si el rectángulo se encuentra completamente dentro o en el límite del círculo.
 (((rectincircle)))((("function", "programmer-defined", "rectincircle", see="rectincircle")))
 
-. Write a function named +rectcircleoverlap+ that takes a +Circle+ object and a +Rectangle+ object and returns +true+ if any of the corners of the rectangle fall inside the circle. Or as a more challenging version, return +true+ if any part of the rectangle falls inside the circle.
+. Escriba una función llamada +sobreposicionrectcirc+ que tome un objeto +Circulo+ y un objeto +Rectangulo+ y devuelva +true+ si alguna de las esquinas del rectángulo cae dentro del círculo. Una versión más desafiante es escribir una función que devuelva +true+ si alguna parte del rectángulo (no necesariamente una esquina) cae dentro del círculo.
 (((rectcircleoverlap)))((("function", "programmer-defined", "rectcircleoverlap", see="rectcircleoverlap")))
 
 [[ex15-2]]
-==== Exercise 15-4
+==== Ejercicio 15-4
 
-. Write a function called +drawrect+ that takes a turtle object and a +Rectangle+ object and uses the turtle to draw the rectangle. See Chapter 4 for examples using +Turtle+ objects.
+. Escriba una función llamada +dibujarrect+ que tome como argumentos un objeto turtle y un objeto +Rectángulo+, y use turtle para dibujar el rectángulo. Consulte el Capítulo 4 para ver ejemplos que usen objetos +Turtle+.
 (((drawrect)))((("function", "programmer-defined", "drawrect", see="drawrect")))
 
-. Write a function called +drawcircle+ that takes a +Turtle+ object and a +Circle+ object and draws the circle.
+. Escriba una función llamada +dibujarcirculo+ que tome como argumentos un objeto +Turtle+ y un objeto +Circulo+, y dibuje el círculo.
 (((drawcircle)))((("function", "programmer-defined", "drawcircle", see="drawcircle")))
 
