@@ -338,7 +338,7 @@ function horaaentero(tiempo::Hora)
     segundos = minutos * 60 + tiempo.segundo
 end;
 
-function enteroahora(segundos)
+function enteroahora(segundos::Int64)
     (minutos, segundo) = divrem(segundos, 60)
     hora, minuto = divrem(minutos, 60)
     Hora(hora, minuto, segundo)
@@ -347,24 +347,26 @@ end;
 function incrementar(tiempo::Hora, segundos::Int64)
     segundos += horaaentero(tiempo)
     enteroahora(segundos)
-end
+end;
 ----
 
-=== Operator Overloading
+=== Sobrecarga del Operador
 
-By defining operator methods, you can specify the behavior of operators on programmer-defined types. For example, if you define a method named +pass:[+]+ with two +MyTime+ arguments, you can use the +pass:[+]+ operator on +MyTime+ objects.
+Al definir métodos del operador, se puede especificar el comportamiento de los operadores en los tipos definidos por el programador. Por ejemplo, si define un método llamado +pass:[+]+ con dos argumentos +Hora+, podrías usar el operador +pass:[+]+ en los objetos +Hora+.
 
-Here is what the definition might look like:
+Así es como se vería la definición:
 
 [source,@julia-setup chap17b]
 ----
 import Base.+
 
-function +(t1::MyTime, t2::MyTime)
-    seconds = timetoint(t1) + timetoint(t2)
-    inttotime(seconds)
+function +(t1::Hora, t2::Hora)
+    segundos = horaaentero(t1) + enteroahora(t2)
+    enteroahora(seconds)
 end
 ----
+
+La sentencia import agrega el operador +pass:[+]+ al ámbito local para que se puedan agregar métodos.
 
 The import statement adds the +pass:[+]+ operator to the local scope so that methods can be added.
 
