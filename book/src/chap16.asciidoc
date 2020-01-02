@@ -164,7 +164,7 @@ El desarrollo de programas que veremos ahora se llama “desarrollo de prototipo
 
 Este enfoque puede ser efectivo, especialmente si aún no tiene un conocimiento profundo del problema. Pero las correcciones incrementales pueden generar código innecesariamente complicado (que considere muchos casos especiales) y poco confiable (es difícil saber si ha encontrado todos los errores).
 
-Una alternativa es el _desarrollo planificado_, en el que la comprensión del problema en profundidad puede facilitar en gran medida la programación. En el caso de sumahora, podemos ver un objeto Hora como ¡un numero de tres dígitos en base 60 (vea https://en.wikipedia.org/wiki/Sexagesimal )!. El atributo segundo es la “columna de unidades”, el atributo minuto es la “columna de los sesentas” y el atributo hora es la “columna de los treinta y seis cientos”.
+Una alternativa es el _desarrollo planificado_, en el que la comprensión del problema en profundidad puede facilitar en gran medida la programación. En el caso de sumahora, podemos ver un objeto Hora como ¡un numero de tres dígitos en base 60 (vea https://en.wikipedia.org/wiki/Sexagesimal )!. El atributo segundo es la “columna de unidades”, el atributo minuto es la “columna de los sesentas” y el atributo hora es la “columna de los tres mil seiscientos”.
 (((designed development)))
 
 Cuando escribimos +sumahora+ e +incrementar!+, efectivamente estábamos sumando en base 60, por eso tuvimos que "acarrear" de una columna a la siguiente.
