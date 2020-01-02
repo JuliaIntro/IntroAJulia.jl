@@ -215,17 +215,17 @@ Reescriba +incrementar!+ usando +horaaentero+ y +enteroahora+.
 
 Convertir de base 60 a base 10, y viceversa, es más difícil que solo trabajar con los tiempos. El cambio de base es más abstracto; nuestra intuición para tratar con las horas es mejor.
 
-Pero si tenemos la idea de tratar los tiempos como números base 60, e invertimos un poco de tiempo en escribir las funciones de conversión (+horaaentero+ y +enteroahora+), obtenemos un programa más corto, fácil de leer y depurar, y confiable.
+Pero si se nos ocurre tratar los tiempos como números base 60, e invertimos un poco de tiempo en escribir las funciones de conversión (+horaaentero+ y +enteroahora+), obtenemos un programa más corto, fácil de leer y depurar, y confiable.
 
-También hace que sea más fácil añadir funcionalidades más tarde. Por ejemplo, imagine restar dos +Horas+ para hallar el intervalo entre ellas. El enfoque simple sería implementar resta con acarreo. Pero usar funciones de conversión sería más fácil y sería más probable que estuviera correcto.
+También hace que sea más fácil añadir funcionalidades posteriormente. Por ejemplo, imagine restar dos +Horas+ para hallar el intervalo entre ellas. El enfoque simple sería implementar una resta con "préstamo". Pero usar funciones de conversión sería más fácil y con mayor probabilidad correcto.
 
-Irónicamente, a veces hacer un poblema más complejo (o más general) lo hace más fácil (porque hay menos casos especiales y por lo tanto, el margen para el error es menor).
+Irónicamente, a veces hacer un poblema más complejo (o más general) lo hace más fácil (porque hay menos casos especiales y por lo tanto, el margen de error es menor).
 
 
 [[chap16_debugging]]
 === Depuración
 
-Un objeto +Hora+ está bien definido si los valores de +minuto+ y +segundo+ están entre 0 y 60 (incluido 0 pero no 60) y si +hora+ es positivo. +hora+ y +minuto+ deberían ser valores enteros, pero podríamos permitir que +segundo+ sea fraccional.
+Un objeto +Hora+ está bien definido si los valores de +minuto+ y +segundo+ están entre 0 y 60 (incluido 0 pero no 60) y si +hora+ es positivo. +hora+ y +minuto+ deben ser valores enteros, pero podríamos permitir que +segundo+ sea fraccional.
 (((debugging)))
 
 Los requisitos como estos se denominan _invariantes_ porque siempre deben ser verdaderos. Dicho de otra manera, si no son ciertas, algo está mal.
