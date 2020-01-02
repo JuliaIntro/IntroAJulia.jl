@@ -78,9 +78,9 @@ function imprimirhora(tiempo)
 end
 ----
 
-Las declaraciones de tipo pueden y deben agregarse por motivos de rendimiento a los atributos en una definición de estructura.
+Para mejorar el rendimiento, se puede (y debe) agregar las declaraciones de tipo a los atributos en una definición de estructura.
 
-Para llamar a esta función, debe pasar un objeto +Hora+ como argumento:
+Para llamar a esta función, debe pasarle un objeto +Hora+ como argumento:
 
 [source,@julia-repl-test chap17a]
 ----
@@ -90,7 +90,7 @@ julia> imprimirhora(inicio)
 09:45:00
 ----
 
-Para agregar un _método_ a la función +imprimirhora+, para que esta solo acepte como argumento un objeto +Hora+, todo lo que tenemos que hacer es agregar +::+ seguido de +Hora+ al argumento +tiempo+ en la definición de la función:
+Para agregar un _método_ a la función +imprimirhora+; con el fin de que esta solo acepte como argumento un objeto +Hora+, todo lo que tenemos que hacer es agregar +::+ seguido de +Hora+ al argumento +tiempo+ en la definición de función:
 (((method)))
 
 [source,@julia-setup chap17a]
@@ -111,7 +111,7 @@ julia> imprimirhora(inicio)
 09:45:00
 ----
 
-Ahora podemos redefinir el primer método sin la anotación de tipo +::+, lo cual permite un argumento de cualquier tipo:
+Ahora redefinamos el primer método sin la anotación de tipo +::+, lo cual permite un argumento de cualquier tipo:
 
 [source,@julia-setup chap17a]
 ----
@@ -120,7 +120,7 @@ function imprimirhora(tiempo)
 end
 ----
 
-Si llama a la función +imprimirhora+ con un objeto diferente de +Hora+, obtendrás:
+Si llama a la función +imprimirhora+ con un objeto diferente de +Hora+, se obtendrá:
 
 [source,@julia-repl-test chap17a]
 ----
@@ -130,7 +130,7 @@ No sé cómo imprimir el tiempo del argumento.
 
 ==== Ejercicio 17-1
 
-Reescriba +horaaentero+ y +enteroahora+ (de <<prototyping_versus_planning>>) para que especifiquen el tipo del argumento.
+Reescriba +horaaentero+ y +enteroahora+ (de <<prototyping_versus_planning>>) especificando el tipo de los argumentos.
 (((timetoint)))(((inttotime)))
 
 
@@ -150,7 +150,7 @@ end;
 
 === Ejemplos Adicionales
 
-Aquí hay una versión de +incrementar+ (Ejercicio 16-5 de <<modificadores>>) reescrita especificando el tipo de los argumentos:
+Aquí hay una versión de la función +incrementar+ (Ejercicio 16-5 de <<modificadores>>) reescrita especificando el tipo de los argumentos:
 (((increment)))
 
 [source,@julia-setup chap17a]
@@ -163,7 +163,7 @@ end
 
 Tenga en cuenta que ahora, +incrementar+ es una función pura, no un modificador.
 
-Así es como se llama a incrementar:
+Así es como se llama a la función incrementar:
 
 [source,@julia-repl-test chap17a]
 ----
@@ -182,9 +182,9 @@ julia> incrementar(1337, inicio)
 ERROR: MethodError: no method matching increment(::Int64, ::MyTime)
 ----
 
-La especificación del método es +incrementar(tiempo::Hora, segundos::Int64)+ y no +incrementar(segundos::Int64, tiempo::Hora)+.
+La especificación del método es +incrementar(tiempo::Hora, segundos::Int64)+, no +incrementar(segundos::Int64, tiempo::Hora)+.
 
-Reescribir +estadespues+ para que solo acepte objetos +Hora+ es tan fácil como esto:
+Al reescribir +estadespues+ (Ejercicio 16-2 de <<modificadores>>) para que solo acepte objetos +Hora+ se tiene:
 (((isafter)))
 
 [source,@julia-setup chap17a]
@@ -217,7 +217,7 @@ Estas expresiones son definiciones válidas de métodos de Julia. Esta es una no
 [[constructor]]
 === Constructores
 
-Un _constructor_ es una función especial que se llama para crear un objeto. Los métodos por defecto del constructor de +Hora+ tienen las siguientes especificaciones:
+Un _constructor_ es una función especial que se llama para crear un objeto. Los métodos por defecto del constructor +Hora+ tienen las siguientes especificaciones:
 (((constructor)))
 
 [source,julia]
@@ -301,7 +301,7 @@ Esto permite construir estructuras de datos recursivas, es decir, una estructura
 
 === +show+
 
-+show+ es una función especial que devuelve una representación de cadena de un objeto. Por ejemplo, a continuación se muestra el método +show+ para objetos +Hora+:
++show+ es una función especial que devuelve la representación de cadena de un objeto. Por ejemplo, a continuación se muestra el método +show+ para objetos +Hora+:
 (((show)))
 
 [source,@julia-setup chap17b]
@@ -315,7 +315,7 @@ end
 
 El prefijo +Base+ es necesario porque queremos agregar un nuevo método a la función +Base.show+.
 
-Cuando imprime un objeto, Julia llama a la función +show+:
+Cuando se imprime un objeto, Julia llama a la función +show+:
 
 [source,@julia-repl-test chap17b]
 ----
@@ -333,21 +333,21 @@ Escriba un método de constructor externo para la clase +Punto+ que tome +x+ e +
 
 [source,@julia-eval chap17b]
 ----
-function timetoint(time::MyTime)
-    minutes = time.hour * 60 + time.minute
-    seconds = minutes * 60 + time.second
+function horaaentero(tiempo::Hora)
+    minutos = tiempo.hora * 60 + tiempo.minuto
+    segundos = minutos * 60 + tiempo.segundo
 end;
 
-function inttotime(seconds::Int64)
-    (minutes, second) = divrem(seconds, 60)
-    hour, minute = divrem(minutes, 60)
-    MyTime(hour, minute, second)
+function enteroahora(segundos)
+    (minutos, segundo) = divrem(segundos, 60)
+    hora, minuto = divrem(minutos, 60)
+    Hora(hora, minuto, segundo)
 end;
 
-function increment(time::MyTime, seconds::Int64)
-    seconds += timetoint(time)
-    inttotime(seconds)
-end;
+function incrementar(tiempo::Hora, segundos::Int64)
+    segundos += horaaentero(tiempo)
+    enteroahora(segundos)
+end
 ----
 
 === Operator Overloading
