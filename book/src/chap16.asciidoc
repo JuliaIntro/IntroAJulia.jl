@@ -51,7 +51,7 @@ Escriba una función booleana llamada +estadespues+ que tome dos objetos +Hora+:
 
 === Funciones Puras
 
-En las siguientes secciones escribiremos dos versiones de una función que calcula la suma de horas. La primera versión muestra un tipo de función llamado función pura, y la segunda un tipo llamado modificador. Además, estas versiones permitirán mostrar un nuevo plan de desarrollo de programa que llamaremos _prototipo y parche_, que es una forma de abordar un problema complejo comenzando con un prototipo simple y lidiando gradualmente con las complicaciones.
+En las siguientes secciones escribiremos dos versiones de una función que calcula la suma de horas. La primera versión muestra un tipo de función llamado función pura, y la segunda un tipo llamado modificador. Además, estas versiones permitirán mostrar un nuevo plan de desarrollo de programas que llamaremos _desarrollo de prototipos_, que es una forma de abordar un problema complejo comenzando con un prototipo simple y lidiando gradualmente con las complicaciones.
 (((pure function)))(((prototype and patch)))
 
 Este es un primer prototipo de la función +sumahora+:
