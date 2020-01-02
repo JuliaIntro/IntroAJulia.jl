@@ -115,7 +115,7 @@ Aunque esta función es correcta, es muy larga. Más adelante veremos una altern
 [[modifiers]]
 === Modificadores
 
-Hay veces en las que es útil que una función modifique uno o más de los objetos que recibe como parámetros. En ese caso, los cambios son visibles en el nivel en donde se ubica la sentencia de llamada. Las funciones así se llaman _modificadores_.
+Hay veces en las que es útil que una función modifique uno o más de los objetos que recibe como parámetros. En ese caso, los cambios son visibles en el nivel en donde se ubica la sentencia de llamada. Estas funciones se llaman _modificadores_.
 (((modifier)))
 
 La función +incrementar!+, que agrega un número dado de segundos a un objeto +Hora+, puede escribirse naturalmente como un modificador. Aquí mostramos un esbozo rápido de la función:
