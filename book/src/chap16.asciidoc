@@ -90,7 +90,7 @@ julia> imprimirhora(finaliza)
 11:65:00
 ----
 
-El resultado +11:65:00+ no es lo que queríamos. El problema es que esta función no considera de los casos en los que el número de segundos o minutos suma más que sesenta. Cuando ocurre eso, debemos "acarrear" (como en una suma) los segundos sobrantes a la columna de los minutos, o los minutos extras a la columna de las horas. He aquí una versión corregida de la función:
+El resultado +11:65:00+ no es lo que queríamos. El problema es que esta función no considera los casos en los que el número de segundos o minutos suma más que sesenta. Cuando ocurre eso, debemos "acarrear" (como en una suma) los segundos sobrantes a la columna de los minutos, o los minutos extras a la columna de las horas. He aquí una versión corregida de la función:
 
 [source,@julia-setup chap16]
 ----
