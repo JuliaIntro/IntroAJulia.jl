@@ -146,9 +146,9 @@ En tal caso, no es suficiente con acarrear una vez; debemos seguir haciéndolo h
 
 Escriba una versión correcta de +incrementar!+ sin bucles.
 
-Todo lo que se pueda hacer con modificadores también puede hacerse con funciones puras. De hecho, algunos lenguajes de programación solo permiten funciones puras. Hay ciertas evidencias de que los programas que usan funciones puras son más rápidos de desarrollar y menos propensos a errores que los programas que usan modificadores. Sin embargo, a veces los modificadores son utiles, y en algunos casos los programas funcionales (es decir, con funciones puras) tienden a ser menos eficientes.
+Todo lo que se pueda hacer con modificadores también puede lograrse con funciones puras. De hecho, algunos lenguajes de programación solo permiten funciones puras. Hay ciertas evidencias de que los programas que usan funciones puras son más rápidos de desarrollar y menos propensos a errores que los programas que usan modificadores. Sin embargo, a veces los modificadores son utiles, y en algunos casos los programas funcionales (es decir, con funciones puras) tienden a ser menos eficientes.
 
-En general, recomendamos que escriba funciones puras siempre que sea razonable hacerlo así, y recurra a los modificadores sólo si hay una ventaja convincente. Este enfoque podría llamarse _estilo de programación funcional_.
+En general, recomendamos que escriba funciones puras siempre que sea razonable, y recurra a los modificadores sólo si hay una ventaja convincente. Este enfoque podría llamarse _estilo de programación funcional_.
 (((functional programming style)))
 
 ==== Ejercicio 16-4
