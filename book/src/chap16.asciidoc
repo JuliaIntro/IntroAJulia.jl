@@ -140,7 +140,7 @@ La primera línea realiza la suma de los segundos; las restantes se ocupan de lo
 
 ¿Es correcta esta función? ¿Qué ocurre si el parámetro +segundos+ es mucho mayor que sesenta?
 
-En tal caso, no es suficiente con acarrear una vez; debemos seguir haciéndolo hasta que +tiempo.segundo+ sea menor que sesenta. Una solución es sustituir las sentencias +if+ por sentencias +while+. Ahora, esta función es correcta, pero no es la solución más eficiente.
+En tal caso, no es suficiente con acarrear una vez; debemos seguir haciéndolo hasta que +tiempo.segundo+ sea menor que sesenta. Una solución es sustituir las sentencias +if+ por sentencias +while+. Esta función sería correcta, pero no es la solución más eficiente.
 
 ==== Ejercicio 16-3
 
