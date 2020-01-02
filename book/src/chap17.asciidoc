@@ -389,66 +389,66 @@ Ampliar el comportamiento de los operadores de modo que trabajen con tipos defin
 (((operator overloading)))
 
 
-=== Multiple Dispatch
+=== Dispatch Múltiple 
 
-In the previous section we added two +MyTime+ objects, but you also might want to add an integer to a +MyTime+ object:
+En la sección anterior sumamos dos objetos +Hora+. También es posible que queramos sumar un número entero a un objeto +Hora+:
 
 [source,@julia-setup chap17b]
 ----
-function +(time::MyTime, seconds::Int64)
-    increment(time, seconds)
+function +(tiempo::Hora, segundos::Int64)
+    incrementar(tiempo, segundos)
 end
 ----
 
-Here is an example that uses the +pass:[+]+ operator with a +MyTime+ object and an integer:
+He aquí un ejemplo que usa el operador +pass:[+]+ con un objeto +Hora+ y un entero:
 
 [source,@julia-repl-test chap17b]
 ----
-julia> start = MyTime(9, 45)
+julia> inicio = Hora(9, 45)
 09:45:00
-julia> start + 1337
+julia> inicio + 1337
 10:07:17
 ----
 
-Addition is a commutative operator so we have to add another method.
+La suma es un operador conmutativo, por lo que debemos agregar otro método.
 
 [source,@julia-setup chap17b]
 ----
-function +(seconds::Int64, time::MyTime)
-  time + seconds
+function +(segundos::Int64, tiempo::Hora)
+  tiempo + segundos
 end
 ----
 
-And we get the same result:
+Y obtenemos el mismo resultado:
 
 [source,@julia-repl-test chap17b]
 ----
-julia> 1337 + start
+julia> 1337 + inicio
 10:07:17
 ----
 
-The choice of which method to execute when a function is applied is called _dispatch_. Julia allows the dispatch process to choose which of a function's methods to call based on the number of arguments given, and on the types of all of the function's arguments.  Using all of a function's arguments to choose which method should be invoked is known as _multiple dispatch_.
+La elección del método a ejecutar cuando se aplica una función se llama _dispatch_. Julia permite que el proceso de dispatch elija a cuál de los métodos de una función llamar en función del número y tipo de los argumentos dados. El uso de todos los argumentos de una función para elegir el método que se debe invocar se conoce como _dispatch múltiple_.
 (((dispatch)))(((multiple dispatch)))
 
-==== Exercise 17-3
+==== Ejercicio 17-3
 
-Write +pass:[+]+ methods for point objects:
+Escribir métodos +pass:[+]+ para objetos Punto:
 
-* If both operands are point objects, the method should return a new point object whose +x+ coordinate is the sum of the +x+ coordinates of the operands, and likewise for the +y+ coordinates.
+* Si ambos operandos son objetos Punto, el método debería devolver un nuevo objeto Punto cuya coordenada +x+ sea la suma de las coordenadas +x+ de los operandos. De manera análoga con las coordenadas +y+.
 
-* If the first or the second operand is a tuple, the method should add the first element of the tuple to the +x+ coordinate and the second element to the +y+ coordinate, and return a new point object with the result.
+* Si el primer o el segundo operando es una tupla, el método debe agregar el primer elemento de la tupla a la coordenada +x+ y el segundo elemento a la coordenada +y+, y devolver un nuevo objeto Punto con el resultado.
 
 
-=== Generic Programming
+=== Programación Genérica
 
-Multiple dispatch is useful when it is necessary, but (fortunately) it is not always necessary. Often you can avoid it by writing functions that work correctly for arguments with different types.
+El dispatch múltiple es útil cuando es necesario, pero (afortunadamente) no siempre lo es. A menudo puede evitarse escribiendo funciones que funcionen correctamente para argumentos con diferentes tipos.
 
-Many of the functions we wrote for strings also work for other sequence types. For example, in <<dictionary_collection_counters>> we used +histogram+ to count the number of times each letter appears in a word.
+Muchas de las funciones que escribimos para cadenas también funcionan para otros tipos de secuencia. Por ejemplo, en <<dictionary_collection_counters>> usamos +histograma+ para contar la cantidad de veces que cada letra aparece en una palabra.
 (((histogram)))
 
 [source,@julia-setup chap17]
 ----
-function histogram(s)
+function histograma(s)
     d = Dict()
     for c in s
         if c ∉ keys(d)
@@ -461,148 +461,148 @@ function histogram(s)
 end
 ----
 
-This function also works for lists, tuples, and even dictionaries, as long as the elements of +s+ are hashable, so they can be used as keys in +d+.
+Esta función también funciona para listas, tuplas e incluso diccionarios, siempre y cuando los elementos de +s+ sean hashables, ya que así pueden usarse como claves de +d+.
 
 [source,@julia-repl-test chap17]
 ----
-julia> t = ("spam", "egg", "spam", "spam", "bacon", "spam")
-("spam", "egg", "spam", "spam", "bacon", "spam")
-julia> histogram(t)
+julia> t = ("spam", "huevo", "spam", "spam", "tocino", "spam")
+("spam", "huevo", "spam", "spam", "tocino", "spam")
+julia> histograma(t)
 Dict{Any,Any} with 3 entries:
-  "bacon" => 1
+  "tocino" => 1
   "spam"  => 4
-  "egg"   => 1
+  "huevo"   => 1
 ----
 
-Functions that work with several types are called _polymorphic_. Polymorphism can facilitate code reuse.
+Las funciones que pueden tomar parámetros de diferentes tipos se llaman _polimórficas_. El polimorfismo puede facilitar la reutilización del código.
 (((polymorphic)))
 
-For example, the built-in function +sum+, which adds the elements of a sequence, works as long as the elements of the sequence support addition.
+Por ejemplo, la función integrada +sum+, que suma los elementos de una secuencia, funciona siempre que los elementos de la secuencia permitan la suma.
 (((sum)))
 
-Since a +pass:[+]+ method is provided for +MyTime+ objects, they work with +sum+:
+Como se añadió un método +pass:[+]+ para los objetos +Hora+, entonces se permite el uso de +sum+ para +Hora+:
 
 [source,@julia-repl-test chap17b]
 ----
-julia> t1 = MyTime(1, 7, 2)
+julia> t1 = Hora(1, 7, 2)
 01:07:02
-julia> t2 = MyTime(1, 5, 8)
+julia> t2 = Hora(1, 5, 8)
 01:05:08
-julia> t3 = MyTime(1, 5, 0)
+julia> t3 = Hora(1, 5, 0)
 01:05:00
 julia> sum((t1, t2, t3))
 03:17:10
 ----
 
-In general, if all of the operations inside a function work with a given type, the function works with that type.
+Si todas las operaciones realizadas dentro de la función se pueden aplicar al tipo, la función se puede aplicar al tipo.
 
-The best kind of polymorphism is the unintentional kind, where you discover that a function you already wrote can be applied to a type you never planned for.
+El mejor tipo de polimorfismo es el que no se busca, cuando usted descubre que una función que había escrito se puede aplicar a un tipo para el que nunca la había planeado.
 (((polymorphism)))
 
 
-=== Interface and Implementation
+=== Interfaz e implementación
 
-One of the goals of multiple dispatch is to make software more maintainable, which means that you can keep the program working when other parts of the system change, and modify the program to meet new requirements.
+Uno de los objetivos del dispatch múltiple es hacer que el software sea más fácil de mantener, lo que significa poder mantener el programa funcionando cuando otras partes del sistema cambian, y modificar el programa para cumplir con los nuevos requisitos.
 
-A design principle that helps achieve that goal is to keep interfaces separate from implementations. This means that the methods having an argument annotated with a type should not depend on how the fields of that type are represented.
+Una técnica de diseño que ayuda a lograr ese objetivo es mantener las interfaces separadas de las implementaciones. Esto significa que los métodos que tienen un argumento con anotación de tipo no deberían depender de cómo se representan los atributos de ese tipo.
 (((interface)))(((implementation)))
 
-For example, in this chapter we developed a struct that represents a time of day. Methods having an argument annotated with this type include +timetoint+, +isafter+, and +pass:[+]+.
+Por ejemplo, en este capítulo desarrollamos una estructura que representa una hora del día. Los métodos que tienen un argumento con anotación de este tipo incluyen +horaaentero+, +estadespues+ y +pass:[+]+.
 
-We could implement those methods in several ways. The details of the implementation depend on how we represent +MyTime+. In this chapter, the fields of a +MyTime+ object are +hour+, +minute+, and +second+.
+Podríamos implementar esos métodos de varias maneras. Los detalles de la implementación dependen de cómo representamos +Hora+. En este capítulo, los atributos de un objeto +Hora+ son +hora+, +minuto+ y +segundo+.
 
-As an alternative, we could replace these fields with a single integer representing the number of seconds since midnight. This implementation would make some functions, like +isafter+, easier to write, but it makes other functions harder.
+Otra opción sería reemplazar estos atributos con un solo entero que represente el número de segundos desde la medianoche. Esta implementación haría que algunas funciones, como +estadespues+, sean más fáciles de escribir, pero hace que otras sean más difíciles.
 
-After you deploy a new type, you might discover a better implementation. If other parts of the program are using your type, it might be time-consuming and error-prone to change the interface.
+Después de implementar un tipo, puede descubrir una mejor implementación. Si otras partes del programa están usando su tipo, cambiar la interfaz puede llevar mucho tiempo y ser propenso a errores.
 
-But if you designed the interface carefully, you can change the implementation without changing the interface, which means that other parts of the program don’t have to change.
+Pero si hizo un buen diseñó de interfaz, puede cambiar la implementación sin cambiar la interfaz, lo que significa que otras partes del programa no tienen que cambiar.
 
 
-=== Debugging
+=== Depuración
 
-Calling a function with the correct arguments can be difficult when more than one method for the function is specified. Julia allows to introspect the signatures of the methods of a function.
+Llamar a una función con los argumentos correctos puede ser difícil cuando se especifica más de un método para la función. Julia permite examinar las especificaciones de los métodos de una función.
 
-To know what methods are available for a given function, you can use the function +methods+:
+Para saber qué métodos están disponibles para una función determinada, puede usar la función +methods+:
 (((methods)))(((debugging)))
 
 [source,jlcon]
 ----
-julia> methods(printtime)
-# 2 methods for generic function "printtime":
+julia> methods(imprimirhora)
+# 2 methods for generic function "imprimirhora":
 [1] printtime(time::MyTime) in Main at REPL[3]:2
 [2] printtime(time) in Main at REPL[4]:2
 ----
 
-In this example, the function +printtime+ has 2 methods: one with a +MyTime+ argument and one with an +Any+ argument.
+En este ejemplo, la función +imprimirhora+ tiene 2 métodos: uno con un argumento +Hora+ y otro con un argumento +Any+.
 
 
-=== Glossary
+=== Glosario
 
-type annotation::
-The operator +::+ followed by a type indicating that an expression or a variable is of that type.
+anotación de tipo::
+El operador +::+ seguido de un tipo que indica que una expresión o una variable es de ese tipo.
 (((type annotation)))
 
-method::
-A definition of a possible behavior for a function.
+método::
+Una definición de un posible comportamiento de una función.
 (((method)))
 
 dispatch::
-The choice of which method to execute when a function is executed.
+La elección de qué método ejecutar cuando se ejecuta una función.
 (((dispatch)))
 
-signature::
-The number and type of the arguments of a method allowing the dispatch to select the most specific method of a function during the function call.
+especificación::
+El número y tipo de argumentos de un método que permite al dispatch seleccionar el método más específico de una función durante la llamada a la función.
 (((signature)))
 
-outer constructor::
-Constructor defined outside the type definition to define convenience methods for creating an object.
+constructor externo::
+Constructor definido fuera de la definición de tipo para definir métodos convenientes para crear un objeto.
 (((outer constructor)))
 
-inner constructor::
-Constructor defined inside the type definition to enforce invariants or to construct self-referential objects.
+constructor interno::
+Constructor definido dentro de la definición de tipo para imponer invariantes o para construir objetos recursivos.
 (((inner constructor)))
 
-default constructor::
-Inner constructor that is available when no programmer-defined inner constructors are provided.
+constructor por defecto::
+Constructor interno que está disponible cuando el usuario no define constructores internos.
 (((default constructor)))
 
-copy constructor::
+constructor de copia::
+Método de constructor externo de un tipo como solo argumento un objeto del tipo. Crea un nuevo objeto que es una copia del argumento.
 Outer constructor method of a type with as only argument an object of the type. It creates a new object that is a copy of the argument.
 (((copy constructor)))
 
-operator overloading::
-Adding to the behavior of an operator like +pass:[+]+ so it works with a programmer-defined type.
+sobrecarga de operadores::
+Ampliar el comportamiento de los operadores como pass:[+]+ de modo que trabajen con tipos definidos por el usuario.
 (((operator overloading)))
 
-multiple dispatch::
-Dispatch based on all of a function's arguments.
+dispatch múltiple::
+Dispatch basado en todos los argumentos de una función.
 (((multiple dispatch)))
 
-generic programming::
-Writing code that can work with more than one type.
+programación genérica::
+Escribir código que pueda funcionar con más de un tipo.
 (((generic programming)))
 
 
-=== Exercises
+=== Ejercicios
 
 [[ex17-1]]
-==== Exercise 17-4
+==== Ejercicio 17-4
 
-Change the fields of +MyTime+ to be a single integer representing seconds since midnight. Then modify the methods defined in this chapter to work with the new implementation.
+Cambie los atributos de +Hora+ para que sea un solo número entero que represente los segundos desde la medianoche. Luego modifique los métodos definidos en este capítulo para que funcionen con la nueva implementación.
 
 [[ex17-2]]
-==== Exercise 17-5
+==== Ejercicio 17-5
 
-Write a definition for a type named +Kangaroo+ with a field named +pouchcontents+ of type +Array+ and the following methods:
+Escriba una definición para un tipo llamado +Canguro+, con un atributo llamado +contenidodelabolsa+ de tipo +Matriz+ y los siguientes métodos:
 (((Kangaroo)))((("type", "programmer-defined", "Kangaroo", see="Kangaroo")))
 
-* A constructor that initializes +pouchcontents+ to an empty array.
+* Un constructor que inicializa +contenidodelabolsa+ en una matriz vacía.
 
-* A method named +putinpouch+ that takes a +Kangaroo+ object and an object of any type and adds it to +pouchcontents+.
+* Un método llamado +ponerenbolsa+ que tome un objeto +Canguro+ y un objeto de cualquier tipo y lo agregue a +contenidodelabolsa+.
 (((putinpouch)))((("function", "programmer-defined", "putinpouch", see="putinpouch")))
 
-* A +show+ method that returns a string representation of the +Kangaroo+ object and the contents of the pouch.
+* Un método +show+ que devuelva una representación de cadena del objeto +Canguro+ y el contenido de la bolsa.
 (((show)))
 
-Test your code by creating two +Kangaroo+ objects, assigning them to variables named +kanga+ and +roo+, and then adding +roo+ to the contents of +kanga+’s pouch.
-
+Pruebe su código creando dos objetos +Canguro+, asignándolos a variables llamadas +cangu+ y +ro+, y luego agregando +ro+ al contenido de la bolsa de +cangu+.
