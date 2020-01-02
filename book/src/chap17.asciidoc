@@ -1,14 +1,14 @@
 [[chap17]]
-== Multiple Dispatch
+== Dispatch Múltiple 
 
-Julia permite escribir código que puede operar en diferentes tipos. Esto se llama programación genérica.
+Julia permite escribir código que puede funcionar con diferentes tipos. Esto se llama programación genérica.
 
-En este capítulo se discutirá sobre el uso de declaraciones de tipo en Julia, y se presentan los métodos, que son formas de implementar diferentes comportamientos en una función dependiendo de los tipos de sus argumentos. Esto es llamado multiple dispatch.
+En este capítulo se discutirá sobre las declaraciones de tipo en Julia. Además, se presentan los métodos, que son formas de implementar diferentes comportamientos en una función dependiendo del tipo de sus argumentos. Esto es llamado dispatch múltiple.
 
 
 === Declaraciones de Tipo
 
-El operador +::+ asocia _anotaciones de tipo_ a expresiones y variables:
+El operador +::+ asocia _anotaciones de tipo_ con expresiones y variables:
 (((TypeError)))((("error", "Core", "TypeError", see="TypeError")))
 
 [source,@julia-repl-test]
@@ -19,7 +19,7 @@ julia> (1 + 2) :: Int64
 3
 ----
 
-Esto ayuda a confirmar que su programa funciona de la manera esperada.
+Esto ayuda a confirmar que el programa funciona de la manera esperada.
 
 El operador +::+ también se puede agregar al lado izquierdo de una asignación, o como parte de una declaración.
 (((returnfloat)))((("function", "programmer-defined", "returnfloat", see="returnfloat")))
