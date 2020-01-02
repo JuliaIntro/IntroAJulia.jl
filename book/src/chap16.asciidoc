@@ -194,7 +194,7 @@ function enteroahora(segundos)
 end
 ----
 
-Puede que tenga que pensar un poco y ejecutar algunas pruebas para convencerse de que estas funciones son correctas. Una forma de probarlas es verificar que +horaaentero((enteroahora(x)) == x+ para muchos valores de +x+. Este es un ejemplo de prueba de consistencia.
+Puede que tenga que pensar un poco y realizar algunas pruebas para convencerse de que estas funciones son correctas. Una forma de probarlas es verificar que +horaaentero((enteroahora(x)) == x+ para muchos valores de +x+. Este es un ejemplo de prueba de consistencia.
 
 Una vez que esté convencido, puede usar estas funciones para reescribir sumahora:
 
