@@ -3,7 +3,7 @@
 
 Julia permite escribir código que puede funcionar con diferentes tipos. Esto se llama programación genérica.
 
-En este capítulo se discutirá sobre las declaraciones de tipo en Julia. Además, se presentan los métodos, que son formas de implementar diferentes comportamientos en una función dependiendo del tipo de sus argumentos. Esto es llamado dispatch múltiple.
+En este capítulo se discutirá sobre las declaraciones de tipo en Julia. Además, se presentan los métodos, que son formas de implementar diferentes comportamientos en una función dependiendo del tipo de sus argumentos. Esto es conocido como dispatch múltiple.
 
 
 === Declaraciones de Tipo
@@ -54,11 +54,11 @@ end
 
 El valor de retorno de +sinc+ siempre se convierte al tipo +Float64+.
 
-En Julia, el comportamiento por defecto cuando se omiten los tipos es permitir que los valores sean de cualquier tipo (+Any+).
+En Julia, cuando se omiten los tipos, los valores pueden ser de cualquier tipo (+Any+).
 (((Any)))
 
 
-=== Metodos
+=== Métodos
 
 En <<chap16>>, definimos una estructura llamada +Hora+ y en <<time>>, escribimos una función llamada +imprimirhora+:
 (((MyTime)))(((printtime)))
@@ -90,7 +90,7 @@ julia> imprimirhora(inicio)
 09:45:00
 ----
 
-Para agregar un _método_ a la función +imprimirhora+ para que solo acepte como argumento un objeto +Hora+, todo lo que tenemos que hacer es agregar +::+ seguido de +Hora+ al argumento +tiempo+ en la definición de la función:
+Para agregar un _método_ a la función +imprimirhora+, para que esta solo acepte como argumento un objeto +Hora+, todo lo que tenemos que hacer es agregar +::+ seguido de +Hora+ al argumento +tiempo+ en la definición de la función:
 (((method)))
 
 [source,@julia-setup chap17a]
@@ -100,7 +100,7 @@ function imprimirhora(tiempo::Hora)
 end
 ----
 
-Un método es una definición de función con una _signature_ específica: +imprimirhora+ tiene un argumento de tipo +Hora+.
+Un método es una definición de función con una _especificación_: +imprimirhora+ tiene un argumento de tipo +Hora+.
 (((signature)))
 
 Llamar a la función +imprimirhora+ con un objeto +Hora+ produce el mismo resultado que antes:
@@ -150,7 +150,7 @@ end;
 
 === Ejemplos Adicionales
 
-Aquí hay una versión de +incrementar+ (Ejercicio 16-5 de <<modificadores>>) reescrita especificando sus argumentos:
+Aquí hay una versión de +incrementar+ (Ejercicio 16-5 de <<modificadores>>) reescrita especificando el tipo de los argumentos:
 (((increment)))
 
 [source,@julia-setup chap17a]
@@ -173,7 +173,7 @@ julia> incrementar(inicio, 1337)
 Hora(10, 7, 17)
 ----
 
-Si colocas los argumentos en el orden incorrecto, obtendrás un error:
+Si colocamos los argumentos en el orden incorrecto, obtendremos un error:
 (((MethodError)))
 
 [source,@julia-repl-test chap17a]
@@ -182,7 +182,7 @@ julia> incrementar(1337, inicio)
 ERROR: MethodError: no method matching increment(::Int64, ::MyTime)
 ----
 
-El signature del método es +incrementar(tiempo::Hora, segundos::Int64)+ y no +incrementar(segundos::Int64, tiempo::Hora)+.
+La especificación del método es +incrementar(tiempo::Hora, segundos::Int64)+ y no +incrementar(segundos::Int64, tiempo::Hora)+.
 
 Reescribir +estadespues+ para que solo acepte objetos +Hora+ es tan fácil como esto:
 (((isafter)))
@@ -217,9 +217,7 @@ Estas expresiones son definiciones válidas de métodos de Julia. Esta es una no
 [[constructor]]
 === Constructores
 
-Un _constructor_ es una función especial que se llama para crear un objeto. Los métodos de constructor por defecto de +Hora+ tienen los siguientes signatures:
-
-A _constructor_ is a special function that is called to create an object. The default constructor methods of +MyTime+ have the following signatures:
+Un _constructor_ es una función especial que se llama para crear un objeto. Los métodos por defecto del constructor de +Hora+ tienen las siguientes especificaciones:
 (((constructor)))
 
 [source,julia]
@@ -229,7 +227,6 @@ Hora(hora::Int64, minuto::Int64, segundo::Int64)
 ----
 
 También podemos agregar nuestros propios métodos de _constructores externos_:
-We can also add our own _outer constructor_ methods:
 (((outer constructor)))((("constructor", "outer", see="outer constructor")))
 
 [source,@julia-setup chap17a]
@@ -240,98 +237,97 @@ end
 ----
 
 Este método se llama _constructor de copia_ porque el nuevo objeto +Hora+ es una copia de su argumento.
-
-This method is called a _copy constructor_ because the new +MyTime+ object is a copy of its argument.
 (((copy constructor)))((("constructor", "copy", see="copy constructor")))
 
-To enforce invariants, we need _inner constructor_ methods:
+Para imponer invariantes, necesitamos métodos de _constructor interno_:
 (((inner constructor)))((("constructor", "inner", see="inner constructor")))
 
 [source,@julia-setup chap17b]
 ----
-struct MyTime
-    hour :: Int64
-    minute :: Int64
-    second :: Int64
-    function MyTime(hour::Int64=0, minute::Int64=0, second::Int64=0)
-        @assert(0 ≤ minute < 60, "Minute is not between 0 and 60.")
-        @assert(0 ≤ second < 60, "Second is not between 0 and 60.")
-        new(hour, minute, second)
+struct Hora
+    hora :: Int64
+    minuto :: Int64
+    segundo :: Int64
+    function Hora(hora::Int64=0, minuto::Int64=0, segundo::Int64=0)
+        @assert(0 ≤ minuto < 60, "Minuto no está entre 0 y 60.")
+        @assert(0 ≤ segundo < 60, "Segundo no está entre 0 y 60.")
+        new(hora, minuto, segundo)
     end
 end
 ----
 
-The struct +MyTime+ has now 4 inner constructor methods:
+La estructura +Hora+ tiene ahora 4 métodos de constructor interno:
 
 [source,julia]
 ----
-MyTime()
-MyTime(hour::Int64)
-MyTime(hour::Int64, minute::Int64)
-MyTime(hour::Int64, minute::Int64, second::Int64)
+Hora()
+Hora(hora::Int64)
+Hora(hora::Int64, minuto::Int64)
+Hora(hora::Int64, minuto::Int64, segundo::Int64)
 ----
 
-An inner constructor method is always defined inside the block of a type declaration and it has access to a special function called +new+ that creates objects of the newly declared type.
+Un método de constructor interno siempre se define dentro del bloque de una declaración de tipo, y tiene acceso a una función especial llamada +new+ que crea objetos del tipo recién declarado.
 
 [WARNING]
 ====
-The default constructor is not available if any inner constructor is defined. You have to write explicitly all the inner constructors you need.
+Si se define algún constructor interno, el constructor por defecto ya no está disponible. Tienes que escribir explícitamente todos los constructores internos que necesitas.
 ====
 
+También existe un segundo método sin argumentos de la función local +new+:
 A second method without arguments of the local function +new+ exists:
 (((new)))((("function", "Base", "new", see="new")))
 
 [source,@julia-setup chap17c]
 ----
-mutable struct MyTime
-    hour :: Int
-    minute :: Int
-    second :: Int
-    function MyTime(hour::Int64=0, minute::Int64=0, second::Int64=0)
-        @assert(0 ≤ minute < 60, "Minute is between 0 and 60.")
-        @assert(0 ≤ second < 60, "Second is between 0 and 60.")
-        time = new()
-        time.hour = hour
-        time.minute = minute
-        time.second = second
-        time
+mutable struct Hora
+    hora :: Int64
+    minuto :: Int64
+    segundo :: Int64
+    function Hora(hora::Int64=0, minuto::Int64=0, segundo::Int64=0)
+        @assert(0 ≤ minuto < 60, "Minuto está entre 0 y 60.")
+        @assert(0 ≤ segundo < 60, "Segundo está entre 0 y 60.")
+        tiempo = new()
+        tiempo.hora = hora
+        tiempo.minuto = minuto
+        tiempo.segundo = segundo
+        tiempo
     end
 end
 ----
 
-This allows to construct recursive data structures, i.e. a struct where one of the fields is the struct itself. In this case the struct has to be mutable because its fields are modified after instantiation.
+Esto permite construir estructuras de datos recursivas, es decir, una estructura donde uno de los atributos es la estructura misma. En este caso, la estructura debe ser mutable porque sus atributos se modifican después de la creación de instancias.
 (((recursive data structures)))
 
 
 === +show+
 
-+show+ is a special function that returns a string representation of an object. For example, here is a +show+ method for +MyTime+ objects:
++show+ es una función especial que devuelve una representación de cadena de un objeto. Por ejemplo, a continuación se muestra el método +show+ para objetos +Hora+:
 (((show)))
 
 [source,@julia-setup chap17b]
 ----
 using Printf
 
-function Base.show(io::IO, time::MyTime)
-    @printf(io, "%02d:%02d:%02d", time.hour, time.minute, time.second)
+function Base.show(io::IO, tiempo::Hora)
+    @printf(io, "%02d:%02d:%02d", tiempo.hora, tiempo.minuto, tiempo.segundo)
 end
 ----
 
-The prefix +Base+ is needed because we want to add a new method to the +Base.show+ function.
+El prefijo +Base+ es necesario porque queremos agregar un nuevo método a la función +Base.show+.
 
-When you print an object, Julia invokes the +show+ function:
+Cuando imprime un objeto, Julia llama a la función +show+:
 
 [source,@julia-repl-test chap17b]
 ----
-julia> time = MyTime(9, 45)
+julia> tiempo = Hora(9, 45)
 09:45:00
 ----
 
-When I write a new composite type, I almost always start by writing an outer constructor, which makes it easier to instantiate objects, and +show+, which is useful for debugging.
+Cuando escribo un nuevo tipo compuesto, casi siempre empiezo escribiendo un constructor externo; lo que facilita la creación de instancias de objetos, y +show+; que es útil para la depuración.
 
-==== Exercise 17-2
+==== Ejercicio 17-2
 
-Write an outer constructor method for the +Point+ class that takes +x+ and +y+ as optional parameters and assigns them to the corresponding fields.
+Escriba un método de constructor externo para la clase +Punto+ que tome +x+ e +y+ como parámetros opcionales y los asigne a los atributos correspondientes.
 (((Point)))
 
 
