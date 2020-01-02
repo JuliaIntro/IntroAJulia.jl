@@ -6,7 +6,7 @@ Ahora que sabemos cómo crear tipos compuestos, el siguiente paso es escribir fu
 [[time]]
 === Tiempo
 
-Como otro ejemplo más de tipo compuesto, definiremos una +estructura+ llamada +Hora+ que registra la hora del día. La definición de esta estructura se muestra a continuación:
+Como otro ejemplo de tipo compuesto, definiremos una +estructura+ llamada +Hora+ que registra la hora del día. La definición de esta estructura se muestra a continuación:
 (((MyTime)))((("type", "programmer-defined", "MyTime", see="MyTime")))
 
 [source,@julia-setup chap16]
