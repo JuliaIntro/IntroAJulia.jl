@@ -350,9 +350,9 @@ function incrementar(tiempo::Hora, segundos::Int64)
 end;
 ----
 
-=== Sobrecarga del Operador
+=== Sobrecarga de Operadores
 
-Al definir métodos del operador, se puede especificar el comportamiento de los operadores en los tipos definidos por el programador. Por ejemplo, si define un método llamado +pass:[+]+ con dos argumentos +Hora+, podrías usar el operador +pass:[+]+ en los objetos +Hora+.
+Es posible cambiar la definición de los operadores cuando se aplican a tipos definidos por el usuario. Esto se hace definiendo métodos del operador. Por ejemplo, si definimos un método llamado +pass:[+]+ con dos argumentos +Hora+, podríamos usar el operador +pass:[+]+ en los objetos +Hora+.
 
 Así es como se vería la definición:
 
@@ -375,17 +375,17 @@ And here is how you could use it:
 
 [source,@julia-repl-test chap17b]
 ----
-julia> start = MyTime(9, 45)
+julia> inicio = Hora(9, 45)
 09:45:00
-julia> duration = MyTime(1, 35, 0)
+julia> duracion = Hora(1, 35, 0)
 01:35:00
-julia> start + duration
+julia> inicio + duracion
 11:20:00
 ----
 
-When you apply the +pass:[+]+ operator to +MyTime+ objects, Julia invokes the newly added method. When the REPL shows the result, Julia invokes +show+. So there is a lot happening behind the scenes!
+Cuando aplicamos el operador +pass:[+]+ a objetos +Hora+, Julia invocará el método recién agregado. Cuando REPL muestra el resultado, Julia invocará a +show+. ¡Hay muchas cosas pasando entre bastidores!
 
-Adding to the behavior of an operator so that it works with programmer-defined types is called _operator overloading_.
+Ampliar el comportamiento de los operadores de modo que trabajen con tipos definidos por el usuario/programador se denomina _sobrecarga del operador_.
 (((operator overloading)))
 
 
