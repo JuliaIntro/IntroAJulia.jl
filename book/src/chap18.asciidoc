@@ -27,7 +27,7 @@ Por ejemplo, esta tabla muestra una correspondencia entre palos y códigos (núm
 
 * +♣+  latexmath:[\(\mapsto\)]  1
 
-Este código facilita la comparación de naipes, pues los palos más altos se asignan a los números más altos, por lo tanto podemos comparar los palos al comparar sus códigos.
+Este código facilita la comparación de naipes; los palos más altos se asignan a los números más altos, por lo tanto podemos comparar los palos al comparar sus códigos.
 
 Estamos usando el símbolo latexmath:[\(\mapsto\)] para dejar en claro que estas asignaciones no son parte de Julia. Forman parte del diseño del programa, pero no aparecen explícitamente en el código.
 
