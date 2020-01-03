@@ -549,11 +549,11 @@ La elección de qué método ejecutar cuando se ejecuta una función.
 (((dispatch)))
 
 especificación::
-El número y tipo de argumentos de un método que permite al dispatch seleccionar el método más específico de una función durante la llamada a la función.
+El número y tipo de argumentos de un método que permite al dispatch seleccionar el método más específico de una función durante la llamada a función.
 (((signature)))
 
 constructor externo::
-Constructor definido fuera de la definición de tipo para definir métodos convenientes para crear un objeto.
+Constructor definido fuera de la definición de tipo para definir métodos útiles para crear un objeto.
 (((outer constructor)))
 
 constructor interno::
@@ -565,8 +565,7 @@ Constructor interno que está disponible cuando el usuario no define constructor
 (((default constructor)))
 
 constructor de copia::
-Método de constructor externo de un tipo como solo argumento un objeto del tipo. Crea un nuevo objeto que es una copia del argumento.
-Outer constructor method of a type with as only argument an object of the type. It creates a new object that is a copy of the argument.
+Método de constructor externo de un tipo, que tiene como único argumento un objeto del tipo. Crea un nuevo objeto que es una copia del argumento.
 (((copy constructor)))
 
 sobrecarga de operadores::
@@ -592,15 +591,15 @@ Cambie los atributos de +Hora+ para que sea un solo número entero que represent
 [[ex17-2]]
 ==== Ejercicio 17-5
 
-Escriba una definición para un tipo llamado +Canguro+, con un atributo llamado +contenidodelabolsa+ de tipo +Matriz+ y los siguientes métodos:
+Escriba una definición para un tipo llamado +Canguro+, con un atributo llamado +contenidodemarsupio+ de tipo +Matriz+ y los siguientes métodos:
 (((Kangaroo)))((("type", "programmer-defined", "Kangaroo", see="Kangaroo")))
 
-* Un constructor que inicializa +contenidodelabolsa+ en una matriz vacía.
+* Un constructor que inicializa +contenidodemarsupio+ a una matriz vacía.
 
-* Un método llamado +ponerenbolsa+ que tome un objeto +Canguro+ y un objeto de cualquier tipo y lo agregue a +contenidodelabolsa+.
+* Un método llamado +ponerenmarsupio+ que tome un objeto +Canguro+ y un objeto de cualquier tipo y lo agregue a +contenidodemarsupio+.
 (((putinpouch)))((("function", "programmer-defined", "putinpouch", see="putinpouch")))
 
-* Un método +show+ que devuelva una representación de cadena del objeto +Canguro+ y el contenido de la bolsa.
+* Un método +show+ que devuelva una representación de cadena del objeto +Canguro+ y el contenido del marsupio.
 (((show)))
 
-Pruebe su código creando dos objetos +Canguro+, asignándolos a variables llamadas +cangu+ y +ro+, y luego agregando +ro+ al contenido de la bolsa de +cangu+.
+Pruebe su código creando dos objetos +Canguro+, asignándolos a variables llamadas +cangu+ y +ro+, y luego agregando +ro+ al contenido del marsupio de +cangu+.
