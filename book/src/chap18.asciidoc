@@ -47,7 +47,7 @@ struct Naipe
 end
 ----
 
-Para crear un +Naipe+, se debe llamar a +Naipe+ con el palo y el valor de la carta deseado:
+Para crear un +Naipe+, se debe llamar a +Naipe+ con el palo y el valor del naipe deseado:
 
 [source,@julia-repl-test chap18]
 ----
