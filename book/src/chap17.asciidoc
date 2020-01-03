@@ -78,7 +78,7 @@ function imprimirhora(tiempo)
 end
 ----
 
-Para mejorar el rendimiento, se puede (y debe) agregar las declaraciones de tipo a los atributos en una definición de estructura.
+Para mejorar el rendimiento, se pueden (y deben) agregar las declaraciones de tipo a los atributos en una definición de estructura.
 
 Para llamar a esta función, debe pasarle un objeto +Hora+ como argumento:
 
