@@ -66,7 +66,7 @@ const nombres_palo = ["♣", "♦", "♥", "♠"]
 const nombres_valor = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
 ----
 
-Las variables +nombres_palo + y +nombres_valor+ son variables globales. La declaración +const+ significa que la variable solo se puede asignar una vez. Esto resuelve el problema de rendimiento de las variables globales.
+Las variables +nombres_palo+ y +nombres_valor+ son variables globales. La declaración +const+ significa que la variable solo se puede asignar una vez. Esto resuelve el problema de rendimiento de las variables globales.
 (((global statement)))(((const)))((("keyword", "const", see="const")))
 
 Ahora podemos implementar un método +show+ apropiado:
