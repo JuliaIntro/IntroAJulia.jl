@@ -5,7 +5,7 @@ En el capítulo anterior se presentó el dispatch múltiple y los métodos polim
 
 En este capítulo se explica el concepto de subtipo usando tipos que representan cartas, mazos de cartas y manos de póker.
 
-Si nunca has jugado póker, puedes leer sobre él en https://es.wikipedia.org/wiki/P%C3%B3quer, aunque no es necesario, pues te diré todo lo que necesitas saber para los ejercicios.
+Si nunca has jugado póker, puedes leer sobre él en https://es.wikipedia.org/wiki/P%C3%B3quer, aunque no es necesario, pues explicaremos todo lo necesario para los ejercicios.
 
 
 === Naipes
