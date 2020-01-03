@@ -312,17 +312,19 @@ function Base.show(io::IO, tiempo::Hora)
 end
 ----
 
+Esta función guarda como cadena de texto una hora dada, en el archivo al que io hace referencia.
+
 El prefijo +Base+ es necesario porque queremos agregar un nuevo método a la función +Base.show+.
 
-Cuando se imprime un objeto, Julia llama a la función +show+:
+Cuando se imprime un objeto, Julia llama a la función +show+ (esto ocurre siempre, y como agregamos un nuevo método a la función +Base.show+, entonces se muestra Hora con el formato que queremos):
 
 [source,@julia-repl-test chap17b]
 ----
-julia> tiempo = Hora(9, 45)
+julia> tiempo = Hora(9, 45, 0)
 09:45:00
 ----
 
-Cuando escribo un nuevo tipo compuesto, casi siempre empiezo escribiendo un constructor externo; lo que facilita la creación de instancias de objetos, y +show+; que es útil para la depuración.
+Personalmente, cuando escribo un nuevo tipo compuesto, casi siempre empiezo escribiendo un constructor externo; lo que facilita la creación de instancias de objetos, y +show+; que es útil para la depuración.
 
 ==== Ejercicio 17-2
 
