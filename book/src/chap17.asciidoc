@@ -367,12 +367,9 @@ function +(t1::Hora, t2::Hora)
 end
 ----
 
-La sentencia import agrega el operador +pass:[+]+ al ámbito local para que se puedan agregar métodos.
+La sentencia import agrega el operador +pass:[+]+ al ámbito local (local scope) para que se puedan agregar métodos.
 
-The import statement adds the +pass:[+]+ operator to the local scope so that methods can be added.
-
-And here is how you could use it:
-
+A continuación se muestra cómo usar este operador para objetos Hora.
 
 [source,@julia-repl-test chap17b]
 ----
@@ -384,15 +381,15 @@ julia> inicio + duracion
 11:20:00
 ----
 
-Cuando aplicamos el operador +pass:[+]+ a objetos +Hora+, Julia invocará el método recién agregado. Cuando REPL muestra el resultado, Julia invocará a +show+. ¡Hay muchas cosas pasando entre bastidores!
+Al aplicar el operador +pass:[+]+ a objetos +Hora+, Julia invoca el método recién agregado. Cuando REPL muestra el resultado, Julia invoca a +show+. ¡Hay muchas cosas pasando que no vemos!
 
-Ampliar el comportamiento de los operadores de modo que trabajen con tipos definidos por el usuario/programador se denomina _sobrecarga del operador_.
+Ampliar el comportamiento de los operadores de modo que funcionen con tipos definidos por el usuario/programador se denomina _sobrecarga del operador_.
 (((operator overloading)))
 
 
 === Dispatch Múltiple 
 
-En la sección anterior sumamos dos objetos +Hora+. También es posible que queramos sumar un número entero a un objeto +Hora+:
+En la sección anterior sumamos dos objetos +Hora+. Imagine que ahora queremos sumar un número entero a un objeto +Hora+:
 
 [source,@julia-setup chap17b]
 ----
@@ -433,18 +430,18 @@ La elección del método a ejecutar cuando se aplica una función se llama _disp
 
 ==== Ejercicio 17-3
 
-Escribir métodos +pass:[+]+ para objetos Punto:
+Escribir los siguientes métodos +pass:[+]+ para objetos Punto:
 
-* Si ambos operandos son objetos Punto, el método debería devolver un nuevo objeto Punto cuya coordenada +x+ sea la suma de las coordenadas +x+ de los operandos. De manera análoga con las coordenadas +y+.
+* Si ambos operandos son objetos Punto, el método debería devolver un nuevo objeto Punto cuya coordenada +x+ sea la suma de las coordenadas +x+ de los operandos. De manera análoga para la coordenada +y+.
 
 * Si el primer o el segundo operando es una tupla, el método debe agregar el primer elemento de la tupla a la coordenada +x+ y el segundo elemento a la coordenada +y+, y devolver un nuevo objeto Punto con el resultado.
 
 
 === Programación Genérica
 
-El dispatch múltiple es útil cuando es necesario, pero (afortunadamente) no siempre lo es. A menudo puede evitarse escribiendo funciones que funcionen correctamente para argumentos con diferentes tipos.
+El dispatch múltiple es útil cuando es necesario, pero (afortunadamente) no siempre lo es. A menudo puede evitarse escribiendo funciones que funcionen correctamente para argumentos de diferentes tipos.
 
-Muchas de las funciones que escribimos para cadenas también funcionan para otros tipos de secuencia. Por ejemplo, en <<dictionary_collection_counters>> usamos +histograma+ para contar la cantidad de veces que cada letra aparece en una palabra.
+Muchas de las funciones que hemos escrito para cadenas también funcionan para otros tipos de secuencia. Por ejemplo, en <<dictionary_collection_counters>> usamos +histograma+ para contar la cantidad de veces que cada letra aparece en una palabra.
 (((histogram)))
 
 [source,@julia-setup chap17]
