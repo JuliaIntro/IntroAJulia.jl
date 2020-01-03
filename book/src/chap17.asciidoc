@@ -19,7 +19,7 @@ julia> (1 + 2) :: Int64
 3
 ----
 
-Esto ayuda a confirmar que el programa funciona de la manera esperada.
+Esto ayuda a verificar que el programa funciona de la manera esperada.
 
 El operador +::+ también se puede agregar al lado izquierdo de una asignación, o como parte de una declaración.
 (((returnfloat)))((("function", "programmer-defined", "returnfloat", see="returnfloat")))
