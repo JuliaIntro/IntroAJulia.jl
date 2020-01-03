@@ -269,8 +269,7 @@ Se puede crear un nuevo tipo abstracto con la palabra reservada +abstract type+.
 Cuando no se proporciona un _supertipo_, el supertipo por defecto es +Any+, es decir, un tipo abstracto predefinido del que todos los objetos son instancias y del que todos los tipos son _subtipos_.
 (((supertype)))(((subtype)))
 
-Ahora podemos expresar que +Mazo+ es un descendiente de +ConjuntoDeCartas+:
-We can now express that +Deck+ is a descendant of +CardSet+:
+Ahora podemos expresar que +Mazo+ es un hijo de +ConjuntoDeCartas+:
 
 [source,@julia-setup chap18a]
 ----
@@ -306,129 +305,136 @@ function Random.shuffle!(mazo::Mazo)
 end
 ----
 
-The operator +isa+ checks whether an object is of a given type:
+El operador +isa+ comprueba si un objeto es de un tipo dado:
 (((isa)))((("operator", "Base", "isa", see="isa")))
 
 [source,@julia-repl-test chap18a]
 ----
-julia> deck = Deck();
+julia> mazo = Mazo();
 
-julia> deck isa CardSet
+julia> mazo isa ConjuntoDeCartas
 true
 ----
 
+Una mano también es una especie de +ConjuntoDeCartas+:
 A hand is also a kind of +CardSet+:
 (((Hand)))((("type", "programmer-defined", "Hand", see="Hand")))
 
 [source,@julia-setup chap18a]
 ----
-struct Hand <: CardSet
-    cards :: Array{Card, 1}
-    label :: String
+struct Mano <: ConjuntoDeCartas
+    naipes :: Array{Naipe, 1}
+    etiqueta :: String
 end
 
-function Hand(label::String="")
-    Hand(Card[], label)
+function Mano(etiqueta::String="")
+    Mano(Naipe[], etiqueta)
 end
 ----
 
-Instead of populating the hand with 52 new cards, the constructor for +Hand+ initializes +cards+ with an empty array. An optional argument can be passed to the constructor giving a label to the +Hand+.
+En lugar de llenar la mano con 52 cartas nuevas, el constructor de +Mano+ inicializa +naipes+ a una matriz vacía. Se puede pasar una etiqueta de la +Mano+ como argumento opcional al constructor.
 
 [source,@julia-repl-test chap18a]
 ----
-julia> hand = Hand("new hand")
-Hand(Card[], "new hand")
+julia> mano = Mano("nueva mano")
+Mano(Naipe[], "nueva mano")
 ----
 
 
-=== Abstract Types and Functions
+=== Tipos Abstractos y Funciones
 
-We can now express the common operations between +Deck+ and +Hand+ as functions having as argument +CardSet+:
+Ahora podemos expresar las operaciones que tienen en común +Mazo+ y +Mano+, al ser funciones que tienen como argumento a +ConjuntoDeCartas+:
 (((show)))(((pop!)))(((push!)))
 
 [source,@julia-setup chap18a]
 ----
-function Base.show(io::IO, cs::CardSet)
-    for card in cs.cards
-        print(io, card, " ")
+function Base.show(io::IO, cdc::ConjuntoDeCartas)
+    for naipe in cdc.naipes
+        print(io, naipe, " ")
     end
 end
 
-function Base.pop!(cs::CardSet)
-    pop!(cs.cards)
+function Base.pop!(cdc::ConjuntoDeCartas)
+    pop!(cdc.naipes)
 end
 
-function Base.push!(cs::CardSet, card::Card)
-    push!(cs.cards, card)
+function Base.push!(cdc::ConjuntoDeCartas, naipe::Naipe)
+    push!(cdc.naipes, naipe)
     nothing
 end
 ----
 
-We can use +pop!+ and +push!+ to deal a card:
+Podemos usar +pop!+ y +push!+ para repartir una carta:
 
 [source,@julia-repl chap18a]
 ----
-deck = Deck()
-shuffle!(deck)
-card = pop!(deck)
-push!(hand, card)
+mazo = Mazo()
+shuffle!(mazo)
+naipe = pop!(mazo)
+push!(mano, naipe)
 ----
 
-A natural next step is to encapsulate this code in a function called +move!+:
+A continuación, encapsularemos este código en una función llamada +mover!+:
 (((move!)))((("function", "programmer-defined", "move!", see="move!")))
 
 [source,@julia-setup chap18a]
 ----
-function move!(cs1::CardSet, cs2::CardSet, n::Int)
-    @assert 1 ≤ n ≤ length(cs1.cards)
+function mover!(cdc1::ConjuntoDeCartas, cdc2::ConjuntoDeCartas, n::Int)
+    @assert 1 ≤ n ≤ length(cs1.naipes)
     for i in 1:n
-        card = pop!(cs1)
-        push!(cs2, card)
+        naipe = pop!(cs1)
+        push!(cs2, naipe)
     end
     nothing
 end
 ----
 
-+move!+ takes three arguments, two +Cardset+ objects and the number of cards to deal. It modifies both +Cardset+ objects, and returns +nothing+.
++mover!+ toma tres argumentos: dos objetos +ConjuntoDeCartas+ y el número de cartas a repartir. Modifica ambos objetos +ConjuntoDeCartas+, y devuelve +nothing+. 
 
-In some games, cards are moved from one hand to another, or from a hand back to the deck. You can use +move!+ for any of these operations: +cs1+ and +cs2+ can be either a +Deck+ or a +Hand+.
+En algunos juegos, las cartas se mueven de una mano a otra, o de una mano a la baraja. Puedes usar +mover!+ para cualquiera de estas operaciones: +cdc1+ y +cdc2+ pueden ser un +Mazo+ o una +Mano+.
 
 
-=== Type Diagrams
+=== Diagramas de tipo
 
-So far we have seen stack diagrams, which show the state of a program, and object diagrams, which show the attributes of an object and their values. These diagrams represent a snapshot in the execution of a program, so they change as the program runs.
+Hasta ahora hemos visto diagramas de pila; que muestran el estado de un programa, y diagramas de objetos; que muestran los atributos de un objeto y sus valores. Estos diagramas son como una foto sacada durante la ejecución de un programa, por lo que cambian a medida que se ejecuta el programa.
 
-They are also highly detailed; for some purposes, too detailed. A _type diagram_ is a more abstract representation of the structure of a program. Instead of showing individual objects, it shows types and the relationships between them.
+También son muy detallados; en algunos casos demasiado detallados. Un _diagrama de tipo_ es una representación más abstracta de la estructura de un programa. En vez de mostrar objetos individuales, muestra los tipos y las relaciones entre ellos.
 (((type diagram)))((("diagram", "type", see="type diagram")))
 
-There are several kinds of relationship between types:
+Hay varias formas de relación entre tipos:
 
-* Objects of a concrete type might contain references to objects of another type. For example, each Rectangle contains a reference to a Point, and each Deck contains references to an array of Cards. This kind of relationship is called _HAS-A_, as in, “a Rectangle has a Point”.
+* Los objetos de un tipo concreto pueden contener referencias a objetos de otro tipo. Por ejemplo, cada Rectangulo contiene una referencia a un Punto, y cada Mazo contiene referencias a un conjunto de Naipes. Este tipo de relación se llama _TIENE-UN_, como por ejemplo "un Rectángulo tiene un Punto".
 (((HAS-A)))
 
-* A concrete type can have an abstract type as a supertype. This relationship is called _IS-A_, as in, “a Hand is a kind of a CardSet.”
+* Un tipo concreto puede tener un tipo abstracto como supertipo. Esta relación se llama _ES-UN_, como por ejemplo "una Mano es un ConjuntoDeCartas".
 (((IS-A)))
 
-* One type might depend on another in the sense that objects of one type take objects of the second type as parameters, or use objects of the second type as part of a computation. This kind of relationship is called a _dependency_.
+* Un tipo puede depender de otro en el sentido de que los objetos de un tipo toman objetos del segundo tipo como parámetros, o usan objetos del segundo tipo como parte de un cálculo. Este tipo de relación se llama _dependencia_.
 (((dependency)))
 
 [[fig18-1]]
 .Type diagram
 image::images/fig181.svg[]
 
-The arrow with a hollow triangle head represents an IS-A relationship; in this case it indicates that Hand has as supertype CardSet.
+Cada una de las flechas superiores representa una relación ES-UN; en este caso, indica que Mano tiene como supertipo a ConjuntoDeCartas.
 
-The standard arrow head represents a HAS-A relationship; in this case a Deck has references to Card objects.
+Cada una de las flechas inferiores representa una relación TIENE-UN; en este caso, un Mazo tiene referencias a objetos Naipe.
 
-The star (+pass:[*]+) near the arrow head is a _multiplicity_; it indicates how many Cards a Deck has. A multiplicity can be a simple number, like +52+, a range, +like 5:7+ or a star, which indicates that a Deck can have any number of Cards.
+El asterisco (+pass:[*]+) cerca de la flecha es una _multiplicidad_; indica cuántos Naipes tiene un Mazo. Una multiplicidad puede ser un número simple; como +52+, un rango; + como 5:7+ o un asterisco; lo cual indica que un Mazo puede tener cualquier número de Cartas.
 (((multiplicity)))
 
-There are no dependencies in this diagram. They would normally be shown with a dashed arrow. Or if there are a lot of dependencies, they are sometimes omitted.
+No hay dependencias en este diagrama. Normalmente se mostrarían con una flecha achurada. Si hay muchas dependencias, a veces se omiten.
 
-A more detailed diagram might show that a Deck actually contains an array of Cards, but built-in types like array and dictionnaries are usually not included in type diagrams.
+Un diagrama más detallado podría mostrar que un Mazo en realidad contiene una matriz de Naipes, pero los tipos integrados como matrices y diccionarios generalmente no se incluyen en los diagramas de tipos.
 
 [[interactive]]
-=== Debugging
+=== Depuración
+
+Utilizar subtipos puede dificultar la depuración porque al llamar a una función con un objeto como argumento, puede ser difícil determinar qué método se invocará.
+
+Supongamos que estamos escribiendo una función que funciona con objetos +Mano+. Nos gustaría que funcionara con todo tipo de +Mano+s, como +ManoDePoker+, +ManoDeBridge+, etc. Si invoca un método como +sort!+, Puede obtener el definido para un tipo abstracto + Hand +, pero si existe un método +sort!+ que tenga como argumento cualquiera de los subtipos, obtendrás esa versión. Este comportamiento suele ser algo bueno, pero puede ser confuso.
+
+
 
 Subtyping can make debugging difficult because when you call a function with an object as argument, it might be hard to figure out which method will be invoked.
 
