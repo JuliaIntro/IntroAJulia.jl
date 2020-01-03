@@ -273,8 +273,7 @@ Un método de constructor interno siempre se define dentro del bloque de una dec
 Si se define algún constructor interno, el constructor por defecto ya no está disponible. Tienes que escribir explícitamente todos los constructores internos que necesitas.
 ====
 
-También existe un segundo método sin argumentos de la función local +new+:
-A second method without arguments of the local function +new+ exists:
+También existe un método sin argumentos de la función local +new+:
 (((new)))((("function", "Base", "new", see="new")))
 
 [source,@julia-setup chap17c]
