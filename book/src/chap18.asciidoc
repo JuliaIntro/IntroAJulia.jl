@@ -58,7 +58,7 @@ Naipe(2, 12)
 
 === Variables Globales
 
-Para poder imprimir los objetos +Naipe+ de una manera fácil de leer, necesitamos establecer una correspondencia entre los códigos enteros, y sus correspondientes palos y valores. Una manera natural de hacer esto es con matrices de cadenas: 
+Para poder imprimir los objetos +Naipe+ de una manera que sea fácil de leer, necesitamos establecer una correspondencia entre los códigos enteros, y sus correspondientes palos y valores. Una manera natural de hacer esto es con matrices de cadenas: 
 
 [source,@julia-setup chap18]
 ----
