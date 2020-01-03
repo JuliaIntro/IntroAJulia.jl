@@ -179,109 +179,110 @@ Así es como se ve el resultado:
 
 [source,@julia-repl-test chap18]
 ----
-julia> Deck()
+julia> Mazo()
 A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ 10♣ J♣ Q♣ K♣ A♦ 2♦ 3♦ 4♦ 5♦ 6♦ 7♦ 8♦ 9♦ 10♦ J♦ Q♦ K♦ A♥ 2♥ 3♥ 4♥ 5♥ 6♥ 7♥ 8♥ 9♥ 10♥ J♥ Q♥ K♥ A♠ 2♠ 3♠ 4♠ 5♠ 6♠ 7♠ 8♠ 9♠ 10♠ J♠ Q♠ K♠
 ----
 
 
-=== Add, Remove, Shuffle and Sort
+=== Añadir, Eliminar, Barajar y Ordenar
 
-To deal cards, we would like a function that removes a card from the deck and returns it. The function +pop!+ provides a convenient way to do that:
+Para repartir los naipes, nos gustaría tener una función que elimine un naipe del mazo y lo devuelva. La función +pop!+ proporciona una forma conveniente de realizar esto:
 (((pop!)))
 
 [source,@julia-setup chap18]
 ----
-function Base.pop!(deck::Deck)
-    pop!(deck.cards)
+function Base.pop!(mazo::Mazo)
+    pop!(mazo.naipes)
 end
 ----
 
-Since +pop!+ removes the last card in the array, we are dealing from the bottom of the deck.
+Como +pop!+ elimina el último naipe en la matriz, estamos repartiendo desde el extremo inferior del mazo.
 
-To add a card, we can use the function +push!+:
+Para añadir un naipe, podemos usar la función +push!+:
 (((push!)))
 
 [source,@julia-setup chap18]
 ----
-function Base.push!(deck::Deck, card::Card)
-    push!(deck.cards, card)
+function Base.push!(mazo::Mazo, naipe::Naipe)
+    push!(mazo.naipes, naipe)
     deck
 end
 ----
 
-A method like this that uses another method without doing much work is sometimes called a _veneer_. The metaphor comes from woodworking, where a veneer is a thin layer of good quality wood glued to the surface of a cheaper piece of wood to improve the appearance.
+Un método como este, que usa otro método sin hacer mucho más se llama _enchapado_. La metáfora proviene de la carpintería, donde un enchapado es una capa fina de madera de alta calidad que se pega a la superficie de una pieza de madera de baja calidad para mejorar su apariencia.
 (((veneer)))
 
-In this case +push!+ is a “thin” method that expresses an array operation in terms appropriate for decks. It improves the appearance, or interface, of the implementation.
+En este caso, +push!+ es un método "fino" que expresa una operación de matriz adecuada para los mazos. Mejora la apariencia o interfaz, de la implementación.
 
-As another example, we can write a method named +shuffle!+ using the function +Random.shuffle!+:
+También podemos escribir un método llamado +shuffle!+ (barajar en inglés) Usando la función +Random.shuffle!+:
 (((Random)))((("module", "Random", see="Random")))(((shuffle!)))((("function", "Random", "shuffle!", see="shuffle!")))
 
 [source,@julia-setup chap18]
 ----
 using Random
 
-function Random.shuffle!(deck::Deck)
-    shuffle!(deck.cards)
-    deck
+function Random.shuffle!(mazo::Mazo)
+    shuffle!(mazo.naipes)
+    mazo
 end
 ----
 
-==== Exercise 18-2
+==== Ejercicio 18-2
 
-Write a function named +sort!+ that uses the function +sort!+ to sort the cards in a Deck. +sort!+ uses the +isless+ method we defined to determine the order.
+Escriba una función llamada +sort!+ (ordenar en inglés) que use la función +sort!+ para ordenar las cartas en un Mazo. +sort!+ usa el método +isless+ que definimos para determinar el orden.
 (((sort!)))
 
 
-=== Abstract Types and Subtyping
+=== Tipos Abstractos y Subtipos
 
-We want a type to represent a “hand”, that is, the cards held by one player. A hand is similar to a deck: both are made up of a collection of cards, and both require operations like adding and removing cards.
+Queremos que un tipo represente una "mano", es decir, los naipes que tiene un jugador. Una mano es similar a un mazo: ambos están compuestos de un conjunto de naipes, y ambos requieren de operaciones tales como agregar y eliminar una carta.
 
-A hand is also different from a deck; there are operations we want for hands that don’t make sense for a deck. For example, in poker we might compare two hands to see which one wins. In bridge, we might compute a score for a hand in order to make a bid.
+Una mano es diferente de un mazo en ciertos aspectos; podemos querer realizar ciertas operaciones sobre una mano que no tienen sentido sobre un mazo. Por ejemplo, en el poker querríamos comparar una mano con otra para ver quién gana. En bridge, necesitamos calcular el puntaje de la mano para así poder hacer la subasta.
 
-So we need a way to group related _concrete types_. In Julia this is done by defining an _abstract type_ that serves as a parent for both +Deck+ and +Hand+. This is called _subtyping_
+Por lo tanto, necesitamos una forma de agrupar los _tipos concretos_ que están relacionados. En Julia, esto se hace definiendo un _abstract type_ (tipo abstracto en inglés) que sea padre de +Mazo+ y +Mano+. A esto se le llama _subtipo_.
 (((concrete type)))(((abstract type)))(((subtyping)))
 
-Let's call this abstract type +CardSet+:
+Llamemos a este tipo abstracto +ConjuntoDeCartas+:
 (((CardSet)))((("type", "programmer-defined", "CardSet", see="CardSet")))
 
 [source,@julia-eval chap18a]
 ----
-struct Card
-    suit :: Int64
-    rank :: Int64
-    function Card(suit::Int64, rank::Int64)
-        @assert(1 ≤ suit ≤ 4, "suit is between 1 and 4")
-        @assert(1 ≤ rank ≤ 13, "rank is between 1 and 13")
-        new(suit, rank)
+struct Naipe
+    palo :: Int64
+    valor :: Int64
+    function Naipe(palo::Int64, valor::Int64)
+        @assert(1 ≤ palo ≤ 4, "palo está entre 1 y 4")
+        @assert(1 ≤ valor ≤ 13, "valor es entre 1 y 13")
+        new(palo, valor)
     end
 end;
 ----
 
 [source,@julia-setup chap18a]
 ----
-abstract type CardSet end
+abstract type ConjuntoDeCartasCardSet end
 ----
 
-A new abstract type is created with the +abstract type+ keyword. An optional “parent” type can be specified by putting after the name +<:+ followed by the name of an already-existing abstract type. 
+Se puede crear un nuevo tipo abstracto con la palabra reservada +abstract type+. También se puede especificar un tipo "padre" opcional colocando después del nombre, el símbolo +<:+ seguido del nombre de un tipo abstracto ya existente.
 (((abstract type)))((("keyword", "abstract type", see="abstract type")))(((type)))
 
-When no _supertype_ is given, the default supertype is +Any+ – a predefined abstract type that all objects are instances of and all types are _subtypes_ of.
+Cuando no se proporciona un _supertipo_, el supertipo por defecto es +Any+, es decir, un tipo abstracto predefinido del que todos los objetos son instancias y del que todos los tipos son _subtipos_.
 (((supertype)))(((subtype)))
 
+Ahora podemos expresar que +Mazo+ es un descendiente de +ConjuntoDeCartas+:
 We can now express that +Deck+ is a descendant of +CardSet+:
 
 [source,@julia-setup chap18a]
 ----
-struct Deck <: CardSet
-    cards :: Array{Card, 1}
+struct Mazo <: ConjuntoDeCartas
+    naipes :: Array{Naipe, 1}
 end
 
-function Deck()
-    deck = Deck(Card[])
-    for suit in 1:4
-        for rank in 1:13
-            push!(deck.cards, Card(suit, rank))
+function Mazo()
+    mazo = Mazo(Naipe[])
+    for palo in 1:4
+        for valor in 1:13
+            push!(mazo.naipes, Naipe(palo, valor))
         end
     end
     deck
@@ -292,16 +293,16 @@ end
 ----
 using Random
 
-const suit_names = ["♣", "♦", "♥", "♠"];
-const rank_names = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+const nombres_palo = ["♣", "♦", "♥", "♠"];
+const nombres_valor = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
 
-function Base.show(io::IO, card::Card)
-    print(io, rank_names[card.rank], suit_names[card.suit])
+function Base.show(io::IO, naipe::Naipe)
+    print(io, nombres_valor[naipe.valor], nombres_palo[naipe.palo])
 end
 
-function Random.shuffle!(deck::Deck)
-    shuffle!(deck.cards)
-    deck
+function Random.shuffle!(mazo::Mazo)
+    shuffle!(mazo.naipes)
+    mazo
 end
 ----
 
