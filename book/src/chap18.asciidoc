@@ -39,7 +39,7 @@ La definición de estructura de +Naipe+ se ve así:
 struct Naipe
     palo :: Int64
     valor :: Int64
-    function Naipe(suit::Int64, rank::Int64)
+    function Naipe(palo::Int64, valor::Int64)
         @assert(1 ≤ palo ≤ 4, "el palo no está entre 1 y 4")
         @assert(1 ≤ valor ≤ 13, "el valor no está entre 1 y 13")
         new(palo, valor)
