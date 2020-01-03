@@ -430,48 +430,42 @@ Un diagrama más detallado podría mostrar que un Mazo en realidad contiene una 
 [[interactive]]
 === Depuración
 
-Utilizar subtipos puede dificultar la depuración porque al llamar a una función con un objeto como argumento, puede ser difícil determinar qué método se invocará.
+Utilizar subtipos puede dificultar la depuración ya que al llamar a una función con un objeto como argumento, puede ser difícil determinar qué método se invocará.
 
-Supongamos que estamos escribiendo una función que funciona con objetos +Mano+. Nos gustaría que funcionara con todo tipo de +Mano+s, como +ManoDePoker+, +ManoDeBridge+, etc. Si invoca un método como +sort!+, Puede obtener el definido para un tipo abstracto + Hand +, pero si existe un método +sort!+ que tenga como argumento cualquiera de los subtipos, obtendrás esa versión. Este comportamiento suele ser algo bueno, pero puede ser confuso.
-
-
-
-Subtyping can make debugging difficult because when you call a function with an object as argument, it might be hard to figure out which method will be invoked.
-
-Suppose you are writing a function that works with +Hand+ objects. You would like it to work with all kinds of +Hand+s, like +PokerHand+s, +BridgeHand+s, etc. If you invoke a method like +sort!+, you might get the one defined for an abstract type +Hand+, but if a method +sort!+ with as argument any of the subtypes exists, you’ll get that version instead. This behavior is usually a good thing, but it can be confusing.
+Supongamos que estamos escribiendo una función que funciona con objetos +Mano+. Nos gustaría que funcionara con todo tipo de +Mano+s, como +ManoDePoker+, +ManoDeBridge+, etc. Si invoca un método como +sort!+, podrías obtener el método definido para un tipo abstracto +Mano+, pero si existe un método +sort!+ que tenga como argumento cualquiera de los subtipos, obtendrás esa versión. Este comportamiento suele ser algo bueno, pero puede ser confuso.
 
 [source,@julia-setup chap18a]
 ----
-function Base.sort!(hand::Hand)
-    sort!(hand.cards)
+function Base.sort!(mano::Mano)
+    sort!(mano.naipes)
 end
 ----
 
-Any time you are unsure about the flow of execution through your program, the simplest solution is to add print statements at the beginning of the relevant methods. If +shuffle!+ prints a message that says something like +Running shuffle! Deck+, then as the program runs it traces the flow of execution.
+Si no estás seguro del flujo de ejecución de su programa, la solución más simple es agregar sentencias de impresión al inicio de los métodos más relevantes. Si +shuffle!+ imprimiera un mensaje como +Ejecutando shuffle! Mazo+, a medida que el programa se ejecutara, sería posible rastrear el flujo de ejecución.
 
-As better alternative, you can also use the +@which+ macro:
+Una mejor alternativa es la macro +@which+:
 (((InteractiveUtils)))((("module", "InteractiveUtils", see="InteractiveUtils")))(((@which)))((("macro", "InteractiveUtils", "@which", see="@which")))
 
 [source,jlcon]
 ----
-julia> @which sort!(hand)
-sort!(hand::Hand) in Main at REPL[5]:1
+julia> @which sort!(mano)
+sort!(mano::Mano) in Main at REPL[5]:1
 ----
 
-So the +sort!+ method for +hand+ is the one having as argument an object of type +Hand+.
+Entonces, el método +sort!+ de +mano+ es el que tiene como argumento un objeto de tipo +Mano+.
 
-Here’s a design suggestion: when you override a method, the interface of the new method should be the same as the old. It should take the same parameters, return the same type, and obey the same preconditions and postconditions. If you follow this rule, you will find that any function designed to work with an instance of a supertype, like a +CardSet+, will also work with instances of its subtypes +Deck+ and +Hand+.
+Una sugerencia para el diseño del programa: cuando anula un método, la interfaz del nuevo método debería ser la misma que la anterior. Debería tomar los mismos parámetros, devolver el mismo tipo y obedecer las mismas condiciones previas y posteriores. Si sigues esta regla, cualquier función diseñada para funcionar con una instancia de un supertipo, como un +ConjuntoDeCartas+, también funcionará con instancias de sus subtipos +Mazo+ y +Mano+.
 
-If you violate this rule, which is called the “Liskov substitution principle”, your code will collapse like (sorry) a house of cards.
+Si viola esta regla, llamada "principio de sustitución de Liskov", su código colapsará como un castillo de naipes (jeje).
 (((Liskov substitution principle)))
 
-The function +supertype+ can be used to find the direct supertype of a type.
+La función +supertype+ permite encontrar el supertipo directo de un tipo.
 (((supertype)))((("function", "Base", "supertype", see="supertype")))
 
 [source,@julia-repl-test chap18a]
 ----
-julia> supertype(Deck)
-CardSet
+julia> supertype(Mazo)
+ConjuntoDeCartas
 ----
 
 
