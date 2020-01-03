@@ -1,7 +1,7 @@
 [[chap16]]
 == Estructuras y Funciones
 
-Ahora que sabemos cómo crear tipos compuestos, el siguiente paso es escribir funciones que tomen objetos definidos por el programador como parámetros, y que los devuelvan como resultados. En este capítulo también se presenta el "estilo de programación funcional" y dos nuevas formas de desarrollar programas.
+Ahora que sabemos cómo crear tipos compuestos, el siguiente paso es escribir funciones que tomen objetos definidos por el programador como parámetros, y que devuelvan otros como resultados. En este capítulo también se presenta el "estilo de programación funcional" y dos nuevas formas de desarrollar programas.
 
 [[time]]
 === Tiempo

@@ -1,14 +1,14 @@
 [[chap17]]
-== Multiple Dispatch
+== Dispatch Múltiple 
 
-In Julia you have the ability to write code that can operate on different types. This is called generic programming.
+Julia permite escribir código que puede funcionar con diferentes tipos. Esto se llama programación genérica.
 
-In this chapter I will discuss the use of type declarations in Julia and I will introduce methods which are ways to implement different behavior for a function depending on the types of its arguments. This is called multiple dispatch.
+En este capítulo se discutirá sobre las declaraciones de tipo en Julia. Además, se presentan los métodos, que son formas de implementar diferentes comportamientos en una función dependiendo del tipo de sus argumentos. Esto es conocido como dispatch múltiple.
 
 
-=== Type Declarations
+=== Declaraciones de Tipo
 
-The +::+ operator attaches _type annotations_ to expressions and variables:
+El operador +::+ asocia _anotaciones de tipo_ con expresiones y variables:
 (((TypeError)))((("error", "Core", "TypeError", see="TypeError")))
 
 [source,@julia-repl-test]
@@ -19,14 +19,14 @@ julia> (1 + 2) :: Int64
 3
 ----
 
-This helps to confirm that your program works the way you expect.
+Esto ayuda a verificar que el programa funciona de la manera esperada.
 
-The +::+ operator can also be appended to the left-hand side of an assignment, or as part of a declaration.
+El operador +::+ también se puede agregar al lado izquierdo de una asignación, o como parte de una declaración.
 (((returnfloat)))((("function", "programmer-defined", "returnfloat", see="returnfloat")))
 
 [source,@julia-repl-test]
 ----
-julia> function returnfloat()
+julia> function devolverfloat()
            x::Float64 = 100
            x
        end
@@ -37,9 +37,9 @@ julia> typeof(x)
 Float64
 ----
 
-The variable +x+ is always of type +Float64+ and the value is converted to a floating point if needed.
+La variable +x+ siempre es de tipo +Float64+, y su valor se convierte en un punto flotante si es necesario.
 
-A type annotation can also be attached to the header of a function definition:
+También se puede añadir una anotación de tipo al encabezado de una definición de función:
 (((sinc)))((("function", "programmer-defined", "sinc", see="sinc")))
 
 [source,@julia-setup]
@@ -52,149 +52,149 @@ function sinc(x)::Float64
 end
 ----
 
-The return value of +sinc+ is always converted to type +Float64+.
+El valor de retorno de +sinc+ siempre se convierte al tipo +Float64+.
 
-The default behavior in Julia when types are omitted is to allow values to be of any type (+Any+).
+En Julia, cuando se omiten los tipos, los valores pueden ser de cualquier tipo (+Any+).
 (((Any)))
 
 
-=== Methods
+=== Métodos
 
-In <<chap16>>, we defined a struct named +MyTime+ and in <<time>>, you wrote a function named +printtime+:
+En <<chap16>>, definimos una estructura llamada +Hora+ y en <<time>>, escribimos una función llamada +imprimirhora+:
 (((MyTime)))(((printtime)))
 
 [source,@julia-setup chap17a]
 ----
 using Printf
 
-struct MyTime
-    hour :: Int64
-    minute :: Int64
-    second :: Int64
+struct Hora
+    hora :: Int64
+    minuto :: Int64
+    segundo :: Int64
 end
 
-function printtime(time)
-    @printf("%02d:%02d:%02d", time.hour, time.minute, time.second)
+function imprimirhora(tiempo)
+    @printf("%02d:%02d:%02d", tiempo.hora, tiempo.minuto, tiempo.segundo)
 end
 ----
 
-As you can see, type declarations can and should be added for performance reasons to the fields in a struct definition.
+Para mejorar el rendimiento, se pueden (y deben) agregar las declaraciones de tipo a los atributos en una definición de estructura.
 
-To call this function, you have to pass a +MyTime+ object as an argument:
+Para llamar a esta función, debe pasarle un objeto +Hora+ como argumento:
 
 [source,@julia-repl-test chap17a]
 ----
-julia> start = MyTime(9, 45, 0)
-MyTime(9, 45, 0)
-julia> printtime(start)
+julia> inicio = Hora(9, 45, 0)
+Hora(9, 45, 0)
+julia> imprimirhora(inicio)
 09:45:00
 ----
 
-To add a _method_ to the function +printtime+ that only accepts as argument a +MyTime+ object, all we have to do is append +::+ followed by +MyTime+ to the argument +time+ in the function definition:
+Para agregar un _método_ a la función +imprimirhora+; con el fin de que esta solo acepte como argumento un objeto +Hora+, todo lo que tenemos que hacer es agregar +::+ seguido de +Hora+ al argumento +tiempo+ en la definición de función:
 (((method)))
 
 [source,@julia-setup chap17a]
 ----
-function printtime(time::MyTime)
-    @printf("%02d:%02d:%02d", time.hour, time.minute, time.second)
+function imprimirhora(tiempo::Hora)
+    @printf("%02d:%02d:%02d", tiempo.hora, tiempo.minuto, tiempo.segundo)
 end
 ----
 
-A method is a function definition with a specific _signature_: +printtime+ has one argument of type +MyTime+.
+Un método es una definición de función con una _especificación_: +imprimirhora+ tiene un argumento de tipo +Hora+.
 (((signature)))
 
-Calling the function +printtime+ with a +MyTime+ object yields the same result:
+Llamar a la función +imprimirhora+ con un objeto +Hora+ produce el mismo resultado que antes:
 
 [source,@julia-repl-test chap17a]
 ----
-julia> printtime(start)
+julia> imprimirhora(inicio)
 09:45:00
 ----
 
-We can now redefine the first method without the +::+ type annotation allowing an argument of any type:
+Ahora redefinamos el primer método sin la anotación de tipo +::+, lo cual permite un argumento de cualquier tipo:
 
 [source,@julia-setup chap17a]
 ----
-function printtime(time)
-    println("I don't know how to print the argument time.")
+function imprimirhora(tiempo)
+    println("No sé cómo imprimir el tiempo del argumento.")
 end
 ----
 
-If you call the function +printtime+ with an object different from +MyTime+, you get now:
+Si llama a la función +imprimirhora+ con un objeto diferente de +Hora+, se obtendrá:
 
 [source,@julia-repl-test chap17a]
 ----
-julia> printtime(150)
-I don't know how to print the argument time.
+julia> imprimirhora(150)
+No sé cómo imprimir el tiempo del argumento.
 ----
 
-==== Exercise 17-1
+==== Ejercicio 17-1
 
-Rewrite +timetoint+ and +inttotime+ (from <<prototyping_versus_planning>>) to specify their argument.
+Reescriba +horaaentero+ y +enteroahora+ (de <<prototyping_versus_planning>>) especificando el tipo de los argumentos.
 (((timetoint)))(((inttotime)))
 
 
 [source,@julia-eval chap17a]
 ----
-function timetoint(time)
-    minutes = time.hour * 60 + time.minute
-    seconds = minutes * 60 + time.second
+function horaaentero(tiempo)
+    minutos = tiempo.hora * 60 + tiempo.minuto
+    segundos = minutos * 60 + tiempo.segundo
 end;
 
-function inttotime(seconds)
-    (minutes, second) = divrem(seconds, 60)
-    hour, minute = divrem(minutes, 60)
-    MyTime(hour, minute, second)
+function enteroahora(segundos)
+    (minutos, segundo) = divrem(segundos, 60)
+    hora, minuto = divrem(minutos, 60)
+    Hora(hora, minuto, segundo)
 end;
 ----
 
-=== Additional Examples
+=== Ejemplos Adicionales
 
-Here’s a version of +increment+ (from <<modifiers>>) rewritten to specify its arguments:
+Aquí hay una versión de la función +incrementar+ (Ejercicio 16-5 de <<modificadores>>) reescrita especificando el tipo de los argumentos:
 (((increment)))
 
 [source,@julia-setup chap17a]
 ----
-function increment(time::MyTime, seconds::Int64)
-    seconds += timetoint(time)
-    inttotime(seconds)
+function incrementar(tiempo::Hora, segundos::Int64)
+    segundos += horaaentero(tiempo)
+    enteroahora(segundos)
 end
 ----
 
-Note that now, it is a pure function, not a modifier.
+Tenga en cuenta que ahora, +incrementar+ es una función pura, no un modificador.
 
-Here's how you would invoke increment:
+Así es como se llama a la función incrementar:
 
 [source,@julia-repl-test chap17a]
 ----
-julia> start = MyTime(9, 45, 0)
-MyTime(9, 45, 0)
-julia> increment(start, 1337)
-MyTime(10, 7, 17)
+julia> inicio = Hora(9, 45, 0)
+Hora(9, 45, 0)
+julia> incrementar(inicio, 1337)
+Hora(10, 7, 17)
 ----
 
-If you put the arguments in the wrong order, you get an error:
+Si colocamos los argumentos en el orden incorrecto, obtendremos un error:
 (((MethodError)))
 
 [source,@julia-repl-test chap17a]
 ----
-julia> increment(1337, start)
+julia> incrementar(1337, inicio)
 ERROR: MethodError: no method matching increment(::Int64, ::MyTime)
 ----
 
-The signature of the method is +increment(time::MyTime, seconds::Int64)+ and not +increment(seconds::Int64, time::MyTime)+.
+La especificación del método es +incrementar(tiempo::Hora, segundos::Int64)+, no +incrementar(segundos::Int64, tiempo::Hora)+.
 
-Rewriting +isafter+ to act only on +MyTime+ objects is as easy:
+Al reescribir +estadespues+ (Ejercicio 16-2 de <<modificadores>>) para que solo acepte objetos +Hora+ se tiene:
 (((isafter)))
 
 [source,@julia-setup chap17a]
 ----
-function isafter(t1::MyTime, t2::MyTime)
-    (t1.hour, t1.minute, t1.second) > (t2.hour, t2.minute, t2.second)
+function estadespues(t1::Hora, t2::Hora)
+    (t1.hora, t1.minuto, t1.segundo) > (t2.hora, t2.minuto, t2.segundo)
 end
 ----
 
-By the way, optional arguments are implemented as syntax for multiple method definitions. For example, this definition:
+Por cierto, los argumentos opcionales permiten definir múltiples métodos. Por ejemplo, esta definición:
 
 [source,@julia-setup]
 ----
@@ -203,7 +203,7 @@ function f(a=1, b=2)
 end
 ----
 
-translates to the following three methods:
+se traduce en los siguientes tres métodos:
 
 [source,@julia-setup]
 ----
@@ -212,240 +212,241 @@ f(a) = f(a, 2)
 f() = f(1, 2)
 ----
 
-These expressions are valid Julia method definitions. This is a shorthand notation for defining functions/methods.
+Estas expresiones son definiciones válidas de métodos de Julia. Esta es una notación abreviada para definir funciones/métodos.
 
 [[constructor]]
-=== Constructors
+=== Constructores
 
-A _constructor_ is a special function that is called to create an object. The default constructor methods of +MyTime+ have the following signatures:
+Un _constructor_ es una función especial que se llama para crear un objeto. Los métodos por defecto del constructor +Hora+ tienen las siguientes especificaciones:
 (((constructor)))
 
 [source,julia]
 ----
-MyTime(hour, minute, second)
-MyTime(hour::Int64, minute::Int64, second::Int64)
+Hora(hora, minuto, segundo)
+Hora(hora::Int64, minuto::Int64, segundo::Int64)
 ----
 
-We can also add our own _outer constructor_ methods:
+También podemos agregar nuestros propios métodos de _constructores externos_:
 (((outer constructor)))((("constructor", "outer", see="outer constructor")))
 
 [source,@julia-setup chap17a]
 ----
-function MyTime(time::MyTime)
-    MyTime(time.hour, time.minute, time.second)
+function Hora(tiempo::Hora)
+    Hora(tiempo.hora, tiempo.minuto, tiempo.segundo)
 end
 ----
 
-This method is called a _copy constructor_ because the new +MyTime+ object is a copy of its argument.
+Este método se llama _constructor de copia_ porque el nuevo objeto +Hora+ es una copia de su argumento.
 (((copy constructor)))((("constructor", "copy", see="copy constructor")))
 
-To enforce invariants, we need _inner constructor_ methods:
+Para imponer invariantes, necesitamos métodos de _constructor interno_:
 (((inner constructor)))((("constructor", "inner", see="inner constructor")))
 
 [source,@julia-setup chap17b]
 ----
-struct MyTime
-    hour :: Int64
-    minute :: Int64
-    second :: Int64
-    function MyTime(hour::Int64=0, minute::Int64=0, second::Int64=0)
-        @assert(0 ≤ minute < 60, "Minute is not between 0 and 60.")
-        @assert(0 ≤ second < 60, "Second is not between 0 and 60.")
-        new(hour, minute, second)
+struct Hora
+    hora :: Int64
+    minuto :: Int64
+    segundo :: Int64
+    function Hora(hora::Int64=0, minuto::Int64=0, segundo::Int64=0)
+        @assert(0 ≤ minuto < 60, "Minuto no está entre 0 y 60.")
+        @assert(0 ≤ segundo < 60, "Segundo no está entre 0 y 60.")
+        new(hora, minuto, segundo)
     end
 end
 ----
 
-The struct +MyTime+ has now 4 inner constructor methods:
+La estructura +Hora+ tiene ahora 4 métodos de constructor interno:
 
 [source,julia]
 ----
-MyTime()
-MyTime(hour::Int64)
-MyTime(hour::Int64, minute::Int64)
-MyTime(hour::Int64, minute::Int64, second::Int64)
+Hora()
+Hora(hora::Int64)
+Hora(hora::Int64, minuto::Int64)
+Hora(hora::Int64, minuto::Int64, segundo::Int64)
 ----
 
-An inner constructor method is always defined inside the block of a type declaration and it has access to a special function called +new+ that creates objects of the newly declared type.
+Un método de constructor interno siempre se define dentro del bloque de una declaración de tipo, y tiene acceso a una función especial llamada +new+ que crea objetos del tipo recién declarado.
 
 [WARNING]
 ====
-The default constructor is not available if any inner constructor is defined. You have to write explicitly all the inner constructors you need.
+Si se define algún constructor interno, el constructor por defecto ya no está disponible. Tienes que escribir explícitamente todos los constructores internos que necesitas.
 ====
 
-A second method without arguments of the local function +new+ exists:
+También existe un método sin argumentos de la función local +new+:
 (((new)))((("function", "Base", "new", see="new")))
 
 [source,@julia-setup chap17c]
 ----
-mutable struct MyTime
-    hour :: Int
-    minute :: Int
-    second :: Int
-    function MyTime(hour::Int64=0, minute::Int64=0, second::Int64=0)
-        @assert(0 ≤ minute < 60, "Minute is between 0 and 60.")
-        @assert(0 ≤ second < 60, "Second is between 0 and 60.")
-        time = new()
-        time.hour = hour
-        time.minute = minute
-        time.second = second
-        time
+mutable struct Hora
+    hora :: Int64
+    minuto :: Int64
+    segundo :: Int64
+    function Hora(hora::Int64=0, minuto::Int64=0, segundo::Int64=0)
+        @assert(0 ≤ minuto < 60, "Minuto está entre 0 y 60.")
+        @assert(0 ≤ segundo < 60, "Segundo está entre 0 y 60.")
+        tiempo = new()
+        tiempo.hora = hora
+        tiempo.minuto = minuto
+        tiempo.segundo = segundo
+        tiempo
     end
 end
 ----
 
-This allows to construct recursive data structures, i.e. a struct where one of the fields is the struct itself. In this case the struct has to be mutable because its fields are modified after instantiation.
+Esto permite construir estructuras de datos recursivas, es decir, una estructura donde uno de los atributos es la estructura misma. En este caso, la estructura debe ser mutable porque sus atributos se modifican después de la creación de instancias.
 (((recursive data structures)))
 
 
 === +show+
 
-+show+ is a special function that returns a string representation of an object. For example, here is a +show+ method for +MyTime+ objects:
++show+ es una función especial que devuelve la representación de cadena de un objeto. Por ejemplo, a continuación se muestra el método +show+ para objetos +Hora+:
 (((show)))
 
 [source,@julia-setup chap17b]
 ----
 using Printf
 
-function Base.show(io::IO, time::MyTime)
-    @printf(io, "%02d:%02d:%02d", time.hour, time.minute, time.second)
+function Base.show(io::IO, tiempo::Hora)
+    @printf(io, "%02d:%02d:%02d", tiempo.hora, tiempo.minuto, tiempo.segundo)
 end
 ----
 
-The prefix +Base+ is needed because we want to add a new method to the +Base.show+ function.
+Esta función guarda como cadena de texto una hora dada, en el archivo al que io hace referencia.
 
-When you print an object, Julia invokes the +show+ function:
+El prefijo +Base+ es necesario porque queremos agregar un nuevo método a la función +Base.show+.
+
+Cuando se imprime un objeto, Julia llama a la función +show+ (esto ocurre siempre, y como agregamos un nuevo método a la función +Base.show+, entonces se muestra Hora con el formato que queremos):
 
 [source,@julia-repl-test chap17b]
 ----
-julia> time = MyTime(9, 45)
+julia> tiempo = Hora(9, 45, 0)
 09:45:00
 ----
 
-When I write a new composite type, I almost always start by writing an outer constructor, which makes it easier to instantiate objects, and +show+, which is useful for debugging.
+Personalmente, cuando escribo un nuevo tipo compuesto, casi siempre empiezo escribiendo un constructor externo; lo que facilita la creación de instancias de objetos, y +show+; que es útil para la depuración.
 
-==== Exercise 17-2
+==== Ejercicio 17-2
 
-Write an outer constructor method for the +Point+ class that takes +x+ and +y+ as optional parameters and assigns them to the corresponding fields.
+Escriba un método de constructor externo para la clase +Punto+ que tome +x+ e +y+ como parámetros opcionales y los asigne a los atributos correspondientes.
 (((Point)))
 
 
 [source,@julia-eval chap17b]
 ----
-function timetoint(time::MyTime)
-    minutes = time.hour * 60 + time.minute
-    seconds = minutes * 60 + time.second
+function horaaentero(tiempo::Hora)
+    minutos = tiempo.hora * 60 + tiempo.minuto
+    segundos = minutos * 60 + tiempo.segundo
 end;
 
-function inttotime(seconds::Int64)
-    (minutes, second) = divrem(seconds, 60)
-    hour, minute = divrem(minutes, 60)
-    MyTime(hour, minute, second)
+function enteroahora(segundos::Int64)
+    (minutos, segundo) = divrem(segundos, 60)
+    hora, minuto = divrem(minutos, 60)
+    Hora(hora, minuto, segundo)
 end;
 
-function increment(time::MyTime, seconds::Int64)
-    seconds += timetoint(time)
-    inttotime(seconds)
+function incrementar(tiempo::Hora, segundos::Int64)
+    segundos += horaaentero(tiempo)
+    enteroahora(segundos)
 end;
 ----
 
-=== Operator Overloading
+=== Sobrecarga de Operadores
 
-By defining operator methods, you can specify the behavior of operators on programmer-defined types. For example, if you define a method named +pass:[+]+ with two +MyTime+ arguments, you can use the +pass:[+]+ operator on +MyTime+ objects.
+Es posible cambiar la definición de los operadores cuando se aplican a tipos definidos por el usuario. Esto se hace definiendo métodos del operador. Por ejemplo, si definimos un método llamado +pass:[+]+ con dos argumentos +Hora+, podríamos usar el operador +pass:[+]+ en los objetos +Hora+.
 
-Here is what the definition might look like:
+Así es como se vería la definición:
 
 [source,@julia-setup chap17b]
 ----
 import Base.+
 
-function +(t1::MyTime, t2::MyTime)
-    seconds = timetoint(t1) + timetoint(t2)
-    inttotime(seconds)
+function +(t1::Hora, t2::Hora)
+    segundos = horaaentero(t1) + enteroahora(t2)
+    enteroahora(seconds)
 end
 ----
 
-The import statement adds the +pass:[+]+ operator to the local scope so that methods can be added.
+La sentencia import agrega el operador +pass:[+]+ al ámbito local (local scope) para que se puedan agregar métodos.
 
-And here is how you could use it:
-
+A continuación se muestra cómo usar este operador para objetos Hora.
 
 [source,@julia-repl-test chap17b]
 ----
-julia> start = MyTime(9, 45)
+julia> inicio = Hora(9, 45)
 09:45:00
-julia> duration = MyTime(1, 35, 0)
+julia> duracion = Hora(1, 35, 0)
 01:35:00
-julia> start + duration
+julia> inicio + duracion
 11:20:00
 ----
 
-When you apply the +pass:[+]+ operator to +MyTime+ objects, Julia invokes the newly added method. When the REPL shows the result, Julia invokes +show+. So there is a lot happening behind the scenes!
+Al aplicar el operador +pass:[+]+ a objetos +Hora+, Julia invoca el método recién agregado. Cuando REPL muestra el resultado, Julia invoca a +show+. ¡Hay muchas cosas pasando que no vemos!
 
-Adding to the behavior of an operator so that it works with programmer-defined types is called _operator overloading_.
+Ampliar el comportamiento de los operadores de modo que funcionen con tipos definidos por el usuario/programador se denomina _sobrecarga del operador_.
 (((operator overloading)))
 
 
-=== Multiple Dispatch
+=== Dispatch Múltiple 
 
-In the previous section we added two +MyTime+ objects, but you also might want to add an integer to a +MyTime+ object:
+En la sección anterior sumamos dos objetos +Hora+. Imagine que ahora queremos sumar un número entero a un objeto +Hora+:
 
 [source,@julia-setup chap17b]
 ----
-function +(time::MyTime, seconds::Int64)
-    increment(time, seconds)
+function +(tiempo::Hora, segundos::Int64)
+    incrementar(tiempo, segundos)
 end
 ----
 
-Here is an example that uses the +pass:[+]+ operator with a +MyTime+ object and an integer:
+He aquí un ejemplo que usa el operador +pass:[+]+ con un objeto +Hora+ y un entero:
 
 [source,@julia-repl-test chap17b]
 ----
-julia> start = MyTime(9, 45)
+julia> inicio = Hora(9, 45)
 09:45:00
-julia> start + 1337
+julia> inicio + 1337
 10:07:17
 ----
 
-Addition is a commutative operator so we have to add another method.
+La suma es un operador conmutativo, por lo que debemos agregar otro método.
 
 [source,@julia-setup chap17b]
 ----
-function +(seconds::Int64, time::MyTime)
-  time + seconds
+function +(segundos::Int64, tiempo::Hora)
+  tiempo + segundos
 end
 ----
 
-And we get the same result:
+Y obtenemos el mismo resultado:
 
 [source,@julia-repl-test chap17b]
 ----
-julia> 1337 + start
+julia> 1337 + inicio
 10:07:17
 ----
 
-The choice of which method to execute when a function is applied is called _dispatch_. Julia allows the dispatch process to choose which of a function's methods to call based on the number of arguments given, and on the types of all of the function's arguments.  Using all of a function's arguments to choose which method should be invoked is known as _multiple dispatch_.
+La elección del método a ejecutar cuando se aplica una función se llama _dispatch_. Julia permite que el proceso de dispatch elija a cuál de los métodos de una función llamar en función del número y tipo de los argumentos dados. El uso de todos los argumentos de una función para elegir el método que se debe invocar se conoce como _dispatch múltiple_.
 (((dispatch)))(((multiple dispatch)))
 
-==== Exercise 17-3
+==== Ejercicio 17-3
 
-Write +pass:[+]+ methods for point objects:
+Escribir los siguientes métodos +pass:[+]+ para objetos Punto:
 
-* If both operands are point objects, the method should return a new point object whose +x+ coordinate is the sum of the +x+ coordinates of the operands, and likewise for the +y+ coordinates.
+* Si ambos operandos son objetos Punto, el método debería devolver un nuevo objeto Punto cuya coordenada +x+ sea la suma de las coordenadas +x+ de los operandos. De manera análoga para la coordenada +y+.
 
-* If the first or the second operand is a tuple, the method should add the first element of the tuple to the +x+ coordinate and the second element to the +y+ coordinate, and return a new point object with the result.
+* Si el primer o el segundo operando es una tupla, el método debe agregar el primer elemento de la tupla a la coordenada +x+ y el segundo elemento a la coordenada +y+, y devolver un nuevo objeto Punto con el resultado.
 
 
-=== Generic Programming
+=== Programación Genérica
 
-Multiple dispatch is useful when it is necessary, but (fortunately) it is not always necessary. Often you can avoid it by writing functions that work correctly for arguments with different types.
+El dispatch múltiple es útil cuando es necesario, pero (afortunadamente) no siempre lo es. A menudo puede evitarse escribiendo funciones que funcionen correctamente para argumentos de diferentes tipos.
 
-Many of the functions we wrote for strings also work for other sequence types. For example, in <<dictionary_collection_counters>> we used +histogram+ to count the number of times each letter appears in a word.
+Muchas de las funciones que hemos escrito para cadenas también funcionan para otros tipos de secuencia. Por ejemplo, en <<dictionary_collection_counters>> usamos +histograma+ para contar la cantidad de veces que cada letra aparece en una palabra.
 (((histogram)))
 
 [source,@julia-setup chap17]
 ----
-function histogram(s)
+function histograma(s)
     d = Dict()
     for c in s
         if c ∉ keys(d)
@@ -458,148 +459,147 @@ function histogram(s)
 end
 ----
 
-This function also works for lists, tuples, and even dictionaries, as long as the elements of +s+ are hashable, so they can be used as keys in +d+.
+Esta función también funciona para listas, tuplas e incluso diccionarios, siempre y cuando los elementos de +s+ sean hashables, ya que así pueden usarse como claves de +d+.
 
 [source,@julia-repl-test chap17]
 ----
-julia> t = ("spam", "egg", "spam", "spam", "bacon", "spam")
-("spam", "egg", "spam", "spam", "bacon", "spam")
-julia> histogram(t)
+julia> t = ("spam", "huevo", "spam", "spam", "tocino", "spam")
+("spam", "huevo", "spam", "spam", "tocino", "spam")
+julia> histograma(t)
 Dict{Any,Any} with 3 entries:
-  "bacon" => 1
+  "tocino" => 1
   "spam"  => 4
-  "egg"   => 1
+  "huevo"   => 1
 ----
 
-Functions that work with several types are called _polymorphic_. Polymorphism can facilitate code reuse.
+Las funciones que pueden tomar parámetros de diferentes tipos se llaman _polimórficas_. El polimorfismo puede facilitar la reutilización del código.
 (((polymorphic)))
 
-For example, the built-in function +sum+, which adds the elements of a sequence, works as long as the elements of the sequence support addition.
+Por ejemplo, la función integrada +sum+, que suma los elementos de una secuencia, funciona siempre que los elementos de la secuencia permitan la suma.
 (((sum)))
 
-Since a +pass:[+]+ method is provided for +MyTime+ objects, they work with +sum+:
+Como se añadió el método +pass:[+]+ para los objetos +Hora+, entonces se puede usar +sum+ para +Hora+:
 
 [source,@julia-repl-test chap17b]
 ----
-julia> t1 = MyTime(1, 7, 2)
+julia> t1 = Hora(1, 7, 2)
 01:07:02
-julia> t2 = MyTime(1, 5, 8)
+julia> t2 = Hora(1, 5, 8)
 01:05:08
-julia> t3 = MyTime(1, 5, 0)
+julia> t3 = Hora(1, 5, 0)
 01:05:00
 julia> sum((t1, t2, t3))
 03:17:10
 ----
 
-In general, if all of the operations inside a function work with a given type, the function works with that type.
+Si todas las operaciones realizadas dentro de la función se pueden aplicar al tipo, la función se puede aplicar al tipo.
 
-The best kind of polymorphism is the unintentional kind, where you discover that a function you already wrote can be applied to a type you never planned for.
+El mejor tipo de polimorfismo es el que no se busca; cuando usted descubre que una función que había escrito se puede aplicar a un tipo para el que nunca la había planeado.
 (((polymorphism)))
 
 
-=== Interface and Implementation
+=== Interfaz e implementación
 
-One of the goals of multiple dispatch is to make software more maintainable, which means that you can keep the program working when other parts of the system change, and modify the program to meet new requirements.
+Uno de los objetivos del dispatch múltiple es hacer que el software sea más fácil de mantener, lo que significa poder mantener el programa funcionando cuando otras partes del sistema cambian, y modificar el programa para cumplir con los nuevos requisitos.
 
-A design principle that helps achieve that goal is to keep interfaces separate from implementations. This means that the methods having an argument annotated with a type should not depend on how the fields of that type are represented.
+Una técnica de diseño que ayuda a lograr ese objetivo es mantener las interfaces separadas de las implementaciones. Esto significa que los métodos que tienen un argumento con anotación de tipo no deberían depender de cómo se representan los atributos de ese tipo.
 (((interface)))(((implementation)))
 
-For example, in this chapter we developed a struct that represents a time of day. Methods having an argument annotated with this type include +timetoint+, +isafter+, and +pass:[+]+.
+Por ejemplo, en este capítulo desarrollamos una estructura que representa una hora del día. Los métodos que tienen un argumento con anotación de este tipo incluyen +horaaentero+, +estadespues+ y +pass:[+]+.
 
-We could implement those methods in several ways. The details of the implementation depend on how we represent +MyTime+. In this chapter, the fields of a +MyTime+ object are +hour+, +minute+, and +second+.
+Podríamos implementar esos métodos de varias maneras. Los detalles de la implementación dependen de cómo representamos +Hora+. En este capítulo, los atributos de un objeto +Hora+ son +hora+, +minuto+ y +segundo+.
 
-As an alternative, we could replace these fields with a single integer representing the number of seconds since midnight. This implementation would make some functions, like +isafter+, easier to write, but it makes other functions harder.
+Otra opción sería reemplazar estos atributos con un solo entero que represente el número de segundos desde la medianoche. Esta implementación haría que algunas funciones, como +estadespues+, sean más fáciles de escribir, pero hace que otras sean más difíciles.
 
-After you deploy a new type, you might discover a better implementation. If other parts of the program are using your type, it might be time-consuming and error-prone to change the interface.
+Después de implementar un tipo, puede descubrir una mejor implementación. Si otras partes del programa están usando su tipo, cambiar la interfaz puede llevar mucho tiempo y ser propenso a errores.
 
-But if you designed the interface carefully, you can change the implementation without changing the interface, which means that other parts of the program don’t have to change.
+Pero si hizo un buen diseñó de interfaz, puede cambiar la implementación sin cambiar la interfaz, lo que significa que otras partes del programa no tienen que cambiar.
 
 
-=== Debugging
+=== Depuración
 
-Calling a function with the correct arguments can be difficult when more than one method for the function is specified. Julia allows to introspect the signatures of the methods of a function.
+Llamar a una función con los argumentos correctos puede ser difícil cuando se especifica más de un método para la función. Julia permite examinar las especificaciones de los métodos de una función.
 
-To know what methods are available for a given function, you can use the function +methods+:
+Para saber qué métodos están disponibles para una función determinada, puede usar la función +methods+:
 (((methods)))(((debugging)))
 
 [source,jlcon]
 ----
-julia> methods(printtime)
-# 2 methods for generic function "printtime":
+julia> methods(imprimirhora)
+# 2 methods for generic function "imprimirhora":
 [1] printtime(time::MyTime) in Main at REPL[3]:2
 [2] printtime(time) in Main at REPL[4]:2
 ----
 
-In this example, the function +printtime+ has 2 methods: one with a +MyTime+ argument and one with an +Any+ argument.
+En este ejemplo, la función +imprimirhora+ tiene 2 métodos: uno con un argumento +Hora+ y otro con un argumento +Any+.
 
 
-=== Glossary
+=== Glosario
 
-type annotation::
-The operator +::+ followed by a type indicating that an expression or a variable is of that type.
+anotación de tipo::
+El operador +::+ seguido de un tipo que indica que una expresión o una variable es de ese tipo.
 (((type annotation)))
 
-method::
-A definition of a possible behavior for a function.
+método::
+Una definición de un posible comportamiento de una función.
 (((method)))
 
 dispatch::
-The choice of which method to execute when a function is executed.
+La elección de qué método ejecutar cuando se ejecuta una función.
 (((dispatch)))
 
-signature::
-The number and type of the arguments of a method allowing the dispatch to select the most specific method of a function during the function call.
+especificación::
+El número y tipo de argumentos de un método que permite al dispatch seleccionar el método más específico de una función durante la llamada a función.
 (((signature)))
 
-outer constructor::
-Constructor defined outside the type definition to define convenience methods for creating an object.
+constructor externo::
+Constructor definido fuera de la definición de tipo para definir métodos útiles para crear un objeto.
 (((outer constructor)))
 
-inner constructor::
-Constructor defined inside the type definition to enforce invariants or to construct self-referential objects.
+constructor interno::
+Constructor definido dentro de la definición de tipo para imponer invariantes o para construir objetos recursivos.
 (((inner constructor)))
 
-default constructor::
-Inner constructor that is available when no programmer-defined inner constructors are provided.
+constructor por defecto::
+Constructor interno que está disponible cuando el usuario no define constructores internos.
 (((default constructor)))
 
-copy constructor::
-Outer constructor method of a type with as only argument an object of the type. It creates a new object that is a copy of the argument.
+constructor de copia::
+Método de constructor externo de un tipo, que tiene como único argumento un objeto del tipo. Crea un nuevo objeto que es una copia del argumento.
 (((copy constructor)))
 
-operator overloading::
-Adding to the behavior of an operator like +pass:[+]+ so it works with a programmer-defined type.
+sobrecarga de operadores::
+Ampliar el comportamiento de los operadores como pass:[+]+ de modo que trabajen con tipos definidos por el usuario.
 (((operator overloading)))
 
-multiple dispatch::
-Dispatch based on all of a function's arguments.
+dispatch múltiple::
+Dispatch basado en todos los argumentos de una función.
 (((multiple dispatch)))
 
-generic programming::
-Writing code that can work with more than one type.
+programación genérica::
+Escribir código que pueda funcionar con más de un tipo.
 (((generic programming)))
 
 
-=== Exercises
+=== Ejercicios
 
 [[ex17-1]]
-==== Exercise 17-4
+==== Ejercicio 17-4
 
-Change the fields of +MyTime+ to be a single integer representing seconds since midnight. Then modify the methods defined in this chapter to work with the new implementation.
+Cambie los atributos de +Hora+ para que sea un solo número entero que represente los segundos desde la medianoche. Luego modifique los métodos definidos en este capítulo para que funcionen con la nueva implementación.
 
 [[ex17-2]]
-==== Exercise 17-5
+==== Ejercicio 17-5
 
-Write a definition for a type named +Kangaroo+ with a field named +pouchcontents+ of type +Array+ and the following methods:
+Escriba una definición para un tipo llamado +Canguro+, con un atributo llamado +contenidodemarsupio+ de tipo +Matriz+ y los siguientes métodos:
 (((Kangaroo)))((("type", "programmer-defined", "Kangaroo", see="Kangaroo")))
 
-* A constructor that initializes +pouchcontents+ to an empty array.
+* Un constructor que inicializa +contenidodemarsupio+ a una matriz vacía.
 
-* A method named +putinpouch+ that takes a +Kangaroo+ object and an object of any type and adds it to +pouchcontents+.
+* Un método llamado +ponerenmarsupio+ que tome un objeto +Canguro+ y un objeto de cualquier tipo y lo agregue a +contenidodemarsupio+.
 (((putinpouch)))((("function", "programmer-defined", "putinpouch", see="putinpouch")))
 
-* A +show+ method that returns a string representation of the +Kangaroo+ object and the contents of the pouch.
+* Un método +show+ que devuelva una representación de cadena del objeto +Canguro+ y el contenido del marsupio.
 (((show)))
 
-Test your code by creating two +Kangaroo+ objects, assigning them to variables named +kanga+ and +roo+, and then adding +roo+ to the contents of +kanga+’s pouch.
-
+Pruebe su código creando dos objetos +Canguro+, asignándolos a variables llamadas +cangu+ y +ro+, y luego agregando +ro+ al contenido del marsupio de +cangu+.
