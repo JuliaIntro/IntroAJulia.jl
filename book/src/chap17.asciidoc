@@ -478,7 +478,7 @@ Las funciones que pueden tomar parámetros de diferentes tipos se llaman _polim�
 Por ejemplo, la función integrada +sum+, que suma los elementos de una secuencia, funciona siempre que los elementos de la secuencia permitan la suma.
 (((sum)))
 
-Como se añadió un método +pass:[+]+ para los objetos +Hora+, entonces se permite el uso de +sum+ para +Hora+:
+Como se añadió el método +pass:[+]+ para los objetos +Hora+, entonces se puede usar +sum+ para +Hora+:
 
 [source,@julia-repl-test chap17b]
 ----
@@ -494,7 +494,7 @@ julia> sum((t1, t2, t3))
 
 Si todas las operaciones realizadas dentro de la función se pueden aplicar al tipo, la función se puede aplicar al tipo.
 
-El mejor tipo de polimorfismo es el que no se busca, cuando usted descubre que una función que había escrito se puede aplicar a un tipo para el que nunca la había planeado.
+El mejor tipo de polimorfismo es el que no se busca; cuando usted descubre que una función que había escrito se puede aplicar a un tipo para el que nunca la había planeado.
 (((polymorphism)))
 
 
