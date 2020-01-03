@@ -8,7 +8,7 @@ En este capítulo se explica el concepto de subtipo usando tipos que representan
 Si nunca has jugado póker, puedes leer sobre él en https://es.wikipedia.org/wiki/P%C3%B3quer, aunque no es necesario, pues te diré todo lo que necesitas saber para los ejercicios.
 
 
-=== Cartas
+=== Naipes
 
 Hay cincuenta y dos naipes en una baraja inglesa, cada uno de los cuales pertenece a uno de los cuatro palos y tiene un valor. Los palos son Picas (+♠+), Corazones (+♥+), Diamantes (+♦+) y Tréboles (+♣+). Los valores son As (A), 2, 3, 4, 5, 6, 7, 8, 9, 10, Jota (J), Reina (Q) y Rey (K). Dependiendo del tipo de juego, el valor del As puede ser mayor que al Rey o inferior al 2.
 
@@ -62,119 +62,120 @@ Para poder imprimir los objetos +Naipe+ de una manera fácil de leer, necesitamo
 
 [source,@julia-setup chap18]
 ----
-const nombres_palos = ["♣", "♦", "♥", "♠"]
-const nombres_valores = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
+const nombres_palo = ["♣", "♦", "♥", "♠"]
+const nombres_valor = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
 ----
 
-The variables +suit_names+ and +rank_names+ are global variables. The +const+ declaration means that the variable can only be assigned once. This solves the performance problem of global variables.
+Las variables +nombres_palo + y +nombres_valor+ son variables globales. La declaración +const+ significa que la variable solo se puede asignar una vez. Esto resuelve el problema de rendimiento de las variables globales.
 (((global statement)))(((const)))((("keyword", "const", see="const")))
 
-Now we can implement an appropriate +show+ method:
+Ahora podemos implementar un método +show+ apropiado:
 (((show)))
 
 [source,@julia-setup chap18]
 ----
-function Base.show(io::IO, card::Card)
-    print(io, rank_names[card.rank], suit_names[card.suit])
+function Base.show(io::IO, naipe::Naipe)
+    print(io, nombres_valor[naipe.valor], nombres_palo[naipe.palo])
 end
 ----
 
-The expression +rank_names[card.rank]+ means “use the field +rank+ from the object +card+ as an index into the array +rank_names+, and select the appropriate string.”
+La expresión +nombres_valor[naipe.valor]+ significa "use el atributo +valor+ del objeto +naipe+ como índice en la matriz +nombres_valor+, y seleccione la cadena correspondiente".
 
-With the methods we have so far, we can create and print cards:
+Con los métodos que tenemos hasta ahora, podemos crear e imprimir naipes:
 
 [source,@julia-repl-test chap18]
 ----
-julia> Card(3, 11)
+julia> Naipe(3, 11)
 J♥
 ----
 
 
-=== Comparing Cards
+=== Comparación de naipes
 
-For built-in types, there are relational operators (+<+, +>+, +==+, etc.) that compare values and determine when one is greater than, less than, or equal to another. For programmer-defined types, we can override the behavior of the built-in operators by providing a method named: +<+.
+Para los tipos integrados, existen operadores relacionales (+<+, +>+, +==+, etc.) que comparan valores y determinan cuándo uno es mayor, menor, o igual a otro. Para los tipos definidos por el usuario, podemos sustituir el comportamiento de los operadores internos si proporcionamos un método llamado: +<+.
 
-The correct ordering for cards is not obvious. For example, which is better, the 3 of Clubs or the 2 of Diamonds? One has a higher rank, but the other has a higher suit. In order to compare cards, you have to decide whether rank or suit is more important.
+El orden correcto de las tarjetas no es obvio. Por ejemplo, ¿cuál es mejor, el 3 de Tréboles o el 2 de Diamantes? Uno tiene un valor mayor, pero el otro tiene un palo mayor. Para hacer que los naipes sean comparables, se debe decidir qué es más importante: valor o palo.
 
-The answer might depend on what game you are playing, but to keep things simple, we’ll make the arbitrary choice that suit is more important, so all of the Spades outrank all of the Diamonds, and so on.
+La respuesta puede depender del tipo de juego, pero para simplificar las cosas, haremos la elección arbitraria de que el palo es más importante, por lo que todas las espadas superan a todos los diamantes, y así sucesivamente.
 
-With that decided, we can write +<+
+Con esa decisión tomada, podemos escribir +<+:
 
 [source,@julia-setup chap18]
 ----
 import Base.<
 
-function <(c1::Card, c2::Card)
-    (c1.suit, c1.rank) < (c2.suit, c2.rank)
+function <(c1::Naipe, c2::Naipe)
+    (c1.palo, c1.rvalor) < (c2.palo, c2.valor)
 end
 ----
 
-==== Exercise 18-1
+==== Ejercicio 18-1
 
-Write a +<+ method for +MyTime+ objects. You can use tuple comparison, but you also might consider comparing integers.
-
-
-=== Unit Testing
+Escriba un método +<+ para objetos +Hora+. Puede usar comparación de tuplas, o comparación de enteros.
 
 
-_Unit testing_ allows you to verify the correctness of your code by comparing the results of your code to what you expect. This can be useful to be sure that your code still is correct after modifications, and it is also a way to predefine the correct behaviour of your code during development.
+=== Prueba unitaria
+
+
+Una _prueba unitaria_ permite verificar el correcto funcionamiento de su código comparando los resultados obtenidos con los esperados. Esto puede ser útil para verificar que su código funciona correctamente después de haberlo modificado, y también es una forma de predefinir el comportamiento correcto de su código durante el desarrollo.
 (((unit testing)))
 
-Simple unit testing can be performed with the +@test+ macros:
+Se pueden realizar pruebas unitarias simples con las macros +@test+:
 (((Test)))((("module", "Test", see="Test")))(((@test)))((("macro", "Test", "@test", see="@test"))) 
 
 [source,@julia-repl-test chap18]
 ----
 julia> using Test
 
-julia> @test Card(1, 4) < Card(2, 4)
+julia> @test Naipe(1, 4) < Naipe(2, 4)
 Test Passed
-julia> @test Card(1, 3) < Card(1, 4)
+julia> @test Naipe(1, 3) < Naipe(1, 4)
 Test Passed
 ----
 
-+@test+ returns a +"Test Passed"+ if the expression following it is +true+, a +"Test Failed"+ if it is +false+, and an +"Error Result"+ if it could not be evaluated.
++@test+ devuelve +"Test Passed"+ ("Prueba aprobada") si la expresión que sigue es +true+, y +"Test Failed"+ ("Prueba fallida") si es +false+, y +"Error Result"+ ("Resultado de error") si no se pudo evaluar.
 
 
-=== Decks
+=== Mazos
 
-Now that we have Cards, the next step is to define Decks. Since a deck is made up of cards, it is natural for each Deck to contain an array of cards as an attribute.
+Ahora que ya tenemos Naipes, el próximo paso es definir Mazos. Como un mazo está compuesto de naipes, naturalmente cada Mazo contendrá una matriz de naipes como atributo.
 
-The following is a struct definition for +Deck+. The constructor creates the fields cards and generates the standard set of fifty-two cards:
+A continuación se muestra una definición para +Mazo+. El constructor crea el atributo naipes y genera el conjunto estándar de cincuenta
+y dos naipes:
 (((Deck)))((("type", "programmer-defined", "Deck", see="Deck")))
 
 [source,@julia-setup chap18]
 ----
-struct Deck
-    cards :: Array{Card, 1}
+struct Mazo
+    naipes :: Array{Naipe, 1}
 end
 
-function Deck()
-    deck = Deck(Card[])
-    for suit in 1:4
-        for rank in 1:13
-            push!(deck.cards, Card(suit, rank))
+function Mazo()
+    mazo = Mazo(Card[])
+    for palo in 1:4
+        for valor in 1:13
+            push!(mazo.naipes, Naipe(palo, valor))
         end
     end
     deck
 end
 ----
 
-The easiest way to populate the deck is with a nested loop. The outer loop enumerates the suits from 1 to 4. The inner loop enumerates the ranks from 1 to 13. Each iteration creates a new +Card+ with the current suit and rank, and pushes it to +deck.cards+.
+La forma más fácil de poblar el mazo es mediante un bucle anidado. El bucle exterior enumera los palos desde 1 hasta 4. El bucle interior enumera los valores desde 1 hasta 13. Cada iteración crea un nuevo +Naipe+ con el palo y valor actual, y lo agrega a +mazo.naipes+.
 
-Here is a +show+ method for +Deck+:
+Este es un método +show+ para +Mazo+:
 
 [source,@julia-setup chap18]
 ----
-function Base.show(io::IO, deck::Deck)
-    for card in deck.cards
-        print(io, card, " ")
+function Base.show(io::IO, mazo::Mazo)
+    for naipe in mazo.naipes
+        print(io, naipe, " ")
     end
     println()
 end
 ----
 
-Here’s what the result looks like:
+Así es como se ve el resultado:
 
 [source,@julia-repl-test chap18]
 ----
