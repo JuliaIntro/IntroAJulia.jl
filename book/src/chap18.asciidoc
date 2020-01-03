@@ -133,7 +133,7 @@ julia> @test Naipe(1, 3) < Naipe(1, 4)
 Test Passed
 ----
 
-+@test+ devuelve +"Test Passed"+ ("Prueba aprobada") si la expresión que sigue es +true+, y +"Test Failed"+ ("Prueba fallida") si es +false+, y +"Error Result"+ ("Resultado de error") si no se pudo evaluar.
++@test+ devuelve +"Test Passed"+ ("Prueba aprobada") si la expresión que sigue es +true+, +"Test Failed"+ ("Prueba fallida") si es +false+, y +"Error Result"+ ("Resultado de error") si no se pudo evaluar.
 
 
 === Mazos
