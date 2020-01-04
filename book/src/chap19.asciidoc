@@ -90,7 +90,7 @@ Los _argumentos con nombre_ en una función se especifican después de un punto 
 
 ==== Clausuras
 
-Una _clausura_ es una técnica que permite que una función capture una variable definida fuera del alcance de la función.
+Una _clausura_ es una técnica que permite que una función capture una variable definida fuera del ambito de la función.
 
 [source,@julia-repl-test]
 ----
@@ -106,15 +106,13 @@ julia> bar()
 
 En este ejemplo, la función +foo+ devuelve una función anónima que tiene acceso al argumento +x+ de la función +foo+. +bar+ apunta a la función anónima y devuelve el valor del argumento de +foo+.
 
-In this example, the function +foo+ returns an anonymous function that has access to the +x+ argument of the function +foo+. +bar+ points to the anonymous function and returns the value of the argument of +foo+.
-
 
 === Bloques
 
-A _block_ is a way to group a number of statements. A block starts with the keyword +begin+ and ends with +end+.
+Un _bloque_ es una forma de agrupar varias sentencias. Un bloque comienza con la palabra reservada +begin+ y termina con +end+.
 (((begin)))((("keyword", "begin", see="begin")))(((end)))(((block)))
 
-In <<chap04>> the +@svg+ macro was introduced:
+En <<chap04>> se presentó la macro +@svg+:
 
 [source,julia]
 ----
@@ -126,10 +124,11 @@ In <<chap04>> the +@svg+ macro was introduced:
 end
 ----
 
-In this example, the macro +@svg+ has a single argument, i.e. a block grouping 3 function calls.
+En este ejemplo, la macro +@svg+ tiene un único argumento: un bloque, que agrupa 3 llamadas a funciones.
 
-==== +let+ Blocks
+==== Bloques +let+ 
 
+Un bloque +let+ es útil para crear nuevos enlaces, es decir, ubicaciones que pueden referirse a valores.
 A +let+ block is useful to create new bindings, i.e. locations that can refer to values.
 
 [source,@julia-repl-test]
@@ -148,39 +147,39 @@ y = -1
 z = -1
 ----
 
-In the example, the first +@show+ macro, shows the local +x+, the global +y+ and the undefined local +z+. The global variables are untouched.
+En el ejemplo, la primera macro +@show+ muestra la variable local +x+, la variable global +y+ y la variable local indefinida +z+. Las variables globales se mantienen intactas.
 
 
-==== +do+ Blocks
+==== Bloques +do+
 
-In <<reading_and_writing>> we had to close the file after when where done writing. This can be done automatically using a _do block_:
+En <<reading_and_writing>> cerramos el archivo después de terminar de escribir en él. Esto se puede hacer automáticamente usando un _Bloque do_:
 (((do)))((("keyword", "do", see="do")))
 
 [source,@julia-repl-test chap19]
 ----
-julia> data = "This here's the wattle,\nthe emblem of our land.\n"
-"This here's the wattle,\nthe emblem of our land.\n"
-julia> open("output.txt", "w") do fout
-           write(fout, data)
+julia> datos = "El Cid convoca a sus vasallos;\néstos se destierran con él.\n"
+"El Cid convoca a sus vasallos;\néstos se destierran con él.\n"
+julia> open("salida.txt", "w") do fout
+           write(fout, datos)
        end
-48
+61
 ----
 
-In this example +fout+ is the file stream used for output.
+En este ejemplo, +fout+ es el archivo stream utilizado para la salida.
 
-This is functionally equivalent to
+Esto es equivalente a:
 
 [source,@julia-repl-test chap19]
 ----
 julia> f = fout -> begin
-           write(fout, data)
+           write(fout, datos)
        end
 #3 (generic function with 1 method)
-julia> open(f, "output.txt", "w")
-48
+julia> open(f, "salida.txt", "w")
+61
 ----
 
-The anonymous function is used as the first argument of the function +open+:
+La función anónima se utiliza como primer argumento de la función +open+:
 (((open)))
 
 [source,julia]
@@ -195,48 +194,52 @@ function open(f::Function, args...)
 end
 ----
 
+Un bloque +do+ puede "capturar" variables de su alcance envolvente. Por ejemplo, la variable +datos+ en el ejemplo anterior de +open pass:[...] do+ se captura desde el ámbito externo. 
+
 A +do+ block can “capture” variables from its enclosing scope. For example, the variable +data+ in the above example of +open pass:[...] do+ is captured from the outer scope.
 
 
 === Control Flow
 
-==== Ternary Operator
+==== Operador ternario
 
-The _ternary operator_, +?:+, is an alternative to an +if-elseif+ statement used when you need to make a choice between single expression values. 
+El _operador ternario_, +?:+, puede utilizarse en vez de una sentencia +if-elseif+. Esta sentencia se usa cuando se necesita elegir entre diferentes expresiones con valor único.
 (((?:)))((("operator", "Base", "?:", see="?:")))((("ternary operator", see="?:")))
 
 [source,@julia-repl-test]
 ----
 julia> a = 150
 150
-julia> a % 2 == 0 ? println("even") : println("odd")
+julia> a % 2 == 0 ? println("par") : println("impar")
 even
 ----
 
-The expression before the +?+ is a condition expression. If the condition is +true+, the expression before the +:+ is evaluated, otherwise, the expression after the +:+ is evaluated.
+La expresión que va antes de +?+ es una expresión de condición. Si la condición es +true+, se evalúa la expresión que va antes de +:+; de lo contrario, se evalúa la expresión que va después de +:+.
 
-==== Short-Circuit Evaluation
+==== Evaluación de cortocircuito
 
-The operators +&&+ and +||+ do a _short-circuit evaluation_: a next argument is only evaluated when it is needed to determine the final value.
+Los operadores +&&+ y +||+ realizan una _evaluación de cortocircuito_, es decir, se evalúa el siguiente argumento solo cuando es necesario para determinar el valor final.
 (((&&)))(((||)))(((short-circuit evaluation)))
 
-For example, a recursive factorial routine could be defined like this:
+Por ejemplo, una función factorial recursiva podría definirse así:
 (((fact)))
 
 [source,@julia-setup]
 ----
 function fact(n::Integer)
-    n >= 0 || error("n must be non-negative")
+    n >= 0 || error("n debe ser no negativo")
     n == 0 && return 1
     n * fact(n-1)
 end
 ----
 
-==== Tasks (aka Coroutines)
+==== Tarea (o Corrutina)
+
+Una _tarea_ es una estructura de control que puede pasar el control de forma cooperativa sin regresar. En Julia, una tarea puede implementarse como una función que tiene como primer argumento un objeto +Channel+. Se usa un channel para pasar valores de la función a la persona que llama.
 
 A _task_ is a control structure that can pass cooperatively control without returning. In Julia, a task can be implemented as a function having as first argument a +Channel+ object. A channel is used to pass values from the function to the callee.
 
-The Fibonnaci sequence can be generated using a task.
+La secuencia de Fibonnaci se puede generar mediante una tarea.
 (((task)))(((Channel)))((("type", "Base", "Channel", see="Channel")))(((put!)))((("function", "Base", "put!", see="put!")))
 
 [source,@julia-setup chap19]
@@ -252,7 +255,7 @@ function fib(c::Channel)
 end
 ----
 
-+put!+ stores values in a channel object and +take!+ reads values from it:
++put!+ almacena valores en un objeto channel y +take!+ lee valores desde él:
 (((take!)))((("function", "Base", "take!", see="take!")))
 
 [source,@julia-repl-test chap19]
@@ -270,6 +273,8 @@ julia> take!(fib_gen)
 julia> take!(fib_gen)
 3
 ----
+
+El constructor +Channel+ crea la tarea. La función +fib+ se suspende después de cada llamada a +put!+ y se reanuda después de +take!+. Por rendimiento, se almacenan varios valores de la secuencia en el objeto channel durante un ciclo de reanudación/suspensión.
 
 The constructor +Channel+ creates the task. The function +fib+ is suspended after each call to +put!+ and resumed after +take!+. For performance reasons, several values of the sequence are buffered in the channel object during a resume/suspend cycle.
 
