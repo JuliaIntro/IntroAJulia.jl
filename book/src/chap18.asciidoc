@@ -381,8 +381,8 @@ A continuación, encapsularemos este código en una función llamada +mover!+:
 function mover!(cdc1::ConjuntoDeCartas, cdc2::ConjuntoDeCartas, n::Int)
     @assert 1 ≤ n ≤ length(cs1.naipes)
     for i in 1:n
-        naipe = pop!(cs1)
-        push!(cs2, naipe)
+        naipe = pop!(cdc1)
+        push!(cdc2, naipe)
     end
     nothing
 end
@@ -390,7 +390,7 @@ end
 
 +mover!+ toma tres argumentos: dos objetos +ConjuntoDeCartas+ y el número de cartas a repartir. Modifica ambos objetos +ConjuntoDeCartas+, y devuelve +nothing+. 
 
-En algunos juegos, las cartas se mueven de una mano a otra, o de una mano a la baraja. Puedes usar +mover!+ para cualquiera de estas operaciones: +cdc1+ y +cdc2+ pueden ser un +Mazo+ o una +Mano+.
+En algunos juegos, las cartas se mueven de una mano a otra, o de una mano al mazo. Puedes usar +mover!+ para cualquiera de estas operaciones: +cdc1+ y +cdc2+ pueden ser un +Mazo+ o una +Mano+.
 
 
 === Diagramas de tipo
