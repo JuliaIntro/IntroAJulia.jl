@@ -754,23 +754,25 @@ type union::
 Type which includes as objects all instances of any of its type parameters.
 (((type union)))
 
-parametric type::
-Type that is parameterized.
+tipo paramétrico::
+Tipo que tiene parámetros.
 (((parametric type)))
 
-functor::
+funtor::
+Objeto con un método asociado, para que sea invocable.
 Object with an associated method, so that it is callable.
 (((functor)))
 
-conversion::
-Conversion allows to convert a value from one type to another.
+conversión::
+Permite convertir un valor de un tipo a otro.
 (((conversion)))
 
-promotion::
-Converting values of mixed types to a single common type.
+promoción::
+Conversión de valores de diferentes tipos a un soloa tipo común.
 (((promotion)))
 
-expression::
+expresión::
+Tipo de Julia que contiene una construcción de lenguaje.
 Julia type that holds a language construct.
 (((expression)))
 
