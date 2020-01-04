@@ -140,7 +140,7 @@ Test Passed
 
 Ahora que ya tenemos Naipes, el próximo paso es definir Mazos. Como un mazo está compuesto de naipes, naturalmente cada Mazo contendrá una matriz de naipes como atributo.
 
-A continuación se muestra una definición para +Mazo+. El constructor crea el atributo naipes y genera el conjunto estándar de cincuenta
+A continuación se muestra una definición para +Mazo+. El constructor crea el atributo naipes y genera la baraja estándar de cincuenta
 y dos naipes:
 (((Deck)))((("type", "programmer-defined", "Deck", see="Deck")))
 
