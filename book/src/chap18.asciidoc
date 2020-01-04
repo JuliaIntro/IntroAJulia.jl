@@ -3,7 +3,7 @@
 
 En el capítulo anterior se presentó el dispatch múltiple y los métodos polimórficos. Al no especificar el tipo de los argumentos de un método, este se puede invocar con argumentos de cualquier tipo. Ahora veremos cómo especificar un subconjunto de tipos permitidos en las especificaciones de un método.
 
-En este capítulo se explica el concepto de subtipo usando tipos que representan cartas, mazos de cartas y manos de póker.
+En este capítulo se explica el concepto de subtipo usando tipos que representan naipes, mazos de naipes y manos de póker.
 
 Si nunca has jugado póker, puedes leer sobre él en https://es.wikipedia.org/wiki/P%C3%B3quer, aunque no es necesario, pues explicaremos todo lo necesario para los ejercicios.
 
