@@ -239,7 +239,7 @@ Queremos que un tipo represente una "mano", es decir, los naipes que tiene un ju
 
 Una mano es diferente de un mazo en ciertos aspectos; podemos querer realizar ciertas operaciones sobre una mano que no tendrían sentido sobre un mazo. Por ejemplo, en el poker querríamos comparar una mano con otra para ver quién gana. En bridge, necesitamos calcular el puntaje de la mano para así poder hacer la subasta.
 
-Por lo tanto, necesitamos una forma de agrupar los _tipos concretos_ que están relacionados. En Julia, esto se hace definiendo un _abstract type_ (tipo abstracto en inglés) que sea padre de +Mazo+ y +Mano+. A esto se le llama _subtipo_.
+Por lo tanto, necesitamos una forma de agrupar los _tipos concretos_ que están relacionados. En Julia, esto se hace definiendo un _abstract type_ (tipo abstracto en inglés) que sea padre de +Mazo+ y +Mano+. A esto se le llama _crear subtipos_.
 (((concrete type)))(((abstract type)))(((subtyping)))
 
 Llamemos a este tipo abstracto +ConjuntoDeCartas+:
