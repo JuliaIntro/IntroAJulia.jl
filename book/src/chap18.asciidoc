@@ -429,9 +429,9 @@ Un diagrama más detallado podría mostrar que un Mazo en realidad contiene una 
 [[interactive]]
 === Depuración
 
-Utilizar subtipos puede dificultar la depuración ya que al llamar a una función con un objeto como argumento, puede ser difícil determinar qué método se invocará.
+Utilizar subtipos puede dificultar la depuración ya que al llamar a una función con un objeto como argumento, puede ser complicado determinar qué método se invocará.
 
-Supongamos que estamos escribiendo una función que funciona con objetos +Mano+. Nos gustaría que funcionara con todo tipo de +Mano+s, como +ManoDePoker+, +ManoDeBridge+, etc. Si invoca un método como +sort!+, podrías obtener el método definido para un tipo abstracto +Mano+, pero si existe un método +sort!+ que tenga como argumento cualquiera de los subtipos, obtendrás esa versión. Este comportamiento suele ser algo bueno, pero puede ser confuso.
+Supongamos que estamos escribiendo una función que funciona con objetos +Mano+. Nos gustaría que funcionara con todo tipo de +Mano+ s, como +ManoDePoker+ , +ManoDeBridge+ , etc. Si invocas un método como +sort!+, podrías obtener el método definido para un tipo abstracto +Mano+ , pero si existe un método +sort!+ que tenga como argumento cualquiera de los subtipos, obtendrás esa versión. Este comportamiento suele ser algo bueno, pero puede ser confuso.
 
 [source,@julia-setup chap18a]
 ----
