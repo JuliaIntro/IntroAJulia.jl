@@ -708,27 +708,28 @@ The complete mapping of the GDBM library can be found as an example in the Piens
 
 === Glossary
 
-closure::
-Function that captures variables from its defining scope.
+clausura::
+Función que captura variables del ámbito en dónde está definida.
 (((closure)))
 
-let block::
-Block allocating new variable bindings.
+bloque let::
+Bloque de asignación de nuevas ligaduras variables.
 (((let block)))
 
-anonymous function::
-Function defined without being given a name.
+función anónima::
+Función definida sin nombre.
 (((anonymous function)))
 
-named tuple::
-Tuple with named components.
+tupla con nombre::
+Tupla con componentes con nombre.
 (((named tuple)))
 
-keyword arguments::
-Arguments identified by name instead of only by position.
+argumentos con nombre::
+Argumentos identificados por su nombre en vez de solo por la posición que ocupan.
 (((keyword arguments)))
 
-do block::
+bloque do::
+Construcción de sintaxis que se usa para definir y llamar a una función anónima que se parece a un bloque de código normal.
 Syntax construction used to define and call an anonymous function which looks like a normal code block.
 (((do block)))
 
