@@ -242,7 +242,7 @@ Una mano es diferente de un mazo en ciertos aspectos; podemos querer realizar ci
 Por lo tanto, necesitamos una forma de agrupar los _tipos concretos_ que están relacionados. En Julia, esto se hace definiendo un _abstract type_ (tipo abstracto en inglés) que sea padre de +Mazo+ y +Mano+. A esto se le llama _crear subtipos_.
 (((concrete type)))(((abstract type)))(((subtyping)))
 
-Llamemos a este tipo abstracto +ConjuntoDeCartas+:
+Llamemos al tipo abstracto +ConjuntoDeCartas+:
 (((CardSet)))((("type", "programmer-defined", "CardSet", see="CardSet")))
 
 [source,@julia-eval chap18a]
@@ -260,16 +260,16 @@ end;
 
 [source,@julia-setup chap18a]
 ----
-abstract type ConjuntoDeCartasCardSet end
+abstract type ConjuntoDeCartas end
 ----
 
-Se puede crear un nuevo tipo abstracto con la palabra reservada +abstract type+. También se puede especificar un tipo "padre" opcional colocando después del nombre, el símbolo +<:+ seguido del nombre de un tipo abstracto ya existente.
+Se puede crear un nuevo tipo abstracto con la palabra reservada +abstract type+. De manera opcional, se puede especificar un tipo "padre" de una estructura colocando después del nombre de esta, el símbolo +<:+ seguido del nombre de un tipo abstracto existente.
 (((abstract type)))((("keyword", "abstract type", see="abstract type")))(((type)))
 
 Cuando no se proporciona un _supertipo_, el supertipo por defecto es +Any+, es decir, un tipo abstracto predefinido del que todos los objetos son instancias y del que todos los tipos son _subtipos_.
 (((supertype)))(((subtype)))
 
-Ahora podemos expresar que +Mazo+ es un hijo de +ConjuntoDeCartas+:
+Ahora podemos expresar que +Mazo+ es un "hijo" de +ConjuntoDeCartas+:
 
 [source,@julia-setup chap18a]
 ----
