@@ -325,31 +325,30 @@ La función +reinterpret+ se usa para almacenar los bits de un entero sin signo 
 
 El sistema de tipos de Julia es _paramétrico_, lo que significa que los tipos pueden tener parámetros.
 
-Los parámetros de tipo se introducen después del nombre del tipo, rodeados por llaves:
-
-Type parameters are introduced after the name of the type, surrounded by curly braces:
+Los parámetros de un tipo se colocan después del nombre del tipo, entre llaves:
 (((curly braces)))
 
 [source,@julia-setup chap19]
 ----
-struct Point{T<:Real}
+struct Punto{T<:Real}
     x::T
     y::T
 end
 ----
 
-This defines a new parametric type, +Point{T<:Real}+, holding two "coordinates" of type +T+, which can be any type having +Real+ as supertype.
+Con esto se define un nuevo tipo paramétrico, +Punto{T<:Real}+, que contiene dos "coordenadas" de tipo +T+, que puede ser cualquier tipo que tenga +Real+ como supertipo.
 
 [source,@julia-repl-test chap19]
 ----
-julia> Point(0.0, 0.0)
-Point{Float64}(0.0, 0.0)
+julia> Punto(0.0, 0.0)
+Punto{Float64}(0.0, 0.0)
 ----
 
-In addition to composite types, abstract types and primitive types can also have a type parameter.
+Además de los tipos compuestos, los tipos abstractos y los tipos primitivos también pueden tener parámetros.
 
 [TIP]
 ====
+Tener tipos concretos como atributos de estructuras es absolutamente recomendable por razones de rendimiento, por lo que esta es una buena manera de hacer que +Punto+ sea rápido y flexible.
 Having concrete types for struct fields is absolutely recommended for performance reasons, so this is a good way to make +Point+ both fast and flexible.
 ====
 
