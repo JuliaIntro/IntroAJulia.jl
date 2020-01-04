@@ -431,7 +431,7 @@ Un diagrama más detallado podría mostrar que un Mazo en realidad contiene una 
 
 Utilizar subtipos puede dificultar la depuración ya que al llamar a una función con un objeto como argumento, puede ser complicado determinar qué método se invocará.
 
-Supongamos que estamos escribiendo una función que funciona con objetos +Mano+. Nos gustaría que funcionara con todo tipo de +Mano+ s, como +ManoDePoker+ , +ManoDeBridge+ , etc. Si invocas un método como +sort!+, podrías obtener el método definido para un tipo abstracto +Mano+ , pero si existe un método +sort!+ que tenga como argumento cualquiera de los subtipos, obtendrás esa versión. Este comportamiento suele ser algo bueno, pero puede ser confuso.
+Supongamos que estamos escribiendo una función que funciona con objetos +Mano+. Nos gustaría que funcionara con todo tipo de +Mano+s, como +ManoDePoker+, +ManoDeBridge+, etc. Si invocas un método como +sort!+, podrías obtener el método definido para un tipo abstracto +Mano+, pero si existiera un método +sort!+ que tuviera como argumento cualquiera de los subtipos de +Mano+, obtendrás esa versión. Este comportamiento suele ser algo bueno, pero puede ser confuso.
 
 [source,@julia-setup chap18a]
 ----
@@ -440,7 +440,7 @@ function Base.sort!(mano::Mano)
 end
 ----
 
-Si no estás seguro del flujo de ejecución de su programa, la solución más simple es agregar sentencias de impresión al inicio de los métodos más relevantes. Si +shuffle!+ imprimiera un mensaje como +Ejecutando shuffle! Mazo+, a medida que el programa se ejecutara, sería posible rastrear el flujo de ejecución.
+Si no estás seguro del flujo de ejecución de un programa, la solución más simple es agregar sentencias de impresión al inicio de sus métodos más relevantes. Si +shuffle!+ imprimiera un mensaje como +Ejecutando shuffle! en Mazo+, durante la ejecución del programa, sería posible rastrear el flujo de ejecución.
 
 Una mejor alternativa es la macro +@which+:
 (((InteractiveUtils)))((("module", "InteractiveUtils", see="InteractiveUtils")))(((@which)))((("macro", "InteractiveUtils", "@which", see="@which")))
