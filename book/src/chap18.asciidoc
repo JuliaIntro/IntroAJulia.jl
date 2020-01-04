@@ -393,11 +393,11 @@ end
 En algunos juegos, las cartas se mueven de una mano a otra, o de una mano al mazo. Puedes usar +mover!+ para cualquiera de estas operaciones: +cdc1+ y +cdc2+ pueden ser un +Mazo+ o una +Mano+.
 
 
-=== Diagramas de tipo
+=== Diagramas de tipos
 
 Hasta ahora hemos visto diagramas de pila; que muestran el estado de un programa, y diagramas de objetos; que muestran los atributos de un objeto y sus valores. Estos diagramas son como una foto sacada durante la ejecución de un programa, por lo que cambian a medida que se ejecuta el programa.
 
-También son muy detallados; en algunos casos demasiado detallados. Un _diagrama de tipo_ es una representación más abstracta de la estructura de un programa. En vez de mostrar objetos individuales, muestra los tipos y las relaciones entre ellos.
+También son muy detallados; en algunos casos demasiado detallados. Un _diagrama de tipos_ es una representación más abstracta de la estructura de un programa. En vez de mostrar objetos individuales, muestra los tipos y las relaciones entre ellos.
 (((type diagram)))((("diagram", "type", see="type diagram")))
 
 Hay varias formas de relación entre tipos:
@@ -408,7 +408,7 @@ Hay varias formas de relación entre tipos:
 * Un tipo concreto puede tener un tipo abstracto como supertipo. Esta relación se llama _ES-UN_, como por ejemplo "una Mano es un ConjuntoDeCartas".
 (((IS-A)))
 
-* Un tipo puede depender de otro en el sentido de que los objetos de un tipo toman objetos del segundo tipo como parámetros, o usan objetos del segundo tipo como parte de un cálculo. Este tipo de relación se llama _dependencia_.
+* Un tipo puede depender de otro si los objetos de un tipo toman objetos del segundo tipo como parámetros, o usan objetos del segundo tipo como parte de un cálculo. Este tipo de relación se llama _dependencia_.
 (((dependency)))
 
 [[fig18-1]]
@@ -419,7 +419,7 @@ Cada una de las flechas superiores representa una relación ES-UN; en este caso,
 
 Cada una de las flechas inferiores representa una relación TIENE-UN; en este caso, un Mazo tiene referencias a objetos Naipe.
 
-El asterisco (+pass:[*]+) cerca de la flecha es una _multiplicidad_; indica cuántos Naipes tiene un Mazo. Una multiplicidad puede ser un número simple; como +52+, un rango; + como 5:7+ o un asterisco; lo cual indica que un Mazo puede tener cualquier número de Cartas.
+El asterisco (+pass:[*]+) cerca de la flecha es una _multiplicidad_; indica cuántos Naipes tiene un Mazo. Una multiplicidad puede ser un número simple; como +52+, un rango; +como 5:7+ o un asterisco; lo cual indica que un Mazo puede tener cualquier número de Naipes.
 (((multiplicity)))
 
 No hay dependencias en este diagrama. Normalmente se mostrarían con una flecha achurada. Si hay muchas dependencias, a veces se omiten.
