@@ -128,8 +128,7 @@ En este ejemplo, la macro +@svg+ tiene un único argumento: un bloque, que agrup
 
 ==== Bloques +let+ 
 
-Un bloque +let+ es útil para crear nuevos enlaces, es decir, ubicaciones que pueden referirse a valores.
-A +let+ block is useful to create new bindings, i.e. locations that can refer to values.
+Un bloque +let+ es útil para crear nuevas ligaduras (o bindings), es decir, variables locales que pueden apuntar a valores.
 
 [source,@julia-repl-test]
 ----
