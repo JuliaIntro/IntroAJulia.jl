@@ -331,7 +331,7 @@ function Mano(etiqueta::String="")
 end
 ----
 
-En lugar de llenar la mano con 52 cartas nuevas, el constructor de +Mano+ inicializa +naipes+ a una matriz vacía. Se puede pasar una etiqueta de la +Mano+ como argumento opcional al constructor.
+En lugar de llenar la mano con 52 naipes nuevos, el constructor de +Mano+ inicializa +naipes+ a una matriz vacía. Se puede etiquetar a la +Mano+ pasando un argumento opcional al constructor.
 
 [source,@julia-repl-test chap18a]
 ----
