@@ -348,41 +348,41 @@ Además de los tipos compuestos, los tipos abstractos y los tipos primitivos tam
 
 [TIP]
 ====
-Tener tipos concretos como atributos de estructuras es absolutamente recomendable por razones de rendimiento, por lo que esta es una buena manera de hacer que +Punto+ sea rápido y flexible.
-Having concrete types for struct fields is absolutely recommended for performance reasons, so this is a good way to make +Point+ both fast and flexible.
+Tener tipos concretos como atributos de una estructura es absolutamente recomendable por razones de rendimiento, por lo que esta es una buena manera de hacer que +Punto+ sea rápido y flexible.
 ====
 
-==== Type Unions
+==== Union de Tipo
 
-A _type union_ is an abstract parametric type that can act as any of its argument types:
+Una _union de tipo_ es un tipo paramétrico abstracto que puede actuar como cualquiera de los tipos de sus argumentos:
 (((type union)))(((Union)))((("type", "Base", "Union", see="Union")))
 
 [source,@julia-repl-test]
 ----
-julia> IntOrString = Union{Int64, String}
+julia> EnteroOCadena = Union{Int64, String}
 Union{Int64, String}
-julia> 150 :: IntOrString
+julia> 150 :: EnteroOCadena
 150
-julia> "Julia" :: IntOrString
+julia> "Julia" :: EnteroOCadena
 "Julia"
 ----
 
-A type union is in most computer language an internal construct for reasoning about types. Julia however exposes this feature to its users because efficient code can be generated when the type union has a small number of types. This feature gives the Julia programmer a tremendous flexibility for controlling dispatch.
+Una unión de tipos es, en la mayoría de los lenguajes informáticos, una construcción interna para trabajar con tipos. Sin embargo, Julia expone esta característica a sus usuarios ya que permite generar un código eficiente cuando la unión es entre pocos tipos. Esta característica le da una gran flexibilidad al programador de Julia para controlar el dispatch.
 
-=== Methods
+=== Métodos
 
-==== Parametric Methods
+==== Métodos Paramétricos 
 
+Las definiciones de métodos también pueden tener parámetros de tipo que califiquen su especificación:
 Method definitions can also have type parameters qualifying their signature:
 (((signature)))
 
 [source,@julia-repl-test chap19]
 ----
-julia> isintpoint(p::Point{T}) where {T} = (T === Int64)
-isintpoint (generic function with 1 method)
-julia> p = Point(1, 2)
-Point{Int64}(1, 2)
-julia> isintpoint(p)
+julia> espuntoentero(p::Punto{T}) where {T} = (T === Int64)
+espuntoentero (generic function with 1 method)
+julia> p = Punto(1, 2)
+Punto{Int64}(1, 2)
+julia> espuntoentero(p)
 true
 ----
 
