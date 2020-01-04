@@ -729,11 +729,12 @@ Argumentos identificados por su nombre en vez de solo por la posición que ocupa
 (((keyword arguments)))
 
 bloque do::
-Construcción de sintaxis que se usa para definir y llamar a una función anónima que se parece a un bloque de código normal.
-Syntax construction used to define and call an anonymous function which looks like a normal code block.
+Construcción usada para definir y llamar a una función anónima parecida a un bloque de código normal.
 (((do block)))
 
-ternary operator::
+operador ternario::
+Operador de flujo de control que toma tres operandos para especificar una condición: una expresión que se ejecutará cuando la condición produzca +true+ y una expresión que se ejecutará cuando la condición produzca + falso +.
+
 Control flow operator taking three operands to specify a condition, an expression to be executed when the condition yields +true+ and an expression to be executed when the condition yields +false+.
 (((ternary operator)))
 
