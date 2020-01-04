@@ -3,7 +3,7 @@
 
 Uno de los objetivos de este libro es enseñar lo justo y necesario de Julia. Si habían dos formas de hacer algo, se elegió una y se evitó mencionar la otra. En ocasiones, la segunda manera se dejó como ejercicio al lector.
 
-Ahora veremos algunas cosas que dejamos de lado, que sí son útiles. Julia proporciona una serie de características que no son realmente necesarias (se puede escribir un buen código sin ellas), pero a veces permiten escribir un código más conciso, legible y/o eficiente.
+Ahora veremos algunas cosas que hemos dejado de lado, que sí son útiles. Julia proporciona una serie de características que no son realmente necesarias (se puede escribir un buen código sin ellas), pero a veces permiten escribir un código más conciso, legible y/o eficiente.
 
 Este capítulo y el siguiente discuten aquello que se ha omitido en los capítulos anteriores:
 
