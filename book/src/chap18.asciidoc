@@ -431,7 +431,7 @@ Un diagrama más detallado podría mostrar que un Mazo en realidad contiene una 
 
 Utilizar subtipos puede dificultar la depuración ya que al llamar a una función con un objeto como argumento, puede ser complicado determinar qué método se invocará.
 
-Supongamos que estamos escribiendo una función que funciona con objetos +Mano+. Nos gustaría que funcionara con todo tipo de +Mano+s, como +ManoDePoker+, +ManoDeBridge+, etc. Si invocas un método como +sort!+, podrías obtener el método definido para un tipo abstracto +Mano+, pero si existiera un método +sort!+ que tuviera como argumento cualquiera de los subtipos de +Mano+, obtendrás esa versión. Este comportamiento suele ser algo bueno, pero puede ser confuso.
+Supongamos que estamos escribiendo una función que funciona con objetos +Mano+. Nos gustaría que funcionara con todo tipo de +Mano+s, como +ManoDePoker+, +ManoDeBridge+, etc. Si invocas un método como +sort!+, podrías obtener el método definido para un tipo abstracto +Mano+, pero si existiera un método +sort!+ que tuviera como argumento cualquiera de estos subtipos de +Mano+, obtendrás esa versión. Este comportamiento suele ser algo bueno, pero puede ser confuso.
 
 [source,@julia-setup chap18a]
 ----
@@ -468,14 +468,12 @@ ConjuntoDeCartas
 ----
 
 
-=== Data Encapsulation
+=== Encapsulado de Datos
 
-Los capítulos anteriores demuestran un plan de desarrollo que podríamos llamar "diseño orientado a tipos". Identificamos los objetos que necesitábamos, como +Punto+, +Rectangulo+ y +Hora+, y definimos estructuras para representarlos. En cada caso hay una correspondencia obvia entre el objeto y alguna entidad en el mundo real (o al menos en un mundo matemático).
+Los capítulos anteriores muestran un plan de desarrollo que podríamos llamar "diseño orientado a tipos". Identificamos los objetos que necesitamos, como +Punto+, +Rectangulo+ y +Hora+, y definimos estructuras para representarlos. En cada caso hay una correspondencia obvia entre el objeto y alguna entidad en el mundo real (o al menos en el mundo matemático).
 (((type-oriented design)))
 
-A veces no es tan obvio los objetos que necesita y cómo estos deben interactuar. En ese caso, necesita un plan de desarrollo diferente. De la misma manera que descubrimos interfaces de funciones por encapsulado y generalización, podemos descubrir interfaces de tipo por encapsulado de datos.
-
-But sometimes it is less obvious what objects you need and how they should interact. In that case you need a different development plan. In the same way that we discovered function interfaces by encapsulation and generalization, we can discover type interfaces by _data encapsulation_.
+A veces no es tan obvio los objetos que necesitamos y cómo estos deben interactuar. En ese caso, se necesita un plan de desarrollo diferente. De la misma manera que aprendimos sobre interfaces de funciones por encapsulado y generalización, podemos aprender sobre interfaces de tipo por encapsulado de datos.
 (((data encapsulation)))
 
 El análisis de Markov, de <<markov_analysis>>, es un buen ejemplo. Si descarga el código desde https://github.com/BenLauwens/ThinkJulia.jl/blob/master/src/solutions/chap13.jl, verá que se usan dos variables globales: +sufijos+ y +prefijo+, las cuales se leen y escriben desde varias funciones.
@@ -488,7 +486,7 @@ prefijos = []
 
 Debido que estas variables son globales, solo podemos ejecutar un análisis a la vez. Si leemos dos textos, sus prefijos y sufijos se agregarían a las mismas estructuras de datos (lo que generaría un texto interesante).
 
-Para ejecutar múltiples análisis y mantenerlos separados, podemos encapsular el estado de cada análisis en un objeto. Así es como se ve:
+Para ejecutar múltiples análisis y mantenerlos separados, podemos encapsular el estado de cada análisis en un objeto. Así es como se vería:
 (((Markov)))((("type", "programmer-defined", "Markov", see="Markov")))
 
 [source,@julia-setup chap18b]
@@ -521,14 +519,14 @@ function procesarpalabra(markov::Markov, palabra::String)
 end
 ----
 
-Transformar un programa como este (cambiando el diseño sin cambiar el comportamiento) es otro ejemplo de refactorización (vea <<refactorización>>).
+Transformar un programa así (cambiando el diseño sin cambiar el comportamiento) es otro ejemplo de refactorización (vea <<refactorización>>).
 (((refactoring)))(((program development plan)))
 
 Este ejemplo sugiere el siguiente plan de desarrollo para diseñar tipos:
 
 * Comience escribiendo funciones que lean y escriban variables globales (cuando sea necesario).
 
-* Una vez que haga funcionar el programa, busque asociaciones entre las variables globales y las funciones que las usan.
+* Una vez que el programa esté funcionando, busque asociaciones entre las variables globales y las funciones que las usan.
 
 * Encapsule variables relacionadas como atributos de una estructura.
 
@@ -586,7 +584,7 @@ dependencia::
 Una relación entre dos tipos donde las instancias de un tipo usan instancias del otro tipo, pero no las almacenan como atributos.
 (((dependency)))
 
-diagrama de tipo::
+diagrama de tipos::
 Un diagrama que muestra los tipos en un programa y las relaciones entre ellos.
 (((type diagram)))
 
@@ -595,7 +593,7 @@ Una notación en un diagrama de tipo que muestra, para una relación TIENE-UN, c
 (((multiplicity)))
 
 encapsulado de datos::
-Un plan de desarrollo de programas que involucra un prototipo que use variables globales y una versión final que convierte las variables globales en atributos de instancia.
+Un plan de desarrollo de programas que implica hacer un prototipo que use variables globales y una versión final que convierta las variables globales en atributos de instancia.
 (((data encapsulation)))
 
 
@@ -640,8 +638,7 @@ Escriba un método llamado +repartir!+ que tome tres parámetros: un +Mazo+, el 
 [[ex18-3]]
 ==== Ejercicio 18-6
 
-Las siguientes son las posibles manos en el póker, en orden de valor creciente y orden de probabilidad decreciente:
-The following are the possible hands in poker, in increasing order of value and decreasing order of probability:
+Las siguientes son las posibles manos en el póker, en orden de valor creciente y probabilidad decreciente:
 
 pareja::
 dos cartas del mismo número
@@ -658,7 +655,7 @@ Cinco cartas consecutivas (los ases pueden ser considerados altos o bajos, por l
 color::
 cinco cartas del mismo palo
 
-full house::
+full::
 tres cartas iguales en su valor, más otras dos iguales en su valor
 
 póker::
@@ -675,6 +672,6 @@ El objetivo de este ejercicio es estimar la probabilidad de tener estas diferent
 . Escriba un método llamado +clasificar+ que descubra la clasificación de mayor valor para una mano, y defina el atributo +etiqueta+ con esta clasificación. Por ejemplo, una mano de 7 cartas que contiene un color y una pareja, debe etiquetarse como "color".
 (((classify)))((("function", "programmer-defined", "classify", see="classify")))
 
-. Cuando esté convencido de que sus métodos de clasificación están funcionando, el siguiente paso es estimar las probabilidades de las distintas manos. Escriba una función que baraje un mazo de naipes, la divida en diferentes manos, clasifique las manos y cuente la cantidad de veces que aparecen varias clasificaciones.
+. Cuando esté convencido de que sus métodos de clasificación están funcionando correctamente, estime las probabilidades de las distintas manos. Escriba una función que baraje un mazo de naipes, la divida en diferentes manos, clasifique las manos y cuente la cantidad de veces que aparecen varias clasificaciones.
 
 . Imprima una tabla de las clasificaciones y sus probabilidades. Ejecute su programa con un número cada vez mayor de manos hasta que los valores de salida converjan con un grado razonable de precisión. Compare sus resultados con los valores en https://en.wikipedia.org/wiki/Hand_rankings.
