@@ -1,23 +1,23 @@
 [[chap18]]
-== Subtyping
+== Subtipos
 
-In the previous chapter we introduced the multiple dispatch mechanism and polymorphic methods. Not specifying the type of the arguments results in a method that can be called with arguments of any type. Specifying a subset of allowed types in the signature of a method is a logical next step.
+En el capítulo anterior se presentó el dispatch múltiple y los métodos polimórficos. Al no especificar el tipo de los argumentos de un método, este se puede invocar con argumentos de cualquier tipo. Ahora veremos cómo especificar un subconjunto de tipos permitidos en las especificaciones de un método.
 
-In this chapter I demonstrate subtyping using types that represent playing cards, decks of cards, and poker hands.
+En este capítulo se explica el concepto de subtipo usando tipos que representan naipes, mazos de naipes y manos de póker.
 
-If you don’t play poker, you can read about it at https://en.wikipedia.org/wiki/Poker, but you don’t have to; I’ll tell you what you need to know for the exercises.
+Si nunca has jugado póker, puedes leer sobre él en https://es.wikipedia.org/wiki/P%C3%B3quer, aunque no es necesario, pues explicaremos todo lo necesario para los ejercicios.
 
 
-=== Cards
+=== Naipes
 
-There are fifty-two cards in a deck, each of which belongs to one of four suits and one of thirteen ranks. The suits are Spades (+♠+), Hearts (+♥+), Diamonds (+♦+), and Clubs (+♣+). The ranks are Ace (A), 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack (J), Queen (Q), and King (K). Depending on the game that you are playing, an Ace may be higher than King or lower than 2.
+Hay cincuenta y dos naipes en una baraja inglesa, cada uno de los cuales pertenece a uno de los cuatro palos y tiene un valor. Los palos son Picas (+♠+), Corazones (+♥+), Diamantes (+♦+) y Tréboles (+♣+). Los valores son As (A), 2, 3, 4, 5, 6, 7, 8, 9, 10, Jota (J), Reina (Q) y Rey (K). Dependiendo del tipo de juego, el valor del As puede ser mayor que al Rey o inferior al 2.
 
-If we want to define a new object to represent a playing card, it is obvious what the attributes should be: rank and suit. It is not as obvious what type the attributes should be. One possibility is to use strings containing words like +"Spade"+ for suits and +"Queen"+ for ranks. One problem with this implementation is that it would not be easy to compare cards to see which had a higher rank or suit.
+Si queremos definir un nuevo objeto para representar un naipe, son obvios los atributos que debería tener: valor y palo. Lo que no es tan obvio es el tipo que se debe dar a estos atributos. Una opción es usar cadenas de caracteres que contengan palabras como +"Picas"+ para los palos y +"Reina"+ para los valores. Un problema de esta implementación es que no sería fácil comparar naipes para ver cuál tiene mayor valor o palo.
 
-An alternative is to use integers to _encode_ the ranks and suits. In this context, “encode” means that we are going to define a mapping between numbers and suits, or between numbers and ranks. This kind of encoding is not meant to be a secret (that would be “encryption”).
+Una alternativa es usar números enteros para _codificar_ los valores y palos. En este contexto, "codificar" significa definir una asociación entre números y palos, o entre números y valores. Este tipo de codificación no está relacionada con cifrar o traducir a un código secreto (eso sería "cifrado").
 (((encode)))
 
-For example, this table shows the suits and the corresponding integer codes:
+Por ejemplo, esta tabla muestra una correspondencia entre palos y códigos (números) enteros:
 
 * +♠+  latexmath:[\(\mapsto\)]  4
 
@@ -27,260 +27,261 @@ For example, this table shows the suits and the corresponding integer codes:
 
 * +♣+  latexmath:[\(\mapsto\)]  1
 
-This code makes it easy to compare cards; because higher suits map to higher numbers, we can compare suits by comparing their codes.
+Este código facilita la comparación de naipes; los palos más altos se asignan a los números más altos, por lo tanto podemos comparar los palos al comparar sus códigos.
 
-I am using the latexmath:[\(\mapsto\)] symbol to make it clear that these mappings are not part of the Julia program. They are part of the program design, but they don’t appear explicitly in the code.
+Estamos usando el símbolo latexmath:[\(\mapsto\)] para dejar en claro que estas asignaciones no son parte de Julia. Forman parte del diseño del programa, pero no aparecen explícitamente en el código.
 
-The struct definition for +Card+ looks like this:
+La definición de estructura de +Naipe+ se ve así:
 (((Card)))((("type", "programmer-defined", "Card", see="Card")))
 
 [source,@julia-setup chap18]
 ----
-struct Card
-    suit :: Int64
-    rank :: Int64
-    function Card(suit::Int64, rank::Int64)
-        @assert(1 ≤ suit ≤ 4, "suit is not between 1 and 4")
-        @assert(1 ≤ rank ≤ 13, "rank is not between 1 and 13")
-        new(suit, rank)
+struct Naipe
+    palo :: Int64
+    valor :: Int64
+    function Naipe(palo::Int64, valor::Int64)
+        @assert(1 ≤ palo ≤ 4, "el palo no está entre 1 y 4")
+        @assert(1 ≤ valor ≤ 13, "el valor no está entre 1 y 13")
+        new(palo, valor)
     end
 end
 ----
 
-To create a +Card+, you call +Card+ with the suit and rank of the card you want:
+Para crear un +Naipe+, se debe llamar a +Naipe+ con el palo y el valor del naipe deseado:
 
 [source,@julia-repl-test chap18]
 ----
-julia> queen_of_diamonds = Card(2, 12)
-Card(2, 12)
+julia> reina_de_diamantes = Naipe(2, 12)
+Naipe(2, 12)
 ----
 
 
-=== Global Variables
+=== Variables Globales
 
-In order to print +Card+ objects in a way that people can easily read, we need a mapping from the integer codes to the corresponding ranks and suits. A natural way to do that is with arrays of strings:
+Para poder imprimir los objetos +Naipe+ de una manera que sea fácil de leer, necesitamos establecer una correspondencia entre los códigos enteros, y sus correspondientes palos y valores. Una manera natural de hacer esto es con matrices de cadenas: 
 
 [source,@julia-setup chap18]
 ----
-const suit_names = ["♣", "♦", "♥", "♠"]
-const rank_names = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
+const nombres_palo = ["♣", "♦", "♥", "♠"]
+const nombres_valor = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
 ----
 
-The variables +suit_names+ and +rank_names+ are global variables. The +const+ declaration means that the variable can only be assigned once. This solves the performance problem of global variables.
+Las variables +nombres_palo+ y +nombres_valor+ son variables globales. La declaración +const+ significa que la variable solo se puede asignar una vez. Esto resuelve el problema de rendimiento de las variables globales.
 (((global statement)))(((const)))((("keyword", "const", see="const")))
 
-Now we can implement an appropriate +show+ method:
+Ahora podemos implementar un método +show+ apropiado:
 (((show)))
 
 [source,@julia-setup chap18]
 ----
-function Base.show(io::IO, card::Card)
-    print(io, rank_names[card.rank], suit_names[card.suit])
+function Base.show(io::IO, naipe::Naipe)
+    print(io, nombres_valor[naipe.valor], nombres_palo[naipe.palo])
 end
 ----
 
-The expression +rank_names[card.rank]+ means “use the field +rank+ from the object +card+ as an index into the array +rank_names+, and select the appropriate string.”
+La expresión +nombres_valor[naipe.valor]+ significa "use el atributo +valor+ del objeto +naipe+ como índice en la matriz +nombres_valor+, y seleccione la cadena correspondiente".
 
-With the methods we have so far, we can create and print cards:
+Con los métodos que tenemos hasta ahora, podemos crear e imprimir naipes:
 
 [source,@julia-repl-test chap18]
 ----
-julia> Card(3, 11)
+julia> Naipe(3, 11)
 J♥
 ----
 
 
-=== Comparing Cards
+=== Comparación de naipes
 
-For built-in types, there are relational operators (+<+, +>+, +==+, etc.) that compare values and determine when one is greater than, less than, or equal to another. For programmer-defined types, we can override the behavior of the built-in operators by providing a method named: +<+.
+Para los tipos integrados, existen operadores relacionales (+<+, +>+, +==+, etc.) que comparan valores y determinan cuándo uno es mayor, menor, o igual a otro. Para los tipos definidos por el usuario, podemos sustituir el comportamiento de estos operadores si proporcionamos un método llamado: +<+.
 
-The correct ordering for cards is not obvious. For example, which is better, the 3 of Clubs or the 2 of Diamonds? One has a higher rank, but the other has a higher suit. In order to compare cards, you have to decide whether rank or suit is more important.
+El orden correcto de los naipes no es obvio. Por ejemplo, ¿cuál es mejor, el 3 de Tréboles o el 2 de Diamantes? Uno tiene un valor mayor, pero el otro tiene un palo mayor. Para hacer que los naipes sean comparables, se debe decidir qué es más importante: valor o palo.
 
-The answer might depend on what game you are playing, but to keep things simple, we’ll make the arbitrary choice that suit is more important, so all of the Spades outrank all of the Diamonds, and so on.
+La respuesta puede depender del tipo de juego, pero para simplificar las cosas, haremos la elección arbitraria de que el palo es más importante, por lo que todas los tréboles superan a todos los diamantes, y así sucesivamente.
 
-With that decided, we can write +<+
+Con esa decisión tomada, podemos escribir +<+:
 
 [source,@julia-setup chap18]
 ----
 import Base.<
 
-function <(c1::Card, c2::Card)
-    (c1.suit, c1.rank) < (c2.suit, c2.rank)
+function <(c1::Naipe, c2::Naipe)
+    (c1.palo, c1.rvalor) < (c2.palo, c2.valor)
 end
 ----
 
-==== Exercise 18-1
+==== Ejercicio 18-1
 
-Write a +<+ method for +MyTime+ objects. You can use tuple comparison, but you also might consider comparing integers.
-
-
-=== Unit Testing
+Escriba un método +<+ para objetos +Hora+. Puede usar comparación de tuplas, o comparación de enteros.
 
 
-_Unit testing_ allows you to verify the correctness of your code by comparing the results of your code to what you expect. This can be useful to be sure that your code still is correct after modifications, and it is also a way to predefine the correct behaviour of your code during development.
+=== Prueba unitaria
+
+
+Una _prueba unitaria_ permite verificar el correcto funcionamiento de su código comparando los resultados obtenidos con los esperados. Esto puede ser útil para verificar que su código funciona correctamente después de haberlo modificado, y también es una forma de predefinir el comportamiento correcto de su código durante el desarrollo.
 (((unit testing)))
 
-Simple unit testing can be performed with the +@test+ macros:
+Se pueden realizar pruebas unitarias simples con las macros +@test+:
 (((Test)))((("module", "Test", see="Test")))(((@test)))((("macro", "Test", "@test", see="@test"))) 
 
 [source,@julia-repl-test chap18]
 ----
 julia> using Test
 
-julia> @test Card(1, 4) < Card(2, 4)
+julia> @test Naipe(1, 4) < Naipe(2, 4)
 Test Passed
-julia> @test Card(1, 3) < Card(1, 4)
+julia> @test Naipe(1, 3) < Naipe(1, 4)
 Test Passed
 ----
 
-+@test+ returns a +"Test Passed"+ if the expression following it is +true+, a +"Test Failed"+ if it is +false+, and an +"Error Result"+ if it could not be evaluated.
++@test+ devuelve +"Test Passed"+ ("Prueba aprobada") si la expresión que sigue es +true+, +"Test Failed"+ ("Prueba fallida") si es +false+, y +"Error Result"+ ("Resultado de error") si no se pudo evaluar.
 
 
-=== Decks
+=== Mazos
 
-Now that we have Cards, the next step is to define Decks. Since a deck is made up of cards, it is natural for each Deck to contain an array of cards as an attribute.
+Ahora que ya tenemos Naipes, el próximo paso es definir Mazos. Como un mazo está compuesto de naipes, naturalmente cada Mazo contendrá una matriz de naipes como atributo.
 
-The following is a struct definition for +Deck+. The constructor creates the fields cards and generates the standard set of fifty-two cards:
+A continuación se muestra una definición para +Mazo+. El constructor crea el atributo naipes y genera la baraja estándar de cincuenta
+y dos naipes:
 (((Deck)))((("type", "programmer-defined", "Deck", see="Deck")))
 
 [source,@julia-setup chap18]
 ----
-struct Deck
-    cards :: Array{Card, 1}
+struct Mazo
+    naipes :: Array{Naipe, 1}
 end
 
-function Deck()
-    deck = Deck(Card[])
-    for suit in 1:4
-        for rank in 1:13
-            push!(deck.cards, Card(suit, rank))
+function Mazo()
+    mazo = Mazo(Card[])
+    for palo in 1:4
+        for valor in 1:13
+            push!(mazo.naipes, Naipe(palo, valor))
         end
     end
     deck
 end
 ----
 
-The easiest way to populate the deck is with a nested loop. The outer loop enumerates the suits from 1 to 4. The inner loop enumerates the ranks from 1 to 13. Each iteration creates a new +Card+ with the current suit and rank, and pushes it to +deck.cards+.
+La forma más fácil de poblar el mazo es mediante un bucle anidado. El bucle exterior enumera los palos desde 1 hasta 4. El bucle interior enumera los valores desde 1 hasta 13. Cada iteración crea un nuevo +Naipe+ con el palo y valor actual, y lo agrega a +mazo.naipes+.
 
-Here is a +show+ method for +Deck+:
+Este es un método +show+ para +Mazo+:
 
 [source,@julia-setup chap18]
 ----
-function Base.show(io::IO, deck::Deck)
-    for card in deck.cards
-        print(io, card, " ")
+function Base.show(io::IO, mazo::Mazo)
+    for naipe in mazo.naipes
+        print(io, naipe, " ")
     end
     println()
 end
 ----
 
-Here’s what the result looks like:
+Así es como se ve el resultado:
 
 [source,@julia-repl-test chap18]
 ----
-julia> Deck()
+julia> Mazo()
 A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ 10♣ J♣ Q♣ K♣ A♦ 2♦ 3♦ 4♦ 5♦ 6♦ 7♦ 8♦ 9♦ 10♦ J♦ Q♦ K♦ A♥ 2♥ 3♥ 4♥ 5♥ 6♥ 7♥ 8♥ 9♥ 10♥ J♥ Q♥ K♥ A♠ 2♠ 3♠ 4♠ 5♠ 6♠ 7♠ 8♠ 9♠ 10♠ J♠ Q♠ K♠
 ----
 
 
-=== Add, Remove, Shuffle and Sort
+=== Añadir, Eliminar, Barajar y Ordenar
 
-To deal cards, we would like a function that removes a card from the deck and returns it. The function +pop!+ provides a convenient way to do that:
+Para repartir los naipes, nos gustaría tener una función que elimine un naipe del mazo y lo devuelva. La función +pop!+ proporciona una forma conveniente de realizar esto:
 (((pop!)))
 
 [source,@julia-setup chap18]
 ----
-function Base.pop!(deck::Deck)
-    pop!(deck.cards)
+function Base.pop!(mazo::Mazo)
+    pop!(mazo.naipes)
 end
 ----
 
-Since +pop!+ removes the last card in the array, we are dealing from the bottom of the deck.
+Como +pop!+ elimina el último naipe en la matriz, estamos repartiendo desde el extremo inferior del mazo.
 
-To add a card, we can use the function +push!+:
+Para añadir un naipe, podemos usar la función +push!+:
 (((push!)))
 
 [source,@julia-setup chap18]
 ----
-function Base.push!(deck::Deck, card::Card)
-    push!(deck.cards, card)
+function Base.push!(mazo::Mazo, naipe::Naipe)
+    push!(mazo.naipes, naipe)
     deck
 end
 ----
 
-A method like this that uses another method without doing much work is sometimes called a _veneer_. The metaphor comes from woodworking, where a veneer is a thin layer of good quality wood glued to the surface of a cheaper piece of wood to improve the appearance.
+Un método como este, que usa otro método sin hacer mucho más se llama _enchapado_. La metáfora proviene de la carpintería, donde un enchapado es una capa fina de madera de alta calidad que se pega a la superficie de una pieza de madera de baja calidad para mejorar su apariencia.
 (((veneer)))
 
-In this case +push!+ is a “thin” method that expresses an array operation in terms appropriate for decks. It improves the appearance, or interface, of the implementation.
+En este caso, +push!+ es un método "fino" que expresa una operación de matriz adecuada para los mazos. Mejora la apariencia o interfaz, de la implementación.
 
-As another example, we can write a method named +shuffle!+ using the function +Random.shuffle!+:
+También podemos escribir un método llamado +shuffle!+ (barajar en inglés) Usando la función +Random.shuffle!+:
 (((Random)))((("module", "Random", see="Random")))(((shuffle!)))((("function", "Random", "shuffle!", see="shuffle!")))
 
 [source,@julia-setup chap18]
 ----
 using Random
 
-function Random.shuffle!(deck::Deck)
-    shuffle!(deck.cards)
-    deck
+function Random.shuffle!(mazo::Mazo)
+    shuffle!(mazo.naipes)
+    mazo
 end
 ----
 
-==== Exercise 18-2
+==== Ejercicio 18-2
 
-Write a function named +sort!+ that uses the function +sort!+ to sort the cards in a Deck. +sort!+ uses the +isless+ method we defined to determine the order.
+Escriba una función llamada +sort!+ (ordenar en inglés) que use la función +sort!+ para ordenar las cartas en un Mazo. +sort!+ usa el método +isless+ que definimos para determinar el orden.
 (((sort!)))
 
 
-=== Abstract Types and Subtyping
+=== Tipos Abstractos y Subtipos
 
-We want a type to represent a “hand”, that is, the cards held by one player. A hand is similar to a deck: both are made up of a collection of cards, and both require operations like adding and removing cards.
+Queremos que un tipo represente una "mano", es decir, los naipes que tiene un jugador. Una mano es similar a un mazo: ambos están compuestos de un conjunto de naipes, y ambos requieren de operaciones tales como agregar y eliminar una carta.
 
-A hand is also different from a deck; there are operations we want for hands that don’t make sense for a deck. For example, in poker we might compare two hands to see which one wins. In bridge, we might compute a score for a hand in order to make a bid.
+Una mano es diferente de un mazo en ciertos aspectos; podemos querer realizar ciertas operaciones sobre una mano que no tendrían sentido sobre un mazo. Por ejemplo, en el poker querríamos comparar una mano con otra para ver quién gana. En bridge, necesitamos calcular el puntaje de la mano para así poder hacer la subasta.
 
-So we need a way to group related _concrete types_. In Julia this is done by defining an _abstract type_ that serves as a parent for both +Deck+ and +Hand+. This is called _subtyping_
+Por lo tanto, necesitamos una forma de agrupar los _tipos concretos_ que están relacionados. En Julia, esto se hace definiendo un _abstract type_ (tipo abstracto en inglés) que sea padre de +Mazo+ y +Mano+. A esto se le llama _crear subtipos_.
 (((concrete type)))(((abstract type)))(((subtyping)))
 
-Let's call this abstract type +CardSet+:
+Llamemos al tipo abstracto +ConjuntoDeCartas+:
 (((CardSet)))((("type", "programmer-defined", "CardSet", see="CardSet")))
 
 [source,@julia-eval chap18a]
 ----
-struct Card
-    suit :: Int64
-    rank :: Int64
-    function Card(suit::Int64, rank::Int64)
-        @assert(1 ≤ suit ≤ 4, "suit is between 1 and 4")
-        @assert(1 ≤ rank ≤ 13, "rank is between 1 and 13")
-        new(suit, rank)
+struct Naipe
+    palo :: Int64
+    valor :: Int64
+    function Naipe(palo::Int64, valor::Int64)
+        @assert(1 ≤ palo ≤ 4, "palo está entre 1 y 4")
+        @assert(1 ≤ valor ≤ 13, "valor es entre 1 y 13")
+        new(palo, valor)
     end
 end;
 ----
 
 [source,@julia-setup chap18a]
 ----
-abstract type CardSet end
+abstract type ConjuntoDeCartas end
 ----
 
-A new abstract type is created with the +abstract type+ keyword. An optional “parent” type can be specified by putting after the name +<:+ followed by the name of an already-existing abstract type. 
+Se puede crear un nuevo tipo abstracto con la palabra reservada +abstract type+. De manera opcional, se puede especificar un tipo "padre" de una estructura colocando después del nombre de esta, el símbolo +<:+ seguido del nombre de un tipo abstracto existente.
 (((abstract type)))((("keyword", "abstract type", see="abstract type")))(((type)))
 
-When no _supertype_ is given, the default supertype is +Any+ – a predefined abstract type that all objects are instances of and all types are _subtypes_ of.
+Cuando no se proporciona un _supertipo_, el supertipo por defecto es +Any+, es decir, un tipo abstracto predefinido del que todos los objetos son instancias y del que todos los tipos son _subtipos_.
 (((supertype)))(((subtype)))
 
-We can now express that +Deck+ is a descendant of +CardSet+:
+Ahora podemos expresar que +Mazo+ es un "hijo" de +ConjuntoDeCartas+:
 
 [source,@julia-setup chap18a]
 ----
-struct Deck <: CardSet
-    cards :: Array{Card, 1}
+struct Mazo <: ConjuntoDeCartas
+    naipes :: Array{Naipe, 1}
 end
 
-function Deck()
-    deck = Deck(Card[])
-    for suit in 1:4
-        for rank in 1:13
-            push!(deck.cards, Card(suit, rank))
+function Mazo()
+    mazo = Mazo(Naipe[])
+    for palo in 1:4
+        for valor in 1:13
+            push!(mazo.naipes, Naipe(palo, valor))
         end
     end
     deck
@@ -291,307 +292,308 @@ end
 ----
 using Random
 
-const suit_names = ["♣", "♦", "♥", "♠"];
-const rank_names = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+const nombres_palo = ["♣", "♦", "♥", "♠"];
+const nombres_valor = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
 
-function Base.show(io::IO, card::Card)
-    print(io, rank_names[card.rank], suit_names[card.suit])
+function Base.show(io::IO, naipe::Naipe)
+    print(io, nombres_valor[naipe.valor], nombres_palo[naipe.palo])
 end
 
-function Random.shuffle!(deck::Deck)
-    shuffle!(deck.cards)
-    deck
+function Random.shuffle!(mazo::Mazo)
+    shuffle!(mazo.naipes)
+    mazo
 end
 ----
 
-The operator +isa+ checks whether an object is of a given type:
+El operador +isa+ comprueba si un objeto es de un tipo dado:
 (((isa)))((("operator", "Base", "isa", see="isa")))
 
 [source,@julia-repl-test chap18a]
 ----
-julia> deck = Deck();
+julia> mazo = Mazo();
 
-julia> deck isa CardSet
+julia> mazo isa ConjuntoDeCartas
 true
 ----
 
-A hand is also a kind of +CardSet+:
+Una mano también es un +ConjuntoDeCartas+:
 (((Hand)))((("type", "programmer-defined", "Hand", see="Hand")))
 
 [source,@julia-setup chap18a]
 ----
-struct Hand <: CardSet
-    cards :: Array{Card, 1}
-    label :: String
+struct Mano <: ConjuntoDeCartas
+    naipes :: Array{Naipe, 1}
+    etiqueta :: String
 end
 
-function Hand(label::String="")
-    Hand(Card[], label)
+function Mano(etiqueta::String="")
+    Mano(Naipe[], etiqueta)
 end
 ----
 
-Instead of populating the hand with 52 new cards, the constructor for +Hand+ initializes +cards+ with an empty array. An optional argument can be passed to the constructor giving a label to the +Hand+.
+En lugar de llenar la mano con 52 naipes nuevos, el constructor de +Mano+ inicializa +naipes+ a una matriz vacía. Se puede etiquetar a la +Mano+ pasando un argumento opcional al constructor.
 
 [source,@julia-repl-test chap18a]
 ----
-julia> hand = Hand("new hand")
-Hand(Card[], "new hand")
+julia> mano = Mano("nueva mano")
+Mano(Naipe[], "nueva mano")
 ----
 
 
-=== Abstract Types and Functions
+=== Tipos Abstractos y Funciones
 
-We can now express the common operations between +Deck+ and +Hand+ as functions having as argument +CardSet+:
+Ahora podemos expresar las operaciones que tienen en común +Mazo+ y +Mano+, al ser funciones que tienen como argumento a +ConjuntoDeCartas+:
 (((show)))(((pop!)))(((push!)))
 
 [source,@julia-setup chap18a]
 ----
-function Base.show(io::IO, cs::CardSet)
-    for card in cs.cards
-        print(io, card, " ")
+function Base.show(io::IO, cdc::ConjuntoDeCartas)
+    for naipe in cdc.naipes
+        print(io, naipe, " ")
     end
 end
 
-function Base.pop!(cs::CardSet)
-    pop!(cs.cards)
+function Base.pop!(cdc::ConjuntoDeCartas)
+    pop!(cdc.naipes)
 end
 
-function Base.push!(cs::CardSet, card::Card)
-    push!(cs.cards, card)
+function Base.push!(cdc::ConjuntoDeCartas, naipe::Naipe)
+    push!(cdc.naipes, naipe)
     nothing
 end
 ----
 
-We can use +pop!+ and +push!+ to deal a card:
+Podemos usar +pop!+ y +push!+ para repartir una carta:
 
 [source,@julia-repl chap18a]
 ----
-deck = Deck()
-shuffle!(deck)
-card = pop!(deck)
-push!(hand, card)
+mazo = Mazo()
+shuffle!(mazo)
+naipe = pop!(mazo)
+push!(mano, naipe)
 ----
 
-A natural next step is to encapsulate this code in a function called +move!+:
+A continuación, encapsularemos este código en una función llamada +mover!+:
 (((move!)))((("function", "programmer-defined", "move!", see="move!")))
 
 [source,@julia-setup chap18a]
 ----
-function move!(cs1::CardSet, cs2::CardSet, n::Int)
-    @assert 1 ≤ n ≤ length(cs1.cards)
+function mover!(cdc1::ConjuntoDeCartas, cdc2::ConjuntoDeCartas, n::Int)
+    @assert 1 ≤ n ≤ length(cs1.naipes)
     for i in 1:n
-        card = pop!(cs1)
-        push!(cs2, card)
+        naipe = pop!(cdc1)
+        push!(cdc2, naipe)
     end
     nothing
 end
 ----
 
-+move!+ takes three arguments, two +Cardset+ objects and the number of cards to deal. It modifies both +Cardset+ objects, and returns +nothing+.
++mover!+ toma tres argumentos: dos objetos +ConjuntoDeCartas+ y el número de cartas a repartir. Modifica ambos objetos +ConjuntoDeCartas+, y devuelve +nothing+. 
 
-In some games, cards are moved from one hand to another, or from a hand back to the deck. You can use +move!+ for any of these operations: +cs1+ and +cs2+ can be either a +Deck+ or a +Hand+.
+En algunos juegos, las cartas se mueven de una mano a otra, o de una mano al mazo. Puedes usar +mover!+ para cualquiera de estas operaciones: +cdc1+ y +cdc2+ pueden ser un +Mazo+ o una +Mano+.
 
 
-=== Type Diagrams
+=== Diagramas de tipos
 
-So far we have seen stack diagrams, which show the state of a program, and object diagrams, which show the attributes of an object and their values. These diagrams represent a snapshot in the execution of a program, so they change as the program runs.
+Hasta ahora hemos visto diagramas de pila; que muestran el estado de un programa, y diagramas de objetos; que muestran los atributos de un objeto y sus valores. Estos diagramas son como una foto sacada durante la ejecución de un programa, por lo que cambian a medida que se ejecuta el programa.
 
-They are also highly detailed; for some purposes, too detailed. A _type diagram_ is a more abstract representation of the structure of a program. Instead of showing individual objects, it shows types and the relationships between them.
+También son muy detallados; en algunos casos demasiado detallados. Un _diagrama de tipos_ es una representación más abstracta de la estructura de un programa. En vez de mostrar objetos individuales, muestra los tipos y las relaciones entre ellos.
 (((type diagram)))((("diagram", "type", see="type diagram")))
 
-There are several kinds of relationship between types:
+Hay varias formas de relación entre tipos:
 
-* Objects of a concrete type might contain references to objects of another type. For example, each Rectangle contains a reference to a Point, and each Deck contains references to an array of Cards. This kind of relationship is called _HAS-A_, as in, “a Rectangle has a Point”.
+* Los objetos de un tipo concreto pueden contener referencias a objetos de otro tipo. Por ejemplo, cada Rectangulo contiene una referencia a un Punto, y cada Mazo contiene referencias a un conjunto de Naipes. Este tipo de relación se llama _TIENE-UN_, como por ejemplo "un Rectángulo tiene un Punto".
 (((HAS-A)))
 
-* A concrete type can have an abstract type as a supertype. This relationship is called _IS-A_, as in, “a Hand is a kind of a CardSet.”
+* Un tipo concreto puede tener un tipo abstracto como supertipo. Esta relación se llama _ES-UN_, como por ejemplo "una Mano es un ConjuntoDeCartas".
 (((IS-A)))
 
-* One type might depend on another in the sense that objects of one type take objects of the second type as parameters, or use objects of the second type as part of a computation. This kind of relationship is called a _dependency_.
+* Un tipo puede depender de otro si los objetos de un tipo toman objetos del segundo tipo como parámetros, o usan objetos del segundo tipo como parte de un cálculo. Este tipo de relación se llama _dependencia_.
 (((dependency)))
 
 [[fig18-1]]
 .Type diagram
 image::images/fig181.svg[]
 
-The arrow with a hollow triangle head represents an IS-A relationship; in this case it indicates that Hand has as supertype CardSet.
+Cada una de las flechas superiores representa una relación ES-UN; en este caso, indica que Mano tiene como supertipo a ConjuntoDeCartas.
 
-The standard arrow head represents a HAS-A relationship; in this case a Deck has references to Card objects.
+Cada una de las flechas inferiores representa una relación TIENE-UN; en este caso, un Mazo tiene referencias a objetos Naipe.
 
-The star (+pass:[*]+) near the arrow head is a _multiplicity_; it indicates how many Cards a Deck has. A multiplicity can be a simple number, like +52+, a range, +like 5:7+ or a star, which indicates that a Deck can have any number of Cards.
+El asterisco (+pass:[*]+) cerca de la flecha es una _multiplicidad_; indica cuántos Naipes tiene un Mazo. Una multiplicidad puede ser un número simple; como +52+, un rango; +como 5:7+ o un asterisco; lo cual indica que un Mazo puede tener cualquier número de Naipes.
 (((multiplicity)))
 
-There are no dependencies in this diagram. They would normally be shown with a dashed arrow. Or if there are a lot of dependencies, they are sometimes omitted.
+No hay dependencias en este diagrama. Normalmente se mostrarían con una flecha achurada. Si hay muchas dependencias, a veces se omiten.
 
-A more detailed diagram might show that a Deck actually contains an array of Cards, but built-in types like array and dictionnaries are usually not included in type diagrams.
+Un diagrama más detallado podría mostrar que un Mazo en realidad contiene una matriz de Naipes, pero los tipos integrados como matrices y diccionarios generalmente no se incluyen en los diagramas de tipos.
 
 [[interactive]]
-=== Debugging
+=== Depuración
 
-Subtyping can make debugging difficult because when you call a function with an object as argument, it might be hard to figure out which method will be invoked.
+Utilizar subtipos puede dificultar la depuración ya que al llamar a una función con un objeto como argumento, puede ser complicado determinar qué método se invocará.
 
-Suppose you are writing a function that works with +Hand+ objects. You would like it to work with all kinds of +Hand+s, like +PokerHand+s, +BridgeHand+s, etc. If you invoke a method like +sort!+, you might get the one defined for an abstract type +Hand+, but if a method +sort!+ with as argument any of the subtypes exists, you’ll get that version instead. This behavior is usually a good thing, but it can be confusing.
+Supongamos que estamos escribiendo una función que funciona con objetos +Mano+. Nos gustaría que funcionara con todo tipo de +Mano+s, como +ManoDePoker+, +ManoDeBridge+, etc. Si invocas un método como +sort!+, podrías obtener el método definido para un tipo abstracto +Mano+, pero si existiera un método +sort!+ que tuviera como argumento cualquiera de estos subtipos de +Mano+, obtendrás esa versión. Este comportamiento suele ser algo bueno, pero puede ser confuso.
 
 [source,@julia-setup chap18a]
 ----
-function Base.sort!(hand::Hand)
-    sort!(hand.cards)
+function Base.sort!(mano::Mano)
+    sort!(mano.naipes)
 end
 ----
 
-Any time you are unsure about the flow of execution through your program, the simplest solution is to add print statements at the beginning of the relevant methods. If +shuffle!+ prints a message that says something like +Running shuffle! Deck+, then as the program runs it traces the flow of execution.
+Si no estás seguro del flujo de ejecución de un programa, la solución más simple es agregar sentencias de impresión al inicio de sus métodos más relevantes. Si +shuffle!+ imprimiera un mensaje como +Ejecutando shuffle! en Mazo+, durante la ejecución del programa, sería posible rastrear el flujo de ejecución.
 
-As better alternative, you can also use the +@which+ macro:
+Una mejor alternativa es la macro +@which+:
 (((InteractiveUtils)))((("module", "InteractiveUtils", see="InteractiveUtils")))(((@which)))((("macro", "InteractiveUtils", "@which", see="@which")))
 
 [source,jlcon]
 ----
-julia> @which sort!(hand)
-sort!(hand::Hand) in Main at REPL[5]:1
+julia> @which sort!(mano)
+sort!(mano::Mano) in Main at REPL[5]:1
 ----
 
-So the +sort!+ method for +hand+ is the one having as argument an object of type +Hand+.
+Entonces, el método +sort!+ de +mano+ es el que tiene como argumento un objeto de tipo +Mano+.
 
-Here’s a design suggestion: when you override a method, the interface of the new method should be the same as the old. It should take the same parameters, return the same type, and obey the same preconditions and postconditions. If you follow this rule, you will find that any function designed to work with an instance of a supertype, like a +CardSet+, will also work with instances of its subtypes +Deck+ and +Hand+.
+Una sugerencia para el diseño del programa: cuando anula un método, la interfaz del nuevo método debería ser la misma que la anterior. Debería tomar los mismos parámetros, devolver el mismo tipo y obedecer las mismas condiciones previas y posteriores. Si sigues esta regla, cualquier función diseñada para funcionar con una instancia de un supertipo, como un +ConjuntoDeCartas+, también funcionará con instancias de sus subtipos +Mazo+ y +Mano+.
 
-If you violate this rule, which is called the “Liskov substitution principle”, your code will collapse like (sorry) a house of cards.
+Si viola esta regla, llamada "principio de sustitución de Liskov", su código colapsará como un castillo de naipes (jeje).
 (((Liskov substitution principle)))
 
-The function +supertype+ can be used to find the direct supertype of a type.
+La función +supertype+ permite encontrar el supertipo directo de un tipo.
 (((supertype)))((("function", "Base", "supertype", see="supertype")))
 
 [source,@julia-repl-test chap18a]
 ----
-julia> supertype(Deck)
-CardSet
+julia> supertype(Mazo)
+ConjuntoDeCartas
 ----
 
 
-=== Data Encapsulation
+=== Encapsulado de Datos
 
-The previous chapters demonstrate a development plan we might call “type-oriented design”. We identified objects we needed—like +Point+, +Rectangle+ and +MyTime+—and defined structs to represent them. In each case there is an obvious correspondence between the object and some entity in the real world (or at least a mathematical world).
+Los capítulos anteriores muestran un plan de desarrollo que podríamos llamar "diseño orientado a tipos". Identificamos los objetos que necesitamos, como +Punto+, +Rectangulo+ y +Hora+, y definimos estructuras para representarlos. En cada caso hay una correspondencia obvia entre el objeto y alguna entidad en el mundo real (o al menos en el mundo matemático).
 (((type-oriented design)))
 
-But sometimes it is less obvious what objects you need and how they should interact. In that case you need a different development plan. In the same way that we discovered function interfaces by encapsulation and generalization, we can discover type interfaces by _data encapsulation_.
+A veces no es tan obvio los objetos que necesitamos y cómo estos deben interactuar. En ese caso, se necesita un plan de desarrollo diferente. De la misma manera que aprendimos sobre interfaces de funciones por encapsulado y generalización, podemos aprender sobre interfaces de tipo por encapsulado de datos.
 (((data encapsulation)))
 
-Markov analysis, from <<markov_analysis>>, provides a good example. If you download code from https://github.com/PiensaEnJulia/PiensaEnJulia.jl/blob/master/src/solutions/chap13.jl, you’ll see that it uses two global variables—+suffixes+ and +prefix+—that are read and written from several functions.
+El análisis de Markov, de <<markov_analysis>>, es un buen ejemplo. Si descarga el código desde https://github.com/BenLauwens/ThinkJulia.jl/blob/master/src/solutions/chap13.jl, verá que se usan dos variables globales: +sufijos+ y +prefijo+, las cuales se leen y escriben desde varias funciones.
 
 [source,@julia-setup]
 ----
-suffixes = Dict()
-prefix = []
+sufijos = Dict()
+prefijos = []
 ----
 
-Because these variables are global, we can only run one analysis at a time. If we read two texts, their prefixes and suffixes would be added to the same data structures (which makes for some interesting generated text).
+Debido que estas variables son globales, solo podemos ejecutar un análisis a la vez. Si leemos dos textos, sus prefijos y sufijos se agregarían a las mismas estructuras de datos (lo que generaría un texto interesante).
 
-To run multiple analyses, and keep them separate, we can encapsulate the state of each analysis in an object. Here’s what that looks like:
+Para ejecutar múltiples análisis y mantenerlos separados, podemos encapsular el estado de cada análisis en un objeto. Así es como se vería:
 (((Markov)))((("type", "programmer-defined", "Markov", see="Markov")))
 
 [source,@julia-setup chap18b]
 ----
 struct Markov
-    order :: Int64
-    suffixes :: Dict{Tuple{String,Vararg{String}}, Array{String, 1}}
-    prefix :: Array{String, 1}
+    orden :: Int64
+    sufijos :: Dict{Tuple{String,Vararg{String}}, Array{String, 1}}
+    prefijo :: Array{String, 1}
 end
 
-function Markov(order::Int64=2)
-    new(order, Dict{Tuple{String,Vararg{String}}, Array{String, 1}}(), Array{String, 1}())
+function Markov(orden::Int64=2)
+    new(orden, Dict{Tuple{String,Vararg{String}}, Array{String, 1}}(), Array{String, 1}())
 end
 ----
 
-Next, we transform the functions into methods. For example, here’s +processword+:
+A continuación, transformamos las funciones en métodos. Por ejemplo, para +procesarpalabra+:
 (((processword)))((("function", "programmer-defined", "processword", see="processword")))
 
 [source,@julia-setup chap18b]
 ----
-function processword(markov::Markov, word::String)
-    if length(markov.prefix) < markov.order
-        push!(markov.prefix, word)
+function procesarpalabra(markov::Markov, palabra::String)
+    if length(markov.prefijo) < markov.orden
+        push!(markov.prefijo, palabra)
         return
     end
-    get!(markov.suffixes, (markov.prefix...,), Array{String, 1}())
-    push!(markov.suffixes[(markov.prefix...,)], word)
-    popfirst!(markov.prefix)
-    push!(markov.prefix, word)
+    get!(markov.sufijos, (markov.prefijo...,), Array{String, 1}())
+    push!(markov.sufijos[(markov.prefijo...,)], palabra)
+    popfirst!(markov.prefijo)
+    push!(markov.prefijo, palabra)
 end
 ----
 
-Transforming a program like this—changing the design without changing the behavior—is another example of refactoring (see <<refactoring>>).
+Transformar un programa así (cambiando el diseño sin cambiar el comportamiento) es otro ejemplo de refactorización (vea <<refactorización>>).
 (((refactoring)))(((program development plan)))
 
-This example suggests a development plan for designing types:
+Este ejemplo sugiere el siguiente plan de desarrollo para diseñar tipos:
 
-* Start by writing functions that read and write global variables (when necessary).
+* Comience escribiendo funciones que lean y escriban variables globales (cuando sea necesario).
 
-* Once you get the program working, look for associations between global variables and the functions that use them.
+* Una vez que el programa esté funcionando, busque asociaciones entre las variables globales y las funciones que las usan.
 
-* Encapsulate related variables as fields of a struct.
+* Encapsule variables relacionadas como atributos de una estructura.
 
-* Transform the associated functions into methods with as argument objects of the new type.
+* Transforme las funciones asociadas en métodos que tengan como argumentos objetos del nuevo tipo.
+
 
 ==== Exercise 18-3
 
-Download Markov code from https://github.com/PiensaEnJulia/PiensaEnJulia.jl/blob/master/src/solutions/chap13.jl, and follow the steps described above to encapsulate the global variables as attributes of a new struct called +Markov+.
+Descargue el código de Markov de https://github.com/BenLauwens/ThinkJulia.jl/blob/master/src/solutions/chap13.jl, y siga los pasos descritos anteriormente para encapsular las variables globales como atributos de una nueva estructura llamada +Markov+.
 
 
-=== Glossary
+=== Glosario
 
-encode::
-To represent one set of values using another set of values by constructing a mapping between them.
+codificar::
+Representar un conjunto de valores uilizando otro conjunto de valores, generando una asociación entre ellos.
 (((encode)))
 
-unit testing::
-Standardized way to test the correctness of code.
+prueba unitaria::
+Manera estandarizada de probar que el código está correcto.
 (((unit testing)))
 
-veneer::
-A method or function that provides a different interface to another function without doing much computation.
+enchapado::
+Un método o función que mejora la interfaz de otra función sin hacer muchos cálculos.
 (((veneer)))
 
-subtyping::
-The ability to define a hierarchy of related types.
+crear subtipos::
+La capacidad de definir una jerarquía de tipos relacionados.
 (((subtyping)))
 
-abstract type::
-A type that can act as a parent for another type.
+tipo abstracto::
+Un tipo que puede ser padre de otro tipo.
 (((abstract type)))
 
-concrete type::
-A type that can be constructed.
+tipo concreto::
+Un tipo que se puede construir.
 (((concrete type)))
 
-subtype::
-A type that has as parent an abstract type.
+subtipo::
+Un tipo que tiene como padre un tipo abstracto.
 (((subtype)))
 
-supertype::
-An abstract type that is the parent of another type.
+supertipo::
+Un tipo abstracto que es el padre de otro tipo.
 (((supertype)))
 
-IS-A relationship::
-A relationship between a subtype and its supertype.
+Relación ES-UN::
+Una relación entre un subtipo y su supertipo.
 (((IS-A relationship)))
 
-HAS-A relationship::
-A relationship between two types where instances of one type contain references to instances of the other.
+Relación TIENE-UN::
+Una relación entre dos tipos donde las instancias de un tipo contienen referencias a instancias del otro.
 (((HAS-A relationship)))
 
-dependency::
-A relationship between two types where instances of one type use instances of the other type, but do not store them as fields.
+dependencia::
+Una relación entre dos tipos donde las instancias de un tipo usan instancias del otro tipo, pero no las almacenan como atributos.
 (((dependency)))
 
-type diagram::
-A diagram that shows the types in a program and the relationships between them.
+diagrama de tipos::
+Un diagrama que muestra los tipos en un programa y las relaciones entre ellos.
 (((type diagram)))
 
-multiplicity::
-A notation in a type diagram that shows, for a HAS-A relationship, how many references there are to instances of another class.
+multiplicidad::
+Una notación en un diagrama de tipo que muestra, para una relación TIENE-UN, cuántas referencias hay a instancias de otra clase.
 (((multiplicity)))
 
-data encapsulation::
-A program development plan that involves a prototype using global variables and a final version that makes the global variables into instance fields.
+encapsulado de datos::
+Un plan de desarrollo de programas que implica hacer un prototipo que use variables globales y una versión final que convierta las variables globales en atributos de instancia.
 (((data encapsulation)))
 
 
@@ -600,77 +602,76 @@ A program development plan that involves a prototype using global variables and 
 [[ex18-1]]
 ==== Exercise 18-4
 
-For the following program, draw a type diagram that shows these types and the relationships among them.
+Para el siguiente programa, dibuje un diagrama de tipos que muestre estos tipos y las relaciones entre ellos.
 
 [source,julia]
 ----
-abstract type PingPongParent end
+abstract type PadrePingPong end
 
-struct Ping <: PingPongParent
-    pong :: PingPongParent
+struct Ping <: PadrePingPong
+    pong :: PadrePingPong
 end
 
-struct Pong <: PingPongParent
+struct Pong <: PadrePingPong
     pings :: Array{Ping, 1}
     function Pong(pings=Array{Ping, 1}())
         new(pings)
     end
 end
 
-function addping(pong::Pong, ping::Ping)
+function agregarping(pong::Pong, ping::Ping)
     push!(pong.pings, ping)
     nothing
 end
 
 pong = Pong()
 ping = Ping(pong)
-addping(pong, ping)
+agregarping(pong, ping)
 ----
 
 [[ex18-2]]
-==== Exercise 18-5
+==== Ejercicio 18-5
 
-Write a method called +deal!+ that takes three parameters, a +Deck+, the number of hands and the number of cards per hand. It should create the appropriate number of +Hand+ objects, deal the appropriate number of cards per hand, and return an array of +Hand+s.
+Escriba un método llamado +repartir!+ que tome tres parámetros: un +Mazo+, el número de manos y el número de naipes por mano. Debería crear el número apropiado de objetos +Mano+, repartir el número apropiado de naipes por mano y devolver una matriz de +Mano+s.
 (((deal!)))((("function", "programmer-defined", "deal!", see="deal!")))
 
 [[ex18-3]]
-==== Exercise 18-6
+==== Ejercicio 18-6
 
-The following are the possible hands in poker, in increasing order of value and decreasing order of probability:
+Las siguientes son las posibles manos en el póker, en orden de valor creciente y probabilidad decreciente:
 
-pair::
-two cards with the same rank
+pareja::
+dos cartas del mismo número
 
-two pair::
-two pairs of cards with the same rank
+doble pareja::
+dos pares de cartas del mismo número
 
-three of a kind::
-three cards with the same rank
+trío::
+tres cartas del mismo número
 
-straight::
-five cards with ranks in sequence (aces can be high or low, so Ace-2-3-4-5 is a straight and so is 10-Jack-Queen-King-Ace, but Queen-King-Ace-2-3 is not.)
+escalera::
+Cinco cartas consecutivas (los ases pueden ser considerados altos o bajos, por lo tanto As-2-3-4-5 es escalera, 10-Jota-Reina-Rey-As también, pero Reina-Rey-As-2-3 no.)
 
-flush::
-five cards with the same suit
+color::
+cinco cartas del mismo palo
 
-full house::
-three cards with one rank, two cards with another
+full::
+tres cartas iguales en su valor, más otras dos iguales en su valor
 
-four of a kind::
-four cards with the same rank
+póker::
+Cuatro cartas iguales en su valor
 
-straight flush::
-five cards in sequence (as defined above) and with the same suit
+escalera de color::
+Cinco cartas consecutivas del mismo palo
 
-The goal of this exercise is to estimate the probability of drawing these various hands.
+El objetivo de este ejercicio es estimar la probabilidad de tener estas diferentes manos.
 
-. Add methods named +haspair+, +hastwopair+, etc. that return +true+ or +false+ according to whether or not the hand meets the relevant criteria. Your code should work correctly for “hands” that contain any number of cards (although 5 and 7 are the most common sizes).
+. Agregue métodos llamados +tienepareja+, +tienedoblepareja+, etc. que devuelvan +true+ o +false+ según si la mano cumple o no con los criterios relevantes. Su código debería funcionar correctamente para "manos" que contengan cualquier número de naipes (aunque 5 y 7 son los tamaños más comunes).
 (((haspair)))((("function", "programmer-defined", "haspair", see="haspair")))(((hastwopair)))((("function", "programmer-defined", "hastwopair", see="hastwopair")))
 
-. Write a method named +classify+ that figures out the highest-value classification for a hand and sets the +label+ field accordingly. For example, a 7-card hand might contain a flush and a pair; it should be labeled “flush”.
+. Escriba un método llamado +clasificar+ que descubra la clasificación de mayor valor para una mano, y defina el atributo +etiqueta+ con esta clasificación. Por ejemplo, una mano de 7 cartas que contiene un color y una pareja, debe etiquetarse como "color".
 (((classify)))((("function", "programmer-defined", "classify", see="classify")))
 
-. When you are convinced that your classification methods are working, the next step is to estimate the probabilities of the various hands. Write a function that shuffles a deck of cards, divides it into hands, classifies the hands, and counts the number of times various classifications appear.
+. Cuando esté convencido de que sus métodos de clasificación están funcionando correctamente, estime las probabilidades de las distintas manos. Escriba una función que baraje un mazo de naipes, la divida en diferentes manos, clasifique las manos y cuente la cantidad de veces que aparecen varias clasificaciones.
 
-. Print a table of the classifications and their probabilities. Run your program with larger and larger numbers of hands until the output values converge to a reasonable degree of accuracy. Compare your results to the values at https://en.wikipedia.org/wiki/Hand_rankings.
-
+. Imprima una tabla de las clasificaciones y sus probabilidades. Ejecute su programa con un número cada vez mayor de manos hasta que los valores de salida converjan con un grado razonable de precisión. Compare sus resultados con los valores en https://en.wikipedia.org/wiki/Hand_rankings.
