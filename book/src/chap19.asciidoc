@@ -235,9 +235,9 @@ end
 
 ==== Tarea (o Corrutina)
 
-Una _tarea_ es una estructura de control que puede pasar el control de forma cooperativa sin regresar. En Julia, una tarea puede implementarse como una función que tiene como primer argumento un objeto +Channel+. Se usa un channel para pasar valores de la función a la persona que llama.
+Una _tarea_ es una estructura de control que puede ceder el control de forma cooperativa sin hacer return. En Julia, una tarea puede implementarse como una función con un objeto +Channel+ como primer argumento. Se usa un channel para pasar valores de la función a la sentencia que la llama.
 
-A _task_ is a control structure that can pass cooperatively control without returning. In Julia, a task can be implemented as a function having as first argument a +Channel+ object. A channel is used to pass values from the function to the callee.
+El término "cooperativo" alude a que los programas deben cooperar para que todo el esquema de programación funcione.
 
 La secuencia de Fibonnaci se puede generar mediante una tarea.
 (((task)))(((Channel)))((("type", "Base", "Channel", see="Channel")))(((put!)))((("function", "Base", "put!", see="put!")))
@@ -274,7 +274,7 @@ julia> take!(fib_gen)
 3
 ----
 
-El constructor +Channel+ crea la tarea. La función +fib+ se suspende después de cada llamada a +put!+ y se reanuda después de +take!+. Por rendimiento, se almacenan varios valores de la secuencia en el objeto channel durante un ciclo de reanudación/suspensión.
+El constructor +Channel+ crea la tarea. La función +fib+ se suspende después de cada llamada a +put!+ y se reanuda al llamar a +take!+. Por razones de rendimiento, se almacenan varios valores de la secuencia en el objeto channel durante un ciclo de reanudación/suspensión.
 
 The constructor +Channel+ creates the task. The function +fib+ is suspended after each call to +put!+ and resumed after +take!+. For performance reasons, several values of the sequence are buffered in the channel object during a resume/suspend cycle.
 
