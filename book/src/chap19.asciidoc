@@ -347,7 +347,7 @@ Además de los tipos compuestos, los tipos abstractos y los tipos primitivos tam
 
 [TIP]
 ====
-Tener tipos concretos como atributos de una estructura es absolutamente recomendable por razones de rendimiento, por lo que esta es una buena manera de hacer que +Punto+ sea rápido y flexible.
+Para mejorar el rendimiento, es totalmente recomendable tener tipos concretos como atributos de una estructura, por lo que esta es una buena manera de hacer que +Punto+ sea rápido y flexible.
 ====
 
 ==== Union de Tipo
@@ -365,7 +365,7 @@ julia> "Julia" :: EnteroOCadena
 "Julia"
 ----
 
-Una unión de tipos es, en la mayoría de los lenguajes informáticos, una construcción interna para trabajar con tipos. Sin embargo, Julia expone esta característica a sus usuarios ya que permite generar un código eficiente cuando la unión es entre pocos tipos. Esta característica le da una gran flexibilidad al programador de Julia para controlar el dispatch.
+Una unión de tipos es, en la mayoría de los lenguajes informáticos, una construcción interna para trabajar con tipos. Sin embargo, Julia pone a disposición esta característica para sus usuarios, ya que permite generar un código eficiente (cuando la unión es entre pocos tipos). Esta característica le da una gran flexibilidad al programador de Julia para controlar el dispatch.
 
 === Métodos
 
@@ -456,7 +456,7 @@ La función +promote+ se detalla en <<promoción>>.
 
 === Conversión y Promoción
 
-Julia tiene un sistema para convertir argumentos de diferentes tipos a un tipo común. Esto es llamado promoción, y aunque no es automático se puede realizar fácilmente.
+Julia tiene un sistema para convertir argumentos de diferentes tipos a un tipo común. Esto es llamado promoción, y aunque no es automático, se puede realizar fácilmente.
 
 ==== Conversion
 
@@ -506,8 +506,7 @@ promote_rule(::Type{Float64}, ::Type{Int32}) = Float64
 
 === Metaprogramación
 
-El código de Julia se puede representar como una estructura de datos del lenguaje en sí. Esto permite que un programa se transforme y genere su propio código.
-Julia code can be represented as a data structure of the language itself. This allows a program to transform and generate its own code. 
+Un código de Julia se puede representar como una estructura de datos del mismo lenguaje. Esto permite que un programa escriba y manipule su propio código.
 
 ==== Expresiones
 
@@ -519,7 +518,7 @@ julia> prog = "1 + 2"
 "1 + 2"
 ----
 
-El siguiente paso es analizar cada cadena en un objeto llamado _expresión_, representada por el tipo de Julia +Expr+:
+El siguiente paso es analizar cada cadena en un objeto llamado _expresión_, representado por el tipo de Julia +Expr+:
 (((expression)))(((Expr)))((("type", "Base", "Expr", see="Expr")))(((parse)))((("function", "Meta", "parse", see="parse")))
 
 [source,@julia-repl-test chap19]
@@ -540,8 +539,7 @@ Expr
 La función +dump+ muestra objetos expr con anotaciones.
 (((dump)))
 
-Las expresiones se pueden construir directamente con el prefijo +:+ entre paréntesis o usando un bloque de comillas
-Expressions can be constructed directly by prefixing with +:+ inside parentheses or using a quote block
+Las expresiones se pueden construir directamente con el prefijo +:+ entre paréntesis o usando un bloque quote:
 (((:)))(((quote)))((("keyword", "quote", see="quote")))
 
 [source,@julia-repl-test chap19]
@@ -553,7 +551,7 @@ julia> ex = quote
 
 ==== +eval+
 
-Julia puede evaluar un objeto de expresión usando +eval+:
+Julia puede evaluar un objeto de expresión usando la función +eval+:
 (((eval)))((("function", "Core", "eval", see="eval")))
 
 [source,@julia-eval chap19]
@@ -571,15 +569,16 @@ Cada módulo tiene su propia función +eval+ que evalúa las expresiones de su �
 
 [WARNING]
 ====
-When you are using a lot of calls to the function +eval+, often this means that something is wrong. +eval+ is considered “evil”.
+Generalmente si un código tiene muchas llamadas a +eval+, significa que algo está mal. +eval+ se considera "malo".
 ====
 
 ==== Macros
 
+Las macros pueden incluir código generado en un programa. Una _macro_ asocia una tupla de objetos +Expr+ directamente con una expresión compilada:
 Macros can include generated code in a program. A _macro_ maps a tuple of +Expr+ objects directly to a compiled expression:
 (((macro)))
 
-Here is a simple macro:
+Aquí hay una macro simple:
 (((@containervariable)))((("macro", "programmer-defined", "@containervariable", see="@containervariable")))
 
 [source,@julia-setup chap19]
@@ -589,6 +588,7 @@ macro containervariable(container, element)
 end
 ----
 
+Las macros se llaman anteponiendo +@+ (arroba) a su nombre. La llamada a la macro +@ contiene letras mayúsculas 1+ se reemplaza por:
 Macros are called by prefixing their name with the +@+ (at-sign). The macro call +@containervariable letters 1+ is replaced by:
 (((@)))
 
@@ -600,6 +600,8 @@ Macros are called by prefixing their name with the +@+ (at-sign). The macro call
 +@macroexpand @containervariable letters 1+  returns this expression which is extremely useful for debugging.
 (((@macroexpand)))((("macro", "Base", "@macroexpand", see="@macroexpand")))
 
+Este ejemplo ilustra cómo una macro puede acceder al nombre de sus argumentos, algo que una función no puede hacer. La expresión de retorno debe "escaparse" con +esc+ porque debe resolverse en el entorno de macro llamada.
+
 This example illustrates how a macro can access the name of its arguments, something a function can’t do. The return expression needs to be “escaped” with +esc+ because it has to be resolved in the macro call environment.
 (((esc)))((("function", "Base", "esc", see="esc")))
 
@@ -608,6 +610,7 @@ This example illustrates how a macro can access the name of its arguments, somet
 Why macros?
 
 Macros generate and include fragments of customized code during parse time, thus _before_ the full program is run.
+Las macros generan e incluyen fragmentos de código personalizado durante el tiempo de análisis, por lo tanto, antes de ejecutar el programa completo.
 ====
 
 ==== Generated Functions
