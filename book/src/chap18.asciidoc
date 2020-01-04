@@ -316,8 +316,7 @@ julia> mazo isa ConjuntoDeCartas
 true
 ----
 
-Una mano también es una especie de +ConjuntoDeCartas+:
-A hand is also a kind of +CardSet+:
+Una mano también es un +ConjuntoDeCartas+:
 (((Hand)))((("type", "programmer-defined", "Hand", see="Hand")))
 
 [source,@julia-setup chap18a]
