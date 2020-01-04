@@ -15,7 +15,7 @@ En este capítulo y el siguiente se discute aquello que se ha omitido en los cap
 
 === Tuplas con nombre
 
-Es posible nombrar los componentes de una tupla, creando una tupla con nombre:
+Es posible colocarle nombre a los componentes de una tupla, creando una tupla con nombre:
 
 [source,@julia-repl-test]
 ----
