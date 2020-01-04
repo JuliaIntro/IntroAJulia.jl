@@ -5,7 +5,7 @@ Uno de los objetivos de este libro es enseñar lo justo y necesario de Julia. Si
 
 Ahora veremos algunas cosas que hemos dejado de lado, que sí son útiles. Julia proporciona una serie de características que no son realmente necesarias (se puede escribir un buen código sin ellas), pero a veces permiten escribir un código más conciso, legible y/o eficiente.
 
-Este capítulo y el siguiente discuten aquello que se ha omitido en los capítulos anteriores:
+En este capítulo y el siguiente se discute aquello que se ha omitido en los capítulos anteriores:
 
 * más sintaxis
 * funciones, tipos y macros disponibles directamente de +Base+ 
