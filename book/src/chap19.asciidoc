@@ -733,12 +733,12 @@ Construcción usada para definir y llamar a una función anónima parecida a un 
 (((do block)))
 
 operador ternario::
-Operador de flujo de control que toma tres operandos para especificar una condición: una expresión que se ejecutará cuando la condición produzca +true+ y una expresión que se ejecutará cuando la condición produzca + falso +.
-
-Control flow operator taking three operands to specify a condition, an expression to be executed when the condition yields +true+ and an expression to be executed when the condition yields +false+.
+Operador de estructura de control que toma tres operandos: una condición, una expresión que se ejecutará si la condición devuelve +true+ y una expresión que se ejecutará si la condición devuelve +false+.
 (((ternary operator)))
 
-short-circuit evaluation::
+evaluación de cortocircuito::
+Evaluación de un operador booleano para el que se ejecuta o evalúa el segundo argumento solo si el primero no es suficiente para determinar el valor de la expresión.
+
 Evaluation of a boolean operator for which the second argument is executed or evaluated only if the first argument does not suffice to determine the value of the expression.
 (((short-circuit evaluation)))
 
