@@ -1,5 +1,11 @@
 [[chap19]]
-== The Goodies: Syntax
+== Extra: Sintaxis
+
+Uno de los objetivos de este libro es enseñar lo justo y necesario de Julia. Si habían dos formas de hacer algo, se elegió una y se evitó mencionar la otra. O a veces, la segunda manera se dejó como ejercicio al lector.
+
+Ahora veremos algunas cosas que dejamos de lado, que sí son útiles. Julia proporciona una serie de características que no son realmente necesarias (puede escribir un buen código sin ellas), pero con ellas a veces puede escribir código más conciso, legible o eficiente, y a veces los tres.
+
+
 
 One of my goals for this book has been to teach you as little Julia as possible. When there were two ways to do something, I picked one and avoided mentioning the other. Or sometimes I put the second one into an exercise.
 
