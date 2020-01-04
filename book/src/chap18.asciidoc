@@ -12,7 +12,7 @@ Si nunca has jugado póker, puedes leer sobre él en https://es.wikipedia.org/wi
 
 Hay cincuenta y dos naipes en una baraja inglesa, cada uno de los cuales pertenece a uno de los cuatro palos y tiene un valor. Los palos son Picas (+♠+), Corazones (+♥+), Diamantes (+♦+) y Tréboles (+♣+). Los valores son As (A), 2, 3, 4, 5, 6, 7, 8, 9, 10, Jota (J), Reina (Q) y Rey (K). Dependiendo del tipo de juego, el valor del As puede ser mayor que al Rey o inferior al 2.
 
-Si queremos definir un nuevo objeto para representar un naipe, es obvio qué atributos debería tener: valor y palo. Lo que no es tan obvio es el tipo que se debe dar a estos atributos. Una opción es usar cadenas de caracteres que contengan palabras como +"Picas"+ para los palos y +"Reina"+ para los valores. Un problema de esta implementación es que no sería fácil comparar naipes para ver cuál tiene mayor valor o palo.
+Si queremos definir un nuevo objeto para representar un naipe, son obvios los atributos que debería tener: valor y palo. Lo que no es tan obvio es el tipo que se debe dar a estos atributos. Una opción es usar cadenas de caracteres que contengan palabras como +"Picas"+ para los palos y +"Reina"+ para los valores. Un problema de esta implementación es que no sería fácil comparar naipes para ver cuál tiene mayor valor o palo.
 
 Una alternativa es usar números enteros para _codificar_ los valores y palos. En este contexto, "codificar" significa definir una asociación entre números y palos, o entre números y valores. Este tipo de codificación no está relacionada con cifrar o traducir a un código secreto (eso sería "cifrado").
 (((encode)))
