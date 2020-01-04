@@ -385,7 +385,7 @@ julia> espuntoentero(p)
 true
 ----
 
-==== Function-like Objects
+==== Objetos Similares a Funciones
 
 Cualquier objeto arbitrario de Julia puede hacerse "invocable". Tales objetos "invocables" a veces se denominan _funtores_.
 (((functor)))
@@ -430,8 +430,6 @@ ERROR: MethodError: no method matching Point(::Int64, ::Float64)
 ----
 
 Se generan constructores internos y externos por defecto para cada +T+:
-
-Default inner and outer constructors are generated for each +T+:
 (((constructor)))
 
 [source,julia]
@@ -457,13 +455,13 @@ Punto(x::Real, y::Real) = Punto(promote(x,y)...);
 La función +promote+ se detalla en <<promoción>>.
 (((promote)))((("function", "Base", "promote", see="promote")))
 
-=== Conversion and Promotion
+=== Conversión y Promoción
 
-Julia has a system for promoting arguments to a common type. This is not done automatically but can be easily extended.
+Julia tiene un sistema para convertir argumentos de diferentes tipos a un tipo común. Esto es llamado promoción, y aunque no es automático se puede realizar fácilmente.
 
 ==== Conversion
 
-A value can be converted from one type to another:
+Un valor se puede convertir de un tipo a otro:
 (((conversion)))(((convert)))((("function", "Base", "convert", see="convert")))
 
 [source,@julia-repl-test]
@@ -478,19 +476,19 @@ julia> typeof(ans)
 UInt8
 ----
 
-We can add our own +convert+ methods:
+Podemos agregar nuestros propios métodos +convert+:
 [source,@julia-repl-test chap19]
 ----
-julia> Base.convert(::Type{Point{T}}, x::Array{T, 1}) where {T<:Real} = Point(x...)
+julia> Base.convert(::Type{Punto{T}}, x::Array{T, 1}) where {T<:Real} = Punto(x...)
 
-julia> convert(Point{Int64}, [1, 2])
-Point{Int64}(1, 2)
+julia> convert(Punto{Int64}, [1, 2])
+Punto{Int64}(1, 2)
 ----
 
 [[promotion]]
-==== Promotion
+==== Promoción
 
-_Promotion_ is the conversion of values of mixed types to a single common type:
+_Promoción_ es la conversión de valores de diferentes tipos a un solo tipo común:
 (((promotion)))(((promote)))
 
 [source,@julia-repl-test]
@@ -499,7 +497,7 @@ julia> promote(1, 2.5, 3)
 (1.0, 2.5, 3.0)
 ----
 
-Methods for the +promote+ function are normally not directly defined, but the auxiliary function +promote_rule+ is used to specify the rules for promotion:
+Generalmente, los métodos para la función +promote+ no se definen directamente, sino que se usa la función auxiliar +promot_rule+ para especificar las reglas de la promoción:
 (((promote_rule)))((("function", "Base", "promote_rule", see="promote_rule")))
 
 [source,julia]
@@ -507,13 +505,14 @@ Methods for the +promote+ function are normally not directly defined, but the au
 promote_rule(::Type{Float64}, ::Type{Int32}) = Float64
 ----
 
-=== Metaprogramming
+=== Metaprogramación
 
+El código de Julia se puede representar como una estructura de datos del lenguaje en sí. Esto permite que un programa se transforme y genere su propio código.
 Julia code can be represented as a data structure of the language itself. This allows a program to transform and generate its own code. 
 
-==== Expressions
+==== Expresiones
 
-Every Julia program starts as a string:
+Cada programa de Julia comienza como una cadena:
 
 [source,@julia-repl-test chap19]
 ----
@@ -521,7 +520,7 @@ julia> prog = "1 + 2"
 "1 + 2"
 ----
 
-The next step is to parse each string into an object called an _expression_, represented by the Julia type +Expr+:
+El siguiente paso es analizar cada cadena en un objeto llamado _expresión_, representada por el tipo de Julia +Expr+:
 (((expression)))(((Expr)))((("type", "Base", "Expr", see="Expr")))(((parse)))((("function", "Meta", "parse", see="parse")))
 
 [source,@julia-repl-test chap19]
@@ -539,9 +538,10 @@ Expr
     3: Int64 2
 ----
 
-The +dump+ function displays expr objects with annotations.
+La función +dump+ muestra objetos expr con anotaciones.
 (((dump)))
 
+Las expresiones se pueden construir directamente con el prefijo +:+ entre paréntesis o usando un bloque de comillas
 Expressions can be constructed directly by prefixing with +:+ inside parentheses or using a quote block
 (((:)))(((quote)))((("keyword", "quote", see="quote")))
 
@@ -554,7 +554,7 @@ julia> ex = quote
 
 ==== +eval+
 
-Julia can evaluate an expression object using +eval+:
+Julia puede evaluar un objeto de expresión usando +eval+:
 (((eval)))((("function", "Core", "eval", see="eval")))
 
 [source,@julia-eval chap19]
@@ -568,7 +568,7 @@ julia> eval(ex)
 3
 ----
 
-Every module has its own +eval+ function that evaluates expressions in its scope.
+Cada módulo tiene su propia función +eval+ que evalúa las expresiones de su ámbito.
 
 [WARNING]
 ====
