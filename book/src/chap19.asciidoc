@@ -276,9 +276,7 @@ julia> take!(fib_gen)
 
 El constructor +Channel+ crea la tarea. La función +fib+ se suspende después de cada llamada a +put!+ y se reanuda al llamar a +take!+. Por razones de rendimiento, se almacenan varios valores de la secuencia en el objeto channel durante un ciclo de reanudación/suspensión.
 
-The constructor +Channel+ creates the task. The function +fib+ is suspended after each call to +put!+ and resumed after +take!+. For performance reasons, several values of the sequence are buffered in the channel object during a resume/suspend cycle.
-
-A channel object can also be used as an iterator:
+Un objeto channel también se puede usar como iterador:
 
 [source,@julia-repl-test chap19]
 ----
@@ -290,11 +288,11 @@ julia> for val in Channel(fib)
 ----
 
 
-=== Types
+=== Tipos
 
-==== Primitive Types
+==== Tipos Primitivos
 
-A concrete type consisting of plain old bits is called a _primitive type_. Unlike most languages, with Julia you can declare your own primitive types. The standard primitive types are defined in the same way:
+Un tipo concreto compuesto por bits se llama _tipo primitivo_. A diferencia de la mayoría de los lenguajes, en Julia podemos declarar nuestros propios tipos primitivos. Los tipos primitivos estándar se definen de la misma manera:
 (((primitive type)))((("keyword", "primitive type", see="primitive type")))
 
 [source,julia]
@@ -305,9 +303,9 @@ primitive type Char <: AbstractChar 32 end
 primitive type Int64 <: Signed 64 end
 ----
 
-The number in the statements specifies how many bits are required.
+El número en las sentencias especifica cuántos bits se requieren.
 
-The following example creates a primitive type +Byte+ and a constructor:
+El siguiente ejemplo crea un tipo primitivo +Byte+ y un constructor:
 (((Byte)))((("type", "programmer-defined", "Byte", see="Byte")))
 
 [source,@julia-repl-test]
@@ -320,12 +318,14 @@ julia> b = Byte(0x01)
 Byte(0x01)
 ----
 
-The function +reinterpret+ is used to store the bits of an unsigned integer with 8 bits (+UInt8+) into the byte.
+La función +reinterpret+ se usa para almacenar los bits de un entero sin signo con 8 bits (+UInt8+) en el byte.
 (((reinterpret)))((("function", "Base", "reinterpret", see="reinterpret")))(((UInt8)))((("type", "Base", "UInt8", see="UInt8")))
 
-==== Parametric Types
+==== Tipos Paramétricos
 
-Julia's type system is _parametric_, meaning that types can have parameters.
+El sistema de tipos de Julia es _paramétrico_, lo que significa que los tipos pueden tener parámetros.
+
+Los parámetros de tipo se introducen después del nombre del tipo, rodeados por llaves:
 
 Type parameters are introduced after the name of the type, surrounded by curly braces:
 (((curly braces)))
