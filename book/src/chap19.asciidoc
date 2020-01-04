@@ -372,8 +372,7 @@ Una unión de tipos es, en la mayoría de los lenguajes informáticos, una const
 
 ==== Métodos Paramétricos 
 
-Las definiciones de métodos también pueden tener parámetros de tipo que califiquen su especificación:
-Method definitions can also have type parameters qualifying their signature:
+Las definiciones de métodos también pueden tener parámetros de tipo que limiten su especificación:
 (((signature)))
 
 [source,@julia-repl-test chap19]
@@ -388,72 +387,74 @@ true
 
 ==== Function-like Objects
 
-Any arbitrary Julia object can be made “callable”. Such “callable” objects are sometimes called _functors_.
+Cualquier objeto arbitrario de Julia puede hacerse "invocable". Tales objetos "invocables" a veces se denominan _funtores_.
 (((functor)))
 
 [source,@julia-setup chap19]
 ----
-struct Polynomial{R}
-    coeff::Vector{R}
+struct Polinomio{R}
+    coef::Vector{R}
 end
 
-function (p::Polynomial)(x)
+function (p::Polinomio)(x)
     val = p.coeff[end]
-    for coeff in p.coeff[end-1:-1:1]
-        val = val * x + coeff
+    for coef in p.coef[end-1:-1:1]
+        val = val * x + coef
     end
     val
 end
 ----
 
-To evaluate the polynomial, we simply have to call it:
+Para evaluar el polinomio, simplemente debemos llamarlo:
 
 [source,@julia-repl-test chap19]
 ----
-julia> p = Polynomial([1,10,100])
-Polynomial{Int64}([1, 10, 100])
+julia> p = Polinomio([1,10,100])
+Polynomi{Int64}([1, 10, 100])
 julia> p(3)
 931
 ----
 
-=== Constructors
+=== Constructores
 
-Parametric types can be explicitly or implicitly constructed:
+Los tipos paramétricos se pueden construir explícita o implícitamente:
 
 [source,@julia-repl-test chap19]
 ----
-julia> Point(1,2)         # implicit T
+julia> Punto(1,2)         # T implicito
 Point{Int64}(1, 2)
-julia> Point{Int64}(1, 2) # explicit T
+julia> Punto{Int64}(1, 2) # T explicito
 Point{Int64}(1, 2)
-julia> Point(1,2.5)       # implicit T
+julia> Punto(1,2.5)       # T implicito
 ERROR: MethodError: no method matching Point(::Int64, ::Float64)
 ----
+
+Se generan constructores internos y externos por defecto para cada +T+:
 
 Default inner and outer constructors are generated for each +T+:
 (((constructor)))
 
 [source,julia]
 ----
-struct Point{T<:Real}
+struct Punto{T<:Real}
     x::T
     y::T
-    Point{T}(x,y) where {T<:Real} = new(x,y)
+    Punto{T}(x,y) where {T<:Real} = new(x,y)
 end
 
-Point(x::T, y::T) where {T<:Real} = Point{T}(x,y);
+Punto(x::T, y::T) where {T<:Real} = Punto{T}(x,y);
 ----
 
-and both +x+ and +y+ have to be of the same type.
+y tanto +x+ como +y+ deben ser del mismo tipo. 
 
-When +x+ and +y+ have a different type, the following outer constructor can be defined:
+Cuando +x+ e +y+ son de tipos diferentes, se puede definir el siguiente constructor externo:
 
 [source,@julia-setup chap19]
 ----
-Point(x::Real, y::Real) = Point(promote(x,y)...);
+Punto(x::Real, y::Real) = Punto(promote(x,y)...);
 ----
 
-The +promote+ function is detailed in <<promotion>>.
+La función +promote+ se detalla en <<promoción>>.
 (((promote)))((("function", "Base", "promote", see="promote")))
 
 === Conversion and Promotion
