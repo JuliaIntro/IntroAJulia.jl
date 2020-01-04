@@ -742,12 +742,12 @@ Evaluación de un operador booleano para el que se ejecuta o evalúa el segundo 
 Evaluation of a boolean operator for which the second argument is executed or evaluated only if the first argument does not suffice to determine the value of the expression.
 (((short-circuit evaluation)))
 
-task (aka coroutine)::
-Control flow feature that allows computations to be suspended and resumed in a flexible manner.
+tareas (corrutina)::
+Característica de las estructuras de control que permite suspender y reanudar cálculos de manera flexible.
 (((task)))
 
-primitive type::
-Concrete type whose data consists of plain old bits.
+tipo primitivo::
+Tipo concreto cuyos datos están compuestos de bits.
 (((primitive type)))
 
 type union::
