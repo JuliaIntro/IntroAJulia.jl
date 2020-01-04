@@ -213,7 +213,7 @@ julia> a % 2 == 0 ? println("par") : println("impar")
 even
 ----
 
-La expresión que va antes de +?+ es una expresión de condición. Si la condición es +true+, evalúan la expresión que va antes de +:+; de lo contrario, se evalúa la expresión que va después de +:+.
+La expresión que va antes de +?+ es una expresión de condición. Si la condición es +true+, se evalúa la expresión que va antes de +:+; de lo contrario, se evalúa la expresión que va después de +:+.
 
 ==== Evaluación de cortocircuito
 
