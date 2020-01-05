@@ -573,7 +573,6 @@ Generalmente si un código tiene muchas llamadas a +eval+, significa que algo es
 ==== Macros
 
 Las macros pueden incluir código generado en un programa. Una _macro_ asocia una tupla de objetos +Expr+ directamente con una expresión compilada:
-Macros can include generated code in a program. A _macro_ maps a tuple of +Expr+ objects directly to a compiled expression:
 (((macro)))
 
 Aquí hay una macro simple:
@@ -586,8 +585,7 @@ macro containervariable(container, element)
 end
 ----
 
-Las macros se llaman anteponiendo +@+ (arroba) a su nombre. La llamada a la macro +@ contiene letras mayúsculas 1+ se reemplaza por:
-Macros are called by prefixing their name with the +@+ (at-sign). The macro call +@containervariable letters 1+ is replaced by:
+Las macros se llaman anteponiendo +@+ (arroba) a su nombre. La llamada a la macro +@containervariable letters 1+ se reemplaza por:
 (((@)))
 
 [source,julia]
@@ -598,7 +596,7 @@ Macros are called by prefixing their name with the +@+ (at-sign). The macro call
 +@macroexpand @containervariable letters 1+  returns this expression which is extremely useful for debugging.
 (((@macroexpand)))((("macro", "Base", "@macroexpand", see="@macroexpand")))
 
-Este ejemplo ilustra cómo una macro puede acceder al nombre de sus argumentos, algo que una función no puede hacer. La expresión de retorno debe "escaparse" con +esc+ porque debe resolverse en el entorno de macro llamada.
+Este ejemplo ilustra cómo una macro puede acceder al nombre de sus argumentos, algo que una función no puede hacer. Se debe "escapar" de la expresión de retorno con +esc+ porque debe resolverse en el entorno de la macro llamada.
 
 This example illustrates how a macro can access the name of its arguments, something a function can’t do. The return expression needs to be “escaped” with +esc+ because it has to be resolved in the macro call environment.
 (((esc)))((("function", "Base", "esc", see="esc")))
@@ -608,7 +606,7 @@ This example illustrates how a macro can access the name of its arguments, somet
 Why macros?
 
 Macros generate and include fragments of customized code during parse time, thus _before_ the full program is run.
-Las macros generan e incluyen fragmentos de código personalizado durante el tiempo de análisis, por lo tanto, antes de ejecutar el programa completo.
+Las macros generan e incluyen fragmentos de código personalizado durante el tiempo de análisis, es decir, antes de ejecutar el programa completo.
 ====
 
 ==== Generated Functions
