@@ -1,14 +1,14 @@
 [[chap20]]
-== The Goodies: Base and Standard Library
+== Extra: Base y Librería Estándar
 
 Julia viene con pilas incluidas. El módulo +Base+ contiene las funciones, tipos y macros más útiles. Los cuales están disponibles directamente en Julia.
 (((Base)))
 
 Julia también posee una gran cantidad de módulos especializados en su Biblioteca Estándar (módulos para Fechas, Computación Distribuida, Álgebra Lineal, Perfiles, Números Aleatorios, ...). Las funciones, los tipos y las macros definidos en la Biblioteca estándar deben importarse antes de poder usarse:
 
-* +import _Module_+ imports the module, and +_Module.fn_(x)+ calls the function +_fn_+
+* +import _Module_+ importa el modulo, y +_Module.fn_(x)+ llama a la función +_fn_+
 (((import)))((("keyword", "import", see="import")))
-* +using _Module_+ imports all exported +_Module_+ functions, types and macros.
+* +using _Module_+ importa todas las funciones, tipos y macros exportadas de +_Module_+.
 (((using)))
 
 Es posible agregar más funciones a una creciente colección de paquetes (https://juliaobserver.com).
@@ -44,6 +44,9 @@ ____
 
 [TIP]
 ====
+
+Una función en Julia se compila la primera vez que se ejecuta. Por lo tanto, para comparar dos algoritmos, estos deben implementarse como funciones para poder compilarlas, y la primera vez que se llama a estas funciones debe ser excluida de la medición de rendimiento; de lo contrario, también se mide el tiempo de compilación.
+
 
 A function in Julia is compiled the first time it is executed. So to compare two algorithms, they have to be implemented as functions to get compiled and the first time they are called has to be excluded from the performance measure, otherwise the compilation time is measured as well.
 
