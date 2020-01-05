@@ -363,7 +363,7 @@ julia> "Julia" :: EnteroOCadena
 "Julia"
 ----
 
-Una unión de tipos es, en la mayoría de los lenguajes informáticos, una construcción interna para trabajar con tipos. Sin embargo, Julia pone a disposición esta característica para sus usuarios, ya que permite generar un código eficiente (cuando la unión es entre pocos tipos). Esta característica le da una gran flexibilidad al programador de Julia para controlar el dispatch.
+Una unión de tipos es, en la mayoría de los lenguajes informáticos, una construcción interna para trabajar con tipos. Sin embargo, Julia pone a disposición esta característica para sus usuarios, ya que permite generar un código eficiente (cuando la unión es entre pocos tipos). Esta característica otorga una gran flexibilidad para controlar el dispatch.
 
 === Métodos
 
