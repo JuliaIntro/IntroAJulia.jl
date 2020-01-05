@@ -407,7 +407,7 @@ Para evaluar el polinomio, simplemente debemos llamarlo:
 [source,@julia-repl-test chap19]
 ----
 julia> p = Polinomio([1,10,100])
-Polynomi{Int64}([1, 10, 100])
+Polinomio{Int64}([1, 10, 100])
 julia> p(3)
 931
 ----
