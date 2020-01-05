@@ -1,23 +1,24 @@
 [[chap20]]
 == The Goodies: Base and Standard Library
 
-Julia comes with batteries included. The +Base+ module contains the most useful functions, types and macros. These are directly available in Julia.
+Julia viene con pilas incluidas. El módulo +Base+ contiene las funciones, tipos y macros más útiles. Los cuales están disponibles directamente en Julia.
 (((Base)))
 
-Julia provides also a large number of specialized modules in its Standard Library (Dates, Distributed Computing, Linear Algebra, Profiling, Random Numbers, ...). Functions, types and macros defined in the Standard Library have to be imported before they can be used:
+Julia también posee una gran cantidad de módulos especializados en su Biblioteca Estándar (módulos para Fechas, Computación Distribuida, Álgebra Lineal, Perfiles, Números Aleatorios, ...). Las funciones, los tipos y las macros definidos en la Biblioteca estándar deben importarse antes de poder usarse:
 
 * +import _Module_+ imports the module, and +_Module.fn_(x)+ calls the function +_fn_+
 (((import)))((("keyword", "import", see="import")))
 * +using _Module_+ imports all exported +_Module_+ functions, types and macros.
 (((using)))
 
-Additional functionality can be added from a growing collection of packages (https://juliaobserver.com).
+Es posible agregar más funciones a una creciente colección de paquetes (https://juliaobserver.com).
 
-This chapter is not a replacement of the official Julia documentation. I give merely some examples to illustrate what is possible without being exhaustive.  Functions already introduced elsewhere are not included. A complete overview can be found in https://docs.julialang.org.
+Este capítulo no es un reemplazo de la documentación oficial de Julia. Solo se dan algunos ejemplos para ilustrar lo que es posible hacer, sin ser exhaustivo. Las funciones ya vistas no están incluidas. Se puede encontrar una descripción completa en https://docs.julialang.org.
+
 
 === Measuring Performance
 
-We have seen that some algorithms perform better than others. +fibonnaci+ in <<memos>> is a lot faster than +fib+ in <<one_more_example>>. The +@time+ macro allows to quantify the difference:
+Hemos visto que algunos algoritmos funcionan mejor que otros. +fibonnaci+ en <<memos>> es mucho más rápido que +fib+ en <<one_more_example>>. La macro +@time+ permite cuantificar la diferencia:
 (((@time)))((("macro", "Base", "@time", see="@time")))
 
 [source,jlcon]
@@ -34,15 +35,16 @@ julia> @time fibonacci(40)
 102334155
 ----
 
-+@time+ prints the time the function took to execute, the number of allocations and the allocated memory before returning the result. The memoized version is effectively a lot faster but needs more memory. 
++@time+ imprime el tiempo que tardó en ejecutarse la función, el número de asignaciones y la memoria asignada antes de devolver el resultado. La función fibonacci (que guardaba resultados previos) es mucho más rápida pero necesita más memoria.
 
 [quote]
 ____
-There ain't no such thing as a free lunch!
+El teorema "No free lunch" dice que no existe un modelo que funcione mejor en todos los casos.
 ____
 
 [TIP]
 ====
+
 A function in Julia is compiled the first time it is executed. So to compare two algorithms, they have to be implemented as functions to get compiled and the first time they are called has to be excluded from the performance measure, otherwise the compilation time is measured as well.
 
 The package +BenchmarkTools+ (https://github.com/JuliaCI/BenchmarkTools.jl) provides the macro +@btime+ that does benchmarking the right way. So just use it!
