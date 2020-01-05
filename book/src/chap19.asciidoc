@@ -196,7 +196,7 @@ end
 Un bloque +do+ puede "capturar" variables de su ámbito envolvente (enclosed scope). Por ejemplo, la variable +datos+ en el ejemplo anterior de +open pass:[...] do+ es capturada desde el ámbito externo. 
 
 
-=== Control Flow
+=== Estructuras de control
 
 ==== Operador ternario
 
