@@ -31,7 +31,7 @@ En las tuplas con nombre, se puede acceder a los atributos con su nombre utiliza
 
 === Funciones
 
-La función en Julia también se puede definir mediante una sintaxis compacta.
+Las funciones en Julia también se pueden definir mediante una sintaxis compacta.
 
 [source,@julia-repl-test]
 ----
