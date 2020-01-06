@@ -1,23 +1,24 @@
 [[chap20]]
-== The Goodies: Base and Standard Library
+== Extra: Base y Librería Estándar
 
-Julia comes with batteries included. The +Base+ module contains the most useful functions, types and macros. These are directly available in Julia.
+Julia viene con pilas incluidas. El módulo +Base+ contiene las funciones, tipos y macros más útiles. Los cuales están disponibles directamente en Julia.
 (((Base)))
 
-Julia provides also a large number of specialized modules in its Standard Library (Dates, Distributed Computing, Linear Algebra, Profiling, Random Numbers, ...). Functions, types and macros defined in the Standard Library have to be imported before they can be used:
+Julia también posee una gran cantidad de módulos especializados en su Biblioteca Estándar (módulos para Fechas, Computación Distribuida, Álgebra Lineal, Perfiles, Números Aleatorios, ...). Las funciones, los tipos y las macros definidos en la Biblioteca estándar deben importarse antes de poder usarse:
 
-* +import _Module_+ imports the module, and +_Module.fn_(x)+ calls the function +_fn_+
+* +import _Module_+ importa el modulo, y +_Module.fn_(x)+ llama a la función +_fn_+
 (((import)))((("keyword", "import", see="import")))
-* +using _Module_+ imports all exported +_Module_+ functions, types and macros.
+* +using _Module_+ importa todas las funciones, tipos y macros exportadas de +_Module_+.
 (((using)))
 
-Additional functionality can be added from a growing collection of packages (https://juliaobserver.com).
+Es posible agregar más funciones a una creciente colección de paquetes (https://juliaobserver.com).
 
-This chapter is not a replacement of the official Julia documentation. I give merely some examples to illustrate what is possible without being exhaustive.  Functions already introduced elsewhere are not included. A complete overview can be found in https://docs.julialang.org.
+Este capítulo no es un reemplazo de la documentación oficial de Julia. Solo se dan algunos ejemplos para ilustrar lo que es posible hacer, sin ser exhaustivo. Las funciones ya vistas no están incluidas. Se puede encontrar una descripción completa en https://docs.julialang.org.
+
 
 === Measuring Performance
 
-We have seen that some algorithms perform better than others. +fibonnaci+ in <<memos>> is a lot faster than +fib+ in <<one_more_example>>. The +@time+ macro allows to quantify the difference:
+Hemos visto que algunos algoritmos funcionan mejor que otros. +fibonnaci+ en <<memos>> es mucho más rápido que +fib+ en <<one_more_example>>. La macro +@time+ permite cuantificar la diferencia:
 (((@time)))((("macro", "Base", "@time", see="@time")))
 
 [source,jlcon]
@@ -34,25 +35,26 @@ julia> @time fibonacci(40)
 102334155
 ----
 
-+@time+ prints the time the function took to execute, the number of allocations and the allocated memory before returning the result. The memoized version is effectively a lot faster but needs more memory. 
++@time+ imprime el tiempo que tardó en ejecutarse la función, el número de asignaciones y la memoria asignada antes de devolver el resultado. La función fibonacci (que guardaba resultados previos) es mucho más rápida pero necesita más memoria.
 
 [quote]
 ____
-There ain't no such thing as a free lunch!
+El teorema "No free lunch" dice que no existe un modelo que funcione mejor en todos los casos.
 ____
 
 [TIP]
 ====
-A function in Julia is compiled the first time it is executed. So to compare two algorithms, they have to be implemented as functions to get compiled and the first time they are called has to be excluded from the performance measure, otherwise the compilation time is measured as well.
 
-The package +BenchmarkTools+ (https://github.com/JuliaCI/BenchmarkTools.jl) provides the macro +@btime+ that does benchmarking the right way. So just use it!
+Una función en Julia se compila la primera vez que se ejecuta. Por lo tanto, para comparar dos algoritmos, estos deben implementarse como funciones para poder ser compilados, y la primera vez que se llama a estas funciones debe ser excluida de la medición de rendimiento; de lo contrario, también se mide el tiempo de compilación.
+
+El paquete +BenchmarkTools+ (https://github.com/JuliaCI/BenchmarkTools.jl) proporciona la macro +@btime+ que realiza una evaluación comparativa de la manera correcta. ¡Así que úsala!
 ====
 
 
 [[collections_and_data_structures]]
 === Collections and Data Structures
 
-In <<dictionary_subtraction>> we used dictionaries to find the words that appear in a document but not in a word array. The function we wrote takes +d1+, which contains the words from the document as keys, and +d2+, which contains the array of words. It returns a dictionary that contains the keys from +d1+ that are not in +d2+.
+En <<dictionary_subtraction>> usamos diccionarios para encontrar las palabras que aparecían en un documento y que no aparecían en una matriz de palabras. La función que escribimos toma +d1+, que contiene las palabras del documento como claves, y +d2+, que contiene la matriz de palabras. Devuelve un diccionario que contiene las claves de +d1+ que no están en +d2+. 
 (((subtract)))
 
 [source,@julia-setup]
@@ -68,12 +70,14 @@ function subtract(d1, d2)
 end
 ----
 
-In all of these dictionaries, the values are +nothing+ because we never use them. As a result, we waste some storage space.
 
-Julia provides another built-in type, called a set, that behaves like a collection of dictionary keys with no values. Adding elements to a set is fast; so is checking membership. And sets provide functions and operators to compute common set operations.
+En todos estos diccionarios, los valores son +nothing+ porque nunca los usamos. Con esto desperdiciamos espacio de almacenamiento.
+
+Julia proporciona otro tipo integrado llamado conjunto, que se comporta como una colección de claves de diccionario sin valores. Agregar elementos a un conjunto es rápido; también lo es verificar si un elemento forma parte de él. Además, los conjuntos proporcionan funciones y operadores para calcular operaciones comunes de conjuntos.
 (((Set)))((("type", "Base", "Set", see="Set")))
 
-For example, set subtraction is available as a function called +setdiff+. So we can rewrite +subtract+ like this:
+
+Por ejemplo, la resta de conjuntos está disponible como una función llamada +setdiff+. Entonces reescribiendo +restar+:
 (((setdiff)))((("function", "Base", "setdiff", see="setdiff")))
 
 [source,@julia-setup]
@@ -83,9 +87,10 @@ function subtract(d1, d2)
 end
 ----
 
-The result is a set instead of a dictionary.
 
-Some of the exercises in this book can be done concisely and efficiently with sets. For example, here is a solution to +hasduplicates+, from <<ex10-7>>, that uses a dictionary:
+El resultado es un conjunto en vez de un diccionario.
+
+Algunos de los ejercicios en este libro se pueden hacer de manera eficiente y concisa con conjuntos. Por ejemplo, a continuación se muestra una solución para +hasduplicates+, de <<ex10-7>>, que usa un diccionario:
 (((hasduplicates)))
 
 [source,@julia-setup]
@@ -102,9 +107,9 @@ function hasduplicates(t)
 end
 ----
 
-When an element appears for the first time, it is added to the dictionary. If the same element appears again, the function returns +true+.
+Cuando un elemento aparece por primera vez, se agrega al diccionario. Si el mismo elemento aparece nuevamente, la función devuelve +true+.
 
-Using sets, we can write the same function like this:
+Usando conjuntos, podemos escribir la misma función:
 
 [source,@julia-setup]
 ----
@@ -113,9 +118,9 @@ function hasduplicates(t)
 end
 ----
 
-An element can only appear in a set once, so if an element in +t+ appears more than once, the set will be smaller than +t+. If there are no duplicates, the set will be the same size as +t+.
+Un elemento solo puede aparecer en un conjunto una vez, por lo que si un elemento en +t+ aparece más de una vez, el conjunto será más pequeño que +t+. Si no hay duplicados, el conjunto tendrá el mismo tamaño que +t+.
 
-We can also use sets to do some of the exercises in <<chap09>>. For example, here’s a version of +usesonly+ with a loop:
+También podemos usar conjuntos para hacer algunos de los ejercicios de <<chap09>>. Por ejemplo, aquí hay una versión de +usesonly+ con un bucle:
 (((usesonly)))
 
 [source,@julia-setup]
@@ -130,7 +135,7 @@ function usesonly(word, available)
 end
 ----
 
-+usesonly+ checks whether all letters in +word+ are in +available+. We can rewrite it like this:
++usesonly+ comprueba si todas las letras en +word+ están en +disponible+. Podemos reescribir esta función:
 
 [source,@julia-setup]
 ----
@@ -139,7 +144,7 @@ function usesonly(word, available)
 end
 ----
 
-The +⊆+ (*+\subseteq TAB+*) operator checks whether one set is a subset or another, including the possibility that they are equal, which is true if all the letters in +word+ appear in +available+. 
+El operador +⊆+ (*+\subseteq TAB+*) verifica si un conjunto es un subconjunto de otro, incluida la posibilidad de que sean iguales, lo cual es cierto si todas las letras en +word+ aparecen en +available+.
 (((⊆)))((("operator", "Base", "⊆", see="⊆")))
 
 ==== Exercise 20-1
