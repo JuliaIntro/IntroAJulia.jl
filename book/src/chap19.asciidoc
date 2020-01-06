@@ -580,36 +580,33 @@ Aquí hay una macro simple:
 
 [source,@julia-setup chap19]
 ----
-macro containervariable(container, element)
-    return esc(:($(Symbol(container,element)) = $container[$element]))
+macro contenedorvariable(contenedor, elemento)
+    return esc(:($(Symbol(contenedor,elemento)) = $contenedor[$elemento]))
 end
 ----
 
-Las macros se llaman anteponiendo +@+ (arroba) a su nombre. La llamada a la macro +@containervariable letters 1+ se reemplaza por:
+Las macros se llaman anteponiendo +@+ (arroba) a su nombre. La llamada a la macro +@contenedorvariable letras 1+ se reemplaza por:
 (((@)))
 
 [source,julia]
 ----
-:(letters1 = letters[1])
+:(letras1 = letras[1])
 ----
 
-+@macroexpand @containervariable letters 1+  returns this expression which is extremely useful for debugging.
++@macroexpand @contenedorvariable letras 1+  returns this expression which is extremely useful for debugging.
 (((@macroexpand)))((("macro", "Base", "@macroexpand", see="@macroexpand")))
 
 Este ejemplo ilustra cómo una macro puede acceder al nombre de sus argumentos, algo que una función no puede hacer. Se debe "escapar" de la expresión de retorno con +esc+ porque debe resolverse en el entorno de la macro llamada.
-
-This example illustrates how a macro can access the name of its arguments, something a function can’t do. The return expression needs to be “escaped” with +esc+ because it has to be resolved in the macro call environment.
 (((esc)))((("function", "Base", "esc", see="esc")))
 
 [NOTE]
 ====
-Why macros?
+¿Por qué usar Macros?
 
-Macros generate and include fragments of customized code during parse time, thus _before_ the full program is run.
-Las macros generan e incluyen fragmentos de código personalizado durante el tiempo de análisis, es decir, antes de ejecutar el programa completo.
+Las macros generan e incluyen fragmentos de código personalizado durante el tiempo de análisis, es decir, _antes_ de ejecutar el programa completo.
 ====
 
-==== Generated Functions
+==== Funciones Generadas
 
 La macro +@generated+ crea código especializado para métodos dependiendo del tipo de los argumentos:
 (((generated functions)))(((@generated)))((("macro", "Base", "@generated", see="@generated")))
@@ -625,13 +622,13 @@ end
 El cuerpo devuelve una expresión citada como una macro.
 The body returns a quoted expression like a macro.
 
-For the caller, the _generated function_ behaves as a regular function:
+Para la sentencia que llama, la _función generada_ se comporta como una función normal:
 
 [source,@julia-repl-test chap19]
 ----
-julia> x = cuadrado(2); # note: output is from println() statement in the body
+julia> x = cuadrado(2); # nota: la salida es de la instrucción println () que está en el cuerpo 
 Int64
-julia> x              # now we print x
+julia> x              # ahora imprimimos x
 4
 julia> y = cuadrado("spam");
 String
@@ -639,12 +636,12 @@ julia> y
 "spamspam"
 ----
 
-=== Missing Values
+=== Datos Faltantes
 
-_Missing values_ can be represented via the +missing+ object, which is the singleton instance of the type +Missing+.
+Los _datos faltantes_ se pueden representar a través del objeto +missing+, que es la instancia única del tipo +Missing+.
 (((missing values)))(((missing)))(((Missing)))((("type", "Base", "Missing", see="Missing")))
 
-Arrays can contain missing values:
+Las matrices pueden contener datos faltantes:
 
 [source,@julia-repl-test chap19]
 ----
@@ -654,9 +651,9 @@ julia> a = [1, missing]
   missing
 ----
 
-The element type of such an array is +Union{Missing, T}+, with +T+ the type of the non-missing values.
+El tipo de dicha matriz es +Union{Missing, T}+, donde +T+ es el tipo de los valores que realmente tenemos en la matriz.
 
-Reduction functions return +missing+ when called on arrays which contain missing values
+Las funciones de reducción devuelven +missing+ cuando se invocan con matrices que contienen valores faltantes
 
 [source,@julia-repl-test chap19]
 ----
@@ -664,7 +661,7 @@ julia> sum(a)
 missing
 ----
 
-In this situation, use the +skipmissing+ function to skip missing values:
+En este caso, se puede usar la función +skipmissing+ para omitir los valores faltantes:
 (((skipmissing)))((("function", "Base", "skipmissing", see="skipmissing")))
 
 [source,@julia-repl-test chap19]
@@ -674,12 +671,12 @@ julia> sum(skipmissing([1, missing]))
 ----
 
 
-=== Calling C and Fortran Code
+=== Llamar a Código de C y Fortran
 
-A lot of code is written in C or Fortran. Reusing tested code is often better than writing your own version of an algorithm. Julia can call directly existing C or Fortran libraries using the +ccall+ syntax.
+Se escribe mucho código en C o Fortran. Reutilizar un código que ya ha sido probado generalmente es mejor que escribir su propia versión en otro lenguaje. Julia puede llamar directamente a las bibliotecas C o Fortran existentes utilizando la sintaxis +ccall+.
 (((ccall)))((("function", "Base", "ccall", see="ccall")))
 
-In <<databases>> we introduced a Julia interface to the GDBM library of database functions. The library is written in C. To close the database a function call to +close(db)+ has to be made:
+En <<databases>> se presentó una interfaz de Julia de la biblioteca GDBM de funciones de base de datos. La biblioteca está escrita en C. Para cerrar la base de datos, se debe hacer una llamada a la función +close(db)+:
 
 [source,julia]
 ----
@@ -690,18 +687,18 @@ function gdbm_close(handle::Ptr{Cvoid})
 end
 ----
 
-A dbm object has a field +handle+ of +Ptr{Cvoid}+ type. This field holds a C pointer that refers to the database. To close the database the C function +gdbm_close+ has to be called having as only argument the C pointer pointing to the database and no return value. Julia does this directly with the +ccall+ function having as arguments:
+Un objeto dbm tiene un atributo +handle+ de tipo +Ptr{Cvoid}+. Este atributo contiene un puntero de C que apunta a la base de datos. Para cerrar la base de datos, debe llamarse a la función de C +gdbm_close+ teniendo como único argumento el puntero C apuntando a la base de datos, sin valor de retorno. Julia hace esto directamente con la función +ccall+ que tiene como argumentos:
 (((Ptr)))((("type", "Base", "Ptr", see="Ptr")))
 
-* a tuple consisting of a symbol holding the name of the function we want to call: +:gdbm_close+ and the shared library specified as a string: +"libgdm"+,
+* una tupla que consiste en un símbolo que contiene el nombre de la función que queremos llamar: +:gdbm_close+ y la librería compartida especificada como una cadena: ++"libgdm"+,
 
-* the return type: +Cvoid+,
+* el tipo de retorno: +Cvoid+,
 
-* a tuple of argument types: +(Ptr{Cvoid},)+ and
+* una tupla de tipos de argumentos: +(Ptr{Cvoid},)+ y
 
-* the argument values: +handle+.
+* los valores del argumento: +handle+.
 
-The complete mapping of the GDBM library can be found as an example in the PiensaEnJulia sources.
+Una visión completa de la librería GDBM se puede encontrar como ejemplo en las fuentes de ThinkJulia.
 
 === Glossary
 
@@ -735,8 +732,6 @@ Operador de estructura de control que toma tres operandos: una condición, una e
 
 evaluación de cortocircuito::
 Evaluación de un operador booleano para el que se ejecuta o evalúa el segundo argumento solo si el primero no es suficiente para determinar el valor de la expresión.
-
-Evaluation of a boolean operator for which the second argument is executed or evaluated only if the first argument does not suffice to determine the value of the expression.
 (((short-circuit evaluation)))
 
 tareas (corrutina)::
@@ -757,7 +752,6 @@ Tipo que tiene parámetros.
 
 funtor::
 Objeto con un método asociado, para que sea invocable.
-Object with an associated method, so that it is callable.
 (((functor)))
 
 conversión::
@@ -774,13 +768,13 @@ Julia type that holds a language construct.
 (((expression)))
 
 macro::
-Way to include generated code in the final body of a program.
+Forma de incluir el código generado en el cuerpo final de un programa.
 (((macro)))
 
-generated functions::
-Functions capable of generating specialized code depending on the types of the arguments.
+funciones generadas::
+Funciones capaces de generar código especializado según el tipo de los argumentos.
 (((generated functions)))
 
-missing values::
-Instances that represent data points with no value.
+datos faltantes::
+Instancias que representan datos sin valor.
 (((missing values)))
