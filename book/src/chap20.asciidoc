@@ -16,7 +16,7 @@ Además, es posible agregar más funciones a una gran cantidad de paquetes (http
 Este capítulo no es un reemplazo de la documentación oficial de Julia. Solo se dan algunos ejemplos para ilustrar lo que es posible hacer, sin ser exhaustivo. Las funciones ya vistas no están incluidas. Se puede encontrar una explicación más completa en https://docs.julialang.org.
 
 
-=== Measuring Performance
+=== Midiendo el Rendimiento
 
 Hemos visto que algunos algoritmos funcionan mejor que otros. +fibonnaci+ en <<memos>> es mucho más rápido que +fib+ en <<one_more_example>>. La macro +@time+ permite cuantificar la diferencia:
 (((@time)))((("macro", "Base", "@time", see="@time")))
