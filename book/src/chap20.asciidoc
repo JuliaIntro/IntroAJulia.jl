@@ -35,7 +35,7 @@ julia> @time fibonacci(40)
 102334155
 ----
 
-+@time+ imprime el tiempo que tardó en ejecutarse la función, el número de asignaciones y la memoria asignada antes de devolver el resultado. La función fibonacci (que guardaba resultados previos) es mucho más rápida pero necesita más memoria.
++@time+ imprime el tiempo que tardó en ejecutarse la función, el número de asignaciones (allocations) y la memoria asignada antes de devolver el resultado. La función fibonacci (que guardaba resultados previos) es mucho más rápida pero necesita más memoria.
 
 [quote]
 ____
@@ -45,14 +45,14 @@ ____
 [TIP]
 ====
 
-Una función en Julia se compila la primera vez que se ejecuta. Por lo tanto, para comparar dos algoritmos, estos deben implementarse como funciones para poder ser compilados, y la primera vez que se llama a estas funciones debe ser excluida de la medición de rendimiento; de lo contrario, también se mide el tiempo de compilación.
+Una función en Julia se compila la primera vez que se ejecuta. Por lo tanto, para comparar dos algoritmos, estos deben implementarse como funciones para poder compilarlas, y la primera vez que se llama a estas funciones debe ser excluida de la medición de rendimiento; de lo contrario, también se mediría el tiempo de compilación.
 
-El paquete +BenchmarkTools+ (https://github.com/JuliaCI/BenchmarkTools.jl) proporciona la macro +@btime+ que realiza una evaluación comparativa de la manera correcta. ¡Así que úsala!
+El paquete +BenchmarkTools+ (https://github.com/JuliaCI/BenchmarkTools.jl) proporciona la macro +@btime+ que realiza una evaluación comparativa de la manera correcta. ¡Así que úsela!
 ====
 
 
 [[collections_and_data_structures]]
-=== Collections and Data Structures
+=== Colecciones y Estructuras de Datos
 
 En <<dictionary_subtraction>> usamos diccionarios para encontrar las palabras que aparecían en un documento y que no aparecían en una matriz de palabras. La función que escribimos toma +d1+, que contiene las palabras del documento como claves, y +d2+, que contiene la matriz de palabras. Devuelve un diccionario que contiene las claves de +d1+ que no están en +d2+. 
 (((subtract)))
