@@ -256,7 +256,7 @@ Las expresiones regulares son extremadamente poderosas y el manual de PERL http:
 
 === Matrices
 
-En el <<chap10>> usamos un objeto de matriz como contenedor unidimensional con un índice para acceder a sus elementos. Sin embargo, en Julia, las matrices son colecciones multidimensionales.
+En el <<chap10>> usamos un objeto de matriz unidimensional, con un índice para acceder a sus elementos. Sin embargo, en Julia, las matrices son multidimensionales.
 
 Creemos una _matriz_ de ceros de 2 por 3:
 (((zeros)))((("function", "Base", "zeros", see="zeros")))(((matrix)))
@@ -382,13 +382,11 @@ Base.iterate(::Fibonacci{T}) where {T<:Real} = (zero(T), (one(T), one(T)))
 Base.iterate(::Fibonacci{T}, state::Tuple{T, T}) where {T<:Real} = (state[1], (state[2], state[1] + state[2]))
 ----
 
-Implementamos un tipo paramétrico sin campos + Fibonacci +, un constructor externo y dos métodos + iterar +. Se llama al primero para inicializar el iterador y devuelve una tupla que consta del primer valor, 0, y un estado. El estado en este caso es una tupla que contiene el segundo y el tercer valor, 1 y 1.
+Implementamos un tipo paramétrico sin atributos +Fibonacci+, un constructor externo y dos métodos +iterate+. Se llama al primero para inicializar el iterador, y este devuelve una tupla que consta de un primer valor, 0, y un estado. El estado en este caso es una tupla que contiene el segundo y el tercer valor, 1 y 1.
 
-We implemented a parametric type with no fields +Fibonacci+, an outer constructor and two methods +iterate+. The first is called to initialize the iterator and returns a tuple consisting of the first value, 0, and a state. The state in this case is a tuple containing the second and the third value, 1 and 1.
+El segundo valor se llama para obtener el siguiente valor de la secuencia de Fibonacci y devuelve una tupla que tiene como primer elemento el siguiente valor y como segundo elemento el estado que es una tupla con los dos valores siguientes.
 
-The second is called to get the next value of the Fibonacci sequence and returns a tuple having as first element the next value and as second element the state which is a tuple with the two following values.
-
-We can use +Fibonacci+ now in a +for+ loop:
+Ahora podemos usar +Fibonacci+ ahora en un bucle +for+:
 (((for statement)))
 
 [source,@julia-repl-test chap20]
@@ -400,7 +398,7 @@ julia> for e in Fibonacci(Int64)
 0 1 1 2 3 5 8 13 21 34 55 89
 ----
 
-It looks like magic has happened but the explanation is simple. A +for+ loop in Julia
+Parece sacado debajo de la manga, pero la explicación es simple. Un bucle +for+ en Julia
 
 [source,julia]
 ----
@@ -409,7 +407,7 @@ for i in iter
 end
 ----
 
-is translated into:
+se traduce en:
 
 [source,julia]
 ----
@@ -421,27 +419,27 @@ while next !== nothing
 end
 ----
 
-This is a great example how a well defined interface allows an implementation to use all the functions that are aware of the interface.
-
+Este es un ejemplo de cómo una interfaz bien definida permite que una implementación use todas las funciones disponibles en la interfaz.
 
 === Interactive Utilities
 
+Ya hemos visto el módulo +InteractiveUtils+ en <<interactive>>. La macro +@which+ es solo una de las tantas opciones.
 We have already met the +InteractiveUtils+ module in <<interactive>>. The +@which+ macro is only the tip of the iceberg.
 (((InteractiveUtils)))(((@which)))
 
-Julia code is transformed by the LLVM library to machinecode in multiple steps. We can directly visualize the output of each stage.
+La biblioteca LLVM transforma el código de Julia en código de máquina, en varios pasos. Podemos visualizar la salida de cada etapa.
 
-Let's give a simple example:
+Veamos un ejemplo simple:
 (((squaresum)))((("function", "programmer-defined", "squaresum", see="squaresum")))
 
 [source,@julia-setup chap20]
 ----
-function squaresum(a::Float64, b::Float64)
+function sumacuadrada(a::Float64, b::Float64)
     a^2 + b^2
 end
 ----
 
-The first step is to look at the lowered code:
+El primer paso es mirar el código de bajo nivel (lowered code):
 (((@code_lowered)))((("macro", "InteractiveUtils", "@code_lowered", see="@code_lowered")))
 
 [source,@julia-repl-test chap20]
@@ -461,10 +459,10 @@ CodeInfo(
 )
 ----
 
-The +@code_lowered+ macro returns an array of an _intermediate representation_ of the code that is used by the compiler to generate optimised code.
+La macro +@code_lowered+ devuelve una matriz de una _representación intermedia_ del código que utiliza el compilador para generar código optimizado.
 (((intermediate representation)))
 
-The next step adds type information:
+El siguiente paso agrega información del tipo:
 (((@code_typed)))((("macro", "InteractiveUtils", "@code_typed", see="@code_typed")))
 
 [source,@julia-repl-test chap20]
@@ -478,9 +476,9 @@ CodeInfo(
 ) => Float64
 ----
 
-We see that the type of the intermediate results and the return value is correctly inferred.
+El tipo de resultados intermedios y el valor de retorno se infiere correctamente.
 
-This representation of the code is transformed into LLVM code:
+Esta representación del código se transforma en código LLVM:
 (((LLVM code)))(((@code_llvm)))((("macro", "InteractiveUtils", "@code_llvm", see="@code_llvm")))
 
 [source,@julia-repl chap20]
@@ -488,7 +486,7 @@ This representation of the code is transformed into LLVM code:
 @code_llvm squaresum(3.0, 4.0)
 ----
 
-And finally the _machine code_ is generated:
+Y finalmente se genera el _código de máquina_:
 (((machine code)))(((@code_native)))((("macro", "InteractiveUtils", "@code_native", see="@code_native")))
 
 [source,@julia-repl-test chap20]
@@ -509,9 +507,9 @@ julia> @code_native squaresum(3.0, 4.0)
 ; └
 ----
 
-=== Debugging
+=== Depuración
 
-The +Logging+ macros provide an alternative to scaffolding with print statements:
+Las macros +Logging+ proporcionan una alternativa al andamiaje con sentencias de impresión:
 (((@warn)))((("macro", "Base", "@warn", see="@warn")))(((debugging)))
 
 [source,jlcon]
@@ -521,7 +519,7 @@ julia> @warn "Abandon printf debugging, all ye who enter here!"
 └ @ Main REPL[1]:1
 ----
 
-The debug statements don't have to be removed from the source. For example, in contrast to the +@warn+ above
+Las sentencias de depuración (debug) no tienen que eliminarse del código. Por ejemplo, en contraste con el +@warn+ anterior
 (((debug statement)))(((@debug)))((("macro", "Base", "@debug", see="@debug")))
 
 [source,jlcon]
@@ -530,10 +528,10 @@ julia> @debug "The sum of some values $(sum(rand(100)))"
 
 ----
 
-will produce no output by default. In this case +sum(rand(100))+ will never be evaluated unless _debug logging_ is enabled.
+_debug_ por defecto no produce salida. En este caso, +sum(rand(100))+ nunca se evaluará a menos que _debug logging_ esté habilitado.
 (((debug logging)))
 
-The level of logging can be selected by an environment variable +JULIA_DEBUG+:
+El nivel de logging puede seleccionarse mediante la variable de entorno +JULIA_DEBUG+:
 (((environment variable)))
 
 [source]
@@ -543,27 +541,27 @@ $ JULIA_DEBUG=all julia -e '@debug "The sum of some values $(sum(rand(100)))"'
 └ @ Main none:1
 ----
 
-Here, we have used +all+ to get all debug information, but you can also choose to generate only output for a specific file or module.
+Aquí, hemos utilizado +all+ para obtener toda la información de depuración, pero también se puede optar por generar solo la salida para un archivo o módulo específico.
 
 
-=== Glossary
+=== Glosario
 
-regex::
-Regular expression, a sequence of characters that define a search pattern.
+Expresión regular::
+Expresión regular, una secuencia de caracteres que definen un patrón de búsqueda.
 (((regex)))
 
-matrix::
-Two-dimensional array.
+matriz::
+Matriz bidimensional.
 (((matrix)))
 
-intermediate representation::
-Data structure used internally by a compiler to represent source code.
+representación intermedia::
+Estructura de datos utilizada internamente por un compilador para representar el código fuente.
 (((intermediate representation)))
 
-machine code::
-Language instructions that can be executed directly by a computer's central processing unit.
+código de máquina::
+Instrucciones que pueden ser ejecutadas directamente por la unidad central de procesamiento de una computadora.
 (((machine code)))
 
 debug logging::
-Storing debug messages in a log.
+Almacenar mensajes de depuración en un registro (log).
 (((debug logging)))
