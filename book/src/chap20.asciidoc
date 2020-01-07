@@ -35,7 +35,7 @@ julia> @time fibonacci(40)
 102334155
 ----
 
-+@time+ imprime el tiempo que tardó en ejecutarse la función, el número de asignaciones (allocations) y la memoria asignada antes de devolver el resultado. La función fibonacci (que guardaba resultados previos) es mucho más rápida pero necesita más memoria.
++@time+ imprime el tiempo que tardó en ejecutarse la función, el número de asignaciones (allocations) y la memoria asignada antes de devolver el resultado. La función fibonacci (que guarda resultados previos) es mucho más rápida pero necesita más memoria.
 
 [quote]
 ____
