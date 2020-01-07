@@ -234,9 +234,9 @@ En este caso, la interpolación de cadenas no está permitida. La función +matc
 
 Podemos extraer la siguiente información de un objeto regexmatch:
 
-* toda la subcadena coincide: + m.match +
-* las subcadenas capturadas como una matriz de cadenas: + m.captures +
-* el desplazamiento en el que comienza todo el partido: + m.offset +
+* toda la subcadena coincide: +m.match+
+* las subcadenas capturadas como una matriz de cadenas: +m.captures+
+* el desplazamiento en el que comienza todo el partido: +m.offset+
 * las compensaciones de las subcadenas capturadas como una matriz: + m.offsets +
 
 * the entire substring matched: +m.match+
@@ -252,13 +252,13 @@ julia> m.offset
 7
 ----
 
-Regexes are extremely powerful and the PERL manpage http://perldoc.perl.org/perlre.html provides all the details to construct the most exotic searches.
+Las expresiones regulares son extremadamente poderosas y el manual de PERL http://perldoc.perl.org/perlre.html explica cómo construir hasta las búsquedas más raras.
 
-=== Arrays
+=== Matrices
 
-In <<chap10>> we used an array object as a one-dimensional container with an index to address its elements. In Julia however, arrays are multi-dimensional collections.
+En el <<chap10>> usamos un objeto de matriz como contenedor unidimensional con un índice para acceder a sus elementos. Sin embargo, en Julia, las matrices son colecciones multidimensionales.
 
-Let's create a 2-by-3 zero _matrix_:
+Creemos una _matriz_ de ceros de 2 por 3:
 (((zeros)))((("function", "Base", "zeros", see="zeros")))(((matrix)))
 
 [source,@julia-repl-test chap20]
@@ -271,10 +271,10 @@ julia> typeof(z)
 Array{Float64,2}
 ----
 
-The type of this matrix is an array holding floating points and having 2 dimensions.
+El tipo de esta matriz es una matriz que contiene puntos flotantes. Esta matriz es de 2 dimensiones.
 (((dimension)))
 
-The +size+ function returns a tuple with as elements the number of elements in each dimension:
+La función +size+ devuelve una tupla con el número de elementos en cada dimensión:
 (((size)))((("function", "Base", "size", see="size")))
 
 [source,@julia-repl-test chap20]
@@ -283,7 +283,7 @@ julia> size(z)
 (2, 3)
 ----
 
-The function +ones+ constructs a matrix with unit value elements:
+La función +ones+ construye una matriz con elementos de valor unitario:
 (((ones)))((("function", "Base", "ones", see="ones")))
 
 [source,@julia-repl-test chap20]
@@ -293,11 +293,11 @@ julia> s = ones(String, 1, 3)
  ""  ""  ""
 ----
 
-The string unit element is an empty string.
+El elemento unitario de una cadena es una cadena vacía.
 
 [WARNING]
 ====
-+s+ is not a one-dimensional array:
++s+ no es una matriz unidimensional:
 
 [source,@julia-repl-test chap20]
 ----
@@ -305,10 +305,10 @@ julia> s ==  ["", "", ""]
 false
 ----
 
-+s+ is a row matrix and +["", "", ""]+ is a column matrix.
++s+ es un vector fila y +["", "", ""]+ es un vector columna.
 ====
 
-A matrix can be entered directly using a space to separate elements in a row and a semicolon +;+ to separate rows:
+Se puede crea una matriz usando un espacio para separar elementos en una fila y un punto y coma +;+ para separar filas:
 (((;)))
 
 [source,@julia-repl-test chap20]
@@ -319,7 +319,7 @@ julia> a = [1 2 3; 4 5 6]
  4  5  6
 ----
 
-You can use square brackets to address individual elements:
+Se pueden usar corchetes para modificar elementos de una matriz:
 (((square brackets)))
 
 [source,@julia-repl-test chap20]
@@ -334,7 +334,7 @@ julia> z
  0.0  0.0  1.0
 ----
 
-Slices can be used for each dimension to select a subgroup of elements:
+Se pueden usar porciones en cada dimensión para seleccionar un subgrupo de elementos:
 (((slice)))
 
 [source,@julia-repl-test chap20]
@@ -345,7 +345,7 @@ julia> u = z[:,2:end]
  0.0  1.0
 ----
 
-The +.+ operator broadcasts to all dimensions:
+El operador +.+ aplica una operación en todas las dimensiones:
 (((.)))
 
 [source,@julia-repl-test chap20]
@@ -358,17 +358,19 @@ julia> ℯ.^(im*u)
 
 === Interfaces
 
+Julia especifica algunas interfaces informales para definir comportamientos, es decir, métodos con un objetivo específico. Cuando se  extiende dicho método para un tipo, los objetos de ese tipo se pueden usar para construir sobre estos comportamientos.
+
 Julia specifies some informal interfaces to define behaviors, i.e. methods with a specific goal. When you extend such a method for a type, objects of that type can be used to build upon these behaviors.
 (((interface)))
 
 [quote]
 ____
-If it looks like a duck, swims like a duck, and quacks like a duck, then it probably _is_ a duck.
+Si parece un pato, nada como un pato y grazna como un pato, entonces probablemente _sea_ un pato.
 ____
 
-In <<one_more_example>> we implemented the +fib+ function returning the latexmath:[\(n\)]th element of the Fibonnaci sequence.
+En <<one_more_example>> implementamos la función +fib+ que devuelve el elemento latexmath:[\(n\)]-ésimo de la secuencia de Fibonnaci.
 
-Looping over the values of a collection, called iteration, is such an interface. Let's make an iterator that returns lazily the Fibonacci sequence:
+Recorrer los valores de una colección, lo cual es llamado iteración, es una interfaz de este tipo. Hagamos un iterador que devuelva la secuencia de Fibonacci:
 (((iterator)))(((Fibonacci)))((("type", "programmer-defined", "Fibonacci", see="Fibonacci")))(((iterate)))((("function", "Base", "iterate", see="iterate")))
 
 [source,@julia-setup chap20]
@@ -379,6 +381,8 @@ Fibonacci(d::DataType) = d<:Real ? Fibonacci{d}() : error("No Real type!")
 Base.iterate(::Fibonacci{T}) where {T<:Real} = (zero(T), (one(T), one(T)))
 Base.iterate(::Fibonacci{T}, state::Tuple{T, T}) where {T<:Real} = (state[1], (state[2], state[1] + state[2]))
 ----
+
+Implementamos un tipo paramétrico sin campos + Fibonacci +, un constructor externo y dos métodos + iterar +. Se llama al primero para inicializar el iterador y devuelve una tupla que consta del primer valor, 0, y un estado. El estado en este caso es una tupla que contiene el segundo y el tercer valor, 1 y 1.
 
 We implemented a parametric type with no fields +Fibonacci+, an outer constructor and two methods +iterate+. The first is called to initialize the iterator and returns a tuple consisting of the first value, 0, and a state. The state in this case is a tuple containing the second and the third value, 1 and 1.
 
