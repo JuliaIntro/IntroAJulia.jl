@@ -13,7 +13,7 @@ Julia también posee una gran cantidad de módulos especializados en su Bibliote
 
 Además, es posible agregar más funciones a una gran cantidad de paquetes (https://juliaobserver.com).
 
-Este capítulo no es un reemplazo de la documentación oficial de Julia. Solo se dan algunos ejemplos para ilustrar lo que es posible hacer, sin ser exhaustivo. Las funciones ya vistas no están incluidas. Se puede encontrar una descripción completa en https://docs.julialang.org.
+Este capítulo no es un reemplazo de la documentación oficial de Julia. Solo se dan algunos ejemplos para ilustrar lo que es posible hacer, sin ser exhaustivo. Las funciones ya vistas no están incluidas. Se puede encontrar una explicación más completa en https://docs.julialang.org.
 
 
 === Measuring Performance
