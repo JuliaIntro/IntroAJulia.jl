@@ -11,7 +11,7 @@ Julia también posee una gran cantidad de módulos especializados en su Bibliote
 * +using _Module_+ importa todas las funciones, tipos y macros exportadas de +_Module_+.
 (((using)))
 
-Es posible agregar más funciones a una creciente colección de paquetes (https://juliaobserver.com).
+Además, es posible agregar más funciones a una gran cantidad de paquetes (https://juliaobserver.com).
 
 Este capítulo no es un reemplazo de la documentación oficial de Julia. Solo se dan algunos ejemplos para ilustrar lo que es posible hacer, sin ser exhaustivo. Las funciones ya vistas no están incluidas. Se puede encontrar una descripción completa en https://docs.julialang.org.
 
