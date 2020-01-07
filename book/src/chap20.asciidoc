@@ -149,16 +149,16 @@ El operador +⊆+ (*+\subseteq TAB+*) verifica si un conjunto es un subconjunto 
 
 ==== Exercise 20-1
 
-Rewrite +avoids+ using sets.
+Reescriba +avoids+ usando conjuntos.
 (((avoids)))
 
 
-=== Mathematics
+=== Matemáticas
 
-Complex numbers are also supported in Julia. The global constant +im+ is bound to the complex number latexmath:[$\mathrm{i}$], representing the principal square root of latexmath:[$-1$].
+También se pueden usar números complejos en Julia. La constante global +im+ está asociada al número complejo latexmath:[$\mathrm{i}$], que representa la raíz cuadrada principal de latexmath:[$-1$].
 (((complex numbers)))(((im)))
 
-We can now verify Euler's identity,
+Ahora podemos verificar la identidad de Euler,
 (((Euler's identity)))
 
 [source,@julia-repl-test]
@@ -167,10 +167,10 @@ julia> ℯ^(im*π)+1
 0.0 + 1.2246467991473532e-16im
 ----
 
-The symbol +ℯ+ (*+\euler TAB+*) is the base of natural logarithms.
+El símbolo +ℯ+ (*+\euler TAB+*) es la base de los logaritmos naturales.
 (((ℯ))) 
 
-Let's illustrate the complex nature of trigonometric functions:
+Analicemos la naturaleza compleja de las funciones trigonométricas:
 
 [latexmath]
 ++++
@@ -179,7 +179,7 @@ Let's illustrate the complex nature of trigonometric functions:
 \end{equation}
 ++++
 
-We can test this formula for different values of latexmath:[\(x\)].
+Podemos probar esta fórmula para diferentes valores de latexmath:[\(x\)].
 
 [source,@julia-repl-test]
 ----
@@ -189,34 +189,37 @@ julia> cos.(x) == 0.5*(ℯ.^(im*x)+ℯ.^(-im*x))
 true
 ----
 
+Aquí se muestra otro ejemplo del operador punto. Julia también permite usar literales numéricos con identificadores como coeficientes como en +2π+.
+
 Here, another example of the dot operator is shown. Julia also allows numeric literals to be juxtaposed with identifiers as coefficients as in +2π+.
 
-=== Strings
+=== Cadenas
 
-In <<chap08>> and <<chap09>>, we did some elementary searches in string objects. Julia can handle however Perl-compatible regular expressions (_regexes_), which eases the task of finding complex patterns in string objets.
+En <<chap08>> y <<chap09>>, realizamos algunas búsquedas en objetos de cadenas. Además, Julia puede usar expresiones compatibles con Perl (_regexes_), lo que facilita la tarea de encontrar patrones complejos en objetos de cadena.
 (((regex)))
 
-The +usesonly+ function can be implemented as a regex:
+La función +usasolo+ se puede implementar como un expresión regular (o regex):
 (((usesonly)))(((Regex)))((("type", "Base", "Regex", see="Regex")))(((occursin)))((("function", "Base", "occursin", see="occursin")))
 
 [source,@julia-setup chap20]
 ----
-function usesonly(word, available)
-  r = Regex("[^$(available)]")
-  !occursin(r, word)
+function usasolo(palabra, disponible)
+  r = Regex("[^$(disponible)]")
+  !occursin(r, palabra)
 end
 ----
 
-The regex looks for a character that is not in the +available+ string and +occursin+ returns +true+ if the pattern is found in +word+.
+La expresión regular busca un carácter que no está en la cadena +disponible+ y +occursin+ devuelve +true+ si el patrón se encuentra en +palabra+.
 
 [source,@julia-repl-test chap20]
 ----
-julia> usesonly("banana", "abn")
+julia> usasolo("banana", "abn")
 true
-julia> usesonly("bananas", "abn")
+julia> usasolo("bananas", "abn")
 false
 ----
 
+Las expresiones regulares también se pueden construir como literales de cadena no estándar con el prefijo +r+:
 Regexes can also be constructed as non-standard string literals prefixed with +r+:
 (((string)))(((match)))((("function", "Base", "match", see="match")))
 
@@ -228,10 +231,15 @@ julia> m = match(r"[^abn]", "bananas")
 RegexMatch("s")
 ----
 
-String interpolation is not allowed in this case. The +match+ function returns nothing if the pattern (a command) is not found and return a regexmatch object otherwise.
+En este caso, la interpolación de cadenas no está permitida. La función +match+ devuelve nothing si no se encuentra el patrón (un comando) y, de lo contrario, devuelve un objeto regexmatch.
 (((string interpolation)))(((RegexMatch)))((("type", "Base", "RegexMatch", see="RegexMatch")))
 
-We can extract the following info from a regexmatch object:
+Podemos extraer la siguiente información de un objeto regexmatch:
+
+* toda la subcadena coincide: + m.match +
+* las subcadenas capturadas como una matriz de cadenas: + m.captures +
+* el desplazamiento en el que comienza todo el partido: + m.offset +
+* las compensaciones de las subcadenas capturadas como una matriz: + m.offsets +
 
 * the entire substring matched: +m.match+
 * the captured substrings as an array of strings: +m.captures+
