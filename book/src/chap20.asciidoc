@@ -45,7 +45,8 @@ ____
 [TIP]
 ====
 
-Una función en Julia se compila la primera vez que se ejecuta. Por lo tanto, para comparar dos algoritmos, estos deben implementarse como funciones para poder compilarlas, y la primera vez que se llama a estas funciones debe ser excluida de la medición de rendimiento; de lo contrario, también se mediría el tiempo de compilación.
+
+Para comparar dos algoritmos, estos deben implementarse como funciones. Una función en Julia se compila la primera vez que se ejecuta, por lo tanto, la primera vez que se llama a estas funciones debe ser excluida al medir el rendimiento; de lo contrario, también se mediría el tiempo de compilación.
 
 El paquete +BenchmarkTools+ (https://github.com/JuliaCI/BenchmarkTools.jl) proporciona la macro +@btime+ que realiza una evaluación comparativa de la manera correcta. ¡Así que úsela!
 ====
