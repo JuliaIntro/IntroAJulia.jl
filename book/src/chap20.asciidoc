@@ -60,11 +60,11 @@ En <<dictionary_subtraction>> usamos diccionarios para encontrar las palabras qu
 
 [source,@julia-setup]
 ----
-function subtract(d1, d2)
+function resta(d1, d2)
     res = Dict()
-    for key in keys(d1)
-        if key ∉ keys(d2)
-            res[key] = nothing
+    for clave in keys(d1)
+        if clave ∉ keys(d2)
+            res[clave] = nothing
         end
     end
     res
@@ -82,7 +82,7 @@ Por ejemplo, la resta de conjuntos está disponible como una función llamada +s
 
 [source,@julia-setup]
 ----
-function subtract(d1, d2)
+function resta(d1, d2)
     setdiff(d1, d2)
 end
 ----
@@ -94,7 +94,7 @@ Algunos de los ejercicios en este libro se pueden hacer de manera eficiente y co
 
 [source,@julia-setup]
 ----
-function hasduplicates(t)
+function repetido(t)
     d = Dict()
     for x in t
         if x ∈ d
@@ -112,21 +112,21 @@ Usando conjuntos, podemos escribir la misma función:
 
 [source,@julia-setup]
 ----
-function hasduplicates(t)
+function repetido(t)
     length(Set(t)) < length(t)
 end
 ----
 
 Un elemento solo puede aparecer en un conjunto una vez, por lo que si un elemento en +t+ aparece más de una vez, el conjunto será más pequeño que +t+. Si no hay duplicados, el conjunto tendrá el mismo tamaño que +t+.
 
-También podemos usar conjuntos para hacer algunos de los ejercicios de <<chap09>>. Por ejemplo, aquí hay una versión de +usesonly+ con un bucle:
+También podemos usar conjuntos para hacer algunos de los ejercicios de <<chap09>>. Por ejemplo, aquí hay una versión de +usasolo+ con un bucle:
 (((usesonly)))
 
 [source,@julia-setup]
 ----
-function usesonly(word, available)
-    for letter in word
-        if letter ∉ available
+function usasolo(palabra, disponibles)
+    for letra in palabra
+        if letra ∉ disponibles
             return false
         end
     end
@@ -134,12 +134,12 @@ function usesonly(word, available)
 end
 ----
 
-+usesonly+ comprueba si todas las letras en +word+ están en +disponible+. Podemos reescribir esta función:
++usasolo+ comprueba si todas las letras en +word+ están en +disponible+. Podemos reescribir esta función:
 
 [source,@julia-setup]
 ----
-function usesonly(word, available)
-    Set(word) ⊆ Set(available)
+function usasolo(palabra, disponibles)
+    Set(palabra) ⊆ Set(disponibles)
 end
 ----
 
@@ -148,7 +148,7 @@ El operador +⊆+ (*+\subseteq TAB+*) verifica si un conjunto es un subconjunto 
 
 ==== Exercise 20-1
 
-Reescriba +avoids+ usando conjuntos.
+Reescriba la función +evita+ de <<chap09>> usando conjuntos.
 (((avoids)))
 
 
