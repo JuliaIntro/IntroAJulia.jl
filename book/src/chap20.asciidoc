@@ -54,7 +54,7 @@ El paquete +BenchmarkTools+ (https://github.com/JuliaCI/BenchmarkTools.jl) propo
 [[collections_and_data_structures]]
 === Colecciones y Estructuras de Datos
 
-En <<dictionary_subtraction>> usamos diccionarios para encontrar las palabras que aparecían en un documento y que no aparecían en una matriz de palabras. La función que escribimos toma +d1+, que contiene las palabras del documento como claves, y +d2+, que contiene la matriz de palabras. Devuelve un diccionario que contiene las claves de +d1+ que no están en +d2+. 
+En <<dictionary_subtraction>> usamos diccionarios para encontrar las palabras que aparecían en un documento y que no aparecían en una matriz de palabras. La función que escribimos tomaba +d1+, que contenía las palabras del documento como claves, y +d2+, que contenía la matriz de palabras. Y devolvía un diccionario que contenía las claves de +d1+ que no estaban en +d2+. 
 (((subtract)))
 
 [source,@julia-setup]
@@ -71,7 +71,7 @@ end
 ----
 
 
-En todos estos diccionarios, los valores son +nothing+ porque nunca los usamos. Con esto desperdiciamos espacio de almacenamiento.
+En todos estos diccionarios, los valores son +nothing+ porque nunca los usamos. Con esto estamos desperdiciando espacio de almacenamiento.
 
 Julia proporciona otro tipo integrado llamado conjunto, que se comporta como una colección de claves de diccionario sin valores. Agregar elementos a un conjunto es rápido; también lo es verificar si un elemento forma parte de él. Además, los conjuntos proporcionan funciones y operadores para calcular operaciones comunes de conjuntos.
 (((Set)))((("type", "Base", "Set", see="Set")))
