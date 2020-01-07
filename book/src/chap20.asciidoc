@@ -76,7 +76,6 @@ En todos estos diccionarios, los valores son +nothing+ porque nunca los usamos. 
 Julia proporciona otro tipo integrado llamado conjunto, que se comporta como una colección de claves de diccionario sin valores. Agregar elementos a un conjunto es rápido; también lo es verificar si un elemento forma parte de él. Además, los conjuntos proporcionan funciones y operadores para calcular operaciones comunes de conjuntos.
 (((Set)))((("type", "Base", "Set", see="Set")))
 
-
 Por ejemplo, la resta de conjuntos está disponible como una función llamada +setdiff+. Entonces reescribiendo +restar+:
 (((setdiff)))((("function", "Base", "setdiff", see="setdiff")))
 
@@ -86,7 +85,6 @@ function subtract(d1, d2)
     setdiff(d1, d2)
 end
 ----
-
 
 El resultado es un conjunto en vez de un diccionario.
 
