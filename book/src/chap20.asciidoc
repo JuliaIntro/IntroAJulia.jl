@@ -89,7 +89,7 @@ end
 
 El resultado es un conjunto en vez de un diccionario.
 
-Algunos de los ejercicios en este libro se pueden hacer de manera eficiente y concisa con conjuntos. Por ejemplo, a continuación se muestra una solución para +hasduplicates+, de <<ex10-7>>, que usa un diccionario:
+Algunos de los ejercicios en este libro se pueden hacer de manera eficiente y concisa con conjuntos. Por ejemplo, a continuación se muestra una solución para +repetido+, de <<ex10-7>>, que usa un diccionario:
 (((hasduplicates)))
 
 [source,@julia-setup]
