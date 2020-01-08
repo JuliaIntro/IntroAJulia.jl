@@ -134,7 +134,7 @@ function usasolo(palabra, disponibles)
 end
 ----
 
-+usasolo+ comprueba si todas las letras en +word+ están en +disponible+. Podemos reescribir esta función:
++usasolo+ comprueba si todas las letras en +palabra+ están en +disponibles+. Podemos reescribir esta función:
 
 [source,@julia-setup]
 ----
@@ -143,7 +143,7 @@ function usasolo(palabra, disponibles)
 end
 ----
 
-El operador +⊆+ (*+\subseteq TAB+*) verifica si un conjunto es un subconjunto de otro, incluida la posibilidad de que sean iguales, lo cual es cierto si todas las letras en +word+ aparecen en +available+.
+El operador +⊆+ (*+\subseteq TAB+*) verifica si un conjunto es un subconjunto de otro, incluida la posibilidad de que sean iguales, lo cual es cierto si todas las letras en +palabra+ aparecen en +disponibles+.
 (((⊆)))((("operator", "Base", "⊆", see="⊆")))
 
 ==== Exercise 20-1
