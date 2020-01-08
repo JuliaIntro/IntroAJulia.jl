@@ -188,9 +188,7 @@ julia> cos.(x) == 0.5*(ℯ.^(im*x)+ℯ.^(-im*x))
 true
 ----
 
-Aquí se muestra otro ejemplo del operador punto. Julia también permite usar literales numéricos con identificadores como coeficientes como en +2π+.
-
-Here, another example of the dot operator is shown. Julia also allows numeric literals to be juxtaposed with identifiers as coefficients as in +2π+.
+Aquí se muestra otro ejemplo del operador punto. Julia también permite usar valores numéricos con identificadores (símbolos léxicos que nombran entidades, como +π+) como en +2π+.
 
 === Cadenas
 
