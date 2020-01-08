@@ -192,16 +192,16 @@ Aquí se muestra otro ejemplo del operador punto. Julia también permite usar va
 
 === Cadenas
 
-En <<chap08>> y <<chap09>>, realizamos algunas búsquedas en objetos de cadenas. Además, Julia puede usar expresiones compatibles con Perl (_regexes_), lo que facilita la tarea de encontrar patrones complejos en objetos de cadena.
+En <<chap08>> y <<chap09>>, realizamos algunas búsquedas en cadenas. Además, Julia puede usar expresiones compatibles con Perl (_expresión regular_ o _regexes_), lo que facilita la tarea de encontrar patrones complejos en objetos de cadena.
 (((regex)))
 
-La función +usasolo+ se puede implementar como un expresión regular (o regex):
+La función +usasolo+ se puede implementar como una expresión regular:
 (((usesonly)))(((Regex)))((("type", "Base", "Regex", see="Regex")))(((occursin)))((("function", "Base", "occursin", see="occursin")))
 
 [source,@julia-setup chap20]
 ----
-function usasolo(palabra, disponible)
-  r = Regex("[^$(disponible)]")
+function usasolo(palabra, disponibles)
+  r = Regex("[^$(disponibles)]")
   !occursin(r, palabra)
 end
 ----
