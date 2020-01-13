@@ -117,7 +117,7 @@ function repetido(t)
 end
 ----
 
-Un elemento solo puede aparecer en un conjunto una vez, por lo que si un elemento en +t+ aparece más de una vez, el conjunto será más pequeño que +t+. Si no hay duplicados, el conjunto tendrá el mismo tamaño que +t+.
+Un elemento solo puede aparecer en un conjunto una vez, por lo que si un elemento en +t+ aparece más de una vez, el conjunto será más pequeño que +t+. Si no hay elementos repetidos, el conjunto tendrá el mismo tamaño que +t+.
 
 También podemos usar conjuntos para hacer algunos de los ejercicios de <<chap09>>. Por ejemplo, aquí hay una versión de +usasolo+ con un bucle:
 (((usesonly)))
