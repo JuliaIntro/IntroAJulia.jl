@@ -531,7 +531,7 @@ $ JULIA_DEBUG=all julia -e '@debug "La suma de algunos valores $(sum(rand(100)))
 └ @ Main none:1
 ----
 
-Aquí, hemos utilizado +all+ para obtener toda la información de depuración, pero también se puede optar por generar solo la salida para un archivo o módulo específico.
+Aquí, hemos utilizado +all+ para obtener toda la información de depuración, pero también se puede optar por generar salida solo para un archivo o módulo específico.
 
 
 === Glosario
