@@ -412,7 +412,7 @@ end
 
 Este es un ejemplo de cómo una interfaz bien definida permite que una implementación use todas las funciones disponibles en esta interfaz.
 
-=== Interactive Utilities
+=== Módulo Interactive Utilities
 
 Ya hemos visto el módulo +InteractiveUtils+ en <<interactive>>. La macro +@which+ es solo una de las tantas opciones.
 (((InteractiveUtils)))(((@which)))
@@ -436,7 +436,7 @@ El primer paso es mirar el código de bajo nivel (lowered code):
 ----
 julia> using InteractiveUtils
 
-julia> @code_lowered squaresum(3.0, 4.0)
+julia> @code_lowered sumacuadrada(3.0, 4.0)
 CodeInfo(
 1 ─ %1 = Core.apply_type(Base.Val, 2)
 │   %2 = (%1)()
@@ -452,12 +452,12 @@ CodeInfo(
 La macro +@code_lowered+ devuelve una matriz de una _representación intermedia_ del código que utiliza el compilador para generar código optimizado.
 (((intermediate representation)))
 
-El siguiente paso agrega información del tipo:
+El siguiente paso añade información del tipo:
 (((@code_typed)))((("macro", "InteractiveUtils", "@code_typed", see="@code_typed")))
 
 [source,@julia-repl-test chap20]
 ----
-julia> @code_typed squaresum(3.0, 4.0)
+julia> @code_typed sumacuadrada(3.0, 4.0)
 CodeInfo(
 1 ─ %1 = Base.mul_float(a, a)::Float64
 │   %2 = Base.mul_float(b, b)::Float64
@@ -473,7 +473,7 @@ Esta representación del código se transforma en código LLVM:
 
 [source,@julia-repl chap20]
 ----
-@code_llvm squaresum(3.0, 4.0)
+@code_llvm sumacuadrada(3.0, 4.0)
 ----
 
 Y finalmente se genera el _código de máquina_:
