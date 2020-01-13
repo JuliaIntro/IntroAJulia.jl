@@ -142,14 +142,16 @@ The stacktrace identifies the function that is currently running, and then the f
 The first step is to examine the place in the program where the error occurred and see if you can figure out what happened. These are some of the most common runtime errors:
 
 ArgumentError:: 
-One of the arguments to a function call is not in the expected state.
+Uno de los argumentos para llamar a una función no tiene la forma esperada.
 (((ArgumentError)))
 
 BoundsError:: 
+Una operación de indexación en un arreglo intentó acceder a un elemento fuera de los límites.
 An indexing operation into an array tried to access an out-of-bounds element.
 (((BoundsError)))
 
 DomainError::
+El argumento de una función o constructor está fuera del dominio válido.
 The argument to a function or constructor is outside the valid domain.
 (((DomainError)))((("error", "Core", "DomainError", see="DomainError")))
 
