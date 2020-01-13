@@ -74,10 +74,10 @@ end
 
 En todos estos diccionarios, los valores son +nothing+ porque nunca los usamos. Con esto estamos desperdiciando espacio de almacenamiento.
 
-Julia proporciona otro tipo integrado llamado conjunto, que se comporta como una colección de claves de diccionario sin valores. Agregar elementos a un conjunto es rápido; también lo es verificar si un elemento forma parte de él. Además, los conjuntos proporcionan funciones y operadores para calcular operaciones comunes de conjuntos.
+Julia ofrece otro tipo integrado llamado conjunto, que se comporta como una colección de claves de diccionario sin valores. Agregar elementos a un conjunto es rápido; también lo es verificar si un elemento forma parte de él. Además, los conjuntos proporcionan funciones y operadores para calcular operaciones de conjuntos.
 (((Set)))((("type", "Base", "Set", see="Set")))
 
-Por ejemplo, la resta de conjuntos está disponible como una función llamada +setdiff+. Entonces reescribiendo +restar+:
+Por ejemplo, la resta de conjuntos está disponible como una función llamada +setdiff+. Entonces reescribiendo +resta+:
 (((setdiff)))((("function", "Base", "setdiff", see="setdiff")))
 
 [source,@julia-setup]
