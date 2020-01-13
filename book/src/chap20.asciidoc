@@ -217,7 +217,6 @@ false
 ----
 
 Las expresiones regulares también se pueden construir como literales de cadena no estándar con el prefijo +r+:
-Regexes can also be constructed as non-standard string literals prefixed with +r+:
 (((string)))(((match)))((("function", "Base", "match", see="match")))
 
 [source,@julia-repl-test chap20]
