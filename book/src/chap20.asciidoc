@@ -39,7 +39,7 @@ julia> @time fibonacci(40)
 
 [quote]
 ____
-El teorema "No free lunch" dice que no existe un modelo que funcione mejor en todos los casos.
+El teorema "No free lunch" dice que no existe un único modelo que funcione mejor en todos los casos.
 ____
 
 [TIP]
