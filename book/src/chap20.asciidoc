@@ -228,20 +228,15 @@ julia> m = match(r"[^abn]", "bananas")
 RegexMatch("s")
 ----
 
-En este caso, la interpolación de cadenas no está permitida. La función +match+ devuelve nothing si no se encuentra el patrón (un comando) y, de lo contrario, devuelve un objeto regexmatch.
+En este caso, la interpolación de cadenas no está permitida. La función +match+ devuelve nothing si no se encuentra el patrón, de lo contrario, devuelve un objeto regexmatch.
 (((string interpolation)))(((RegexMatch)))((("type", "Base", "RegexMatch", see="RegexMatch")))
 
 Podemos extraer la siguiente información de un objeto regexmatch:
 
-* toda la subcadena coincide: +m.match+
-* las subcadenas capturadas como una matriz de cadenas: +m.captures+
-* el desplazamiento en el que comienza todo el partido: +m.offset+
-* las compensaciones de las subcadenas capturadas como una matriz: + m.offsets +
-
-* the entire substring matched: +m.match+
-* the captured substrings as an array of strings: +m.captures+
-* the offset at which the whole match begins: +m.offset+
-* the offsets of the captured substrings as an array: +m.offsets+
+* la subcadena que coincide: +m.match+
+* las subcadenas que coinciden en forma de matriz de cadenas: +m.captures+
+* la primera posición en la que se encuentra el patrón: +m.offset+
+* las posiciones de las subcadenas que coinciden en forma de matriz: +m.offsets+
 
 [source,@julia-repl-test chap20]
 ----
@@ -251,7 +246,7 @@ julia> m.offset
 7
 ----
 
-Las expresiones regulares son extremadamente poderosas y el manual de PERL http://perldoc.perl.org/perlre.html explica cómo construir hasta las búsquedas más raras.
+Las expresiones regulares son extremadamente poderosas y el manual de PERL http://perldoc.perl.org/perlre.html explica cómo realizar hasta las búsquedas más extrañas.
 
 === Matrices
 
