@@ -351,9 +351,7 @@ julia> ℯ.^(im*u)
 
 === Interfaces
 
-Julia especifica algunas interfaces informales para definir comportamientos, es decir, métodos con un objetivo específico. Cuando se  extiende dicho método para un tipo, los objetos de ese tipo se pueden usar para construir sobre estos comportamientos.
-
-Julia specifies some informal interfaces to define behaviors, i.e. methods with a specific goal. When you extend such a method for a type, objects of that type can be used to build upon these behaviors.
+Julia especifica algunas interfaces informales para definir comportamientos, es decir, métodos con un objetivo específico. Cuando se  extienden estos métodos para un tipo, los objetos de ese tipo se pueden usar para construir estos comportamientos.
 (((interface)))
 
 [quote]
@@ -375,7 +373,7 @@ Base.iterate(::Fibonacci{T}) where {T<:Real} = (zero(T), (one(T), one(T)))
 Base.iterate(::Fibonacci{T}, state::Tuple{T, T}) where {T<:Real} = (state[1], (state[2], state[1] + state[2]))
 ----
 
-Implementamos un tipo paramétrico sin atributos +Fibonacci+, un constructor externo y dos métodos +iterate+. Se llama al primero para inicializar el iterador, y este devuelve una tupla que consta de un primer valor, 0, y un estado. El estado en este caso es una tupla que contiene el segundo y el tercer valor, 1 y 1.
+Implementamos un tipo paramétrico +Fibonacci+ sin atributos, un constructor externo y dos métodos +iterate+. Se llama al primero para inicializar el iterador, y este devuelve una tupla que consta de un primer valor: 0, y un estado. El estado en este caso es una tupla que contiene el segundo y el tercer valor, 1 y 1.
 
 El segundo valor se llama para obtener el siguiente valor de la secuencia de Fibonacci y devuelve una tupla que tiene como primer elemento el siguiente valor y como segundo elemento el estado que es una tupla con los dos valores siguientes.
 
