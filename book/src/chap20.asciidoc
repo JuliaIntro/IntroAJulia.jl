@@ -499,13 +499,13 @@ julia> @code_native squaresum(3.0, 4.0)
 
 === Depuración
 
-Las macros +Logging+ proporcionan una alternativa al andamiaje con sentencias de impresión:
+Las macros +Logging+ son una alternativa al andamiaje con sentencias de impresión:
 (((@warn)))((("macro", "Base", "@warn", see="@warn")))(((debugging)))
 
 [source,jlcon]
 ----
-julia> @warn "Abandon printf debugging, all ye who enter here!"
-┌ Warning: Abandon printf debugging, all ye who enter here!
+julia> @warn "¡Oh vosotros los que entráis, abandonad la depuración con printf!"
+┌ Warning: ¡Oh vosotros los que entráis, abandonad la depuración con printf!
 └ @ Main REPL[1]:1
 ----
 
@@ -514,7 +514,7 @@ Las sentencias de depuración (debug) no tienen que eliminarse del código. Por 
 
 [source,jlcon]
 ----
-julia> @debug "The sum of some values $(sum(rand(100)))"
+julia> @debug "La suma de algunos valores $(sum(rand(100)))"
 
 ----
 
@@ -526,8 +526,8 @@ El nivel de logging puede seleccionarse mediante la variable de entorno +JULIA_D
 
 [source]
 ----
-$ JULIA_DEBUG=all julia -e '@debug "The sum of some values $(sum(rand(100)))"'
-┌ Debug: The sum of some values 47.116520814555024
+$ JULIA_DEBUG=all julia -e '@debug "La suma de algunos valores $(sum(rand(100)))"'
+┌ Debug: La suma de algunos valores 47.116520814555024
 └ @ Main none:1
 ----
 
@@ -536,12 +536,12 @@ Aquí, hemos utilizado +all+ para obtener toda la información de depuración, p
 
 === Glosario
 
-Expresión regular::
+regex::
 Expresión regular, una secuencia de caracteres que definen un patrón de búsqueda.
 (((regex)))
 
 matriz::
-Matriz bidimensional.
+Arreglo bidimensional.
 (((matrix)))
 
 representación intermedia::
