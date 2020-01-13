@@ -6,22 +6,22 @@ Al depurar, es necesario distinguir entre los diferentes tipos de errores para r
 * Los errores de sintaxis se descubren cuando el intérprete traduce el código fuente a código de bytes. Estos errores indican que hay una falla en la estructura del programa. Por ejemplo, omitir la palabra reservada +end+ al final de un bloque de funciones genera el mensaje +ERROR: LoadError: syntax: incomplete: function requires end+.
 (((syntax error)))
 
-* Los errores en tiempo de ejecución son generados por el intérprete si algo falla mientras se ejecuta el programa. La mayoría de los mensajes de error en tiempo de ejecución indican dónde ocurrió el error y qué funciones se estaban ejecutando. Ejemplo: Una recursión infinita eventualmente causa el error en tiempo de ejecución +ERROR: StackOverflowError+.
+* Los errores en tiempo de ejecución se presentan si algo falla mientras se ejecuta el programa. La mayoría de los mensajes de error en tiempo de ejecución indican dónde ocurrió el error y qué funciones se estaban ejecutando. Ejemplo: Una recursión infinita eventualmente causa el error en tiempo de ejecución +ERROR: StackOverflowError+.
 (((runtime error)))
 
 * Los errores semánticos ocurren cuando un programa se ejecuta sin generar mensajes de error pero no hace lo que debería. Por ejemplo: una expresión puede no evaluarse en el orden esperado, generando un resultado incorrecto.
 (((semantic error)))
 
-El primer paso en la depuración es averiguar el tipo de error. Aunque las siguientes secciones están organizadas por tipo de error, algunas técnicas son aplicables en más de una situación.
+El primer paso en la depuración es averiguar el tipo de error al que se enfrenta. Aunque las siguientes secciones están organizadas por tipo de error, algunas técnicas son aplicables en más de una situación.
 
 
 === Errores de Sintaxis
 
-Los errores de sintaxis suelen ser fáciles de corregir una vez que se descubre cuáles son. Desafortunadamente, generalmente los mensajes de error no son útiles. Los mensajes más comunes son +ERROR: LoadError: syntax: incomplete: premature end of input+ y +ERROR: LoadError: syntax: unexpected "="+, los cuales no son muy informativos.
+Los errores de sintaxis suelen ser fáciles de corregir una vez que se descubre cuáles son. Desafortunadamente, muchas veces los mensajes de error no son útiles. Los mensajes más comunes son +ERROR: LoadError: syntax: incomplete: premature end of input+ y +ERROR: LoadError: syntax: unexpected "="+, los cuales no son muy informativos.
 
 Por otro lado, el mensaje indica en qué parte del programa se produjo el problema. En realidad, indica dónde Julia notó que había un problema, que no es necesariamente dónde está el error. A veces, el error es anterior a la ubicación del mensaje de error, generalmente en la línea anterior.
 
-Si estás programando de forma incremental, es más fácil descubrir dónde está el error. Estará en la última línea que agregó.
+Si está haciendo el programa incrementalmente, debería tener casi localizado el error. Estará en la última línea que agregó.
 
 Si está copiando código de un libro, comience comparando su código con el código del libro. Verifique cada letra. Al mismo tiempo, recuerde que el libro puede contener errores, por lo que si ve algo que parece un error de sintaxis, podría serlo.
 
@@ -31,11 +31,11 @@ Aquí hay algunas formas de evitar los errores de sintaxis más comunes:
 
 . Compruebe que tiene la palabra reservada +end+ al final de cada sentencia compuesta, incluyendo los bloques +for+, +while+, +if+ y +function+.
 
-. Asegúrese de que las cadenas tengan inicio y cierre de comillas. Asegúrese de que todas las comillas sean "comillas rectas", y no otro tipo de "comillas".
+. Asegúrese de que las cadenas tengan su par de comillas de apertura y cierre. Asegúrese de que todas las comillas sean "comillas rectas", y no otro tipo de "comillas".
 
-. Si tiene una cadena con comillas triples escrita en diferentes líneas, asegúrese de haber terminado la cadena correctamente. Una cadena no terminada puede causar un error de token inválido al final de su programa, o puede hacer que la siguiente parte del programa sea tratada como una cadena hasta llegar a la siguiente cadena. En el segundo caso, ¡podría no producir un mensaje de error!
+. Si tiene cadenas que ocupan varias líneas con triples comillas, asegúrese de que ha terminado la cadena correctamente. Una cadena sin terminar puede provocar un error invalid token al final de su programa, o puede hacer que la siguiente parte del programa sea tratada como una cadena hasta llegar a la siguiente cadena. ¡El segundo caso podría no presentar mensaje de error!
 
-. Un operador de apertura no cerrado —+(+, +{+, or +[+— hace que Julia continúe con la siguiente línea como parte de la sentencia actual. Generalmente, se produce un error casi inmediatamente en la siguiente línea.
+. Un paréntesis sin cerrar —+(+, +{+, or +[+— hace que Julia continúe con la línea siguiente como parte de la sentencia actual. Generalmente, se produce un error casi inmediatamente en la siguiente línea.
 
 . Verifique el clásico error que se produce al ocupar +=+ en lugar de +==+ dentro de un condicional.
 
@@ -81,12 +81,12 @@ Si no es intencional, asegúrese de que haya una llamada a la función en el pro
 
 Si un programa se detiene y parece no estar haciendo nada, está "congelado". Generalmente eso significa que está atrapado en un bucle infinito o en una recursión infinita.
 
-* Si hay un bucle que se sospecha que sea el problema, agregue una sentencia de impresión inmediatamente anterior al bucle que diga "entrando al bucle" y otra inmediatamente posterior que diga "saliendo del bucle".
+* Si hay un bucle en particular que le resulta sospechoso de provocar el pproblema, agregue una sentencia de impresión justo antes del bucle que diga "entrando al bucle" y otra inmediatamente posterior que diga "saliendo del bucle".
 +
 Ejecute el programa. Si recibe el primer mensaje y no el segundo, tiene un bucle infinito. Vea <<infinite_loop>>.
 (((infinite loop)))
 
-* La mayoría de las veces, una recursión infinita hará que el programa se ejecute por un tiempo y luego produzca un error +ERROR: LoadError: StackOverflowError+. Si eso sucede, vea <<infinite_recursion>>.
+* La mayoría de las veces, una recursión infinita hará que el programa se ejecute por un rato y luego produzca un error +ERROR: LoadError: StackOverflowError+. Si eso sucede, vea <<infinite_recursion>>.
 +
 Si no obtiene este error pero sospecha que hay un problema con un método o función recursiva, igual puede utilizar las técnicas de <<infinite_recursion>>.
 (((infinite recursion)))
@@ -97,40 +97,41 @@ Si no obtiene este error pero sospecha que hay un problema con un método o func
 
 
 [[infinite_loop]]
-===== Infinite Loop
+===== Bucle Infinito
 
-If you think you have an infinite loop and you think you know what loop is causing the problem, add a print statement at the end of the loop that prints the values of the variables in the condition and the value of the condition.
+Si crees que tienes un bucle infinito y crees saber cuál es, añada una sentencia de impresión que imprima los valores de las variables de la condición al final del bucle junto con el valor de la condición.
 
-For example:
+Por ejemplo:
 
 [source,julia]
 ----
 while x > 0 && y < 0
-    # do something to x
-    # do something to y
+    # hacer algo con x
+    # hacer algo con y
     @debug "variables" x y
-    @debug "condition" x > 0 && y < 0
+    @debug "condicion" x > 0 && y < 0
 end
 ----
 
-Now when you run the program in debug mode, you will see the value of the variables and the condition for each time through the loop. The last time through the loop, the condition should be +false+. If the loop keeps going, you will be able to see the values of +x+ and +y+, and you might figure out why they are not being updated correctly.
+Ahora, cuando ejecute el programa en modo de depuración, verá el valor de las variables y la condición en cada iteración. En la última iteración, la condición debe ser +false+. Si el ciclo continúa, podrá ver los valores de +x+ e +y+, y podrá averiguar por qué no
+se actualizan correctamente.
 
 [[infinite_recursion]]
 ===== Infinite Recursion
 
-Most of the time, infinite recursion causes the program to run for a while and then produce a +ERROR: LoadError: StackOverflowError+ error.
+La mayoría de las veces, una recursión infinita hace que el programa se ejecute durante un tiempo y luego produzca un error +ERROR: LoadError: StackOverflowError+.
 (((StackOverflowError)))
 
-If you suspect that a function is causing an infinite recursion, make sure that there is a base case. There should be some condition that causes the function to return without making a recursive invocation. If not, you need to rethink the algorithm and identify a base case.
+Si sospecha que una función o un método está causando una recursión infinita, comience por asegurarse de que hay un caso base. En otras palabras, debería haber una condición que haga que la función devuelva un valor sin hacer otra llamada recursiva. Si no, necesita revisar el algoritmo y encontrar ese caso base.
 
-If there is a base case but the program doesn’t seem to be reaching it, add a print statement at the beginning of the function that prints the parameters. Now when you run the program, you will see a few lines of output every time the function is invoked, and you will see the parameter values. If the parameters are not moving toward the base case, you will get some ideas about why not.
+Si hay un caso base pero el programa no parece llegar hasta él, añada una sentencia de impresión al inicio de la función que imprima los parámetros. Ahora, cuando ejecute el programa, verá unas pocas líneas cada vez que se llame la función, y allí verá los parámetros. Si los parámetros no se acercan al caso base, eso le dará alguna idea de por qué no lo hace.
 
 [[flow_of_execution]]
-===== Flow of Execution
+===== Flujo de Ejecución
 
-If you are not sure how the flow of execution is moving through your program, add print statements to the beginning of each function with a message like “entering function foo”, where foo is the name of the function.
+Si no está seguro del flujo de ejecución en su programa, añada sentencias de impresión al principio de cada función con mensajes como “entrando a la función fun”, donde fun sea el nombre de la función.
 
-Now when you run the program, it will print a trace of each function as it is invoked.
+Ahora, cuando ejecute el programa, se imprimirá una mensaje en cada función a medida que estas sean llamadas.
 
 ==== When I run the program I get an exception
 
