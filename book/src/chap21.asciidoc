@@ -1,5 +1,5 @@
 [[chap21]]
-== Debugging
+== Depuración
 
 When you are debugging, you should distinguish among different kinds of errors in order to track them down more quickly:
 
