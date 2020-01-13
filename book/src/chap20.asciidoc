@@ -249,7 +249,7 @@ Las expresiones regulares son extremadamente poderosas y el manual de PERL http:
 
 === Matrices
 
-En el <<chap10>> usamos un objeto de matriz unidimensional, con un índice para acceder a sus elementos. Sin embargo, en Julia, las matrices son multidimensionales.
+En el <<chap10>> usamos un objeto de matriz unidimensional, con un índice para acceder a sus elementos. Sin embargo, en Julia las matrices son multidimensionales.
 
 Creemos una _matriz_ de ceros de 2 por 3:
 (((zeros)))((("function", "Base", "zeros", see="zeros")))(((matrix)))
@@ -264,7 +264,7 @@ julia> typeof(z)
 Array{Float64,2}
 ----
 
-El tipo de esta matriz es una matriz que contiene puntos flotantes. Esta matriz es de 2 dimensiones.
+El tipo de esta matriz es una matriz que contiene números de punto flotante. Esta matriz es de 2 dimensiones.
 (((dimension)))
 
 La función +size+ devuelve una tupla con el número de elementos en cada dimensión:
@@ -286,11 +286,11 @@ julia> s = ones(String, 1, 3)
  ""  ""  ""
 ----
 
-El elemento unitario de una cadena es una cadena vacía.
+El elemento de valor unitario de una cadena es una cadena vacía.
 
 [WARNING]
 ====
-+s+ no es una matriz unidimensional:
++s+ no es un arreglo unidimensional:
 
 [source,@julia-repl-test chap20]
 ----
@@ -301,7 +301,7 @@ false
 +s+ es un vector fila y +["", "", ""]+ es un vector columna.
 ====
 
-Se puede crea una matriz usando un espacio para separar elementos en una fila y un punto y coma +;+ para separar filas:
+Se puede crear una matriz usando espacios para separar elementos en una fila, y punto y coma +;+ para separar filas:
 (((;)))
 
 [source,@julia-repl-test chap20]
