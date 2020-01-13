@@ -1,22 +1,22 @@
 [[chap20]]
 == Extra: Base y Librería Estándar
 
-Julia viene con pilas incluidas. El módulo +Base+ contiene las funciones, tipos y macros más útiles. Los cuales están disponibles directamente en Julia.
+Julia tiene todo lo necesario. El módulo +Base+ contiene las funciones, tipos y macros más útiles. Los cuales están disponibles directamente en Julia.
 (((Base)))
 
-Julia también posee una gran cantidad de módulos especializados en su Biblioteca Estándar (módulos para Fechas, Computación Distribuida, Álgebra Lineal, Perfiles, Números Aleatorios, ...). Las funciones, los tipos y las macros definidos en la Biblioteca estándar deben importarse antes de poder usarse:
+Julia también posee una gran cantidad de módulos especializados en su Biblioteca Estándar (módulos para Fechas, Computación Distribuida, Álgebra Lineal, Perfiles, Números Aleatorios, entre otros). Las funciones, los tipos y las macros definidos en la Biblioteca estándar deben importarse antes de poder usarse:
 
 * +import _Module_+ importa el modulo, y +_Module.fn_(x)+ llama a la función +_fn_+
 (((import)))((("keyword", "import", see="import")))
 * +using _Module_+ importa todas las funciones, tipos y macros exportadas de +_Module_+.
 (((using)))
 
-Es posible agregar más funciones a una creciente colección de paquetes (https://juliaobserver.com).
+Además, es posible agregar más funciones a una gran cantidad de paquetes (https://juliaobserver.com).
 
-Este capítulo no es un reemplazo de la documentación oficial de Julia. Solo se dan algunos ejemplos para ilustrar lo que es posible hacer, sin ser exhaustivo. Las funciones ya vistas no están incluidas. Se puede encontrar una descripción completa en https://docs.julialang.org.
+Este capítulo no es un reemplazo de la documentación oficial de Julia. Solo se dan algunos ejemplos para ilustrar lo que es posible hacer, sin ser exhaustivo. Las funciones ya vistas no están incluidas. Se puede encontrar una explicación más completa en https://docs.julialang.org.
 
 
-=== Measuring Performance
+=== Midiendo el Rendimiento
 
 Hemos visto que algunos algoritmos funcionan mejor que otros. +fibonnaci+ en <<memos>> es mucho más rápido que +fib+ en <<one_more_example>>. La macro +@time+ permite cuantificar la diferencia:
 (((@time)))((("macro", "Base", "@time", see="@time")))
@@ -35,35 +35,36 @@ julia> @time fibonacci(40)
 102334155
 ----
 
-+@time+ imprime el tiempo que tardó en ejecutarse la función, el número de asignaciones y la memoria asignada antes de devolver el resultado. La función fibonacci (que guardaba resultados previos) es mucho más rápida pero necesita más memoria.
++@time+ imprime el tiempo que tardó en ejecutarse la función, el número de asignaciones (allocations) y la memoria asignada antes de devolver el resultado. La función fibonacci (que guarda resultados previos) es mucho más rápida pero necesita más memoria.
 
 [quote]
 ____
-El teorema "No free lunch" dice que no existe un modelo que funcione mejor en todos los casos.
+El teorema "No free lunch" dice que no existe un único modelo que funcione mejor en todos los casos.
 ____
 
 [TIP]
 ====
 
-Una función en Julia se compila la primera vez que se ejecuta. Por lo tanto, para comparar dos algoritmos, estos deben implementarse como funciones para poder ser compilados, y la primera vez que se llama a estas funciones debe ser excluida de la medición de rendimiento; de lo contrario, también se mide el tiempo de compilación.
 
-El paquete +BenchmarkTools+ (https://github.com/JuliaCI/BenchmarkTools.jl) proporciona la macro +@btime+ que realiza una evaluación comparativa de la manera correcta. ¡Así que úsala!
+Para comparar dos algoritmos, estos deben implementarse como funciones. Una función en Julia se compila la primera vez que se ejecuta, por lo tanto, se debe excluir la primera vez que se llama a estas funciones al medir el rendimiento; de lo contrario, también se mediría el tiempo de compilación.
+
+El paquete +BenchmarkTools+ (https://github.com/JuliaCI/BenchmarkTools.jl) proporciona la macro +@btime+ que realiza una evaluación comparativa de la manera correcta. ¡Así que úsela!
 ====
 
 
 [[collections_and_data_structures]]
-=== Collections and Data Structures
+=== Colecciones y Estructuras de Datos
 
-En <<dictionary_subtraction>> usamos diccionarios para encontrar las palabras que aparecían en un documento y que no aparecían en una matriz de palabras. La función que escribimos toma +d1+, que contiene las palabras del documento como claves, y +d2+, que contiene la matriz de palabras. Devuelve un diccionario que contiene las claves de +d1+ que no están en +d2+. 
+En <<dictionary_subtraction>> usamos diccionarios para encontrar las palabras que aparecían en un documento y que no aparecían en una matriz de palabras. La función que escribimos tomaba +d1+, que contenía las palabras del documento como claves, y +d2+, que contenía la matriz de palabras. Y devolvía un diccionario que contenía las claves de +d1+ que no estaban en +d2+. 
 (((subtract)))
 
 [source,@julia-setup]
 ----
-function subtract(d1, d2)
+function resta(d1, d2)
     res = Dict()
-    for key in keys(d1)
-        if key ∉ keys(d2)
-            res[key] = nothing
+    for clave in keys(d1)
+        if clave ∉ keys(d2)
+            res[clave] = nothing
         end
     end
     res
@@ -71,31 +72,29 @@ end
 ----
 
 
-En todos estos diccionarios, los valores son +nothing+ porque nunca los usamos. Con esto desperdiciamos espacio de almacenamiento.
+En todos estos diccionarios, los valores son +nothing+ porque nunca los usamos. Con esto estamos desperdiciando espacio de almacenamiento.
 
-Julia proporciona otro tipo integrado llamado conjunto, que se comporta como una colección de claves de diccionario sin valores. Agregar elementos a un conjunto es rápido; también lo es verificar si un elemento forma parte de él. Además, los conjuntos proporcionan funciones y operadores para calcular operaciones comunes de conjuntos.
+Julia ofrece otro tipo integrado llamado conjunto, que se comporta como una colección de claves de diccionario sin valores. Agregar elementos a un conjunto es rápido; también lo es verificar si un elemento forma parte de él. Además, los conjuntos proporcionan funciones y operadores para calcular operaciones de conjuntos.
 (((Set)))((("type", "Base", "Set", see="Set")))
 
-
-Por ejemplo, la resta de conjuntos está disponible como una función llamada +setdiff+. Entonces reescribiendo +restar+:
+Por ejemplo, la resta de conjuntos está disponible como una función llamada +setdiff+. Entonces reescribiendo +resta+:
 (((setdiff)))((("function", "Base", "setdiff", see="setdiff")))
 
 [source,@julia-setup]
 ----
-function subtract(d1, d2)
+function resta(d1, d2)
     setdiff(d1, d2)
 end
 ----
 
-
 El resultado es un conjunto en vez de un diccionario.
 
-Algunos de los ejercicios en este libro se pueden hacer de manera eficiente y concisa con conjuntos. Por ejemplo, a continuación se muestra una solución para +hasduplicates+, de <<ex10-7>>, que usa un diccionario:
+Algunos de los ejercicios en este libro se pueden hacer de manera eficiente y concisa con conjuntos. Por ejemplo, a continuación se muestra una solución para +repetido+, de <<ex10-7>>, que usa un diccionario:
 (((hasduplicates)))
 
 [source,@julia-setup]
 ----
-function hasduplicates(t)
+function repetido(t)
     d = Dict()
     for x in t
         if x ∈ d
@@ -113,21 +112,21 @@ Usando conjuntos, podemos escribir la misma función:
 
 [source,@julia-setup]
 ----
-function hasduplicates(t)
+function repetido(t)
     length(Set(t)) < length(t)
 end
 ----
 
-Un elemento solo puede aparecer en un conjunto una vez, por lo que si un elemento en +t+ aparece más de una vez, el conjunto será más pequeño que +t+. Si no hay duplicados, el conjunto tendrá el mismo tamaño que +t+.
+Un elemento solo puede aparecer en un conjunto una vez, por lo que si un elemento en +t+ aparece más de una vez, el conjunto será más pequeño que +t+. Si no hay elementos repetidos, el conjunto tendrá el mismo tamaño que +t+.
 
-También podemos usar conjuntos para hacer algunos de los ejercicios de <<chap09>>. Por ejemplo, aquí hay una versión de +usesonly+ con un bucle:
+También podemos usar conjuntos para hacer algunos de los ejercicios de <<chap09>>. Por ejemplo, aquí hay una versión de +usasolo+ con un bucle:
 (((usesonly)))
 
 [source,@julia-setup]
 ----
-function usesonly(word, available)
-    for letter in word
-        if letter ∉ available
+function usasolo(palabra, disponibles)
+    for letra in palabra
+        if letra ∉ disponibles
             return false
         end
     end
@@ -135,30 +134,30 @@ function usesonly(word, available)
 end
 ----
 
-+usesonly+ comprueba si todas las letras en +word+ están en +disponible+. Podemos reescribir esta función:
++usasolo+ comprueba si todas las letras en +palabra+ están en +disponibles+. Podemos reescribir esta función:
 
 [source,@julia-setup]
 ----
-function usesonly(word, available)
-    Set(word) ⊆ Set(available)
+function usasolo(palabra, disponibles)
+    Set(palabra) ⊆ Set(disponibles)
 end
 ----
 
-El operador +⊆+ (*+\subseteq TAB+*) verifica si un conjunto es un subconjunto de otro, incluida la posibilidad de que sean iguales, lo cual es cierto si todas las letras en +word+ aparecen en +available+.
+El operador +⊆+ (*+\subseteq TAB+*) verifica si un conjunto es un subconjunto de otro, incluida la posibilidad de que sean iguales, lo cual es cierto si todas las letras en +palabra+ aparecen en +disponibles+.
 (((⊆)))((("operator", "Base", "⊆", see="⊆")))
 
 ==== Exercise 20-1
 
-Rewrite +avoids+ using sets.
+Reescriba la función +evita+ de <<chap09>> usando conjuntos.
 (((avoids)))
 
 
-=== Mathematics
+=== Matemáticas
 
-Complex numbers are also supported in Julia. The global constant +im+ is bound to the complex number latexmath:[$\mathrm{i}$], representing the principal square root of latexmath:[$-1$].
+También se pueden usar números complejos en Julia. La constante global +im+ está asociada al número complejo latexmath:[$\mathrm{i}$], que representa la raíz cuadrada principal de latexmath:[$-1$].
 (((complex numbers)))(((im)))
 
-We can now verify Euler's identity,
+Ahora podemos verificar la identidad de Euler,
 (((Euler's identity)))
 
 [source,@julia-repl-test]
@@ -167,10 +166,10 @@ julia> ℯ^(im*π)+1
 0.0 + 1.2246467991473532e-16im
 ----
 
-The symbol +ℯ+ (*+\euler TAB+*) is the base of natural logarithms.
+El símbolo +ℯ+ (*+\euler TAB+*) es la base de los logaritmos naturales.
 (((ℯ))) 
 
-Let's illustrate the complex nature of trigonometric functions:
+Analicemos la naturaleza compleja de las funciones trigonométricas:
 
 [latexmath]
 ++++
@@ -179,7 +178,7 @@ Let's illustrate the complex nature of trigonometric functions:
 \end{equation}
 ++++
 
-We can test this formula for different values of latexmath:[\(x\)].
+Podemos probar esta fórmula para diferentes valores de latexmath:[\(x\)].
 
 [source,@julia-repl-test]
 ----
@@ -189,35 +188,35 @@ julia> cos.(x) == 0.5*(ℯ.^(im*x)+ℯ.^(-im*x))
 true
 ----
 
-Here, another example of the dot operator is shown. Julia also allows numeric literals to be juxtaposed with identifiers as coefficients as in +2π+.
+Aquí se muestra otro ejemplo del operador punto. Julia también permite usar valores numéricos con identificadores (símbolos léxicos que nombran entidades, como +π+) como en +2π+.
 
-=== Strings
+=== Cadenas
 
-In <<chap08>> and <<chap09>>, we did some elementary searches in string objects. Julia can handle however Perl-compatible regular expressions (_regexes_), which eases the task of finding complex patterns in string objets.
+En <<chap08>> y <<chap09>>, realizamos algunas búsquedas en cadenas. Además, Julia puede usar _expresiones regulares_ (o _regexes_) compatibles con Perl, lo que facilita la tarea de encontrar patrones complejos en cadenas.
 (((regex)))
 
-The +usesonly+ function can be implemented as a regex:
+La función +usasolo+ se puede implementar como una expresión regular:
 (((usesonly)))(((Regex)))((("type", "Base", "Regex", see="Regex")))(((occursin)))((("function", "Base", "occursin", see="occursin")))
 
 [source,@julia-setup chap20]
 ----
-function usesonly(word, available)
-  r = Regex("[^$(available)]")
-  !occursin(r, word)
+function usasolo(palabra, disponibles)
+  r = Regex("[^$(disponibles)]")
+  !occursin(r, palabra)
 end
 ----
 
-The regex looks for a character that is not in the +available+ string and +occursin+ returns +true+ if the pattern is found in +word+.
+La expresión regular busca un carácter que no está en la cadena +disponible+ y +occursin+ devuelve +true+ si el patrón se encuentra en +palabra+.
 
 [source,@julia-repl-test chap20]
 ----
-julia> usesonly("banana", "abn")
+julia> usasolo("banana", "abn")
 true
-julia> usesonly("bananas", "abn")
+julia> usasolo("bananas", "abn")
 false
 ----
 
-Regexes can also be constructed as non-standard string literals prefixed with +r+:
+Las expresiones regulares también se pueden construir como literales de cadena no estándar con el prefijo +r+:
 (((string)))(((match)))((("function", "Base", "match", see="match")))
 
 [source,@julia-repl-test chap20]
@@ -228,15 +227,15 @@ julia> m = match(r"[^abn]", "bananas")
 RegexMatch("s")
 ----
 
-String interpolation is not allowed in this case. The +match+ function returns nothing if the pattern (a command) is not found and return a regexmatch object otherwise.
+En este caso, la interpolación de cadenas no está permitida. La función +match+ devuelve nothing si no se encuentra el patrón, de lo contrario, devuelve un objeto regexmatch.
 (((string interpolation)))(((RegexMatch)))((("type", "Base", "RegexMatch", see="RegexMatch")))
 
-We can extract the following info from a regexmatch object:
+Podemos extraer la siguiente información de un objeto regexmatch:
 
-* the entire substring matched: +m.match+
-* the captured substrings as an array of strings: +m.captures+
-* the offset at which the whole match begins: +m.offset+
-* the offsets of the captured substrings as an array: +m.offsets+
+* la subcadena que coincide: +m.match+
+* las subcadenas que coinciden en forma de matriz de cadenas: +m.captures+
+* la primera posición en la que se encuentra el patrón: +m.offset+
+* las posiciones de las subcadenas que coinciden en forma de matriz: +m.offsets+
 
 [source,@julia-repl-test chap20]
 ----
@@ -246,13 +245,13 @@ julia> m.offset
 7
 ----
 
-Regexes are extremely powerful and the PERL manpage http://perldoc.perl.org/perlre.html provides all the details to construct the most exotic searches.
+Las expresiones regulares son extremadamente poderosas y el manual de PERL http://perldoc.perl.org/perlre.html explica cómo realizar hasta las búsquedas más extrañas.
 
-=== Arrays
+=== Matrices
 
-In <<chap10>> we used an array object as a one-dimensional container with an index to address its elements. In Julia however, arrays are multi-dimensional collections.
+En el <<chap10>> usamos un objeto de matriz unidimensional, con un índice para acceder a sus elementos. Sin embargo, en Julia las matrices son multidimensionales.
 
-Let's create a 2-by-3 zero _matrix_:
+Creemos una _matriz_ de ceros de 2 por 3:
 (((zeros)))((("function", "Base", "zeros", see="zeros")))(((matrix)))
 
 [source,@julia-repl-test chap20]
@@ -265,10 +264,10 @@ julia> typeof(z)
 Array{Float64,2}
 ----
 
-The type of this matrix is an array holding floating points and having 2 dimensions.
+El tipo de esta matriz es una matriz que contiene números de punto flotante. Esta matriz es de 2 dimensiones.
 (((dimension)))
 
-The +size+ function returns a tuple with as elements the number of elements in each dimension:
+La función +size+ devuelve una tupla con el número de elementos en cada dimensión:
 (((size)))((("function", "Base", "size", see="size")))
 
 [source,@julia-repl-test chap20]
@@ -277,7 +276,7 @@ julia> size(z)
 (2, 3)
 ----
 
-The function +ones+ constructs a matrix with unit value elements:
+La función +ones+ construye una matriz con elementos de valor unitario:
 (((ones)))((("function", "Base", "ones", see="ones")))
 
 [source,@julia-repl-test chap20]
@@ -287,11 +286,11 @@ julia> s = ones(String, 1, 3)
  ""  ""  ""
 ----
 
-The string unit element is an empty string.
+El elemento de valor unitario de una cadena es una cadena vacía.
 
 [WARNING]
 ====
-+s+ is not a one-dimensional array:
++s+ no es un arreglo unidimensional:
 
 [source,@julia-repl-test chap20]
 ----
@@ -299,10 +298,10 @@ julia> s ==  ["", "", ""]
 false
 ----
 
-+s+ is a row matrix and +["", "", ""]+ is a column matrix.
++s+ es un vector fila y +["", "", ""]+ es un vector columna.
 ====
 
-A matrix can be entered directly using a space to separate elements in a row and a semicolon +;+ to separate rows:
+Se puede crear una matriz usando espacios para separar elementos en una fila, y punto y coma +;+ para separar filas:
 (((;)))
 
 [source,@julia-repl-test chap20]
@@ -313,7 +312,7 @@ julia> a = [1 2 3; 4 5 6]
  4  5  6
 ----
 
-You can use square brackets to address individual elements:
+Se pueden usar corchetes para modificar elementos de una matriz:
 (((square brackets)))
 
 [source,@julia-repl-test chap20]
@@ -328,7 +327,7 @@ julia> z
  0.0  0.0  1.0
 ----
 
-Slices can be used for each dimension to select a subgroup of elements:
+Se pueden usar porciones en cada dimensión para seleccionar un subgrupo de elementos:
 (((slice)))
 
 [source,@julia-repl-test chap20]
@@ -339,7 +338,7 @@ julia> u = z[:,2:end]
  0.0  1.0
 ----
 
-The +.+ operator broadcasts to all dimensions:
+El operador +.+ aplica una operación en todas las dimensiones:
 (((.)))
 
 [source,@julia-repl-test chap20]
@@ -352,17 +351,17 @@ julia> ℯ.^(im*u)
 
 === Interfaces
 
-Julia specifies some informal interfaces to define behaviors, i.e. methods with a specific goal. When you extend such a method for a type, objects of that type can be used to build upon these behaviors.
+Julia especifica algunas interfaces informales para definir comportamientos, es decir, métodos con un objetivo específico. Cuando se  extienden estos métodos para un tipo, los objetos de ese tipo se pueden usar para construir estos comportamientos.
 (((interface)))
 
 [quote]
 ____
-If it looks like a duck, swims like a duck, and quacks like a duck, then it probably _is_ a duck.
+Si parece un pato, nada como un pato y grazna como un pato, entonces probablemente _sea_ un pato.
 ____
 
-In <<one_more_example>> we implemented the +fib+ function returning the latexmath:[\(n\)]th element of the Fibonnaci sequence.
+En <<one_more_example>> implementamos la función +fib+ que devuelve el elemento latexmath:[\(n\)]-ésimo de la secuencia de Fibonnaci.
 
-Looping over the values of a collection, called iteration, is such an interface. Let's make an iterator that returns lazily the Fibonacci sequence:
+Recorrer los valores de una colección, lo cual es llamado iteración, es una interfaz de este tipo. Creemos un iterador que devuelva la secuencia de Fibonacci:
 (((iterator)))(((Fibonacci)))((("type", "programmer-defined", "Fibonacci", see="Fibonacci")))(((iterate)))((("function", "Base", "iterate", see="iterate")))
 
 [source,@julia-setup chap20]
@@ -374,11 +373,11 @@ Base.iterate(::Fibonacci{T}) where {T<:Real} = (zero(T), (one(T), one(T)))
 Base.iterate(::Fibonacci{T}, state::Tuple{T, T}) where {T<:Real} = (state[1], (state[2], state[1] + state[2]))
 ----
 
-We implemented a parametric type with no fields +Fibonacci+, an outer constructor and two methods +iterate+. The first is called to initialize the iterator and returns a tuple consisting of the first value, 0, and a state. The state in this case is a tuple containing the second and the third value, 1 and 1.
+Implementamos un tipo paramétrico +Fibonacci+ sin atributos, un constructor externo y dos métodos +iterate+. Se llama al primer método +iterate+ para inicializar el iterador, y este devuelve una tupla que consta de un primer valor: 0, y un estado. El estado en este caso es una tupla que contiene el segundo y el tercer valor: 1 y 1.
 
-The second is called to get the next value of the Fibonacci sequence and returns a tuple having as first element the next value and as second element the state which is a tuple with the two following values.
+Se llama al segundo método +iterate+ para obtener el siguiente valor de la secuencia de Fibonacci, y devuelve una tupla que tiene como primer elemento el siguiente valor y como segundo elemento el estado que es una tupla con los dos valores siguientes.
 
-We can use +Fibonacci+ now in a +for+ loop:
+Ahora podemos usar +Fibonacci+ en un bucle +for+:
 (((for statement)))
 
 [source,@julia-repl-test chap20]
@@ -390,7 +389,7 @@ julia> for e in Fibonacci(Int64)
 0 1 1 2 3 5 8 13 21 34 55 89
 ----
 
-It looks like magic has happened but the explanation is simple. A +for+ loop in Julia
+Parece sacado debajo de la manga, pero la explicación es simple. Un bucle +for+ en Julia
 
 [source,julia]
 ----
@@ -399,7 +398,7 @@ for i in iter
 end
 ----
 
-is translated into:
+se traduce en:
 
 [source,julia]
 ----
@@ -411,34 +410,33 @@ while next !== nothing
 end
 ----
 
-This is a great example how a well defined interface allows an implementation to use all the functions that are aware of the interface.
+Este es un ejemplo de cómo una interfaz bien definida permite que una implementación use todas las funciones disponibles en esta interfaz.
 
+=== Módulo Interactive Utilities
 
-=== Interactive Utilities
-
-We have already met the +InteractiveUtils+ module in <<interactive>>. The +@which+ macro is only the tip of the iceberg.
+Ya hemos visto el módulo +InteractiveUtils+ en <<interactive>>. La macro +@which+ es solo una de las tantas opciones.
 (((InteractiveUtils)))(((@which)))
 
-Julia code is transformed by the LLVM library to machinecode in multiple steps. We can directly visualize the output of each stage.
+La biblioteca LLVM transforma el código de Julia en código de máquina, en varios pasos. Podemos visualizar la salida de cada etapa.
 
-Let's give a simple example:
+Veamos un ejemplo simple:
 (((squaresum)))((("function", "programmer-defined", "squaresum", see="squaresum")))
 
 [source,@julia-setup chap20]
 ----
-function squaresum(a::Float64, b::Float64)
+function sumacuadrada(a::Float64, b::Float64)
     a^2 + b^2
 end
 ----
 
-The first step is to look at the lowered code:
+El primer paso es mirar el código de bajo nivel (lowered code):
 (((@code_lowered)))((("macro", "InteractiveUtils", "@code_lowered", see="@code_lowered")))
 
 [source,@julia-repl-test chap20]
 ----
 julia> using InteractiveUtils
 
-julia> @code_lowered squaresum(3.0, 4.0)
+julia> @code_lowered sumacuadrada(3.0, 4.0)
 CodeInfo(
 1 ─ %1 = Core.apply_type(Base.Val, 2)
 │   %2 = (%1)()
@@ -451,15 +449,15 @@ CodeInfo(
 )
 ----
 
-The +@code_lowered+ macro returns an array of an _intermediate representation_ of the code that is used by the compiler to generate optimised code.
+La macro +@code_lowered+ devuelve una matriz de una _representación intermedia_ del código que utiliza el compilador para generar código optimizado.
 (((intermediate representation)))
 
-The next step adds type information:
+El siguiente paso añade información del tipo:
 (((@code_typed)))((("macro", "InteractiveUtils", "@code_typed", see="@code_typed")))
 
 [source,@julia-repl-test chap20]
 ----
-julia> @code_typed squaresum(3.0, 4.0)
+julia> @code_typed sumacuadrada(3.0, 4.0)
 CodeInfo(
 1 ─ %1 = Base.mul_float(a, a)::Float64
 │   %2 = Base.mul_float(b, b)::Float64
@@ -468,17 +466,17 @@ CodeInfo(
 ) => Float64
 ----
 
-We see that the type of the intermediate results and the return value is correctly inferred.
+El tipo de resultados intermedios y el valor de retorno se infiere correctamente.
 
-This representation of the code is transformed into LLVM code:
+Esta representación del código se transforma en código LLVM:
 (((LLVM code)))(((@code_llvm)))((("macro", "InteractiveUtils", "@code_llvm", see="@code_llvm")))
 
 [source,@julia-repl chap20]
 ----
-@code_llvm squaresum(3.0, 4.0)
+@code_llvm sumacuadrada(3.0, 4.0)
 ----
 
-And finally the _machine code_ is generated:
+Y finalmente se genera el _código de máquina_:
 (((machine code)))(((@code_native)))((("macro", "InteractiveUtils", "@code_native", see="@code_native")))
 
 [source,@julia-repl-test chap20]
@@ -499,61 +497,61 @@ julia> @code_native squaresum(3.0, 4.0)
 ; └
 ----
 
-=== Debugging
+=== Depuración
 
-The +Logging+ macros provide an alternative to scaffolding with print statements:
+Las macros +Logging+ son una alternativa al andamiaje con sentencias de impresión:
 (((@warn)))((("macro", "Base", "@warn", see="@warn")))(((debugging)))
 
 [source,jlcon]
 ----
-julia> @warn "Abandon printf debugging, all ye who enter here!"
-┌ Warning: Abandon printf debugging, all ye who enter here!
+julia> @warn "¡Oh vosotros los que entráis, abandonad la depuración con printf!"
+┌ Warning: ¡Oh vosotros los que entráis, abandonad la depuración con printf!
 └ @ Main REPL[1]:1
 ----
 
-The debug statements don't have to be removed from the source. For example, in contrast to the +@warn+ above
+Las sentencias de depuración (debug) no tienen que eliminarse del código. Por ejemplo, en contraste con el +@warn+ anterior
 (((debug statement)))(((@debug)))((("macro", "Base", "@debug", see="@debug")))
 
 [source,jlcon]
 ----
-julia> @debug "The sum of some values $(sum(rand(100)))"
+julia> @debug "La suma de algunos valores $(sum(rand(100)))"
 
 ----
 
-will produce no output by default. In this case +sum(rand(100))+ will never be evaluated unless _debug logging_ is enabled.
+_debug_ por defecto no produce salida. En este caso, +sum(rand(100))+ nunca se evaluará a menos que _debug logging_ esté habilitado.
 (((debug logging)))
 
-The level of logging can be selected by an environment variable +JULIA_DEBUG+:
+El nivel de logging puede seleccionarse mediante la variable de entorno +JULIA_DEBUG+:
 (((environment variable)))
 
 [source]
 ----
-$ JULIA_DEBUG=all julia -e '@debug "The sum of some values $(sum(rand(100)))"'
-┌ Debug: The sum of some values 47.116520814555024
+$ JULIA_DEBUG=all julia -e '@debug "La suma de algunos valores $(sum(rand(100)))"'
+┌ Debug: La suma de algunos valores 47.116520814555024
 └ @ Main none:1
 ----
 
-Here, we have used +all+ to get all debug information, but you can also choose to generate only output for a specific file or module.
+Aquí, hemos utilizado +all+ para obtener toda la información de depuración, pero también se puede optar por generar salida solo para un archivo o módulo específico.
 
 
-=== Glossary
+=== Glosario
 
 regex::
-Regular expression, a sequence of characters that define a search pattern.
+Expresión regular, una secuencia de caracteres que definen un patrón de búsqueda.
 (((regex)))
 
-matrix::
-Two-dimensional array.
+matriz::
+Arreglo bidimensional.
 (((matrix)))
 
-intermediate representation::
-Data structure used internally by a compiler to represent source code.
+representación intermedia::
+Estructura de datos utilizada internamente por un compilador para representar el código fuente.
 (((intermediate representation)))
 
-machine code::
-Language instructions that can be executed directly by a computer's central processing unit.
+código de máquina::
+Instrucciones que pueden ser ejecutadas directamente por la unidad central de procesamiento de una computadora.
 (((machine code)))
 
 debug logging::
-Storing debug messages in a log.
+Almacenar mensajes de depuración en un registro (log).
 (((debug logging)))

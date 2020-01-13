@@ -82,7 +82,7 @@ Escriba una función llamada +escogerdelhistograma+ que tome un histograma defin
 ----
 julia> t = ['a', 'a', 'b'];
 
-julia> histogram(t)
+julia> histograma(t)
 Dict{Any,Any} with 2 entries:
   'a' => 2
   'b' => 1
