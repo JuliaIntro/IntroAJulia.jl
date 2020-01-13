@@ -361,7 +361,7 @@ ____
 
 En <<one_more_example>> implementamos la función +fib+ que devuelve el elemento latexmath:[\(n\)]-ésimo de la secuencia de Fibonnaci.
 
-Recorrer los valores de una colección, lo cual es llamado iteración, es una interfaz de este tipo. Hagamos un iterador que devuelva la secuencia de Fibonacci:
+Recorrer los valores de una colección, lo cual es llamado iteración, es una interfaz de este tipo. Creemos un iterador que devuelva la secuencia de Fibonacci:
 (((iterator)))(((Fibonacci)))((("type", "programmer-defined", "Fibonacci", see="Fibonacci")))(((iterate)))((("function", "Base", "iterate", see="iterate")))
 
 [source,@julia-setup chap20]
@@ -373,11 +373,11 @@ Base.iterate(::Fibonacci{T}) where {T<:Real} = (zero(T), (one(T), one(T)))
 Base.iterate(::Fibonacci{T}, state::Tuple{T, T}) where {T<:Real} = (state[1], (state[2], state[1] + state[2]))
 ----
 
-Implementamos un tipo paramétrico +Fibonacci+ sin atributos, un constructor externo y dos métodos +iterate+. Se llama al primero para inicializar el iterador, y este devuelve una tupla que consta de un primer valor: 0, y un estado. El estado en este caso es una tupla que contiene el segundo y el tercer valor, 1 y 1.
+Implementamos un tipo paramétrico +Fibonacci+ sin atributos, un constructor externo y dos métodos +iterate+. Se llama al primer método +iterate+ para inicializar el iterador, y este devuelve una tupla que consta de un primer valor: 0, y un estado. El estado en este caso es una tupla que contiene el segundo y el tercer valor: 1 y 1.
 
-El segundo valor se llama para obtener el siguiente valor de la secuencia de Fibonacci y devuelve una tupla que tiene como primer elemento el siguiente valor y como segundo elemento el estado que es una tupla con los dos valores siguientes.
+Se llama al segundo método +iterate+ para obtener el siguiente valor de la secuencia de Fibonacci, y devuelve una tupla que tiene como primer elemento el siguiente valor y como segundo elemento el estado que es una tupla con los dos valores siguientes.
 
-Ahora podemos usar +Fibonacci+ ahora en un bucle +for+:
+Ahora podemos usar +Fibonacci+ en un bucle +for+:
 (((for statement)))
 
 [source,@julia-repl-test chap20]
@@ -410,12 +410,11 @@ while next !== nothing
 end
 ----
 
-Este es un ejemplo de cómo una interfaz bien definida permite que una implementación use todas las funciones disponibles en la interfaz.
+Este es un ejemplo de cómo una interfaz bien definida permite que una implementación use todas las funciones disponibles en esta interfaz.
 
 === Interactive Utilities
 
 Ya hemos visto el módulo +InteractiveUtils+ en <<interactive>>. La macro +@which+ es solo una de las tantas opciones.
-We have already met the +InteractiveUtils+ module in <<interactive>>. The +@which+ macro is only the tip of the iceberg.
 (((InteractiveUtils)))(((@which)))
 
 La biblioteca LLVM transforma el código de Julia en código de máquina, en varios pasos. Podemos visualizar la salida de cada etapa.
