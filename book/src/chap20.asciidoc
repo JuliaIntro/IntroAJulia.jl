@@ -1,7 +1,7 @@
 [[chap20]]
 == Extra: Base y Librería Estándar
 
-Julia viene con todo incluido. El módulo +Base+ contiene las funciones, tipos y macros más útiles. Los cuales están disponibles directamente en Julia.
+Julia tiene todo lo necesario. El módulo +Base+ contiene las funciones, tipos y macros más útiles. Los cuales están disponibles directamente en Julia.
 (((Base)))
 
 Julia también posee una gran cantidad de módulos especializados en su Biblioteca Estándar (módulos para Fechas, Computación Distribuida, Álgebra Lineal, Perfiles, Números Aleatorios, entre otros). Las funciones, los tipos y las macros definidos en la Biblioteca estándar deben importarse antes de poder usarse:
