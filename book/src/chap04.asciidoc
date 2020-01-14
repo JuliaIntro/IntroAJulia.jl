@@ -398,44 +398,44 @@ Este proceso tiene algunos inconvenientes, veremos alternativas más adelante, p
 
 === Docstring
 
-A _docstring_ is a string before a function that explains the interface (“doc” is short for “documentation”). Here is an example:
+Un _docstring_ es una cadena que va antes de una función, y que explica la interfaz ("doc" es la abreviatura de "documentación"). Aquí hay un ejemplo:
 (((docstring)))(((triple quotes)))((("pass:[&quot;&quot;&quot;]", see="triple quotes")))
 
 [source,julia]
 ----
 """
-polyline(t, n, len, angle)
+polilinea(t, n, lon, angulo)
 
-Draws n line segments with the given length and
-angle (in degrees) between them.  t is a turtle.
+Dibuja n segmentos de línea de la longitud dada y con 
+ángulo entre ellos (en grados) dado. t es una tortuga.
 """
-function polyline(t, n, len, angle)
+function polilinea(t, n, lon, angulo)
     for i in 1:n
-        forward(t, len)
-        turn(t, -angle)
+        forward(t, lon)
+        turn(t, -angulo)
     end
 end
 ----
 
-Documentation can be accessed in the REPL or in a notebook by typing ? followed by the name of a function or macro, and pressing +ENTER+:
+Se puede acceder a la documentación en REPL o en un notebook escribiendo ? seguido del nombre de una función o macro, y presionando +ENTER+:
 (((help)))((("?", see="help")))
 
 ----
-help?> polyline
+help?> polilinea
 search:
 
-  polyline(t, n, len, angle)
-
-  Draws n line segments with the given length and angle (in degrees) between them. t is a turtle.
+  polilinea(t, n, lon, angulo)
+  
+  Dibuja n segmentos de línea de la longitud dada y con ángulo entre ellos (en grados) dado. t es una tortuga.
 ----
 
-Docstrings are often triple-quoted strings, also known as multiline strings because the triple quotes allow the string to span more than one line.
+Los docstring generalmente son cadenas de comillas triples, también conocidas como cadenas de líneas múltiples ya que las comillas triples permiten que la cadena abarque más de una línea.
 
-A docstring contains the essential information someone would need to use this function. It explains concisely what the function does (without getting into the details of how it does it). It explains what effect each parameter has on the behavior of the function and what type each parameter should be (if it is not obvious).
+Un docstring contiene la información esencial que alguien necesitaría para usar esta función. Explica de manera concisa lo que hace la función (sin entrar en detalles sobre cómo lo hace). Explica qué efecto tiene cada parámetro en el comportamiento de la función y de qué tipo debe ser cada parámetro (si no es obvio).
 
 [TIP]
 ====
-Writing this kind of documentation is an important part of interface design. A well-designed interface should be simple to explain; if you have a hard time explaining one of your functions, maybe the interface could be improved.
+Escribir este tipo de documentación es una parte importante del diseño de la interfaz. Una interfaz bien diseñada debe ser simple de explicar; si tiene dificultades para explicar una de sus funciones, tal vez la interfaz podría mejorarse.
 ====
 
 
