@@ -521,57 +521,57 @@ Enter the code in this chapter in a notebook.
 [source,julia]
 ----
 """
-arc(t, r, angle)
+arco(t, r, angulo)
 
-Draws an arc with the given radius and angle:
+Dibuja un arco con el radio y el ángulo dados:
 
-    t: turtle
-    r: radius
-    angle: angle subtended by the arc, in degrees
+    t: tuortuga
+    r: radio
+    angulo: ángulo subtendido por el arco, en grados 
 """
-function arco(t, r, angle)
-    arc_len = 2 * π * r * abs(angle) / 360
-    n = trunc(arc_len / 4) + 3
-    step_len = arc_len / n
-    step_angle = angle / n
+function arco(t, r, angulo)
+    arco_lon = 2 * π * r * abs(angulo) / 360
+    n = trunc(arco_lon / 4) + 3
+    paso_lon = arco_lon / n
+    paso_angulo = angulo / n
 
-    # making a slight left turn before starting reduces
-    # the error caused by the linear approximation of the arc
-    turn(t, -step_angle/2)
-    polyline(t, n, step_len, step_angle)
-    turn(t, step_angle/2)
+    # haciendo un ligero giro a la izquierda antes de comenzar se reduce
+    # el error causado por la aproximación lineal del arco
+    turn(t, -paso_angulo/2)
+    polilinea(t, n, paso_lon, paso_angulo)
+    turn(t, paso_angulo/2)
 end
 ----
 
 [[ex04-8]]
-==== Exercise 4-9
+==== Ejercicio 4-9
 
-Write an appropriately general set of functions that can draw flowers as in <<fig04-2>>.
+Escriba un conjunto de funciones generales que permitan dibujar flores como en <<fig04-2>>.
 
 [[fig04-2]]
 .Turtle flowers
 image::images/fig42.svg[]
 
 [[ex04-9]]
-==== Exercise 4-10
+==== Ejercicio 4-10
 
-Write an appropriately general set of functions that can draw shapes as in <<fig04-3>>.
+Escriba un conjunto de funciones generales que puedan dibujar formas como en <<fig04-3>>.
 
 [[fig04-3]]
 .Turtle pies
 image::images/fig43.svg[]
 
 [[ex04-10]]
-==== Exercise 4-11
+==== Ejercicio 4-11
 
-The letters of the alphabet can be constructed from a moderate number of basic elements, like vertical and horizontal lines and a few curves. Design an alphabet that can be drawn with a minimal number of basic elements and then write functions that draw the letters.
+Las letras del alfabeto se pueden construir a partir de un número pequeño de elementos básicos, como líneas verticales y horizontales, y algunas curvas. Diseñe un alfabeto que se pueda dibujar con un número mínimo de elementos básicos y luego escriba funciones que dibujen las letras.
 
-You should write one function for each letter, with names +draw_a+, +draw_b+, etc., and put your functions in a file named _letters.jl_.
+Debería escribir una función para cada letra, con nombres +dibujar_a+, +dibujar_b+, etc., y colocar sus funciones en un archivo llamado _letras.jl_.
 
 [[ex04-11]]
-==== Exercise 4-12
+==== Ejercicio 4-12
 
-Read about spirals at https://en.wikipedia.org/wiki/Spiral; then write a program that draws an Archimedan spiral as in <<fig04-4>>.
+Lea sobre espirales en https://es.wikipedia.org/wiki/Espiral; luego escriba un programa que dibuje una espiral de Arquímedes como en <<fig04-4>>.
 
 [[fig04-4]]
 .Archimedan spiral
