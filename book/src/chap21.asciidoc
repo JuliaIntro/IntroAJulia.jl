@@ -232,11 +232,11 @@ A menudo desearía ralentizar el programa a una velocidad humana. El tiempo que 
 
 Debería hacerse estas preguntas:
 
-* ¿Hay algo que se supone que debería hacer el programa pero que no parece suceder? Busque la sección del código que realiza esa función y asegúrese de que se ejecuta cuando debería.
+* ¿Hay algo que se supone que debería hacer el programa pero que no sucede? Busque la sección del código que realiza esa función y asegúrese de que se ejecuta cuando debería.
 
 * ¿Ocurre algo que no debería? Busque el código en su programa que realiza esa función y vea si se ejecuta cuando no debe.
 
-¿Hay alguna sección del código que cause un efecto que no esperaba? asegurese de que entiende el código en cuestión, especialmente si incluye funciones o métodos de otros módulos de Julia. Lea la documentación de las funciones a las que llama. Pruébelas escribiendo casos de prueba simples y comprobando sus resultados.
+* ¿Hay alguna sección del código que cause un efecto que no esperaba? asegurese de que entiende el código en cuestión, especialmente si incluye funciones o métodos de otros módulos de Julia. Lea la documentación de las funciones a las que llama. Pruébelas escribiendo casos de prueba simples y comprobando sus resultados.
 
 Para programar necesitará tener un modelo mental de cómo funcionan los programas. Si escribe un programa que no hace lo que espera de él, muchas veces el problema no estará en el programa, sino en su modelo mental.
 (((mental model)))
