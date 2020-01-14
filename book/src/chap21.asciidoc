@@ -133,65 +133,67 @@ Si no está seguro del flujo de ejecución en su programa, añada sentencias de 
 
 Ahora, cuando ejecute el programa, se imprimirá una mensaje en cada función a medida que estas sean llamadas.
 
-==== When I run the program I get an exception
+==== Cuando ejecuto el programa recibo una excepción.
 
-If something goes wrong during runtime, Julia prints a message that includes the name of the exception, the line of the program where the problem occurred, and a stacktrace.
+Si algo sale mal durante la ejecución, Julia imprime un mensaje que incluye el nombre de la excepción, la línea del programa donde sucedió el problema y un trazado inverso.
 
-The stacktrace identifies the function that is currently running, and then the function that called it, and then the function that called that, and so on. In other words, it traces the sequence of function calls that got you to where you are, including the line number in your file where each call occurred.
+El trazado inverso identifica la función que se está ejecutando y la función que la llamó, y luego la función que llamó a esa, y así sucesivamente. En otras palabras, traza la ruta de las llamadas a las funciones que le llevaron a donde se encuentra. También incluye los numeros de las líneas de su archivo donde suceden todas esas llamadas.
 
-The first step is to examine the place in the program where the error occurred and see if you can figure out what happened. These are some of the most common runtime errors:
+El primer paso es examinar el lugar del programa donde ocurrió el error y ver si puede adivinar lo que sucedió. Estos son algunos de los errores en tiempo de ejecución más comunes:
 
 ArgumentError:: 
 Uno de los argumentos para llamar a una función no tiene la forma esperada.
 (((ArgumentError)))
 
-BoundsError:: 
+BoundsError::
 Una operación de indexación en un arreglo intentó acceder a un elemento fuera de los límites.
 An indexing operation into an array tried to access an out-of-bounds element.
 (((BoundsError)))
 
 DomainError::
-El argumento de una función o constructor está fuera del dominio válido.
-The argument to a function or constructor is outside the valid domain.
+El argumento de una función o constructor no pertenece al dominio válido.
 (((DomainError)))((("error", "Core", "DomainError", see="DomainError")))
 
 DivideError:: 
-Integer division was attempted with a denominator value of 0.
+Se intentó dividir un entero por 0.
 (((DivideError)))((("error", "Core", "DivideError", see="DivideError")))
 
 EOFError:: 
-No more data was available to read from a file or stream.
+No había más datos disponibles para leer desde un archivo o stream.
 (((EOFError)))((("error", "Base", "EOFError", see="EOFError")))
 
 InexactError::
-Cannot exactly convert to a type.
+No se puede convertir a un tipo.
 (((InexactError)))((("error", "Core", "InexactError", see="InexactError")))
 
-KeyError:: 
-An indexing operation into an +AbstractDict+ (+Dict+) or +Set+ like object tried to access or delete a non-existent element.
+KeyError::
+Se está tratando de acceder o eliminar un elemento inexistente de un objeto +AbstractDict+ (+Dict+) o +Set+.
 (((KeyError)))
 
 MethodError:: 
-A method with the required type signature does not exist in the given generic function. Alternatively, there is no unique most-specific method.
+No existe un método con la especificación de tipo requerida en la función genérica dada. Alternativamente, no existe un método único más específico.
 (((MethodError)))
 
 OutOfMemoryError:: 
-An operation allocated too much memory for either the system or the garbage collector to handle properly.
+Una operación asignó demasiada memoria para que el sistema o el recolector de basura opere correctamente.
 (((OutOfMemoryError)))((("error", "Core", "OutOfMemoryError", see="OutOfMemoryError")))
 
 OverflowError:: 
+El resultado de una expresión es demasiado grande para el tipo especificado y provocará una envoltura.
 The result of an expression is too large for the specified type and will cause a wraparound.
 (((OverflowError)))((("error", "Core", "OverflowError", see="OverflowError")))
 
 StackOverflowError:: 
+La llamada a la función creció más allá del tamaño de la pila de llamadas. Esto generalmente ocurre cuando una llamada se repite infinitamente.
 The function call grew beyond the size of the call stack. This usually happens when a call recurses infinitely.
 (((StackOverflowError)))
 
 StringIndexError::
-An error occurred when trying to access a string at an index that is not valid.
+Se produjo un error al intentar acceder a un índice inválido de una cadena.
 (((StringIndexError)))
 
 SystemError::
+Una llamada al sistema falló con un código de error.
 A system call failed with an error code.
 (((SystemError)))
 
