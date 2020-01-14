@@ -1,20 +1,20 @@
 [[chap04]]
-== Case Study: Interface Design
+== Estudio de Caso: Diseño de Interfaz
 
-This chapter presents a case study that demonstrates a process for designing functions that work together.
+Este capítulo presenta un segundo estudio de caso, que muestra el proceso de diseñar funciones que trabajen en conjunto.
 
-It introduces turtle graphics, a way to create programmatic drawings. Turtle graphics are not included in the Standard Library, so the PiensaEnJulia module has to be added to your Julia setup.
+Se presentan gráficos turtle, que es una forma de crear dibujos a través de la programación. Los gráficos turtle no están incluidos en la Biblioteca Estándar, por lo que se debe agregar el módulo PiensaEnJulia a su configuración de Julia.
 
-The examples in this chapter can be executed in a graphical notebook on JuliaBox, which combines code, formatted text, math, and multimedia in a single document (see <<juliabox>>).
+Los ejemplos de este capítulo se pueden ejecutar en un notebook gráfico en JuliaBox, el cual combina código, texto formateado, matemáticas y multimedia en un solo documento (vea <<juliabox>>).
 (((JuliaBox, graphical notebook)))
 
 
 === Turtles
 
-A _module_ is a file that contains a collection of related functions. Julia provides some modules in its Standard Library. Additional functionality can be added from a growing collection of _packages_ (https://juliaobserver.com).
+Un _modulo_ es un archivo que contiene una colección de funciones relacionadas. Julia proporciona algunos módulos en su Biblioteca Estándar. Además, es posible agregar más funciones a una gran cantidad de _paquetes_ (https://juliaobserver.com).
 (((module)))(((package)))
 
-Packages can be installed in the REPL by entering the Pkg REPL-mode using the key +]+.
+Los paquetes se pueden instalar en REPL ingresando al modo Pkg REPL con la tecla +]+.
 (((pass:[&#93;])))(((PiensaEnJulia)))((("module", "PiensaEnJulia", see="PiensaEnJulia")))
 
 [source,jlcon]
@@ -22,9 +22,9 @@ Packages can be installed in the REPL by entering the Pkg REPL-mode using the ke
 (v1.2) pkg> add https://github.com/PiensaEnJulia/PiensaEnJulia.jl
 ----
 
-This can take some time.
+Esto puede demorar un poco.
 
-Before we can use the functions in a module, we have to import it with an +using+ statement:
+Antes de que podamos usar las funciones de un módulo, tenemos que importarlo con una sentencia +using+:
 (((using)))((("keyword", "using", see="using")))(((using statement)))((("statement", "using", see="using statement")))
 
 [source,@julia-repl-test]
@@ -35,10 +35,10 @@ julia> 🐢 = Turtle()
 Luxor.Turtle(0.0, 0.0, true, 0.0, (0.0, 0.0, 0.0))
 ----
 
-The +PiensaEnJulia+ module provides a function called +Turtle+ that creates a +Luxor.Turtle+ object, which we assign to a variable named +🐢+ (*+\:turtle: TAB+*).
+El módulo +PiensaEnJulia+ proporciona una función llamada +Turtle+ (tortuga en español) que crea un objeto +Luxor.Turtle+, el cual asignamos a una variable llamada +🐢+ (*+\:turtle: TAB+*).
 (((Turtle)))((("type", "Luxor", "Turtle", see="Turtle")))
 
-Once you create a turtle, you can call a function to move it around a drawing. For example, to move the turtle forward:
+Una vez que crea una tortuga, puede llamar a una función para "moverla", y así hacer un dibujo con ella. Por ejemplo, para mover la tortuga hacia adelante (forward en inglés):
 (((forward)))((("function", "PiensaEnJulia", "forward", see="forward")))
 
 [source,julia]
@@ -53,18 +53,18 @@ end
 image::images/fig41.svg[]
 
 
-The +@svg+ keyword runs a macro that draws a SVG picture. Macros are an important but advanced feature of Julia.
+La palabra reservada +@svg+ ejecuta una macro que dibuja una imagen SVG. Las macros son una característica importante pero avanzada de Julia.
 (((@svg)))((("macro", "Luxor", "@svg", see="@svg")))(((macro)))(((SVG picture)))
 
-The arguments of +forward+ are the turtle and a distance in pixels, so the actual size depends on your display.
+Los argumentos de +forward+ son la tortuga y una distancia en píxeles, por lo que el tamaño real depende de su pantalla.
 
-Another function you can call with a turtle as argument is +turn+ for turning. The second argument for +turn+ is an angle in degrees.
+También es posible hacer girar a la tortuga con la función +turn+. Los argumentos de esta función son la tortuga y un ángulo en grados.
 (((turn)))((("function", "PiensaEnJulia", "turn", see="turn")))
 
-Also, each turtle is holding a pen, which is either down or up; if the pen is down, the turtle leaves a trail when it moves. <<fig04-1>> shows the trail left behind by the turtle. The functions +penup+ and +pendown+ stand for “pen up” and “pen down”.
+Además, cada tortuga está sosteniendo un lápiz, que puede estar hacia arriba o hacia abajo; si el lápiz está hacia abajo, la tortuga deja un rastro cuando se mueve. <<fig04-1>> muestra el rastro dejado por la tortuga. Las funciones +penup+ y +pendown+ significan "lápiz hacia arriba" y "lápiz hacia abajo".
 (((penup)))((("function", "PiensaEnJulia", "penup", see="penup")))(((pendown)))((("function", "PiensaEnJulia", "pendown", see="pendown")))
 
-To draw a right angle, modify the macro call:
+Para dibujar un ángulo recto, modifique la llamada a la macro:
 
 [source,julia]
 ----
@@ -76,9 +76,9 @@ To draw a right angle, modify the macro call:
 end
 ----
 
-==== Exercise 4-1
+==== Ejercicio 4-1
 
-Now modify the macro to draw a square. Don’t go on until you’ve got it working!
+Ahora modifique la macro para que dibuje un cuadrado. ¡No sigas hasta haberlo terminado!
 
 
 [[simple_repetition]]
