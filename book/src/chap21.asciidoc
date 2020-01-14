@@ -253,19 +253,19 @@ Por ejamplo:
 
 [source,julia]
 ----
-addcard(game.hands[i], popcard(game.hands[findneighbor(game, i)]))
+agregarcarta(juego.manos[i], sacarcarta(juego.manos[encontrarvecino(juego, i)]))
 ----
 
 Puede reescribirse como:
 
 [source,julia]
 ----
-neighbor = findneighbor(game, i)
-pickedcard = popcard(game.hands[neighbor])
-addcard(game.hands[i], pickedcard)
+vecino = encontrarvecino(juego, i)
+cartaseleccionada = sacarcarta(juego.manos[vecino])
+agregarcarta(juego.manos[i], cartaseleccionada)
 ----
 
-La versión explícita es más fácil de leer porque los nombres de variable nos entregan documentación adicional, y es más fácil de depurar porque se pueden comprobar los tipos de las variables intermedias y mostrar sus valores.
+La versión explícita es más fácil de leer porque los nombres de variables nos entregan documentación adicional, y es más fácil de depurar porque se pueden comprobar los tipos de las variables intermedias y mostrar sus valores.
 
 Otro problema que puede suceder con las expresiones grandes es que el orden de evaluación puede no ser el que usted esperaba. Por ejemplo, si está traduciendo la expresión latexmath:[\(\frac{x}{2\pi}\)] a Julia, podría escribir:
 
@@ -292,15 +292,15 @@ Si tiene una sentencia return con una expresión compleja, no tendrá la oportun
 
 [source,julia]
 ----
-return removematches(game.hands[i])
+return sacarpares(juego.manos[i])
 ----
 
-podría excribir:
+podría escribir:
 
 [source,julia]
 ----
-count = removematches(game.hands[i])
-return count
+contar = sacarpares(juego.manos[i])
+return contar
 ----
 
 Ahora ya tiene la oportunidad de mostrar el valor de +count+ antes de retornar.
