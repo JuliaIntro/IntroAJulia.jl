@@ -124,7 +124,7 @@ La mayoría de las veces, una recursión infinita hace que el programa se ejecut
 
 Si sospecha que una función o un método está causando una recursión infinita, comience por asegurarse de que hay un caso base. En otras palabras, debería haber una condición que haga que la función devuelva un valor sin hacer otra llamada recursiva. Si no, necesita revisar el algoritmo y encontrar ese caso base.
 
-Si hay un caso base pero el programa no parece llegar hasta él, añada una sentencia de impresión al inicio de la función que imprima los parámetros. Ahora, cuando ejecute el programa, verá unas pocas líneas cada vez que se llame la función, y allí verá los parámetros. Si los parámetros no se acercan al caso base, eso le dará alguna idea de por qué no lo hace.
+Si hay un caso base pero el programa no parece llegar hasta él, añada una sentencia de impresión al inicio de la función que imprima los parámetros. Ahora, cuando ejecute el programa, verá el valor de los parámetros cada vez que se llame la función. Si los parámetros no se acercan al caso base, eso le dará alguna idea de por qué no lo hace.
 
 [[flow_of_execution]]
 ===== Flujo de Ejecución
