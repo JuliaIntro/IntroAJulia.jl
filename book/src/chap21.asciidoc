@@ -238,14 +238,14 @@ Debería hacerse estas preguntas:
 
 * ¿Hay alguna sección del código que cause un efecto que no esperaba? asegurese de que entiende el código en cuestión, especialmente si incluye funciones o métodos de otros módulos de Julia. Lea la documentación de las funciones a las que llama. Pruébelas escribiendo casos de prueba simples y comprobando sus resultados.
 
-Para programar necesitará tener un modelo mental de cómo funcionan los programas. Si escribe un programa que no hace lo que espera de él, muchas veces el problema no estará en el programa, sino en su modelo mental.
+Para programar necesitará tener un modelo mental de cómo funcionan los programas. Si escribe un programa que no hace lo que esperaba de él, muchas veces el problema no estará en el programa, sino en su modelo mental.
 (((mental model)))
 
 La mejor manera de corregir su modelo mental es dividiendo el programa en sus componentes (normalmente en funciones y métodos) y probando cada componente de forma independiente. Una vez que encuentre la discrepancia entre su modelo y la realidad, podrá solucionar el problema.
 
-Por supuesto, debería ir haciendo y probando componentes a medida que desarrolla el programa. Si encuentra un problema, sólo habría una pequeña cantidad de código nuevo que tendría que revisar.
+Por supuesto, debería ir haciendo y probando componentes a medida que desarrolla el programa. Si encuentra un problema, sólo habría que revisar una pequeña cantidad de código nuevo.
 
-==== I’ve got a big hairy expression and it doesn’t do what I expect
+==== Tengo una expresión grande y peliaguda y no hace lo que espero.
 
 Está bien escribir expresiones complejas mientras sean legibles, pero pueden ser difíciles de depurar. Suele ser una buena idea dividir una expresión compleja en una serie de asignaciones de variables temporales.
 
@@ -256,7 +256,7 @@ Por ejamplo:
 addcard(game.hands[i], popcard(game.hands[findneighbor(game, i)]))
 ----
 
-This can be rewritten as:
+Puede reescribirse como:
 
 [source,julia]
 ----
