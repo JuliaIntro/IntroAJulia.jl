@@ -343,26 +343,26 @@ function polilinea(t, n, lon, angulo)
 end
 ----
 
-Now we can rewrite +polygon+ and +arc+ to use +polyline+:
+Ahora podemos reescribir +poligono+ y +arco+ usando +polilinea+:
 (((polygon)))(((arc)))
 
 [source,julia]
 ----
-function polygon(t, n, len)
-    angle = 360 / n
-    polyline(t, n, len, angle)
+function poligono(t, n, lon)
+    angulo = 360 / n
+    polilinea(t, n, lon, angulo)
 end
 
-function arc(t, r, angle)
-    arc_len = 2 * π * r * angle / 360
-    n = trunc(arc_len / 3) + 1
-    step_len = arc_len / n
-    step_angle = angle / n
-    polyline(t, n, step_len, step_angle)
+function arco(t, r, angulo)
+    arco_lon = 2 * π * r * angulo / 360
+    n = trunc(arco_lon / 3) + 1
+    paso_lon = arco_lon / n
+    paso_angulo = angulo / n
+    polilinea(t, n, paso_lon, paso_angulo)
 end
 ----
 
-Finally, we can rewrite +circle+ to use +arc+:
+Finalmente, podemos reescribir +circulo+ usando +arco+:
 (((circle)))
 
 [source,julia]
@@ -372,28 +372,28 @@ function circle(t, r)
 end
 ----
 
-This process—rearranging a program to improve interfaces and facilitate code re-use—is called _refactoring_. In this case, we noticed that there was similar code in +arc+ and +polygon+, so we “factored it out” into +polyline+.
+Este proceso, que reorganiza un programa para mejorar las interfaces y facilitar la reutilización del código, se denomina _refactorización_. En este caso, notamos que había un código similar en +arco+ y +poligono+, por lo que lo "factorizamos" en +polilinea+.
 (((refactoring)))
 
-If we had planned ahead, we might have written +polyline+ first and avoided refactoring, but often you don’t know enough at the beginning of a project to design all the interfaces. Once you start coding, you understand the problem better. Sometimes refactoring is a sign that you have learned something.
+Si hubiéramos planeado con anticipación, podríamos haber escrito +polilinea+ primero y haber evitado la refactorización, pero a menudo no se sabe lo suficiente al comienzo de un proyecto para diseñar todas las interfaces. Una vez que se comienza a programar, se comprende mejor el problema. A veces, refactorizar es una señal de que has aprendido algo.
 
 
-=== A Development Plan
+=== Un Plan de Desarrollo
 
-A _development plan_ is a process for writing programs. The process we used in this case study is “encapsulation and generalization”. The steps of this process are:
+Un _plan de desarrollo_ es un proceso para escribir programas. El proceso que utilizamos en este estudio de caso es "encapsulado y generalización". Los pasos de este proceso son:
 (((program development plan)))
 
-. Start by writing a small program with no function definitions.
+. Comience escribiendo un pequeño programa sin definiciones de funciones.
 
-. Once you get the program working, identify a coherent piece of it, encapsulate the piece in a function and give it a name.
+. Una vez que el programa funcione, identifique una porción de código que tenga un objetivo específico, encapsule esta porción en una función y asígnele un nombre.
 
-. Generalize the function by adding appropriate parameters.
+. Generalice la función agregando los parámetros apropiados.
 
-. Repeat steps 1–3 until you have a set of working functions. Copy and paste working code to avoid retyping (and re-debugging).
+. Repita los pasos 1–3 hasta que tenga un conjunto de funciones. De ser posible, copie y pegue código para evitar volver a escribir (y volver a depurar).
 
-. Look for opportunities to improve the program by refactoring. For example, if you have similar code in several places, consider factoring it into an appropriately general function.
+. Busque oportunidades para mejorar el programa refactorizando. Por ejemplo, si tiene un código similar en varios lugares, considere factorizarlo en una función general apropiada.
 
-This process has some drawbacks—we will see alternatives later—but it can be useful if you don’t know ahead of time how to divide the program into functions. This approach lets you design as you go along.
+Este proceso tiene algunos inconvenientes, veremos alternativas más adelante, pero puede ser útil si no sabe de antemano cómo dividir el programa en funciones. Este enfoque permite diseñar conforme avancemos.
 
 
 === Docstring
