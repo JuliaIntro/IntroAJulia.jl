@@ -283,7 +283,7 @@ Una buena forma de depurar expresiones es añadir paréntesis para que sea expl�
 y = x / (2 * π)
 ----
 
-Siempre que no esté seguro del orden de evaluación, utilice paréntesis. El programa no sólo será correcto (en el sentido de hacer lo que usted prentendía), sino que además será más legible para otras personas que no hayan memorizado las reglas de precedencia.
+Siempre que no esté seguro del orden de evaluación, utilice paréntesis. El programa no sólo será correcto (en el sentido de que hace lo que usted quiere), sino que además será más legible para otras personas que no hayan memorizado las reglas de precedencia.
 
 ==== Tengo una función que no devuelve lo que esperaba.
 
