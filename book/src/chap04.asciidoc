@@ -160,7 +160,7 @@ Escriba una llamada a función que pase +t+ como argumento a +cuadrado+, y luego
 [[ex04-3]]
 ==== Ejercicio 4-4
 
-Agregue otro parámetro, llamado +len+, a cuadrado. Modifique el cuerpo para que la longitud de los lados sea +len+, y luego modifique la llamada a función agregando este segundo argumento. Ejecute la macro nuevamente. Prueba con un rango de valores para +len+.
+Agregue otro parámetro, llamado +lon+, a cuadrado. Modifique el cuerpo para que la longitud de los lados sea +lon+, y luego modifique la llamada a función agregando este segundo argumento. Ejecute la macro nuevamente. Prueba con un rango de valores para +lon+.
 
 [[ex04-4]]
 ==== Ejercicio 4-5
@@ -175,29 +175,27 @@ Los ángulos exteriores de un polígono regular de latexmath:[\(n\)]-lados son l
 [[ex04-5]]
 ==== Ejercicio 4-6
 
-Escriba una función llamada +círculo+ que tome un turtle +t+, y un radio +r+, como parámetros y que dibuje un círculo aproximado llamando a + polígono + con una longitud y número de lados apropiados. Pruebe su función con un rango de valores de + r +.
-
-Write a function called +circle+ that takes a turtle, +t+, and radius, +r+, as parameters and that draws an approximate circle by calling +polygon+ with an appropriate length and number of sides. Test your function with a range of values of +r+. 
+Escriba una función llamada +círculo+ que tome un turtle +t+, y un radio +r+ como parámetros, y que dibuje un círculo aproximado llamando a +polígono+ con una longitud y número de lados apropiados. Pruebe su función con un rango de valores de +r+.
 
 [TIP]
 ====
-Figure out the circumference of the circle and make sure that +len * n == circumference+.
+Calcule la circunferencia del círculo y asegúrese de que +len * n == circunferencia+.
 ====
 
 [[ex04-6]]
 ==== Ejercicio 4-7
 
-Make a more general version of +circle+ called +arc+ that takes an additional parameter +angle+, which determines what fraction of a circle to draw. +angle+ is in units of degrees, so when +angle = 360+, +arc+ should draw a complete circle.
+Haga una versión más general de +circulo+ llamada +arco+ que tome un parámetro adicional +angulo+, que determina qué fracción de un círculo dibujar. +angulo+ está en grados, entonces cuando +angulo= 360+, +arco+ debería dibujar un círculo completo.
 
 
-=== Encapsulation
+=== Encapsulación
 
-The first exercise asks you to put your square-drawing code into a function definition and then call the function, passing the turtle as a parameter. Here is a solution:
+El primer ejercicio le pide que coloque el código que permite dibujar un cuadrado en una definición de función, y que luego llame a la función, pasando a turtle como parámetro. Aquí hay una solución:
 (((square)))((("function", "programmer-defined", "square", see="square")))
 
 [source,julia]
 ----
-function square(t)
+function cuadrado(t)
     for i in 1:4
         forward(t, 100)
         turn(t, -90)
@@ -205,142 +203,142 @@ function square(t)
 end
 🐢 = Turtle()
 @svg begin
-    square(🐢)
+    cuadrado(🐢)
 end
 ----
 
-The innermost statements, +forward+ and +turn+ are indented twice to show that they are inside the +for+ loop, which is inside the function definition.
+Las sentencias más internas, +forward+ y +turn+ tienen doble sangría para mostrar que están dentro del bucle +for+, que a su vez está dentro de la definición de función.
 (((indentation)))
 
-Inside the function, +t+ refers to the same turtle +🐢+, so +turn(t, -90)+ has the same effect as +turn(🐢, -90)+. In that case, why not call the parameter +🐢+? The idea is that +t+ can be any turtle, not just +🐢+, so you could create a second turtle and pass it as an argument to +square+:
+Dentro de la función, +t+ se refiere a la misma tortuga +🐢+, entonces +turn(t, -90)+ tiene el mismo efecto que +turn(🐢, -90)+. En ese caso, ¿por qué no llamar al parámetro +🐢+? La razón es que +t+ puede ser cualquier tortuga, no solo +🐢+, por lo que podríamos crear una segunda tortuga y pasarla como argumento a +cuadrado+:
 
 [source,julia]
 ----
 🐫 = Turtle()
 @svg begin
-    square(🐫)
+    cuadrado(🐫)
 end
 ----
 
-Wrapping a piece of code up in a function is called _encapsulation_. One of the benefits of encapsulation is that it attaches a name to the code, which serves as a kind of documentation. Another advantage is that if you re-use the code, it is more concise to call a function twice than to copy and paste the body!
+Colocar una porción de código en una función se denomina _encapsulación_. Uno de los beneficios de la encapsulación es que al ponerle un nombre al código, esto sirve como una especie de documentación. Otra ventaja es que si reutiliza el código, ¡es más conciso llamar a una función dos veces que copiar y pegar el cuerpo!
 (((encapsulation)))
 
 
-=== Generalization
+=== Generalización
 
-The next step is to add a +len+ parameter to +square+. Here is a solution:
+El siguiente paso es agregar un parámetro +lon+ a +cuadrado+. Aquí hay una solución:
 (((square)))
 
 [source,julia]
 ----
-function square(t, len)
+function cuadrado(t, lon)
     for i in 1:4
-        forward(t, len)
+        forward(t, lon)
         turn(t, -90)
     end
 end
 🐢 = Turtle()
 @svg begin
-    square(🐢, 100)
+    cuadrado(🐢, 100)
 end
 ----
 
-Adding a parameter to a function is called _generalization_ because it makes the function more general: in the previous version, the square is always the same size; in this version it can be any size.
+Agregar un parámetro a una función se llama _generalización_ porque hace que la función sea más general: en la versión anterior, el cuadrado siempre tenía el mismo tamaño; en esta versión puede ser de cualquier tamaño.
 (((generalization)))
 
-The next step is also a generalization. Instead of drawing squares, +polygon+ draws regular polygons with any number of sides. Here is a solution:
+El siguiente paso también es una generalización. En vez de dibujar cuadrados, +poligono+ dibuja polígonos regulares con cualquier número de lados. Aquí hay una solución:
 (((polygon)))((("function", "programmer-defined", "polygon", see="polygon")))
 
 [source,julia]
 ----
-function polygon(t, n, len)
-    angle = 360 / n
+function poligono(t, n, lon)
+    angulo = 360 / n
     for i in 1:n
-        forward(t, len)
-        turn(t, -angle)
+        forward(t, lon)
+        turn(t, -angulo)
     end
 end
 🐢 = Turtle()
 @svg begin
-    polygon(🐢, 7, 70)
+    poligono(🐢, 7, 70)
 end
 ----
 
-This example draws a 7-sided polygon with side length 70.
+Este ejemplo dibuja un polígono de 7 lados, con una longitud de 70 por lado.
 
 
-=== Interface Design
+=== Diseño de Interfaz
 
-The next step is to write +circle+, which takes a radius, +r+, as a parameter. Here is a simple solution that uses +polygon+ to draw a 50-sided polygon:
+El siguiente paso es escribir +circulo+, que toma un radio +r+ como parámetro. Aquí hay una solución simple que usa +poligono+ para dibujar un polígono de 50 lados:
 (((circle)))((("function", "programmer-defined", "circle", see="circle")))
 
 [source,julia]
 ----
-function circle(t, r)
-    circumference = 2 * π * r
+function circulo(t, r)
+    circunferencia = 2 * π * r
     n = 50
-    len = circumference / n
-    polygon(t, n, len)
+    len = circunferencia / n
+    poligono(t, n, lon)
 end
 ----
 
-The first line computes the circumference of a circle with radius latexmath:[\(r\)] using the formula latexmath:[\(2 \pi r\)]. +n+ is the number of line segments in our approximation of a circle, so +len+ is the length of each segment. Thus, +polygon+ draws a 50-sided polygon that approximates a circle with radius +r+.
+La primera línea calcula la circunferencia de un círculo con radio latexmath:[\(r\)] usando la fórmula latexmath:[\(2 \pi r\)]. +n+ es el número de segmentos de línea de nuestra aproximación a un círculo, y +len+ es la longitud de cada segmento. Por lo tanto, +polígono+ dibuja un polígono de 50 lados que se aproxima a un círculo de radio +r+.
 
-One limitation of this solution is that +n+ is a constant, which means that for very big circles, the line segments are too long, and for small circles, we waste time drawing very small segments. One solution would be to generalize the function by taking +n+ as a parameter. This would give the user (whoever calls circle) more control, but the interface would be less clean.
+Una limitante de esta solución es que +n+ es constante, lo que significa que para círculos muy grandes, los segmentos de línea son demasiado largos, y para círculos pequeños, perdemos tiempo dibujando segmentos muy pequeños. Una solución sería generalizar la función tomando +n+ como parámetro. Esto le daría al usuario (quien llama a círculo) más control, pero la interfaz sería menos pulcra.
 
-The _interface_ of a function is a summary of how it is used: what are the parameters? What does the function do? And what is the return value? An interface is “clean” if it allows the caller to do what they want without dealing with unnecessary details.
+La _interfaz_ de una función es un resumen de cómo se usa: ¿cuáles son los parámetros? ¿Qué hace la función? ¿Y cuál es el valor de retorno? Una interfaz es "pulcra" si le permite al usuario que la llama hacer lo que quiera sin tener que lidiar con detalles innecesarios.
 (((interface)))
 
-In this example, +r+ belongs in the interface because it specifies the circle to be drawn. +n+ is less appropriate because it pertains to the details of how the circle should be rendered.
+En este ejemplo, +r+ pertenece a la interfaz porque especifica el círculo a dibujar. +n+ es menos apropiado porque se refiere a los detalles de cómo se debe representar el círculo.
 
-Rather than clutter up the interface, it is better to choose an appropriate value of +n+ depending on +circumference+:
+En lugar de saturar la interfaz, es mejor elegir un valor apropiado de +n+ dependiendo de la +circunferencia+:
 
 [source,julia]
 ----
-function circle(t, r)
-    circumference = 2 * π * r
-    n = trunc(circumference / 3) + 3
-    len = circumference / n
-    polygon(t, n, len)
+function circulo(t, r)
+    circunferencia = 2 * π * r
+    n = trunc(circunferencia / 3) + 3
+    len = circunferencia / n
+    poligono(t, n, len)
 end
 ----
 
-Now the number of segments is an integer near +circumference/3+, so the length of each segment is approximately 3, which is small enough that the circles look good, but big enough to be efficient, and acceptable for any size circle.
+Ahora, el número de segmentos es un número entero cercano a +circunferencia/3+, por lo que la longitud de cada segmento es aproximadamente 3, que es lo suficientemente pequeño como para que los círculos se vean bien, pero lo suficientemente grandes como para ser eficientes y aceptables para cualquier círculo.
 
-Adding 3 to +n+ guarantees that the polygon has at least 3 sides.
+Agregar 3 a +n+ garantiza que el polígono tenga al menos 3 lados.
 
 
 [[refactoring]]
-=== Refactoring
+=== Refactorización
 
-When I wrote +circle+, I was able to re-use +polygon+ because a many-sided polygon is a good approximation of a circle. But +arc+ is not as cooperative; we can’t use +polygon+ or +circle+ to draw an arc.
+Cuando escribimos +circulo+, pudimos reutilizar +poligono+ ya que un polígono de muchos lados es una buena aproximación de un círculo. Pero +arco+ no es tan versatil; no podemos usar +poligono+ o +circulo+ para dibujar un arco.
 
-One alternative is to start with a copy of +polygon+ and transform it into +arc+. The result might look like this:
+Una alternativa es comenzar con una copia de +poligono+ y transformarla en +arco+. El resultado podría verse así:
 (((arc)))((("function", "programmer-defined", "arc", see="arc")))
 
 [source,julia]
 ----
-function arc(t, r, angle)
-    arc_len = 2 * π * r * angle / 360
-    n = trunc(arc_len / 3) + 1
-    step_len = arc_len / n
-    step_angle = angle / n
+function arco(t, r, angulo)
+    arco_lon = 2 * π * r * angulo / 360
+    n = trunc(arco_lon / 3) + 1
+    paso_lon = arco_lon / n
+    paso_angulo = angulo / n
     for i in 1:n
-        forward(t, step_len)
-        turn(t, -step_angle)
+        forward(t, paso_lon)
+        turn(t, -paso_angulo)
     end
 end
 ----
 
-The second half of this function looks like +polygon+, but we can’t re-use +polygon+ without changing the interface. We could generalize +polygon+ to take an +angle+ as a third argument, but then +polygon+ would no longer be an appropriate name! Instead, let’s call the more general function +polyline+:
+La segunda mitad de esta función se parece a +poligono+, pero no podemos reutilizar +poligono+ sin cambiar la interfaz. Podríamos generalizar +poligono+ para tomar un +angulo+ como tercer argumento, ¡pero entonces +poligono+ ya no sería un nombre apropiado! En su lugar, llamemos a esta función más general +polilinea+:
 (((polyline)))((("function", "programmer-defined", "polyline", see="polyline")))
 
 [source,julia]
 ----
-function polyline(t, n, len, angle)
+function polilinea(t, n, lon, angulo)
     for i in 1:n
-        forward(t, len)
-        turn(t, -angle)
+        forward(t, lon)
+        turn(t, -angulo)
     end
 end
 ----
