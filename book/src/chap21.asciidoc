@@ -99,7 +99,7 @@ Si no obtiene este error pero sospecha que hay un problema con un método o func
 [[infinite_loop]]
 ===== Bucle Infinito
 
-Si crees que tienes un bucle infinito y crees saber cuál es, añada una sentencia de impresión que imprima los valores de las variables de la condición al final del bucle junto con el valor de la condición.
+Si crees que tienes un bucle infinito y crees saber cuál es, añade una sentencia de impresión que imprima los valores de las variables de la condición al final del bucle junto con el valor de la condición.
 
 Por ejemplo:
 
@@ -117,7 +117,7 @@ Ahora, cuando ejecute el programa en modo de depuración, verá el valor de las 
 se actualizan correctamente.
 
 [[infinite_recursion]]
-===== Infinite Recursion
+===== Recursión Infinita
 
 La mayoría de las veces, una recursión infinita hace que el programa se ejecute durante un tiempo y luego produzca un error +ERROR: LoadError: StackOverflowError+.
 (((StackOverflowError)))
