@@ -201,52 +201,55 @@ UndefVarError::
 Un símbolo en el entorno (o ámbito) actual no está definido.
 (((UndefVarError)))
 
-==== I added so many print statements I get inundated with output
+==== Puse tantas sentencias de impresión que me ahogo en información
 
-One of the problems with using print statements for debugging is that you can end up buried in output. There are two ways to proceed: simplify the output or simplify the program.
+Uno de los problemas de usar sentencias print en la depuración es que puede terminar ahogado por tanta información. Hay dos formas de resolver esto: simplificar la salida o simplificar el programa.
 
-To simplify the output, you can remove or comment out print statements that aren’t helping, or combine them, or format the output so it is easier to understand.
+Para simplificar la salida, puede eliminar o comentar (convertir en comentarios) las sentencias print que no sean de ayuda, o combinarlas, o dar a la salida un formato que la haga más comprensible.
 
-To simplify the program, there are several things you can do. First, scale down the problem the program is working on. For example, if you are searching a list, search a small list. If the program takes input from the user, give it the simplest input that causes the problem.
+Para simplificar el programa puede hacer varias cosas. Primero, reducir la escala del problema en el que está trabajando el programa. Por ejemplo, si está buscando algo en una lista, búsquelo en una lista pequeña. Si el programa acepta entradas del usuario, ingrese la entrada más simple que provoque el problema.
 
-Second, clean up the program. Remove dead code and reorganize the program to make it as easy to read as possible. For example, if you suspect that the problem is in a deeply nested part of the program, try rewriting that part with simpler structure. If you suspect a large function, try splitting it into smaller functions and testing them separately.
+Segundo, "limpie" el programa. Elimine el código muerto y reorganice el programa para hacerlo tan legible como sea posible. Por ejemplo, si sospecha que el problema está en una parte del programa con un anidamiento muy profundo, pruebe a reescribir esa parte con una estructura más simple. Si sospecha de una función muy larga, trate de dividirla en funciones más pequeñas y pruébelas separadamente.
 (((dead code)))
 
-Often the process of finding the minimal test case leads you to the bug. If you find that a program works in one situation but not in another, that gives you a clue about what is going on.
+Generalmente, el proceso de encontrar el caso de prueba mínimo te lleva al error. Si encuentra que un programa funciona en una situación pero no en otra, eso le dará una pista sobre lo que está sucediendo.
 
-Similarly, rewriting a piece of code can help you find subtle bugs. If you make a change that you think shouldn’t affect the program, and it does, that can tip you off.
+De forma parecida, reescribir una porción de código puede ayudarle a encontrar errores sutiles. Si realiza un cambio que cree que no debería afectar el programa, pero lo hace, entonces eso puede darle una pista.
 
 
-=== Semantic Errors
+=== Errores Semánticos 
 
-In some ways, semantic errors are the hardest to debug, because the interpreter provides no information about what is wrong. Only you know what the program is supposed to do.
+En cierto modo, los errores semánticos son los más difíciles de corregir, ya que el intérprete no entrega información sobre lo
+que está mal. Sólo usted sabe lo que se supone que debe hacer el programa.
 
-The first step is to make a connection between the program text and the behavior you are seeing. You need a hypothesis about what the program is actually doing. One of the things that makes that hard is that computers run so fast.
+El primer paso es hacer una conexión entre el código y el comportamiento que está viendo. Necesita una hipótesis sobre lo que realmente
+está haciendo el programa. Una de las dificultades que nos encontramos para ello es la alta velocidad de los computadores.
 
-You will often wish that you could slow the program down to human speed. Inserting a few well-placed print statements is often quicker than setting up a debugger, inserting and removing breakpoints, and “stepping” the program to where the error is occurring.
+A menudo desearía ralentizar el programa a una velocidad humana. El tiempo que lleva colocar unas sentencias print en los lugares adecuados suele ser menor que el que lleva configurar un depurador, poner y quitar puntos de interrupción, y “hacer avanzar” al programa hasta donde se produce el error.
 
-==== My program doesn’t work
 
-You should ask yourself these questions:
+==== Mi programa no funciona
 
-* Is there something the program was supposed to do but which doesn’t seem to be happening? Find the section of the code that performs that function and make sure it is executing when you think it should.
+Debería hacerse estas preguntas:
 
-* Is something happening that shouldn’t? Find code in your program that performs that function and see if it is executing when it shouldn’t.
+* ¿Hay algo que se supone que debería hacer el programa pero que no parece suceder? Busque la sección del código que realiza esa función y asegúrese de que se ejecuta cuando debería.
 
-* Is a section of code producing an effect that is not what you expected? Make sure that you understand the code in question, especially if it involves functions or methods in other Julia modules. Read the documentation for the functions you call. Try them out by writing simple test cases and checking the results.
+* ¿Ocurre algo que no debería? Busque el código en su programa que realiza esa función y vea si se ejecuta cuando no debe.
 
-In order to program, you need a mental model of how programs work. If you write a program that doesn’t do what you expect, often the problem is not in the program; it’s in your mental model.
+¿Hay alguna sección del código que cause un efecto que no esperaba? asegurese de que entiende el código en cuestión, especialmente si incluye funciones o métodos de otros módulos de Julia. Lea la documentación de las funciones a las que llama. Pruébelas escribiendo casos de prueba simples y comprobando sus resultados.
+
+Para programar necesitará tener un modelo mental de cómo funcionan los programas. Si escribe un programa que no hace lo que espera de él, muchas veces el problema no estará en el programa, sino en su modelo mental.
 (((mental model)))
 
-The best way to correct your mental model is to break the program into its components (usually the functions and methods) and test each component independently. Once you find the discrepancy between your model and reality, you can solve the problem.
+La mejor manera de corregir su modelo mental es dividiendo el programa en sus componentes (normalmente en funciones y métodos) y probando cada componente de forma independiente. Una vez que encuentre la discrepancia entre su modelo y la realidad, podrá solucionar el problema.
 
-Of course, you should be building and testing components as you develop the program. If you encounter a problem, there should be only a small amount of new code that is not known to be correct.
+Por supuesto, debería ir haciendo y probando componentes a medida que desarrolla el programa. Si encuentra un problema, sólo habría una pequeña cantidad de código nuevo que tendría que revisar.
 
 ==== I’ve got a big hairy expression and it doesn’t do what I expect
 
-Writing complex expressions is fine as long as they are readable, but they can be hard to debug. It is often a good idea to break a complex expression into a series of assignments to temporary variables.
+Está bien escribir expresiones complejas mientras sean legibles, pero pueden ser difíciles de depurar. Suele ser una buena idea dividir una expresión compleja en una serie de asignaciones de variables temporales.
 
-For example:
+Por ejamplo:
 
 [source,julia]
 ----
@@ -262,29 +265,29 @@ pickedcard = popcard(game.hands[neighbor])
 addcard(game.hands[i], pickedcard)
 ----
 
-The explicit version is easier to read because the variable names provide additional documentation, and it is easier to debug because you can check the types of the intermediate variables and display their values.
+La versión explícita es más fácil de leer porque los nombres de variable nos entregan documentación adicional, y es más fácil de depurar porque se pueden comprobar los tipos de las variables intermedias y mostrar sus valores.
 
-Another problem that can occur with big expressions is that the order of evaluation may not be what you expect. For example, if you are translating the expression latexmath:[\(\frac{x}{2\pi}\)] into Julia, you might write:
+Otro problema que puede suceder con las expresiones grandes es que el orden de evaluación puede no ser el que usted esperaba. Por ejemplo, si está traduciendo la expresión latexmath:[\(\frac{x}{2\pi}\)] a Julia, podría escribir:
 
 [source,julia]
 ----
 y = x / 2 * π
 ----
 
-That is not correct because multiplication and division have the same precedence and are evaluated from left to right. So this expression computes latexmath:[\(\frac{x\pi}{2}\)].
+Esto no es correcto, ya que la multiplicación y la división tienen la misma precedencia, y se evalúan de izquierda a derecha. Así que esa expresión calcula latexmath:[\(\frac{x\pi}{2}\)].
 
-A good way to debug expressions is to add parentheses to make the order of evaluation explicit:
+Una buena forma de depurar expresiones es añadir paréntesis para que sea explícito el orden de evaluación:
 
 [source,julia]
 ----
 y = x / (2 * π)
 ----
 
-Whenever you are not sure of the order of evaluation, use parentheses. Not only will the program be correct (in the sense of doing what you intended), it will also be more readable for other people who haven’t memorized the order of operations.
+Siempre que no esté seguro del orden de evaluación, utilice paréntesis. El programa no sólo será correcto (en el sentido de hacer lo que usted prentendía), sino que además será más legible para otras personas que no hayan memorizado las reglas de precedencia.
 
-==== I’ve got a function that doesn’t return what I expect
+==== Tengo una función que no devuelve lo que esperaba.
 
-If you have a return statement with a complex expression, you don’t have a chance to print the result before returning. Again, you can use a temporary variable. For example, instead of:
+Si tiene una sentencia return con una expresión compleja, no tendrá la oportunidad de imprimir el valor de retorno antes de retornar. De nuevo, puede usar una variable temporal. Por ejemplo, en lugar de:
 (((temporary variable)))
 
 [source,julia]
@@ -292,7 +295,7 @@ If you have a return statement with a complex expression, you don’t have a cha
 return removematches(game.hands[i])
 ----
 
-you could write:
+podría excribir:
 
 [source,julia]
 ----
@@ -300,37 +303,37 @@ count = removematches(game.hands[i])
 return count
 ----
 
-Now you have the opportunity to display the value of +count+ before returning.
+Ahora ya tiene la oportunidad de mostrar el valor de +count+ antes de retornar.
 
-==== I’m really, really stuck and I need help
+==== Estoy atascado de verdad y necesito ayuda.
 
-First, try getting away from the computer for a few minutes. Working with a computer can cause these symptoms:
+Primero, intente alejarse del computador durante unos minutos. Trabajar con un computador puede provocar estos efectos: 
 
-* Frustration and rage.
+* Frustración y/o furia.
 
-* Superstitious beliefs (“the computer hates me”) and magical thinking (“the program only works when I wear my hat backward”).
+* Creencias supersticiosas (“el computador me odia”) y pensamiento mágico (“el programa sólo funciona cuando me pongo el gorro hacia atrás”).
 
-* Random walk programming (the attempt to program by writing every possible program and choosing the one that does the right thing).
+* Programar dando palos de ciego (el empeño de programar escribiendo todos los programas posibles y eligiendo el que hace lo correcto).
 
-If you find yourself suffering from any of these symptoms, get up and go for a walk. When you are calm, think about the program. What is it doing? What are some possible causes of that behavior? When was the last time you had a working program, and what did you do next?
+Si se encuentra afectado por alguno de estos síntomas, levántese y dé un paseo. Cuando esté calmado, piense en el programa. ¿Qué es lo que hace? ¿Cuáles pueden ser las causas de tal comportamiento? ¿Cuándo fue la última vez que su programa funcionaba y qué fue lo siguiente que hizo?
 
-Sometimes it just takes time to find a bug. I often find bugs when I am away from the computer and let my mind wander. Some of the best places to find bugs are trains, showers, and in bed, just before you fall asleep.
+A veces lleva tiempo encontrar un error. Muchas veces encontramos errores cuando estamos lejos del computador y divagamos. Algunos de los mejores lugares para encontrar errores son los trenes, las duchas y la cama, justo antes de quedarse dormido.
 
-==== No, I really need help
+==== No, de verdad necesito ayuda
 
-It happens. Even the best programmers occasionally get stuck. Sometimes you work on a program so long that you can’t see the error. You need a fresh pair of eyes.
+Sucede. Incluso los mejores programadores se atascan de vez en cuando. A veces trabaja durante tanto tiempo en un programa que no puede ver el error. Lo que necesita es un par de ojos nuevos.
 
-Before you bring someone else in, make sure you are prepared. Your program should be as simple as possible, and you should be working on the smallest input that causes the error. You should have print statements in the appropriate places (and the output they produce should be comprehensible). You should understand the problem well enough to describe it concisely.
+Antes de llamar a alguien, asegúrese de estar preparado. Su programa debería ser tan simple como sea posible, y usted debería estar
+trabajando con la entrada mínima que provoca el error. Debería tener sentencias print en los lugares adecuados (y lo que dicen debería ser comprensible). Debería entender el problema lo bastante bien como para describirlo de manera concisa.
 
-When you bring someone in to help, be sure to give them the information they need:
+Cuando llame a alguien para que le ayude, asegúrese de darles la información que necesitan:
 
-* If there is an error message, what is it and what part of the program does it indicate?
+* Si hay un mensaje de error, ¿cuál es y qué parte del programa señala?
 
-* What was the last thing you did before this error occurred? What were the last lines of code that you wrote, or what is the new test case that fails?
+* ¿Qué fue lo último que hizo antes de que apareciera el error? ¿Cuáles son las últimas líneas de cúdigo que escribió, o cuál es el nuevo caso de prueba que falla?
 
-* What have you tried so far, and what have you learned?
+* ¿Qué ha intentado hasta ahora y qué ha averiguado?
 
-When you find the bug, take a second to think about what you could have done to find it faster. Next time you see something similar, you will be able to find the bug more quickly.
+Cuando encuentre el error, tómese un momento para pensar acerca de lo que podría haber hecho para encontrarlo más rápido. La siguiente vez que vea algo parecido, será capaz de encontrar el error antes.
 
-Remember, the goal is not just to make the program work. The goal is to learn how to make the program work.
-
+Recuerde, el objetivo no es solo hacer que el programa funcione. El objetivo es aprender cómo hacer funcionar el programa.
