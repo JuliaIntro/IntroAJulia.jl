@@ -62,7 +62,7 @@ Estas son algunas de las posibles razones:
 
 * Si está usando +using+ para importar un módulo, recuerde que debe reiniciar REPL cuando modifique el código en el módulo. Si vuelve a importar el módulo, no ocurre nada.
 
-Si se queda atascado y no puede darse cuenta de lo que está sucediendo, un enfoque es comenzar de nuevo con un nuevo programa como "¡Hola, Mundo!" y asegurarse de que puede ejecutar este programa conocido. Luego, agregue gradualmente las piezas del programa original al nuevo.
+Si se queda atascado y no puede darse cuenta de lo que está sucediendo, un enfoque es comenzar de nuevo con un nuevo programa como "¡Hola, Mundo!" y asegurarse de que puede ejecutar este programa ya conocido. Luego, puede agregar gradualmente las piezas del programa original al nuevo.
 
 
 === Errores en Tiempo de Ejecución
