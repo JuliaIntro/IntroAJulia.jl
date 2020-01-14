@@ -21,7 +21,7 @@ Los errores de sintaxis suelen ser fáciles de corregir una vez que se descubre 
 
 Por otro lado, el mensaje indica en qué parte del programa se produjo el problema. En realidad, indica dónde Julia notó que había un problema, que no es necesariamente dónde está el error. A veces, el error es anterior a la ubicación del mensaje de error, generalmente en la línea anterior.
 
-Si está haciendo el programa incrementalmente, debería tener casi localizado el error. Estará en la última línea que agregó.
+Si está programando incrementalmente, debería tener casi localizado el error. Estará en la última línea que agregó.
 
 Si está copiando código de un libro, comience comparando su código con el código del libro. Verifique cada letra. Al mismo tiempo, recuerde que el libro puede contener errores, por lo que si ve algo que parece un error de sintaxis, podría serlo.
 
