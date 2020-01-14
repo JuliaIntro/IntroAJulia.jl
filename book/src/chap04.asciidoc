@@ -439,82 +439,83 @@ Escribir este tipo de documentación es una parte importante del diseño de la i
 ====
 
 
-=== Debugging
+=== Depuración
 
-An interface is like a contract between a function and a caller. The caller agrees to provide certain parameters and the function agrees to do certain work.
+Una interfaz es como un contrato entre una función y el usuario. El usuario acepta proporcionar ciertos parámetros y la función acepta hacer cierto trabajo.
 (((debugging)))
 
-For example, +polyline+ requires four arguments: +t+ has to be a turtle; +n+ has to be an integer; +len+ should be a positive number; and +angle+ has to be a number, which is understood to be in degrees.
+Por ejemplo, +polilinea+ requiere cuatro argumentos: +t+ tiene que ser una tortuga; +n+ tiene que ser un número entero; +lon+ debería ser un número positivo; y +angulo+ tiene que ser un número, en grados.
 
-These requirements are called _preconditions_ because they are supposed to be true before the function starts executing. Conversely, conditions at the end of the function are _postconditions_. Postconditions include the intended effect of the function (like drawing line segments) and any side effects (like moving the turtle or making other changes).
+Estos requisitos se llaman _precondiciones_ porque se supone que son verdaderos antes de que la función comience a ejecutarse. Por el contrario, las condiciones al final de la función son _postcondiciones_. Las _postcondiciones_ incluyen el efecto deseado de la función (como dibujar segmentos de línea) y cualquier efecto secundario (como mover la tortuga o hacer otros cambios).
 (((precondition)))(((postcondition)))
 
-Preconditions are the responsibility of the caller. If the caller violates a (properly documented!) precondition and the function doesn’t work correctly, the bug is in the caller, not the function.
+Las condiciones previas son responsabilidad del usuario. Si el usuario viola una precondición (¡debidamente documentada!) y la función no funciona correctamente, el error está en el usuario, no en la función.
 
-If the preconditions are satisfied and the postconditions are not, the bug is in the function. If your pre- and postconditions are clear, they can help with debugging.
+Si se cumplen las precondiciones pero no las postcondiciones, el error está en la función. Si sus pre y postcondiciones son claras, pueden ayudar con la depuración.
 
 
-=== Glossary
+=== Glosario
 
-module::
-A file that contains a collection of related functions and other definitions.
+modulo::
+Un archivo que contiene una colección de funciones relacionadas y otras definiciones.
 (((module)))
 
-package::
-An external library with additional functionality.
+paquete::
+Una biblioteca externa con más funcionalidades.
 (((package)))
 
-using statement::
-A statement that reads a module file and creates a module object.
+sentencia using::
+Una sentencia que lee un archivo de módulo y crea un objeto de módulo.
 (((using statement)))
 
-loop::
-A part of a program that can run repeatedly.
+bucle::
+Una parte de un programa que puede ejecutarse repetidamente.
 (((loop)))
 
-encapsulation::
-The process of transforming a sequence of statements into a function definition.
+encapsulado::
+El proceso de transformar una secuencia de sentencias en una definición de función.
 (((encapsulation)))
 
-generalization::
-The process of replacing something unnecessarily specific (like a number) with something appropriately general (like a variable or parameter).
+generalización::
+El proceso de reemplazar algo innecesariamente específico (como un número) con algo más general (como una variable o parámetro).
 (((generalization)))
 
-interface::
-A description of how to use a function, including the name and descriptions of the arguments and return value.
+interfaz::
+Una descripción de cómo usar una función, incluido el nombre y las descripciones de los argumentos y el valor de retorno.
 (((interface)))
 
-refactoring::
-The process of modifying a working program to improve function interfaces and other qualities of the code.
+refactorización::
+El proceso de modificar un programa para mejorar las interfaces de las funciones y otras cualidades del código.
 (((refactoring)))
 
-development plan::
-A process for writing programs.
+plan de desarrollo::
+Un proceso para escribir programas.
 (((program development plan)))
 
 docstring::
-A string that appears at the top of a function definition to document the function’s interface.
+Una cadena que aparece en la parte superior de una definición de función para documentar la interfaz de la función.
 (((docstring)))
 
-precondition::
-A requirement that should be satisfied by the caller before a function starts.
+precondición::
+Un requisito que debe cumplir el usuario antes de que comience una función.
 (((precondition)))
 
-postcondition::
-A requirement that should be satisfied by the function before it ends.
+postcondición::
+Un requisito que debe cumplir la función antes de que finalice.
 (((postcondition)))
 
 
-=== Exercises
+=== Ejercicios
 
 [[ex04-7]]
-==== Exercise 4-8
+==== Ejercicio 4-8
 
+Copie y pegue el código de este capítulo en un notebook.
 Enter the code in this chapter in a notebook.
 
-. Draw a stack diagram that shows the state of the program while executing +circle(🐢, radius)+. You can do the arithmetic by hand or add print statements to the code.
+. Dibuje un diagrama de pila que muestre el estado del programa mientras ejecuta +circulo(🐢,radio)+. Puede hacer la aritmética a mano o agregar sentencias de impresión al código.
 
-. The version of +arc+ in <<refactoring>> is not very accurate because the linear approximation of the circle is always outside the true circle. As a result, the turtle ends up a few pixels away from the correct destination. My solution shows a way to reduce the effect of this error. Read the code and see if it makes sense to you. If you draw a diagram, you might see how it works.
+. La versión de +arco+ en <<refactoring>> no es muy precisa ya que la aproximación lineal del círculo siempre queda por afuera del círculo verdadero. Como resultado, la tortuga termina a unos pocos píxeles del destino correcto. La siguiente solución muestra una forma de reducir el efecto de este error. Lea el código y vea si tiene sentido. Si dibuja un diagrama, es posible que entienda mejor cómo funciona.
 (((arc)))
 
 [source,julia]
@@ -528,7 +529,7 @@ Draws an arc with the given radius and angle:
     r: radius
     angle: angle subtended by the arc, in degrees
 """
-function arc(t, r, angle)
+function arco(t, r, angle)
     arc_len = 2 * π * r * abs(angle) / 360
     n = trunc(arc_len / 4) + 3
     step_len = arc_len / n
