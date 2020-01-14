@@ -23,7 +23,7 @@ Por otro lado, el mensaje indica en qué parte del programa se produjo el proble
 
 Si está programando incrementalmente, debería tener casi localizado el error. Estará en la última línea que agregó.
 
-Si está copiando código de un libro, comience comparando su código con el código del libro. Verifique cada letra. Al mismo tiempo, recuerde que el libro puede contener errores, por lo que si ve algo que parece un error de sintaxis, podría serlo.
+Si está copiando código de un libro, comience comparando su código con el código del libro. Verifique cada letra. Al mismo tiempo, recuerde que el libro puede contener errores, por lo que si ve algo que parece un error de sintaxis, es posible que lo sea.
 
 Aquí hay algunas formas de evitar los errores de sintaxis más comunes:
 
