@@ -205,7 +205,7 @@ Un símbolo en el entorno (o ámbito) actual no está definido.
 
 Uno de los problemas de usar sentencias print en la depuración es que puede terminar ahogado por tanta información. Hay dos formas de resolver esto: simplificar la salida o simplificar el programa.
 
-Para simplificar la salida, puede eliminar o comentar (convertir en comentarios) las sentencias print que no sean de ayuda, o combinarlas, o dar a la salida un formato que la haga más comprensible.
+Para simplificar la salida, puede eliminar o comentar (convertir en comentarios) las sentencias print que no sean útiles, o combinarlas, o dar a la salida un formato que la haga más comprensible.
 
 Para simplificar el programa puede hacer varias cosas. Primero, reducir la escala del problema en el que está trabajando el programa. Por ejemplo, si está buscando algo en una lista, búsquelo en una lista pequeña. Si el programa acepta entradas del usuario, ingrese la entrada más simple que provoque el problema.
 
