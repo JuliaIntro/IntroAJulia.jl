@@ -155,25 +155,27 @@ Escriba una función llamada +cuadrado+ que tome como parámetro a un turtle +t+
 [[ex04-2]]
 ==== Ejercicio 4-3
 
-Write a function call that passes +t+ as an argument to +square+, and then run the macro again.
+Escriba una llamada a función que pase +t+ como argumento a +cuadrado+, y luego vuelva a ejecutar la macro.
 
 [[ex04-3]]
 ==== Ejercicio 4-4
 
-Add another parameter, named +len+, to square. Modify the body so length of the sides is +len+, and then modify the function call to provide a second argument. Run the macro again. Test with a range of values for +len+.
+Agregue otro parámetro, llamado +len+, a cuadrado. Modifique el cuerpo para que la longitud de los lados sea +len+, y luego modifique la llamada a función agregando este segundo argumento. Ejecute la macro nuevamente. Prueba con un rango de valores para +len+.
 
 [[ex04-4]]
 ==== Ejercicio 4-5
 
-Make a copy of +square+ and change the name to +polygon+. Add another parameter named +n+ and modify the body so it draws an latexmath:[\(n\)]-sided regular polygon. 
+Haga una copia de +cuadrado+ y cambie su nombre a +polígono+. Agregue otro parámetro llamado +n+ y modifique el cuerpo para que dibuje un polígono regular de latexmath:[\(n\)]-lados.
 
 [TIP]
 ====
-The exterior angles of an latexmath:[\(n\)]-sided regular polygon are latexmath:[\(\frac{360}{n}\)] degrees.
+Los ángulos exteriores de un polígono regular de latexmath:[\(n\)]-lados son latexmath:[\(\frac{360}{n}\)] grados.
 ====
 
 [[ex04-5]]
-==== Exercise 4-6
+==== Ejercicio 4-6
+
+Escriba una función llamada +círculo+ que tome un turtle +t+, y un radio +r+, como parámetros y que dibuje un círculo aproximado llamando a + polígono + con una longitud y número de lados apropiados. Pruebe su función con un rango de valores de + r +.
 
 Write a function called +circle+ that takes a turtle, +t+, and radius, +r+, as parameters and that draws an approximate circle by calling +polygon+ with an appropriate length and number of sides. Test your function with a range of values of +r+. 
 
@@ -183,7 +185,7 @@ Figure out the circumference of the circle and make sure that +len * n == circum
 ====
 
 [[ex04-6]]
-==== Exercise 4-7
+==== Ejercicio 4-7
 
 Make a more general version of +circle+ called +arc+ that takes an additional parameter +angle+, which determines what fraction of a circle to draw. +angle+ is in units of degrees, so when +angle = 360+, +arc+ should draw a complete circle.
 
