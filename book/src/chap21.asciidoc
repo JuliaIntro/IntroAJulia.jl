@@ -1,332 +1,339 @@
 [[chap21]]
-== Debugging
+== Depuración
 
-When you are debugging, you should distinguish among different kinds of errors in order to track them down more quickly:
+Al depurar, es necesario distinguir entre los diferentes tipos de errores para rastrearlos más rápidamente:
 
-* Syntax errors are discovered by the interpreter when it is translating the source code into byte code. They indicate that there is something wrong with the structure of the program. Example: Omitting the +end+ keyword at the end of a function block generates the somewhat redundant message +ERROR: LoadError: syntax: incomplete: function requires end+.
+* Los errores de sintaxis se descubren cuando el intérprete traduce el código fuente a código de bytes. Estos errores indican que hay una falla en la estructura del programa. Por ejemplo, omitir la palabra reservada +end+ al final de un bloque de funciones genera el mensaje +ERROR: LoadError: syntax: incomplete: function requires end+.
 (((syntax error)))
 
-* Runtime errors are produced by the interpreter if something goes wrong while the program is running. Most runtime error messages include information about where the error occurred and what functions were executing. Example: An infinite recursion eventually causes the runtime error +ERROR: StackOverflowError+.
+* Los errores en tiempo de ejecución se presentan si algo falla mientras se ejecuta el programa. La mayoría de los mensajes de error en tiempo de ejecución indican dónde ocurrió el error y qué funciones se estaban ejecutando. Ejemplo: Una recursión infinita eventualmente causa el error en tiempo de ejecución +ERROR: StackOverflowError+.
 (((runtime error)))
 
-* Semantic errors are problems with a program that runs without producing error messages but doesn’t do the right thing. Example: An expression may not be evaluated in the order you expect, yielding an incorrect result.
+* Los errores semánticos ocurren cuando un programa se ejecuta sin generar mensajes de error pero no hace lo que debería. Por ejemplo: una expresión puede no evaluarse en el orden esperado, generando un resultado incorrecto.
 (((semantic error)))
 
-The first step in debugging is to figure out which kind of error you are dealing with. Although the following sections are organized by error type, some techniques are applicable in more than one situation.
+El primer paso en la depuración es averiguar el tipo de error al que se enfrenta. Aunque las siguientes secciones están organizadas por tipo de error, algunas técnicas son aplicables en más de una situación.
 
 
-=== Syntax Errors
+=== Errores de Sintaxis
 
-Syntax errors are usually easy to fix once you figure out what they are. Unfortunately, the error messages are often not helpful. The most common messages are +ERROR: LoadError: syntax: incomplete: premature end of input+ and +ERROR: LoadError: syntax: unexpected "="+, neither of which is very informative.
+Los errores de sintaxis suelen ser fáciles de corregir una vez que se descubre cuáles son. Desafortunadamente, muchas veces los mensajes de error no son útiles. Los mensajes más comunes son +ERROR: LoadError: syntax: incomplete: premature end of input+ y +ERROR: LoadError: syntax: unexpected "="+, los cuales no son muy informativos.
 
-On the other hand, the message does tell you where in the program the problem occurred. Actually, it tells you where Julia noticed a problem, which is not necessarily where the error is. Sometimes the error is prior to the location of the error message, often on the preceding line.
+Por otro lado, el mensaje indica en qué parte del programa se produjo el problema. En realidad, indica dónde Julia notó que había un problema, que no es necesariamente dónde está el error. A veces, el error es anterior a la ubicación del mensaje de error, generalmente en la línea anterior.
 
-If you are building the program incrementally, you should have a good idea about where the error is. It will be in the last line you added.
+Si está programando incrementalmente, debería tener casi localizado el error. Estará en la última línea que agregó.
 
-If you are copying code from a book, start by comparing your code to the book’s code very carefully. Check every character. At the same time, remember that the book might be wrong, so if you see something that looks like a syntax error, it might be.
+Si está copiando código de un libro, comience comparando su código con el código del libro. Verifique cada letra. Al mismo tiempo, recuerde que el libro puede contener errores, por lo que si ve algo que parece un error de sintaxis, es posible que lo sea.
 
-Here are some ways to avoid the most common syntax errors:
+Aquí hay algunas formas de evitar los errores de sintaxis más comunes:
 
-. Make sure you are not using a Julia keyword for a variable name.
+. Asegúrese de no estar usando una palabra reservada de Julia en un nombre de variable.
 
-. Check that you have the +end+ keyword at the end of every compound statement, including +for+, +while+, +if+, and +function+ blocks.
+. Compruebe que tiene la palabra reservada +end+ al final de cada sentencia compuesta, incluyendo los bloques +for+, +while+, +if+ y +function+.
 
-. Make sure that any strings in the code have matching quotation marks. Make sure that all quotation marks are “straight quotes”, not “curly quotes”.
+. Asegúrese de que las cadenas tengan su par de comillas de apertura y cierre. Asegúrese de que todas las comillas sean "comillas rectas", y no otro tipo de "comillas".
 
-. If you have multiline strings with triple quotes , make sure you have terminated the string properly. An unterminated string may cause an invalid token error at the end of your program, or it may treat the following part of the program as a string until it comes to the next string. In the second case, it might not produce an error message at all!
+. Si tiene cadenas que ocupan varias líneas con triples comillas, asegúrese de que ha terminado la cadena correctamente. Una cadena sin terminar puede provocar un error invalid token al final de su programa, o puede hacer que la siguiente parte del programa sea tratada como una cadena hasta llegar a la siguiente cadena. ¡El segundo caso podría no presentar mensaje de error!
 
-. An unclosed opening operator—+(+, +{+, or +[+—makes Julia continue with the next line as part of the current statement. Generally, an error occurs almost immediately in the next line.
+. Un paréntesis sin cerrar —+(+, +{+, or +[+— hace que Julia continúe con la línea siguiente como parte de la sentencia actual. Generalmente, se produce un error casi inmediatamente en la siguiente línea.
 
-. Check for the classic +=+ instead of +==+ inside a conditional.
+. Verifique el clásico error que se produce al ocupar +=+ en lugar de +==+ dentro de un condicional.
 
-. If you have non-ASCII characters in the code (including strings and comments), that might cause a problem, although Julia usually handles non-ASCII characters. Be careful if you paste in text from a web page or other source.
+. Si tiene caracteres que no son ASCII en el código (incluidas cadenas y comentarios), esto podría causar un problema, aunque Julia generalmente maneja caracteres no ASCII. Tenga cuidado si pega texto de una página web u otra fuente.
 
-If nothing works, move on to the next section...
-
-==== I keep making changes and it makes no difference
-
-If the REPL says there is an error and you don’t see it, that might be because you and the REPL are not looking at the same code. Check your programming environment to make sure that the program you are editing is the one Julia is trying to run.
-
-If you are not sure, try putting an obvious and deliberate syntax error at the beginning of the program. Now run it again. If the REPL doesn’t find the new error, you are not running the new code.
-
-There are a few likely culprits:
-
-* You edited the file and forgot to save the changes before running it again. Some programming environments do this for you, but some don’t.
-
-* You changed the name of the file, but you are still running the old name.
-
-* Something in your development environment is configured incorrectly.
-
-* If you are writing a module and using +using+, make sure you don’t give your module the same name as one of the standard Julia modules.
-
-* If you are using +using+ to import a module, remember that you have to restart the REPL when you modify the code in the module. If you import the module again, it doesn’t do anything.
-
-If you get stuck and you can’t figure out what is going on, one approach is to start again with a new program like “Hello, World!”, and make sure you can get a known program to run. Then gradually add the pieces of the original program to the new one.
+Si nada funciona, pase a la siguiente sección ...
 
 
-=== Runtime Errors
+==== Sigo haciendo cambios y no hay diferencia
 
-Once your program is syntactically correct, Julia can read it and at least start running it. What could possibly go wrong?
+Si el REPL dice que hay un error y usted no lo ve, podría deberse a que usted y el REPL no están viendo el mismo código. Verifique su entorno de programación para asegurarse de que el programa que está editando es el que Julia está tratando de ejecutar.
 
-==== My program does absolutely nothing
+Si no está seguro, intente poner un error de sintaxis obvio y deliberado al comienzo del programa. Ahora ejecútelo de nuevo. Si REPL no encuentra el nuevo error, no está ejecutando el nuevo código.
 
-This problem is most common when your file consists of functions and classes but does not actually invoke a function to start execution. This may be intentional if you only plan to import this module to supply classes and functions.
+Estas son algunas de las posibles razones:
 
-If it is not intentional, make sure there is a function call in the program, and make sure the flow of execution reaches it (see <<flow_of_execution>>).
+* Editó el archivo y olvidó guardar los cambios antes de ejecutarlo nuevamente. Algunos entornos de programación hacen esto por usted, pero otros no.
+
+* Cambió el nombre del archivo, pero aún está ejecutando el archivo con el nombre anterior.
+
+* Algo en su entorno de desarrollo está configurado incorrectamente.
+
+* Si está escribiendo un módulo y está usando +using+, asegúrese de no darle a su módulo el mismo nombre que uno de los módulos estándar de Julia.
+
+* Si está usando +using+ para importar un módulo, recuerde que debe reiniciar REPL cuando modifique el código en el módulo. Si vuelve a importar el módulo, no ocurre nada.
+
+Si se queda atascado y no puede darse cuenta de lo que está sucediendo, un enfoque es comenzar de nuevo con un nuevo programa como "¡Hola, Mundo!" y asegurarse de que puede ejecutar este programa ya conocido. Luego, puede agregar gradualmente las piezas del programa original al nuevo.
+
+
+=== Errores en Tiempo de Ejecución
+
+Una vez que su programa es sintácticamente correcto, Julia puede leerlo y al menos comenzar a ejecutarlo. ¿Qué podría salir mal?
+
+==== Mi programa no hace absolutamente nada
+
+Este problema es común cuando su archivo consta de funciones y clases, pero en realidad no llama a ninguna función para iniciar la ejecución. Esto puede ser intencional si solo se busca importar este módulo para suministrar clases y funciones.
+
+Si no es intencional, asegúrese de que haya una llamada a la función en el programa, y asegúrese de que el flujo de ejecución pase por esta llamada (vea <<flow_of_execution>>).
 (((flow of execution)))
 
-==== My program hangs
 
-If a program stops and seems to be doing nothing, it is “hanging”. Often that means that it is caught in an infinite loop or infinite recursion.
+==== Mi programa se congela
 
-* If there is a particular loop that you suspect is the problem, add a print statement immediately before the loop that says “entering the loop” and another immediately after that says “exiting the loop”.
+Si un programa se detiene y parece no estar haciendo nada, está "congelado". Generalmente eso significa que está atrapado en un bucle infinito o en una recursión infinita.
+
+* Si hay un bucle en particular que le resulta sospechoso de provocar el pproblema, agregue una sentencia de impresión justo antes del bucle que diga "entrando al bucle" y otra inmediatamente posterior que diga "saliendo del bucle".
 +
-Run the program. If you get the first message and not the second, you’ve got an infinite loop. Go to <<infinite_loop>> below.
+Ejecute el programa. Si recibe el primer mensaje y no el segundo, tiene un bucle infinito. Vea <<infinite_loop>>.
 (((infinite loop)))
 
-* Most of the time, an infinite recursion will cause the program to run for a while and then produce a +ERROR: LoadError: StackOverflowError+ error. If that happens, go to <<infinite_recursion>> below.
+* La mayoría de las veces, una recursión infinita hará que el programa se ejecute por un rato y luego produzca un error +ERROR: LoadError: StackOverflowError+. Si eso sucede, vea <<infinite_recursion>>.
 +
-If you are not getting this error but you suspect there is a problem with a recursive method or function, you can still use the techniques in <<infinite_recursion>>.
+Si no obtiene este error pero sospecha que hay un problema con un método o función recursiva, igual puede utilizar las técnicas de <<infinite_recursion>>.
 (((infinite recursion)))
 
-* If neither of those steps works, start testing other loops and other recursive functions and methods.
+* Si ninguno de esos pasos funciona, comience a probar otros bucles, y otras funciones y métodos recursivos.
 
-* If that doesn’t work, then it is possible that you don’t understand the flow of execution in your program. Go to <<flow_of_execution>> below.
+* Si esto no funciona, quizás es porque no entiendes el flujo de ejecución de tu programa. Vea <<flow_of_execution>>.
+
 
 [[infinite_loop]]
-===== Infinite Loop
+===== Bucle Infinito
 
-If you think you have an infinite loop and you think you know what loop is causing the problem, add a print statement at the end of the loop that prints the values of the variables in the condition and the value of the condition.
+Si crees tener un bucle infinito y crees saber cuál es, añade una sentencia de impresión que imprima los valores de las variables de la condición al final del bucle junto con el valor de la condición.
 
-For example:
+Por ejemplo:
 
 [source,julia]
 ----
 while x > 0 && y < 0
-    # do something to x
-    # do something to y
+    # hacer algo con x
+    # hacer algo con y
     @debug "variables" x y
-    @debug "condition" x > 0 && y < 0
+    @debug "condicion" x > 0 && y < 0
 end
 ----
 
-Now when you run the program in debug mode, you will see the value of the variables and the condition for each time through the loop. The last time through the loop, the condition should be +false+. If the loop keeps going, you will be able to see the values of +x+ and +y+, and you might figure out why they are not being updated correctly.
+Ahora, cuando ejecute el programa en modo de depuración, verá el valor de las variables y la condición en cada iteración. En la última iteración, la condición debe ser +false+. Si el ciclo continúa, podrá ver los valores de +x+ e +y+, y podrá averiguar por qué no
+se actualizan correctamente.
 
 [[infinite_recursion]]
-===== Infinite Recursion
+===== Recursión Infinita
 
-Most of the time, infinite recursion causes the program to run for a while and then produce a +ERROR: LoadError: StackOverflowError+ error.
+La mayoría de las veces, una recursión infinita hace que el programa se ejecute durante un tiempo y luego produzca un error +ERROR: LoadError: StackOverflowError+.
 (((StackOverflowError)))
 
-If you suspect that a function is causing an infinite recursion, make sure that there is a base case. There should be some condition that causes the function to return without making a recursive invocation. If not, you need to rethink the algorithm and identify a base case.
+Si sospecha que una función o un método está causando una recursión infinita, comience por asegurarse de que hay un caso base. En otras palabras, debería haber una condición que haga que la función devuelva un valor sin hacer otra llamada recursiva. Si no, necesita revisar el algoritmo y encontrar ese caso base.
 
-If there is a base case but the program doesn’t seem to be reaching it, add a print statement at the beginning of the function that prints the parameters. Now when you run the program, you will see a few lines of output every time the function is invoked, and you will see the parameter values. If the parameters are not moving toward the base case, you will get some ideas about why not.
+Si hay un caso base pero el programa no parece llegar hasta él, añada una sentencia de impresión al inicio de la función que imprima los parámetros. Ahora, cuando ejecute el programa, verá el valor de los parámetros cada vez que se llame la función. Si los parámetros no se acercan al caso base, eso le dará alguna idea de por qué no lo hace.
 
 [[flow_of_execution]]
-===== Flow of Execution
+===== Flujo de Ejecución
 
-If you are not sure how the flow of execution is moving through your program, add print statements to the beginning of each function with a message like “entering function foo”, where foo is the name of the function.
+Si no está seguro del flujo de ejecución en su programa, añada sentencias de impresión al principio de cada función con mensajes como “entrando a la función fun”, donde fun sea el nombre de la función.
 
-Now when you run the program, it will print a trace of each function as it is invoked.
+Ahora, cuando ejecute el programa, se imprimirá una mensaje en cada función a medida que estas sean llamadas.
 
-==== When I run the program I get an exception
+==== Cuando ejecuto el programa recibo una excepción.
 
-If something goes wrong during runtime, Julia prints a message that includes the name of the exception, the line of the program where the problem occurred, and a stacktrace.
+Si algo sale mal durante la ejecución, Julia imprime un mensaje que incluye el nombre de la excepción, la línea del programa donde sucedió el problema y un trazado inverso.
 
-The stacktrace identifies the function that is currently running, and then the function that called it, and then the function that called that, and so on. In other words, it traces the sequence of function calls that got you to where you are, including the line number in your file where each call occurred.
+El trazado inverso identifica la función que se está ejecutando y la función que la llamó, y luego la función que llamó a esa, y así sucesivamente. En otras palabras, traza la ruta de las llamadas a las funciones que le llevaron a donde se encuentra. También incluye los numeros de las líneas de su archivo donde suceden todas esas llamadas.
 
-The first step is to examine the place in the program where the error occurred and see if you can figure out what happened. These are some of the most common runtime errors:
+El primer paso es examinar el lugar del programa donde ocurrió el error y ver si puede adivinar lo que sucedió. Estos son algunos de los errores en tiempo de ejecución más comunes:
 
 ArgumentError:: 
-One of the arguments to a function call is not in the expected state.
+Uno de los argumentos para llamar a una función no tiene la forma esperada.
 (((ArgumentError)))
 
-BoundsError:: 
-An indexing operation into an array tried to access an out-of-bounds element.
+BoundsError::
+Se está tratando de acceder a un elemento de un arreglo fuera de los límites de indexación.
 (((BoundsError)))
 
 DomainError::
-The argument to a function or constructor is outside the valid domain.
+El argumento de una función o constructor no pertenece al dominio válido.
 (((DomainError)))((("error", "Core", "DomainError", see="DomainError")))
 
 DivideError:: 
-Integer division was attempted with a denominator value of 0.
+Se intentó dividir un entero por 0.
 (((DivideError)))((("error", "Core", "DivideError", see="DivideError")))
 
 EOFError:: 
-No more data was available to read from a file or stream.
+No había más datos disponibles para leer desde un archivo o stream.
 (((EOFError)))((("error", "Base", "EOFError", see="EOFError")))
 
 InexactError::
-Cannot exactly convert to a type.
+No se puede convertir a un tipo.
 (((InexactError)))((("error", "Core", "InexactError", see="InexactError")))
 
-KeyError:: 
-An indexing operation into an +AbstractDict+ (+Dict+) or +Set+ like object tried to access or delete a non-existent element.
+KeyError::
+Se está tratando de acceder o eliminar un elemento inexistente de un objeto +AbstractDict+ (+Dict+) o +Set+.
 (((KeyError)))
 
 MethodError:: 
-A method with the required type signature does not exist in the given generic function. Alternatively, there is no unique most-specific method.
+No existe un método con la especificación de tipo requerida en la función genérica dada. Alternativamente, no existe un método único más específico.
 (((MethodError)))
 
 OutOfMemoryError:: 
-An operation allocated too much memory for either the system or the garbage collector to handle properly.
+Una operación asignó demasiada memoria para que el sistema o el recolector de basura opere correctamente.
 (((OutOfMemoryError)))((("error", "Core", "OutOfMemoryError", see="OutOfMemoryError")))
 
 OverflowError:: 
-The result of an expression is too large for the specified type and will cause a wraparound.
+El resultado de una expresión es demasiado grande para el tipo especificado y se produce un desbordamiento.
 (((OverflowError)))((("error", "Core", "OverflowError", see="OverflowError")))
 
 StackOverflowError:: 
-The function call grew beyond the size of the call stack. This usually happens when a call recurses infinitely.
+Una llamada a función trata de usar más espacio que el que está disponible en la pila de llamadas. Esto generalmente ocurre cuando una llamada se repite infinitamente.
 (((StackOverflowError)))
 
 StringIndexError::
-An error occurred when trying to access a string at an index that is not valid.
+Se produjo un error al intentar acceder a un índice inválido de una cadena.
 (((StringIndexError)))
 
 SystemError::
-A system call failed with an error code.
+Falló una llamada al sistema, y se muestra un mensaje de error.
 (((SystemError)))
 
 TypeError::
-A type assertion failure, or calling an intrinsic function with an incorrect argument type.
+Error de aserción de tipo, o error producido al llamar a una función integrada con un tipo de argumento incorrecto.
 (((TypeError)))
 
 UndefVarError:: 
-A symbol in the current scope is not defined.
+Un símbolo en el entorno (o ámbito) actual no está definido.
 (((UndefVarError)))
 
-==== I added so many print statements I get inundated with output
+==== Puse tantas sentencias de impresión que me ahogo en información
 
-One of the problems with using print statements for debugging is that you can end up buried in output. There are two ways to proceed: simplify the output or simplify the program.
+Uno de los problemas de usar sentencias print en la depuración es que puede terminar ahogado por tanta información. Hay dos formas de resolver esto: simplificar la salida o simplificar el programa.
 
-To simplify the output, you can remove or comment out print statements that aren’t helping, or combine them, or format the output so it is easier to understand.
+Para simplificar la salida, puede eliminar o comentar (convertir en comentarios) las sentencias print que no sean útiles, o combinarlas, o dar a la salida un formato que la haga más comprensible.
 
-To simplify the program, there are several things you can do. First, scale down the problem the program is working on. For example, if you are searching a list, search a small list. If the program takes input from the user, give it the simplest input that causes the problem.
+Para simplificar el programa puede hacer varias cosas. Primero, reducir la escala del problema en el que está trabajando el programa. Por ejemplo, si está buscando algo en una lista, búsquelo en una lista pequeña. Si el programa acepta entradas del usuario, ingrese la entrada más simple que provoque el problema.
 
-Second, clean up the program. Remove dead code and reorganize the program to make it as easy to read as possible. For example, if you suspect that the problem is in a deeply nested part of the program, try rewriting that part with simpler structure. If you suspect a large function, try splitting it into smaller functions and testing them separately.
+Segundo, "limpie" el programa. Elimine el código muerto y reorganice el programa para hacerlo tan legible como sea posible. Por ejemplo, si sospecha que el problema está en una parte del programa con un anidamiento muy profundo, pruebe a reescribir esa parte con una estructura más simple. Si sospecha de una función muy larga, trate de dividirla en funciones más pequeñas y pruébelas separadamente.
 (((dead code)))
 
-Often the process of finding the minimal test case leads you to the bug. If you find that a program works in one situation but not in another, that gives you a clue about what is going on.
+Generalmente, el proceso de encontrar el caso de prueba mínimo te lleva al error. Si encuentra que un programa funciona en una situación pero no en otra, eso le dará una pista sobre lo que está sucediendo.
 
-Similarly, rewriting a piece of code can help you find subtle bugs. If you make a change that you think shouldn’t affect the program, and it does, that can tip you off.
+De forma parecida, reescribir una porción de código puede ayudarle a encontrar errores sutiles. Si realiza un cambio que cree que no debería afectar el programa, pero lo hace, entonces eso puede darle una pista.
 
 
-=== Semantic Errors
+=== Errores Semánticos 
 
-In some ways, semantic errors are the hardest to debug, because the interpreter provides no information about what is wrong. Only you know what the program is supposed to do.
+En cierto modo, los errores semánticos son los más difíciles de corregir, ya que el intérprete no entrega información sobre lo
+que está mal. Sólo usted sabe lo que se supone que debe hacer el programa.
 
-The first step is to make a connection between the program text and the behavior you are seeing. You need a hypothesis about what the program is actually doing. One of the things that makes that hard is that computers run so fast.
+El primer paso es hacer una conexión entre el código y el comportamiento que está viendo. Necesita una hipótesis sobre lo que realmente
+está haciendo el programa. Una de las dificultades que nos encontramos para ello es la alta velocidad de los computadores.
 
-You will often wish that you could slow the program down to human speed. Inserting a few well-placed print statements is often quicker than setting up a debugger, inserting and removing breakpoints, and “stepping” the program to where the error is occurring.
+A menudo desearía ralentizar el programa a una velocidad humana. El tiempo que lleva colocar unas sentencias print en los lugares adecuados suele ser menor que el que lleva configurar un depurador, poner y quitar puntos de interrupción, y “hacer avanzar” al programa hasta donde se produce el error.
 
-==== My program doesn’t work
 
-You should ask yourself these questions:
+==== Mi programa no funciona
 
-* Is there something the program was supposed to do but which doesn’t seem to be happening? Find the section of the code that performs that function and make sure it is executing when you think it should.
+Debería hacerse estas preguntas:
 
-* Is something happening that shouldn’t? Find code in your program that performs that function and see if it is executing when it shouldn’t.
+* ¿Hay algo que se supone que debería hacer el programa pero que no sucede? Busque la sección del código que realiza esa función y asegúrese de que se ejecuta cuando debería.
 
-* Is a section of code producing an effect that is not what you expected? Make sure that you understand the code in question, especially if it involves functions or methods in other Julia modules. Read the documentation for the functions you call. Try them out by writing simple test cases and checking the results.
+* ¿Ocurre algo que no debería? Busque el código en su programa que realiza esa función y vea si se ejecuta cuando no debe.
 
-In order to program, you need a mental model of how programs work. If you write a program that doesn’t do what you expect, often the problem is not in the program; it’s in your mental model.
+* ¿Hay alguna sección del código que cause un efecto que no esperaba? asegurese de que entiende el código en cuestión, especialmente si incluye funciones o métodos de otros módulos de Julia. Lea la documentación de las funciones a las que llama. Pruébelas escribiendo casos de prueba simples y comprobando sus resultados.
+
+Para programar necesitará tener un modelo mental de cómo funcionan los programas. Si escribe un programa que no hace lo que esperaba de él, muchas veces el problema no estará en el programa, sino en su modelo mental.
 (((mental model)))
 
-The best way to correct your mental model is to break the program into its components (usually the functions and methods) and test each component independently. Once you find the discrepancy between your model and reality, you can solve the problem.
+La mejor manera de corregir su modelo mental es dividiendo el programa en sus componentes (normalmente en funciones y métodos) y probando cada componente de forma independiente. Una vez que encuentre la discrepancia entre su modelo y la realidad, podrá solucionar el problema.
 
-Of course, you should be building and testing components as you develop the program. If you encounter a problem, there should be only a small amount of new code that is not known to be correct.
+Por supuesto, debería ir haciendo y probando componentes a medida que desarrolla el programa. Si encuentra un problema, sólo habría que revisar una pequeña cantidad de código nuevo.
 
-==== I’ve got a big hairy expression and it doesn’t do what I expect
+==== Tengo una expresión grande y peliaguda y no hace lo que espero.
 
-Writing complex expressions is fine as long as they are readable, but they can be hard to debug. It is often a good idea to break a complex expression into a series of assignments to temporary variables.
+Está bien escribir expresiones complejas mientras sean legibles, pero pueden ser difíciles de depurar. Suele ser una buena idea dividir una expresión compleja en una serie de asignaciones de variables temporales.
 
-For example:
-
-[source,julia]
-----
-addcard(game.hands[i], popcard(game.hands[findneighbor(game, i)]))
-----
-
-This can be rewritten as:
+Por ejamplo:
 
 [source,julia]
 ----
-neighbor = findneighbor(game, i)
-pickedcard = popcard(game.hands[neighbor])
-addcard(game.hands[i], pickedcard)
+agregarcarta(juego.manos[i], sacarcarta(juego.manos[encontrarvecino(juego, i)]))
 ----
 
-The explicit version is easier to read because the variable names provide additional documentation, and it is easier to debug because you can check the types of the intermediate variables and display their values.
+Puede reescribirse como:
 
-Another problem that can occur with big expressions is that the order of evaluation may not be what you expect. For example, if you are translating the expression latexmath:[\(\frac{x}{2\pi}\)] into Julia, you might write:
+[source,julia]
+----
+vecino = encontrarvecino(juego, i)
+cartaseleccionada = sacarcarta(juego.manos[vecino])
+agregarcarta(juego.manos[i], cartaseleccionada)
+----
+
+La versión explícita es más fácil de leer porque los nombres de variables nos entregan documentación adicional, y es más fácil de depurar porque se pueden comprobar los tipos de las variables intermedias y mostrar sus valores.
+
+Otro problema que puede suceder con las expresiones grandes es que el orden de evaluación puede no ser el que usted esperaba. Por ejemplo, si está traduciendo la expresión latexmath:[\(\frac{x}{2\pi}\)] a Julia, podría escribir:
 
 [source,julia]
 ----
 y = x / 2 * π
 ----
 
-That is not correct because multiplication and division have the same precedence and are evaluated from left to right. So this expression computes latexmath:[\(\frac{x\pi}{2}\)].
+Esto no es correcto, ya que la multiplicación y la división tienen la misma precedencia, y se evalúan de izquierda a derecha. Así que esa expresión calcula latexmath:[\(\frac{x\pi}{2}\)].
 
-A good way to debug expressions is to add parentheses to make the order of evaluation explicit:
+Una buena forma de depurar expresiones es añadir paréntesis para que sea explícito el orden de evaluación:
 
 [source,julia]
 ----
 y = x / (2 * π)
 ----
 
-Whenever you are not sure of the order of evaluation, use parentheses. Not only will the program be correct (in the sense of doing what you intended), it will also be more readable for other people who haven’t memorized the order of operations.
+Siempre que no esté seguro del orden de evaluación, utilice paréntesis. El programa no sólo será correcto (en el sentido de que hace lo que usted quiere), sino que además será más legible para otras personas que no hayan memorizado las reglas de precedencia.
 
-==== I’ve got a function that doesn’t return what I expect
+==== Tengo una función que no devuelve lo que esperaba.
 
-If you have a return statement with a complex expression, you don’t have a chance to print the result before returning. Again, you can use a temporary variable. For example, instead of:
+Si tiene una sentencia return con una expresión compleja, no tendrá la oportunidad de imprimir el valor de retorno antes de retornar. De nuevo, puede usar una variable temporal. Por ejemplo, en lugar de:
 (((temporary variable)))
 
 [source,julia]
 ----
-return removematches(game.hands[i])
+return sacarpares(juego.manos[i])
 ----
 
-you could write:
+podría escribir:
 
 [source,julia]
 ----
-count = removematches(game.hands[i])
-return count
+contar = sacarpares(juego.manos[i])
+return contar
 ----
 
-Now you have the opportunity to display the value of +count+ before returning.
+Ahora ya tiene la oportunidad de mostrar el valor de +count+ antes de retornar.
 
-==== I’m really, really stuck and I need help
+==== Estoy atascado de verdad y necesito ayuda.
 
-First, try getting away from the computer for a few minutes. Working with a computer can cause these symptoms:
+Primero, intente alejarse del computador durante unos minutos. Trabajar con un computador puede provocar estos efectos: 
 
-* Frustration and rage.
+* Frustración y/o furia.
 
-* Superstitious beliefs (“the computer hates me”) and magical thinking (“the program only works when I wear my hat backward”).
+* Creencias supersticiosas (“el computador me odia”) y pensamiento mágico (“el programa sólo funciona cuando me pongo el gorro hacia atrás”).
 
-* Random walk programming (the attempt to program by writing every possible program and choosing the one that does the right thing).
+* Programar dando palos de ciego (el empeño de programar escribiendo todos los programas posibles y eligiendo el que hace lo correcto).
 
-If you find yourself suffering from any of these symptoms, get up and go for a walk. When you are calm, think about the program. What is it doing? What are some possible causes of that behavior? When was the last time you had a working program, and what did you do next?
+Si se encuentra afectado por alguno de estos síntomas, levántese y dé un paseo. Cuando esté calmado, piense en el programa. ¿Qué es lo que hace? ¿Cuáles pueden ser las causas de tal comportamiento? ¿Cuándo fue la última vez que su programa funcionaba y qué fue lo siguiente que hizo?
 
-Sometimes it just takes time to find a bug. I often find bugs when I am away from the computer and let my mind wander. Some of the best places to find bugs are trains, showers, and in bed, just before you fall asleep.
+A veces lleva tiempo encontrar un error. Muchas veces encontramos errores cuando estamos lejos del computador y divagamos. Algunos de los mejores lugares para encontrar errores son los trenes, las duchas y la cama, justo antes de quedarse dormido.
 
-==== No, I really need help
+==== No, de verdad necesito ayuda
 
-It happens. Even the best programmers occasionally get stuck. Sometimes you work on a program so long that you can’t see the error. You need a fresh pair of eyes.
+Sucede. Incluso los mejores programadores se atascan de vez en cuando. A veces trabaja durante tanto tiempo en un programa que no puede ver el error. Lo que necesita es un par de ojos nuevos.
 
-Before you bring someone else in, make sure you are prepared. Your program should be as simple as possible, and you should be working on the smallest input that causes the error. You should have print statements in the appropriate places (and the output they produce should be comprehensible). You should understand the problem well enough to describe it concisely.
+Antes de llamar a alguien, asegúrese de estar preparado. Su programa debería ser tan simple como sea posible, y usted debería estar
+trabajando con la entrada mínima que provoca el error. Debería tener sentencias print en los lugares adecuados (y lo que dicen debería ser comprensible). Debería entender el problema lo bastante bien como para describirlo de manera concisa.
 
-When you bring someone in to help, be sure to give them the information they need:
+Cuando llame a alguien para que le ayude, asegúrese de darles la información que necesitan:
 
-* If there is an error message, what is it and what part of the program does it indicate?
+* Si hay un mensaje de error, ¿cuál es y qué parte del programa señala?
 
-* What was the last thing you did before this error occurred? What were the last lines of code that you wrote, or what is the new test case that fails?
+* ¿Qué fue lo último que hizo antes de que apareciera el error? ¿Cuáles son las últimas líneas de cúdigo que escribió, o cuál es el nuevo caso de prueba que falla?
 
-* What have you tried so far, and what have you learned?
+* ¿Qué ha intentado hasta ahora y qué ha averiguado?
 
-When you find the bug, take a second to think about what you could have done to find it faster. Next time you see something similar, you will be able to find the bug more quickly.
+Cuando encuentre el error, tómese un momento para pensar acerca de lo que podría haber hecho para encontrarlo más rápido. La siguiente vez que vea algo parecido, será capaz de encontrar el error antes.
 
-Remember, the goal is not just to make the program work. The goal is to learn how to make the program work.
-
+Recuerde, el objetivo no es solo hacer que el programa funcione. El objetivo es aprender cómo hacer funcionar el programa.
