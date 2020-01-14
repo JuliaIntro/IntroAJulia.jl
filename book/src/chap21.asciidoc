@@ -99,7 +99,7 @@ Si no obtiene este error pero sospecha que hay un problema con un método o func
 [[infinite_loop]]
 ===== Bucle Infinito
 
-Si crees que tienes un bucle infinito y crees saber cuál es, añade una sentencia de impresión que imprima los valores de las variables de la condición al final del bucle junto con el valor de la condición.
+Si crees tener un bucle infinito y crees saber cuál es, añade una sentencia de impresión que imprima los valores de las variables de la condición al final del bucle junto con el valor de la condición.
 
 Por ejemplo:
 
