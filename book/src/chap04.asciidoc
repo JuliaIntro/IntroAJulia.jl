@@ -82,9 +82,9 @@ Ahora modifique la macro para que dibuje un cuadrado. ¡No sigas hasta haberlo t
 
 
 [[simple_repetition]]
-=== Simple Repetition
+=== Repetición Simple
 
-Chances are you wrote something like this:
+Es probable que hayas escrito algo como esto:
 (((repetition)))
 
 [source,julia]
@@ -101,23 +101,23 @@ Chances are you wrote something like this:
 end
 ----
 
-We can do the same thing more concisely with a +for+ statement:
+Podemos hacer lo mismo de manera más concisa con una sentencia +for+:
 (((for statement)))((("statement", "for", see="for statement)))(((for)))((("keyword", "for", see="for")))(((in)))((("keyword", "in", see="in")))
 
 [source,@julia-repl-test]
 ----
 julia> for i in 1:4
-          println("Hello!")
+          println("¡Hola!")
        end
-Hello!
-Hello!
-Hello!
-Hello!
+¡Hola!
+¡Hola!
+¡Hola!
+¡Hola!
 ----
 
-This is the simplest use of the +for+ statement; we will see more later. But that should be enough to let you rewrite your square-drawing program. Don’t go on until you do.
+Este es el uso más simple de la sentencia +for+; veremos más usos después. Pero esto debería ser suficiente para reescribir su programa que dibuja un cuadrado. No continúes hasta que lo hagas.
 
-Here is a +for+ statement that draws a square:
+Aquí hay una sentencia +for+ que dibuja un cuadrado:
 
 [source,julia]
 ----
@@ -130,41 +130,40 @@ Here is a +for+ statement that draws a square:
 end
 ----
 
-The syntax of a +for+ statement is similar to a function definition. It has a header and a body that ends with the keyword +end+. The body can contain any number of statements.
+La sintaxis de una sentencia +for+ es similar a la definición de una función. Tiene un encabezado y un cuerpo que termina con la palabra reservada +end+. El cuerpo puede contener el número de sentencias que desee.
 (((end)))
 
-A +for+ statement is also called a _loop_ because the flow of execution runs through the body and then loops back to the top. In this case, it runs the body four times.
+Una sentencia +for+ también es llamada _bucle_ porque el flujo de ejecución recorre el cuerpo y luego vuelve a la parte superior. En este caso, ejecuta el cuerpo cuatro veces.
 (((loop)))
 
-This version is actually a little different from the previous square-drawing code because it makes another turn after drawing the last side of the square. The extra turn takes more time, but it simplifies the code if we do the same thing every time through the loop. This version also has the effect of leaving the turtle back in the starting position, facing in the starting direction.
+Esta versión es en realidad un poco diferente del código anterior que dibujaba un cuadrado porque hace otro giro después de dibujar el último lado del cuadrado. El giro adicional lleva más tiempo, pero simplifica el código si hacemos lo mismo en cada iteración del ciclo. Esta versión también tiene el efecto de dejar a la tortuga nuevamente en la posición inicial, mirando hacia la dirección inicial.
 
+=== Ejercicios
 
-=== Exercises
-
-The following is a series of exercises using turtles. They are meant to be fun, but they have a point, too. While you are working on them, think about what the point is.
+Los siguientes ejercicios usan tortugas. Son divertidos, pero también tienen un trasfondo. Mientras trabaja en ellos, piense cuál es este trasfondo.
 
 [TIP]
 ====
-The following sections have solutions to the exercises, so don’t look until you have finished (or at least tried).
+Las siguientes secciones muestran las soluciones para estos ejercicios, así que no mire hasta que haya terminado (o al menos lo haya intentado).
 ====
 
 [[ex04-1]]
-==== Exercise 4-2
+==== Ejercicio 4-2
 
-Write a function called +square+ that takes a parameter named +t+, which is a turtle. It should use the turtle to draw a square.
+Escriba una función llamada +cuadrado+ que tome como parámetro a un turtle +t+. Debería usar este turtle para dibujar un cuadrado.
 
 [[ex04-2]]
-==== Exercise 4-3
+==== Ejercicio 4-3
 
 Write a function call that passes +t+ as an argument to +square+, and then run the macro again.
 
 [[ex04-3]]
-==== Exercise 4-4
+==== Ejercicio 4-4
 
 Add another parameter, named +len+, to square. Modify the body so length of the sides is +len+, and then modify the function call to provide a second argument. Run the macro again. Test with a range of values for +len+.
 
 [[ex04-4]]
-==== Exercise 4-5
+==== Ejercicio 4-5
 
 Make a copy of +square+ and change the name to +polygon+. Add another parameter named +n+ and modify the body so it draws an latexmath:[\(n\)]-sided regular polygon. 
 
