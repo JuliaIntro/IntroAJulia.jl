@@ -380,7 +380,7 @@ Si hubiéramos planeado con anticipación, podríamos haber escrito +polilinea+ 
 === Un Plan de Desarrollo
 
 Un _plan de desarrollo_ es un proceso para escribir programas. El proceso que utilizamos en este estudio de caso es "encapsulado y generalización". Los pasos de este proceso son:
-(((plan de desarrollo)))
+(((plan de desarrollo de programa)))
 
 . Comience escribiendo un pequeño programa sin definiciones de funciones.
 
@@ -489,7 +489,7 @@ El proceso de modificar un programa para mejorar las interfaces de las funciones
 
 plan de desarrollo::
 Un proceso para escribir programas.
-(((plan de desarrollo)))
+(((plan de desarrollo de programa)))
 
 docstring::
 Una cadena que aparece en la parte superior de una definición de función para documentar la interfaz de la función.
