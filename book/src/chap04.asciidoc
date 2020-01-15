@@ -6,16 +6,16 @@ Este capítulo presenta un segundo estudio de caso, que muestra el proceso de di
 Se presentan gráficos turtle, que es una forma de crear dibujos a través de la programación. Los gráficos turtle no están incluidos en la Biblioteca Estándar, por lo que se debe agregar el módulo PiensaEnJulia a su configuración de Julia.
 
 Los ejemplos de este capítulo se pueden ejecutar en un notebook gráfico en JuliaBox, el cual combina código, texto formateado, matemáticas y multimedia en un solo documento (vea <<juliabox>>).
-(((JuliaBox, graphical notebook)))
+(((JuliaBox, notebook gráfico)))
 
 
 === Turtles
 
 Un _modulo_ es un archivo que contiene una colección de funciones relacionadas. Julia proporciona algunos módulos en su Biblioteca Estándar. Además, es posible agregar más funciones a una gran cantidad de _paquetes_ (https://juliaobserver.com).
-(((module)))(((package)))
+(((modulo)))(((paquete)))
 
 Los paquetes se pueden instalar en REPL ingresando al modo Pkg REPL con la tecla +]+.
-(((pass:[&#93;])))(((PiensaEnJulia)))((("module", "PiensaEnJulia", see="PiensaEnJulia")))
+(((pass:[&#93;])))(((PiensaEnJulia)))((("modulo", "PiensaEnJulia", see="PiensaEnJulia")))
 
 [source,jlcon]
 ----
@@ -25,7 +25,7 @@ Los paquetes se pueden instalar en REPL ingresando al modo Pkg REPL con la tecla
 Esto puede demorar un poco.
 
 Antes de que podamos usar las funciones de un módulo, tenemos que importarlo con una sentencia +using+:
-(((using)))((("keyword", "using", see="using")))(((using statement)))((("statement", "using", see="using statement")))
+(((using)))((("palabra reservada", "using", see="using")))(((sentencia using)))((("sentencia", "using", see="sentencia using")))
 
 [source,@julia-repl-test]
 ----
@@ -36,10 +36,10 @@ Luxor.Turtle(0.0, 0.0, true, 0.0, (0.0, 0.0, 0.0))
 ----
 
 El módulo +PiensaEnJulia+ proporciona una función llamada +Turtle+ (tortuga en español) que crea un objeto +Luxor.Turtle+, el cual asignamos a una variable llamada +🐢+ (*+\:turtle: TAB+*).
-(((Turtle)))((("type", "Luxor", "Turtle", see="Turtle")))
+(((Turtle)))((("tipo", "Luxor", "Turtle", see="Turtle")))
 
 Una vez que crea una tortuga, puede llamar a una función para "moverla", y así hacer un dibujo con ella. Por ejemplo, para mover la tortuga hacia adelante (forward en inglés):
-(((forward)))((("function", "PiensaEnJulia", "forward", see="forward")))
+(((forward)))((("función", "PiensaEnJulia", "forward", see="forward")))
 
 [source,julia]
 ----
@@ -62,7 +62,7 @@ También es posible hacer girar a la tortuga con la función +turn+. Los argumen
 (((turn)))((("function", "PiensaEnJulia", "turn", see="turn")))
 
 Además, cada tortuga está sosteniendo un lápiz, que puede estar hacia arriba o hacia abajo; si el lápiz está hacia abajo, la tortuga deja un rastro cuando se mueve. <<fig04-1>> muestra el rastro dejado por la tortuga. Las funciones +penup+ y +pendown+ significan "lápiz hacia arriba" y "lápiz hacia abajo".
-(((penup)))((("function", "PiensaEnJulia", "penup", see="penup")))(((pendown)))((("function", "PiensaEnJulia", "pendown", see="pendown")))
+(((penup)))((("función", "PiensaEnJulia", "penup", see="penup")))(((pendown)))((("función", "PiensaEnJulia", "pendown", see="pendown")))
 
 Para dibujar un ángulo recto, modifique la llamada a la macro:
 
@@ -102,7 +102,7 @@ end
 ----
 
 Podemos hacer lo mismo de manera más concisa con una sentencia +for+:
-(((for statement)))((("statement", "for", see="for statement)))(((for)))((("keyword", "for", see="for")))(((in)))((("keyword", "in", see="in")))
+(((sentencia for)))((("sentencia", "for", see="sentencia for")))(((for)))((("palabra reservada", "for", see="for")))(((in)))((("palabra reservada", "in", see="in")))
 
 [source,@julia-repl-test]
 ----
@@ -134,7 +134,7 @@ La sintaxis de una sentencia +for+ es similar a la definición de una función. 
 (((end)))
 
 Una sentencia +for+ también es llamada _bucle_ porque el flujo de ejecución recorre el cuerpo y luego vuelve a la parte superior. En este caso, ejecuta el cuerpo cuatro veces.
-(((loop)))
+(((bucle)))
 
 Esta versión es en realidad un poco diferente del código anterior que dibujaba un cuadrado porque hace otro giro después de dibujar el último lado del cuadrado. El giro adicional lleva más tiempo, pero simplifica el código si hacemos lo mismo en cada iteración del ciclo. Esta versión también tiene el efecto de dejar a la tortuga nuevamente en la posición inicial, mirando hacia la dirección inicial.
 
@@ -191,7 +191,7 @@ Haga una versión más general de +circulo+ llamada +arco+ que tome un parámetr
 === Encapsulación
 
 El primer ejercicio le pide que coloque el código que permite dibujar un cuadrado en una definición de función, y que luego llame a la función, pasando a turtle como parámetro. Aquí hay una solución:
-(((square)))((("function", "programmer-defined", "square", see="square")))
+(((cuadrado)))((("función", "definida por el programador", "cuadrado", see="cuadrado")))
 
 [source,julia]
 ----
@@ -208,7 +208,7 @@ end
 ----
 
 Las sentencias más internas, +forward+ y +turn+ tienen doble sangría para mostrar que están dentro del bucle +for+, que a su vez está dentro de la definición de función.
-(((indentation)))
+(((indentación)))
 
 Dentro de la función, +t+ se refiere a la misma tortuga +🐢+, entonces +turn(t, -90)+ tiene el mismo efecto que +turn(🐢, -90)+. En ese caso, ¿por qué no llamar al parámetro +🐢+? La razón es que +t+ puede ser cualquier tortuga, no solo +🐢+, por lo que podríamos crear una segunda tortuga y pasarla como argumento a +cuadrado+:
 
@@ -221,8 +221,7 @@ end
 ----
 
 Colocar una porción de código en una función se denomina _encapsulación_. Uno de los beneficios de la encapsulación es que al ponerle un nombre al código, esto sirve como una especie de documentación. Otra ventaja es que si reutiliza el código, ¡es más conciso llamar a una función dos veces que copiar y pegar el cuerpo!
-(((encapsulation)))
-
+(((encapsulación)))
 
 === Generalización
 
@@ -244,10 +243,10 @@ end
 ----
 
 Agregar un parámetro a una función se llama _generalización_ porque hace que la función sea más general: en la versión anterior, el cuadrado siempre tenía el mismo tamaño; en esta versión puede ser de cualquier tamaño.
-(((generalization)))
+(((generalización)))
 
 El siguiente paso también es una generalización. En vez de dibujar cuadrados, +poligono+ dibuja polígonos regulares con cualquier número de lados. Aquí hay una solución:
-(((polygon)))((("function", "programmer-defined", "polygon", see="polygon")))
+(((polígono)))((("función", "definida por el programador", "polígono", see="polígono")))
 
 [source,julia]
 ----
@@ -270,7 +269,7 @@ Este ejemplo dibuja un polígono de 7 lados, con una longitud de 70 por lado.
 === Diseño de Interfaz
 
 El siguiente paso es escribir +circulo+, que toma un radio +r+ como parámetro. Aquí hay una solución simple que usa +poligono+ para dibujar un polígono de 50 lados:
-(((circle)))((("function", "programmer-defined", "circle", see="circle")))
+(((círculo)))((("función", "definida por el programador", "círculo", see="círculo")))
 
 [source,julia]
 ----
@@ -287,7 +286,7 @@ La primera línea calcula la circunferencia de un círculo con radio latexmath:[
 Una limitante de esta solución es que +n+ es constante, lo que significa que para círculos muy grandes, los segmentos de línea son demasiado largos, y para círculos pequeños, perdemos tiempo dibujando segmentos muy pequeños. Una solución sería generalizar la función tomando +n+ como parámetro. Esto le daría al usuario (quien llama a círculo) más control, pero la interfaz sería menos pulcra.
 
 La _interfaz_ de una función es un resumen de cómo se usa: ¿cuáles son los parámetros? ¿Qué hace la función? ¿Y cuál es el valor de retorno? Una interfaz es "pulcra" si le permite al usuario que la llama hacer lo que quiera sin tener que lidiar con detalles innecesarios.
-(((interface)))
+(((interfaz)))
 
 En este ejemplo, +r+ pertenece a la interfaz porque especifica el círculo a dibujar. +n+ es menos apropiado porque se refiere a los detalles de cómo se debe representar el círculo.
 
@@ -314,7 +313,7 @@ Agregar 3 a +n+ garantiza que el polígono tenga al menos 3 lados.
 Cuando escribimos +circulo+, pudimos reutilizar +poligono+ ya que un polígono de muchos lados es una buena aproximación de un círculo. Pero +arco+ no es tan versatil; no podemos usar +poligono+ o +circulo+ para dibujar un arco.
 
 Una alternativa es comenzar con una copia de +poligono+ y transformarla en +arco+. El resultado podría verse así:
-(((arc)))((("function", "programmer-defined", "arc", see="arc")))
+(((arco)))((("función", "programmer-defined", "arco", see="arco")))
 
 [source,julia]
 ----
@@ -331,7 +330,7 @@ end
 ----
 
 La segunda mitad de esta función se parece a +poligono+, pero no podemos reutilizar +poligono+ sin cambiar la interfaz. Podríamos generalizar +poligono+ para tomar un +angulo+ como tercer argumento, ¡pero entonces +poligono+ ya no sería un nombre apropiado! En su lugar, llamemos a esta función más general +polilinea+:
-(((polyline)))((("function", "programmer-defined", "polyline", see="polyline")))
+(((polyline)))((("function", "definida por el programador", "polyline", see="polyline")))
 
 [source,julia]
 ----
@@ -373,7 +372,7 @@ end
 ----
 
 Este proceso, que reorganiza un programa para mejorar las interfaces y facilitar la reutilización del código, se denomina _refactorización_. En este caso, notamos que había un código similar en +arco+ y +poligono+, por lo que lo "factorizamos" en +polilinea+.
-(((refactoring)))
+(((refactorización))
 
 Si hubiéramos planeado con anticipación, podríamos haber escrito +polilinea+ primero y haber evitado la refactorización, pero a menudo no se sabe lo suficiente al comienzo de un proyecto para diseñar todas las interfaces. Una vez que se comienza a programar, se comprende mejor el problema. A veces, refactorizar es una señal de que has aprendido algo.
 
@@ -381,7 +380,7 @@ Si hubiéramos planeado con anticipación, podríamos haber escrito +polilinea+ 
 === Un Plan de Desarrollo
 
 Un _plan de desarrollo_ es un proceso para escribir programas. El proceso que utilizamos en este estudio de caso es "encapsulado y generalización". Los pasos de este proceso son:
-(((program development plan)))
+(((plan de desarrollo)))
 
 . Comience escribiendo un pequeño programa sin definiciones de funciones.
 
@@ -399,7 +398,7 @@ Este proceso tiene algunos inconvenientes, veremos alternativas más adelante, p
 === Docstring
 
 Un _docstring_ es una cadena que va antes de una función, y que explica la interfaz ("doc" es la abreviatura de "documentación"). Aquí hay un ejemplo:
-(((docstring)))(((triple quotes)))((("pass:[&quot;&quot;&quot;]", see="triple quotes")))
+(((docstring)))(((comillas triples)))((("pass:[&quot;&quot;&quot;]", see="comillas triples")))
 
 [source,julia]
 ----
@@ -442,12 +441,12 @@ Escribir este tipo de documentación es una parte importante del diseño de la i
 === Depuración
 
 Una interfaz es como un contrato entre una función y el usuario. El usuario acepta proporcionar ciertos parámetros y la función acepta hacer cierto trabajo.
-(((debugging)))
+(((depuración)))
 
 Por ejemplo, +polilinea+ requiere cuatro argumentos: +t+ tiene que ser una tortuga; +n+ tiene que ser un número entero; +lon+ debería ser un número positivo; y +angulo+ tiene que ser un número, en grados.
 
 Estos requisitos se llaman _precondiciones_ porque se supone que son verdaderos antes de que la función comience a ejecutarse. Por el contrario, las condiciones al final de la función son _postcondiciones_. Las _postcondiciones_ incluyen el efecto deseado de la función (como dibujar segmentos de línea) y cualquier efecto secundario (como mover la tortuga o hacer otros cambios).
-(((precondition)))(((postcondition)))
+(((precondición)))(((postcondición)))
 
 Las condiciones previas son responsabilidad del usuario. Si el usuario viola una precondición (¡debidamente documentada!) y la función no funciona correctamente, el error está en el usuario, no en la función.
 
@@ -458,39 +457,39 @@ Si se cumplen las precondiciones pero no las postcondiciones, el error está en 
 
 modulo::
 Un archivo que contiene una colección de funciones relacionadas y otras definiciones.
-(((module)))
+(((modulo)))
 
 paquete::
 Una biblioteca externa con más funcionalidades.
-(((package)))
+(((paquete)))
 
 sentencia using::
 Una sentencia que lee un archivo de módulo y crea un objeto de módulo.
-(((using statement)))
+(((sentencia using)))
 
 bucle::
 Una parte de un programa que puede ejecutarse repetidamente.
-(((loop)))
+(((bucle)))
 
 encapsulado::
 El proceso de transformar una secuencia de sentencias en una definición de función.
-(((encapsulation)))
+(((encapsulado)))
 
 generalización::
 El proceso de reemplazar algo innecesariamente específico (como un número) con algo más general (como una variable o parámetro).
-(((generalization)))
+(((generalización)))
 
 interfaz::
 Una descripción de cómo usar una función, incluido el nombre y las descripciones de los argumentos y el valor de retorno.
-(((interface)))
+(((interfaz)))
 
 refactorización::
 El proceso de modificar un programa para mejorar las interfaces de las funciones y otras cualidades del código.
-(((refactoring)))
+(((refactorización)))
 
 plan de desarrollo::
 Un proceso para escribir programas.
-(((program development plan)))
+(((plan de desarrollo)))
 
 docstring::
 Una cadena que aparece en la parte superior de una definición de función para documentar la interfaz de la función.
@@ -498,11 +497,11 @@ Una cadena que aparece en la parte superior de una definición de función para 
 
 precondición::
 Un requisito que debe cumplir el usuario antes de que comience una función.
-(((precondition)))
+(((precondición)))
 
 postcondición::
 Un requisito que debe cumplir la función antes de que finalice.
-(((postcondition)))
+(((postcondición)))
 
 
 === Ejercicios
@@ -516,7 +515,7 @@ Enter the code in this chapter in a notebook.
 . Dibuje un diagrama de pila que muestre el estado del programa mientras ejecuta +circulo(🐢,radio)+. Puede hacer la aritmética a mano o agregar sentencias de impresión al código.
 
 . La versión de +arco+ en <<refactoring>> no es muy precisa ya que la aproximación lineal del círculo siempre queda por afuera del círculo verdadero. Como resultado, la tortuga termina a unos pocos píxeles del destino correcto. La siguiente solución muestra una forma de reducir el efecto de este error. Lea el código y vea si tiene sentido. Si dibuja un diagrama, es posible que entienda mejor cómo funciona.
-(((arc)))
+(((arco)))
 
 [source,julia]
 ----
