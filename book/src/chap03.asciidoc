@@ -164,7 +164,7 @@ end
 ----
 
 +function+ es una palabra reservada que indica que esta es una definición de función. El nombre de la función es +imprimirletras+. Las reglas para los nombres de funciones son las mismas que para los nombres de variables: pueden contener casi todos los caracteres Unicode (consulte <<caracteres>>), pero el primer carácter no puede ser un número. No puede usar una palabra reservada como nombre de una función, y debe evitar tener una variable y una función con el mismo nombre.
-((("palabra clave", "función", see="función")))(((argumento)))(((carácter Unicode)))
+((("palabra reservada", "función", see="función")))(((argumento)))(((carácter Unicode)))
 
 Los paréntesis vacíos después del nombre indican que esta función no tiene argumentos.
 (((paréntesis, vacíos)))
@@ -686,4 +686,4 @@ println("-")
 
 El resultado de estas sentencias es +pass:["+ -"]+ en la misma línea. El resultado de una siguiente sentencia de impresión comenzaría en la siguiente línea.
 ====
-(((println))) (((print))) ((("function", "Base", "print", see = "print")))
+(((println))) (((print))) ((("función", "Base", "print", see = "print")))
