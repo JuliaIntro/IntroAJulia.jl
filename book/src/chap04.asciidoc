@@ -379,7 +379,7 @@ Si hubiéramos planeado con anticipación, podríamos haber escrito +polilinea+ 
 
 === Un Plan de Desarrollo
 
-Un _plan de desarrollo_ es un proceso para escribir programas. El proceso que utilizamos en este estudio de caso es "encapsulado y generalización". Los pasos de este proceso son:
+Un _plan de desarrollo de programa_ es un proceso para escribir programas. El proceso que utilizamos en este estudio de caso es "encapsulado y generalización". Los pasos de este proceso son:
 (((plan de desarrollo de programa)))
 
 . Comience escribiendo un pequeño programa sin definiciones de funciones.
@@ -487,7 +487,7 @@ refactorización::
 El proceso de modificar un programa para mejorar las interfaces de las funciones y otras cualidades del código.
 (((refactorización)))
 
-plan de desarrollo::
+plan de desarrollo de programa::
 Un proceso para escribir programas.
 (((plan de desarrollo de programa)))
 
