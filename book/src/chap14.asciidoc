@@ -197,7 +197,7 @@ Muchas cosas pueden salir mal al intentar leer y escribir archivos. Al intentar 
 
 [source,@julia-repl-test]
 ----
-julia> fin = open("archivo_malo.txt")
+julia> fin = open("archivo_malo")
 ERROR: SystemError: opening file "archivo_malo": No such file or directory
 ----
 
@@ -405,7 +405,7 @@ Si desea leer la salida del comando externo, se puede usar +read+ en su lugar:
 [source,@julia-repl-test chap14]
 ----
 julia> a = read(cmd, String)
-"hello\n"
+"hola\n"
 ----
 
 Por ejemplo, la mayoría de los sistemas Unix tienen un comando llamado +md5sum+ o +md5+ que lee el contenido de un archivo y calcula una "suma de verificación". Puede leer sobre Md5 en https://en.wikipedia.org/wiki/Md5. Este comando proporciona una manera eficiente de verificar si dos archivos tienen el mismo contenido. La probabilidad de que diferentes contenidos produzcan la misma suma de comprobación es muy pequeña.

@@ -90,7 +90,7 @@ Sin embargo, las estructuras son inmutables por defecto, después de la construc
 [source,@julia-repl-test chap15]
 ----
 julia> p.y = 1.0
-ERROR: setfield! immutable struct of type Point cannot be changed
+ERROR: setfield! immutable struct of type Punto cannot be changed
 ----
 
 Esto puede parecer extraño al principio, pero tiene varias ventajas:
@@ -225,7 +225,7 @@ MPunto(0.0, 0.0)
 julia> moverpunto!(origen, 1.0, 2.0)
 
 julia> origen
-MPoint(1.0, 2.0)
+MPunto(1.0, 2.0)
 ----
 
 Dentro de la función, +p+ es un alias de +origen+, por lo que cuando la función modifica +p+, +origen+ también cambia.
@@ -236,7 +236,7 @@ Al pasar un objeto inmutable +Punto+ a +moverpunto!+ se produce un error:
 [source,@julia-repl-test chap15]
 ----
 julia> moverpunto!(p, 1.0, 2.0)
-ERROR: setfield! immutable struct of type Point cannot be changed
+ERROR: setfield! immutable struct of type Punto cannot be changed
 ----
 
 Sin embargo, puede modificar el valor de un atributo mutable de un objeto inmutable. Por ejemplo, +moverrectangulo!+ tiene como argumentos un objeto +Rectangulo+ y dos números, +dx+ y +dy+. Esta función usa +moverpunto!+ para mover la esquina del rectángulo:
@@ -270,7 +270,7 @@ No puede reasignar un atributo mutable de un objeto inmutable:
 [source,@julia-repl-test chap15]
 ----
 julia> caja.esquina = MPunto(1.0, 2.0)
-ERROR: setfield! immutable struct of type Rectangle cannot be changed
+ERROR: setfield! immutable struct of type Rectangulo cannot be changed
 ----
 ====
 
@@ -282,7 +282,7 @@ Las funciones pueden devolver instancias. Por ejemplo, +encontrarcentro+ toma un
 [source,@julia-setup chap15]
 ----
 function encontrarcentro(rect)
-    Punto(rect.esquina.x + rect.ancho / 2, rect.esquina.y + rect.altura / 2)
+    Punto(rect.esquina.x + rect.ancho / 2, rect.esquina.y + rect.alto / 2)
 end
 ----
 
@@ -293,7 +293,7 @@ A continución vemos un ejemplo que toma +caja+ como argumento y asigna el +Punt
 [source,@julia-repl-test chap15]
 ----
 julia> centro = encontrarcentro(caja)
-Point(51.0, 102.0)
+Punto(51.0, 102.0)
 ----
 
 
@@ -335,7 +335,7 @@ Al comenzar a trabajar con objetos, es probable que encuentre algunas excepcione
 julia> p = Punto(3.0, 4.0)
 Punto(3.0, 4.0)
 julia> p.z = 1.0
-ERROR: type Point has no field z
+ERROR: type Punto has no field z
 ----
 
 Si no está seguro del tipo de un objeto, puede saberlo de la siguiente manera:
@@ -352,7 +352,7 @@ También puede usar +isa+ para verificar si un objeto es una instancia de un tip
 
 [source,@julia-repl-test chap15]
 ----
-julia> p isa Point
+julia> p isa Punto
 true
 ----
 
@@ -361,7 +361,7 @@ Si no está seguro de si un objeto tiene un atributo particular, puede usar la f
 
 [source,@julia-repl-test chap15]
 ----
-julia> fieldnames(Point)
+julia> fieldnames(Punto)
 (:x, :y)
 ----
 

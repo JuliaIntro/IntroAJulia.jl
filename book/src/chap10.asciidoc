@@ -626,7 +626,7 @@ Cuando se pasa una matriz como argumento de una función, en realidad se pasa un
 
 [source,@julia-setup chap10]
 ----
-function borrarprimero(t)
+function borrarprimero!(t)
     popfirst!(t)
 end
 ----
@@ -637,7 +637,7 @@ Aquí vemos el uso de borrarprimero:
 ----
 julia> letras = ['a', 'b', 'c'];
 
-julia> deletehead!(letras);
+julia> borrarprimero!(letras);
 
 julia> print(letras)
 ['b', 'c']
@@ -726,9 +726,9 @@ Esta función no modifica la matriz original, y se usa de la siguiente manera:
 ----
 julia> letras = ['a', 'b', 'c'];
 
-julia> rest = cola(letters);
+julia> demas = cola(letras);
 
-julia> print(rest)
+julia> print(demas)
 ['b', 'c']
 ----
 

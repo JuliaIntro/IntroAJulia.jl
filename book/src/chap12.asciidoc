@@ -164,7 +164,7 @@ El valor de retorno de +split+ es una matriz con dos elementos; el primer elemen
 julia> unombre
 "julio.cesar"
 julia> dominio
-"rome"
+"roma"
 ----
 
 
@@ -222,7 +222,7 @@ El parámetro de recopilación puede tener cualquier nombre, pero la convención
 
 [source,@julia-repl-test chap12]
 ----
-julia> printall(1, 2.0, '3')
+julia> imprimirtodo(1, 2.0, '3')
 (1, 2.0, '3')
 ----
 
@@ -293,7 +293,7 @@ El resultado es un _objeto zip_ que permite iterar a través de los pares. El us
 [source,@julia-repl-test chap12]
 ----
 julia> for par in zip(s, t)
-           println(pair)
+           println(par)
        end
 ('a', 1)
 ('b', 2)
@@ -322,7 +322,7 @@ Si las secuencias no tienen el mismo largo, el resultado tiene el largo de la m�
 [source,@julia-repl-test]
 ----
 julia> collect(zip("Juan", "Gabriel"))
-3-element Array{Tuple{Char,Char},1}:
+4-element Array{Tuple{Char,Char},1}:
  ('J', 'G')
  ('u', 'a')
  ('a', 'b')
