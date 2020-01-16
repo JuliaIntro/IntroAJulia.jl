@@ -277,14 +277,14 @@ julia> "1 + 2 = $(1 + 2)"
 ----
 
 [[searching]]
-=== Buscar
+=== Búsqueda
 
 ¿Qué hace la siguiente función?
-(((buscar)))((("función", "definida por el programador", "buscar", see="buscar")))
+(((búsqueda)))((("función", "definida por el programador", "búsqueda", see="búsqueda")))
 
 [source,@julia-setup]
 ----
-function buscar(palabra, letra)
+function busqueda(palabra, letra)
     indice = primerindice(palabra)
     while indice <= sizeof(palabra)
         if palabra[indice] == letra
@@ -296,18 +296,18 @@ function buscar(palabra, letra)
 end
 ----
 
-En cierto sentido, la funcion buscar es lo contrario del operador +[]+. En lugar de tomar un índice y extraer el carácter correspondiente, toma un carácter y encuentra el índice donde aparece el carácter. Si el carácter no se encuentra, la función devuelve -1.
+En cierto sentido, la funcion busqueda es lo contrario del operador +[]+. En lugar de tomar un índice y extraer el carácter correspondiente, toma un carácter y encuentra el índice donde aparece el carácter. Si el carácter no se encuentra, la función devuelve -1.
 
 Este es el primer ejemplo que hemos visto de una sentencia return dentro de un bucle. Si +palabra[indice] == letra+, la función devuelve inmediatamente el índice, escapando del bucle prematuramente.
 
 Si el carácter no aparece en la cadena, entonces el programa sale del bucle normalmente y devuelve -1.
 
 Este patrón de computación se llama a veces un recorrido _eureka_ porque tan pronto como encontramos lo que buscamos, podemos gritar “¡Eureka! ” y dejar de buscar.
-(((buscar)))
+(((búsqueda)))
 
 ==== Ejercicio 8-4
 
-Modifique la función +buscar+ para que tenga un tercer parámetro: el índice de +palabra+ donde debería comenzar a buscar.
+Modifique la función +busqueda+ para que tenga un tercer parámetro: el índice de +palabra+ donde debería comenzar a buscar.
 
 [[looping_and_counting]]
 === Iterando y contando
@@ -333,7 +333,7 @@ Este programa es otro ejemplo del patrón de computación llamado _conteo_.  La 
 
 Coloque este código en una función llamada +conteo+, y generalícelo de tal manera que tome como argumentos una cadena y una letra.
 
-Luego, vuelva a escribir la función para que, en vez de revisar toda la cadena, utilice la función +buscar+ de tres parámetros de la sección anterior.
+Luego, vuelva a escribir la función para que, en vez de revisar toda la cadena, utilice la función +busqueda+ de tres parámetros de la sección anterior.
 
 === Librería con cadenas
 
@@ -346,7 +346,7 @@ julia> uppercase("¡Hola, mundo!")
 "¡HOLA, MUNDO!"
 ----
 
-Existe una función llamada +findfirst+ que es notablemente similar a la función +buscar+ que escribimos:
+Existe una función llamada +findfirst+ que es notablemente similar a la función +busqueda+ que escribimos:
 (((findfirst)))((("función", "definida por el programador", "findfirst", see="findfirst")))
 
 [source,@julia-repl-test]
@@ -622,7 +622,7 @@ El proceso de evaluar una cadena que contiene uno o más marcadores de posición
 
 búsqueda::
 Un patrón de recorrido que se detiene cuando encuentra lo que está buscando.
-(((buscar)))
+(((búsqueda)))
 
 contador::
 Una variable utilizada para contar algo, generalmente inicializada en cero y luego incrementada.
@@ -637,7 +637,7 @@ Una variable utilizada para contar algo, generalmente inicializada en cero y lue
 Lea la documentación de las funciones relacionadas con cadenas en https://docs.julialang.org/en/v1/manual/strings/. Es posible que desee probar algunas de ellas para asegurarse de comprender cómo funcionan. +strip+ y +replace+ son particularmente útiles.
 
 La documentación utiliza una sintaxis que puede ser confusa. Por ejemplo, en +search(cadena::AbstractString, caracter::Chars, [comienzo::Integer])+, los corchetes indican argumentos opcionales. Por lo tanto, +cadena+ y +caracter+ son obligatorios, pero +comienzo+ es opcional.
-(((buscar)))((("función", "Base", "buscar", see="buscar")))
+(((búsqueda)))((("función", "Base", "búsqueda", see="búsqueda")))
 
 [[ex08-2]]
 ==== Ejercicio 8-8
