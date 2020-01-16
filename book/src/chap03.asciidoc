@@ -164,7 +164,7 @@ end
 ----
 
 +function+ es una palabra reservada que indica que esta es una definición de función. El nombre de la función es +imprimirletras+. Las reglas para los nombres de funciones son las mismas que para los nombres de variables: pueden contener casi todos los caracteres Unicode (consulte <<caracteres>>), pero el primer carácter no puede ser un número. No puede usar una palabra reservada como nombre de una función, y debe evitar tener una variable y una función con el mismo nombre.
-((("palabra clave", "función", see="función")))(((argumento)))(((carácter Unicode)))
+((("palabra reservada", "función", see="función")))(((argumento)))(((carácter Unicode)))
 
 Los paréntesis vacíos después del nombre indican que esta función no tiene argumentos.
 (((paréntesis, vacíos)))
@@ -196,7 +196,7 @@ mientras el lobo no está.
 ----
 
 Una vez que haya definido una función, puede usarla dentro de otra función. Por ejemplo, para repetir el estribillo anterior, podríamos escribir una función llamada +repetirletras+:
-(((repetirletras)))((("función", "definido por el programador", "repetirletras", see="repetirletras")))
+(((repetirletras)))((("función", "definida por el programador", "repetirletras", see="repetirletras")))
 
 [source,@julia-setup chap03]
 ----
@@ -272,7 +272,7 @@ Algunas de las funciones que hemos visto requieren argumentos. Por ejemplo, la f
 (((parámetro))) (((argumento))) (((analizar))) (((sin)))
 
 Dentro de la función, los argumentos se asignan a variables llamadas _parámetros_. A continuación se muestra un ejemplo de definición de función que toma un argumento:
-(((imprimirdosveces)))((("función", "definido por el programador", "imprimirdosveces", see = "imprimirdosveces")))
+(((imprimirdosveces)))((("función", "definida por el programador", "imprimirdosveces", see = "imprimirdosveces")))
 
 [source, @julia-setup chap03]
 ----
@@ -332,7 +332,7 @@ El nombre de la variable que pasamos como argumento (+michael+) no tiene nada qu
 === Las variables y los parámetros son locales
 
 Cuando se crea una variable dentro de una función, esta es _local_, es decir, solo existe dentro de la función. Por ejemplo:
-(((variable local))) (((variable, local))) (((concatenar_dos))) ((("función", "definido por el programador", "concatenar_dos", see = "concatenar_dos")))
+(((variable local))) (((variable, local))) (((concatenar_dos))) ((("función", "definida por el programador", "concatenar_dos", see = "concatenar_dos")))
 
 [source, @julia-setup chap03]
 ----
@@ -453,7 +453,7 @@ Para imprimir el valor +nothing+, debe usar la función +show+ que es como la fu
 (((show))) ((("function", "Base", "show", see = "show")))
 
 El valor +nothing+ no es lo mismo que la cadena +"nothing"+. Es un valor especial que tiene su propio tipo:
-(((Nothing))) ((("type", "Base", "Nothing", see = "Nothing")))
+(((nothing))) ((("type", "Base", "nothing", see = "nothing")))
 
 [source, @julia-repl-test]
 ----
@@ -586,7 +586,7 @@ Estos ejercicios deben realizarse utilizando sólo lo que hemos aprendido hasta 
 ==== Ejercicio 3-2
 
 Escriba una función llamada +justificar_a_la_derecha+ que tome una cadena +s+ como parámetro y que imprima la cadena con suficientes espacios en blanco para que la última letra de la cadena se encuentre en la columna 70 de la pantalla.
-(((justificar_a_la_derecha))) ((("función", "definido por el programador", "justificar_a_la_derecha", see = "justificar_a_la_derecha")))
+(((justificar_a_la_derecha))) ((("función", "definida por el programador", "justificar_a_la_derecha", see = "justificar_a_la_derecha")))
 
 [source, @julia-eval chap03-ex]
 ----
@@ -608,7 +608,7 @@ Use concatenación de cadenas y repetición. Además, Julia tiene integrada una 
 ==== Ejercicio 3-3
 
 Un objeto de función es un valor que se puede asignar a una variable o ser pasado como argumento. Por ejemplo, +dosveces+ es una función que toma un objeto de función como argumento y lo llama dos veces:
-(((objeto de función))) (((dosveces))) ((("función", "definido por el programador", "dosveces", see = "dosveces")))
+(((objeto de función))) (((dosveces))) ((("función", "definida por el programador", "dosveces", see = "dosveces")))
 
 [source, julia]
 ----
@@ -619,7 +619,7 @@ end
 ----
 
 A continuación se muestra un ejemplo que usa +dosveces+ para llamar a una función llamada +imprimirgato+ dos veces.
-(((imprimirpalabra))) ((("función", "definido por el programador", "imprimirpalabra", see = "imprimirgato")))
+(((imprimirpalabra))) ((("función", "definida por el programador", "imprimirpalabra", see = "imprimirgato")))
 
 [source, julia]
 ----
@@ -639,7 +639,7 @@ dosveces(imprimirpalabra)
 . Use la versión modificada de +dosveces+ para llamar a +imprimirdosveces+ dos veces, pasando +"palabra"+ como argumento.
 
 . 5.	Defina una nueva función llamada +cuatroveces+ que tome un objeto de función y un valor, y que llame a la función cuatro veces, pasando el valor como parámetro. Debe haber solo dos sentencias en el cuerpo de esta función, no cuatro.
-(((cuatroveces))) ((("función", "definido por el programador", "cuatroveces", see = "cuatroveces")))
+(((cuatroveces))) ((("función", "definida por el programador", "cuatroveces", see = "cuatroveces")))
 
 [[ex03-3]]
 ==== Ejercicio 3-4
@@ -686,4 +686,4 @@ println("-")
 
 El resultado de estas sentencias es +pass:["+ -"]+ en la misma línea. El resultado de una siguiente sentencia de impresión comenzaría en la siguiente línea.
 ====
-(((println))) (((print))) ((("function", "Base", "print", see = "print")))
+(((println))) (((print))) ((("función", "Base", "print", see = "print")))

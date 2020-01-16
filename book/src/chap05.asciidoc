@@ -34,7 +34,7 @@ julia> resto = minutos - horas * 60
 ----
 
 Otra alternativa es usar el _operador módulo_, +%+, que divide dos números y devuelve el resto.
-(((operador módulo)))((("operator", "Base", "%", see="operador módulo")))((("%", see="operador módulo")))
+(((operador módulo)))((("operador", "Base", "%", see="operador módulo")))((("%", see="operador módulo")))
 
 [source,@julia-repl-test chap05]
 ----
@@ -64,7 +64,7 @@ false
 ----
 
 +true+ y +false+ son valores especiales que pertenecen al tipo +Bool+; no son cadenas:
-(((Bool)))((("type", "Base", "Bool", see="Bool")))
+(((Bool)))((("tipo", "Base", "Bool", see="Bool")))
 
 [source,@julia-repl-test]
 ----
@@ -110,7 +110,7 @@ Finalmente, el operador +!+ niega una expresión booleana, entonces +!(x>y)+ es 
 === Ejecución Condicional
 
 Para escribir programas útiles, generalmente necesitamos poder verificar condiciones y cambiar el comportamiento del programa acorde a ellas. Las sentencias condicionales nos permiten hacer esto. La forma más simple es la sentencia +if+ ("si" en inglés):
-(((sentencia condicional)))(((if)))((("keyword", "if", see="if")))(((sentencia if)))((("sentencia", "if", see="sentencia if")))
+(((sentencia condicional)))(((if)))((("palabra reservada", "if", see="if")))(((sentencia if)))((("sentencia", "if", see="sentencia if")))
 
 [source,julia]
 ----
@@ -149,7 +149,7 @@ else
 end
 ----
 Si el resto de +x+ dividido por 2 es 0, entonces +x+ es par, y el programa muestra un mensaje acorde. Si la condición es falsa, se ejecuta el segundo conjunto de sentencias. Como la condición debe ser verdadera o falsa, se ejecutará exactamente una de las alternativas. Las alternativas se llaman _ramas_, porque son ramas en el flujo de ejecución.
-(((branch)))
+(((rama)))
 
 === Condicionales encadenadas
 
@@ -306,10 +306,10 @@ Para ejemplos simples como este, es más fácil usar un ciclo +for+. Veremos eje
 === Diagramas de pila para funciones recursivas
 
 En <<stack_diagrams>>, se usó un diagrama de pila para representar el estado de un programa durante una llamada de función. El mismo tipo de diagrama puede ser de utilidad para interpretar una función recursiva.
-(((stack diagram)))
+(((diagrama de pila)))
 
 Cada vez que se llama a una función, Julia crea un marco que contiene las variables locales de la función y los parámetros. En una función recursiva, puede haber más de un marco en el diagrama de pila al mismo tiempo.
-(((frame)))
+(((marco)))
 
 [[fig05-1]]
 .Stack diagram
@@ -320,7 +320,7 @@ image::images/fig51.svg[]
 Como siempre, la parte superior de la pila es el marco para +Main+. Está vacío pues no se crearon variables en +Main+, ni tampoco se pasaron argumentos.
 
 Los cuatro marcos de +cuentaregresiva+ tienen diferentes valores del parámetro +n+. La parte inferior del diagrama de pila, donde +n = 0+, es llamado _caso base_. No hace una llamada recursiva, así que no hay más marcos.
-(((base case)))
+(((caso base)))
 
 ==== Ejercicio 5-1
 
@@ -328,7 +328,7 @@ Como ejercicio, dibuje un diagrama de pila para +printn+, llamada con +s = "Hola
 
 === Recursión infinita
 Si una recursión nunca alcanza un caso base, continúa haciendo llamadas recursivas para siempre, y el programa nunca termina. Esto se conoce como _recursión infinita_, y generalmente no es una buena idea. Aquí hay un código con una recursión infinita:
-(((infinite recursion)))(((recurse)))((("function", "programmer-defined", "recurse", see="recurse")))
+(((recursión infinita)))(((recursión)))((("función", "definida por el programador", "recursión", see="recursión")))
 
 [source,julia]
 ----
@@ -347,7 +347,7 @@ Stacktrace:
  [1] recursion() at ./REPL[1]:2 (repeats 80000 times)
 ----
 
-Este stacktrace es un poco más grande que el que vimos en el capítulo anterior. Cuando se produce el error, ¡hay 80000 marcos de +recurse+ en el diagrama de pila!
+Este stacktrace es un poco más grande que el que vimos en el capítulo anterior. Cuando se produce el error, ¡hay 80000 marcos de +recursion+ en el diagrama de pila!
 (((stacktrace)))(((StackOverflowError)))((("error", "Core", "StackOverflowError", see="StackOverflowError")))
 
 Si por accidente encuentra una recursión infinita en su código, revise su función para confirmar que hay un caso base que no realiza una llamada recursiva. Si hay un caso base, verifique si realmente puede ocurrir.
@@ -357,7 +357,7 @@ Si por accidente encuentra una recursión infinita en su código, revise su func
 Los programas que hemos escrito hasta ahora no aceptan entradas del usuario. Simplemente hacen lo mismo cada vez.
 
 Julia tiene una función incorporada llamada +readline+ que detiene el programa y espera a que el usuario escriba algo. Cuando el usuario presiona +RETURN+ o +ENTER+, el programa se reanuda y +readline+ devuelve lo que el usuario escribió como una cadena.
-(((readline)))((("function", "Base", "readline", see="readline")))
+(((readline)))((("función", "Base", "readline", see="readline")))
 
 [source,jlcon]
 ----
@@ -410,7 +410,7 @@ Veremos qué hacer con este tipo de error más adelante.
 === Depuración
 
 Cuando se produce un error de sintaxis o de tiempo de ejecución, el mensaje de error contiene mucha información, lo cual puede ser abrumador. Las partes más útiles suelen ser:
-(((debugging)))
+(((depuración)))
 
 * Qué tipo de error fue, y
 
@@ -458,11 +458,11 @@ Debes tomarte el tiempo de leer los mensajes de error cuidadosamente, pero no as
 
 División de tipo piso::
 Un operador, denotado por +÷+, que divide dos números y redondea hacia abajo (hacia el infinito negativo) a un entero.
-(((floor division)))
+(((división de tipo piso)))
 
 operador módulo::
 Un operador, denotado con el signo de porcentaje (%), que se utiliza con enteros y devuelve el resto cuando un número se divide por otro.
-(((modulus operator)))
+(((operador módulo)))
 
 expresión booleana::
 Una expresión cuyo valor es +verdadero+ o +falso+.
@@ -470,52 +470,52 @@ Una expresión cuyo valor es +verdadero+ o +falso+.
 
 operador relacional::
 Uno de los operadores que compara sus operandos: +==+, +≠+ (+!=+), +>+, +<+, +≥+ (+>=+), and +≤+ (+pass:[&lt;=]+).
-(((relational operator)))
+(((operador relacional)))
 
 operador lógico::
 Uno de los operadores que combina expresiones booleanas: +&&+ (and), +||+ (or), and +!+ (not).
-(((logical operator)))
+(((operador lógico)))
 
 sentencia condicional::
 Una sentencia que controla el flujo de ejecución dependiendo de alguna condición.
-(((conditional statement)))
+(((sentencia condicional)))
 
 condición::
 La expresión booleana en una sentencia condicional que determina qué rama se ejecuta.
-(((condition)))
+(((condición)))
 
 sentencia compuesta::
 Una sentencia que consta de un encabezado y un cuerpo. El cuerpo termina con la palabra reservada +end+.
-(((compound statement)))
+(((sentencia compuesta)))
 
 rama::
 Una de las secuencias alternativas de sentencias en una sentencia condicional.
-(((branch)))
+(((rama)))
 
 condicional encadenada::
 Una sentencia condicional con una serie de ramas alternativas.
 A conditional statement with a series of alternative branches.
-(((chained conditional)))
+(((condicional encadenada)))
 
 condicional anidada::
 Una sentencia condicional que aparece en una de las ramas de otra sentencia condicional.
-(((nested conditional)))
+(((condicional anidada)))
 
 sentencia return::
 Una sentencia que hace que una función finalice de inmediato y que vuelva a la sentencia de llamada a función.
-(((return statement)))
+(((sentencia return)))
 
 recursividad o recursión::
 El proceso de llamar a la función que se está ejecutando actualmente.
-(((recursion)))
+(((recursión)))
 
 caso base::
 Una rama condicional en una función recursiva que no realiza una llamada recursiva.
-(((base case)))
+(((caso base)))
 
-recursividad infinita::
+recursión infinita::
 Una recursión que no tiene un caso base, o que nunca llega a él. Eventualmente, una recursión infinita provoca un error de tiempo de ejecución.
-(((infinite recursion)))
+(((recursión infinita)))
 
 
 === Ejercicios
@@ -524,7 +524,7 @@ Una recursión que no tiene un caso base, o que nunca llega a él. Eventualmente
 ==== Ejercicio 5-2
 
 La función +time+ devuelve el tiempo medio de Greenwich actual en segundos desde "la época", que es un tiempo arbitrario utilizado como punto de referencia. En sistemas UNIX, la época es el 1 de enero de 1970.
-(((time)))((("function", "Base", "time", see="time")))
+(((time)))((("función", "Base", "time", see="time")))
 
 [source,@julia-repl]
 ----
@@ -537,7 +537,7 @@ Escriba un script que lea la hora actual y la convierta a una hora del día en h
 ==== Ejercicio 5-3
 
 El último teorema de Fermat dice que no hay enteros positivos latexmath:[\(a\)], latexmath:[\(b\)], and latexmath:[\(c\)] tal que
-(((Fermat's last theorem)))
+(((último teorema de Fermat)))
 
 [latexmath]
 ++++
@@ -549,7 +549,7 @@ El último teorema de Fermat dice que no hay enteros positivos latexmath:[\(a\)]
 para cualquier valor de latexmath: [\ (n \)] mayor que 2.
 
 . Escriba una función llamada +verificarfermat+ que tome cuatro parámetros—+a+, +b+, +c+ and +n+— y que verifique si el teorema de Fermat es válido. Si +n+ es mayor que 2 y +pass:[a^n + b^n == c^n]+ el programa debería imprimir, "¡Santo cielo, Fermat estaba equivocado!" De lo contrario, el programa debería imprimir, "No, eso no funciona".
-(((checkfermat)))((("function", "programmer-defined", "checkfermat", see="checkfermat")))
+(((verificarfermat)))((("función", "definida por el programador", "verificarfermat", see="verificarfermat")))
 
 . Escriba una función que solicite al usuario ingresar valores para +a+, +b+, +c+ and +n+, que los convierta en enteros y que use +verificarfermat+ para verificar si violan el teorema de Fermat.
 
@@ -564,7 +564,7 @@ Si cualquiera de las tres longitudes es mayor que la suma de las otras dos, ento
 ====
 
 . Escriba una función llamada +estriangulo+ que tome tres enteros como argumentos, y que imprima “Sí” o “No”, dependiendo de si se puede o no formar un triángulo a partir de barras de las longitudes dadas.
-(((istriangle)))((("function", "programmer-defined", "istriangle", see="istriangle")))
+(((estriangulo)))((("function", "definida por el programador", "estriangulo", see="estriangulo")))
 
 . Escriba una función que solicite al usuario ingresar tres longitudes de barras, que las convierta en enteros y use +estriangulo+ para verificar si las barras con las longitudes dadas pueden formar un triángulo.
 
@@ -572,7 +572,7 @@ Si cualquiera de las tres longitudes es mayor que la suma de las otras dos, ento
 ==== Ejercicio 5-5
 
 ¿Cuál es el resultado del siguiente programa? Dibuje un diagrama de pila que muestre el estado del programa cuando imprime el resultado.
-(((stack diagram)))(((recurse)))
+(((diagrama de pila)))(((recursión)))
 
 [source,julia]
 ----
@@ -590,7 +590,7 @@ recursion(3, 0)
 
 . Escriba una documento que explique todo lo que alguien necesitaría saber para usar esta función (y nada más).
 
-Los siguientes ejercicios utilizan el módulo +ThinkJulia+, descrito en <<chap04>>:
+Los siguientes ejercicios utilizan el módulo +PiensaEnJulia+, descrito en <<chap04>>:
 
 [[ex05-5]]
 ==== Ejercicio 5-6
@@ -622,7 +622,7 @@ end
 image::images/fig52.svg[]
 
 La curva de Koch es un fractal que luce como <<fig05-2>>. Para dibujar una curva de Koch con longitud latexmath: [\(x\)], todo lo que tiene que hacer es
-(((Koch curve)))(((fractal)))
+(((curva de Koch)))(((fractal)))
 
 . Dibuje una curva de Koch con longitud latexmath:[\(\frac{x}{3}\)].
 
@@ -641,10 +641,10 @@ La curva de Koch es un fractal que luce como <<fig05-2>>. Para dibujar una curva
 La excepción es cuando latexmath:[\(x\)] es menor que 3: en ese caso, puede dibujar una línea recta con una longitud latexmath:[\(x\)].
 
 . Escribe una función llamada +koch+ que tome una tortuga y una longitud como parámetros, y que use la tortuga para dibujar una curva de Koch con la longitud dada.
-(((koch)))((("function", "programmer-defined", "koch", see="koch")))
+(((koch)))((("función", "definida por el programador", "koch", see="koch")))
 
 . Escriba una función llamada +copodenieve+ que dibuje tres curvas de Koch para hacer el contorno de un copo de nieve.
-(((snowflake)))((("function", "programmer-defined", "snowflake", see="snowflake")))
+(((copodenieve)))((("función", "definida por el programador", "copodenieve", see="copodenieve")))
 
 . La curva de Koch se puede generalizar de varias maneras. Consulte https://en.wikipedia.org/wiki/Koch_snowflake para ver ejemplos e implementar su favorito.
 

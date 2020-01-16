@@ -2,7 +2,7 @@
 == Iteración
 
 Este capítulo se centra en la iteración, que es la capacidad de ejecutar repetidamente un bloque de sentencias. Hemos visto dos tipos de iteración: usando recursión en <<recursion>>, y usando ciclos +for+, en <<simple_repetition>>. En este capítulo veremos otro tipo más: usando sentencias +while+. Primeramente, se introducirán algunos términos sobre asignación de variables.
-(((iteration)))(((recursion)))(((for statement)))
+(((iteración)))(((recursión)))(((sentencia for)))
 
 === Asignación múltiple
 
@@ -23,10 +23,10 @@ La primera vez que se muestra +x+ su valor es 5, y la segunda vez su valor es 7
 image::images/fig71.svg[]
 
 <<fig07-1>> muestra el aspecto de una _asignación múltiple_ en un diagrama de estado.
-(((reassignment)))(((state diagram)))
+(((asignación múltiple)))(((diagrama de estado)))
 
 Es necesario aclarar algo que puede causar confusión. Puesto que Julia usa el signo igual (+=+) para la asignación, es tentador interpretar una sentencia +a = b+ como una sentencia de igualdad. Pero esta interpretación es incorrecta.
-(((assignment statement)))
+(((sentencia de asignación)))
 
 Para empezar, la igualdad es simétrica y la asignación no lo es. Por ejemplo, en matemáticas, si latexmath:[\(a=7\)] entonces latexmath:[\(7=a\)]. Pero en Julia la sentencia +a = 7+ es válida, y +7 = a+ no lo es.
 
@@ -77,7 +77,7 @@ ERROR: UndefVarError: y not defined
 ----
 
 Antes de actualizar una variable tiene que inicializarla, usualmente con una asignación simple:
-(((initialization)))
+(((initialización)))
 
 [source,@julia-repl-test]
 ----
@@ -88,18 +88,18 @@ julia> y = y + 1
 ----
 
 Actualizar una variable sumándole 1 de denomina un _incremento_; y restándole 1 de llama un _decremento_.
-(((increment)))(((decrement)))
+(((incremento)))(((decremento)))
 
 === La Sentencia +while+
 
 Las computadoras se usan a menudo para automatizar tareas repetitivas. Realizar repetidamente tareas idénticas o similares sin cometer errores es algo que las computadoras hacen bien y que los seres humanos hacemos limitadamente. La ejecución repetida de un conjunto de sentencias se llama _iteración_. 
-(((iteration)))
+(((iteración)))
 
 Ya hemos visto dos funciones, +cuenta regresiva+ y +printn+, que iteran usando recursividad. Por ser la iteración tan común, Julia proporciona varias características que la hacen más fácil. Una es la sentencia +for+ que vimos en <<simple_repetition>>, a la cual volveremos más adelante. 
-(((recursion)))(((for statement)))
+(((recursión)))(((sentencia for)))
 
 Otra característica es la _sentencia_ +while+. Aquí hay una versión de +cuentaregresiva+ que muestra el uso de la sentencia +while+:
-(((while)))((("keyword", "while", see="while")))(((while statement)))((("statement", "while", see="while statement")))
+(((while)))((("palabra reservada", "while", see="while")))(((sentencia while)))((("sentencia", "while", see="sentencia while")))
 
 [source,@julia-setup]
 ----
@@ -113,10 +113,10 @@ end
 ----
 
 Casi podría leer la sentencia while como si fuera Español. La función anterior significa: “Mientras +n+ sea mayor que 0, continúe mostrando el valor de +n+ y luego reduciendo el valor de +n+ en 1. Cuando llegue a 0, muestre la palabra ¡Despegue!“
-(((countdown)))
+(((cuentaregresiva)))
 
 Más formalmente, el flujo de ejecución de una sentencia +while+ es el siguiente:
-(((flow of execution)))
+(((flujo de ejecución)))
 
 . Se determina si la condición es verdadera o falsa.
 
@@ -125,15 +125,15 @@ Más formalmente, el flujo de ejecución de una sentencia +while+ es el siguient
 . Si es verdadera, ejecuta cada una de las sentencias en el cuerpo y regresa al paso 1.
 
 Este tipo de flujo de llama bucle porque el tercer paso vuelve a la parte superior.
-(((loop)))
+(((bucle)))
 
 El cuerpo del bucle debería cambiar el valor de una o más variables de manera que, en algún momento, la condición sea falsa y el bucle termine. En caso contrario, el bucle se repetirá indefinidamente, lo cual se llama _bucle infinito_. Una interminable fuente de diversión para los informáticos es la observación de que las instrucciones del champú “Enjabone, enjuague, repita”, son un bucle infinito.
-(((infinite loop)))
+(((bucle infinito)))
 
 En el caso de +cuentaregresiva+, podemos probar que el bucle termina: si +n+ es cero o negativo, el ciclo no se produce. En otro caso, el valor de +n+ se hace más pequeño cada vez que pasa por el bucle, así en cierto momento llegaremos a 0. 
 
 En otros casos no es tan fácil decirlo. Por ejemplo:
-(((seq)))((("function", "programmer-defined", "seq", see="seq")))
+(((seq)))((("función", "definida por el programador", "seq", see="seq")))
 
 [source,@julia-setup]
 ----
@@ -155,8 +155,8 @@ Cada vez que pasa por el bucle, el programa muestra como salida el valor de +n+ 
 
 Puesto que n a veces aumenta y a veces disminuye, no hay una prueba obvia de que +n+ alcanzará alguna vez el valor 1, o de que el programa vaya a terminar. Para algunos valores particulares de +n+, podemos probar que sí termina. Por ejemplo, si el valor de inicio es una potencia de dos, entonces el valor de +n+ será par cada vez que se pasa por el bucle, hasta que llegue a 1. El ejemplo anterior produce dicha secuencia si se inicia con 16.
 
-Lo díficil es preguntarnos si se puede probar que este programa termina para todos los valores positivos de +n+. Hasta ahora, nadie ha sido capaz de probar que lo hace o ¡que no lo hace! (Vea https://en.wikipedia.org/wiki/Collatz_conjecture.)
-(((Collatz conjecture)))
+Lo díficil es preguntarnos si se puede probar que este programa termina para todos los valores positivos de +n+. Hasta ahora, nadie ha sido capaz de probar que lo hace o ¡que no lo hace! (Vea https://es.wikipedia.org/wiki/Conjetura_de_Collatz.)
+(((conjetura de Collatz)))
 
 ==== Ejercicio 7-1
 
@@ -165,7 +165,7 @@ Reescribe la función +printn+ de <<recursion>> utilizando iteración en vez de 
 === +break+
 
 A veces no se sabe que un ciclo debe terminar hasta que se llega al cuerpo. En ese caso, se puede usar la _sentencia break_ para salir del bucle.
-(((break)))((("keyword", "break", see="break")))(((break statement)))((("statement", "break", see="break statement")))
+(((break)))((("palabra reservada", "break", see="break")))(((sentencia break)))((("sentencia", "break", see="sentencia break")))
 
 Por ejemplo, suponga que se desea recibir entradas del usuario hasta que este escriba "listo". Podríamos escribir:
 (((readline)))
@@ -200,7 +200,7 @@ Esta forma de escribir bucles while es común porque permite verificar la condic
 === +continue+
 
 La sentencia break permite terminar el bucle. Cuando aparece una _sentencia continue_ dentro de un bucle, se regresa al comienzo del bucle, ignorando todos las sentencias que quedan en la iteración actual del bucle e inicia la siguiente iteración. Por ejemplo:
-(((continue)))((("keyword", "continue", see="continue")))(((continue statement)))((("statement", "continue", see="continue statement")))
+(((continue)))((("palabra reservada", "continue", see="continue")))(((sentencia continue)))((("sentencia", "continue", see="sentencia continue")))
 
 [source,@julia]
 ----
@@ -220,7 +220,7 @@ Si +i+ es divisible por 3, la sentencia continue detiene la iteración actual y 
 Los bucles son comúnmente utilizados en programas que calculan resultados numéricos, que comienzan con una respuesta aproximada, y que es iterativamente mejorada.
 
 Por ejemplo, una forma de calcular raíces cuadradas es el método de Newton. Suponga que desea conocer la raíz cuadrada de latexmath:[\(a\)]. Si comienza con casi cualquier estimación latexmath:[\(x\)], puede calcular una mejor aproximación con la siguiente fórmula:
-(((Newton's method)))
+(((método de Newton)))
 
 [latexmath]
 ++++
@@ -310,7 +310,7 @@ Donde +ε+ (*+\varepsilon TAB+*) toma un valor como +0.0000001+, y representa el
 === Algoritmos
 
 El método de Newton es un ejemplo de un _algoritmo_: es un proceso mecánico que permite resolver una categoría de problemas (en este caso, el cálculo de raíces cuadradas).
-(((algorithm)))
+(((algoritmo)))
 
 Para comprender qué es un algoritmo, podría ayudar empezar con algo que no es un algoritmo. Cuando aprendiste a multiplicar números de un solo dígito, probablemente memorizaste la tabla de multiplicar. En efecto, memorizaste 100 soluciones específicas. Ese tipo de conocimiento no es un algoritmo.
 
@@ -325,13 +325,13 @@ Algunas de las cosas que las personas hacen naturalmente, sin dificultad o consc
 === Depuración
 
 A medida que comienzas a escribir programas más extensos, es posible que pases más tiempo depurando. Más código significa más posibilidades de cometer un error y más lugares en dónde se pueden esconder los errores.
-(((debugging)))
+(((depuración)))
 
 Una forma de reducir el tiempo de depuración es "depurar por bisección". Por ejemplo, si hay 100 líneas en su programa y las revisas una a la vez, serían 100 revisiones.
-(((debugging by bisection)))
+(((depuración por bisección)))
 
 Es mejor tratar de dividir el problema en dos. Busque en la mitad del programa, o cerca, un valor intermedio que pueda verificar. Agregue una sentencia de impresión (o algo que permita verificar) y ejecute el programa.
-(((print statement)))
+(((sentencia print)))
 
 Si esta verificación es incorrecta, debe haber un problema en la primera mitad del programa. Si es correcta, el problema está en la segunda mitad.
 
@@ -343,48 +343,48 @@ En la práctica, no siempre se conoce dónde está la "mitad del programa", y no
 
 asignación múltiple::
 Asignar un nuevo valor a una variable que ya existe.
-(((reassignment)))
+(((asignación múltiple)))
 
 actualización::
 Asignación donde el nuevo valor de la variable depende del antiguo.
-(((update)))
+(((actualización)))
 
 inicialización::
 Asignación que le da un valor inicial a una variable que será actualizada.
 An assignment that gives an initial value to a variable that will be updated.
-(((initialization)))
+(((inicialización)))
 
 incremento::
 Actualización que incrementa el valor de la variable (usualmente en 1)
-(((increment)))
+(((incremento)))
 
 decremento::
 Actualización que disminuye el valor de la variable.
-(((decrement)))
+(((decremento)))
 
 iteración::
 Ejecución repetida de un conjunto de sentencias, usando una función recursiva o un bucle.
-(((iteration)))
+(((iteración)))
 
 sentencia while::
 Sentencia que permite iteraciones controladas por una condición.
-(((while statement)))
+(((sentencia while)))
 
 sentencia break::
 Sentencia que permite salir de un bucle.
-(((break statement)))
+(((sentencia break)))
 
 sentencia continue::
 Sentencia localizada dentro de un bucle, que obliga a iniciar una nueva iteración desde el inicio del bucle.
-(((continue statement)))
+(((sentencia continue)))
 
 bucle infinito::
 Un bucle cuya condición de término no es satisfecha.
-(((infinite loop)))
+(((bucle infinito)))
 
 algoritmo::
 Proceso general para resolver una categoría de problemas.
-(((algorithm)))
+(((algoritmo)))
 
 
 === Ejercicios
@@ -393,10 +393,10 @@ Proceso general para resolver una categoría de problemas.
 ==== Ejercicio 7-2
 
 Copie el bucle de <<square_roots>> e insértelo en una función llamada +miraiz+, que tome +a+ como parámetro, elija un valor razonable de +x+ y devuelva una estimación de la raíz cuadrada de +a+.
-(((mysqrt)))((("function", "programmer-defined", "mysqrt", see="mysqrt")))
+(((miraiz)))((("función", "definida por el programador", "miraiz", see="miraiz")))
 
 Para probarla, escriba una función llamada +probarraiz+ que imprima una tabla como esta:
-(((testsquareroot)))((("function", "programmer-defined", "testsquareroot", see="testsquareroot")))
+(((probarraiz)))((("function", "definida por el programador", "probarraiz", see="probarraiz")))
 
 [source,@julia-eval]
 ----
@@ -413,7 +413,7 @@ La primera columna es un número, +a+; la segunda columna es la raíz cuadrada d
 ==== Exercise 7-3
 
 La función integrada +Meta.parse+ toma una cadena y la transforma en una expresión. Esta expresión se puede evaluar en Julia con la función +Core.eval+. Por ejemplo:
-(((parse)))((("function", "Meta", "parse", see="parse")))(((eval)))((("function", "Core", "eval", see="eval")))
+(((parse)))((("función", "Meta", "parse", see="parse")))(((eval)))((("función", "Core", "eval", see="eval")))
 
 [source,@julia-eval chap07]
 ----
@@ -433,7 +433,7 @@ julia> eval(expr)
 ----
 
 Escriba una función llamada +evalbucle+ que iterativamente solicite una entrada al usuario, tome la entrada resultante y la evalúe usando +eval+, pasa posteriormente imprimir el resultado. Debe continuar hasta que el usuario ingrese +listo+, y luego devolver el valor de la última expresión que evaluó.
-(((evalloop)))((("function", "programmer-defined", "evalloop", see="evalloop")))
+(((evalbucle)))((("función", "definida por el programador", "evalbucle", see="evalbucle")))
 
 [[ex07-3]]
 ==== Exercise 7-4
@@ -448,4 +448,4 @@ El matemático Srinivasa Ramanujan encontró una serie infinita que puede usarse
 ++++
 
 Escriba una función llamada +estimarpi+ que utilice esta fórmula para calcular y devolver una estimación de π. Debe usar un ciclo while para calcular los términos de la suma hasta que el último término sea menor que +1e-15+ (que es la notación de Julia para latexmath:[\(10^{-15}\)]). Puede verificar el resultado comparándolo con +π+.
-(((estimatepi)))((("function", "programmer-defined", "estimatepi", see="estimatepi")))
+(((estimarpi)))((("función", "definida por el programador", "estimarpi", see="estimarpi")))

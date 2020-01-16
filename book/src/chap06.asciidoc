@@ -2,7 +2,7 @@
 == Funciones productivas
 
 Muchas de las funciones de Julia que hemos utilizado, como las funciones matemáticas, producen valores de retorno. Todas las funciones que hemos escrito hasta ahora son nulas, es decir, tienen un efecto (como imprimir un valor) pero devuelven el valor +nothing+. En este capítulo aprenderemos a escribir funciones productivas.
-(((fruitful function)))
+(((función productiva)))
 
 === Valores de retorno
 
@@ -15,7 +15,7 @@ altura = radio * sin(radio)
 ----
 
 Las funciones que hemos escrito hasta ahora son nulas. Coloquialmente hablando, no tienen valor de retorno; de manera formal, su valor de retorno es +nothing+. En este capítulo, (finalmente) vamos a escribir funciones productivas. El primer ejemplo es +area+, que devuelve el área de un círculo dado un radio:
-(((nothing)))(((area)))((("function", "programmer-defined", "area", see="area")))
+(((nothing)))(((área)))((("funcion", "definida por el programador", "área", see="área")))
 
 [source,@julia-setup]
 ----
@@ -25,7 +25,7 @@ function area(radio)
 end
 ----
 Hemos visto la sentencia +return+ antes, pero en una función productiva la sentencia +return+ incluye una expresión. Esta sentencia significa: "Retorne inmediatamente de esta función y use la siguiente expresión como valor de retorno". La expresión dada puede ser arbitrariamente complicada; así pues, podríamos haber escrito esta función más concisamente:
-(((return statement)))
+(((sentencia return)))
 
 [source,@julia-setup]
 ----
@@ -37,10 +37,10 @@ end
 El valor devuelto por una función es el valor de la última expresión evaluada, que, por defecto, es la última expresión en el cuerpo de la definición de la función.
 
 Por otro lado, las _variables temporales_ como +a+, y las sentencias +return+ explícitas pueden facilitar la depuración.
-(((temporary variable)))
+(((variable temporal)))
 
 A veces es útil tener múltiples sentencias +return+, una en cada rama de una sentencia condicional:
-(((absvalue)))((("function", "programmer-defined", "absvalue", see="absvalue")))
+(((valorabsoluto)))((("función", "definida por el programador", "valorabsoluto", see="valorabsoluto")))
 
 [source,@julia-setup chap06]
 ----
@@ -54,10 +54,10 @@ end
 ----
 
 Dado que estas sentencias return están en una condicional alternativa, solo se ejecuta una.
-(((alternative conditional)))
+(((condicional alternativa)))
 
 En cuanto se ejecuta una sentencia return, la función termina sin ejecutar ninguna de las sentencias siguientes. El código que aparezca después de la sentencia return, o en cualquier otro lugar al que el flujo de ejecución nunca llegará, se llama código muerto.
-(((flow of execution)))(((dead code)))
+(((flujo de ejecución)))(((código muerto)))
 
 En una función productiva, es una buena idea asegurarse que cualquier posible recorrido del programa llegue a una sentencia return. Por ejemplo:
 
@@ -84,7 +84,7 @@ nothing
 [TIP]
 ====
 Julia tiene una función incorporada llamada +abs+ que calcula los valores absolutos.
-(((abs)))((("function", "Base", "abs", see="abs")))
+(((abs)))((("función", "Base", "abs", see="abs")))
 ====
 
 
@@ -96,13 +96,13 @@ Escriba la función +comparar+ que tome dos valores, +x+ y +y+, y que devuelva +
 === Desarrollo incremental
 
 Conforme vaya escribiendo funciones más extensas puede empezar a dedicar más tiempo a la depuración.
-(((debugging)))
+(((depuración)))
 
 Para lidiar con programas de complejidad creciente, se sugiere una técnica llamada desarrollo incremental. El objetivo del desarrollo incremental es evitar largas sesiones de depuración, adicionando y probando solamente pequeñas porciones de código cada vez.
-(((incremental development)))
+(((desarrollo incremental)))
 
 Por ejemplo, suponga que desea encontrar la distancia entre dos puntos dados por las coordenadas latexmath:[\(\left(x_1, y_1\right)\)] y latexmath:[\(\left(x_2, y_2\right)\)]. Por el teorema de Pitágoras, la distancia es:
-(((Pythagorean theorem)))
+(((teorema de Pitágoras)))
 
 [latexmath]
 ++++
@@ -116,17 +116,17 @@ El primer paso es considerar qué aspecto tendría la función distancia en Juli
 En este caso las entradas son los dos puntos, que podemos representar usando cuatro números. El valor devuelto es la distancia, que es un valor de punto flotante.
 
 Escribamos una primera versión de la función:
-(((distance)))((("function", "programmer-defined", "distance", see="distance")))
+(((distancia)))((("función", "definida por el progamador", "distancia", see="distancia")))
 
 [source,@julia-setup chap06]
 ----
-function distance(x₁, y₁, x₂, y₂)
+function distancia(x₁, y₁, x₂, y₂)
     0.0
 end
 ----
 
 Obviamente esta versión de la función no calcula distancias; siempre devuelve cero. Pero es correcta sintácticamente y se ejecutará, lo que implica que la podemos probar antes de hacerla más compleja. Los números de subíndice están disponibles en la codificación de caracteres Unicode (*+\_1 TAB+*, *+\_2 TAB+*, etc.).
-(((Unicode character)))
+(((carácter Unicode)))
 
 Para probar la nueva función, la llamamos con una muestra de valores:
 
@@ -156,7 +156,7 @@ A continuación calculamos la suma de los cuadrados de +dx+ y +dy+:
 
 [source,@julia-setup]
 ----
-function distance(x₁, y₁, x₂, y₂)
+function distancia(x₁, y₁, x₂, y₂)
     dx = x₂ - x₁
     dy = y₂ - y₁
     d² = dx^2 + dy^2
@@ -181,7 +181,7 @@ end
 Si esto funciona correctamente, habremos terminado. Si no, podríamos mostrar el valor de la variable resultado antes de la sentencia de retorno.
 
 La versión final de la función no muestra nada cuando se ejecuta; sólo retorna un valor. Las sentencias print que escribimos son útiles para la depuración, pero una vez que el programa esté funcionando correctamente, se deben eliminar. El código eliminado se llama _andamiaje_ porque es útil para construir el programa pero no es parte del producto final.
-(((scaffolding)))
+(((andamiaje)))
 
 Al principio, debería añadir solamente una o dos líneas de código cada vez. Conforme vaya ganando experiencia, puede que se encuentre escribiendo y depurando fragmentos mayores de código. Sin embargo, el proceso de desarrollo incremental puede ahorrarle mucho tiempo de depuración.
 
@@ -200,7 +200,7 @@ Use la técnica de desarrollo incremental para escribir una función llamada +hi
 === Composición
 
 Ahora, como usted esperaría, se puede llamar a una función desde otra. Como ejemplo, escribiremos una función que tome dos puntos, el centro del círculo y un punto del perímetro, y calcule el área del círculo.
-(((composition)))
+(((composición)))
 
 Suponga que el punto central está almacenado en las variables +xc+ y +yc+, y que el punto del perímetro lo está en +xp+ y +yp+. El primer paso es hallar el radio del círculo, que es la distancia entre los dos puntos. Hemos escrito la función distancia que realiza esta tarea:
 
@@ -217,7 +217,7 @@ resultado = area(radio)
 ----
 
 Envolviendo todo en una función, obtenemos:
-(((circlearea)))((("function", "programmer-defined", "circlearea", see="circlearea")))
+(((areacirculo)))((("función", "definida por el programador", "areacirculo", see="areacirculo")))
 
 [source,@julia-setup]
 ----
@@ -229,7 +229,7 @@ end
 ----
 
 Las variables temporales +radio+ y +resultado+ son útiles para el desarrollo y la depuración, pero una vez que el programa está funcionando, podemos hacerlo más conciso componiendo las llamadas a función:
-(((temporary variable)))
+(((variable temporal)))
 
 [source,@julia-setup]
 ----
@@ -243,7 +243,7 @@ end
 === Funciones Booleanas
 
 Las funciones pueden devolver valores booleanos, lo que a menudo es conveniente para ocultar complicadas comprobaciones dentro de funciones. Por ejemplo:
-(((boolean function)))(((isdivisible)))((("function", "programmer-defined", "isdivisible", see="isdivisible")))
+(((función booleana)))(((esdivisible)))((("función", "definida por el programador", "esdivisible", see="esdivisible")))
 
 [source,@julia-setup chap06]
 ----
@@ -278,7 +278,7 @@ end
 ----
 
 Las funciones booleanas se usan a menudo en las sentencias condicionales:
-(((conditional statement)))
+(((sentencia condicional)))
 
 [source,julia]
 ----
@@ -305,19 +305,19 @@ Escriba la función +entremedio(x,y,z)+ que devuelva +true+ si +x ≤ y ≤ z+, 
 === Más recursividad
 
 Solo hemos cubierto una pequeña parte de Julia, pero le puede interesar saber que esta parte ya es un lenguaje de programación _completo_, lo que significa que cualquier cómputo puede expresarse en este lenguaje. Cualquier programa que se haya escrito podría reescribirse usando solo lo que ha aprendido hasta ahora (en realidad, necesitaría algunos comandos para controlar dispositivos como el mouse, discos, etc., pero eso es todo).
-(((recursion)))(((complete programming language)))((("programming language", "complete", see="complete programming language")))
+(((recursión)))(((lenguaje de programación completo)))((("lenguaje de programación", "completo", see="lenguaje de programación completo")))
 
 Probar esa afirmación es un ejercicio no trivial realizado por primera vez por Alan Turing, uno de los primeros científicos de la computación (algunos argumentarían que era matemático, pero muchos de los primeros científicos informáticos comenzaron como matemáticos). En consecuencia, esto se conoce como la Tesis de Turing. Para una discusión más completa (y precisa) de la Tesis de Turing, se recomienda el libro de Michael Sipser _Introducción a la Teoría de la Computación_.
-(((Turing, Alan)))(((Turing thesis)))
+(((Turing, Alan)))(((tesis de Turing)))
 
 Para darle una idea de lo que puede hacer con las herramientas que ha aprendido hasta ahora, evaluaremos algunas funciones matemáticas definidas recursivamente. Una definición recursiva es similar a una definición circular, en el sentido de que la definición contiene una referencia a lo que está siendo definido. Una definición verdaderamente circular no es muy útil:
-(((recursive definition)))(((circular definition)))
+(((definición recursiva)))(((definición circular)))
 
 vorpal::
 Un adjetivo usado para describir algo que es vorpal.
 
 Si ves esta definición en el diccionario, podrías molestarte. Por otro lado, si buscas la definición de la función factorial, denotada con el símbolo latexmath:[\(!\)], podrías encontrar algo como esto:
-(((factorial function)))
+(((función factorial)))
 
 [latexmath]
 ++++
@@ -334,7 +334,7 @@ Esta definición dice que el factorial de 0 es 1, y el factorial de cualquier ot
 Entonces latexmath:[\(3!\)] es 3 veces latexmath:[\(2!\)], que es 2 veces latexmath:[\(1!\)], que es 1 vez latexmath:[\(0!\)]. Es decir, latexmath:[\(3!\)] es igual a 3 por 2 por 1 por 1, que es 6.
 
 Si se puede escribir una definición recursiva, se puede escribir un programa de Julia para evaluarlo. El primer paso es decidir cuáles deberían ser los parámetros. En este caso, debe quedar claro que factorial toma valores enteros:
-(((fact)))((("function", "programmer-defined", "fact", see="fact")))
+(((fact)))((("función", "definida por el programador", "fact", see="fact")))
 
 [source,@julia-setup]
 ----
@@ -367,7 +367,7 @@ function fact(n)
 end
 ----
 El flujo de ejecución de este programa es similar al flujo de +cuentaregresiva+ en <<recursion>>. Si llamamos a +fact+ con el valor +3+:
-(((flow of execution)))
+(((flujo de ejecución)))
 
 [small]
 --
@@ -392,7 +392,7 @@ image::images/fig61.svg[]
 
 
 <<fig06-1>>  muestra cómo se ve el diagrama de pila para esta secuencia de llamadas a funciones.
-(((stack diagram)))
+(((diagrama de pila)))
 
 Los valores de retorno se pasan de nuevo a la pila. En cada marco, el valor de retorno es el valor de +resultado+, que es el producto de +n+ y +recursion+.
 
@@ -401,14 +401,14 @@ En el último marco, las variables locales +recursion+ y +resultado+ no existen,
 [TIP]
 ====
 Julia tiene la función +factorial+ para calcular el factorial de un número entero.
-(((factorial)))((("function", "Base", "factorial", see="factorial")))
+(((factorial)))((("función", "Base", "factorial", see="factorial")))
 ====
 
 
 === Salto de fe
 
 Seguir el flujo de ejecución es una forma de leer programas, pero puede llegar a ser abrumador. Una alternativa es lo que llamamos el "salto de fe". Cuando llega a una llamada de función, en lugar de seguir el flujo de ejecución, asume que la función funciona correctamente y devuelve el resultado correcto.
-(((leap of faith)))
+(((salto de fe)))
 
 De hecho, ya estás haciendo este salto de fe cuando usas funciones integradas de Julia. Cuando llamas a +cos+ o +exp+, no examinas los cuerpos de esas funciones. Simplemente asumes que funcionan porque las personas que las escribieron eran buenos programadores.
 
@@ -437,7 +437,7 @@ Después de los factoriales, el ejemplo más común de una función matemática 
 ++++
 
 Traducido a Julia, se ve así:
-(((fib)))((("function", "programmer-defined", "fib", see="fib")))
+(((fib)))((("función", "definida por el programador", "fib", see="fib")))
 
 [source,@julia-setup chap06]
 ----
@@ -456,7 +456,7 @@ Si intentas seguir el flujo de ejecución en esta función, incluso para valores
 
 === Tipos de Comprobación
 
-What happens if we call +fact+ and give it +1.5+ as an argument?
+¿Qué pasa si llamamos a +fact+ con +1.5+ como argumento?
 (((StackOverflowError)))
 
 [source,jlcon]
@@ -468,12 +468,12 @@ Stacktrace:
 ----
 
 Parece una recursión infinita. ¿Como es esto posible? La función tiene un caso base (cuando +n == 0+). Pero si +n+ no es un número entero, podemos _perdernos_ el caso base y hacer recursión para siempre.
-(((infinite recursion)))
+(((recursión infinita)))
 
 En la primera llamada recursiva, el valor de +n+ es +0.5+. En el siguiente, es +-0.5+. A partir de ahí, se vuelve más pequeño (más negativo), pero nunca será +0+.
 
 Tenemos dos opciones. Podemos intentar generalizar la función factorial para trabajar con números de punto flotante, o podemos hacer que +fact+ verifique el tipo del argumento. La primera opción se llama función gamma, y está un poco más allá del alcance de este libro. Entonces intentaremos con la segunda.
-(((gamma function)))
+(((función gamma)))
 
 Podemos usar el operador integrado +isa+ para verificar el tipo de argumento. También podemos asegurarnos de que el argumento sea positivo:
 (((isa)))(((fact)))
@@ -514,13 +514,13 @@ En <<catching_exceptions>> veremos una alternativa más flexible para imprimir u
 === Depuración
 
 Dividir un código extenso en pequeñas funciones crea naturalmente puntos de control para la depuración. Si un programa no está funcionando, existen tres posibilidades a considerar:
-(((debugging)))
+(((depuración)))
 
 * Hay algo incorrecto en los argumentos de la función; se viola una condición previa.
-(((precondition)))
+(((precondición)))
 
 * Hay algo incorrecto en la función; se viola una condición posterior.
-(((postcondition)))
+(((postcondición)))
 
 * Hay algo incorrecto en el valor de retorno o la forma en que se está utilizando.
 
@@ -531,7 +531,7 @@ Si los parámetros están bien, agregue una sentencia de impresión antes de cad
 Si la función parece estar funcionando, revise la llamada a función para asegurarse de que el valor de retorno se está utilizando correctamente (¡o incluso si se está utilizando!).
 
 Agregar sentencias de impresión al principio y al final de una función puede ayudar a que el flujo de ejecución sea más transparente. Por ejemplo, aquí hay una versión de +fact+ con sentencias de impresión:
-(((fact)))(((flow of execution)))(((print statement)))
+(((fact)))(((flujo de ejecución)))(((sentencia print)))
 
 [source,@julia-setup chap06]
 ----
@@ -563,23 +563,23 @@ Si estás confundido con el flujo de ejecución, este tipo de salida puede ser �
 
 variable temporal::
 Variable usada para almacenar un valor intermedio en un cálculo complejo.
-(((temporary variable)))
+(((variable temporal)))
 
 código muerto::
 Parte de un programa que nunca puede ser ejecutado, a menudo porque aparece después de una sentencia return.
-(((dead code)))
+(((código muerto)))
 
 desarrollo incremental::
 Plan de desarrollo de un programa que intenta evitar la depuración agregando y probando solamente una pequeña porción de código a la vez.
-(((incremental development)))(((program development plan)))
+(((desarrollo incremental)))(((plan de desarrollo de programa)))
 
 andamiaje::
 Código que se usa durante el desarrollo de un programa pero que no es parte de la versión final del mismo.
-(((scaffolding)))
+(((andamiaje)))
 
 guardián::
 Un patrón de programación que usa una sentencia condicional para verificar y manejar circunstancias que puedan causar un error.
-(((guardian)))
+(((guardián)))
 
 
 === Ejercicios
@@ -617,7 +617,7 @@ println(c(x, y+3, x+y))
 ==== Ejercicio 6-5
 
 La función de Ackermann, latexmath:[\(A(m, n)\)], se define:
-(((Ackermann function)))
+(((función Ackermann)))
 
 [latexmath]
 ++++
@@ -632,16 +632,16 @@ A(m-1, A(m, n-1))& \textrm{si}\ m > 0\ \textrm{y}\ n > 0.
 ++++
 
 Vea https://en.wikipedia.org/wiki/Ackermann_function. Escriba una función llamada +ack+ que evalúe la función de Ackermann. Use su función para evaluar +ack(3, 4)+, que debería ser 125. ¿Qué sucede para valores mayores de +m+ y +n+?
-(((ack)))((("function", "programmer-defined", "ack", see="ack")))
+(((ack)))((("función", "definida por el programador", "ack", see="ack")))
 
 [[ex06-3]]
 ==== Ejercicio 6-6
 
 Un palíndromo es una palabra que se escribe igual en un sentido que en otro, como "ana" y "radar". De manera recursiva, una palabra es un palíndromo si la primera y la última letra son iguales y lo que está entre ellas es un palíndromo.
-(((palindrome)))
+(((palíndromo)))
 
 Las siguientes son funciones que toman un argumento de tipo cadena y devuelven la primera letra, la última, y las intermedias:
-(((first)))((("function", "programmer-defined", "first", see="first")))(((last)))((("function", "programmer-defined", "last", see="last")))(((middle)))((("function", "programmer-defined", "middle", see="middle")))
+(((primera)))((("función", "definida por el programador", "primera", see="primera")))(((ultima)))((("función", "definida por el programador", "ultima", see="ultima")))(((medio)))((("función", "definida por el programador", "medio", see="medio")))
 
 [source,@julia-setup]
 ----
@@ -667,13 +667,13 @@ Veremos cómo funcionan en <<chap08>>.
 . Prueba estas funciones. ¿Qué sucede si llamas a la función medio con una cadena de dos letras? ¿Y con una cadena de una letra? ¿Qué pasa con la cadena vacía +""+, que no contiene letras?
 
 . Escriba una función llamada +espalindromo+ que tome un argumento de tipo cadena y devuelva +true+ si es un palíndromo y +false+ de lo contrario. Recuerde que puede usar la función integrada +length+ para verificar la longitud de una cadena.
-(((ispalindrome)))((("function", "programmer-defined", "ispalindrome", see="ispalindrome")))(((length)))
+(((espalindromo)))((("función", "definida por el programador", "espalindromo", see="espalindromo")))(((length)))
 
 [[ex06-4]]
 ==== Ejercicio 6-7
 
 Un número, latexmath:[\(a\)], es una potencia de latexmath:[\(b\)] si es divisible por latexmath:[\(b\)] y latexmath:[\(\frac{a}{b}\)] es una potencia de latexmath:[\(b\)]. Escriba una función llamada +espotencia+ que tome los parámetros +a+ y +b+ y devuelva +true+ si +a+ es una potencia de +b+.
-(((ispower)))((("function", "programmer-defined", "ispower", see="ispower")))
+(((espotencia)))((("función", "definida por el programador", "espotencia", see="espotencia")))
 
 [TIP]
 ====
@@ -688,7 +688,7 @@ El máximo común divisor (MCD) de latexmath:[\(a\)] y latexmath:[\(b\)] es el n
 Una forma de encontrar el MCD de dos números se basa en la observación de que si latexmath:[\(r\)] es el resto cuando latexmath:[\(a\)] se divide por latexmath:[\(b\)], entonces +mcd(a, b) = mcd(b, r)+. Como caso base, podemos usar +mcd(a, 0) = a+.
 
 Escriba una función llamada +mcd+ que tome los parámetros +a+ y +b+ y devuelva su máximo divisor común.
-(((gcd)))((("function", "programmer-defined", "gcd", see="gcd")))
+(((mcd)))((("función", "definida por el programador", "mcd", see="mcd")))
 
 Créditos: Este ejercicio se basa en un ejemplo del libro _Estructura e interpretación de programas informáticos_ de Abelson y Sussman.
 

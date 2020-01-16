@@ -1,15 +1,15 @@
 [[chap10]]
-== Matrices
+== Arreglos
 
-Este capítulo presenta uno de los tipos más útiles de Julia: las matrices. También aprenderemos sobre objetos y lo que puede suceder cuando se tiene más de un nombre para el mismo objeto.
+Este capítulo presenta uno de los tipos más útiles de Julia: los arreglos. También aprenderemos sobre objetos y lo que puede suceder cuando se tiene más de un nombre para el mismo objeto.
 
-=== Una matriz es una secuencia
+=== Un arreglo es una secuencia
 
-Al igual que una cadena de texto, una _matriz_ es una secuencia de valores. En una cadena los valores son caracteres, en una matriz pueden ser de cualquier tipo. Los valores en una matriz se denominan _elementos_ o, a veces, _items_.
-(((array)))(((element)))(((item)))
+Al igual que una cadena de texto, un _arreglo_ es una secuencia de valores. En una cadena los valores son caracteres, en un arreglo pueden ser de cualquier tipo. Los valores en un arreglo se denominan _elementos_ o, a veces, _items_.
+(((arreglo)))(((elemento)))(((item)))
 
-Hay varias formas de crear una nueva matriz; la más sencilla es encerrar los elementos entre corchetes (+[ ]+):
-(((bracket operator)))
+Hay varias formas de crear un nuevo arreglo; la más sencilla es encerrar los elementos entre corchetes (+[ ]+):
+(((operador corchete)))
 
 [source,julia]
 ----
@@ -17,20 +17,20 @@ Hay varias formas de crear una nueva matriz; la más sencilla es encerrar los el
 ["abadejo", "falsía", "estrambote"]
 ----
 
-El primer ejemplo es una matriz de cuatro enteros. El segundo es una matriz de tres cadenas de texto. Los elementos de una matriz no tienen por qué ser del mismo tipo. La siguiente matriz contiene una cadena, un número de punto flotante, un entero y otra matriz:
+El primer ejemplo es un arreglo de cuatro enteros. El segundo es un arreglo de tres cadenas de texto. Los elementos de un arreglo no tienen por qué ser del mismo tipo. El siguiente arreglo contiene una cadena, un número de punto flotante, un entero y otro arreglo:
 
 [source,julia]
 ----
 ["spam", 2.0, 5, [10, 20]]
 ----
 
-Se dice que una matriz dentro de otra matriz está _anidada_.
-(((nested)))
+Se dice que un arreglo dentro de otro arreglo está _anidado_.
+(((anidado)))
 
-Una matriz que no contiene elementos se llama matriz vacía; se puede crear una con corchetes vacíos, +[]+.
-(((empty array)))
+Un arreglo que no contiene elementos se llama arreglo vacío; se puede crear uno con corchetes vacíos, +[]+.
+(((arreglo vacío)))
 
-Como es de esperar, se pueden asignar valores de matrices a variables:
+Como es de esperar, se pueden asignar valores de arreglos a variables:
 
 [source,@julia-repl-test chap10]
 ----
@@ -44,7 +44,7 @@ julia> print(quesos, " ", numeros, " ", vacio)
 ["Cheddar", "Edam", "Gouda"] [42, 123] Any[]
 ----
 
-La función +typeof+ se puede usar para conocer el tipo de la matriz:
+La función +typeof+ se puede usar para conocer el tipo del arreglo:
 (((typeof)))
 
 [source,@julia-repl-test chap10]
@@ -57,14 +57,14 @@ julia> typeof(vacio)
 Array{Any,1}
 ----
 
-El tipo de la matriz se especifica entre llaves, y se compone de un tipo y un número. El número indica las dimensiones. El conjunto +vacío+ contiene valores de tipo +Any+, es decir, puede contener valores de todos los tipos.
-(((Array)))((("type", "Base", "Array", see="Array")))(((Any)))((("type", "Base", "Any", see="Any")))
+El tipo del arreglo se especifica entre llaves, y se compone de un tipo y un número. El número indica las dimensiones. El conjunto +vacío+ contiene valores de tipo +Any+, es decir, puede contener valores de todos los tipos.
+(((Arreglo)))((("tipo", "Base", "Array", see="Array")))(((Any)))((("tipo", "Base", "Any", see="Any")))
 
 
-=== Las matrices son mutables
+=== Los arreglos son mutables
 
-La sintaxis para acceder a los elementos de una matriz es la misma que para acceder a los caracteres de una cadena: el operador corchetes. La expresión dentro de los corchetes especifica el índice. Recuerde que los índices comienzan en 1:
-(((bracket operator)))(((index)))
+La sintaxis para acceder a los elementos de un arreglo es el mismo que para acceder a los caracteres de una cadena: el operador corchete. La expresión dentro de los corchetes especifica el índice. Recuerde que los índices comienzan en 1:
+(((operador corchete)))(((índice)))
 
 [source,@julia-repl-test chap10]
 ----
@@ -72,9 +72,8 @@ julia> quesos[1]
 "Cheddar"
 ----
 
-A diferencia de las cadenas, las matrices son _mutables_, lo que significa que podemos cambiar sus elementos. Se puede modificar uno de sus elementos usando el operador corchetes en el lado izquierdo de una asignación:
-
-(((mutable)))(((assignment statement)))
+A diferencia de las cadenas, los arreglos son _mutables_, lo que significa que podemos cambiar sus elementos. Se puede modificar uno de sus elementos usando el operador corchetes en el lado izquierdo de una asignación:
+(((mutable)))(((sentencia de asignación)))
 
 [source,@julia-repl-test chap10]
 ----
@@ -87,24 +86,24 @@ julia> print(numeros)
 El segundo elemento de +numeros+, que era 123, ahora es 5.
 
 <<fig10-1>> muestra los diagramas de estado para +quesos+, +numeros+ y +vacio+.
-(((state diagram)))
+(((diaframa de estado)))
 
 [[fig10-1]]
 .State diagram
 image::images/fig101.svg[]
 
-Las matrices son representadas mediante cuadros con elementos de la matriz en su interior. La matriz +quesos+ hace referencia a una matriz con tres elementos indexados +1+, +2+ y +3+. La matriz +numeros+ contiene dos elementos. El diagrama muestra que el valor del segundo elemento de +numeros+ se ha reasignado de +123+ a +5+. Finalmente, +vacio+ hace referencia a una matriz sin elementos.
+Los arreglos son representados mediante cuadros con elementos del arreglo en su interior. El arreglo +quesos+ hace referencia a un arreglo con tres elementos indexados +1+, +2+ y +3+. El arreglo +numeros+ contiene dos elementos. El diagrama muestra que el valor del segundo elemento de +numeros+ se ha reasignado de +123+ a +5+. Finalmente, +vacio+ hace referencia a un arreglo sin elementos.
 
-Los índices de una matriz funcionan de la misma manera que los índices de una cadena (pero sin los problemas generados por la codificación UTF-8):
+Los índices de un arreglo funcionan de la misma manera que los índices de una cadena (pero sin los problemas generados por la codificación UTF-8):
 
 * Cualquier expresión entera se puede usar como índice.
 
 * Si se intenta leer o escribir un elemento que no existe, se obtiene un +BoundsError+.
 
-* La palabra reservada +end+ indica el último índice de la matriz.
+* La palabra reservada +end+ indica el último índice del arreglo.
 (((end)))
 
-El operador +∈+ también funciona en matrices:
+El operador +∈+ también funciona en arreglos:
 (((in)))
 
 [source,@julia-repl-test chap10]
@@ -116,10 +115,10 @@ false
 ----
 
 
-=== Recorriendo una Matriz
+=== Recorriendo un Arreglo
 
-La forma más común de recorrer los elementos de una matriz es con un ciclo +for+. La sintaxis es la misma que para las cadenas:
-(((traversal)))(((for statement)))
+La forma más común de recorrer los elementos de un arreglo es con un ciclo +for+. La sintaxis es la misma que para las cadenas:
+(((recorrido)))(((sentencia for)))
 
 [source,@julia-setup chap10]
 ----
@@ -128,8 +127,8 @@ for queso in quesos
 end
 ----
 
-Esto funciona bien si solo se necesita leer los elementos de la matriz. Pero si se desea escribir o actualizar los elementos es necesario utilizar índices. Una forma común de hacerlo es usando la función integrada +eachindex+:
-(((eachindex)))((("function", "Base", "eachindex", see="eachindex")))
+Esto funciona bien si solo se necesita leer los elementos del arreglo. Pero si se desea escribir o actualizar los elementos es necesario utilizar índices. Una forma común de hacerlo es usando la función integrada +eachindex+:
+(((eachindex)))((("función", "Base", "eachindex", see="eachindex")))
 
 [source,@julia-setup chap10]
 ----
@@ -138,11 +137,11 @@ for i in eachindex(numeros)
 end
 ----
 
-Este bucle recorre la matriz y actualiza cada elemento. En cada iteración del ciclo, +i+ representa el índice del elemento actual. La sentencia de asignación usa +numeros[i]+ para leer el valor original del elemento y asignar el nuevo valor.
+Este bucle recorre el arreglo y actualiza cada elemento. En cada iteración del ciclo, +i+ representa el índice del elemento actual. La sentencia de asignación usa +numeros[i]+ para leer el valor original del elemento y asignar el nuevo valor.
 
-Por otra parte, +length+ devuelve el número de elementos en la matriz.
+Por otra parte, +length+ devuelve el número de elementos en el arreglo.
 
-Un ciclo +for+ sobre una matriz vacía nunca ejecuta el cuerpo del bucle:
+Un ciclo +for+ sobre un arreglo vacío nunca ejecuta el cuerpo del bucle:
 (((empty array)))
 
 [source,@julia-setup]
@@ -152,7 +151,7 @@ for x in []
 end
 ----
 
-Aunque una matriz puede contener otra matriz, esta matriz anidada cuenta como un elemento único. Por ejemplo, la longitud de esta matriz es cuatro:
+Aunque un arreglo puede contener otro arreglo, este arreglo anidado cuenta como un elemento único. Por ejemplo, la longitud de este arreglo es cuatro:
 
 [source,@julia-setup]
 ----
@@ -160,10 +159,10 @@ Aunque una matriz puede contener otra matriz, esta matriz anidada cuenta como un
 ----
 
 
-=== Porciones de matrices
+=== Porciones de arreglos
 
-El operador porción también funciona en matrices:
-(((slice operator)))((("operator", "Base", "[:]", see="slice operator")))((("[:]", see="slice operator")))
+El operador porción también funciona en arreglos:
+(((operador porción)))((("operador", "Base", "[:]", see="slice operator")))((("[:]", see="slice operator")))
 
 [source,@julia-repl-test chap10]
 ----
@@ -175,7 +174,7 @@ julia> print(t[3:end])
 ['c', 'd', 'e', 'f']
 ----
 
-El operador porción +[:]+ hace una copia de toda la matriz:
+El operador porción +[:]+ hace una copia de todo el arreglo:
 (((copy)))
 
 [source,@julia-repl-test chap10]
@@ -184,7 +183,7 @@ julia> print(t[:])
 ['a', 'b', 'c', 'd', 'e', 'f']
 ----
 
-Como las matrices son mutables, es útil hacer una copia antes de realizar operaciones que las modifiquen.
+Como los arreglos son mutables, es útil hacer una copia antes de realizar operaciones que las modifiquen.
 
 Un operador porción en el lado izquierdo de una asignación puede actualizar varios elementos:
 
@@ -197,10 +196,10 @@ julia> print(t)
 ----
 
 
-=== Librería de Matrices
+=== Librería de Arreglos
 
-Julia tiene funciones integradas que operan en matrices. Por ejemplo, +push!+ agrega un nuevo elemento al final de una matriz:
-(((push!)))((("function", "Base", "push!", see="push!")))
+Julia tiene funciones integradas que operan en arreglos. Por ejemplo, +push!+ agrega un nuevo elemento al final de un arreglo:
+(((push!)))((("función", "Base", "push!", see="push!")))
 
 [source,@julia-repl-test chap10]
 ----
@@ -212,8 +211,8 @@ julia> print(t)
 ['a', 'b', 'c', 'd']
 ----
 
-+append!+ agrega elementos de una matriz al final de otra:
-(((append!)))((("function", "Base", "append!", see="append!")))
++append!+ agrega elementos de un arreglo al final de otro:
+(((append!)))((("función", "Base", "append!", see="append!")))
 
 [source,@julia-repl-test chap10]
 ----
@@ -229,8 +228,8 @@ julia> print(t1)
 
 En este ejemplo +t2+ no es modificado.
 
-+sort!+ ordena los elementos de una matriz de menor a mayor:
-(((sort!)))((("function", "Base", "sort!", see="sort!")))
++sort!+ ordena los elementos de un arreglo de menor a mayor:
+(((sort!)))((("función", "Base", "sort!", see="sort!")))
 
 [source,@julia-repl-test chap10]
 ----
@@ -242,8 +241,8 @@ julia> print(t)
 ['a', 'b', 'c', 'd', 'e']
 ----
 
-+sort+ devuelve una copia ordenada de los elementos de la matriz:
-(((sort)))((("function", "Base", "sort", see="sort")))
++sort+ devuelve una copia ordenada de los elementos de un arreglo:
+(((sort)))((("función", "Base", "sort", see="sort")))
 
 [source,@julia-repl-test chap10]
 ----
@@ -266,7 +265,7 @@ Como convención en Julia, se agrega +!+ a los nombres de las funciones que modi
 
 === Mapear, Filtrar y Reducir
 
-Para sumar todos los números en una matriz se puede usar un ciclo como este:
+Para sumar todos los números en un arreglo se puede usar un ciclo como este:
 
 [source,@julia-setup]
 ----
@@ -279,8 +278,8 @@ function sumartodo(t)
 end
 ----
 
-+total+ se inicializa en 0. En cada iteración, con +pass:[+=]+ se añade un elemento de la matriz a la suma total. El operador +pass:[+=]+ es una forma simple de actualizar esta variable. Esta _sentencia de asignación aumentada_,
-(((augmented assignment statement)))(((pass:[+=])))((("operator", "Base", "pass:[+=]", see="pass:[+=]")))
++total+ se inicializa en 0. En cada iteración, con +pass:[+=]+ se añade un elemento del arreglo a la suma total. El operador +pass:[+=]+ es una forma simple de actualizar esta variable. Esta _sentencia de asignación aumentada_,
+(((sentencia de asignación aumentada)))(((pass:[+=])))((("operador", "Base", "pass:[+=]", see="pass:[+=]")))
 
 [source,julia]
 ----
@@ -295,10 +294,10 @@ total = total + x
 ----
 
 A medida que se ejecuta el ciclo, +total+ acumula la suma de los elementos. A veces se denomina _acumulador_ a una variable utilizada de esta manera.
-(((accumulator)))
+(((acumulador)))
 
-Sumar los elementos de una matriz es una operación tan común que Julia tiene una función integrada para ello, +sum+:
-(((sum)))((("function", "Base", "sum", see="sum")))
+Sumar los elementos de un arreglo es una operación tan común que Julia tiene una función integrada para ello, +sum+:
+(((sum)))((("función", "Base", "sum", see="sum")))
 
 [source,@julia-repl-test]
 ----
@@ -309,10 +308,10 @@ julia> sum(t)
 ----
 
 Una operación como esta, que combina una secuencia de elementos en un solo valor a veces se denomina _operación de reducción_.
-(((reduce operation)))
+(((operación de reducción)))
 
-Es común querer recorrer una matriz mientras se construye otra. Por ejemplo, la siguiente función toma una matriz de cadenas y devuelve una nueva matriz que contiene las mismas cadenas pero en mayúsculas:
-(((capitalizeall)))((("function", "programmer-defined", "capitalizeall", see="capitalizeall")))(((uppercase)))
+Es común querer recorrer un arreglo mientras se construye otro. Por ejemplo, la siguiente función toma un arreglo de cadenas y devuelve un nuevo arreglo que contiene las mismas cadenas pero en mayúsculas:
+(((todoenmayusculas)))((("función", "definida por el programador", "todoenmayusculas", see="todoenmayusculas")))(((mayúscula)))
 
 [source,@julia-setup]
 ----
@@ -325,13 +324,13 @@ function todoenmayusculas(t)
 end
 ----
 
-+res+ se inicializa con una matriz vacía, y en cada iteración se le agrega un nuevo elemento. De esta manera, +res+ es otro tipo de acumulador.
++res+ se inicializa con un arreglo vacío, y en cada iteración se le agrega un nuevo elemento. De esta manera, +res+ es otro tipo de acumulador.
 
 Una operación como +todoenmayusculas+ a veces se denomina _mapeo_ porque "asigna" una función (en este caso +uppercase+) a cada uno de los elementos de una secuencia.
 (((map)))
 
-Otra operación común es seleccionar solo algunos de los elementos de una matriz y devolver una submatriz. Por ejemplo, la siguiente función toma una matriz de cadenas y devuelve una matriz que contiene solamente las cadenas en mayúsculas:
-(((onlyupper)))((("function", "programmer-defined", "onlyupper", see="onlyupper")))
+Otra operación común es seleccionar solo algunos de los elementos de un arreglo y devolver una sub-arreglo. Por ejemplo, la siguiente función toma un arreglo de cadenas y devuelve un arreglo que contiene solamente las cadenas en mayúsculas:
+(((solomayusculas)))((("función", "definida por el programador", "solomayusculas", see="solomayusculas")))
 
 [source,@julia-setup]
 ----
@@ -347,15 +346,15 @@ end
 ----
 
 Operaciones como +solomayusculas+ se llaman _filtro_ porque seleccionan solo algunos elementos, filtrando otros.
-(((filter)))
+(((filtro)))
 
-Las operaciones de matriz más comunes son una combinación de mapeo, filtro y reducción.
+Las operaciones de arreglos más comunes son una combinación de mapeo, filtro y reducción.
 
 
 === Sintaxis de punto
 
-Para cada operador binario, como por ejemplo +pass:[^]+, existe un _operador punto_ correspondiente pass:[<code>.^</code>] que automaticamente define la operación +pass:[^]+ para cada elemento de una matriz. Por ejemplo, pass:[<code>&#91;1, 2, 3&#93; ^ 3</code>] no está definido, pero pass:[<code>&#91;1, 2, 3&#93; .^ 3</code>] se define como el resultado de realizar la operación +pass:[^]+ en cada elemento pass:[<code>&#91;1^3, 2^3, 3^3&#93;</code>]:
-(((dot operator)))((("operator", "Base", ".", see="dot operator")))(((".", see="dot operator")))
+Para cada operador binario, como por ejemplo +pass:[^]+, existe un _operador punto_ correspondiente pass:[<code>.^</code>] que automaticamente define la operación +pass:[^]+ para cada elemento de un arreglo. Por ejemplo, pass:[<code>&#91;1, 2, 3&#93; ^ 3</code>] no está definido, pero pass:[<code>&#91;1, 2, 3&#93; .^ 3</code>] se define como el resultado de realizar la operación +pass:[^]+ en cada elemento pass:[<code>&#91;1^3, 2^3, 3^3&#93;</code>]:
+(((operador punto)))((("operador", "Base", ".", see="operador punto")))(((".", see="operador punto")))
 
 [source,@julia-repl-test]
 ----
@@ -363,8 +362,8 @@ julia> print([1, 2, 3] .^ 3)
 [1, 8, 27]
 ----
 
-Cualquier función +f+ de Julia puede ser aplicada a cada elemento de cualquier matriz con la _sintaxis de punto_. Por ejemplo, para poner en mayúsculas una matriz de cadenas, no es necesario un bucle explícito:
-(((dot syntax)))
+Cualquier función +f+ de Julia puede ser aplicada a cada elemento de cualquier arreglo con la _sintaxis de punto_. Por ejemplo, para poner en mayúsculas un arreglo de cadenas, no es necesario un bucle explícito:
+(((sintaxis de punto)))
 
 [source,@julia-repl-test]
 ----
@@ -375,7 +374,7 @@ julia> print(t)
 ----
 
 Esta es una forma elegante de crear un mapeo. Siguiendo esta lógica, la función +todoenmayusculas+ puede implementarse con una línea:
-(((capitalizeall)))
+(((todoenmayusculas)))
 
 [source,@julia-setup]
 ----
@@ -387,8 +386,8 @@ end
 
 === Borrando (Insertando) Elementos
 
-Hay varias formas de eliminar elementos de una matriz. Si se conoce el índice del elemento que se desea eliminar, se puede usar +splice!+:
-(((splice!)))((("function", "Base", "splice!", see="splice!")))
+Hay varias formas de eliminar elementos de un arreglo. Si se conoce el índice del elemento que se desea eliminar, se puede usar +splice!+:
+(((splice!)))((("función", "Base", "splice!", see="splice!")))
 
 [source,@julia-repl-test]
 ----
@@ -400,10 +399,10 @@ julia> print(t)
 ['a', 'c']
 ----
 
-+splice!+ modifica la matriz y devuelve el elemento que se eliminó.
++splice!+ modifica el arreglo y devuelve el elemento que se eliminó.
 
 +pop!+ elimina y devuelve el último elemento:
-(((pop!)))((("function", "Base", "pop!", see="pop!")))
+(((pop!)))((("función", "Base", "pop!", see="pop!")))
 
 [source,@julia-repl-test]
 ----
@@ -416,7 +415,7 @@ julia> print(t)
 ----
 
 +popfirst!+ elimina y devuelve el primer elemento:
-(((popfirst!)))((("function", "Base", "popfirst!", see="popfirst!")))
+(((popfirst!)))((("función", "Base", "popfirst!", see="popfirst!")))
 
 [source,@julia-repl-test]
 ----
@@ -428,11 +427,11 @@ julia> print(t)
 ['b', 'c']
 ----
 
-Las funciones +pushfirst!+ y +push!+ insertan un elemento al principio y al final de la matriz, respectivamente.
-(((pushfirst!)))((("function", "Base", "pushfirst!", see="pushfirst!")))(((push!)))
+Las funciones +pushfirst!+ y +push!+ insertan un elemento al principio y al final del arreglo, respectivamente.
+(((pushfirst!)))((("función", "Base", "pushfirst!", see="pushfirst!")))(((push!)))
 
 Si no se necesita el valor eliminado, se puede usar la función +deleteat!+:
-(((deleteat!)))((("function", "Base", "deleteat!", see="deleteat!")))
+(((deleteat!)))((("función", "Base", "deleteat!", see="deleteat!")))
 
 [source,@julia-repl-test]
 ----
@@ -443,7 +442,7 @@ julia> print(deleteat!(t, 2))
 ----
 
 La función +insert!+ inserta un elemento en un índice dado:
-(((insert!)))((("function", "Base", "insert!", see="insert!")))
+(((insert!)))((("función", "Base", "insert!", see="insert!")))
 
 [source,@julia-repl-test]
 ----
@@ -454,10 +453,10 @@ julia> print(insert!(t, 2, 'x'))
 ----
 
 
-=== Matrices y Cadenas
+=== Arreglos y Cadenas
 
-Una cadena es una secuencia de caracteres y una matriz es una secuencia de valores, pero una matriz de caracteres no es lo mismo que una cadena. Para convertir una cadena a una matriz de caracteres, se puede usar la función +collect+:
-(((collect)))((("function", "Base", "collect", see="collect")))
+Una cadena es una secuencia de caracteres y un arreglo es una secuencia de valores, pero un arreglo de caracteres no es lo mismo que una cadena. Para convertir una cadena a un arreglo de caracteres, se puede usar la función +collect+:
+(((collect)))((("función", "Base", "collect", see="collect")))
 
 [source,@julia-repl-test]
 ----
@@ -470,7 +469,7 @@ julia> print(t)
 La función +collect+ divide una cadena u otra secuencia en elementos individuales.
 
 Si desea dividir una cadena en palabras, puede usar la función +split+:
-(((split)))((("function", "Base", "split", see="split")))
+(((split)))((("función", "Base", "split", see="split")))
 
 [source,@julia-repl-test]
 ----
@@ -481,7 +480,7 @@ SubString{String}["En", "un", "lugar", "de", "la", "Mancha"]
 ----
 
 Un _argumento opcional_ llamado _delimitador_ especifica qué caracteres usar como límites de palabra. El siguiente ejemplo usa un guión como delimitador:
-(((optional argument)))(((delimiter)))
+(((argumento opcional)))(((delimitador)))
 
 [source,@julia-repl-test]
 ----
@@ -491,8 +490,8 @@ julia> print(t)
 SubString{String}["hola", "hola", "hola"]
 ----
 
-+join+ es el inverso de +split+. Toma una matriz de cadenas y concatena los elementos:
-(((join)))((("function", "Base", "join", see="join")))
++join+ es el inverso de +split+. Toma un arreglo de cadenas y concatena los elementos:
+(((join)))((("función", "Base", "join", see="join")))
 
 [source,@julia-repl-test]
 ----
@@ -507,7 +506,7 @@ En este caso, el delimitador es un carácter de espacio en blanco. Para concaten
 === Objeto y Valores 
 
 Un _objeto_ es algo a lo que una variable puede referirse. Hasta ahora, podría usar "objeto" y "valor" indistintamente.
-(((object)))(((variable)))(((value)))
+(((objeto)))(((variable)))(((valor)))
 
 Si ejecutamos estas sentencias de asignación:
 
@@ -518,7 +517,7 @@ b = "banana"
 ----
 
 Sabemos que +a+ y +b+ apuntan a una cadena, pero no sabemos si están apuntando a la _misma_ cadena. Hay dos estados posibles, los cuales se muestran en la Figura 10-2.
-(((state diagram)))
+(((diagrama de estado)))
 
 .State diagrams.
 image::images/fig102.svg[]
@@ -527,7 +526,7 @@ image::images/fig102.svg[]
 En un caso, +a+ y +b+ se refieren a dos objetos diferentes que tienen el mismo valor. En el segundo caso, se refieren al mismo objeto. 
 
 Para verificar si dos variables se refieren al mismo objeto, se puede usar el operador +≡+ (*+\equiv TAB+*)) o +===+.
-(((≡)))((("operator", "Base", "≡", see="≡")))((("===", see="≡")))
+(((≡)))((("operador", "Base", "≡", see="≡")))((("===", see="≡")))
 
 [source,@julia-repl-test]
 ----
@@ -539,7 +538,7 @@ julia> a ≡ b
 true
 ----
 
-En este ejemplo, Julia solo creó un objeto de cadena, y ambas variables +a+ y +b+ apuntan a ella. Pero cuando se crean dos matrices, se obtienen dos objetos:
+En este ejemplo, Julia solo creó un objeto de cadena, y ambas variables +a+ y +b+ apuntan a ella. Pero cuando se crean dos arreglos, se obtienen dos objetos:
 
 [source,@julia-repl-test]
 ----
@@ -559,10 +558,10 @@ Entonces el diagrama de estado se ve así <<fig10-3>>.
 image::images/fig103.svg[]
 
 
-En este caso, diríamos que las dos matrices son _equivalentes_, porque tienen los mismos elementos, pero no _idénticos_, porque no son el mismo objeto. Si dos objetos son idénticos, también son equivalentes, pero si son equivalentes, no son necesariamente idénticos.
-(((equivalent)))(((identical)))
+En este caso, diríamos que los dos arreglos son _equivalentes_, porque tienen los mismos elementos, pero no _idénticos_, porque no son el mismo objeto. Si dos objetos son idénticos, también son equivalentes, pero si son equivalentes, no son necesariamente idénticos.
+(((equivalente)))(((idéntico)))
 
-Para ser precisos, un objeto tiene un valor. Si se evalúa +[1, 2, 3]+, se obtendrá un objeto de matriz cuyo valor es una secuencia de enteros. Si otra matriz tiene los mismos elementos, decimos que tiene el mismo valor, pero no es el mismo objeto.
+Para ser precisos, un objeto tiene un valor. Si se evalúa +[1, 2, 3]+, se obtendrá un objeto arreglo cuyo valor es una secuencia de enteros. Si otro arreglo tiene los mismos elementos, decimos que tiene el mismo valor, pero no es el mismo objeto.
 
 
 === Alias (poner sobrenombres)
@@ -587,10 +586,10 @@ image::images/fig104.svg[]
 
 
 La asociación de una variable con un objeto se llama _referencia_. En este ejemplo, hay dos referencias al mismo objeto.
-(((reference)))
+(((referencia)))
 
 Un objeto con más de una referencia tiene más de un nombre, por lo que decimos que el objeto tiene un _alias_.
-(((aliased)))
+(((alias)))
 
 Si el objeto con alias es mutable, los cambios hechos a un alias afectan al otro:
 (((mutable)))
@@ -619,10 +618,10 @@ b = "banana"
 Casi nunca es relevante que +a+ y +b+ se refieran a la misma cadena o no.
 
 
-=== Matrices como argumentos
+=== Arreglos como argumentos
 
-Cuando se pasa una matriz como argumento de una función, en realidad se pasa una referencia a ella. Si la función modifica la matriz, el que hizo la llamada verá el cambio. Por ejemplo, la función +borrarprimero+ elimina el primer elemento de una matriz:
-(((deletehead!)))((("function", "programmer-defined", "deletehead!", see="deletehead!")))(((popfirst!)))
+Cuando se pasa un arreglo como argumento de una función, en realidad se pasa una referencia a ella. Si la función modifica el arreglo, el que hizo la llamada verá el cambio. Por ejemplo, la función +borrarprimero+ elimina el primer elemento de un arreglo:
+(((borrarprimero!)))((("función", "definida por el programador", "borrarprimero!", see="borrarprimero!")))(((popfirst!)))
 
 [source,@julia-setup chap10]
 ----
@@ -631,7 +630,7 @@ function borrarprimero!(t)
 end
 ----
 
-Aquí vemos el uso de borrarprimero:
+Aquí vemos el uso de borrarprimero!:
 
 [source,@julia-repl-test chap10]
 ----
@@ -644,16 +643,16 @@ julia> print(letras)
 ----
 
 El parámetro +t+ y la variable +letras+ son alias de un mismo objeto. El diagrama de estado es así <<fig10-5>>.
-(((stack diagram)))
+(((diagrama de pila)))
 
 [[fig10-5]]
 .Stack diagram
 image::images/fig105.svg[]
 
-Como la matriz está compartida por dos marcos, la dibujamos entre ambos.
+Como el arreglo está compartido por dos marcos, lo dibujamos entre ambos.
 
-Es importante distinguir entre operaciones que modifiquen matrices y operaciones que creen nuevas matrices. Por ejemplo, +push!+ modifica una matriz, pero +vcat+ crea una nueva matriz.
-(((push!)))(((vcat)))((("function", "Base", "vcat", see="vcat")))
+Es importante distinguir entre operaciones que modifiquen arreglos y operaciones que creen nuevas arreglos. Por ejemplo, +push!+ modifica un arreglo, pero +vcat+ crea un nuevo arreglo.
+(((push!)))(((vcat)))((("función", "Base", "vcat", see="vcat")))
 
 Aquí hay un ejemplo de +push!+:
 
@@ -681,12 +680,12 @@ julia> print(t3)
 [1, 2, 3, 4]
 ----
 
-El resultado de +vcat+ es una nueva matriz. La matriz original no ha sufrido cambios.
+El resultado de +vcat+ es unn nuevo arreglo. El arreglo original no ha sufrido cambios.
 
-Esta diferencia es importante al momento de escribir funciones que modifican matrices.
+Esta diferencia es importante al momento de escribir funciones que modifican arreglos.
 
-Por ejemplo, esta función _no_ elimina el primer elemento de una matriz:
-(((baddeletehead)))((("function", "programmer-defined", "baddeletehead", see="baddeletehead")))
+Por ejemplo, esta función _no_ elimina el primer elemento de un arrreglo:
+(((noborrarprimero)))((("función", "definida por el programador", "noborrarprimero", see="noborrarprimero")))
 
 [source,@julia-setup chap10]
 ----
@@ -695,8 +694,8 @@ function noborrarprimero(t)
 end
 ----
 
-El operador porción crea una nueva matriz y la asignación hace que +t+ se refiera a ella, pero eso no afecta a la matriz +t+ fuera de la función.
-(((slice operator)))
+El operador porción crea un nuevo arreglo y la asignación hace que +t+ se refiera a ella, pero eso no afecta al arreglo +t+ fuera de la función.
+(((operador porción)))
 
 [source,@julia-repl-test chap10]
 ----
@@ -708,10 +707,10 @@ julia> print(t4)
 [2, 3, 4]
 ----
 
-Al comienzo de +noborrarprimero+, +t+ y +t3+ se refieren a la misma matriz. Al final, +t+ se refiere a una nueva matriz, pero +t3+ todavía se refiere a la matriz original no modificada.
+Al comienzo de +noborrarprimero+, +t+ y +t3+ se refieren al mismo arreglo. Al final, +t+ se refiere a un nuevo arreglo, pero +t3+ todavía se refiere al arreglo original no modificado.
 
-Una alternativa es escribir una función que cree y devuelva una nueva matriz. Por ejemplo, la función +cola+ devuelve todos menos el primer elemento de una matriz:
-(((tail)))((("function", "programmer-defined", "tail", see="tail")))
+Una alternativa es escribir una función que cree y devuelva un nuevo arreglo. Por ejemplo, la función +cola+ devuelve todos menos el primer elemento de un arreglo:
+(((cola)))((("function", "definida por el programador", "cola", see="cola")))
 
 [source,@julia-setup chap10]
 ----
@@ -720,7 +719,7 @@ function cola(t)
 end
 ----
 
-Esta función no modifica la matriz original, y se usa de la siguiente manera:
+Esta función no modifica el arreglo original, y se usa de la siguiente manera:
 
 [source,@julia-repl-test chap10]
 ----
@@ -735,10 +734,10 @@ julia> print(demas)
 
 === Depuración
 
-Un uso inadecuado de las matrices (y otros objetos mutables) puede llevarnos a largas horas de depuración. A continuación se muestran algunos errores comunes y cómo evitarlos:
-(((debugging)))
+Un uso inadecuado de los arreglos (y otros objetos mutables) puede llevarnos a largas horas de depuración. A continuación se muestran algunos errores comunes y cómo evitarlos:
+(((depuración)))
 
-* La mayoría de las funciones que operan en matrices modifican el argumento. Esto es lo opuesto a lo que ocurre en las funciones que operan en cadenas de texto, que devuelven una nueva cadena y dejan la original sin modificaciones.
+* La mayoría de las funciones que operan en arreglos modifican el argumento. Esto es lo opuesto a lo que ocurre en las funciones que operan en cadenas de texto, que devuelven una nueva cadena y dejan la original sin modificaciones.
 +
 Si está acostumbrado a escribir código con cadenas de texto como este:
 (((strip)))(((sort!)))
@@ -748,23 +747,23 @@ Si está acostumbrado a escribir código con cadenas de texto como este:
 nueva_palabra = strip(palabra)
 ----
 +
-Puede parecer tentador escribir código con matrices como este:
+Puede parecer tentador escribir código con arreglos como este:
 +
 [source,julia]
 ----
 t2 = sort!(t1)
 ----
 +
-Pero como +sort!+ devuelve la matriz original +t1+ modificada, +t2+ es un alias de +t1+.
+Pero como +sort!+ devuelve el arreglo original +t1+ modificado, +t2+ es un alias de +t1+.
 +
 [TIP]
 ====
-Antes de utilizar funciones y operadores de matrices, debes leer la documentación detenidamente y luego probarla en modo interactivo.
+Antes de utilizar funciones y operadores de arreglos, debes leer la documentación detenidamente y luego probarla en modo interactivo.
 ====
 
 * Escoge una expresión y quédate con ella.
 +
-Parte del problema con las matrices es que hay demasiadas formas de hacer las cosas. Por ejemplo, para eliminar un elemento de una matriz se puede usar +pop!+, +popfirst!+, +delete_at+, o incluso una asignación de porción. Para agregar un elemento se puede usar +push!+, +pushfirst!+, +insert!+ or +vcat+. Suponiendo que +t+ es una matriz y +x+, es un elemento, estas formas son correctas: 
+Parte del problema con los arreglos es que hay demasiadas formas de hacer las cosas. Por ejemplo, para eliminar un elemento de un arreglo se puede usar +pop!+, +popfirst!+, +delete_at+, o incluso una asignación de porción. Para agregar un elemento se puede usar +push!+, +pushfirst!+, +insert!+ or +vcat+. Suponiendo que +t+ es un arreglo y +x+, es un elemento, estas formas son correctas: 
 (((push!)))(((pushfirst!)))(((insert!)))(((vcat)))
 +
 [source,julia]
@@ -785,7 +784,7 @@ vcat(t, [x])               # MALO!
 
 * Haga copias para evitar usar alias.
 +
-Si se desea utilizar una función como +sort!+ que modifica el argumento, pero también se necesita mantener la matriz original, es posible hacer una copia:
+Si se desea utilizar una función como +sort!+ que modifica el argumento, pero también se necesita mantener el arreglo original, es posible hacer una copia:
 (((sort!)))
 +
 [source,@julia-repl-test chap10]
@@ -802,7 +801,7 @@ julia> print(t2)
 [1, 2, 3]
 ----
 +
-En este ejemplo, también podría usar la función incorporada +sort+, que devuelve una nueva matriz ordenada y no modifica el original:
+En este ejemplo, también podría usar la función incorporada +sort+, que devuelve un nuevo arreglo ordenado y no modifica el original:
 (((sort)))
 +
 [source,@julia-repl-test chap10]
@@ -818,76 +817,76 @@ julia> println(t2)
 
 === Glosario
 
-matriz::
+arreglo::
 Una secuencia de valores.
-(((array)))
+(((arreglo)))
 
 elemento::
-Uno de los valores de una matriz (u otra secuencia), también llamado item.
-(((element)))
+Uno de los valores de un arreglo (u otra secuencia), también llamado item.
+(((elemento)))
 
 lista anidada::
-Una matriz que es elemento de otra matriz.
-(((nested array)))
+Un arreglo que es elemento de otro arreglo.
+(((lista anidada)))
 
 acumulador::
 Una variable utilizada en un ciclo para sumar o acumular un resultado.
-(((accumulator)))
+(((acumulador)))
 
 asignación aumentada::
 Una sentencia que actualiza el valor de una variable usando un operador como ++=+.
-(((augmented assignment)))
+(((asignación aumentada)))
 
 operador punto::
-Operador binario que se aplica a cada elemento de una matriz.
-(((dot operator)))
+Operador binario que se aplica a cada elemento de un arreglo.
+(((operador punto)))
 
 sintaxis de punto::
-Sintaxis utilizada para aplicar una función a todos los elementos de cualquier matriz.
-(((dot syntax)))
+Sintaxis utilizada para aplicar una función a todos los elementos de cualquier arreglo.
+(((sintaxis de punto)))
 
 operación de reducción::
 Un patrón de procesamiento que recorre una secuencia y acumula los elementos en un solo resultado.
-(((reduce operation)))
+(((operación de reducción)))
 
 mapeo::
 Un patrón de procesamiento que recorre una secuencia y realiza una operación en cada elemento.
-(((map)))
+(((mapeo)))
 
 filtro::
 Un patrón de procesamiento que recorre una secuencia y selecciona los elementos que satisfacen algún criterio.
-(((filter)))
+(((filtro)))
 
 objeto::
 Una cosa a la que se puede referir una variable. Un objeto tiene tipo y valor.
-(((object)))
+(((objeto)))
 
 equivalente::
 Tener el mismo valor.
-(((equivalent)))
+(((equivalente)))
 
 idéntico::
 Ser el mismo objeto (lo que implica equivalencia).
-(((identical)))
+(((idéntico)))
 
 referencia::
 La asociación entre una variable y su valor.
-(((reference)))
+(((referencia)))
 
 alias::
 Multiples variables que contienen referencias al mismo objeto.
-(((aliasing)))
+(((alias)))
 
 argumentos opcionales::
 argumentos que no son necesarios.
-(((optional arguments)))
+(((argumentos opcionales)))
 
 delimitador::
 Un carácter o cadena utilizado para indicar donde debe cortarse una cadena.
-(((delimiter)))
+(((delimitador)))
 
 
-=== Exercises
+=== Ejercicios
 
 [source,@julia-eval chap10]
 ----
@@ -927,8 +926,8 @@ end;
 [[ex10-1]]
 ==== Ejercicio 10-1
 
-Escriba una función llamada +sumaanidada+ que tome una matriz de matrices de enteros y sume los elementos de todas las matrices anidadas. Por ejemplo:
-(((nestedsum)))((("function", "programmer-defined", "nestedsum", see="nestedsum")))
+Escriba una función llamada +sumaanidada+ que tome un arreglo de arreglos de enteros y sume los elementos de todos los arreglos anidados. Por ejemplo:
+(((sumaanidada)))((("función", "definida por el programador", "sumaanidada", see="sumaanidada")))
 
 [source,@julia-repl-test chap10]
 ----
@@ -941,8 +940,8 @@ julia> sumaanidada(t)
 [[ex10-2]]
 ==== Ejercicio 10-2
 
-Escriba una función llamada +sumaacumulada+ que tome una matriz de números y devuelva la suma acumulativa; es decir, una nueva matriz donde el latexmath:[\(i\)]ésimo elemento es la suma de los primeros latexmath:[\(i\)] elementos de la matriz original. Por ejemplo:
-(((cumulsum)))((("function", "programmer-defined", "cumulsum", see="cumulsum")))
+Escriba una función llamada +sumaacumulada+ que tome un arreglo de números y devuelva la suma acumulativa; es decir, un nuevo arreglo donde el latexmath:[\(i\)]ésimo elemento es la suma de los primeros latexmath:[\(i\)] elementos del arreglo original. Por ejemplo:
+(((sumaacumulada)))((("función", "definida por el programador", "sumaacumulada", see="sumaacumulada")))
 
 [source,@julia-repl-test chap10]
 ----
@@ -955,8 +954,8 @@ Any[1, 3, 6]
 [[ex10-3]]
 ==== Ejercicio 10-3
 
-Escriba una función llamada +interior+ que tome una matriz y devuelva una nueva matriz que contenga todos los elementos excepto el primero y el último. Por ejemplo:
-(((interior)))((("function", "programmer-defined", "interior", see="interior")))
+Escriba una función llamada +interior+ que tome un arreglo y devuelva un nuevo arreglo que contenga todos los elementos excepto el primero y el último. Por ejemplo:
+(((interior)))((("función", "definida por el programador", "interior", see="interior")))
 
 [source,@julia-repl-test chap10]
 ----
@@ -969,8 +968,8 @@ julia> print(interior(t))
 [[ex10-4]]
 ==== Ejercicio 10-4
 
-Escriba una función llamada +interior!+ que tome una matriz, la modifique eliminando el primer y el último elemento, y que no devuelva un valor. Por ejemplo:
-(((interior!)))((("function", "programmer-defined", "interior!", see="interior!")))
+Escriba una función llamada +interior!+ que tome un arreglo, lo modifique eliminando el primer y el último elemento, y que no devuelva un valor. Por ejemplo:
+(((interior!)))((("función", "definida por el programador", "interior!", see="interior!")))
 
 [source,@julia-repl-test chap10]
 ----
@@ -985,8 +984,8 @@ julia> print(t)
 [[ex10-5]]
 ==== Ejercicio 10-5
 
-Escriba una función llamada +estaordenada+ que tome una matriz como parámetro y devuelva +true+ si la matriz se ordena en orden ascendente y +false+ de lo contrario. Por ejemplo:
-(((issort)))((("function", "programmer-defined", "issort", see="issort")))
+Escriba una función llamada +estaordenada+ que tome un arreglo como parámetro y devuelva +true+ si el arreglo se ordena en orden ascendente y +false+ de lo contrario. Por ejemplo:
+(((estaordenada)))((("función", "definida por el programador", "estaordenada", see="estaordenada")))
 
 [source,@julia-repl-test chap10]
 ----
@@ -1000,22 +999,22 @@ false
 ==== Ejercicio 10-6
 
 Dos palabras son anagramas si se pueden ordenar las letras de una para escribir la otra. Escriba una función llamada +esanagrama+ que tome dos cadenas y devuelva +true+ si son anagramas.
-(((isanagram)))((("function", "programmer-defined", "isanagram", see="isanagram")))
+(((esanagrama)))((("función", "definida por el programador", "esanagrama", see="esanagrama")))
 
 [[ex10-7]]
 ==== Ejercicio 10-7
 
-Escriba una función llamada +repetido+ que tome una matriz y devuelva +true+ si hay algún elemento que aparece más de una vez. No debe modificar la matriz original.
-(((hasduplicates)))((("function", "programmer-defined", "hasduplicates", see="hasduplicates")))
+Escriba una función llamada +repetido+ que tome un arreglo y devuelva +true+ si hay algún elemento que aparece más de una vez. No debe modificar el arreglo original.
+(((repetido)))((("función", "definida por el programador", "repetido", see="repetido")))
 
 [[ex10-8]]
 ==== Ejercicio 10-8
 
-Este ejercicio se relaciona con la llamada paradoja del cumpleaños, sobre la cual puede leer en https://en.wikipedia.org/wiki/Birthday_paradox
-(((Birthday paradox)))
+Este ejercicio se relaciona con la llamada paradoja del cumpleaños, sobre la cual puede leer en https://es.wikipedia.org/wiki/Paradoja_del_cumplea%C3%B1os
+(((Paradoja del cumpleaños)))
 
 Si hay 23 estudiantes en su clase, ¿cuáles son las posibilidades de que dos de ustedes tengan el mismo cumpleaños? Puede estimar esta probabilidad generando muestras aleatorias de 23 cumpleaños y buscando coincidencias.
-(((rand)))((("function", "Base", "rand", see="rand")))
+(((rand)))((("función", "Base", "rand", see="rand")))
 
 [TIP]
 ====
@@ -1025,32 +1024,32 @@ Puede generar cumpleaños aleatorios con +rand(1:365)+.
 [[ex10-9]]
 ==== Ejercicio 10-9
 
-Escriba una función que lea el archivo +palabras.txt+ y construya una matriz con un elemento por palabra. Escriba dos versiones de esta función, una con +push!+ y la otra con la expresión +t = [pass:[t...], x]+. ¿Cuál tarda más en ejecutarse? ¿Por qué?
+Escriba una función que lea el archivo +palabras.txt+ y construya un arreglo con un elemento por palabra. Escriba dos versiones de esta función, una con +push!+ y la otra con la expresión +t = [pass:[t...], x]+. ¿Cuál tarda más en ejecutarse? ¿Por qué?
 (((push!)))
 
 [[ex10-10]]
 ==== Ejercicio 10-10
 
-Para verificar si una palabra está en la matriz de palabras se puede usar el operador +∈+. Esto sería lento pues este operador busca las palabras en orden.
+Para verificar si una palabra está en el arreglo de palabras se puede usar el operador +∈+. Esto sería lento pues este operador busca las palabras en orden.
 
 Debido a que las palabras están en orden alfabético, podemos acelerar la verificación con una búsqueda de bisección (también conocida como búsqueda binaria), que es similar a lo que haces cuando buscas una palabra en el diccionario. Comienzas en el medio y verificas si la palabra que estás buscando va antes que la palabra localizada en el medio. Si es así, se busca en la primera mitad de la matriz de la misma manera. De lo contrario, se busca en la segunda mitad.
 
-En ambos casos se reduce el espacio de búsqueda restante a la mitad. Si la matriz de palabras tiene 113,809 palabras, se necesitarán unos 17 pasos para encontrar la palabra o concluir que no está allí.
+En ambos casos se reduce el espacio de búsqueda restante a la mitad. Si el arreglo de palabras tiene 113,809 palabras, se necesitarán unos 17 pasos para encontrar la palabra o concluir que no está allí.
 
-Escriba una función llamada +enbiseccion+ que tome una matriz ordenada y un valor objetivo, y devuelva +true+ si la palabra está en la matriz y +false+ si no lo está.
-(((inbisect)))((("function", "programmer-defined", "inbisect", see="inbisect")))
+Escriba una función llamada +enbiseccion+ que tome un arreglo ordenado y un valor objetivo, y devuelva +true+ si la palabra está en el arreglo y +false+ si no lo está.
+(((enbiseccion)))((("función", "definida por el programador", "enbiseccion", see="enbiseccion")))
 
 [[ex10-11]]
 ==== Ejercicio 10-11
 
-Dos palabras son un "par inverso" si cada una es la inversa de la otra. Escriba un programa llamado +parinverso+ que encuentre todos los pares inversos en la matriz de palabras.
-(((reversepairs)))((("function", "programmer-defined", "reversepairs", see="reversepairs")))
+Dos palabras son un "par inverso" si cada una es la inversa de la otra. Escriba un programa llamado +parinverso+ que encuentre todos los pares inversos en el arreglo de palabras.
+(((par inverso)))((("función", "definida por el programador", "par inverso", see="par inverso")))
 
 [[ex10-12]]
 ==== Ejercicio 10-12
 
 Dos palabras se "entrelazan" si al tomar letras alternando entre cada palabra se forma una nueva palabra. Por ejemplo, "pi" y "as" se entrelazan para formar "pais".
-(((interlock)))
+(((entrelazan)))
 
 Credito: Este ejercicio está inspirado en un ejemplo de http://puzzlers.org.
 

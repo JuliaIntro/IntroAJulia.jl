@@ -10,7 +10,7 @@ Para los ejercicios de este capítulo necesitamos una lista de palabras en espa�
 (((lemario)))
 
 Este archivo es un archivo de texto simple, por lo que puede ser abierto con un editor de texto o leído con Julia. La función integrada +open+ toma el nombre del archivo como parámetro y devuelve un objeto archivo que puede ser usado para la lectura del archivo.
-(((open)))((("function", "Base", "open", see="open")))
+(((open)))((("función", "Base", "open", see="open")))
 
 [source,@julia-eval chap09]
 ----
@@ -27,7 +27,7 @@ IOStream(<file palabras.txt>)
 +fin+ es un objeto archivo que puede ser utilizado como entrada y cuando se deja de utilizar, debe cerrarse con +close(fin)+.
 
 Julia tiene integrada varias funciones de lectura, entre ellas +readline+, que lee los caracteres del archivo hasta que llega a un +salto de línea+, devolviendo el resultado como una cadena:
-(((file stream)))(((input)))(((readline)))((("function", "Base", "readline", see="readline")))(((close)))
+(((file stream)))(((input)))(((readline)))((("función", "Base", "readline", see="readline")))(((close)))
 
 [source,@julia-repl chap09]
 ----
@@ -46,7 +46,7 @@ readline(fin)
 La siguiente palabra es "a-", que es un prefijo que indica privación.
 
 También se puede usar un archivo como parte de un bucle +for+. El siguiente programa lee +palabras.txt+ e imprime cada palabra, una por línea:
-(((for statement)))(((eachline)))((("function", "Base", "eachline", see="eachline")))
+(((sentencia for)))(((eachline)))((("función", "Base", "eachline", see="eachline")))
 
 [source,julia]
 ----
@@ -74,7 +74,7 @@ De hecho, es difícil pensar oraciones que no utilicen esta letra. Intentarlo es
 Bueno, a lo que vinimos.
 
 Escriba una función llamada +notiene_e+ que devuelva +true+ si una palabra dada no tiene la letra +'e'+.
-(((hasno_e)))((("function", "programmer-defined", "hasno_e", see="hasno_e")))
+(((notiene_e)))((("función", "definida por el programador", "notiene_e", see="notiene_e")))
 
 Modifique su programa de la sección anterior para que imprima solo las palabras que no tienen +'e'+, y que además calcule el porcentaje de palabras en la lista que no tengan +'e'+.
 
@@ -82,7 +82,7 @@ Modifique su programa de la sección anterior para que imprima solo las palabras
 ==== Ejercicio 9-3
 
 Escriba una función llamada +evitar+ que tome como argumentos una palabra y una cadena de letras prohibidas, y que devuelva +true+ si la palabra no usa ninguna de las letras prohibidas.
-(((avoids)))((("function", "programmer-defined", "avoids", see="avoids")))
+(((evitar)))((("función", "definida por el programador", "evita", see="evita")))
 
 Modifique su programa de la sección anterior para solicitar al usuario que ingrese una cadena de letras prohibidas, y que luego imprima el número de palabras que no contengan ninguna de ellas. ¿Es posible encontrar una combinación de 5 letras prohibidas que excluya la menor cantidad de palabras?
 
@@ -90,25 +90,25 @@ Modifique su programa de la sección anterior para solicitar al usuario que ingr
 ==== Ejercicio 9-4
 
 Escriba una función llamada +usasolo+ que tome una palabra y una cadena de letras, y que devuelva +true+ si la palabra contiene solo letras de la lista. ¿Puedes hacer una oración usando solo las letras +oneacmil+? Aparte de +"¿El camino?"+
-(((usesonly)))((("function", "programmer-defined", "usesonly", see="usesonly")))
+(((usasolo)))((("función", "definida por el programador", "usasolo", see="usasolo")))
 
 [[ex09-5]]
 ==== Ejercicio 9-5
 
 Escriba una función llamada +usatodo+ que tome una palabra y una cadena de letras, y que devuelva +true+ si la palabra usa todas las letras requeridas al menos una vez. ¿Cuántas palabras usan todas las vocales +aeiou+? 
-(((usesall)))((("function", "programmer-defined", "usesall", see="usesall")))
+(((usatodo)))((("función", "definida por el programador", "usatodo", see="usatodo")))
 
 [[ex09-6]]
 ==== Ejercicio 9-6
 
 Escriba una función llamada +esabecedaria+ que devuelva +true+ si las letras de una palabra aparecen en orden alfabético. ¿Cuántas palabras de este tipo hay?
-(((isabecedarian)))((("function", "programmer-defined", "isabecedarian", see="isabecedarian")))
+(((esabecedaria)))((("función", "definida por el programador", "esabecedaria", see="esabecedaria")))
 
 [[search]]
 === Búsqueda
 
 Todos los ejercicios en la sección anterior tienen algo en común: se pueden resolver con el patrón de búsqueda. El ejemplo más simple es:
-(((search)))(((hasno_e)))
+(((búsqueda)))(((notiene_e)))
 
 [source,@julia-setup chap09]
 ----
@@ -125,10 +125,10 @@ end
 El bucle +for+ recorre los caracteres de palabra. Si encontramos la letra +'e'+, podemos devolver inmediatamente +false+; de lo contrario tenemos que pasar a la siguiente letra. Si salimos del bucle normalmente, eso significa que no encontramos una +'e'+, por lo que devolvemos +true+.
 
 Esta función podría ser escrita de manera más concisa usando el operador +∉+ (*+\notin TAB+*), pero se comienza con esta versión porque muestra la lógica del patrón de búsqueda.
-(((∉)))((("operator", "Base", "∉", see="∉")))
+(((∉)))((("operador", "Base", "∉", see="∉")))
 
 +evita+ es una versión más general de +notiene_e+ pero tiene la misma estructura:
-(((avoids)))
+(((evita)))
 
 [source,@julia-setup chap09]
 ----
@@ -145,7 +145,7 @@ end
 Se devuelve +false+ tan pronto como se encuentre una letra prohibida; si llegamos al final del ciclo, se devuelve +true+.
 
 +usasolo+ es similar, excepto que el sentido de la condición se invierte:
-(((usesonly)))
+(((usasolo)))
 
 [source,@julia-setup chap09]
 ----
@@ -162,7 +162,7 @@ end
 En vez de un conjunto de letras prohibidas, se tiene un conjunto de letras disponibles. Si encontramos una letra en +palabra+ que no está en +disponible+, se devuelve +false+.
 
 +usatodo+ es similar, excepto que se invierte el papel de la palabra y la cadena de letras:
-(((usesall)))
+(((usatodo)))
 
 [source,@julia-setup chap09]
 ----
@@ -188,7 +188,7 @@ end
 ----
 
 Este es un ejemplo de una forma de desarrollar programas llamada _reducción a un problema resuelto previamente_, lo que significa que se reconoce el problema en el que se está trabajando como una instancia de un problema ya resuelto y se aplica la solución existente.
-(((program development plan)))(((reduction to a previously solved problem)))
+(((plan de desarrollo de programa)))(((reducción a un problema resuelto previamente)))
 
 
 === Bucle con índices
@@ -196,7 +196,7 @@ Este es un ejemplo de una forma de desarrollar programas llamada _reducción a u
 Las funciones de la sección anterior fueron escritas con ciclos +for+ porque solo se necesitaban los caracteres en las cadenas, no hubo necesidad de trabajar con los índices. 
 
 Para +esabecedaria+ tenemos que comparar letras adyacentes, lo cual es un poco complicado con un ciclo +for+:
-(((isabecedarian)))(((for statement)))
+(((esabecedaria)))(((sentencia for)))
 
 [source,@julia-setup chap09]
 ----
@@ -215,7 +215,7 @@ end
 ----
 
 Otra alternativa es usar recursividad:
-(((recursion)))
+(((recursión)))
 
 [source,@julia-setup chap09]
 ----
@@ -233,7 +233,7 @@ end
 ----
 
 Una tercera opción es usar un ciclo +while+:
-(((while statement)))
+(((sentencia while)))
 
 [source,@julia-setup chap09]
 ----
@@ -258,7 +258,7 @@ Si el siguiente carácter es menor (va antes en el alfabeto) que el actual, ento
 Si llegamos al final del ciclo sin encontrar letras que imposibiliten el orden alfabético, entonces la palabra pasa la prueba. Para convencerse de que el ciclo termina correctamente, considere como ejemplo la palabra +"Abel"+.
 
 A continuación se muestra una versión de +espalindromo+ que usa dos índices; uno comienza al principio de la palabra y aumenta su valor; el otro comienza al final y disminuye su valor.
-(((ispalindrome)))
+(((espalindromo)))
 
 [source,@julia-setup chap09]
 ----
@@ -286,18 +286,18 @@ end
 ----
 
 Usando +esreverso+ de <<deb08>>.
-(((isreverse)))
+(((esreverso)))
 
 
 === Depuración
 
 Comprobar el correcto funcionamiento de los programas es difícil. Las funciones de este capítulo son relativamente fáciles de probar porque se pueden verificar los resultados a mano. Aun así, es casi imposible elegir un conjunto de palabras que permitan evaluar todos los posibles errores.
-(((debugging)))
+(((depuración)))
 
 Tomando +notiene_e+ como ejemplo, hay dos casos obvios que verificar: las palabras que tienen una +'e'+ deberían devolver +false+, y las palabras que no, deberían devolver +true+. No deberían haber problemas para encontrar un ejemplo de cada uno.
 
 Dentro de cada caso, hay algunos subcasos menos obvios. Entre las palabras que tienen una "e", se deben probar las palabras con una "e" al principio, al final y al medio. Además, se deben probar palabras largas, cortas y muy cortas, como una cadena vacía. La cadena vacía es un ejemplo de un "caso especial" no obvio donde pueden originarse errores.
-(((special case)))
+(((caso especial)))
 
 Además de las instancias de prueba generadas, también puede probar su programa con una lista de palabras como +palabras.txt+. Al escanear el resultado, es posible que pueda detectar errores, pero tenga cuidado: puede detectar un tipo de error (palabras que no deberían incluirse, pero lo están) y no otro (palabras que deberían incluirse, pero no lo están).
 
@@ -311,17 +311,17 @@ ____
 
 === Glosario
 
-objeto archivo::
+objeto archivo o file stream::
 Un valor que representa un archivo abierto.
 (((file stream)))
 
 reducción a un problema previamente resuelto::
 Una manera de resolver un problema expresándolo como una instancia de un problema previamente resuelto.
-(((reduction to a previously solved problem)))
+(((reducción a un problema previamente resuelto)))
 
 caso especial::
 Una instancia de prueba que es atípica o no obvia (y por lo tanto, menos probable que se maneje correctamente).
-(((special case)))
+(((caso especial)))
 
 
 === Ejercicios
@@ -380,6 +380,6 @@ Escriba un programa de Julia que busque soluciones para este puzzle.
 [TIP]
 ====
 Puede encontrar la función +lpad+ útil.
-(((lpad)))((("function", "Base", "lpad", see="lpad")))
+(((lpad)))((("función", "Base", "lpad", see="lpad")))
 ====
 

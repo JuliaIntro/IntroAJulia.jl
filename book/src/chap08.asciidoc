@@ -2,21 +2,21 @@
 == Cadenas
 
 Las cadenas son diferentes de los números enteros, flotantes y booleanos. Una cadena es una _secuencia_, es decir, es una colección ordenada de valores. En este capítulo veremos cómo acceder a los caracteres que forman una cadena, y conoceremos algunas funciones integradas en Julia relacionadas con cadenas.
-(((string)))(((sequence)))
+(((cadena)))(((secuencia)))
 
 [[characters]]
 === Caracteres
 
 Los hispanohablantes están familiarizados con algunos caracteres, tales como las letras del alfabeto (A, B, C, ...), los números y los signos de puntuación comunes. Estos caracteres están estandarizados en el código _ASCII_ (Código Estándar Estadounidense para el Intercambio de Información).
-(((ASCII standard)))
+(((código ASCII)))
 
 Por supuesto hay muchos otros caracteres utilizados en idiomas distintos del español que no están en el código _ASCII_, tales como aquellos usados en los idiomas griego, árabe, chino, hebreo, hindi, japonés y coreano.
 
 Definir qué es un carácter es altamente complejo. La _norma Unicode_ permite abordar este problema, y se considera como el estándar definitivo para ello. Esta norma funciona asignando un número único para cada carácter a nivel global.
-(((Unicode standard)))
+(((norma Unicode)))
 
 Un valor +Char+ representa un único carácter y está entre comillas simples:
-(((Char)))((("type", "Base", "Char", see="Char")))
+(((Char)))((("tipo", "Base", "Char", see="Char")))
 
 [source,@julia-repl-test]
 ----
@@ -35,7 +35,7 @@ Incluso los emojis son parte del estándar Unicode. (*+\:banana: TAB+*)
 === Una Cadena es una Secuencia
 
 Una cadena es una secuencia de caracteres. Se puede acceder a un carácter con el operador corchete:
-(((string)))(((String)))(((sequence)))(((bracket operator)))((("[]", see="bracket operator")))((("operator", "Base", "[]", see="bracket operator")))
+(((cadena)))(((String)))(((secuencia)))(((operador corchete)))((("[]", see="operador corchete")))((("operador", "Base", "[]", see="operador corchete")))
 
 [source,@julia-repl-test chap08]
 ----
@@ -48,7 +48,7 @@ julia> letra = fruta[1]
 La segunda sentencia selecciona el carácter número 1 de +fruta+ y la asigna a la variable +letra+. 
 
 La expresión entre corchetes se llama _indice_. El índice indica el carácter de la secuencia a obtener (de ahí el nombre).
-(((index)))
+(((indice)))
 
 La indexación en Julia es base 1, es decir, el primer elemento de cualquier objeto indexado con enteros está en el índice 1, y el último en el índice +end+:
 (((end)))
@@ -105,10 +105,10 @@ julia> last = frutas[len]
 Pero con esto no se obtiene el resultado esperado.
 
 Las cadenas se codifican usando _codificación UTF-8_. UTF-8 es una codificación de longitud variable, lo que significa que no todos los caracteres están codificados con el mismo número de bytes.
-(((UTF-8 encoding)))
+(((codificación UTF-8)))
 
 La función +sizeof+ devuelve el número de bytes de una cadena:
-(((sizeof)))((("function", "Base", "sizeof", see="sizeof")))
+(((sizeof)))((("función", "Base", "sizeof", see="sizeof")))
 
 [source,@julia-repl-test chap08]
 ----
@@ -129,13 +129,13 @@ ERROR: StringIndexError("🍌 🍎 🍐", 2)
 ----
 
 En el caso de +frutas+, el carácter +🍌+ es un carácter de cuatro bytes, por lo que los índices 2, 3 y 4 no son válidos y el índice del siguiente carácter es 5; el siguiente índice válido se puede calcular con +nextind(frutas, 1)+, el subsiguiente con +nextind(frutas,5)+ y así sucesivamente.
-(((nextind)))((("function", "Base", "nextind", see="nextind")))
+(((nextind)))((("función", "Base", "nextind", see="nextind")))
 
 
 === Recorrido
 
 Muchos cálculos implican procesar una cadena carácter por carácter. A menudo empiezan por el principio, seleccionan cada carácter por turno, hacen algo con él y continúan hasta el final. Este patrón de proceso se llama _recorrido_. Una forma de escribir un recorrido es con una sentencia while:
-(((traversal)))(((while statement)))
+(((recorrido)))(((sentencia while)))
 
 [source,@julia-setup chap08]
 ----
@@ -150,14 +150,14 @@ end
 Este bucle recorre la cadena y muestra cada letra en una línea distinta. La condición del bucle es +index pass:[&lt;=] sizeof(fruta)+, de modo que cuando el indice es mayor al número de bytes en la cadena, la condición es +falsa+, y no se ejecuta el cuerpo del bucle.
 
 La función +firstindex+ devuelve el primer índice de bytes válido. La palabra reservada +global+ antes de +indice+ indica que queremos reasignar la variable +indice+ definida en +Main+ (ver <<variables_globales>>).
-(((global)))(((firstindex)))((("function", "Base", "firstindex", see="firstindex")))
+(((global)))(((firstindex)))((("función", "Base", "firstindex", see="firstindex")))
 
 ==== Ejercicio 8-1
 
 Escriba una función que tome una cadena como argumento y que muestre las letras desde la última a la primera, una por línea.
 
 Otra forma de escribir un recorrido es con un bucle +for+:
-(((for statement)))(((in)))
+(((sentencia for)))(((in)))
 
 [source,@julia-setup chap08]
 ----
@@ -200,7 +200,7 @@ julia> str[1:5]
 ----
 
 El operador +[n:m]+ devuelve la parte de la cadena desde el +n+-ésimo byte hasta el +m+-ésimo. Por lo tanto, se siguen las mismas reglas que para la indexación simple.
-(((bracket operator)))
+(((operador corchete)))
 
 La palabra reservada +end+ se puede usar para indicar al último byte de la cadena:
 (((end)))
@@ -212,7 +212,7 @@ julia> str[7:end]
 ----
 
 Si el primer índice es mayor que el segundo, el resultado es una _cadena vacía_, representada por dos comillas:
-(((empty string)))((("&quot;&quot;", see="empty string")))
+(((cadena vacía)))((("&quot;&quot;", see="cadena vacía")))
 
 [source,@julia-repl-test chap08]
 ----
@@ -229,7 +229,7 @@ Continuando este ejemplo, ¿qué crees que significa +str[:]+? Prueba y verás.
 === Las Cadenas son Inmutables
 
 Es tentador usar el operador +[]+ en el lado izquierdo de una asignación, con la intención de cambiar un carácter en una cadena. Por ejemplo:
-(((bracket operator)))(((MethodError)))
+(((operador corchete)))(((MethodError)))
 
 [source,@julia-repl-test chap08]
 ----
@@ -254,7 +254,7 @@ Este ejemplo concatena la apertura del signo de exclamación y una nueva primera
 === Interpolación de Cadenas
 
 Construir cadenas usando concatenación puede ser un poco engorroso. Para disminuir la necesidad de las llamadas a +string+ o multiplicaciones repetidas, Julia permite la _interpolación de cadenas_ usando +$+:
-(((string interpolation)))((("$", see="string interpolation")))
+(((interpolación de cadenas)))((("$", see="interpolación de cadenas")))
 
 [source,@julia-repl-test]
 ----
@@ -277,14 +277,14 @@ julia> "1 + 2 = $(1 + 2)"
 ----
 
 [[searching]]
-=== Buscar
+=== Búsqueda
 
 ¿Qué hace la siguiente función?
-(((find)))((("function", "programmer-defined", "find", see="find")))
+(((búsqueda)))((("función", "definida por el programador", "búsqueda", see="búsqueda")))
 
 [source,@julia-setup]
 ----
-function buscar(palabra, letra)
+function busqueda(palabra, letra)
     indice = primerindice(palabra)
     while indice <= sizeof(palabra)
         if palabra[indice] == letra
@@ -296,18 +296,18 @@ function buscar(palabra, letra)
 end
 ----
 
-En cierto sentido, la funcion buscar es lo contrario del operador +[]+. En lugar de tomar un índice y extraer el carácter correspondiente, toma un carácter y encuentra el índice donde aparece el carácter. Si el carácter no se encuentra, la función devuelve -1.
+En cierto sentido, la funcion busqueda es lo contrario del operador +[]+. En lugar de tomar un índice y extraer el carácter correspondiente, toma un carácter y encuentra el índice donde aparece el carácter. Si el carácter no se encuentra, la función devuelve -1.
 
 Este es el primer ejemplo que hemos visto de una sentencia return dentro de un bucle. Si +palabra[indice] == letra+, la función devuelve inmediatamente el índice, escapando del bucle prematuramente.
 
 Si el carácter no aparece en la cadena, entonces el programa sale del bucle normalmente y devuelve -1.
 
 Este patrón de computación se llama a veces un recorrido _eureka_ porque tan pronto como encontramos lo que buscamos, podemos gritar “¡Eureka! ” y dejar de buscar.
-(((search)))
+(((búsqueda)))
 
 ==== Ejercicio 8-4
 
-Modifique la función +buscar+ para que tenga un tercer parámetro: el índice de +palabra+ donde debería comenzar a buscar.
+Modifique la función +busqueda+ para que tenga un tercer parámetro: el índice de +palabra+ donde debería comenzar a buscar.
 
 [[looping_and_counting]]
 === Iterando y contando
@@ -327,18 +327,18 @@ println(contador)
 ----
 
 Este programa es otro ejemplo del patrón de computación llamado _conteo_.  La variable +contador+ se inicializa en 0 y se incrementa cada vez que encuentra la letra +a+. Cuando termina el bucle, +contador+ contiene el resultado (el número total de letras +a+).
-(((counter)))
+(((contador)))
 
 ==== Ejercicio 8-5
 
 Coloque este código en una función llamada +conteo+, y generalícelo de tal manera que tome como argumentos una cadena y una letra.
 
-Luego, vuelva a escribir la función para que, en vez de revisar toda la cadena, utilice la función +buscar+ de tres parámetros de la sección anterior.
+Luego, vuelva a escribir la función para que, en vez de revisar toda la cadena, utilice la función +busqueda+ de tres parámetros de la sección anterior.
 
 === Librería con cadenas
 
 Julia tiene funciones integradas que realizan una variedad de operaciones útiles en cadenas. Por ejemplo, la función +uppercase+ toma una cadena y devuelve una nueva cadena con todas las letras mayúsculas.
-(((uppercase)))((("function", "Base", "uppercase", see="uppercase")))
+(((uppercase)))((("función", "Base", "uppercase", see="uppercase")))
 
 [source,@julia-repl-test]
 ----
@@ -346,8 +346,8 @@ julia> uppercase("¡Hola, mundo!")
 "¡HOLA, MUNDO!"
 ----
 
-Existe una función llamada +findfirst+ que es notablemente similar a la función +buscar+ que escribimos:
-(((findfirst)))((("function", "programmer-defined", "findfirst", see="findfirst")))
+Existe una función llamada +findfirst+ que es notablemente similar a la función +busqueda+ que escribimos:
+(((findfirst)))((("función", "definida por el programador", "findfirst", see="findfirst")))
 
 [source,@julia-repl-test]
 ----
@@ -364,7 +364,7 @@ julia> findfirst("na", "banana")
 ----
 
 Por defecto, +findfirst+ comienza la búsqueda al comienzo de la cadena, pero la función +findnext+ toma un tercer argumento: el +indice+ donde debería comenzar:
-(((findnext)))((("function", "programmer-defined", "findnext", see="findnext")))
+(((findnext)))((("función", "definida por el programador", "findnext", see="findnext")))
 
 [source,@julia-repl-test]
 ----
@@ -376,7 +376,7 @@ julia> findnext("na", "banana", 4)
 ===  El operador +∈+
 
 El operador +∈+ (*+\in TAB+*) es un operador booleano que toma un carácter y una cadena, y devuelve +true+ si el primero aparece en el segundo:
-((("∈", see="in")))((("operator", "Base", "in", see="in")))((("operator", "Base", "∈", see="in")))
+((("∈", see="in")))((("operador", "Base", "in", see="in")))((("operador", "Base", "∈", see="in")))
 
 [source,@julia-repl-test]
 ----
@@ -385,7 +385,7 @@ true
 ----
 
 Por ejemplo, la siguiente función imprime todas las letras de palabra1 que también aparecen en palabra2:
-(((inboth)))((("function", "programmer-defined", "inboth", see="inboth")))
+(((ambas)))((("función", "definida por el programador", "ambas", see="ambas")))
 
 [source,@julia-setup chap08-2]
 ----
@@ -412,7 +412,7 @@ a n a n a s
 === Comparación de Cadenas
 
 Los operadores de comparación trabajan sobre cadenas. Para ver si dos cadenas son iguales:
-(((string comparison)))(((==)))
+(((comparación de cadenas)))(((==)))
 
 [source,@julia-setup chap08]
 ----
@@ -423,7 +423,7 @@ end
 ----
 
 Otras operaciones de comparación son útiles para ordenar alfabeticamente palabras:
-(((alphabetical order)))
+(((orden alfabético)))
 
 [source,@julia-setup chap08]
 ----
@@ -457,7 +457,7 @@ Una forma común de abordar este problema es convertir las cadenas a un formato 
 === Depuración
 
 Cuando se usan índices para recorrer los valores en una secuencia, es difícil acceder al principio y al final del recorrido. Aquí hay una función que compara dos palabras y devuelve +true+ si una de las palabras es el reverso de la otra, pero contiene dos errores:
-(((debugging)))(((traversal)))(((isreverse)))((("function", "programmer-defined", "isreverse", see="isreverse")))
+(((depuración)))(((recorrido)))(((esreverso)))((("función", "definida por el programador", "esreverso", see="esreverso")))
 
 [source,@julia-setup chap08]
 ----
@@ -584,35 +584,35 @@ Ejecute el programa en papel, cambiando los valores de +i+ y +j+ durante cada it
 
 secuencia::
 Una colección ordenada de valores donde cada valor se identifica mediante un índice entero.
-(((sequence)))
+(((secuencia)))
 
 código ASCII::
 Código de caracteres estándar para el intercambio de información.
-(((ASCII standard)))
+(((código ASCII)))
 
 norma Unicode::
 Un estándar en la industria informática para la codificación, representación y manejo consistentes de texto en la mayoría de los sistemas de escritura del mundo.
-(((Unicode standard)))
+(((norma Unicode)))
 
 índice::
 Un valor entero usado para seleccionar un miembro de un conjunto ordenado, como puede ser un carácter de una cadena. En Julia los índices comienzan en 1.
-(((index)))
+(((índice)))
 
 codificación UTF-8::
 Una codificación de caracteres de longitud variable capaz de codificar todos los 1112064 puntos de código válidos en Unicode utilizando de uno a cuatro bytes de 8 bits.
-(((UTF-8 encoding)))
+(((codificación UTF-8)))
 
 recorrer::
 Iterar sobre los elementos de un conjunto, realizando una operación similar en cada uno de ellos.
-(((traversal)))
+(((recorrido)))
 
 porción::
 Una parte de una cadena especificada mediante un rango de índices.
-(((slice)))
+(((porción)))
 
 cadena vacía::
 Una cadena sin caracteres y longitud 0, representada por dos comillas.
-(((empty string)))
+(((cadena vacía)))
 
 immutable::
 La propiedad de una secuencia que hace que a sus elementos no se les pueda asignar nuevos valores.
@@ -620,15 +620,15 @@ La propiedad de una secuencia que hace que a sus elementos no se les pueda asign
 
 interpolación de cadenas::
 El proceso de evaluar una cadena que contiene uno o más marcadores de posición, produciendo un resultado en el que los marcadores de posición se reemplazan con sus valores correspondientes.
-(((string interpolation)))
+(((interpolación de cadenas)))
 
 búsqueda::
 Un patrón de recorrido que se detiene cuando encuentra lo que está buscando.
-(((search)))
+(((búsqueda)))
 
 contador::
 Una variable utilizada para contar algo, generalmente inicializada en cero y luego incrementada.
-(((counter)))
+(((contador)))
 
 
 === Ejercicios
@@ -639,19 +639,19 @@ Una variable utilizada para contar algo, generalmente inicializada en cero y lue
 Lea la documentación de las funciones relacionadas con cadenas en https://docs.julialang.org/en/v1/manual/strings/. Es posible que desee probar algunas de ellas para asegurarse de comprender cómo funcionan. +strip+ y +replace+ son particularmente útiles.
 
 La documentación utiliza una sintaxis que puede ser confusa. Por ejemplo, en +search(cadena::AbstractString, caracter::Chars, [comienzo::Integer])+, los corchetes indican argumentos opcionales. Por lo tanto, +cadena+ y +caracter+ son obligatorios, pero +comienzo+ es opcional.
-(((search)))((("function", "Base", "search", see="search")))
+(((búsqueda)))((("función", "Base", "búsqueda", see="búsqueda")))
 
 [[ex08-2]]
 ==== Ejercicio 8-8
 
 Hay una función integrada llamada +count+ que es similar a la función en <<looping_and_counting>>. Lea la documentación de esta función y úsela para contar el número de letras +a+ en "banana".
-(((count)))((("function","Base", "count", see="count")))
+(((conteo)))((("función","Base", "conteo", see="conteo")))
 
 [[ex08-3]]
 ==== Ejercicio 8-9
 
 Una porción de cadena puede tomar un tercer índice. El primero especifica el inicio, el tercero el final y el segundo el "tamaño del paso"; es decir, el número de espacios entre caracteres sucesivos. Un tamaño de paso de 2 significa cada un caracter; 3 significa cada dos, etc.
-(((slice)))
+(((porción)))
 
 [source,@julia-repl-test]
 ----
@@ -663,8 +663,8 @@ julia> fruta[1:2:6]
 
 Un tamaño de paso de -1 recorre la palabra hacia la izquierda, por lo que la porción +[end:-1:1]+ genera una cadena invertida.
 
-Use esto para escribir una versión de una línea de código de +espalindrome+ de <<ex06-3>>.
-(((ispalindrome)))
+Use esto para escribir una versión de una línea de código de +espalindromo+ de <<ex06-3>>.
+(((espalindromo)))
 
 [[ex08-4]]
 ==== Exercise 8-10
@@ -722,12 +722,12 @@ end
 ==== Exercise 8-11
 
 Un cifrado César es una forma simple de cifrado que implica desplazar cada letra un número fijo de lugares. Desplazar una letra significa reemplazarla por otra letra que se encuentra un número fijo de posiciones más adelante en el alfabeto. Es posible desplazarse hasta el principio del abecedario si fuera necesario. De esta manera, con un desplazamiento de 3, +'A'+ es +'D'+, y con un desplazamiento de 1, +'Z'+ es +'A'+ .
-(((César cypher)))
+(((cifrado César)))
 
 Para desplazar una palabra, desplace cada letra en la misma cantidad. Por ejemplo, con un desplazamiento de 6, +"ABCDEF"+ es +"GHIJKL"+ y con un desplazamiento de -6, +"BCDE"+ es +"VWXY"+. En la película _2001: Una odisea del espacio_, la computadora de la nave se llama HAL, que es IBM desplazada por -1.
 
 Escriba una función llamada +desplazarpalabra+ que tome una cadena y un número entero como parámetros, y devuelva una nueva cadena que contenga las letras de la cadena original desplazadas por la cantidad dada.
-(((rotateword)))((("function","programmer-defined", "rotateword", see="rotateword")))
+(((desplazarpalabra)))((("función","definida por el programador", "desplazarpalabra", see="desplazarpalabra")))
 
 [TIP]
 ====
@@ -748,5 +748,6 @@ julia> Char(Int('A') + 32)
 'a': ASCII/Unicode U+0061 (category Ll: Letter, lowercase)
 ----
 ====
+
 
 Algunos chistes ofensivos en Internet están codificados en ROT13, que es un cifrado César con desplazamiento 13. Si no te ofendes fácilmente, encuentra y decodifica algunos de ellos.
