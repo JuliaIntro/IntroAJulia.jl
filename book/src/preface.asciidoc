@@ -109,44 +109,44 @@ Tenemos una página web para este libro, donde se colocan las erratas, ejemplos 
 <!--Don't forget to update the link above.-->
 ++++
 
-To comment or ask technical questions about this book, send email to pass:[<a class="email" href="mailto:bookquestions@oreilly.com"><em>bookquestions@oreilly.com</em></a>].
+Para comentar o hacer preguntas técnicas sobre este libro, envíe un correo electrónico a ass:[<a class="email" href="mailto:bookquestions@oreilly.com"><em>bookquestions@oreilly.com</em></a>].
 
-For more information about our books, courses, conferences, and news, see our website at link:$$http://www.oreilly.com$$[].
+Para obtener más información sobre nuestros libros, cursos, conferencias y noticias, visite nuestro sitio web en el enlace:$$http://www.oreilly.com$$[].
 
-Find us on Facebook: link:$$http://facebook.com/oreilly$$[]
+Encuéntranos en Facebook: link:$$http://facebook.com/oreilly$$[]
 
-Follow us on Twitter: link:$$http://twitter.com/oreillymedia$$[]
+Síganos en Twitter: link:$$http://twitter.com/oreillymedia$$[]
 
-Watch us on YouTube: link:$$http://www.youtube.com/oreillymedia$$[]
+Véanos en YouTube: link:$$http://www.youtube.com/oreillymedia$$[]
 
-=== Acknowledgments
+=== Agradecimientos
 
-I really want to thank Allen for writing Think Python and allowing me to port Think Python to Julia. Your enthusiasm is contagious!
+Realmente quiero agradecer a Allen por escribir Think Python y permitirme pasar Think Python a Julia. ¡Tu entusiasmo es contagioso!
 
-I would also like to thank the technical reviewers for this book, who made many helpful suggestions: Tim Besard, Bart Janssens and David P. Sanders.
+También me gustaría agradecer a los revisores técnicos de este libro, que hicieron muchas sugerencias útiles: Tim Besard, Bart Janssens y David P. Sanders.
 
-Thanks to Melissa Potter from O'Reilly Media who made this a better book. You forced me to do the things right and make this book as original as possible.
+Gracias a Melissa Potter de O'Reilly Media por hacer de este un libro mejor. Me obligaste a hacer las cosas bien y hacer que este libro sea lo más original posible.
 
-Thanks to Matt Hacker from O'Reilly Media who helped me out with the Atlas toolchain and some syntax highlighting issues.
+Gracias a Matt Hacker de O'Reilly Media que me ayudó con la cadena de herramientas Atlas y algunos problemas al destacar la sintaxis.
 
-Thanks to all the students who worked with an early version of this book and all the contributors (listed below) who sent in corrections and suggestions.
+Gracias a todos los estudiantes que trabajaron con una versión temprana de este libro y a todos los colaboradores (enumerados a continuación) que enviaron correcciones y sugerencias.
 
-=== Contributor List
+=== Lista de Colaboradores
 
-If you have a suggestion or correction, please send email to ben.lauwens@gmail.com or open an issue on GitHub. If I make a change based on your feedback, I will add you to the contributor list (unless you ask to be omitted).
+Si tiene una sugerencia o corrección, envíe un correo electrónico a ben.lauwens@gmail.com o abra un issue en GitHub. Si se realiza un cambio basado en sus comentarios, será agregado a la lista de contribuyentes (a menos que solicite ser omitido).
 
-Let me know what version of the book you are working with, and what format. If you include at least part of the sentence the error appears in, that makes it easy for me to search. Page and section numbers are fine, too, but not quite as easy to work with. Thanks!
+Avíseme con qué versión del libro está trabajando y en qué formato. Si incluye al menos parte de la oración en la que aparece el error, eso facilita la búsqueda. Los números de página y sección también son útiles, pero no es tan fácil trabajar con ellos. ¡Gracias!
 
 [small]
 --
-- Scott Jones pointed out the name change of +Void+ to +Nothing+ and this started the migration to Julia v1.0.
-- Robin Deits found some typos in Chapter 2.
-- Mark Schmitz suggested to turn on the syntax highlighting.
-- Zigu Zhao caught some bugs in Chapter 8.
-- Oleg Soloviev caught an error in the url to add the +PiensaEnJulia+ package.
-- Aaron Ang found some rendering and naming issues.
-- Sergey Volkov caught a broken link in Chapter 7.
-- Sean McAllister suggested to mention the excellent package +BenchmarkTools+.
-- Carlos Bolech sent a long list of corrections and suggestions.
-- Krishna Kumar corrected the Markov example in Chapter 18.
+- Scott Jones señaló el cambio de nombre de +Void+ a +Nothing+ y con esto se comenzó la migración a Julia v1.0
+- Robin Deits encontró algunos errores tipográficos en el Capítulo 2.
+- Mark Schmitz sugirió destacar la sintaxis.
+- Zigu Zhao encontró algunos errores en el Capítulo 8.
+- Oleg Soloviev detectó un error en la url al agregar el paquete +ThinkJulia+.
+- Aaron Ang encontró algunos problemas de representación y nomenclatura.
+- Sergey Volkov encontró un enlace caido en el Capítulo 7.
+- Sean McAllister sugirió mencionar el excelente paquete +BenchmarkTools+.
+- Carlos Bolech envió una larga lista de correcciones y sugerencias.
+- Krishna Kumar corrigió el ejemplo de Markov en el Capítulo 18.
 --
