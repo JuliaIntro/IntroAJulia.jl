@@ -3,96 +3,94 @@
 
 En enero de 2018 comencé a preparar un curso de programación pensado en estudiantes que no tuvieran experiencia previa en programación. Quería usar Julia como lenguaje de programación, y descubrí que no existía ningún libro para aprender a programar que usara Julia como primer lenguaje de programación. Hay tutoriales maravillosos que explican los conceptos clave de Julia, pero ninguno de ellos se dedicaba lo suficiente a enseñar a pensar como un programador.
 
-Conocía el libro Think Python de Allen Downey que contiene todos los elementos clave para aprender a programar correctamente. Sin embargo, este libro se basa en el lenguaje de programación Python. Mi primer borrador del curso fue una mezcla de muchos trabajos de referencia, pero a medida que trabajaba en él, el contenido comenzó a parecerse cada vez más a los capítulos de Think Python. La idea de desarrollar mi curso utilizando Think Python como base para Think Julia se hizo realidad.
+Conocía el libro Think Python de Allen Downey que contiene todos los elementos clave para aprender a programar correctamente. Sin embargo, este libro se basa en el lenguaje de programación Python. Mi primer borrador del curso fue una mezcla de muchas referencias, pero a medida que trabajaba en él, el contenido comenzó a parecerse cada vez más a los capítulos de Think Python. La idea de desarrollar mi curso utilizando Think Python como base para enseñar Julia se hizo realidad.
 
-Todo el material estaba disponible en notebooks de Jupyter, en un repositorio de GitHub. Después de publicar un mensaje en el sitio Discourse de Julia sobre el progreso de mi curso, los comentarios fueron abrumadores. Aparentemente, un libro sobre conceptos básicos de programación con Julia como primer lenguaje de programación era algo que faltaba en el universo de Julia. Contacté a Allen para ver si podía iniciar oficialmente la versión de Think Python para Julia y su respuesta fue inmediata: "¡adelante!", me puso en contacto con su editor de O'Reilly Media y ahora, un año después, estoy poniendo los retoques finales a este libro.
+Todo el material estaba disponible en notebooks de Jupyter, en un repositorio de GitHub. Después de publicar un mensaje en el sitio Discourse de Julia sobre el progreso de mi curso, los comentarios fueron abrumadores. Aparentemente, un libro sobre conceptos básicos de programación con Julia como primer lenguaje de programación era algo que faltaba en el universo de Julia. Contacté a Allen para ver si podía iniciar oficialmente la versión de Think Python para Julia y su respuesta fue inmediata: "¡adelante!", me puso en contacto con su editor de O'Reilly Media y ahora, un año después, estoy haciendo los retoques finales a este libro.
 
-Fue un camino difícil. En agosto de 2018, se lanzó Julia v1.0 y, como todos mis colegas programadores de Julia, tuve que hacer una migración del código. Todos los ejemplos en el libro se prueban durante la conversión de los archivos fuente a archivos ASCIIDoc compatibles con O'Reilly. Tanto la cadena de herramientas como el código de los ejemplos tenían que ser compatibles con Julia v1.0. Afortunadamente no hay conferencias para dar en agosto...
+Fue un camino difícil. En agosto de 2018 se lanzó Julia v1.0 y, como todos mis colegas programadores de Julia, tuve que hacer una migración del código. Todos los ejemplos en el libro se prueban durante la conversión de los archivos fuente a archivos ASCIIDoc compatibles con O'Reilly. Tanto la cadena de herramientas como el código de los ejemplos tenían que ser compatibles con Julia v1.0. Afortunadamente no hay conferencias en agosto...
 
-Espero que disfrute al trabajar con este libro, y que lo ayude a aprender a programar y pensar como un informático, al menos un poco.
+Espero que disfrutes al trabajar con este libro, y que te ayude a aprender a programar y pensar como un informático, al menos un poquito.
 
 _Ben Lauwens_
 
-=== Why Julia?
+=== ¿Por qué usar Julia?
 
-Julia was originally released in 2012 by Alan Edelman, Stefan Karpinski, Jeff Bezanson, and Viral Shah. It is a free and open source programming language.
+Julia fue lanzada originalmente en 2012 por Alan Edelman, Stefan Karpinski, Jeff Bezanson y Viral Shah. Es un lenguaje de programación gratuito y de código abierto.
 
-Choosing a programming language is always subjective. For me, the following characteristics of Julia are decisive:
+Elegir un lenguaje de programación es siempre subjetivo. Para mí, las siguientes características de Julia son decisivas:
 
-- Julia is developed as a high-performance programming language.
-- Julia uses multiple dispatch which allows the programmer to choose from different programming patterns adapted to the application.
-- Julia is a dynamically typed language that can easily be used interactively.
-- Julia has a nice high level syntax that is easy to learn.
-- Julia is an optional typed programming language whose (user-defined) data types make the code clearer and more robust.
-- Julia has an extended standard library and numerous third party packages are available.
+- Julia está desarrollado como un lenguaje de programación de alto rendimiento.
+- Julia usa dispatch múltiple que le permite al programador elegir entre diferentes patrones de programación de acuerdo a la aplicación.
+- Julia es un lenguaje de tipo dinámico que se puede usar fácilmente de forma interactiva.
+- Julia tiene una sintaxis de alto nivel que es fácil de aprender.
+- Julia es un lenguaje de programación con tipos opcionales, cuyos tipos de datos (definidos por el usuario) hacen que el código sea más claro y robusto.
+- Julia tiene una biblioteca estándar extendida y numerosos paquetes de terceros están disponibles.
 
-Julia is a unique programming language because it solves the so-called two languages problem. No other programming language is needed to write high-performance code. This does not mean it happens automatically. It is the responsability of the programmer to optimize the code that forms a bottleneck but this can done in Julia itself.
+Julia es un lenguaje de programación único, ya que resuelve el problema de los dos idiomas. No se necesita de ningún otro lenguaje de programación para escribir código de alto rendimiento. Esto no significa que ocurra automáticamente. Es responsabilidad del programador optimizar el código que produzca cuellos de botella, pero esto puede hacerse en Julia.
 
-=== Who Is this Book For?
+=== ¿Para quién es este libro?
 
-This book is for anyone who wants to learn to program. No formal prior knowledge is required. 
+Este libro es para cualquier persona que quiera aprender a programar. No se requieren conocimientos previos formales.
 
-New concepts are introduced gradually and more advanced topics are described in later chapters. 
+Los nuevos conceptos se introducen gradualmente y los temas más avanzados se describen en capítulos posteriores.
 
-Think Julia can be used as a one-semester course at the high school or college level.
+Piensa en Julia puede ser usado como un curso de un semestre de nivel secundario o universitario.
 
-=== Conventions Used in This Book
+=== Convenciones utilizadas en este libro
 
-The following typographical conventions are used in this book:
+En este libro se utilizan las siguientes convenciones tipográficas:
 
-_Italic_:: Indicates new terms, URLs, email addresses, filenames, and file extensions.
+_Cursiva_:: Indica nuevos términos, URL, direcciones de correo electrónico, nombres de archivo y extensiones de archivo.
 
-+Constant width+:: Used for program listings, as well as within paragraphs to refer to program elements such as variable or function names, databases, data types, environment variables, statements, and keywords.
++Ancho constante+:: Se utiliza para mostrar código de programas, así como dentro de los párrafos para referirse a elementos del programa como nombres de variables o funciones, bases de datos, tipos de datos, variables de entorno, sentencias y palabras reservadas.
 
-**`Constant width bold`**:: Shows commands or other text that should be typed literally by the user.
+**`Ancho constante en negrita`**:: Muestra comandos u otro texto que el usuario debe escribir.
 
-_++Constant width italic++_:: Shows text that should be replaced with user-supplied values or by values determined by context.
-
+_++Ancho constante en cursiva++_:: Muestra el texto que debe reemplazarse con valores proporcionados por el usuario o por valores determinados por el contexto.
 
 [TIP]
 ====
-This element signifies a tip or suggestion.
+Esto indica consejo o sugerencia.
 ====
 
 [NOTE]
 ====
-This element signifies a general note.
+Esto es una nota general.
 ====
 
 [WARNING]
 ====
-This element indicates a warning or caution.
+Esto indica una advertencia o precaución.
 ====
 
-=== Using Code Examples
+=== Usar códigos de ejemplo
+Todo el código utilizado en este libro está disponible en un repositorio de Git en GitHub: https://github.com/PiensaEnJulia/PiensaEnJulia.jl. Si no está familiarizado con Git, es un sistema de control de versiones que le permite realizar seguimiento a los archivos que componen un proyecto. Una colección de archivos controlados por Git se denomina "repositorio". GitHub es un servicio de hosting que proporciona almacenamiento para repositorios de Git y una interfaz web conveniente.
 
-All code used in this book is available from a Git repository on GitHub: https://github.com/PiensaEnJulia/PiensaEnJulia.jl. If you are not familiar with Git, it is a version control system that allows you to keep track of the files that make up a project. A collection of files under Git's control is called a “repository”. GitHub is a hosting service that provides storage for Git repositories and a convenient web interface.
+El siguiente paquete puede ser de utilidad, y se puede agregar directamente a Julia. Simplemente escriba *+pass:[add https://github.com/PiensaEnJulia/PiensaEnJulia.jl]+* en el REPL, en modo Pkg.
 
-A convenience package is provided that can be directly added to Julia. Just type *+pass:[add https://github.com/PiensaEnJulia/PiensaEnJulia.jl]+* in the REPL in Pkg mode.
+La forma más fácil de ejecutar un código de Julia es en https://juliabox.com, iniciando una sesión de prueba gratuita. Es posible utilizar la interfaz REPL y notebooks. Si desea que Julia esté instalada localmente en su computadora, puede descargar JuliaPro de Julia Computing gratuitamente desde https://juliacomputing.com/products/juliapro.html. Consiste en una versión reciente de Julia, el IDE de Juno basado en Atom y varios paquetes de Julia preinstalados. Si eres más aventurero, puedes descargar Julia desde https://julialang.org, instalar el editor que te gusta, por ejemplo Atom o Visual Studio Code, y activar los complementos para su integración de Julia. Para una instalación local, también puedes agregar el paquete +IJulia+ y ejecutar un notebook Jupyter en su computadora.
 
-The easiest way to run Julia code is going to https://juliabox.com and start a free session. Both the REPL and a notebook interface are available. If you want to have Julia locally installed on you computer, JuliaPro from Julia Computing can be downloaded freely from https://juliacomputing.com/products/juliapro.html. It consists of a recent Julia version, the Juno IDE based on Atom and a number of preinstalled Julia packages. If you are more adventurous, you can download Julia from https://julialang.org, install the editor you like, e.g. Atom or Visual Studio Code, and activate the plugins for Julia integration. To a local install, you can also add the +IJulia+ package and run a Jupyter notebook on your computer.
+Este libro tiene como objetivo ayudarlo a hacer su trabajo. En general, puede usar código de ejemplo en sus programas y documentación. No necesita contactarnos para obtener permiso a menos que esté reproduciendo una parte importante del código. Por ejemplo, escribir un programa que use varios fragmentos de código de este libro no requiere permiso. Vender o distribuir un CD-ROM de ejemplos de los libros de O’Reilly requiere permiso. Responder una pregunta citando este libro y citando código de ejemplo no requiere permiso. La incorporación de una cantidad significativa de código de ejemplo de este libro en la documentación de su producto requiere permiso.
 
-This book is here to help you get your job done. In general, you may use example code in your programs and documentation. You do not need to contact us for permission unless you’re reproducing a significant portion of the code. For example, writing a program that uses several chunks of code from this book does not require permission. Selling or distributing a CD-ROM of examples from O’Reilly books does require permission. Answering a question by citing this book and quoting example code does not require permission. Incorporating a significant amount of example code from this book into your product’s documentation does require permission.
+Apreciamos, pero no requerimos, la atribución. Una atribución generalmente incluye el título, autor, editor y ISBN. Por ejemplo: “Piensa en Julia de Ben Lauwens y Allen B; Downey (O'Reilly). Copyright 2019 Allen Downey, Ben Lauwens, 978-1-492-04503-8."
 
-We appreciate, but do not require, attribution. An attribution usually includes the title, author, publisher, and ISBN. For example: “Think Julia by Ben Lauwens and Allen B; Downey (O’Reilly). Copyright 2019 Allen Downey, Ben Lauwens, 978-1-492-04503-8.”
-
-If you feel your use of code examples falls outside fair use or the permission given above, feel free to contact us at pass:[<a class="email" href="mailto:permissions@oreilly.com"><em>permissions@oreilly.com</em></a>].
+Si cree que su uso de código de ejemplo está fuera del uso permitido o del permiso otorgado anteriormente, no dude en comunicarse con nosotros a pass:[<a class="email" href="mailto:permissions@oreilly.com"><em>permissions@oreilly.com</em></a>].
 
 === O'Reilly Safari
 
 [role = "safarienabled"]
 [NOTE]
 ====
-pass:[<a href="http://oreilly.com/safari" class="orm:hideurl"><em class="hyperlink">Safari</em></a>] (formerly Safari Books Online) is a membership-based training and reference platform for enterprise, government, educators, and individuals.
+pass:[<a href="http://oreilly.com/safari" class="orm:hideurl"><em class="hyperlink">Safari</em></a>] (anteriormente Safari Books Online) es una plataforma de referencia y capacitación basada en membresía para empresas, gobiernos, educadores e individuos.
 ====
 
-Members have access to thousands of books, training videos, Learning Paths, interactive tutorials, and curated playlists from over 250 publishers, including O’Reilly Media, Harvard Business Review, Prentice Hall Professional, Addison-Wesley Professional, Microsoft Press, Sams, Que, Peachpit Press, Adobe, Focal Press, Cisco Press, John Wiley & Sons, Syngress, Morgan Kaufmann, IBM Redbooks, Packt, Adobe Press, FT Press, Apress, Manning, New Riders, McGraw-Hill, Jones & Bartlett, and Course Technology, among others.
+Los miembros tienen acceso a miles de libros, videos de capacitación, diferentes formas de aprendizaje, tutoriales interactivos y listas de reproducción seleccionadas de más de 250 editoriales, incluidos O'Reilly Media, Harvard Business Review, Prentice Hall Professional, Addison-Wesley Professional, Microsoft Press, Sams, Que , Peachpit Press, Adobe, Focal Press, Cisco Press, John Wiley & Sons, Syngress, Morgan Kaufmann, IBM Redbooks, Packt, Adobe Press, FT Press, Apress, Manning, New Riders, McGraw-Hill, Jones & Bartlett y Course Technology, entre otros.
 
-For more information, please visit pass:[<a href="http://oreilly.com/safari" class="orm:hideurl"><em>http://oreilly.com/safari</em></a>]. 
+Para obtener más información, visite pass:[<a href="http://oreilly.com/safari" class="orm:hideurl"><em>http://oreilly.com/safari</em></a>]. 
 
-=== How to Contact Us
+=== Cómo contactarnos
 
-Please address comments and questions concerning this book to the publisher:
+Por favor envíe sus comentarios y preguntas sobre este libro al editor:
 
 ++++
 <ul class="simplelist">
@@ -105,7 +103,7 @@ Please address comments and questions concerning this book to the publisher:
 </ul>
 ++++
 
-We have a web page for this book, where we list errata, examples, and any additional information. You can access this page at link:$$http://oreilly.com/catalog/0636920215707$$[].
+Tenemos una página web para este libro, donde se colocan las erratas, ejemplos y cualquier información adicional. Puede acceder a esta página con el enlace:$$http://oreilly.com/catalog/0636920215707$$[].
 
 ++++
 <!--Don't forget to update the link above.-->
