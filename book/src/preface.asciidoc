@@ -15,9 +15,9 @@ _Ben Lauwens_
 
 === ¿Por qué usar Julia?
 
-Julia fue lanzada originalmente en 2012 por Alan Edelman, Stefan Karpinski, Jeff Bezanson y Viral Shah. Es un lenguaje de programación gratuito y de código abierto.
+Julia fue lanzado originalmente en 2012 por Alan Edelman, Stefan Karpinski, Jeff Bezanson y Viral Shah. Es un lenguaje de programación gratuito y de código abierto.
 
-Elegir un lenguaje de programación es siempre subjetivo. Para mí, las siguientes características de Julia son decisivas:
+La elección de un lenguaje de programación es siempre subjetiva. Para mí, las siguientes características de Julia son decisivas:
 
 - Julia está desarrollado como un lenguaje de programación de alto rendimiento.
 - Julia usa dispatch múltiple que le permite al programador elegir entre diferentes patrones de programación de acuerdo a la aplicación.
