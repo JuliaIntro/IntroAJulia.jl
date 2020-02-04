@@ -6,7 +6,7 @@ La siguiente tabla muestra algunos carácteres Unicode de los muchos que existen
 
 [options="header"]
 |====
-|Character|Tab completion sequence|ASCII representation
+|Carácter|Tab completion sequence|representaciónASCII
 |+²+|*+\^2+*| 
 |+₁+|*+\_1+*| 
 |+₂+|*+\_2+*|
