@@ -1,7 +1,7 @@
 [appendix]
 == Entrada de Unicode
 
-La siguiente tabla muestra algunos carácteres Unicode que pueden ingresarse mediante abreviaciones similares a aquellas utilizadas en Latex, en el REPL de Julia (y en muchos otros entornos de edición).
+La siguiente tabla muestra algunos de los muchos carácteres Unicode que pueden ingresarse mediante abreviaciones similares a aquellas utilizadas en Latex, en el REPL de Julia (y en muchos otros entornos de edición).
 (((Unicode character)))(((LaTeX-like abbreviations)))(((REPL)))
 
 [options="header"]
