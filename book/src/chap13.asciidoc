@@ -163,10 +163,10 @@ Para imprimir los resultados se puede usar el siguiente código:
 [source,@julia-repl-test chap13]
 ----
 julia> println("Número total de palabras: ", palabrastotales(hist))
-Número total de palabras: 385819
+Número total de palabras: 385925
 
 julia> println("Número de palabras diferentes: ", palabrasdiferentes(hist))
-Número de palabras diferentes: 23599
+Número de palabras diferentes: 23607
 ----
 
 Observación: No se considera el encabezado del archivo de texto, sólo el libro.
@@ -206,7 +206,7 @@ En este ejemplo utilizamos un carácter de tabulación (+pass:['\t']+) como "sep
 t = mascomun(hist)
 println("Las palabras más comunes son:")
 for (frec, palabra) in t[1:10]
-    println(palabra, "\t", freq)
+    println(palabra, "\t", frec)
 end
 ----
 
@@ -227,7 +227,7 @@ function imprimirmascomun(hist, num=10)
     t = mascomun(hist)
     println("Las palabras más comunes son: ")
     for (frec, palabra) in t[1:num]
-        println(palabra, "\t", freq)
+        println(palabra, "\t", frec)
     end
 end
 ----

@@ -725,9 +725,9 @@ Esta función no modifica el arreglo original, y se usa de la siguiente manera:
 ----
 julia> letras = ['a', 'b', 'c'];
 
-julia> rest = cola(letters);
+julia> demas = cola(letras);
 
-julia> print(rest)
+julia> print(demas)
 ['b', 'c']
 ----
 

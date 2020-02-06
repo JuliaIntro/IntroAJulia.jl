@@ -173,7 +173,7 @@ El ejemplo siguiente muestra cómo usar la concatenación (multiplicación de ca
 [source,@julia chap08-3]
 ----
 prefijos = "JKLMNOPQ"
-sufijos = "ack"
+sufijo = "ack"
 
 for letra in prefijos
     println(letra * sufijo)
@@ -195,7 +195,7 @@ A la subcadena de una cadena se le llama _porción_. La selección de una porci�
 ----
 julia> str = "Julio Cesar";
 
-julia> str[1:6]
+julia> str[1:5]
 "Julio"
 ----
 
@@ -207,7 +207,7 @@ La palabra reservada +end+ se puede usar para indicar al último byte de la cade
 
 [source,@julia-repl-test chap08]
 ----
-julia> str[8:end]
+julia> str[7:end]
 "Cesar"
 ----
 
@@ -245,7 +245,7 @@ La razón del error es que las cadenas son _inmutables_, lo que significa que no
 
 [source,@julia-repl-test chap08]
 ----
-julia> saludo = "J" * saludo[4:end]
+julia> saludo = "¡J" * saludo[4:end]
 "¡Jola, mundo!"
 ----
 
@@ -259,9 +259,9 @@ Construir cadenas usando concatenación puede ser un poco engorroso. Para dismin
 [source,@julia-repl-test]
 ----
 julia> saludo = "¡Hola"
-"Hello"
+"¡Hola"
 julia> paraquien = "mundo"
-"World"
+"mundo"
 julia> "$saludo, $(paraquien)!"
 "¡Hola, mundo!"
 ----
@@ -428,19 +428,21 @@ Otras operaciones de comparación son útiles para ordenar alfabeticamente palab
 [source,@julia-setup chap08]
 ----
 if palabra < "banana"
-    println("Su palabra, $word, va antes de banana.")
+    println("Su palabra, $palabra, va antes de banana.")
 elseif word > "banana"
-    println("Su palabra, $word, va antes de banana.")
+    println("Su palabra, $palabra, va antes de banana.")
 else
     println("¡Tenemos bananas!")
 end
 ----
 
+// Pamela, I'm not sure what's going on in the following. Do you really want this?
+
 Julia no maneja las letras mayúsculas y minúsculas como nosotros. Todas las letras mayúsculas van antes de las letras minúsculas. Por lo tanto:
 
-[source,@julia-eval chap08]
+[source,julia chap08]
 ----
-Su palabra, Piña, va antes de banana.
+"Su palabra, Piña, va antes de banana."
 ----
 
 [TIP]
@@ -492,13 +494,13 @@ false
 
 Para depurar este tipo de error, primeramente imprimamos los valores de los índices:
 
-[source,julia]
-----
-    while j >= 0
-        j = prevind(palabra2, j)
-        @show i j
-        if palabra1[i] != palabra2[j]
-----
+// [source,julia]
+// ----
+//     while j >= 0
+//         j = prevind(palabra2, j)
+//         @show i j
+//         if palabra1[i] != palabra2[j]
+// ----
 
 [source,@julia-eval chap08]
 ----
@@ -567,7 +569,7 @@ i = 4
 j = 1
 i = 5
 j = 0
-ERROR: BoundsError: attempt to access "amor"
+ERROR: BoundsError: attempt to access String
   at index [5]
 ----
 

@@ -225,11 +225,11 @@ Así es como se ve la salida:
 julia> h = histograma("perros");
 
 julia> imprimirhist(h)
-e 1
-r 2
-p 1
-o 1
 s 1
+e 1
+p 1
+r 2
+o 1
 ----
 
 Nuevamente, las claves no están en un orden particular. Para recorrer las claves en orden, puede usar +sort+ y +collect+:
@@ -464,7 +464,7 @@ Si lo ejecutas obtienes:
 [source,@julia-repl-test chap11]
 ----
 julia> ejemplo3()
-ERROR: UndefVarError: count not defined
+ERROR: UndefVarError: conteo not defined
 ----
 
 Julia asume que +conteo+ es local, y bajo esa suposición lo estás leyendo antes de escribirlo. La solución, nuevamente, es declarar +conteo+ como global.

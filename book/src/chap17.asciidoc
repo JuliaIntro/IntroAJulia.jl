@@ -30,8 +30,8 @@ julia> function devolverfloat()
            x::Float64 = 100
            x
        end
-returnfloat (generic function with 1 method)
-julia> x = returnfloat()
+devolverfloat (generic function with 1 method)
+julia> x = devolverfloat()
 100.0
 julia> typeof(x)
 Float64
@@ -179,7 +179,7 @@ Si colocamos los argumentos en el orden incorrecto, obtendremos un error:
 [source,@julia-repl-test chap17a]
 ----
 julia> incrementar(1337, inicio)
-ERROR: MethodError: no method matching increment(::Int64, ::MyTime)
+ERROR: MethodError: no method matching incrementar(::Int64, ::Hora)
 ----
 
 La especificación del método es +incrementar(tiempo::Hora, segundos::Int64)+, no +incrementar(segundos::Int64, tiempo::Hora)+.
@@ -362,8 +362,8 @@ Así es como se vería la definición:
 import Base.+
 
 function +(t1::Hora, t2::Hora)
-    segundos = horaaentero(t1) + enteroahora(t2)
-    enteroahora(seconds)
+    segundos = horaaentero(t1) + horaaentero(t2)
+    enteroahora(segundos)
 end
 ----
 
@@ -467,9 +467,9 @@ julia> t = ("spam", "huevo", "spam", "spam", "tocino", "spam")
 ("spam", "huevo", "spam", "spam", "tocino", "spam")
 julia> histograma(t)
 Dict{Any,Any} with 3 entries:
+  "spam"   => 4
+  "huevo"  => 1
   "tocino" => 1
-  "spam"  => 4
-  "huevo"   => 1
 ----
 
 Las funciones que pueden tomar parámetros de diferentes tipos se llaman _polimórficas_. El polimorfismo puede facilitar la reutilización del código.

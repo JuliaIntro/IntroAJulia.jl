@@ -1,5 +1,6 @@
 [colophon]
-== Copyright
+== License
+
 
 Copyright © 2018 Allen Downey, Ben Lauwens. Todos los derechos reservados.
 
@@ -10,3 +11,4 @@ _Think Julia_ está disponible bajo la Licencia Creative Commons Attribution-Non
 *Allen Downey* es profesor de informática en Olin College of Engineering. Ha dado clases en Wellesley College, Colby College y U.C. Berkeley Tiene un doctorado en informática de U.C. Berkeley, y maestrías y licenciaturas del MIT.
 
 La versión en inglés de este libro está disponible en: https://benlauwens.github.io/ThinkJulia.jl/latest/book.html
+
