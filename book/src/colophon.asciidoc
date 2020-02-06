@@ -1,10 +1,14 @@
 [colophon]
 == License
 
-_Piensa En Julia_ is available under the Creative Commons Attribution-NonCommercial 3.0 Unported License. An online version is available at https://piensaenjulia.github.io/PiensaEnJulia.jl/latest/book.html
 
-*Ben Lauwens* is a Professor of Mathematics at Royal Military Academy (RMA Belgium). He has a PhD in Engineering and Master’s degrees from KU Leuven and RMA and Bachelor’s degree from RMA.
+Copyright © 2018 Allen Downey, Ben Lauwens. Todos los derechos reservados.
 
-*Allen Downey* is a Professor of Computer Science at Olin College of Engineering. He has taught at Wellesley College, Colby College and U.C. Berkeley. He has a PhD in Computer Science from U.C. Berkeley and Master’s and Bachelor’s degrees from MIT.
+_Think Julia_ está disponible bajo la Licencia Creative Commons Attribution-NonCommercial 3.0 Unported. Los autores mantienen una versión en línea en https://piensaenjulia.github.io/PiensaEnJulia.jl/latest/book.html
 
-An https://benlauwens.github.io/ThinkJulia.jl/latest/book.html[English] version of this book is available.
+*Ben Lauwens* es profesor de matemáticas en Royal Military Academy (RMA Bélgica). Tiene un doctorado en ingeniería y maestrías de KU Leuven y RMA, y una licenciatura de RMA.
+
+*Allen Downey* es profesor de informática en Olin College of Engineering. Ha dado clases en Wellesley College, Colby College y U.C. Berkeley Tiene un doctorado en informática de U.C. Berkeley, y maestrías y licenciaturas del MIT.
+
+La versión en inglés de este libro está disponible en: https://benlauwens.github.io/ThinkJulia.jl/latest/book.html
+

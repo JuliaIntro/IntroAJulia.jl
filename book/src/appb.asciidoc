@@ -2,15 +2,15 @@
 [[juliabox]]
 == JuliaBox
 
-JuliaBox allows you to run Julia in your browser. Enter the url https://www.juliabox.com, login and start using the Jupyter environment.
+JuliaBox permite ejecutar Julia en su navegador. Ingrese a la página https://www.juliabox.com, inicie sesión y comience a usar el entorno Jupyter.
 
-The initial screen is shown in <<figb-1>>. The new button allows the creation of a Julia notebook, a text file, a folder or a terminal session.
+La pantalla inicial se muestra en <<figb-1>>. El botón "new" (nuevo) permite la creación de un notebook de Julia, un archivo de texto (text file), una carpeta (folder) o una sesión de terminal (terminal session).
 
-In a terminal session, the command *+julia+* starts the REPL as shown in <<figb-2>>.
+En una sesión de terminal, el comando *+julia+* inicia REPL como se muestra en <<figb-2>>.
 
-The notebook interface allows to mix text in Markdown markup and highlighted code with associated output. <<figb-3>> shows an example.
+La interfaz del notebook permite mezclar texto (en modo Markdown) y código con su respectiva salida. <<figb-3>> muestra un ejemplo.
 
-Further documentation can be found on the website of Jupyter: http://jupyter.org/documentation.
+Puedes encontrar más documentación en el sitio web de Jupyter: http://jupyter.org/documentation.
 
 [[figb-1]]
 .Initial screen
