@@ -1,5 +1,5 @@
 [preface]
-== Preface
+== Prefacio
 
 En enero de 2018 comencé a preparar un curso de programación dirigido a estudiantes que no tuvieran experiencia previa en programación. Quería usar Julia como lenguaje de programación, pero descubrí que no existía ningún libro para aprender a programar que usara Julia como primer lenguaje de programación. Hay tutoriales maravillosos que explican los conceptos clave de Julia, pero ninguno de ellos se dedicaba lo suficiente a enseñar a pensar como un programador.
 
