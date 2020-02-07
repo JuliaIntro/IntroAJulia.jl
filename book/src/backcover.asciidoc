@@ -8,7 +8,7 @@ Piensa en Julia es ideal para estudiantes de secundaria o de universidad, así c
 
 * Entienda claramente cada concepto de programación
 
-* Aprenda sobre valores, variables, sentencias, funciones y estructuras de datos en una progresión lógica
+* Aprenda sobre valores, variables, sentencias, funciones y estructuras de datos de manera progresiva
 
 * Descubra cómo trabajar con archivos y bases de datos
 
