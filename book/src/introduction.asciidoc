@@ -65,7 +65,7 @@ Esto es una nota general.
 Esto indica una advertencia o precaución.
 ====
 
-=== Using Code Examples
+=== Usando los códigos de ejemplo
 
 Todo ((("code examples in this book")))((("Git")))((("GitHub")))((("repository")))((("online resources", "Julia")))el código utilizado en este libro está disponible en un repositorio de Git en GitHub: https://github.com/PiensaEnJulia/PiensaEnJulia.jl. Si no está familiarizado con Git, es un sistema de control de versiones que le permite realizar seguimiento a los archivos que componen un proyecto. Una colección de archivos controlados por Git se denomina “repositorio”. GitHub es un servicio de hosting que proporciona almacenamiento para repositorios de Git y una interfaz web conveniente.
 
