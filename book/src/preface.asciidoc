@@ -3,7 +3,7 @@
 
 En enero de 2018 comencé a preparar un curso de programación pensado en estudiantes que no tuvieran experiencia previa en programación. Quería usar Julia como lenguaje de programación, y descubrí que no existía ningún libro para aprender a programar que usara Julia como primer lenguaje de programación. Hay tutoriales maravillosos que explican los conceptos clave de Julia, pero ninguno de ellos se dedicaba lo suficiente a enseñar a pensar como un programador.
 
-Conocía el libro Think Python de Allen Downey que contiene todos los elementos clave para aprender a programar correctamente. Sin embargo, este libro se basa en el lenguaje de programación Python. Mi primer borrador del curso fue una mezcla de muchas referencias, pero a medida que trabajaba en él, el contenido comenzó a parecerse cada vez más a los capítulos de Think Python. La idea de desarrollar mi curso utilizando Think Python como base para enseñar Julia se hizo realidad.
+Conocía el libro Think Python de Allen Downey que contiene todos los elementos clave para aprender a programar correctamente. Sin embargo, este libro se basa en el lenguaje de programación Python. Mi primer borrador del curso fue una mezcla de muchas referencias, pero a medida que trabajaba en él, el contenido comenzó a parecerse cada vez más a los capítulos de Think Python. La idea de desarrollar mi curso como base para traspasar ese libro a Julia se hizo realidad.
 
 Todo el material estaba disponible en notebooks de Jupyter, en un repositorio de GitHub. Después de publicar un mensaje en el sitio Discourse de Julia sobre el progreso de mi curso, los comentarios fueron abrumadores. Aparentemente, un libro sobre conceptos básicos de programación con Julia como primer lenguaje de programación era algo que faltaba en el universo de Julia. Contacté a Allen para ver si podía iniciar oficialmente la versión de Think Python para Julia y su respuesta fue inmediata: "¡adelante!", me puso en contacto con su editor de O'Reilly Media y ahora, un año después, estoy haciendo los retoques finales a este libro.
 
@@ -121,7 +121,7 @@ Véanos en YouTube: link:$$http://www.youtube.com/oreillymedia$$[]
 
 === Agradecimientos
 
-Realmente quiero agradecer a Allen por escribir Think Python y permitirme pasar Think Python a Julia. ¡Tu entusiasmo es contagioso!
+Realmente quiero agradecer a Allen por escribir Think Python y permitirme traspasar este libro a Julia. ¡Tu entusiasmo es contagioso!
 
 También me gustaría agradecer a los revisores técnicos de este libro, que hicieron muchas sugerencias útiles: Tim Besard, Bart Janssens y David P. Sanders.
 
