@@ -7,7 +7,7 @@ Ahora que sabemos cómo crear tipos compuestos, el siguiente paso es escribir fu
 === Tiempo
 
 Como otro ejemplo de tipo compuesto, definiremos una +estructura+ llamada +Hora+ que registra la hora del día. La definición de esta estructura se muestra a continuación:
-(((MyTime)))((("type", "programmer-defined", "MyTime", see="MyTime")))
+(((Hora)))((("tipo", "definida por el programador", "Hora", see="Hora")))
 
 [source,@julia-setup chap16]
 ----
@@ -24,7 +24,7 @@ end
 ----
 
 Observación: +Time+ es una palabra reservada de Julia. 
-(((Time)))((("type", "Dates", "Time", see="Time")))
+(((Time)))((("tipo", "Dates", "Time", see="Time")))
 
 [source,@julia-repl-test chap16]
 ----
@@ -41,21 +41,21 @@ image::images/fig161.svg[]
 ==== Ejercicio 16-1
 
 Escriba una función llamada +imprimirhora+ que tome un objeto +Hora+ y lo imprima con el formato +hora:minuto:segundo+. +Printf+, de la macro +@printf+ del módulo StdLib, permite imprimir un número entero con el formato `"%02d"`, es decir, utilizando al menos dos dígitos, incluido un cero inicial si es necesario.
-(((printtime)))((("function", "programmer-defined", "printtime", see="printtime")))
+(((imprimirhora)))((("función", "definida por el programador", "imprimirhora", see="imprimirhora")))
 
 ==== Ejercicio 16-2
 
 Escriba una función booleana llamada +estadespues+ que tome dos objetos +Hora+: +t1+ y +t2+, y devuelva +true+ si la hora +t1+ está después que +t2+, y +false+ de lo contrario. Desafío: no use sentencias +if+.
-(((isafter)))((("function", "programmer-defined", "isafter", see="isafter")))
+(((estadespues)))((("función", "definida por el programador", "estadespues", see="estadespues")))
 
 
 === Funciones Puras
 
 En las siguientes secciones escribiremos dos versiones de una función que calcula la suma de horas. La primera versión muestra un tipo de función llamado función pura, y la segunda un tipo llamado modificador. Además, estas versiones permitirán mostrar un nuevo plan de desarrollo de programas que llamaremos _desarrollo de prototipos_, que es una forma de abordar un problema complejo comenzando con un prototipo simple y lidiando gradualmente con las complicaciones.
-(((pure function)))(((prototype and patch)))
+(((función pura)))(((desarrollo de prototipos)))
 
 Este es un primer prototipo de la función +sumahora+:
-(((addtime)))((("function", "programmer-defined", "addtime", see="addtime")))
+(((sumahora)))((("función", "definida por el programador", "sumahora", see="sumahora")))
 
 [source,@julia-setup chap16]
 ----
@@ -116,10 +116,10 @@ Aunque esta función es correcta, es muy larga. Más adelante veremos una altern
 === Modificadores
 
 Hay veces en las que es útil que una función modifique uno o más de los objetos que recibe como parámetros. En ese caso, los cambios son visibles en el nivel en donde se ubica la sentencia de llamada. Estas funciones se llaman _modificadores_.
-(((modifier)))
+(((modificador)))
 
 La función +incrementar!+, que agrega un número dado de segundos a un objeto +Hora+, puede escribirse naturalmente como un modificador. Aquí mostramos un prototipo de la función:
-(((increment!)))((("function", "programmer-defined", "increment!", see="increment!")))
+(((incrementar!)))((("función", "definida por el programador", "incrementar!", see="incrementar!")))
 
 [source,@julia-setup chap16]
 ----
@@ -149,7 +149,7 @@ Escriba una versión correcta de +incrementar!+ sin bucles.
 Todo lo que se pueda hacer con modificadores también puede lograrse con funciones puras. De hecho, algunos lenguajes de programación solo permiten funciones puras. Hay ciertas evidencias de que los programas que usan funciones puras son más rápidos de desarrollar y menos propensos a errores que los programas que usan modificadores. Sin embargo, a veces los modificadores son utiles, y en algunos casos los programas funcionales (es decir, con funciones puras) tienden a ser menos eficientes.
 
 En general, recomendamos que escriba funciones puras siempre que sea razonable, y recurra a los modificadores sólo si hay una ventaja convincente. Este enfoque podría llamarse _estilo de programación funcional_.
-(((functional programming style)))
+(((estilo de programación funcional)))
 
 ==== Ejercicio 16-4
 
@@ -160,19 +160,19 @@ Escriba una versión "pura" de +incrementar!+, que cree y devuelva un nuevo obje
 === Desarrollo de prototipos frente a la planificación
 
 El desarrollo de programas que veremos ahora se llama “desarrollo de prototipos”. En cada una de las funciones anteriores, escribimos un prototipo que realizaba el cálculo básico, y luego lo probamos sobre unos cuantos casos, corrigiendo las fallas a medida que las encontrábamos.
-(((program development plan)))(((prototyping and patch)))
+(((plan de desarrollo de programa)))(((desarrollo de prototipos)))
 
 Este enfoque puede ser efectivo, especialmente si aún no tiene un conocimiento profundo del problema. Pero las correcciones incrementales pueden generar código innecesariamente complicado (que considere muchos casos especiales) y poco confiable (es difícil saber si ha encontrado todos los errores).
 
 Una alternativa es el _desarrollo planificado_, en el que la comprensión del problema en profundidad puede facilitar en gran medida la programación. En el caso de sumahora, podemos ver un objeto Hora como ¡un numero de tres dígitos en base 60 (vea https://en.wikipedia.org/wiki/Sexagesimal )!. El atributo segundo es la “columna de unidades”, el atributo minuto es la “columna de los sesentas” y el atributo hora es la “columna de los tres mil seiscientos”.
-(((designed development)))
+(((desarrollo planificado)))
 
 Cuando escribimos +sumahora+ e +incrementar!+, efectivamente estábamos sumando en base 60, por eso tuvimos que "acarrear" de una columna a la siguiente.
 
 Esta observación sugiere otro enfoque para el problema: podemos convertir los objetos +Hora+ en enteros y aprovechar el hecho de que la computadora sabe realizar aritmética con enteros.
 
 La siguiente función convierte un objeto Hora en un entero:
-(((timetoint)))((("function", "programmer-defined", "timetoint", see="timetoint")))
+(((horaaentero)))((("función", "definida por el programador", "horaaentero", see="horaaentero")))
 
 [source,@julia-setup chap16]
 ----
@@ -183,7 +183,7 @@ end
 ----
 
 Ahora, para convertir un entero en un objeto +Hora+ (recuerde que +divrem+ divide el primer argumento por el segundo, y devuelve el cociente y el resto como una tupla):
-(((inttotime)))((("function", "programmer-defined", "inttotime", see="inttotime")))
+(((enteroahora)))((("función", "definida por el programador", "enteroahora", see="enteroahora")))
 
 [source,@julia-setup chap16]
 ----
@@ -226,13 +226,13 @@ Irónicamente, a veces hacer un poblema más complejo (o más general) lo hace m
 === Depuración
 
 Un objeto +Hora+ está bien definido si los valores de +minuto+ y +segundo+ están entre 0 y 60 (incluido 0 pero no 60) y si +hora+ es positivo. +hora+ y +minuto+ deben ser valores enteros, pero podríamos permitir que +segundo+ sea fraccional.
-(((debugging)))
+(((depuración)))
 
 Los requisitos como estos se denominan _invariantes_ porque siempre deben ser verdaderos. Dicho de otra manera, si no son ciertas, algo está mal.
-(((invariant)))
+(((invariante)))
 
 Escribir código para verificar invariantes puede ayudar a detectar errores y encontrar sus causas. Por ejemplo, podría tener una función como +eshoravalida+ que tome un objeto +Hora+ y devuelva +false+ si viola una invariante:
-(((isvalidtime)))((("function", "programmer-defined", "isvalidtime", see="isvalidtime")))
+(((eshoravalida)))((("función", "definida por el programador", "eshoravalida", see="eshoravalida")))
 
 [source,@julia-setup chap16]
 ----
@@ -248,7 +248,7 @@ end
 ----
 
 Al comienzo de cada función, puede verificar los argumentos para asegurarse de que sean válidos:
-(((addtime)))(((error)))
+(((sumahora)))(((error)))
 
 [source,@julia-setup chap16]
 ----
@@ -280,27 +280,27 @@ Las macros +@assert+ son útiles porque permiten distinguir el código que trata
 
 desarrollo de prototipos::
 Una forma de desarrollar programas que involucra generar un prototipo del programa, hacer pruebas y corregir errores a medida que son encontrados.
-(((prototype and patch)))
+(((desarrollo de prototipos)))
 
 desarrollo planificado::
 Una forma de desarrollar programas que implica una profunda comprensión del problema, y más planificación que desarrollo incremental o desarrollo de prototipos.
-(((designed development)))
+(((desarrollo planificado)))
 
 función pura::
 Una función que no modifica los objetos que recibe como parámetros. La mayoría de las funciones puras son productivas.
-(((pure function)))
+(((función pura)))
 
 modificador::
 Una función que modifica uno o más de los objetos que recibe como parámetros. La mayoría de los modificadores son nulos, es decir, entregan resultado +nothing+.
-(((modifier)))
+(((modificador)))
 
 estilo funcional de programación::
 Un estilo de programación en el que la mayoría de las funciones son puras.
-(((functional programming style)))
+(((estilo funcional de programación)))
 
 invariante::
 Una condición que nunca debería cambiar durante la ejecución de un programa.
-(((invariant)))
+(((invariante)))
 
 
 === Ejercicios
@@ -309,7 +309,7 @@ Una condición que nunca debería cambiar durante la ejecución de un programa.
 ==== Ejercicio 16-6
 
 Escriba una función llamada +multhora+ que tome un objeto +Hora+ y un número, y devuelva un nuevo objeto +Hora+ que contenga el producto entre +Hora+ original y el número.
-(((multime)))((("function", "programmer-defined", "multime", see="multime")))
+(((multhora)))((("función", "definida por el programador", "multhora", see="multhora")))
 
 Luego use +multhora+ para escribir una función que tome un objeto +Hora+ que represente el tiempo de duración de una carrera, y un número que represente la distancia, y devuelva un objeto +Hora+ que represente el ritmo promedio (minutos por kilómetro).
 
