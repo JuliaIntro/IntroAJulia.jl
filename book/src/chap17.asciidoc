@@ -591,10 +591,10 @@ Cambie los atributos de +Hora+ para que sea un solo número entero que represent
 [[ex17-2]]
 ==== Ejercicio 17-5
 
-Escriba una definición para un tipo llamado +Canguro+, con un atributo llamado +contenidodemarsupio+ de tipo +Matriz+ y los siguientes métodos:
+Escriba una definición para un tipo llamado +Canguro+, con un atributo llamado +contenidodemarsupio+ de tipo +Arreglo+ y los siguientes métodos:
 (((Canguro)))((("tipo", "definida por el programador", "Canguro", see="Canguro")))
 
-* Un constructor que inicializa +contenidodemarsupio+ a una matriz vacía.
+* Un constructor que inicializa +contenidodemarsupio+ a un arreglo vacío.
 
 * Un método llamado +ponerenmarsupio+ que tome un objeto +Canguro+ y un objeto de cualquier tipo y lo agregue a +contenidodemarsupio+.
 (((ponerenmarsupio)))((("función", "definida por el programador", "ponerenmarsupio", see="ponerenmarsupio")))
