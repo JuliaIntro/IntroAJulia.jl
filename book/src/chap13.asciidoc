@@ -62,7 +62,7 @@ for i in 1:10
 end
 ----
 
-La función +rand+ puede tomar un iterador o matriz como argumento y devuelve un elemento aleatorio de ellos:
+La función +rand+ puede tomar un iterador o arreglo como argumento y devuelve un elemento aleatorio de ellos:
 
 [source,@julia-setup]
 ----
@@ -133,7 +133,7 @@ Este programa lee _DonQuijote.txt_, que contiene el texto de _Don Quijote_ de Mi
 +procesararchivo+ recorre las líneas del archivo, pasando una línea a la vez a +procesarlinea+. El histograma +hist+ se está utilizando como acumulador.
 (((acumulador)))
 
-+procesarlinea+ usa la función +replace+ para reemplazar los guiones por espacios antes de usar +split+ para dividir la línea en una matriz de cadenas. Recorre el conjunto de palabras y usa +filter+, +isletter+ y +lowercase+ para eliminar los signos de puntuación y convertir las palabras a minúsculas. (Decir que las cadenas se "convierten" es incorrecto; recuerde que las cadenas son inmutables, por lo que una función como +lowercase+ devuelve cadenas nuevas).
++procesarlinea+ usa la función +replace+ para reemplazar los guiones por espacios antes de usar +split+ para dividir la línea en un arreglo de cadenas. Recorre el conjunto de palabras y usa +filter+, +isletter+ y +lowercase+ para eliminar los signos de puntuación y convertir las palabras a minúsculas. (Decir que las cadenas se "convierten" es incorrecto; recuerde que las cadenas son inmutables, por lo que una función como +lowercase+ devuelve cadenas nuevas).
 (((replace)))(((split)))(((isletter)))(((lowercase)))(((get!)))(((filter)))((("función", "Base", "filter", see="filter")))
 
 Finalmente, +procesarlinea+ actualiza el histograma creando un nuevo elemento o incrementando uno existente.
@@ -173,7 +173,7 @@ Observación: No se considera el encabezado del archivo de texto, sólo el libro
 
 === Palabras Más Comunes
 
-Para encontrar las palabras más comunes, podemos hacer una matriz de tuplas, donde cada tupla contiene una palabra y su frecuencia, y ordenarla. La siguiente función toma un histograma y devuelve una matriz de tuplas de frecuencia de palabras:
+Para encontrar las palabras más comunes, podemos hacer un arreglo de tuplas, donde cada tupla contiene una palabra y su frecuencia, y ordenarla. La siguiente función toma un histograma y devuelve un arreglo de tuplas de frecuencia de palabras:
 (((mascomun)))((("función", "definida por el programador", "mascomun", see="mascomun")))(((reverse)))(((sort)))
 
 [source,@julia-setup chap13]
@@ -187,7 +187,7 @@ function mascomun(hist)
 end
 ----
 
-En cada tupla, la frecuencia aparece primero, por lo que la matriz resultante se ordena por frecuencia. A continuación se muestra un bucle que imprime las 10 palabras más comunes:
+En cada tupla, la frecuencia aparece primero, por lo que el arreglo resultante se ordena por frecuencia. A continuación se muestra un bucle que imprime las 10 palabras más comunes:
 
 [source,julia]
 ----
@@ -308,7 +308,7 @@ Escriba un programa que use la resta de conjuntos para encontrar palabras en el 
 
 === Palabras al Azar
 
-Para elegir una palabra aleatoria del histograma, el algoritmo más simple es construir una matriz con múltiples copias de cada palabra, de acuerdo con la frecuencia observada, y luego elegir una palabra de la matriz:
+Para elegir una palabra aleatoria del histograma, el algoritmo más simple es construir un arreglo con múltiples copias de cada palabra, de acuerdo con la frecuencia observada, y luego elegir una palabra del arreglo:
 (((palabraalazar)))((("función", "definida por el programador", "palabraalazar", see="palabraalazar")))
 
 [source,@julia-setup chap13]
@@ -324,18 +324,18 @@ function palabraalazar(h)
 end
 ----
 
-Este algoritmo funciona, pero no es muy eficiente; cada vez que elige una palabra aleatoria, reconstruye la matriz, que es tan grande como el libro original. Una mejora es construir la matriz una vez y luego hacer múltiples selecciones, pero la matriz sigue siendo grande.
+Este algoritmo funciona, pero no es muy eficiente; cada vez que elige una palabra aleatoria, reconstruye el arreglo, que es tan grande como el libro original. Una mejora es construir el arreglo una vez y luego hacer múltiples selecciones, pero el arreglo sigue siendo grande.
 
 Una alternativa es:
 
-. Use las +claves+ para obtener una matriz de palabras del libro.
+. Use las +claves+ para obtener un arreglo de palabras del libro.
 
-. Cree una matriz que contenga la suma acumulada de las frecuencias de palabras (vea <<ex10-2>>). El último elemento en esta matriz es el número total de palabras en el libro, latexmath:[\(n\)].
+. Cree un arreglo que contenga la suma acumulada de las frecuencias de palabras (vea <<ex10-2>>). El último elemento en este arreglo es el número total de palabras en el libro, latexmath:[\(n\)].
 
 . Elija un número aleatorio del 1 al latexmath:[\(n\)]. Use búsqueda binaria (vea <<ex10-10>>) para encontrar el índice donde se insertará el número aleatorio en la suma acumulada.
 (((búsqueda de bisección)))
 
-. Use el índice para encontrar la palabra correspondiente en la matriz de palabras.
+. Use el índice para encontrar la palabra correspondiente en el arreglo de palabras.
 
 [[ex13-7]]
 ==== Ejercicio 13-7
@@ -392,7 +392,7 @@ En este ejemplo, la longitud del prefijo siempre es dos, pero puede hacer análi
 
 Análisis de Markov:
 
-. Escriba un programa que lea un texto desde un archivo y realice análisis de Markov. El resultado debe ser un diccionario que asocie prefijos y una colección de posibles sufijos. La colección puede ser una matriz, tupla o diccionario; depende de usted hacer una elección adecuada. Puede probar su programa con una longitud de prefijo de dos, pero debe escribir el programa de manera tal que sea fácil probar con otras longitudes.
+. Escriba un programa que lea un texto desde un archivo y realice análisis de Markov. El resultado debe ser un diccionario que asocie prefijos y una colección de posibles sufijos. La colección puede ser un arreglo, tupla o diccionario; depende de usted hacer una elección adecuada. Puede probar su programa con una longitud de prefijo de dos, pero debe escribir el programa de manera tal que sea fácil probar con otras longitudes.
 
 . Agregue una función al programa anterior para generar texto aleatorio basado en análisis de Markov. Aquí hay un ejemplo de Don Quijote con longitud de prefijo 2:
 +
@@ -426,19 +426,19 @@ Usar análisis de Markov para generar texto aleatorio es divertido, pero además
 
 El último es fácil: un diccionario es la opción obvia para una asociación entre claves y valores correspondientes.
 
-Para los prefijos, las opciones más obvias son cadena, matriz de cadenas o tupla de cadenas.
+Para los prefijos, las opciones más obvias son cadena, arreglo de cadenas o tupla de cadenas.
 
-Para los sufijos, puede ser una matriz o un histograma (diccionario).
+Para los sufijos, puede ser un arreglo o un histograma (diccionario).
 
 ¿Cómo se elige? El primer paso es pensar en las operaciones que deberá implementar para cada estructura de datos. Para los prefijos, debemos ser capaces de eliminar palabras del principio y agregarlas al final. Por ejemplo, si el prefijo actual es "que piense" y la siguiente palabra es "que", debe poder formar el siguiente prefijo, "piense que".
 
-Para los prefijos, podría elegir una matriz, ya que en ella es fácil agregar y eliminar elementos.
+Para los prefijos, podría elegir un arreglo, ya que en él es fácil agregar y eliminar elementos.
 
 Para la colección de sufijos, las operaciones que debemos realizar incluyen agregar un nuevo sufijo (o aumentar la frecuencia de uno existente) y elegir un sufijo aleatorio.
 
-Agregar un nuevo sufijo es igualmente fácil para la implementación de la matriz o el histograma. Elegir un elemento aleatorio de una matriz es fácil; elegir eficientemente de un histograma es más difícil (ver <<ex13-7>>).
+Agregar un nuevo sufijo es igualmente fácil para la implementación del arreglo o del histograma. Elegir un elemento aleatorio de un arreglo es fácil; elegir eficientemente de un histograma es más difícil (ver <<ex13-7>>).
 
-Hasta ahora hemos hablado principalmente sobre la facilidad de implementación, pero hay otros factores a considerar al elegir las estructuras de datos. Uno es el tiempo de ejecución. A veces hay una razón teórica para esperar que una estructura de datos sea más rápida que otra; por ejemplo, anteriormente se mencionó que el operador +in+ es más rápido para los diccionarios que para las matrices, al menos cuando el número de elementos es grande.
+Hasta ahora hemos hablado principalmente sobre la facilidad de implementación, pero hay otros factores a considerar al elegir las estructuras de datos. Uno es el tiempo de ejecución. A veces hay una razón teórica para esperar que una estructura de datos sea más rápida que otra; por ejemplo, anteriormente se mencionó que el operador +in+ es más rápido para los diccionarios que para los arreglos, al menos cuando el número de elementos es grande.
 
 Pero generalmente no se sabe de antemano qué implementación será más rápida. Una opción es implementar ambos y ver cuál es mejor. Este enfoque se llama _benchmarking_. Una alternativa práctica es elegir la estructura de datos que sea más fácil de implementar y luego ver si es lo suficientemente rápida para la aplicación prevista. Si es así, no hay necesidad de continuar. Si no, hay herramientas, como el módulo +Profile+, que pueden identificar los lugares en un programa que toman más tiempo.
 (((benchmarking)))
@@ -521,7 +521,7 @@ Depuración en dónde se explica el problema a un objeto inanimado, tal como un 
 [[ex13-9]]
 ==== Ejercicio 13-9
 
-El "rango" de una palabra es su posición en una matriz de palabras ordenadas por frecuencia: la palabra más común tiene rango 1, la segunda más común tiene rango 2, etc.
+El "rango" de una palabra es su posición en un arreglo de palabras ordenadas por frecuencia: la palabra más común tiene rango 1, la segunda más común tiene rango 2, etc.
 
 La ley de Zipf describe una relación entre los rangos y las frecuencias de las palabras en idiomas naturales (https://en.wikipedia.org/wiki/Zipfpass:[&apos;]s_law). Específicamente, predice que la frecuencia, latexmath:[\(f\)], de la palabra con rango latexmath:[\(r\)] es:
 (((ley de Zipf)))
