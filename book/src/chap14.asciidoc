@@ -149,7 +149,7 @@ true
 Del mismo modo, +isfile+ comprueba si se trata de un archivo.
 (((isfile)))((("función", "Base", "isfile", see="isfile")))
 
-+readdir+ devuelve una matriz de los archivos (y otros directorios) en el directorio dado:
++readdir+ devuelve un arreglo de los archivos (y otros directorios) en el directorio dado:
 (((readdir)))((("función", "Base", "readdir", see="readdir")))
 
 [source,jlcon]
@@ -312,7 +312,7 @@ julia> close(bd)
 
 Una limitación de +GDBM+ es que las claves y los valores deben ser cadenas o conjuntos de bytes. Si intenta utilizar cualquier otro tipo, se producirá un error.
 
-Las funciones +serialize+ y +deserialize+ pueden ser útiles. Traducen casi cualquier tipo de objeto en una matriz de bytes (un iobuffer) adecuada para el almacenamiento en una base de datos, y luego traducen las matrices de bytes nuevamente en objetos:
+Las funciones +serialize+ y +deserialize+ pueden ser útiles. Traducen casi cualquier tipo de objeto en un arreglo de bytes (un iobuffer) adecuada para el almacenamiento en una base de datos, y luego traducen los arreglos de bytes nuevamente en objetos:
 (((Serialización)))((("módulo", "Serialización", see="Serialización")))(((serialize)))((("función", "Serialización", "serialize", see="serialize)))(((IOBuffer)))((("tipo", "Base", "IOBuffer", see="IOBuffer")))(((take!)))((("función", "Base", "take!", see="take!")))
 
 [source,@julia-repl-test chap14]
@@ -348,7 +348,7 @@ julia> print(t2)
 [1, 2, 3]
 ----
 
-+serialize+ y +deserialize+ escriben y leen desde un objeto iobuffer que representa un I/O stream en memoria. La función +take!+ recupera el contenido del iobuffer como una matriz de bytes y reestablece el iobuffer a su estado inicial.
++serialize+ y +deserialize+ escriben y leen desde un objeto iobuffer que representa un I/O stream en memoria. La función +take!+ recupera el contenido del iobuffer como un arreglo de bytes y reestablece el iobuffer a su estado inicial.
 
 Aunque el nuevo objeto tiene el mismo valor que el anterior, no es (en general) el mismo objeto:
 
@@ -601,9 +601,9 @@ Si se produce un error al abrir, leer, escribir o cerrar los archivos, su progra
 [[ex14-2]]
 ==== Ejercicio 14-3
 
-Si hizo <<ex12-2>>, recordará que debía crear un diccionario que asociaba una cadena ordenada de letras al conjunto de palabras que se podía deletrear con esas letras. Por ejemplo, +"cuaderno"+ estaba asociado a la matriz +["cuaderno", "educaron", "encuadro"]+.
+Si hizo <<ex12-2>>, recordará que debía crear un diccionario que asociaba una cadena ordenada de letras al conjunto de palabras que se podía deletrear con esas letras. Por ejemplo, +"cuaderno"+ estaba asociado al arreglo +["cuaderno", "educaron", "encuadro"]+.
 
-Escriba un módulo que importe +conjuntoanagramas+ y proporcione dos nuevas funciones: +almacenaranagramas+, que almacena el diccionario de anagramas usando +JLD2+ (vea https://github.com/JuliaIO/JLD2.jl); y +leeranagramas+, que busca una palabra y devuelve una matriz de sus anagramas.
+Escriba un módulo que importe +conjuntoanagramas+ y proporcione dos nuevas funciones: +almacenaranagramas+, que almacena el diccionario de anagramas usando +JLD2+ (vea https://github.com/JuliaIO/JLD2.jl); y +leeranagramas+, que busca una palabra y devuelve un arreglo de sus anagramas.
 (((conjuntoanagramas)))((("funcción", "definida por el programador", "conjuntoanagramas", see="conjuntoanagramas")))(((leeranagramas)))((("función", "definida por el programador", "leeranagramas", see="leeranagramas")))
 
 [[ex14-3]]
@@ -611,7 +611,7 @@ Escriba un módulo que importe +conjuntoanagramas+ y proporcione dos nuevas func
 
 En una gran colección de archivos MP3, puede haber más de una copia de la misma canción, almacenada en diferentes directorios o con diferentes nombres de archivo. El objetivo de este ejercicio es buscar duplicados.
 
-. Escriba un programa que busque un directorio y todos sus subdirectorios, de forma recursiva, y devuelva una matriz de rutas completas para todos los archivos con un sufijo dado (como _.mp3_).
+. Escriba un programa que busque un directorio y todos sus subdirectorios, de forma recursiva, y devuelva un arreglo de rutas completas para todos los archivos con un sufijo dado (como _.mp3_).
 
 . Para reconocer duplicados, puede usar +md5sum+ o +md5+ para calcular una "suma de verificación" para cada archivo. Si dos archivos tienen la misma suma de verificación, probablemente tengan el mismo contenido.
 
