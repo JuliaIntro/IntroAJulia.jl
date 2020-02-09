@@ -1,6 +1,7 @@
 ## Piensa en Julia: Cómo Pensar como un Informático
 
-Una introducción a la programación en el lenguaje informático científico Julia. Una versión en línea está disponible en https://piensaenjulia.github.io/PiensaEnJulia.jl/   Para una versión en inglés, vea [ThinkJulia](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html).
+Una introducción a la programación en el lenguaje informático científico Julia. Una versión en línea está disponible en https://piensaenjulia.github.io/PiensaEnJulia.jl/  
+Para una versión en inglés, vea [ThinkJulia](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html).
 
 ## PiensaEnJulia.jl
 
@@ -34,6 +35,11 @@ está el esquema general para hacer esto:
 ```bash
 git clone https://github.com/PiensaEnJulia/PiensaEnJulia.jl.git
 ```
+* En Julia, agregue el paquete `PiensaEnJulia` con un comando como el siguiente:
+```julia
+julia> Pkg.add(PackageSpec(url="https://github.com/PiensaEnJulia/PiensaEnJulia.jl.git"))
+```
+
 * Vaya al directorio `book` en el repositorio y ejecute el comando
 ```bash
 julia --startup-file=no make.jl build html images
