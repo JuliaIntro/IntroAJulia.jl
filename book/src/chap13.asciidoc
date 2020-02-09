@@ -469,7 +469,7 @@ Reflexiona::
 
 Habla::
 Si le explica el problema a otra persona, a veces puede encontrar la respuesta incluso antes de terminar de hacer la pregunta. Generalmente no necesitas a otra persona; incluso podrías hablar con un pato de goma. Este es el origen de la conocida estrategia llamada depuración del pato de goma. Esto es real, vea https://en.wikipedia.org/wiki/Rubber_duck_debugging.
-(((rubber duck debugging)))
+(((depuración del pato de goma)))
 
 Vuelve atrás:: 
 En ocasiones, lo mejor que puede hacer es retroceder, deshacer los cambios recientes, hasta regresar a un programa que funcione y que comprenda. Una vez logrado esto, puedes comenzar a reconstruir.
@@ -511,9 +511,9 @@ benchmarking::
 El proceso de elegir entre estructuras de datos implementando alternativas y probándolas con una muestra de las posibles entradas.
 (((benchmarking)))
 
-depuración de pato de goma::
+depuración del pato de goma::
 Depuración en dónde se explica el problema a un objeto inanimado, tal como un pato de goma. Articular el problema puede ayudarte a resolverlo, incluso si el pato de goma no sabe de Julia.
-(((depuración de pato de goma)))
+(((depuración del pato de goma)))
 
 
 === Ejercicios
