@@ -772,6 +772,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_entrada_de_unicode">Apéndice A: Entrada de Unicode</a></li>
 <li><a href="#juliabox">Apéndice B: JuliaBox</a></li>
+<li><a href="#cambios">Apéndice C: Cambios de ThinkJulia</a></li>
 <li><a href="#_index">Index</a></li>
 </ul>
 </div>
@@ -791,16 +792,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Copyright © 2018 Allen Downey, Ben Lauwens. Todos los derechos reservados.</p>
 </div>
 <div class="paragraph">
-<p><em>Think Julia</em> está disponible bajo la Licencia Creative Commons Attribution-NonCommercial 3.0 Unported. Los autores mantienen una versión en línea en <a href="https://piensaenjulia.github.io/PiensaEnJulia.jl/latest/book.html" class="bare">https://piensaenjulia.github.io/PiensaEnJulia.jl/latest/book.html</a></p>
+<p><a href="https://piensaenjulia.github.io/PiensaEnJulia.jl/latest/book.html">Este libro</a> está disponible bajo la <a href="https://creativecommons.org/licenses/by-nc/3.0/deed.es">Licencia Creative Commons Atribución-NoComercial 3.0 No portada</a>. Es una traducción de <a href="https://benlauwens.github.io/ThinkJulia.jl/latest/book.html">ThinkJulia</a>, que tiene la misma licencia. Una lista de las diferencias entre ThinkJulia y este libro está disponible en <a href="#cambios">Apéndice C</a>.</p>
 </div>
 <div class="paragraph">
 <p><strong>Ben Lauwens</strong> es profesor de matemáticas en Royal Military Academy (RMA Bélgica). Tiene un doctorado en ingeniería y maestrías de KU Leuven y RMA, y una licenciatura de RMA.</p>
 </div>
 <div class="paragraph">
 <p><strong>Allen Downey</strong> es profesor de informática en Olin College of Engineering. Ha dado clases en Wellesley College, Colby College y U.C. Berkeley Tiene un doctorado en informática de U.C. Berkeley, y maestrías y licenciaturas del MIT.</p>
-</div>
-<div class="paragraph">
-<p>La versión en inglés de este libro está disponible en: <a href="https://benlauwens.github.io/ThinkJulia.jl/latest/book.html" class="bare">https://benlauwens.github.io/ThinkJulia.jl/latest/book.html</a></p>
 </div>
 </div>
 </div>
@@ -4249,7 +4247,7 @@ A conditional statement with a series of alternative branches.
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; time()
-1.581031899775758e9</code></pre>
+1.581445607396558e9</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -13588,9 +13586,9 @@ end</code></pre>
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; mazo = Mazo()
 A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ 10♣ J♣ Q♣ K♣ A♦ 2♦ 3♦ 4♦ 5♦ 6♦ 7♦ 8♦ 9♦ 10♦ J♦ Q♦ K♦ A♥ 2♥ 3♥ 4♥ 5♥ 6♥ 7♥ 8♥ 9♥ 10♥ J♥ Q♥ K♥ A♠ 2♠ 3♠ 4♠ 5♠ 6♠ 7♠ 8♠ 9♠ 10♠ J♠ Q♠ K♠
 julia&gt; shuffle!(mazo)
-7♣ 5♥ A♦ 8♦ Q♥ 2♦ 5♣ J♠ Q♣ 3♠ 8♥ A♠ 2♠ K♣ J♦ 7♠ 7♦ 6♦ J♥ 10♦ 4♣ 3♣ 9♣ A♣ 10♥ 9♠ 9♥ 5♠ 6♥ 4♦ 3♥ 10♠ 6♣ 3♦ 8♠ 2♥ 10♣ 5♦ 8♣ Q♦ 6♠ 4♥ 9♦ A♥ J♣ 2♣ 4♠ K♠ 7♥ K♦ Q♠ K♥
+7♥ 2♠ Q♠ 6♦ 8♣ 9♥ 10♦ 7♠ 5♠ 4♠ 7♣ 9♦ 5♥ Q♦ 2♣ 9♠ 10♥ Q♥ 7♦ 4♣ 5♣ Q♣ 8♠ K♦ A♥ J♦ A♠ K♠ A♦ J♣ 10♠ 10♣ 3♦ 9♣ J♥ 2♥ 3♥ 4♥ 8♥ 2♦ 6♣ 8♦ 3♣ 4♦ 6♠ J♠ 3♠ K♥ A♣ 5♦ 6♥ K♣
 julia&gt; naipe = pop!(mazo)
-K♥
+K♣
 julia&gt; push!(mano, naipe)</code></pre>
 </div>
 </div>
@@ -15515,7 +15513,7 @@ CodeInfo(
 <div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; @code_llvm sumacuadrada(3.0, 4.0)
 ;  @ none:2 within `sumacuadrada'
-define double @julia_sumacuadrada_20122(double, double) {
+define double @julia_sumacuadrada_20132(double, double) {
 top:
 ; ┌ @ intfuncs.jl:244 within `literal_pow'
 ; │┌ @ float.jl:405 within `*'
@@ -16270,6 +16268,33 @@ trabajando con la entrada mínima que provoca el error. Debería tener sentencia
 </div>
 </div>
 <div class="sect1">
+<h2 id="cambios">Apéndice C: Cambios de ThinkJulia</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Este libro es una traducción de <a href="https://benlauwens.github.io/ThinkJulia.jl/latest/book.html">ThinkJulia</a>, que está disponible bajo la <a href="https://creativecommons.org/licenses/by-nc/3.0/deed.es">Licencia Creative Commons Atribución-NoComercial 3.0 No portada</a>. Esta licencia requiere que los trabajos derivados (como este libro) enumeren los cambios que se hicieron en el trabajo derivado en comparación con la fuente.</p>
+</div>
+<div class="paragraph">
+<p>Las diferencias en este libro de ThinkJulia incluyen lo siguiente:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Traducción del inglés al español.</p>
+</li>
+<li>
+<p>Se cambiaron muchas frases idiomáticas que no serán familiares para los lectores en español ("Se cayó el centavo").</p>
+</li>
+<li>
+<p>En lugar de usar el texto de la novela "Emma" en el Capítulo 13, se usa el texto de "DonQuijote".</p>
+</li>
+<li>
+<p>Debido a que O&#8217;Reilly no financió la traducción y no ha hecho planes para un libro impreso, hemos eliminado algunas de las referencias a O&#8217;Reilly en el prefacio.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_index">Index</h2>
 <div class="sectionbody">
 
@@ -16284,7 +16309,7 @@ trabajando con la entrada mínima que provoca el error. Debería tener sentencia
 </div>
 <div id="footer">
 <div id="footer-text">
-Ultima actualización 2020-02-06 15:31:37 -0800
+Ultima actualización 2020-02-11 10:26:44 -0800
 </div>
 </div>
 <script type="text/x-mathjax-config">
