@@ -25,15 +25,13 @@ ifdef::preface-title[:preface-title: Prefacio]
 = Piensa en Julia: Cómo Pensar como un Informático
 Ben Lauwens y Allen Downey; Traducido por Pamela Alejandra Bustamante Faúndez
 
-Este libro no está completo. Algunos de los primeros capítulos están traducidos al español, pero la mayor parte del libro permanece en inglés.
-
-This book is not complete. A few of the early chapters are translated into Spanish, yet most of the book remains in English.
+Este libro aún no está completamente terminado; Se realizarán más cambios en el texto a medida que se revise el libro.
 
 include::colophon.asciidoc[]
 
 include::dedication.asciidoc[]
 
-include::introduction.asciidoc[]
+include::preface.asciidoc[]
 
 include::chap01.asciidoc[]
 
@@ -80,6 +78,8 @@ include::chap21.asciidoc[]
 include::appa.asciidoc[]
 
 include::appb.asciidoc[]
+
+include::appc.asciidoc[]
 
 include::index.asciidoc[]    
     

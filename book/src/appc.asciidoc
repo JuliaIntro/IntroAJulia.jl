@@ -1,0 +1,17 @@
+[appendix]
+[[cambios]]
+== Cambios de ThinkJulia
+
+Este libro es una traducción de https://benlauwens.github.io/ThinkJulia.jl/latest/book.html[ThinkJulia], que está disponible bajo la https://creativecommons.org/licenses/by-nc/3.0/deed.es[Licencia Creative Commons Atribución-NoComercial 3.0 No portada]. Esta licencia requiere que los trabajos derivados (como este libro) enumeren los cambios que se hicieron en el trabajo derivado en comparación con la fuente.
+
+Las diferencias en este libro de ThinkJulia incluyen lo siguiente:
+
+* Traducción del inglés al español.
+
+* Se cambiaron muchas frases idiomáticas que no serán familiares para los lectores en español ("Se cayó el centavo").
+
+* En lugar de usar el texto de la novela "Emma" en el Capítulo 13, se usa el texto de "DonQuijote".
+
+* Debido a que O'Reilly no financió la traducción y no ha hecho planes para un libro impreso, hemos eliminado algunas de las referencias a O'Reilly en el prefacio.
+
+

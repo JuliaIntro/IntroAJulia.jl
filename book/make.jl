@@ -10,7 +10,6 @@ const chaps = [
   "book.asciidoc",
   "colophon.asciidoc",
   "dedication.asciidoc",
-  "introduction.asciidoc",
   "preface.asciidoc",
   "chap01.asciidoc",
   "chap02.asciidoc",
@@ -35,6 +34,7 @@ const chaps = [
   "chap21.asciidoc",
   "appa.asciidoc",
   "appb.asciidoc",
+  "appc.asciidoc",
   "index.asciidoc"
 ]
 mkpath(img)
@@ -106,6 +106,7 @@ elseif "oreilly" in ARGS
   run(`cp build/chap21.asciidoc $oreilly`)
   run(`cp build/appa.asciidoc $oreilly`)
   run(`cp build/appb.asciidoc $oreilly`)
+  run(`cp build/appc.asciidoc $oreilly`)
   cd(oreilly) do
     run(`git commit -a -m $(ARGS[end])`)
     run(`git push`)
