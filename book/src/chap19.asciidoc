@@ -640,7 +640,7 @@ julia> y
 Los _datos faltantes_ se pueden representar a través del objeto +missing+, que es la instancia única del tipo +Missing+.
 (((datos faltantes)))(((faltantes)))(((Missing)))((("type", "Base", "Missing", see="Missing")))
 
-Las matrices pueden contener datos faltantes:
+Los arreglos pueden contener datos faltantes:
 
 [source,@julia-repl-test chap19]
 ----
@@ -650,9 +650,9 @@ julia> a = [1, missing]
   missing
 ----
 
-El tipo de dicha matriz es +Union{Missing, T}+, donde +T+ es el tipo de los valores que realmente tenemos en la matriz.
+El tipo de dicho arreglo es +Union{Missing, T}+, donde +T+ es el tipo de los valores que realmente tenemos en el arreglo.
 
-Las funciones de reducción devuelven +missing+ cuando se invocan con matrices que contienen valores faltantes
+Las funciones de reducción devuelven +missing+ cuando se invocan con arreglos que contienen valores faltantes
 
 [source,@julia-repl-test chap19]
 ----
