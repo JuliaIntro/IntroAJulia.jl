@@ -743,8 +743,7 @@ Tipo concreto cuyos datos están compuestos de bits.
 
 unión de tipos::
 Tipo que incluye todas las instancias de cualquiera de sus tipos de parámetros como objetos.
-Type which includes as objects all instances of any of its type parameters.
-(((type union)))
+(((unión de tipos)))
 
 tipo paramétrico::
 Tipo que tiene parámetros.
