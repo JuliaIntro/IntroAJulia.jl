@@ -137,7 +137,7 @@ Test Passed
 
 === Mazos
 
-Ahora que ya tenemos Naipes, el próximo paso es definir Mazos. Como un mazo está compuesto de naipes, naturalmente cada Mazo contendrá una matriz de naipes como atributo.
+Ahora que ya tenemos Naipes, el próximo paso es definir Mazos. Como un mazo está compuesto de naipes, naturalmente cada Mazo contendrá un arreglo de naipes como atributo.
 
 A continuación se muestra una definición para +Mazo+. El constructor crea el atributo naipes y genera la baraja estándar de cincuenta
 y dos naipes:
@@ -195,7 +195,7 @@ function Base.pop!(mazo::Mazo)
 end
 ----
 
-Como +pop!+ elimina el último naipe en la matriz, estamos repartiendo desde el extremo inferior del mazo.
+Como +pop!+ elimina el último naipe en el arreglo, estamos repartiendo desde el extremo inferior del mazo.
 
 Para añadir un naipe, podemos usar la función +push!+:
 (((push!)))
