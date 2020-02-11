@@ -58,7 +58,7 @@ Naipe(2, 12)
 
 === Variables Globales
 
-Para poder imprimir los objetos +Naipe+ de una manera que sea fácil de leer, necesitamos establecer una correspondencia entre los códigos enteros, y sus correspondientes palos y valores. Una manera natural de hacer esto es con matrices de cadenas: 
+Para poder imprimir los objetos +Naipe+ de una manera que sea fácil de leer, necesitamos establecer una correspondencia entre los códigos enteros, y sus correspondientes palos y valores. Una manera natural de hacer esto es con arreglos de cadenas: 
 
 [source,@julia-setup chap18]
 ----
@@ -79,7 +79,7 @@ function Base.show(io::IO, naipe::Naipe)
 end
 ----
 
-La expresión +nombres_valor[naipe.valor]+ significa "use el atributo +valor+ del objeto +naipe+ como índice en la matriz +nombres_valor+, y seleccione la cadena correspondiente".
+La expresión +nombres_valor[naipe.valor]+ significa "use el atributo +valor+ del objeto +naipe+ como índice en el arreglo +nombres_valor+, y seleccione la cadena correspondiente".
 
 Con los métodos que tenemos hasta ahora, podemos crear e imprimir naipes:
 
@@ -211,7 +211,7 @@ end
 Un método como este, que usa otro método sin hacer mucho más se llama _enchapado_. La metáfora proviene de la carpintería, donde un enchapado es una capa fina de madera de alta calidad que se pega a la superficie de una pieza de madera de baja calidad para mejorar su apariencia.
 (((enchapado)))
 
-En este caso, +push!+ es un método "fino" que expresa una operación de matriz adecuada para los mazos. Mejora la apariencia o interfaz, de la implementación.
+En este caso, +push!+ es un método "fino" que expresa una operación de arreglos adecuada para los mazos. Mejora la apariencia o interfaz, de la implementación.
 
 También podemos escribir un método llamado +shuffle!+ (barajar en inglés) Usando la función +Random.shuffle!+:
 (((Random)))((("module", "Random", see="Random")))(((shuffle!)))((("función", "Random", "shuffle!", see="shuffle!")))
@@ -330,7 +330,7 @@ function Mano(etiqueta::String="")
 end
 ----
 
-En lugar de llenar la mano con 52 naipes nuevos, el constructor de +Mano+ inicializa +naipes+ a una matriz vacía. Se puede etiquetar a la +Mano+ pasando un argumento opcional al constructor.
+En lugar de llenar la mano con 52 naipes nuevos, el constructor de +Mano+ inicializa +naipes+ a un arreglo vacío. Se puede etiquetar a la +Mano+ pasando un argumento opcional al constructor.
 
 [source,@julia-repl-test chap18a]
 ----
@@ -423,7 +423,7 @@ El asterisco (+pass:[*]+) cerca de la flecha es una _multiplicidad_; indica cuá
 
 No hay dependencias en este diagrama. Normalmente se mostrarían con una flecha achurada. Si hay muchas dependencias, a veces se omiten.
 
-Un diagrama más detallado podría mostrar que un Mazo en realidad contiene una matriz de Naipes, pero los tipos integrados como matrices y diccionarios generalmente no se incluyen en los diagramas de tipos.
+Un diagrama más detallado podría mostrar que un Mazo en realidad contiene un arreglo de Naipes, pero los tipos integrados como arreglos y diccionarios generalmente no se incluyen en los diagramas de tipos.
 
 [[interactive]]
 === Depuración
@@ -631,7 +631,7 @@ agregarping(pong, ping)
 [[ex18-2]]
 ==== Ejercicio 18-5
 
-Escriba un método llamado +repartir!+ que tome tres parámetros: un +Mazo+, el número de manos y el número de naipes por mano. Debería crear el número apropiado de objetos +Mano+, repartir el número apropiado de naipes por mano y devolver una matriz de +Mano+s.
+Escriba un método llamado +repartir!+ que tome tres parámetros: un +Mazo+, el número de manos y el número de naipes por mano. Debería crear el número apropiado de objetos +Mano+, repartir el número apropiado de naipes por mano y devolver un arreglo de +Mano+s.
 (((repartir!)))((("función", "definida por el programador", "repartir!", see="repartir!")))
 
 [[ex18-3]]
