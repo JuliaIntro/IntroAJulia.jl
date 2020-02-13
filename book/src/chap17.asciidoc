@@ -22,7 +22,7 @@ julia> (1 + 2) :: Int64
 Esto ayuda a verificar que el programa funciona de la manera esperada.
 
 El operador +::+ también se puede agregar al lado izquierdo de una asignación, o como parte de una declaración.
-(((returnfloat)))((("function", "programmer-defined", "returnfloat", see="returnfloat")))
+(((devolverfloat)))((("función", "definida por el programador", "devolverfloat", see="devolverfloat")))
 
 [source,@julia-repl-test]
 ----
@@ -40,7 +40,7 @@ Float64
 La variable +x+ siempre es de tipo +Float64+, y su valor se convierte en un punto flotante si es necesario.
 
 También se puede añadir una anotación de tipo al encabezado de una definición de función:
-(((sinc)))((("function", "programmer-defined", "sinc", see="sinc")))
+(((sinc)))((("función", "definida por el programador", "sinc", see="sinc")))
 
 [source,@julia-setup]
 ----
@@ -61,7 +61,7 @@ En Julia, cuando se omiten los tipos, los valores pueden ser de cualquier tipo (
 === Métodos
 
 En <<chap16>>, definimos una estructura llamada +Hora+ y en <<time>>, escribimos una función llamada +imprimirhora+:
-(((MyTime)))(((printtime)))
+(((Hora)))(((imprimirhora)))
 
 [source,@julia-setup chap17a]
 ----
@@ -91,7 +91,7 @@ julia> imprimirhora(inicio)
 ----
 
 Para agregar un _método_ a la función +imprimirhora+; con el fin de que esta solo acepte como argumento un objeto +Hora+, todo lo que tenemos que hacer es agregar +::+ seguido de +Hora+ al argumento +tiempo+ en la definición de función:
-(((method)))
+(((método)))
 
 [source,@julia-setup chap17a]
 ----
@@ -101,7 +101,7 @@ end
 ----
 
 Un método es una definición de función con una _especificación_: +imprimirhora+ tiene un argumento de tipo +Hora+.
-(((signature)))
+(((especificación)))
 
 Llamar a la función +imprimirhora+ con un objeto +Hora+ produce el mismo resultado que antes:
 
@@ -131,7 +131,7 @@ No sé cómo imprimir el tiempo del argumento.
 ==== Ejercicio 17-1
 
 Reescriba +horaaentero+ y +enteroahora+ (de <<prototyping_versus_planning>>) especificando el tipo de los argumentos.
-(((timetoint)))(((inttotime)))
+(((horaaentero)))(((enteroahora)))
 
 
 [source,@julia-eval chap17a]
@@ -151,7 +151,7 @@ end;
 === Ejemplos Adicionales
 
 Aquí hay una versión de la función +incrementar+ (Ejercicio 16-5 de <<modificadores>>) reescrita especificando el tipo de los argumentos:
-(((increment)))
+(((incrementar)))
 
 [source,@julia-setup chap17a]
 ----
@@ -185,7 +185,7 @@ ERROR: MethodError: no method matching incrementar(::Int64, ::Hora)
 La especificación del método es +incrementar(tiempo::Hora, segundos::Int64)+, no +incrementar(segundos::Int64, tiempo::Hora)+.
 
 Al reescribir +estadespues+ (Ejercicio 16-2 de <<modificadores>>) para que solo acepte objetos +Hora+ se tiene:
-(((isafter)))
+(((estadespues)))
 
 [source,@julia-setup chap17a]
 ----
@@ -227,7 +227,7 @@ Hora(hora::Int64, minuto::Int64, segundo::Int64)
 ----
 
 También podemos agregar nuestros propios métodos de _constructores externos_:
-(((outer constructor)))((("constructor", "outer", see="outer constructor")))
+(((constructor externo)))((("constructor", "externo", see="constructor externo")))
 
 [source,@julia-setup chap17a]
 ----
@@ -237,10 +237,10 @@ end
 ----
 
 Este método se llama _constructor de copia_ porque el nuevo objeto +Hora+ es una copia de su argumento.
-(((copy constructor)))((("constructor", "copy", see="copy constructor")))
+(((constructor de copia)))((("constructor", "copia", see="constructor de copia")))
 
 Para imponer invariantes, necesitamos métodos de _constructor interno_:
-(((inner constructor)))((("constructor", "inner", see="inner constructor")))
+(((constructor interno)))((("constructor", "interno", see="constructor interno")))
 
 [source,@julia-setup chap17b]
 ----
@@ -274,7 +274,7 @@ Si se define algún constructor interno, el constructor por defecto ya no está 
 ====
 
 También existe un método sin argumentos de la función local +new+:
-(((new)))((("function", "Base", "new", see="new")))
+(((new)))((("función", "Base", "new", see="new")))
 
 [source,@julia-setup chap17c]
 ----
@@ -295,7 +295,7 @@ end
 ----
 
 Esto permite construir estructuras de datos recursivas, es decir, una estructura donde uno de los atributos es la estructura misma. En este caso, la estructura debe ser mutable porque sus atributos se modifican después de la creación de instancias.
-(((recursive data structures)))
+(((estructuras de datos recursivas)))
 
 
 === +show+
@@ -329,7 +329,7 @@ Personalmente, cuando escribo un nuevo tipo compuesto, casi siempre empiezo escr
 ==== Ejercicio 17-2
 
 Escriba un método de constructor externo para la clase +Punto+ que tome +x+ e +y+ como parámetros opcionales y los asigne a los atributos correspondientes.
-(((Point)))
+(((Punto)))
 
 
 [source,@julia-eval chap17b]
@@ -384,7 +384,7 @@ julia> inicio + duracion
 Al aplicar el operador +pass:[+]+ a objetos +Hora+, Julia invoca el método recién agregado. Cuando REPL muestra el resultado, Julia invoca a +show+. ¡Hay muchas cosas pasando que no vemos!
 
 Ampliar el comportamiento de los operadores de modo que funcionen con tipos definidos por el usuario/programador se denomina _sobrecarga del operador_.
-(((operator overloading)))
+(((sobrecarga del operador)))
 
 
 === Dispatch Múltiple 
@@ -426,7 +426,7 @@ julia> 1337 + inicio
 ----
 
 La elección del método a ejecutar cuando se aplica una función se llama _dispatch_. Julia permite que el proceso de dispatch elija a cuál de los métodos de una función llamar en función del número y tipo de los argumentos dados. El uso de todos los argumentos de una función para elegir el método que se debe invocar se conoce como _dispatch múltiple_.
-(((dispatch)))(((multiple dispatch)))
+(((dispatch)))(((dispatch múltiple)))
 
 ==== Ejercicio 17-3
 
@@ -442,7 +442,7 @@ Escribir los siguientes métodos +pass:[+]+ para objetos Punto:
 El dispatch múltiple es útil cuando es necesario, pero (afortunadamente) no siempre lo es. A menudo puede evitarse escribiendo funciones que funcionen correctamente para argumentos de diferentes tipos.
 
 Muchas de las funciones que hemos escrito para cadenas también funcionan para otros tipos de secuencia. Por ejemplo, en <<dictionary_collection_counters>> usamos +histograma+ para contar la cantidad de veces que cada letra aparece en una palabra.
-(((histogram)))
+(((histograma)))
 
 [source,@julia-setup chap17]
 ----
@@ -473,7 +473,7 @@ Dict{Any,Any} with 3 entries:
 ----
 
 Las funciones que pueden tomar parámetros de diferentes tipos se llaman _polimórficas_. El polimorfismo puede facilitar la reutilización del código.
-(((polymorphic)))
+(((polimórfica)))
 
 Por ejemplo, la función integrada +sum+, que suma los elementos de una secuencia, funciona siempre que los elementos de la secuencia permitan la suma.
 (((sum)))
@@ -495,7 +495,7 @@ julia> sum((t1, t2, t3))
 Si todas las operaciones realizadas dentro de la función se pueden aplicar al tipo, la función se puede aplicar al tipo.
 
 El mejor tipo de polimorfismo es el que no se busca; cuando usted descubre que una función que había escrito se puede aplicar a un tipo para el que nunca la había planeado.
-(((polymorphism)))
+(((polimorfismo)))
 
 
 === Interfaz e implementación
@@ -503,7 +503,7 @@ El mejor tipo de polimorfismo es el que no se busca; cuando usted descubre que u
 Uno de los objetivos del dispatch múltiple es hacer que el software sea más fácil de mantener, lo que significa poder mantener el programa funcionando cuando otras partes del sistema cambian, y modificar el programa para cumplir con los nuevos requisitos.
 
 Una técnica de diseño que ayuda a lograr ese objetivo es mantener las interfaces separadas de las implementaciones. Esto significa que los métodos que tienen un argumento con anotación de tipo no deberían depender de cómo se representan los atributos de ese tipo.
-(((interface)))(((implementation)))
+(((interfaz)))(((implementación)))
 
 Por ejemplo, en este capítulo desarrollamos una estructura que representa una hora del día. Los métodos que tienen un argumento con anotación de este tipo incluyen +horaaentero+, +estadespues+ y +pass:[+]+.
 
@@ -521,7 +521,7 @@ Pero si hizo un buen diseñó de interfaz, puede cambiar la implementación sin 
 Llamar a una función con los argumentos correctos puede ser difícil cuando se especifica más de un método para la función. Julia permite examinar las especificaciones de los métodos de una función.
 
 Para saber qué métodos están disponibles para una función determinada, puede usar la función +methods+:
-(((methods)))(((debugging)))
+(((métodos)))(((depuración)))
 
 [source,jlcon]
 ----
@@ -538,11 +538,11 @@ En este ejemplo, la función +imprimirhora+ tiene 2 métodos: uno con un argumen
 
 anotación de tipo::
 El operador +::+ seguido de un tipo que indica que una expresión o una variable es de ese tipo.
-(((type annotation)))
+(((anotación de tipo)))
 
 método::
 Una definición de un posible comportamiento de una función.
-(((method)))
+(((método)))
 
 dispatch::
 La elección de qué método ejecutar cuando se ejecuta una función.
@@ -550,35 +550,35 @@ La elección de qué método ejecutar cuando se ejecuta una función.
 
 especificación::
 El número y tipo de argumentos de un método que permite al dispatch seleccionar el método más específico de una función durante la llamada a función.
-(((signature)))
+(((especificación)))
 
 constructor externo::
 Constructor definido fuera de la definición de tipo para definir métodos útiles para crear un objeto.
-(((outer constructor)))
+(((constructor externo)))
 
 constructor interno::
 Constructor definido dentro de la definición de tipo para imponer invariantes o para construir objetos recursivos.
-(((inner constructor)))
+(((constructor interno)))
 
 constructor por defecto::
 Constructor interno que está disponible cuando el usuario no define constructores internos.
-(((default constructor)))
+(((constructor por defecto)))
 
 constructor de copia::
 Método de constructor externo de un tipo, que tiene como único argumento un objeto del tipo. Crea un nuevo objeto que es una copia del argumento.
-(((copy constructor)))
+(((constructor de copia)))
 
 sobrecarga de operadores::
 Ampliar el comportamiento de los operadores como pass:[+]+ de modo que trabajen con tipos definidos por el usuario.
-(((operator overloading)))
+(((sobrecarga de operadores)))
 
 dispatch múltiple::
 Dispatch basado en todos los argumentos de una función.
-(((multiple dispatch)))
+(((dispatch múltiple)))
 
 programación genérica::
 Escribir código que pueda funcionar con más de un tipo.
-(((generic programming)))
+(((programación genérica)))
 
 
 === Ejercicios
@@ -591,13 +591,13 @@ Cambie los atributos de +Hora+ para que sea un solo número entero que represent
 [[ex17-2]]
 ==== Ejercicio 17-5
 
-Escriba una definición para un tipo llamado +Canguro+, con un atributo llamado +contenidodemarsupio+ de tipo +Matriz+ y los siguientes métodos:
-(((Kangaroo)))((("type", "programmer-defined", "Kangaroo", see="Kangaroo")))
+Escriba una definición para un tipo llamado +Canguro+, con un atributo llamado +contenidodemarsupio+ de tipo +Arreglo+ y los siguientes métodos:
+(((Canguro)))((("tipo", "definida por el programador", "Canguro", see="Canguro")))
 
-* Un constructor que inicializa +contenidodemarsupio+ a una matriz vacía.
+* Un constructor que inicializa +contenidodemarsupio+ a un arreglo vacío.
 
 * Un método llamado +ponerenmarsupio+ que tome un objeto +Canguro+ y un objeto de cualquier tipo y lo agregue a +contenidodemarsupio+.
-(((putinpouch)))((("function", "programmer-defined", "putinpouch", see="putinpouch")))
+(((ponerenmarsupio)))((("función", "definida por el programador", "ponerenmarsupio", see="ponerenmarsupio")))
 
 * Un método +show+ que devuelva una representación de cadena del objeto +Canguro+ y el contenido del marsupio.
 (((show)))

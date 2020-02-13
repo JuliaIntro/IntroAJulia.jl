@@ -15,7 +15,7 @@ Hay cincuenta y dos naipes en una baraja inglesa, cada uno de los cuales pertene
 Si queremos definir un nuevo objeto para representar un naipe, son obvios los atributos que debería tener: valor y palo. Lo que no es tan obvio es el tipo que se debe dar a estos atributos. Una opción es usar cadenas de caracteres que contengan palabras como +"Picas"+ para los palos y +"Reina"+ para los valores. Un problema de esta implementación es que no sería fácil comparar naipes para ver cuál tiene mayor valor o palo.
 
 Una alternativa es usar números enteros para _codificar_ los valores y palos. En este contexto, "codificar" significa definir una asociación entre números y palos, o entre números y valores. Este tipo de codificación no está relacionada con cifrar o traducir a un código secreto (eso sería "cifrado").
-(((encode)))
+(((codificar)))
 
 Por ejemplo, esta tabla muestra una correspondencia entre palos y códigos (números) enteros:
 
@@ -32,7 +32,7 @@ Este código facilita la comparación de naipes; los palos más altos se asignan
 Estamos usando el símbolo latexmath:[\(\mapsto\)] para dejar en claro que estas asignaciones no son parte de Julia. Forman parte del diseño del programa, pero no aparecen explícitamente en el código.
 
 La definición de estructura de +Naipe+ se ve así:
-(((Card)))((("type", "programmer-defined", "Card", see="Card")))
+(((Naipe)))((("tipo", "definida por el programador", "Naipe", see="Naipe")))
 
 [source,@julia-setup chap18]
 ----
@@ -58,7 +58,7 @@ Naipe(2, 12)
 
 === Variables Globales
 
-Para poder imprimir los objetos +Naipe+ de una manera que sea fácil de leer, necesitamos establecer una correspondencia entre los códigos enteros, y sus correspondientes palos y valores. Una manera natural de hacer esto es con matrices de cadenas: 
+Para poder imprimir los objetos +Naipe+ de una manera que sea fácil de leer, necesitamos establecer una correspondencia entre los códigos enteros, y sus correspondientes palos y valores. Una manera natural de hacer esto es con arreglos de cadenas: 
 
 [source,@julia-setup chap18]
 ----
@@ -67,7 +67,7 @@ const nombres_valor = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "
 ----
 
 Las variables +nombres_palo+ y +nombres_valor+ son variables globales. La declaración +const+ significa que la variable solo se puede asignar una vez. Esto resuelve el problema de rendimiento de las variables globales.
-(((global statement)))(((const)))((("keyword", "const", see="const")))
+(((variable global)))(((const)))((("palabra reservada", "const", see="const")))
 
 Ahora podemos implementar un método +show+ apropiado:
 (((show)))
@@ -79,7 +79,7 @@ function Base.show(io::IO, naipe::Naipe)
 end
 ----
 
-La expresión +nombres_valor[naipe.valor]+ significa "use el atributo +valor+ del objeto +naipe+ como índice en la matriz +nombres_valor+, y seleccione la cadena correspondiente".
+La expresión +nombres_valor[naipe.valor]+ significa "use el atributo +valor+ del objeto +naipe+ como índice en el arreglo +nombres_valor+, y seleccione la cadena correspondiente".
 
 Con los métodos que tenemos hasta ahora, podemos crear e imprimir naipes:
 
@@ -116,9 +116,8 @@ Escriba un método +<+ para objetos +Hora+. Puede usar comparación de tuplas, o
 
 === Prueba unitaria
 
-
 Una _prueba unitaria_ permite verificar el correcto funcionamiento de su código comparando los resultados obtenidos con los esperados. Esto puede ser útil para verificar que su código funciona correctamente después de haberlo modificado, y también es una forma de predefinir el comportamiento correcto de su código durante el desarrollo.
-(((unit testing)))
+(((prueba unitaria)))
 
 Se pueden realizar pruebas unitarias simples con las macros +@test+:
 (((Test)))((("module", "Test", see="Test")))(((@test)))((("macro", "Test", "@test", see="@test"))) 
@@ -138,11 +137,11 @@ Test Passed
 
 === Mazos
 
-Ahora que ya tenemos Naipes, el próximo paso es definir Mazos. Como un mazo está compuesto de naipes, naturalmente cada Mazo contendrá una matriz de naipes como atributo.
+Ahora que ya tenemos Naipes, el próximo paso es definir Mazos. Como un mazo está compuesto de naipes, naturalmente cada Mazo contendrá un arreglo de naipes como atributo.
 
 A continuación se muestra una definición para +Mazo+. El constructor crea el atributo naipes y genera la baraja estándar de cincuenta
 y dos naipes:
-(((Deck)))((("type", "programmer-defined", "Deck", see="Deck")))
+(((Mazo)))((("tipo", "definida por el programador", "Mazo", see="Mazo")))
 
 [source,@julia-setup chap18]
 ----
@@ -196,7 +195,7 @@ function Base.pop!(mazo::Mazo)
 end
 ----
 
-Como +pop!+ elimina el último naipe en la matriz, estamos repartiendo desde el extremo inferior del mazo.
+Como +pop!+ elimina el último naipe en el arreglo, estamos repartiendo desde el extremo inferior del mazo.
 
 Para añadir un naipe, podemos usar la función +push!+:
 (((push!)))
@@ -210,12 +209,12 @@ end
 ----
 
 Un método como este, que usa otro método sin hacer mucho más se llama _enchapado_. La metáfora proviene de la carpintería, donde un enchapado es una capa fina de madera de alta calidad que se pega a la superficie de una pieza de madera de baja calidad para mejorar su apariencia.
-(((veneer)))
+(((enchapado)))
 
-En este caso, +push!+ es un método "fino" que expresa una operación de matriz adecuada para los mazos. Mejora la apariencia o interfaz, de la implementación.
+En este caso, +push!+ es un método "fino" que expresa una operación de arreglos adecuada para los mazos. Mejora la apariencia o interfaz, de la implementación.
 
 También podemos escribir un método llamado +shuffle!+ (barajar en inglés) Usando la función +Random.shuffle!+:
-(((Random)))((("module", "Random", see="Random")))(((shuffle!)))((("function", "Random", "shuffle!", see="shuffle!")))
+(((Random)))((("module", "Random", see="Random")))(((shuffle!)))((("función", "Random", "shuffle!", see="shuffle!")))
 
 [source,@julia-setup chap18]
 ----
@@ -240,10 +239,10 @@ Queremos que un tipo represente una "mano", es decir, los naipes que tiene un ju
 Una mano es diferente de un mazo en ciertos aspectos; podemos querer realizar ciertas operaciones sobre una mano que no tendrían sentido sobre un mazo. Por ejemplo, en el poker querríamos comparar una mano con otra para ver quién gana. En bridge, necesitamos calcular el puntaje de la mano para así poder hacer la subasta.
 
 Por lo tanto, necesitamos una forma de agrupar los _tipos concretos_ que están relacionados. En Julia, esto se hace definiendo un _abstract type_ (tipo abstracto en inglés) que sea padre de +Mazo+ y +Mano+. A esto se le llama _crear subtipos_.
-(((concrete type)))(((abstract type)))(((subtyping)))
+(((tipo concreto)))(((abstract type)))(((subtipo)))
 
 Llamemos al tipo abstracto +ConjuntoDeCartas+:
-(((CardSet)))((("type", "programmer-defined", "CardSet", see="CardSet")))
+(((ConjuntoDeCartas)))((("tipo", "definida por el programador", "ConjuntoDeCartas", see="ConjuntoDeCartas")))
 
 [source,@julia-eval chap18a]
 ----
@@ -264,10 +263,10 @@ abstract type ConjuntoDeCartas end
 ----
 
 Se puede crear un nuevo tipo abstracto con la palabra reservada +abstract type+. De manera opcional, se puede especificar un tipo "padre" de una estructura colocando después del nombre de esta, el símbolo +<:+ seguido del nombre de un tipo abstracto existente.
-(((abstract type)))((("keyword", "abstract type", see="abstract type")))(((type)))
+(((abstract type)))((("palabra reservada", "abstract type", see="abstract type")))(((tipo)))
 
 Cuando no se proporciona un _supertipo_, el supertipo por defecto es +Any+, es decir, un tipo abstracto predefinido del que todos los objetos son instancias y del que todos los tipos son _subtipos_.
-(((supertype)))(((subtype)))
+(((supertipo)))(((subtipo)))
 
 Ahora podemos expresar que +Mazo+ es un "hijo" de +ConjuntoDeCartas+:
 
@@ -306,7 +305,7 @@ end
 ----
 
 El operador +isa+ comprueba si un objeto es de un tipo dado:
-(((isa)))((("operator", "Base", "isa", see="isa")))
+(((isa)))((("operador", "Base", "isa", see="isa")))
 
 [source,@julia-repl-test chap18a]
 ----
@@ -317,7 +316,7 @@ true
 ----
 
 Una mano también es un +ConjuntoDeCartas+:
-(((Hand)))((("type", "programmer-defined", "Hand", see="Hand")))
+(((Mano)))((("tipo", "definida por el programador", "Mano", see="Mano")))
 
 [source,@julia-setup chap18a]
 ----
@@ -331,7 +330,7 @@ function Mano(etiqueta::String="")
 end
 ----
 
-En lugar de llenar la mano con 52 naipes nuevos, el constructor de +Mano+ inicializa +naipes+ a una matriz vacía. Se puede etiquetar a la +Mano+ pasando un argumento opcional al constructor.
+En lugar de llenar la mano con 52 naipes nuevos, el constructor de +Mano+ inicializa +naipes+ a un arreglo vacío. Se puede etiquetar a la +Mano+ pasando un argumento opcional al constructor.
 
 [source,@julia-repl-test chap18a]
 ----
@@ -374,7 +373,7 @@ push!(mano, naipe)
 ----
 
 A continuación, encapsularemos este código en una función llamada +mover!+:
-(((move!)))((("function", "programmer-defined", "move!", see="move!")))
+(((mover!)))((("función", "definida por el programador", "mover!", see="mover!")))
 
 [source,@julia-setup chap18a]
 ----
@@ -398,18 +397,18 @@ En algunos juegos, las cartas se mueven de una mano a otra, o de una mano al maz
 Hasta ahora hemos visto diagramas de pila; que muestran el estado de un programa, y diagramas de objetos; que muestran los atributos de un objeto y sus valores. Estos diagramas son como una foto sacada durante la ejecución de un programa, por lo que cambian a medida que se ejecuta el programa.
 
 También son muy detallados; en algunos casos demasiado detallados. Un _diagrama de tipos_ es una representación más abstracta de la estructura de un programa. En vez de mostrar objetos individuales, muestra los tipos y las relaciones entre ellos.
-(((type diagram)))((("diagram", "type", see="type diagram")))
+(((diagrama de tipos)))((("diagrama", "tipos", see="diagrama de tipos")))
 
 Hay varias formas de relación entre tipos:
 
 * Los objetos de un tipo concreto pueden contener referencias a objetos de otro tipo. Por ejemplo, cada Rectangulo contiene una referencia a un Punto, y cada Mazo contiene referencias a un conjunto de Naipes. Este tipo de relación se llama _TIENE-UN_, como por ejemplo "un Rectángulo tiene un Punto".
-(((HAS-A)))
+(((TIENE-UN)))
 
 * Un tipo concreto puede tener un tipo abstracto como supertipo. Esta relación se llama _ES-UN_, como por ejemplo "una Mano es un ConjuntoDeCartas".
-(((IS-A)))
+(((ES-UN)))
 
 * Un tipo puede depender de otro si los objetos de un tipo toman objetos del segundo tipo como parámetros, o usan objetos del segundo tipo como parte de un cálculo. Este tipo de relación se llama _dependencia_.
-(((dependency)))
+(((dependencia)))
 
 [[fig18-1]]
 .Type diagram
@@ -420,11 +419,11 @@ Cada una de las flechas superiores representa una relación ES-UN; en este caso,
 Cada una de las flechas inferiores representa una relación TIENE-UN; en este caso, un Mazo tiene referencias a objetos Naipe.
 
 El asterisco (+pass:[*]+) cerca de la flecha es una _multiplicidad_; indica cuántos Naipes tiene un Mazo. Una multiplicidad puede ser un número simple; como +52+, un rango; +como 5:7+ o un asterisco; lo cual indica que un Mazo puede tener cualquier número de Naipes.
-(((multiplicity)))
+(((multiplicidad)))
 
 No hay dependencias en este diagrama. Normalmente se mostrarían con una flecha achurada. Si hay muchas dependencias, a veces se omiten.
 
-Un diagrama más detallado podría mostrar que un Mazo en realidad contiene una matriz de Naipes, pero los tipos integrados como matrices y diccionarios generalmente no se incluyen en los diagramas de tipos.
+Un diagrama más detallado podría mostrar que un Mazo en realidad contiene un arreglo de Naipes, pero los tipos integrados como arreglos y diccionarios generalmente no se incluyen en los diagramas de tipos.
 
 [[interactive]]
 === Depuración
@@ -456,10 +455,10 @@ Entonces, el método +sort!+ de +mano+ es el que tiene como argumento un objeto 
 Una sugerencia para el diseño del programa: cuando anula un método, la interfaz del nuevo método debería ser la misma que la anterior. Debería tomar los mismos parámetros, devolver el mismo tipo y obedecer las mismas condiciones previas y posteriores. Si sigues esta regla, cualquier función diseñada para funcionar con una instancia de un supertipo, como un +ConjuntoDeCartas+, también funcionará con instancias de sus subtipos +Mazo+ y +Mano+.
 
 Si viola esta regla, llamada "principio de sustitución de Liskov", su código colapsará como un castillo de naipes (jeje).
-(((Liskov substitution principle)))
+(((principio de sustitución de Liskov)))
 
 La función +supertype+ permite encontrar el supertipo directo de un tipo.
-(((supertype)))((("function", "Base", "supertype", see="supertype")))
+(((supertype)))((("función", "Base", "supertype", see="supertype")))
 
 [source,@julia-repl-test chap18a]
 ----
@@ -471,10 +470,10 @@ ConjuntoDeCartas
 === Encapsulado de Datos
 
 Los capítulos anteriores muestran un plan de desarrollo que podríamos llamar "diseño orientado a tipos". Identificamos los objetos que necesitamos, como +Punto+, +Rectangulo+ y +Hora+, y definimos estructuras para representarlos. En cada caso hay una correspondencia obvia entre el objeto y alguna entidad en el mundo real (o al menos en el mundo matemático).
-(((type-oriented design)))
+(((diseño orientado a tipos)))
 
 A veces no es tan obvio los objetos que necesitamos y cómo estos deben interactuar. En ese caso, se necesita un plan de desarrollo diferente. De la misma manera que aprendimos sobre interfaces de funciones por encapsulado y generalización, podemos aprender sobre interfaces de tipo por encapsulado de datos.
-(((data encapsulation)))
+(((encapsulado de dato)))
 
 El análisis de Markov, de <<markov_analysis>>, es un buen ejemplo. Si descarga el código desde https://github.com/BenLauwens/ThinkJulia.jl/blob/master/src/solutions/chap13.jl, verá que se usan dos variables globales: +sufijos+ y +prefijo+, las cuales se leen y escriben desde varias funciones.
 
@@ -487,7 +486,7 @@ prefijos = []
 Debido que estas variables son globales, solo podemos ejecutar un análisis a la vez. Si leemos dos textos, sus prefijos y sufijos se agregarían a las mismas estructuras de datos (lo que generaría un texto interesante).
 
 Para ejecutar múltiples análisis y mantenerlos separados, podemos encapsular el estado de cada análisis en un objeto. Así es como se vería:
-(((Markov)))((("type", "programmer-defined", "Markov", see="Markov")))
+(((Markov)))((("tipo", "definida por el programador", "Markov", see="Markov")))
 
 [source,@julia-setup chap18b]
 ----
@@ -503,7 +502,7 @@ end
 ----
 
 A continuación, transformamos las funciones en métodos. Por ejemplo, para +procesarpalabra+:
-(((processword)))((("function", "programmer-defined", "processword", see="processword")))
+(((procesarpalabra)))((("función", "definida por el programador", "procesarpalabra", see="procesarpalabra")))
 
 [source,@julia-setup chap18b]
 ----
@@ -520,7 +519,7 @@ end
 ----
 
 Transformar un programa así (cambiando el diseño sin cambiar el comportamiento) es otro ejemplo de refactorización (vea <<refactorización>>).
-(((refactoring)))(((program development plan)))
+(((refactorización)))(((plan de desarrollo de programa)))
 
 Este ejemplo sugiere el siguiente plan de desarrollo para diseñar tipos:
 
@@ -542,19 +541,19 @@ Descargue el código de Markov de https://github.com/BenLauwens/ThinkJulia.jl/bl
 
 codificar::
 Representar un conjunto de valores uilizando otro conjunto de valores, generando una asociación entre ellos.
-(((encode)))
+(((codificar)))
 
 prueba unitaria::
 Manera estandarizada de probar que el código está correcto.
-(((unit testing)))
+(((prueba unitaria)))
 
 enchapado::
 Un método o función que mejora la interfaz de otra función sin hacer muchos cálculos.
-(((veneer)))
+(((enchapado)))
 
 crear subtipos::
 La capacidad de definir una jerarquía de tipos relacionados.
-(((subtyping)))
+(((subtipo)))
 
 tipo abstracto::
 Un tipo que puede ser padre de otro tipo.
@@ -562,39 +561,39 @@ Un tipo que puede ser padre de otro tipo.
 
 tipo concreto::
 Un tipo que se puede construir.
-(((concrete type)))
+(((tipo concreto)))
 
 subtipo::
 Un tipo que tiene como padre un tipo abstracto.
-(((subtype)))
+(((subtipo)))
 
 supertipo::
 Un tipo abstracto que es el padre de otro tipo.
-(((supertype)))
+(((supertipo)))
 
-Relación ES-UN::
+relación ES-UN::
 Una relación entre un subtipo y su supertipo.
-(((IS-A relationship)))
+(((relación ES-UN)))
 
-Relación TIENE-UN::
+relación TIENE-UN::
 Una relación entre dos tipos donde las instancias de un tipo contienen referencias a instancias del otro.
-(((HAS-A relationship)))
+(((relación TIENE-UN)))
 
 dependencia::
 Una relación entre dos tipos donde las instancias de un tipo usan instancias del otro tipo, pero no las almacenan como atributos.
-(((dependency)))
+(((dependencia)))
 
 diagrama de tipos::
 Un diagrama que muestra los tipos en un programa y las relaciones entre ellos.
-(((type diagram)))
+(((diagrama de tipos)))
 
 multiplicidad::
 Una notación en un diagrama de tipo que muestra, para una relación TIENE-UN, cuántas referencias hay a instancias de otra clase.
-(((multiplicity)))
+(((multiplicidad)))
 
 encapsulado de datos::
 Un plan de desarrollo de programas que implica hacer un prototipo que use variables globales y una versión final que convierta las variables globales en atributos de instancia.
-(((data encapsulation)))
+(((encapsulado de datos)))
 
 
 === Exercises
@@ -632,8 +631,8 @@ agregarping(pong, ping)
 [[ex18-2]]
 ==== Ejercicio 18-5
 
-Escriba un método llamado +repartir!+ que tome tres parámetros: un +Mazo+, el número de manos y el número de naipes por mano. Debería crear el número apropiado de objetos +Mano+, repartir el número apropiado de naipes por mano y devolver una matriz de +Mano+s.
-(((deal!)))((("function", "programmer-defined", "deal!", see="deal!")))
+Escriba un método llamado +repartir!+ que tome tres parámetros: un +Mazo+, el número de manos y el número de naipes por mano. Debería crear el número apropiado de objetos +Mano+, repartir el número apropiado de naipes por mano y devolver un arreglo de +Mano+s.
+(((repartir!)))((("función", "definida por el programador", "repartir!", see="repartir!")))
 
 [[ex18-3]]
 ==== Ejercicio 18-6
@@ -667,10 +666,10 @@ Cinco cartas consecutivas del mismo palo
 El objetivo de este ejercicio es estimar la probabilidad de tener estas diferentes manos.
 
 . Agregue métodos llamados +tienepareja+, +tienedoblepareja+, etc. que devuelvan +true+ o +false+ según si la mano cumple o no con los criterios relevantes. Su código debería funcionar correctamente para "manos" que contengan cualquier número de naipes (aunque 5 y 7 son los tamaños más comunes).
-(((haspair)))((("function", "programmer-defined", "haspair", see="haspair")))(((hastwopair)))((("function", "programmer-defined", "hastwopair", see="hastwopair")))
+(((tienepareja)))((("función", "definida por el programador", "tienepareja", see="tienepareja")))(((tienedoblepareja)))((("función", "definida por el programador", "tienedoblepareja", see="tienedoblepareja")))
 
 . Escriba un método llamado +clasificar+ que descubra la clasificación de mayor valor para una mano, y defina el atributo +etiqueta+ con esta clasificación. Por ejemplo, una mano de 7 cartas que contiene un color y una pareja, debe etiquetarse como "color".
-(((classify)))((("function", "programmer-defined", "classify", see="classify")))
+(((clasificar)))((("función", "definida por el programador", "clasificar", see="clasificar")))
 
 . Cuando esté convencido de que sus métodos de clasificación están funcionando correctamente, estime las probabilidades de las distintas manos. Escriba una función que baraje un mazo de naipes, la divida en diferentes manos, clasifique las manos y cuente la cantidad de veces que aparecen varias clasificaciones.
 

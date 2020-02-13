@@ -7,16 +7,16 @@ Este capítulo presenta otro tipo integrado llamado diccionario.
 === Un Diccionario es un Mapeo 
 
 Un _diccionario_ es como una matriz, pero más general. En una matriz, los índices tienen que ser enteros; en un diccionario pueden ser (casi) de cualquier tipo.
-(((dictionary)))
+(((diccionario)))
 
 Un diccionario contiene una colección de índices, llamados _claves_, y una colección de valores. Cada clave está asociada a un solo valor. La asociación entre una clave y un valor se denomina _par clave-valor_ o, a veces, item.
-(((key)))(((value)))(((key-value pair)))(((item)))
+(((clave)))(((valor)))(((par clave-valor)))(((item)))
 
 En lenguaje matemático, un diccionario representa un _mapeo_ de las claves a los valores, es decir, cada clave apunta a un valor. A modo de ejemplo, crearemos un diccionario que asocie palabras en español con palabras en inglés. En este diccionario, las claves y los valores son cadenas.
-(((mapping)))
+(((mapeo)))
 
 La función +Dict+ crea un nuevo diccionario sin elementos. Como +Dict+ es el nombre de una función integrada de Julia, debe evitar usarla como nombre de variable.
-(((Dict)))((("type", "Base", "Dict", see="Dict")))
+(((Dict)))((("tipo", "Base", "Dict", see="Dict")))
 
 [source,@julia-repl-test chap11]
 ----
@@ -24,11 +24,11 @@ julia> ing_a_esp = Dict()
 Dict{Any,Any} with 0 entries
 ----
 
-El tipo de este diccionario está compuesto por el tipo de las claves y de los valores. En este caso, las claves y los valores son de tipo +Any+.
-(((curly braces)))((("{}", see="curly braces")))(((Any)))((("type", "Base", "Any", see="Any")))
+El tipo de este diccionario está compuesto por el tipo de las claves y de los valores, entre llaves. En este caso, las claves y los valores son de tipo +Any+.
+(((llaves)))((("{}", see="llaves")))(((Any)))((("tipo", "Base", "Any", see="Any")))
 
 El diccionario está vacio. Para agregar elementos a él, se pueden usar corchetes:
-(((square brackets)))
+(((corchetes)))
 
 [source,@julia-repl-test chap11]
 ----
@@ -93,7 +93,7 @@ julia> length(ing_a_esp)
 ----
 
 La función +keys+ devuelve una colección con las claves del diccionario:
-(((keys)))((("function", "Base", "keys", see="keys")))
+(((keys)))((("función", "Base", "keys", see="keys")))
 
 [source,@julia-repl-test chap11]
 ----
@@ -115,7 +115,7 @@ false
 ----
 
 Para ver si algo es un valor en un diccionario, se puede usar la función +values+, que devuelve una colección de valores, y luego usar el operador +∈+:
-(((values)))((("function", "Base", "values", see="values")))
+(((values)))((("función", "Base", "values", see="values")))
 
 [source,@julia-repl-test chap11]
 ----
@@ -144,7 +144,7 @@ Suponga que tienes una cadena y deseas contar cuántas veces aparece cada letra.
 Cada una de estas opciones realiza el mismo cálculo, pero la implementación es diferente.
 
 Una _implementación_ es una forma de realizar un cálculo. Algunas implementaciones son mejores que otras, por ejemplo, una ventaja de la implementación del diccionario es que no tenemos que saber de antemano qué letras aparecen en la cadena y solo tenemos que agregar las letras que aparecen.
-(((implementation)))
+(((implementación)))
 
 Así es como se vería el código:
 
@@ -164,7 +164,7 @@ end
 ----
 
 La función se llama +histograma+, que es un término en estadística para una colección de frecuencias (o conteos).
-(((histogram)))((("function", "programmer-defined", "histogram", see="histogram")))
+(((histograma)))((("función", "definida por el programador", "histograma", see="histograma")))
 
 La primera línea de la función crea un diccionario vacío. El ciclo +for+ recorre la cadena +s+. En cada iteración de este ciclo, si el carácter +c+ no está en el diccionario, se crea un nuevo elemento con la clave +c+ y el valor inicial +1+ (ya que hemos visto esta letra una vez). Si +c+ ya está en el diccionario, se incrementa +d[c]+.
 
@@ -187,7 +187,7 @@ Dict{Any,Any} with 8 entries:
 El histograma indica que las letras +'a'+ y +'b'+ aparecen una vez; +'o'+ aparece dos veces, y así sucesivamente.
 
 Los diccionarios tienen una función llamada +get+ que toma como argumentos un diccionario, una clave y un valor predeterminado. Si la clave aparece en el diccionario, +get+ devuelve el valor correspondiente; de lo contrario, devuelve el valor predeterminado. Por ejemplo:
-(((get)))((("function", "Base", "get", see="get")))
+(((get)))((("función", "Base", "get", see="get")))
 
 [source,@julia-repl-test chap11]
 ----
@@ -207,7 +207,7 @@ Use +get+ para escribir la función +histograma+ de manera más concisa. Deberí
 === Iteración y Diccionarios 
 
 Es posible recorrer las claves del diccionario con un ciclo +for+. Por ejemplo, +imprimirhist+ imprime cada clave y su valor correspondiente:
-(((printhist)))((("function", "programmer-defined", "printhist", see="printhist")))
+(((imprimirhist)))((("function", "definida por el programador", "imprimirhist", see="imprimirhist")))
 
 [source,@julia-setup chap11]
 ----
@@ -271,7 +271,7 @@ end
 ----
 
 Esta función es otro ejemplo del patrón de búsqueda, pero utiliza una función que no hemos visto antes: +error+. La función +error+ se usa para producir un +ErrorException+ que interrumpe el flujo normal. En este caso tiene el mensaje +"Error de Busqueda"+, que indica que no existe una clave.
-(((error)))((("function", "Base", "error", see="error")))
+(((error)))((("función", "Base", "error", see="error")))
 
 Si llega al final del ciclo, eso significa que +v+ no aparece en el diccionario como un valor, por lo que se produce una excepción.
 
@@ -296,7 +296,7 @@ ERROR: Error de Busqueda
 El efecto cuando generamos una excepción es el mismo que cuando Julia genera una: se imprime un trazado inverso y un mensaje de error.
 
 Julia proporciona una forma optimizada de hacer una búsqueda inversa: +findall(isequal(3),h)+.
-(((findall)))((("function", "Base", "findall", see="findall")))(((isequal)))((("function", "Base", "isequal", see="isequal")))
+(((findall)))((("función", "Base", "findall", see="findall")))(((isequal)))((("función", "Base", "isequal", see="isequal")))
 
 [WARNING]
 ====
@@ -309,7 +309,7 @@ Una búsqueda inversa es mucho más lenta que una búsqueda directa. Si tiene qu
 Las matrices pueden aparecer como valores en un diccionario. Por ejemplo, si tenemos un diccionario que asigna frecuencias a letras, y queremos invertirlo; es decir, tener un diccionario que asigne letras a frecuencias. Dado que pueden haber varias letras con la misma frecuencia, cada valor en el diccionario invertido debería ser una matriz de letras.
 
 Aquí hay una función que invierte un diccionario:
-(((invertdict)))((("function", "programmer-defined", "invertdict", see="invertdict")))
+(((invertirdic)))((("función", "definida por el programador", "invertirdic", see="invertirdic")))
 
 [source,@julia-setup chap11]
 ----
@@ -347,7 +347,7 @@ Dict{Any,Any} with 2 entries:
 image::images/fig111.svg[]
 
 <<fig11-1>> es un diagrama de estado que muestra +hist+ e +inverso+. Un diccionario se representa como un cuadro con los pares clave-valor dentro. En este libro, si los valores son enteros, números de punto flotante o cadenas de texto, se dibujan dentro del cuadro, y las matrices (generalmente) se dibujan fuera del cuadro, solo para mantener el diagrama simple.
-(((state diagram)))
+(((diagrama de estado)))
 
 [NOTE]
 ====
@@ -365,7 +365,7 @@ Si estuvo jugando con la función +fibonacci+ de <<one_more_example>>, es posibl
 (((fibonnaci)))
 
 Para entender por qué, considere <<fig11-2>>, que muestra el _gráfico de llamadas_ para la función +fibonacci+ con +n = 4+:
-(((call graph)))((("diagram", "call graph", see="call graph")))
+(((gráfico de llamadas)))((("diagrama", "gráfico de llamadas", see="gráfico de llamadas")))
 
 [[fig11-2]]
 .Call graph
@@ -376,7 +376,7 @@ Un gráfico de llamadas muestra un conjunto de cuadros de funciones, con líneas
 Cuente cuántas veces se llama a +fibonacci(0)+ y +fibonacci(1)+. Esta es una solución ineficiente al problema, y empeora a medida que el argumento aumenta en tamaño.
 
 Una solución es llevar un registro de los valores que ya se han calculado almacenándolos en un diccionario. Un valor que ya ha sido calculado y almacenado para un uso posterior se le denomina _pista_. Aquí hay una implementación de fibonacci con pistas:
-(((memo)))
+(((pista)))
 
 [source,@julia-setup]
 ----
@@ -402,10 +402,10 @@ Si ejecuta esta versión de +fibonacci+ y la compara con la original, se dará c
 === Variables Globales 
 
 En el ejemplo anterior, el diccionario anteriores se crea fuera de la función, por lo que pertenece al marco especial llamado +Main+. Las variables en +Main+ a veces son llamadas _globales_ porque se puede acceder a ellas desde cualquier función. A diferencia de las variables locales, que desaparecen cuando finaliza su función, las variables globales existen de una llamada de función a la siguiente.
-(((global)))((("keyword", "global", see="global")))(((global variable)))
+(((global)))((("palabra reservada", "global", see="global")))(((variable global)))
 
 Es común usar variables globales como _flags_ o _banderas_; es decir, variables booleanas que indican si una condición es verdadera. Por ejemplo, algunos programas usan una bandera llamada +verbosa+ para controlar el nivel de detalle en la salida:
-(((flag)))
+(((bandera)))
 
 [source,@julia-setup]
 ----
@@ -432,7 +432,7 @@ end
 Pero si lo ejecutas, verás que el valor de +ha_sido_llamada+ no cambia. El problema es que +ejemplo2 + crea una nueva variable local llamada +ha_sido_llamada+. La variable local desaparece cuando finaliza la función y no tiene efecto en la variable global.
 
 Para reasignar una variable global dentro de una función, debe _declarar_ la variable global antes de usarla:
-(((declaration)))(((reassignment)))
+(((declaración)))(((reasignación))
 
 [source,@julia-setup]
 ----
@@ -445,7 +445,7 @@ end
 ----
 
 La _sentencia global_ le dice al intérprete algo como esto: “En esta función, cuando digo +ha_sido_llamada+, me refiero a la variable global; así que no crees una variable local".
-(((global statement)))((("statement", "global", see="global statement")))
+(((sentencia global)))((("sentencia", "global", see="sentencia global")))
 
 A continuación se muestra un ejemplo que intenta actualizar una variable global:
 
@@ -503,7 +503,7 @@ end
 ----
 
 Para mejorar el rendimiento, puedes declarar la variable global como constante. Con esto, ya no se puede reasignar la variable, pero si se refiere a un valor mutable, sí se puede modificar el valor.
-(((const)))((("keyword", "const", see="const")))(((constant global variable)))
+(((const)))((("palabra reservada", "const", see="const")))(((variable global constante)))
 
 [source,@julia-setup]
 ----
@@ -522,29 +522,29 @@ Las variables globales pueden ser útiles, pero si tiene muchas de ellas y las m
 === Depuración
 
 A medida que trabaja con conjuntos de datos más grandes, la depuración mediante la impresió y verificación de la salida de manera manual puede tornarse difícil. Aquí hay algunas sugerencias para depurar grandes conjuntos de datos:
-(((debugging)))
+(((depuración)))
 
 * Reduzca la entrada:
 +
 Si es posible, reduzca el tamaño del conjunto de datos. Por ejemplo, si el programa lee un archivo de texto, comience con solo las primeras 10 líneas, o con el ejemplo más pequeño que pueda encontrar que produzca errores. No debe editar los archivos, sino modificar el programa para que solo lea las primeras latexmath:[\(n\)] líneas.
-(((scale down)))
+(((reducir el tamaño)))
 +
 Si hay un error, puede reducir latexmath:[\(n\)] al valor más pequeño que manifieste el error, y luego aumentarlo gradualmente a medida que encuentre y corrija errores.
 
 * Revisar resúmenes y tipos
 +
 En lugar de imprimir y verificar todo el conjunto de datos, considere imprimir resúmenes de los datos: por ejemplo, el número de elementos en un diccionario o el total de una serie de números.
-(((check)))
+(((verificar)))
 +
 Una causa común de los errores de tiempo de ejecución son los valores de tipo incorrecto. Para depurar este tipo de error, generalmente es suficiente imprimir el tipo de un valor.
 
 * Escribir autocomprobaciones:
 +
 Puede escribir código que verifique errores automáticamente. Por ejemplo, si está calculando el promedio de una matriz de números, puede verificar que el resultado no sea mayor que el elemento más grande de la matriz o menor que el más pequeño. Esto se llama "prueba de cordura".
-(((self-check)))(((sanity check)))
+(((verificar automáticamente)))(((prueba de cordura)))
 +
 Otro tipo de verificación compara los resultados de dos cálculos diferentes para ver si son consistentes. Esta se llama "prueba de consistencia".
-(((consistency check)))
+(((prueba de consistencia)))
 
 * Formatear la salida:
 +
@@ -552,22 +552,22 @@ Formatear la salida de depuración puede hacer que sea más fácil detectar un e
 (((formatting)))
 +
 Nuevamente, el tiempo que dedica a construir andamiaje puede reducir el tiempo que dedica a la depuración
-(((scaffolding)))(((debugging)))
+(((andamiaje)))(((depuración)))
 
 
 === Glosario
 
 mapeo::
 Una relación en la que cada elemento de un conjunto corresponde a un elemento de otro conjunto.
-(((mapping)))
+(((mapeo)))
 
 diccionario::
 Una asignación de claves a sus valores correspondientes.
-(((dictionary)))
+(((diccionario)))
 
 par clave-valor::
 La representación de la asociación entre una clave y un valor.
-(((key-value pair)))
+(((par clave-valor)))
 
 item::
 En un diccionario, otro nombre para un par clave-valor.
@@ -575,23 +575,23 @@ En un diccionario, otro nombre para un par clave-valor.
 
 clave::
 Un objeto que aparece en un diccionario como la primera parte de un par clave-valor.
-(((key)))
+(((clave)))
 
 valor::
 Un objeto que aparece en un diccionario como la segunda parte de un par clave-valor. Este término es más específico que nuestro uso previo de la palabra "valor".
-(((value)))
+(((valor)))
 
 implementación::
 Una forma de realizar un cálculo.
-(((implementation)))
+(((implementación)))
 
 tabla hash::
 El algoritmo utilizado para implementar los diccionarios de Julia.
-(((hash table)))
+(((tabla hash)))
 
 función hash::
 Una función utilizada por una tabla hash para calcular la ubicación de una clave.
-(((hash function)))
+(((función hash)))
 
 hashable::
 Un tipo que tiene una función hash.
@@ -599,11 +599,11 @@ Un tipo que tiene una función hash.
 
 búsqueda::
 Una operación sobre un diccionario que toma una clave y encuentra el valor correspondiente.
-(((lookup)))
+(((búsqueda)))
 
 búsqueda inversa::
 Una operación sobre un diccionario que toma un valor y encuentra una o más claves que se asignan a él.
-(((reverse lookup)))
+(((búsqueda inversa)))
 
 singleton::
 Una matriz (u otra secuencia) con un solo elemento.
@@ -611,31 +611,31 @@ Una matriz (u otra secuencia) con un solo elemento.
 
 gráfico de llamada::
 Un diagrama que muestra cada cuadro creado durante la ejecución de un programa, con una flecha entre cada función y sus respectivas funciones llamadas. 
-(((call graph)))
+(((gráfico de llamada)))
 
 pista::
 Valor precalculado y almacenado temporalmente para evitar cálculos redundantes.
-(((memo)))
+(((pista)))
 
 variable global::
 Una variable definida fuera de una función. Se puede acceder a las variables globales desde cualquier función.
-(((global variable)))
+(((variable global)))
 
 sentencia global::
 Una sentencia que declara un nombre de variable global.
-(((global statement)))
+(((sentencia global)))
 
 bandera::
 Una variable booleana utilizada para indicar si una condición es verdadera.
-(((flag)))
+(((bandera)))
 
 declaración::
 Una sentencia como +global+ que le dice al intérprete algo sobre una variable.
-(((declaration)))
+(((declaración)))
 
 variable global constante::
 Una variable global que no se puede reasignar.
-(((constant global variable)))
+(((variable global constante)))
 
 
 === Ejercicios
@@ -658,23 +658,23 @@ Lea la documentación de la función que opera sobre diccionarios +get!+ y úsel
 ==== Ejercicio 11-4
 
 Use pistas en la función de Ackermann de <<ex06-2>> y vea si esto permite evaluar la función con argumentos de mayor tamaño.
-(((memo)))(((Ackermann function)))
+(((pista)))(((función de Ackermann)))
 
 [[ex11-4]]
 ==== Ejercicio 11-5
 
 Si hizo <<ex10-7>>, ya tiene una función llamada +repetido+ que toma una matriz como parámetro y devuelve +true+ si hay algún objeto que aparece más de una vez en la matriz.
-(((hasduplicates)))
+(((repetido)))
 
 Use un diccionario para escribir una versión más rápida y simple de +repetido+.
 
 [[ex11-5]]
 ==== Ejercicio 11-6
 
-Dos palabras son "pares rotados" si puede rotar una de ellas y obtener la otra (vea +rotateword+ en <<ex08-5>>).
-(((rotateword)))
+Dos palabras son "pares desplazados" si puede desplazar una de ellas y obtener la otra (vea +desplazarpalabra+ en <<ex08-5>>).
+(((desplazarpalabra)))
 
-Escriba un programa que lea una matriz de palabras y encuentre todos los pares rotados.
+Escriba un programa que lea una matriz de palabras y encuentre todos los pares desplazados.
 
 [[ex11-6]]
 ==== Ejercicio 11-7
