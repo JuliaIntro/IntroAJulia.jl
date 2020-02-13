@@ -4,13 +4,13 @@
 Al depurar, es necesario distinguir entre los diferentes tipos de errores para rastrearlos más rápidamente:
 
 * Los errores de sintaxis se descubren cuando el intérprete traduce el código fuente a código de bytes. Estos errores indican que hay una falla en la estructura del programa. Por ejemplo, omitir la palabra reservada +end+ al final de un bloque de funciones genera el mensaje +ERROR: LoadError: syntax: incomplete: function requires end+.
-(((syntax error)))
+(((error de sintaxis)))
 
 * Los errores en tiempo de ejecución se presentan si algo falla mientras se ejecuta el programa. La mayoría de los mensajes de error en tiempo de ejecución indican dónde ocurrió el error y qué funciones se estaban ejecutando. Ejemplo: Una recursión infinita eventualmente causa el error en tiempo de ejecución +ERROR: StackOverflowError+.
-(((runtime error)))
+(((error en tiempo de ejecución)))
 
 * Los errores semánticos ocurren cuando un programa se ejecuta sin generar mensajes de error pero no hace lo que debería. Por ejemplo: una expresión puede no evaluarse en el orden esperado, generando un resultado incorrecto.
-(((semantic error)))
+(((error semántico)))
 
 El primer paso en la depuración es averiguar el tipo de error al que se enfrenta. Aunque las siguientes secciones están organizadas por tipo de error, algunas técnicas son aplicables en más de una situación.
 
@@ -74,7 +74,7 @@ Una vez que su programa es sintácticamente correcto, Julia puede leerlo y al me
 Este problema es común cuando su archivo consta de funciones y clases, pero en realidad no llama a ninguna función para iniciar la ejecución. Esto puede ser intencional si solo se busca importar este módulo para suministrar clases y funciones.
 
 Si no es intencional, asegúrese de que haya una llamada a la función en el programa, y asegúrese de que el flujo de ejecución pase por esta llamada (vea <<flow_of_execution>>).
-(((flow of execution)))
+(((flujo de ejecución)))
 
 
 ==== Mi programa se congela
@@ -84,12 +84,12 @@ Si un programa se detiene y parece no estar haciendo nada, está "congelado". Ge
 * Si hay un bucle en particular que le resulta sospechoso de provocar el pproblema, agregue una sentencia de impresión justo antes del bucle que diga "entrando al bucle" y otra inmediatamente posterior que diga "saliendo del bucle".
 +
 Ejecute el programa. Si recibe el primer mensaje y no el segundo, tiene un bucle infinito. Vea <<infinite_loop>>.
-(((infinite loop)))
+(((bucle infinito)))
 
 * La mayoría de las veces, una recursión infinita hará que el programa se ejecute por un rato y luego produzca un error +ERROR: LoadError: StackOverflowError+. Si eso sucede, vea <<infinite_recursion>>.
 +
 Si no obtiene este error pero sospecha que hay un problema con un método o función recursiva, igual puede utilizar las técnicas de <<infinite_recursion>>.
-(((infinite recursion)))
+(((recursión infinita)))
 
 * Si ninguno de esos pasos funciona, comience a probar otros bucles, y otras funciones y métodos recursivos.
 
@@ -210,7 +210,7 @@ Para simplificar la salida, puede eliminar o comentar (convertir en comentarios)
 Para simplificar el programa puede hacer varias cosas. Primero, reducir la escala del problema en el que está trabajando el programa. Por ejemplo, si está buscando algo en una lista, búsquelo en una lista pequeña. Si el programa acepta entradas del usuario, ingrese la entrada más simple que provoque el problema.
 
 Segundo, "limpie" el programa. Elimine el código muerto y reorganice el programa para hacerlo tan legible como sea posible. Por ejemplo, si sospecha que el problema está en una parte del programa con un anidamiento muy profundo, pruebe a reescribir esa parte con una estructura más simple. Si sospecha de una función muy larga, trate de dividirla en funciones más pequeñas y pruébelas separadamente.
-(((dead code)))
+(((código muerto)))
 
 Generalmente, el proceso de encontrar el caso de prueba mínimo te lleva al error. Si encuentra que un programa funciona en una situación pero no en otra, eso le dará una pista sobre lo que está sucediendo.
 
@@ -239,7 +239,7 @@ Debería hacerse estas preguntas:
 * ¿Hay alguna sección del código que cause un efecto que no esperaba? asegurese de que entiende el código en cuestión, especialmente si incluye funciones o métodos de otros módulos de Julia. Lea la documentación de las funciones a las que llama. Pruébelas escribiendo casos de prueba simples y comprobando sus resultados.
 
 Para programar necesitará tener un modelo mental de cómo funcionan los programas. Si escribe un programa que no hace lo que esperaba de él, muchas veces el problema no estará en el programa, sino en su modelo mental.
-(((mental model)))
+(((modelo mental)))
 
 La mejor manera de corregir su modelo mental es dividiendo el programa en sus componentes (normalmente en funciones y métodos) y probando cada componente de forma independiente. Una vez que encuentre la discrepancia entre su modelo y la realidad, podrá solucionar el problema.
 
@@ -288,7 +288,7 @@ Siempre que no esté seguro del orden de evaluación, utilice paréntesis. El pr
 ==== Tengo una función que no devuelve lo que esperaba.
 
 Si tiene una sentencia return con una expresión compleja, no tendrá la oportunidad de imprimir el valor de retorno antes de retornar. De nuevo, puede usar una variable temporal. Por ejemplo, en lugar de:
-(((temporary variable)))
+(((variable temporal)))
 
 [source,julia]
 ----
