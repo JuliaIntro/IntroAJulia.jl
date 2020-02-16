@@ -440,7 +440,7 @@ end
 
 Este bucle recorre los pares clave-valor en +directorio+, los cuales son tuplas. Asigna los elementos de la clave de cada tupla a +apellido+ y +nombre+, y el valor a +numero+, luego imprime el nombre y el número de teléfono correspondiente.
 
-Hay dos formas de representar tuplas en un diagrama de estado. La versión más detallada muestra los índices y elementos tal como aparecen en un arreglo. Por ejemplo, la tupla +("Cleese", "John")+ se vería como en <<fig12-1>>.
+Hay dos formas de representar tuplas en un diagrama de estado. La versión más detallada muestra los índices y elementos tal como aparecen en un arreglo. Por ejemplo, la tupla +("Cortázar", "Julio")+ se vería como en <<fig12-1>>.
 (((diagrama de estado)))
 
 [[fig12-1]]
