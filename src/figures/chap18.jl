@@ -1,9 +1,9 @@
 function fig18_1(output::Symbol, font::String, scale::Float64)
     p = TikzPicture(L"""
-        \node(cs) [draw, fill=mycolor, minimum width=1.5cm, minimum height=1cm]{\tt CardSet};
-        \node(de) [draw, fill=mycolor, minimum width=1.5cm, minimum height=1cm] at(-2, -1.5) {\tt Deck};
-        \node(ha) [draw, fill=mycolor, minimum width=1.5cm, minimum height=1cm] at(2, -1.5) {\tt Hand};
-        \node(ca) [draw, fill=mycolor, minimum width=1.5cm, minimum height=1cm] at(0, -3) {\tt Card};
+        \node(cs) [draw, fill=mycolor, minimum width=1.5cm, minimum height=1cm]{\tt ConjuntoDeCartas};
+        \node(de) [draw, fill=mycolor, minimum width=1.5cm, minimum height=1cm] at(-2, -1.5) {\tt Mazo};
+        \node(ha) [draw, fill=mycolor, minimum width=1.5cm, minimum height=1cm] at(2, -1.5) {\tt Mano};
+        \node(ca) [draw, fill=mycolor, minimum width=1.5cm, minimum height=1cm] at(0, -3) {\tt Naipe};
         \draw[arrows = {-Triangle[open, length=5pt, width=5pt]}] (de)--(cs);
         \draw[arrows = {-Triangle[open, length=5pt, width=5pt]}] (ha)--(cs);
         \draw[arrows = {-Straight Barb[length=5pt, width=5pt]}] (de)--(ca);
