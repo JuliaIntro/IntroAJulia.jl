@@ -28,7 +28,7 @@ Observación: +Time+ es una palabra reservada de Julia.
 
 [source,@julia-repl-test chap16]
 ----
-julia> hora = Hora(11, 59, 30)
+julia> tiempo = Hora(11, 59, 30)
 Hora(11, 59, 30)
 ----
 
