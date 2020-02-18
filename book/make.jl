@@ -70,9 +70,11 @@ if "pdf" in ARGS
   book = replace(book, "}\n\\end{equation}\\\\]"=> "\n\\]")
   write("build/$(title).html", book)
   println("Run mjpage")
-  run(`mjpage --notexhints true --speech false  --semantics false --output MML < build/$(title).html > build/output.html`)
-  println("Run antennahouse")
-  run(`/usr/local/AHFormatterV66/run.sh -d build/output.html -s ~/stack/Configs/styles/book.css -o build/$(title).pdf -i build/config.xml`)
+#several updates needed to get PDF generation working. One update is
+#changing the following statements so they don't emit warnings.    
+#  run(`mjpage --notexhints true --speech false  --semantics false --output MML < build/$(title).html > build/output.html`)
+#  println("Run antennahouse")
+#  run(`/usr/local/AHFormatterV66/run.sh -d build/output.html -s ~/stack/Configs/styles/book.css -o build/$(title).pdf -i build/config.xml`)
 elseif "html" in ARGS
   run(`asciidoctor -d book -b html5 -a compat-mode -a stem=latexmath -a sectnums -a sectnumlevels=1 -a source-highlighter=pygmentize -a toc -a toc=left -a toclevels=2 build/book.asciidoc`)
   book = read("build/book.html", String)
