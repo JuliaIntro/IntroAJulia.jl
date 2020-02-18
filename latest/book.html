@@ -451,10 +451,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_dedicatoria">Dedicatoria</a></li>
 <li><a href="#_prefacio">Prefacio</a>
 <ul class="sectlevel2">
-<li><a href="#_por_qué_usar_julia">¿Por qué usar Julia?</a></li>
+<li><a href="#_a_quién_está_dirigido_este_libro">¿A quién está dirigido este libro?</a></li>
 <li><a href="#_para_quién_es_este_libro">¿Para quién es este libro?</a></li>
 <li><a href="#_convenciones_utilizadas_en_este_libro">Convenciones utilizadas en este libro</a></li>
-<li><a href="#_usar_códigos_de_ejemplo">Usar códigos de ejemplo</a></li>
+<li><a href="#_usando_los_códigos_de_ejemplo">Usando los códigos de ejemplo</a></li>
 <li><a href="#_agradecimientos">Agradecimientos</a></li>
 <li><a href="#_lista_de_colaboradores">Lista de Colaboradores</a></li>
 </ul>
@@ -636,7 +636,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_asignación_de_tupla">Asignación de tupla</a></li>
 <li><a href="#_tuplas_como_valor_de_retorno">Tuplas como valor de retorno</a></li>
 <li><a href="#_tupla_con_argumentos_de_longitud_variable">Tupla con Argumentos de Longitud Variable</a></li>
-<li><a href="#_matrices_y_tuplas">Matrices y tuplas</a></li>
+<li><a href="#_arreglos_y_tuplas">Arreglos y tuplas</a></li>
 <li><a href="#_diccionarios_y_tuplas">Diccionarios y Tuplas</a></li>
 <li><a href="#_secuencias_de_secuencias">Secuencias de Secuencias</a></li>
 <li><a href="#_depuración_10">Depuración</a></li>
@@ -673,7 +673,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_modulos">Modulos</a></li>
 <li><a href="#_depuración_12">Depuración</a></li>
 <li><a href="#_glosario_13">Glosario</a></li>
-<li><a href="#_exercises">Exercises</a></li>
+<li><a href="#_ejercicios_16">Ejercicios</a></li>
 </ul>
 </li>
 <li><a href="#chap15">15. Estructuras y Objetos</a>
@@ -687,7 +687,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_copiado">Copiado</a></li>
 <li><a href="#_depuración_13">Depuración</a></li>
 <li><a href="#_glosario_14">Glosario</a></li>
-<li><a href="#_ejercicios_16">Ejercicios</a></li>
+<li><a href="#_ejercicios_17">Ejercicios</a></li>
 </ul>
 </li>
 <li><a href="#chap16">16. Estructuras y Funciones</a>
@@ -698,7 +698,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#prototyping_versus_planning">Desarrollo de prototipos frente a la planificación</a></li>
 <li><a href="#chap16_debugging">Depuración</a></li>
 <li><a href="#_glosario_15">Glosario</a></li>
-<li><a href="#_ejercicios_17">Ejercicios</a></li>
+<li><a href="#_ejercicios_18">Ejercicios</a></li>
 </ul>
 </li>
 <li><a href="#chap17">17. Dispatch Múltiple</a>
@@ -714,7 +714,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_interfaz_e_implementación">Interfaz e implementación</a></li>
 <li><a href="#_depuración_14">Depuración</a></li>
 <li><a href="#_glosario_16">Glosario</a></li>
-<li><a href="#_ejercicios_18">Ejercicios</a></li>
+<li><a href="#_ejercicios_19">Ejercicios</a></li>
 </ul>
 </li>
 <li><a href="#chap18">18. Subtipos</a>
@@ -731,7 +731,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#interactive">Depuración</a></li>
 <li><a href="#_encapsulado_de_datos">Encapsulado de Datos</a></li>
 <li><a href="#_glosario_17">Glosario</a></li>
-<li><a href="#_exercises_2">Exercises</a></li>
+<li><a href="#_exercises">Exercises</a></li>
 </ul>
 </li>
 <li><a href="#chap19">19. Extra: Sintaxis</a>
@@ -756,7 +756,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#collections_and_data_structures">Colecciones y Estructuras de Datos</a></li>
 <li><a href="#_matemáticas">Matemáticas</a></li>
 <li><a href="#_cadenas">Cadenas</a></li>
-<li><a href="#_matrices">Matrices</a></li>
+<li><a href="#_arreglos">Arreglos</a></li>
 <li><a href="#_interfaces">Interfaces</a></li>
 <li><a href="#_módulo_interactive_utilities">Módulo Interactive Utilities</a></li>
 <li><a href="#_depuración_15">Depuración</a></li>
@@ -817,7 +817,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>En enero de 2018 comencé a preparar un curso de programación pensado en estudiantes que no tuvieran experiencia previa en programación. Quería usar Julia como lenguaje de programación, y descubrí que no existía ningún libro para aprender a programar que usara Julia como primer lenguaje de programación. Hay tutoriales maravillosos que explican los conceptos clave de Julia, pero ninguno de ellos se dedicaba lo suficiente a enseñar a pensar como un programador.</p>
 </div>
 <div class="paragraph">
-<p>Conocía el libro Think Python de Allen Downey que contiene todos los elementos clave para aprender a programar correctamente. Sin embargo, este libro se basa en el lenguaje de programación Python. Mi primer borrador del curso fue una mezcla de muchas referencias, pero a medida que trabajaba en él, el contenido comenzó a parecerse cada vez más a los capítulos de Think Python. La idea de desarrollar mi curso utilizando Think Python como base para enseñar Julia se hizo realidad.</p>
+<p>Conocía el libro Think Python de Allen Downey que contiene todos los elementos clave para aprender a programar correctamente. Sin embargo, este libro se basa en el lenguaje de programación Python. Mi primer borrador del curso fue una mezcla de muchas referencias, pero a medida que trabajaba en él, el contenido comenzó a parecerse cada vez más a los capítulos de Think Python. La idea de desarrollar mi curso como base para traspasar ese libro a Julia se hizo realidad.</p>
 </div>
 <div class="paragraph">
 <p>Todo el material estaba disponible en notebooks de Jupyter, en un repositorio de GitHub. Después de publicar un mensaje en el sitio Discourse de Julia sobre el progreso de mi curso, los comentarios fueron abrumadores. Aparentemente, un libro sobre conceptos básicos de programación con Julia como primer lenguaje de programación era algo que faltaba en el universo de Julia. Contacté a Allen para ver si podía iniciar oficialmente la versión de Think Python para Julia y su respuesta fue inmediata: "¡adelante!", me puso en contacto con su editor de O&#8217;Reilly Media y ahora, un año después, estoy haciendo los retoques finales a este libro.</p>
@@ -832,7 +832,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><em>Ben Lauwens</em></p>
 </div>
 <div class="sect2">
-<h3 id="_por_qué_usar_julia">¿Por qué usar Julia?</h3>
+<h3 id="_a_quién_está_dirigido_este_libro">¿A quién está dirigido este libro?</h3>
 <div class="paragraph">
 <p>Julia fue lanzado originalmente en 2012 por Alan Edelman, Stefan Karpinski, Jeff Bezanson y Viral Shah. Es un lenguaje de programación gratuito y de código abierto.</p>
 </div>
@@ -946,7 +946,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_usar_códigos_de_ejemplo">Usar códigos de ejemplo</h3>
+<h3 id="_usando_los_códigos_de_ejemplo">Usando los códigos de ejemplo</h3>
 <div class="paragraph">
 <p>Todo el código utilizado en este libro está disponible en un repositorio de Git en GitHub: <a href="https://github.com/PiensaEnJulia/PiensaEnJulia.jl" class="bare">https://github.com/PiensaEnJulia/PiensaEnJulia.jl</a>. Si no está familiarizado con Git, es un sistema de control de versiones que le permite realizar seguimiento a los archivos que componen un proyecto. Una colección de archivos controlados por Git se denomina "repositorio". GitHub es un servicio de hosting que proporciona almacenamiento para repositorios de Git y una interfaz web conveniente.</p>
 </div>
@@ -963,7 +963,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_agradecimientos">Agradecimientos</h3>
 <div class="paragraph">
-<p>Realmente quiero agradecer a Allen por escribir Think Python y permitirme pasar Think Python a Julia. ¡Tu entusiasmo es contagioso!</p>
+<p>Realmente quiero agradecer a Allen por escribir Think Python y permitirme traspasar este libro a Julia. ¡Tu entusiasmo es contagioso!</p>
 </div>
 <div class="paragraph">
 <p>También me gustaría agradecer a los revisores técnicos de este libro, que hicieron muchas sugerencias útiles: Tim Besard, Bart Janssens y David P. Sanders.</p>
@@ -4247,7 +4247,7 @@ A conditional statement with a series of alternative branches.
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; time()
-1.581445607396558e9</code></pre>
+1.582059889961293e9</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -8464,7 +8464,7 @@ Dict{Any,Any} with 0 entries</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>El tipo de este diccionario está compuesto por el tipo de las claves y de los valores. En este caso, las claves y los valores son de tipo <code>Any</code>.
+<p>El tipo de este diccionario está compuesto por el tipo de las claves y de los valores, entre llaves. En este caso, las claves y los valores son de tipo <code>Any</code>.
 </p>
 </div>
 <div class="paragraph">
@@ -8965,7 +8965,7 @@ end</code></pre>
 </div>
 <div class="paragraph">
 <p>Para reasignar una variable global dentro de una función, debe <em>declarar</em> la variable global antes de usarla:
-</p>
+(reasignación</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9268,11 +9268,11 @@ end</code></pre>
 <div class="sect3">
 <h4 id="ex11-5">Ejercicio 11-6</h4>
 <div class="paragraph">
-<p>Dos palabras son "pares rotados" si puede rotar una de ellas y obtener la otra (vea <code>rotateword</code> en <a href="#ex08-5">Exercise 8-11</a>).
+<p>Dos palabras son "pares desplazados" si puede desplazar una de ellas y obtener la otra (vea <code>desplazarpalabra</code> en <a href="#ex08-5">Exercise 8-11</a>).
 </p>
 </div>
 <div class="paragraph">
-<p>Escriba un programa que lea una matriz de palabras y encuentre todos los pares rotados.</p>
+<p>Escriba un programa que lea una matriz de palabras y encuentre todos los pares desplazados.</p>
 </div>
 </div>
 <div class="sect3">
@@ -9322,12 +9322,12 @@ end</code></pre>
 <h2 id="chap12">12. Tuplas</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Este capítulo presenta otro tipo integrado; las tuplas, y luego muestra cómo las matrices, los diccionarios y las tuplas funcionan en conjunto. También se presenta una característica útil para las matrices de longitud variable como argumento: los operadores de recopilación y dispersión.</p>
+<p>Este capítulo presenta otro tipo integrado; las tuplas, y luego muestra cómo los arreglos, los diccionarios y las tuplas funcionan en conjunto. También se presenta una característica útil para los arreglos de longitud variable como argumento: los operadores de recopilación y dispersión.</p>
 </div>
 <div class="sect2">
 <h3 id="_las_tuplas_son_immutables">Las Tuplas son Immutables</h3>
 <div class="paragraph">
-<p>Una tupla es una secuencia de valores. Los valores pueden ser de cualquier tipo, y están indexados por enteros, por lo que las tuplas son muy parecidas a las matrices. La diferencia más importante es que las tuplas son inmutables y que cada elemento puede tener su propio tipo.
+<p>Una tupla es una secuencia de valores. Los valores pueden ser de cualquier tipo, y están indexados por enteros, por lo que las tuplas son muy parecidas a los arreglos. La diferencia más importante es que las tuplas son inmutables y que cada elemento puede tener su propio tipo.
 </p>
 </div>
 <div class="paragraph">
@@ -9406,7 +9406,7 @@ Char</code></pre>
 <p>Ya que tuple es el nombre de una función integrada, debe evitar usarla como nombre de variable.</p>
 </div>
 <div class="paragraph">
-<p>La mayoría de los operadores de matriz también sirven en las tuplas. El operador corchete indexa un elemento:
+<p>La mayoría de los operadores de arreglos también sirven en las tuplas. El operador corchete indexa un elemento:
 </p>
 </div>
 <div class="listingblock">
@@ -9492,7 +9492,7 @@ ERROR: BoundsError: attempt to access (1, 2)
 </div>
 </div>
 <div class="paragraph">
-<p>El lado derecho puede ser cualquier tipo de secuencia (cadena, matriz o tupla). Por ejemplo, para dividir una dirección de correo electrónico en nombre de usuario y dominio, se puede escribir:
+<p>El lado derecho puede ser cualquier tipo de secuencia (cadena, arreglo o tupla). Por ejemplo, para dividir una dirección de correo electrónico en nombre de usuario y dominio, se puede escribir:
 </p>
 </div>
 <div class="listingblock">
@@ -9503,7 +9503,7 @@ julia&gt; unombre, dominio = split(addr, '@');</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>El valor de retorno de <code>split</code> es una matriz con dos elementos; el primer elemento se asigna a <code>unombre</code>, y el segundo a <code>dominio</code>.</p>
+<p>El valor de retorno de <code>split</code> es un arreglo con dos elementos; el primer elemento se asigna a <code>unombre</code>, y el segundo a <code>dominio</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9554,7 +9554,7 @@ end</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p><code>máximo</code> y <code>mínimo</code> son funciones integradas que encuentran los elementos más grandes y más pequeños de una secuencia, respectivamente. La función <code>minmax</code> calcula ambos y devuelve una tupla de dos valores. Otra alternativa es utilizar la función integrada <code>extrema</code>, lo cual es más eficiente.
+<p><code>maximum</code> y <code>minimum</code> son funciones integradas que encuentran los elementos más grandes y más pequeños de una secuencia, respectivamente. La función <code>minmax</code> calcula ambos y devuelve una tupla de dos valores. Otra alternativa es utilizar la función integrada <code>extrema</code>, lo cual es más eficiente.
 </p>
 </div>
 </div>
@@ -9624,7 +9624,7 @@ ERROR: MethodError: no method matching sum(::Int64, ::Int64, ::Int64)</code></pr
 <div class="sect3">
 <h4 id="_ejercicio_12_1">Ejercicio 12-1</h4>
 <div class="paragraph">
-<p>Escriba una función llamada <code>sumall</code> que tome cualquier número de argumentos y devuelva su suma.
+<p>Escriba una función llamada <code>sumartodo</code> que tome cualquier número de argumentos y devuelva su suma.
 </p>
 </div>
 <div class="paragraph">
@@ -9633,13 +9633,13 @@ ERROR: MethodError: no method matching sum(::Int64, ::Int64, ::Int64)</code></pr
 </div>
 </div>
 <div class="sect2">
-<h3 id="_matrices_y_tuplas">Matrices y tuplas</h3>
+<h3 id="_arreglos_y_tuplas">Arreglos y tuplas</h3>
 <div class="paragraph">
 <p><code>zip</code> es una función integrada que toma dos o más secuencias y devuelve una colección de tuplas donde cada tupla contiene un elemento de cada secuencia. El nombre de la función se refiere a una cremallera, que une e intercala dos filas de dientes.
 </p>
 </div>
 <div class="paragraph">
-<p>Este ejemplo une e intercala una cadena y una matriz:</p>
+<p>Este ejemplo une e intercala una cadena y un arreglo:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9666,11 +9666,11 @@ Base.Iterators.Zip{Tuple{String,Array{Int64,1}}}(("abc", [1, 2, 3]))</code></pre
 </div>
 </div>
 <div class="paragraph">
-<p>Un objeto zip es un tipo de <em>iterador</em>, que es cualquier objeto que itera a través de una secuencia. Los iteradores son, de cierto modo, similares a las matrices, pero a diferencia de las matrices, no se puede usar un índice para seleccionar un elemento de un iterador.
+<p>Un objeto zip es un tipo de <em>iterador</em>, que es cualquier objeto que itera a través de una secuencia. Los iteradores son, de cierto modo, similares a los arreglos, pero a diferencia de los arreglos, no se puede usar un índice para seleccionar un elemento de un iterador.
 </p>
 </div>
 <div class="paragraph">
-<p>Si desea usar operadores y funciones de matrices, puedes usar un objeto zip para hacer una matriz:
+<p>Si desea usar operadores y funciones de arreglos, puedes usar un objeto zip para hacer un arreglo:
 </p>
 </div>
 <div class="listingblock">
@@ -9683,7 +9683,7 @@ Base.Iterators.Zip{Tuple{String,Array{Int64,1}}}(("abc", [1, 2, 3]))</code></pre
 </div>
 </div>
 <div class="paragraph">
-<p>El resultado es una serie de tuplas; en este ejemplo, cada tupla contiene un carácter de la cadena y el elemento correspondiente de la matriz.</p>
+<p>El resultado es una serie de tuplas; en este ejemplo, cada tupla contiene un carácter de la cadena y el elemento correspondiente del arreglo.</p>
 </div>
 <div class="paragraph">
 <p>Si las secuencias no tienen el mismo largo, el resultado tiene el largo de la más corta.</p>
@@ -9699,7 +9699,7 @@ Base.Iterators.Zip{Tuple{String,Array{Int64,1}}}(("abc", [1, 2, 3]))</code></pre
 </div>
 </div>
 <div class="paragraph">
-<p>Se puede usar asignación de tuplas en un bucle <code>for</code> para recorrer una matriz de tuplas:
+<p>Se puede usar asignación de tuplas en un bucle <code>for</code> para recorrer un arreglo de tuplas:
 </p>
 </div>
 <div class="listingblock">
@@ -9715,7 +9715,7 @@ julia&gt; for (letra, numero) in t
 </div>
 </div>
 <div class="paragraph">
-<p>En cada iteración del ciclo, Julia selecciona la siguiente tupla en la matriz y asigna estos elementos a letra y número. Los paréntesis de <code>(letra, número)</code> son obligatorios.
+<p>En cada iteración del ciclo, Julia selecciona la siguiente tupla en el arreglo y asigna estos elementos a letra y número. Los paréntesis de <code>(letra, número)</code> son obligatorios.
 </p>
 </div>
 <div class="paragraph">
@@ -9822,7 +9822,7 @@ end</code></pre>
 <p>Este bucle recorre los pares clave-valor en <code>directorio</code>, los cuales son tuplas. Asigna los elementos de la clave de cada tupla a <code>apellido</code> y <code>nombre</code>, y el valor a <code>numero</code>, luego imprime el nombre y el número de teléfono correspondiente.</p>
 </div>
 <div class="paragraph">
-<p>Hay dos formas de representar tuplas en un diagrama de estado. La versión más detallada muestra los índices y elementos tal como aparecen en una matriz. Por ejemplo, la tupla <code>("Cleese", "John")</code> se vería como en <a href="#fig12-1">State diagram</a>.
+<p>Hay dos formas de representar tuplas en un diagrama de estado. La versión más detallada muestra los índices y elementos tal como aparecen en un arreglo. Por ejemplo, la tupla <code>("Cortázar", "Julio")</code> se vería como en <a href="#fig12-1">State diagram</a>.
 </p>
 </div>
 <div id="fig12-1" class="imageblock">
@@ -9848,25 +9848,25 @@ end</code></pre>
 <div class="sect2">
 <h3 id="_secuencias_de_secuencias">Secuencias de Secuencias</h3>
 <div class="paragraph">
-<p>Nos hemos centrado en las matrices de tuplas, pero casi todos los ejemplos de este capítulo también funcionan con matrices de matrices, tuplas de tuplas y tuplas de matrices. Para evitar enumerar todas las posibles combinaciones, a veces es más fácil hablar sobre secuencias de secuencias.
+<p>Nos hemos centrado en los arreglos de tuplas, pero casi todos los ejemplos de este capítulo también funcionan con arreglos de arreglos, tuplas de tuplas y tuplas de arreglos. Para evitar enumerar todas las posibles combinaciones, a veces es más fácil hablar sobre secuencias de secuencias.
 </p>
 </div>
 <div class="paragraph">
-<p>En muchos contextos, los diferentes tipos de secuencias (cadenas, matrices y tuplas) se pueden usar indistintamente. Entonces, ¿cómo elegir uno u otro?
+<p>En muchos contextos, los diferentes tipos de secuencias (cadenas, arreglos y tuplas) se pueden usar indistintamente. Entonces, ¿cómo elegir uno u otro?
 </p>
 </div>
 <div class="paragraph">
-<p>Para comenzar con lo mas obvio, las cadenas son más limitadas que las demás secuencias, porque los elementos deben ser caracteres. Además son inmutables. Si necesitas poder cambiar los caracteres en una cadena (en vez de crear una nueva), puede que lo mas adecuado sea elegir una matriz de caracteres.
+<p>Para comenzar con lo mas obvio, las cadenas son más limitadas que las demás secuencias, porque los elementos deben ser caracteres. Además son inmutables. Si necesitas poder cambiar los caracteres en una cadena (en vez de crear una nueva), puede que lo mas adecuado sea elegir un arreglo de caracteres.
 </p>
 </div>
 <div class="paragraph">
-<p>Las matrices se usan con mas frecuencia que las tuplas, principalmente porque son mutables. Pero hay algunos casos donde es posible que prefieras usar tuplas:
+<p>Los arreglos se usan con mas frecuencia que las tuplas, principalmente porque son mutables. Pero hay algunos casos donde es posible que prefieras usar tuplas:
 </p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>En algunos contextos, como en una sentencia return, resulta sintácticamente más simple crear una tupla que una matriz.</p>
+<p>En algunos contextos, como en una sentencia return, resulta sintácticamente más simple crear una tupla que un arreglo.</p>
 </li>
 <li>
 <p>Si estas pasando una secuencia como argumento de una función, el uso de tuplas reduce los comportamientos potencialmente indeseados debido a la creacion de alias.
@@ -9878,14 +9878,14 @@ end</code></pre>
 </ul>
 </div>
 <div class="paragraph">
-<p>Dado que las tuplas son inmutables, no tienen funciones como <code>sort!</code> y <code>reverse!</code>, que modifican matrices ya existentes. Sin embargo, Julia proporciona las funciones integradas <code>sort</code>, que toma una matriz y devuelve una secuencia nueva con los mismos elementos ordenados, y <code>reverse</code>, que toma cualquier secuencia y devuelve una secuencia nueva del mismo tipo con los mismos elementos en el orden contrario.
+<p>Dado que las tuplas son inmutables, no tienen funciones como <code>sort!</code> y <code>reverse!</code>, que modifiquen arreglos ya existentes. Sin embargo, Julia proporciona las funciones integradas <code>sort</code>, que toma un arreglo y devuelve una secuencia nueva con los mismos elementos ordenados, y <code>reverse</code>, que toma cualquier secuencia y devuelve una secuencia nueva del mismo tipo con los mismos elementos en el orden contrario.
 </p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_depuración_10">Depuración</h3>
 <div class="paragraph">
-<p>Las matrices, diccionarios y tuplas son ejemplos de <em>estructuras de datos</em>; en este capítulo estamos comenzando a ver estructuras de datos compuestas, como matrices o tuplas, y diccionarios que contienen tuplas como claves y matrices como valores. Las estructuras de datos compuestas son utiles, pero también resultan propensas a lo que yo llamo <em>errores de forma</em>; es decir, errores causados cuando una estructura de datos tiene el tipo, tamaño o estructura incorrecta. Por ejemplo, si estás esperando una lista con un entero y te paso simplemente un entero (no en una lista), no funcionará.
+<p>Los arreglos, diccionarios y tuplas son ejemplos de <em>estructuras de datos</em>; en este capítulo estamos comenzando a ver estructuras de datos compuestas, como arreglos o tuplas, y diccionarios que contienen tuplas como claves y arreglos como valores. Las estructuras de datos compuestas son utiles, pero también resultan propensas a lo que yo llamo <em>errores de forma</em>; es decir, errores causados cuando una estructura de datos tiene el tipo, tamaño o estructura incorrecta. Por ejemplo, si estás esperando una lista con un entero y te paso simplemente un entero (no en una lista), no funcionará.
 </p>
 </div>
 <div class="paragraph">
@@ -9923,12 +9923,12 @@ end</code></pre>
 </dd>
 <dt class="hdlist1">iterador</dt>
 <dd>
-<p>Un objeto que puede iterar a través de una secuencia, pero que no tiene los operadores y funciones de matriz.
+<p>Un objeto que puede iterar a través de una secuencia, pero que no tiene los operadores y funciones de arreglos.
 </p>
 </dd>
 <dt class="hdlist1">estructura de datos</dt>
 <dd>
-<p>Una coleccion de valores relacionados, a menudo organizados en matrices, diccionarios, tuplas, etc.
+<p>Una coleccion de valores relacionados, a menudo organizados en arreglos, diccionarios, tuplas, etc.
 </p>
 </dd>
 <dt class="hdlist1">error de forma</dt>
@@ -9984,7 +9984,7 @@ end</code></pre>
 </div>
 </li>
 <li>
-<p>Modifique el programa anterior para que imprima primero la matriz más larga de anagramas, seguida de la segunda más larga, y así sucesivamente.</p>
+<p>Modifique el programa anterior para que imprima primero el arreglo más largo de anagramas, seguida de la segunda más larga, y así sucesivamente.</p>
 </li>
 <li>
 <p>En Scrabble, un "bingo" es cuando juegas las siete fichas de tu atril, junto con una letra del tablero, para formar una palabra de ocho letras. ¿Qué colección de 8 letras forman parte del bingo más probable?</p>
@@ -10013,7 +10013,7 @@ end</code></pre>
 </table>
 </div>
 <div class="paragraph">
-<p>Credit: This exercise is inspired by an example at <a href="http://puzzlers.org" class="bare">http://puzzlers.org</a>.</p>
+<p>Créditos: Este ejercicio está inspirado en un ejemplo de <a href="http://puzzlers.org" class="bare">http://puzzlers.org</a>.</p>
 </div>
 </div>
 <div class="sect3">
@@ -10051,7 +10051,7 @@ end</code></pre>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Es posible que quieras escribir una función que tome una palabra y calcule una matriz de todas las palabras que se pueden formar al eliminar una letra. Estos son los "hijos" de la palabra.</p>
+<p>Es posible que quieras escribir una función que tome una palabra y calcule un arreglo de todas las palabras que se pueden formar al eliminar una letra. Estos son los "hijos" de la palabra.</p>
 </li>
 <li>
 <p>De manera recursiva, una palabra es reducible si alguno de sus hijos es reducible. Como caso base, puede considerar la cadena vacía reducible.
@@ -10161,7 +10161,7 @@ end</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>La función <code>rand</code> puede tomar un iterador o matriz como argumento y devuelve un elemento aleatorio de ellos:</p>
+<p>La función <code>rand</code> puede tomar un iterador o arreglo como argumento y devuelve un elemento aleatorio de ellos:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10235,7 +10235,7 @@ end;</code></pre>
 </p>
 </div>
 <div class="paragraph">
-<p><code>procesarlinea</code> usa la función <code>replace</code> para reemplazar los guiones por espacios antes de usar <code>split</code> para dividir la línea en una matriz de cadenas. Recorre el conjunto de palabras y usa <code>filter</code>, <code>isletter</code> y <code>lowercase</code> para eliminar los signos de puntuación y convertir las palabras a minúsculas. (Decir que las cadenas se "convierten" es incorrecto; recuerde que las cadenas son inmutables, por lo que una función como <code>lowercase</code> devuelve cadenas nuevas).
+<p><code>procesarlinea</code> usa la función <code>replace</code> para reemplazar los guiones por espacios antes de usar <code>split</code> para dividir la línea en un arreglo de cadenas. Recorre el conjunto de palabras y usa <code>filter</code>, <code>isletter</code> y <code>lowercase</code> para eliminar los signos de puntuación y convertir las palabras a minúsculas. (Decir que las cadenas se "convierten" es incorrecto; recuerde que las cadenas son inmutables, por lo que una función como <code>lowercase</code> devuelve cadenas nuevas).
 </p>
 </div>
 <div class="paragraph">
@@ -10282,7 +10282,7 @@ Número de palabras diferentes: 23607</code></pre>
 <div class="sect2">
 <h3 id="_palabras_más_comunes">Palabras Más Comunes</h3>
 <div class="paragraph">
-<p>Para encontrar las palabras más comunes, podemos hacer una matriz de tuplas, donde cada tupla contiene una palabra y su frecuencia, y ordenarla. La siguiente función toma un histograma y devuelve una matriz de tuplas de frecuencia de palabras:
+<p>Para encontrar las palabras más comunes, podemos hacer un arreglo de tuplas, donde cada tupla contiene una palabra y su frecuencia, y ordenarla. La siguiente función toma un histograma y devuelve un arreglo de tuplas de frecuencia de palabras:
 </p>
 </div>
 <div class="listingblock">
@@ -10297,7 +10297,7 @@ end</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>En cada tupla, la frecuencia aparece primero, por lo que la matriz resultante se ordena por frecuencia. A continuación se muestra un bucle que imprime las 10 palabras más comunes:</p>
+<p>En cada tupla, la frecuencia aparece primero, por lo que el arreglo resultante se ordena por frecuencia. A continuación se muestra un bucle que imprime las 10 palabras más comunes:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10448,7 +10448,7 @@ enojó angosta coronan sirviesen solene enderécese rescatarlos embotó estime r
 <div class="sect2">
 <h3 id="_palabras_al_azar">Palabras al Azar</h3>
 <div class="paragraph">
-<p>Para elegir una palabra aleatoria del histograma, el algoritmo más simple es construir una matriz con múltiples copias de cada palabra, de acuerdo con la frecuencia observada, y luego elegir una palabra de la matriz:
+<p>Para elegir una palabra aleatoria del histograma, el algoritmo más simple es construir un arreglo con múltiples copias de cada palabra, de acuerdo con la frecuencia observada, y luego elegir una palabra del arreglo:
 </p>
 </div>
 <div class="listingblock">
@@ -10465,7 +10465,7 @@ end</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Este algoritmo funciona, pero no es muy eficiente; cada vez que elige una palabra aleatoria, reconstruye la matriz, que es tan grande como el libro original. Una mejora es construir la matriz una vez y luego hacer múltiples selecciones, pero la matriz sigue siendo grande.</p>
+<p>Este algoritmo funciona, pero no es muy eficiente; cada vez que elige una palabra aleatoria, reconstruye el arreglo, que es tan grande como el libro original. Una mejora es construir el arreglo una vez y luego hacer múltiples selecciones, pero el arreglo sigue siendo grande.</p>
 </div>
 <div class="paragraph">
 <p>Una alternativa es:</p>
@@ -10473,17 +10473,17 @@ end</code></pre>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Use las <code>claves</code> para obtener una matriz de palabras del libro.</p>
+<p>Use las <code>claves</code> para obtener un arreglo de palabras del libro.</p>
 </li>
 <li>
-<p>Cree una matriz que contenga la suma acumulada de las frecuencias de palabras (vea <a href="#ex10-2">Ejercicio 10-2</a>). El último elemento en esta matriz es el número total de palabras en el libro, \(n\).</p>
+<p>Cree un arreglo que contenga la suma acumulada de las frecuencias de palabras (vea <a href="#ex10-2">Ejercicio 10-2</a>). El último elemento en este arreglo es el número total de palabras en el libro, \(n\).</p>
 </li>
 <li>
 <p>Elija un número aleatorio del 1 al \(n\). Use búsqueda binaria (vea <a href="#ex10-10">Ejercicio 10-10</a>) para encontrar el índice donde se insertará el número aleatorio en la suma acumulada.
 </p>
 </li>
 <li>
-<p>Use el índice para encontrar la palabra correspondiente en la matriz de palabras.</p>
+<p>Use el índice para encontrar la palabra correspondiente en el arreglo de palabras.</p>
 </li>
 </ol>
 </div>
@@ -10552,7 +10552,7 @@ Que es más bello vivir cantando</pre>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Escriba un programa que lea un texto desde un archivo y realice análisis de Markov. El resultado debe ser un diccionario que asocie prefijos y una colección de posibles sufijos. La colección puede ser una matriz, tupla o diccionario; depende de usted hacer una elección adecuada. Puede probar su programa con una longitud de prefijo de dos, pero debe escribir el programa de manera tal que sea fácil probar con otras longitudes.</p>
+<p>Escriba un programa que lea un texto desde un archivo y realice análisis de Markov. El resultado debe ser un diccionario que asocie prefijos y una colección de posibles sufijos. La colección puede ser un arreglo, tupla o diccionario; depende de usted hacer una elección adecuada. Puede probar su programa con una longitud de prefijo de dos, pero debe escribir el programa de manera tal que sea fácil probar con otras longitudes.</p>
 </li>
 <li>
 <p>Agregue una función al programa anterior para generar texto aleatorio basado en análisis de Markov. Aquí hay un ejemplo de Don Quijote con longitud de prefijo 2:</p>
@@ -10616,25 +10616,25 @@ Que es más bello vivir cantando</pre>
 <p>El último es fácil: un diccionario es la opción obvia para una asociación entre claves y valores correspondientes.</p>
 </div>
 <div class="paragraph">
-<p>Para los prefijos, las opciones más obvias son cadena, matriz de cadenas o tupla de cadenas.</p>
+<p>Para los prefijos, las opciones más obvias son cadena, arreglo de cadenas o tupla de cadenas.</p>
 </div>
 <div class="paragraph">
-<p>Para los sufijos, puede ser una matriz o un histograma (diccionario).</p>
+<p>Para los sufijos, puede ser un arreglo o un histograma (diccionario).</p>
 </div>
 <div class="paragraph">
 <p>¿Cómo se elige? El primer paso es pensar en las operaciones que deberá implementar para cada estructura de datos. Para los prefijos, debemos ser capaces de eliminar palabras del principio y agregarlas al final. Por ejemplo, si el prefijo actual es "que piense" y la siguiente palabra es "que", debe poder formar el siguiente prefijo, "piense que".</p>
 </div>
 <div class="paragraph">
-<p>Para los prefijos, podría elegir una matriz, ya que en ella es fácil agregar y eliminar elementos.</p>
+<p>Para los prefijos, podría elegir un arreglo, ya que en él es fácil agregar y eliminar elementos.</p>
 </div>
 <div class="paragraph">
 <p>Para la colección de sufijos, las operaciones que debemos realizar incluyen agregar un nuevo sufijo (o aumentar la frecuencia de uno existente) y elegir un sufijo aleatorio.</p>
 </div>
 <div class="paragraph">
-<p>Agregar un nuevo sufijo es igualmente fácil para la implementación de la matriz o el histograma. Elegir un elemento aleatorio de una matriz es fácil; elegir eficientemente de un histograma es más difícil (ver <a href="#ex13-7">Ejercicio 13-7</a>).</p>
+<p>Agregar un nuevo sufijo es igualmente fácil para la implementación del arreglo o del histograma. Elegir un elemento aleatorio de un arreglo es fácil; elegir eficientemente de un histograma es más difícil (ver <a href="#ex13-7">Ejercicio 13-7</a>).</p>
 </div>
 <div class="paragraph">
-<p>Hasta ahora hemos hablado principalmente sobre la facilidad de implementación, pero hay otros factores a considerar al elegir las estructuras de datos. Uno es el tiempo de ejecución. A veces hay una razón teórica para esperar que una estructura de datos sea más rápida que otra; por ejemplo, anteriormente se mencionó que el operador <code>in</code> es más rápido para los diccionarios que para las matrices, al menos cuando el número de elementos es grande.</p>
+<p>Hasta ahora hemos hablado principalmente sobre la facilidad de implementación, pero hay otros factores a considerar al elegir las estructuras de datos. Uno es el tiempo de ejecución. A veces hay una razón teórica para esperar que una estructura de datos sea más rápida que otra; por ejemplo, anteriormente se mencionó que el operador <code>in</code> es más rápido para los diccionarios que para los arreglos, al menos cuando el número de elementos es grande.</p>
 </div>
 <div class="paragraph">
 <p>Pero generalmente no se sabe de antemano qué implementación será más rápida. Una opción es implementar ambos y ver cuál es mejor. Este enfoque se llama <em>benchmarking</em>. Una alternativa práctica es elegir la estructura de datos que sea más fácil de implementar y luego ver si es lo suficientemente rápida para la aplicación prevista. Si es así, no hay necesidad de continuar. Si no, hay herramientas, como el módulo <code>Profile</code>, que pueden identificar los lugares en un programa que toman más tiempo.
@@ -10744,7 +10744,7 @@ Que es más bello vivir cantando</pre>
 <p>El proceso de elegir entre estructuras de datos implementando alternativas y probándolas con una muestra de las posibles entradas.
 </p>
 </dd>
-<dt class="hdlist1">depuración de pato de goma</dt>
+<dt class="hdlist1">depuración del pato de goma</dt>
 <dd>
 <p>Depuración en dónde se explica el problema a un objeto inanimado, tal como un pato de goma. Articular el problema puede ayudarte a resolverlo, incluso si el pato de goma no sabe de Julia.
 </p>
@@ -10757,7 +10757,7 @@ Que es más bello vivir cantando</pre>
 <div class="sect3">
 <h4 id="ex13-9">Ejercicio 13-9</h4>
 <div class="paragraph">
-<p>El "rango" de una palabra es su posición en una matriz de palabras ordenadas por frecuencia: la palabra más común tiene rango 1, la segunda más común tiene rango 2, etc.</p>
+<p>El "rango" de una palabra es su posición en un arreglo de palabras ordenadas por frecuencia: la palabra más común tiene rango 1, la segunda más común tiene rango 2, etc.</p>
 </div>
 <div class="paragraph">
 <p>La ley de Zipf describe una relación entre los rangos y las frecuencias de las palabras en idiomas naturales (<a href="https://en.wikipedia.org/wiki/Zipf&apos;s_law" class="bare">https://en.wikipedia.org/wiki/Zipf&apos;s_law</a>). Específicamente, predice que la frecuencia, \(f\), de la palabra con rango \(r\) es:
@@ -10856,10 +10856,8 @@ IOStream(&lt;file salida.txt&gt;)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Si el archivo ya existe, abrirlo en modo de escritura borra los datos antiguos y comienza de nuevo, ¡así que tenga cuidado!. Si el archivo no existe, se crea uno nuevo. <code>open</code> devuelve un objeto de archivo y la función <code>write</code> escribe datos en el archivo.</p>
-</div>
-<div class="paragraph">
-<p></p>
+<p>Si el archivo ya existe, abrirlo en modo de escritura borra los datos antiguos y comienza de nuevo, ¡así que tenga cuidado!. Si el archivo no existe, se crea uno nuevo. <code>open</code> devuelve un objeto de archivo y la función <code>write</code> escribe datos en el archivo.
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10998,7 +10996,7 @@ true</code></pre>
 </p>
 </div>
 <div class="paragraph">
-<p><code>readdir</code> devuelve una matriz de los archivos (y otros directorios) en el directorio dado:
+<p><code>readdir</code> devuelve un arreglo de los archivos (y otros directorios) en el directorio dado:
 </p>
 </div>
 <div class="listingblock">
@@ -11188,7 +11186,7 @@ end</code></pre>
 <p>Una limitación de <code>GDBM</code> es que las claves y los valores deben ser cadenas o conjuntos de bytes. Si intenta utilizar cualquier otro tipo, se producirá un error.</p>
 </div>
 <div class="paragraph">
-<p>Las funciones <code>serialize</code> y <code>deserialize</code> pueden ser útiles. Traducen casi cualquier tipo de objeto en una matriz de bytes (un iobuffer) adecuada para el almacenamiento en una base de datos, y luego traducen las matrices de bytes nuevamente en objetos:
+<p>Las funciones <code>serialize</code> y <code>deserialize</code> pueden ser útiles. Traducen casi cualquier tipo de objeto en un arreglo de bytes (un iobuffer) adecuada para el almacenamiento en una base de datos, y luego traducen los arreglos de bytes nuevamente en objetos:
 </p>
 </div>
 <div class="listingblock">
@@ -11226,7 +11224,7 @@ julia&gt; print(t2)
 </div>
 </div>
 <div class="paragraph">
-<p><code>serialize</code> y <code>deserialize</code> escriben y leen desde un objeto iobuffer que representa un I/O stream en memoria. La función <code>take!</code> recupera el contenido del iobuffer como una matriz de bytes y reestablece el iobuffer a su estado inicial.</p>
+<p><code>serialize</code> y <code>deserialize</code> escriben y leen desde un objeto iobuffer que representa un I/O stream en memoria. La función <code>take!</code> recupera el contenido del iobuffer como un arreglo de bytes y reestablece el iobuffer a su estado inicial.</p>
 </div>
 <div class="paragraph">
 <p>Aunque el nuevo objeto tiene el mismo valor que el anterior, no es (en general) el mismo objeto:</p>
@@ -11505,7 +11503,7 @@ String "1 2\t 3\n 4"</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_exercises">Exercises</h3>
+<h3 id="_ejercicios_16">Ejercicios</h3>
 <div class="sect3">
 <h4 id="ex14-1">Ejercicio 14-2</h4>
 <div class="paragraph">
@@ -11519,10 +11517,10 @@ String "1 2\t 3\n 4"</code></pre>
 <div class="sect3">
 <h4 id="ex14-2">Ejercicio 14-3</h4>
 <div class="paragraph">
-<p>Si hizo <a href="#ex12-2">Ejercicio 12-3</a>, recordará que debía crear un diccionario que asociaba una cadena ordenada de letras al conjunto de palabras que se podía deletrear con esas letras. Por ejemplo, <code>"cuarderno"</code> estaba asociado a la matriz <code>["cuarderno", "educaron", "encuadro"]</code>.</p>
+<p>Si hizo <a href="#ex12-2">Ejercicio 12-3</a>, recordará que debía crear un diccionario que asociaba una cadena ordenada de letras al conjunto de palabras que se podía deletrear con esas letras. Por ejemplo, <code>"cuaderno"</code> estaba asociado al arreglo <code>["cuaderno", "educaron", "encuadro"]</code>.</p>
 </div>
 <div class="paragraph">
-<p>Escriba un módulo que importe <code>conjuntoanagramas</code> y proporcione dos nuevas funciones: <code>almacenaranagramas</code>, que almacena el diccionario de anagramas usando <code>JLD2</code> (vea <a href="https://github.com/JuliaIO/JLD2.jl" class="bare">https://github.com/JuliaIO/JLD2.jl</a>); y <code>leeranagramas</code>, que busca una palabra y devuelve una matriz de sus anagramas.
+<p>Escriba un módulo que importe <code>conjuntoanagramas</code> y proporcione dos nuevas funciones: <code>almacenaranagramas</code>, que almacena el diccionario de anagramas usando <code>JLD2</code> (vea <a href="https://github.com/JuliaIO/JLD2.jl" class="bare">https://github.com/JuliaIO/JLD2.jl</a>); y <code>leeranagramas</code>, que busca una palabra y devuelve un arreglo de sus anagramas.
 </p>
 </div>
 </div>
@@ -11534,7 +11532,7 @@ String "1 2\t 3\n 4"</code></pre>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Escriba un programa que busque un directorio y todos sus subdirectorios, de forma recursiva, y devuelva una matriz de rutas completas para todos los archivos con un sufijo dado (como <em>.mp3</em>).</p>
+<p>Escriba un programa que busque un directorio y todos sus subdirectorios, de forma recursiva, y devuelva un arreglo de rutas completas para todos los archivos con un sufijo dado (como <em>.mp3</em>).</p>
 </li>
 <li>
 <p>Para reconocer duplicados, puede usar <code>md5sum</code> o <code>md5</code> para calcular una "suma de verificación" para cada archivo. Si dos archivos tienen la misma suma de verificación, probablemente tengan el mismo contenido.</p>
@@ -11572,7 +11570,7 @@ String "1 2\t 3\n 4"</code></pre>
 <p>Podríamos almacenar las coordenadas por separado en dos variables, <code>x</code> e <code>y</code>.</p>
 </li>
 <li>
-<p>Podríamos almacenar las coordenadas como elementos de una matriz o tupla.</p>
+<p>Podríamos almacenar las coordenadas como elementos de un arreglo o tupla.</p>
 </li>
 <li>
 <p>Podríamos crear un nuevo tipo para representar puntos como objetos.</p>
@@ -12050,7 +12048,7 @@ false</code></pre>
 <p>Un objeto que se almacena como atributo de otro objeto.
 </p>
 </dd>
-<dt class="hdlist1">deep copy</dt>
+<dt class="hdlist1">deep copy o copia profunda</dt>
 <dd>
 <p>Copiar el contenido de un objeto, y cualquier objeto embebido en él, y a su vez, cualquier objeto embebido en ellos, y así sucesivamente. Implementado por la función <code>deepcopy</code>.
 </p>
@@ -12064,7 +12062,7 @@ false</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_ejercicios_16">Ejercicios</h3>
+<h3 id="_ejercicios_17">Ejercicios</h3>
 <div class="sect3">
 <h4 id="ex15-1">Ejercicio 15-3</h4>
 <div class="olist arabic">
@@ -12141,7 +12139,7 @@ end</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; hora = Hora(11, 59, 30)
+<pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; tiempo = Hora(11, 59, 30)
 Hora(11, 59, 30)</code></pre>
 </div>
 </div>
@@ -12463,7 +12461,7 @@ end</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_ejercicios_17">Ejercicios</h3>
+<h3 id="_ejercicios_18">Ejercicios</h3>
 <div class="sect3">
 <h4 id="ex16-1">Ejercicio 16-6</h4>
 <div class="paragraph">
@@ -13153,7 +13151,7 @@ julia&gt; sum((t1, t2, t3))
 </div>
 </div>
 <div class="sect2">
-<h3 id="_ejercicios_18">Ejercicios</h3>
+<h3 id="_ejercicios_19">Ejercicios</h3>
 <div class="sect3">
 <h4 id="ex17-1">Ejercicio 17-4</h4>
 <div class="paragraph">
@@ -13163,13 +13161,13 @@ julia&gt; sum((t1, t2, t3))
 <div class="sect3">
 <h4 id="ex17-2">Ejercicio 17-5</h4>
 <div class="paragraph">
-<p>Escriba una definición para un tipo llamado <code>Canguro</code>, con un atributo llamado <code>contenidodemarsupio</code> de tipo <code>Matriz</code> y los siguientes métodos:
+<p>Escriba una definición para un tipo llamado <code>Canguro</code>, con un atributo llamado <code>contenidodemarsupio</code> de tipo <code>Arreglo</code> y los siguientes métodos:
 </p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Un constructor que inicializa <code>contenidodemarsupio</code> a una matriz vacía.</p>
+<p>Un constructor que inicializa <code>contenidodemarsupio</code> a un arreglo vacío.</p>
 </li>
 <li>
 <p>Un método llamado <code>ponerenmarsupio</code> que tome un objeto <code>Canguro</code> y un objeto de cualquier tipo y lo agregue a <code>contenidodemarsupio</code>.
@@ -13267,7 +13265,7 @@ Naipe(2, 12)</code></pre>
 <div class="sect2">
 <h3 id="_variables_globales">Variables Globales</h3>
 <div class="paragraph">
-<p>Para poder imprimir los objetos <code>Naipe</code> de una manera que sea fácil de leer, necesitamos establecer una correspondencia entre los códigos enteros, y sus correspondientes palos y valores. Una manera natural de hacer esto es con matrices de cadenas:</p>
+<p>Para poder imprimir los objetos <code>Naipe</code> de una manera que sea fácil de leer, necesitamos establecer una correspondencia entre los códigos enteros, y sus correspondientes palos y valores. Una manera natural de hacer esto es con arreglos de cadenas:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -13291,7 +13289,7 @@ end</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>La expresión <code>nombres_valor[naipe.valor]</code> significa "use el atributo <code>valor</code> del objeto <code>naipe</code> como índice en la matriz <code>nombres_valor</code>, y seleccione la cadena correspondiente".</p>
+<p>La expresión <code>nombres_valor[naipe.valor]</code> significa "use el atributo <code>valor</code> del objeto <code>naipe</code> como índice en el arreglo <code>nombres_valor</code>, y seleccione la cadena correspondiente".</p>
 </div>
 <div class="paragraph">
 <p>Con los métodos que tenemos hasta ahora, podemos crear e imprimir naipes:</p>
@@ -13360,7 +13358,7 @@ Test Passed</code></pre>
 <div class="sect2">
 <h3 id="_mazos">Mazos</h3>
 <div class="paragraph">
-<p>Ahora que ya tenemos Naipes, el próximo paso es definir Mazos. Como un mazo está compuesto de naipes, naturalmente cada Mazo contendrá una matriz de naipes como atributo.</p>
+<p>Ahora que ya tenemos Naipes, el próximo paso es definir Mazos. Como un mazo está compuesto de naipes, naturalmente cada Mazo contendrá un arreglo de naipes como atributo.</p>
 </div>
 <div class="paragraph">
 <p>A continuación se muestra una definición para <code>Mazo</code>. El constructor crea el atributo naipes y genera la baraja estándar de cincuenta
@@ -13424,7 +13422,7 @@ end</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Como <code>pop!</code> elimina el último naipe en la matriz, estamos repartiendo desde el extremo inferior del mazo.</p>
+<p>Como <code>pop!</code> elimina el último naipe en el arreglo, estamos repartiendo desde el extremo inferior del mazo.</p>
 </div>
 <div class="paragraph">
 <p>Para añadir un naipe, podemos usar la función <code>push!</code>:
@@ -13443,7 +13441,7 @@ end</code></pre>
 </p>
 </div>
 <div class="paragraph">
-<p>En este caso, <code>push!</code> es un método "fino" que expresa una operación de matriz adecuada para los mazos. Mejora la apariencia o interfaz, de la implementación.</p>
+<p>En este caso, <code>push!</code> es un método "fino" que expresa una operación de arreglos adecuada para los mazos. Mejora la apariencia o interfaz, de la implementación.</p>
 </div>
 <div class="paragraph">
 <p>También podemos escribir un método llamado <code>shuffle!</code> (barajar en inglés) Usando la función <code>Random.shuffle!</code>:
@@ -13545,7 +13543,7 @@ end</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>En lugar de llenar la mano con 52 naipes nuevos, el constructor de <code>Mano</code> inicializa <code>naipes</code> a una matriz vacía. Se puede etiquetar a la <code>Mano</code> pasando un argumento opcional al constructor.</p>
+<p>En lugar de llenar la mano con 52 naipes nuevos, el constructor de <code>Mano</code> inicializa <code>naipes</code> a un arreglo vacío. Se puede etiquetar a la <code>Mano</code> pasando un argumento opcional al constructor.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -13586,9 +13584,9 @@ end</code></pre>
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; mazo = Mazo()
 A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ 10♣ J♣ Q♣ K♣ A♦ 2♦ 3♦ 4♦ 5♦ 6♦ 7♦ 8♦ 9♦ 10♦ J♦ Q♦ K♦ A♥ 2♥ 3♥ 4♥ 5♥ 6♥ 7♥ 8♥ 9♥ 10♥ J♥ Q♥ K♥ A♠ 2♠ 3♠ 4♠ 5♠ 6♠ 7♠ 8♠ 9♠ 10♠ J♠ Q♠ K♠
 julia&gt; shuffle!(mazo)
-7♥ 2♠ Q♠ 6♦ 8♣ 9♥ 10♦ 7♠ 5♠ 4♠ 7♣ 9♦ 5♥ Q♦ 2♣ 9♠ 10♥ Q♥ 7♦ 4♣ 5♣ Q♣ 8♠ K♦ A♥ J♦ A♠ K♠ A♦ J♣ 10♠ 10♣ 3♦ 9♣ J♥ 2♥ 3♥ 4♥ 8♥ 2♦ 6♣ 8♦ 3♣ 4♦ 6♠ J♠ 3♠ K♥ A♣ 5♦ 6♥ K♣
+6♣ 9♠ 10♠ 8♠ 8♣ Q♣ 9♦ 3♦ 6♥ 4♥ J♣ 7♦ 2♠ 5♣ 3♣ 2♥ 10♥ 6♠ Q♥ 4♦ 2♦ 4♣ 10♦ J♥ 8♥ 5♠ K♣ 3♠ 7♥ A♠ K♠ A♦ 9♥ 6♦ 9♣ Q♠ J♦ K♦ 3♥ 7♠ A♥ A♣ Q♦ 5♦ 2♣ 7♣ 5♥ 8♦ 10♣ J♠ 4♠ K♥
 julia&gt; naipe = pop!(mazo)
-K♣
+K♥
 julia&gt; push!(mano, naipe)</code></pre>
 </div>
 </div>
@@ -13663,7 +13661,7 @@ end</code></pre>
 <p>No hay dependencias en este diagrama. Normalmente se mostrarían con una flecha achurada. Si hay muchas dependencias, a veces se omiten.</p>
 </div>
 <div class="paragraph">
-<p>Un diagrama más detallado podría mostrar que un Mazo en realidad contiene una matriz de Naipes, pero los tipos integrados como matrices y diccionarios generalmente no se incluyen en los diagramas de tipos.</p>
+<p>Un diagrama más detallado podría mostrar que un Mazo en realidad contiene un arreglo de Naipes, pero los tipos integrados como arreglos y diccionarios generalmente no se incluyen en los diagramas de tipos.</p>
 </div>
 </div>
 <div class="sect2">
@@ -13846,12 +13844,12 @@ end</code></pre>
 <p>Un tipo abstracto que es el padre de otro tipo.
 </p>
 </dd>
-<dt class="hdlist1">Relación ES-UN</dt>
+<dt class="hdlist1">relación ES-UN</dt>
 <dd>
 <p>Una relación entre un subtipo y su supertipo.
 </p>
 </dd>
-<dt class="hdlist1">Relación TIENE-UN</dt>
+<dt class="hdlist1">relación TIENE-UN</dt>
 <dd>
 <p>Una relación entre dos tipos donde las instancias de un tipo contienen referencias a instancias del otro.
 </p>
@@ -13880,7 +13878,7 @@ end</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_exercises_2">Exercises</h3>
+<h3 id="_exercises">Exercises</h3>
 <div class="sect3">
 <h4 id="ex18-1">Exercise 18-4</h4>
 <div class="paragraph">
@@ -13915,7 +13913,7 @@ agregarping(pong, ping)</code></pre>
 <div class="sect3">
 <h4 id="ex18-2">Ejercicio 18-5</h4>
 <div class="paragraph">
-<p>Escriba un método llamado <code>repartir!</code> que tome tres parámetros: un <code>Mazo</code>, el número de manos y el número de naipes por mano. Debería crear el número apropiado de objetos <code>Mano</code>, repartir el número apropiado de naipes por mano y devolver una matriz de +Mano+s.
+<p>Escriba un método llamado <code>repartir!</code> que tome tres parámetros: un <code>Mazo</code>, el número de manos y el número de naipes por mano. Debería crear el número apropiado de objetos <code>Mano</code>, repartir el número apropiado de naipes por mano y devolver un arreglo de +Mano+s.
 </p>
 </div>
 </div>
@@ -14728,8 +14726,7 @@ end</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>El cuerpo devuelve una expresión citada como una macro.
-The body returns a quoted expression like a macro.</p>
+<p>El cuerpo devuelve una expresión citada como una macro.</p>
 </div>
 <div class="paragraph">
 <p>Para la sentencia que llama, la <em>función generada</em> se comporta como una función normal:</p>
@@ -14755,7 +14752,7 @@ julia&gt; y
 </p>
 </div>
 <div class="paragraph">
-<p>Las matrices pueden contener datos faltantes:</p>
+<p>Los arreglos pueden contener datos faltantes:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14766,10 +14763,10 @@ julia&gt; y
 </div>
 </div>
 <div class="paragraph">
-<p>El tipo de dicha matriz es <code>Union{Missing, T}</code>, donde <code>T</code> es el tipo de los valores que realmente tenemos en la matriz.</p>
+<p>El tipo de dicho arreglo es <code>Union{Missing, T}</code>, donde <code>T</code> es el tipo de los valores que realmente tenemos en el arreglo.</p>
 </div>
 <div class="paragraph">
-<p>Las funciones de reducción devuelven <code>missing</code> cuando se invocan con matrices que contienen valores faltantes</p>
+<p>Las funciones de reducción devuelven <code>missing</code> cuando se invocan con arreglos que contienen valores faltantes</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14884,9 +14881,9 @@ end</code></pre>
 <p>Tipo concreto cuyos datos están compuestos de bits.
 </p>
 </dd>
-<dt class="hdlist1">type union</dt>
+<dt class="hdlist1">unión de tipos</dt>
 <dd>
-<p>Type which includes as objects all instances of any of its type parameters.
+<p>Tipo que incluye todas las instancias de cualquiera de sus tipos de parámetros como objetos.
 </p>
 </dd>
 <dt class="hdlist1">tipo paramétrico</dt>
@@ -15014,7 +15011,7 @@ julia&gt; @time fibonacci(40)
 <div class="sect2">
 <h3 id="collections_and_data_structures">Colecciones y Estructuras de Datos</h3>
 <div class="paragraph">
-<p>En <a href="#dictionary_subtraction">Resta de Diccionario</a> usamos diccionarios para encontrar las palabras que aparecían en un documento y que no aparecían en una matriz de palabras. La función que escribimos tomaba <code>d1</code>, que contenía las palabras del documento como claves, y <code>d2</code>, que contenía la matriz de palabras. Y devolvía un diccionario que contenía las claves de <code>d1</code> que no estaban en <code>d2</code>.
+<p>En <a href="#dictionary_subtraction">Resta de Diccionario</a> usamos diccionarios para encontrar las palabras que aparecían en un documento y que no aparecían en un arreglo de palabras. La función que escribimos tomaba <code>d1</code>, que contenía las palabras del documento como claves, y <code>d2</code>, que contenía el arreglo de palabras. Y devolvía un diccionario que contenía las claves de <code>d1</code> que no estaban en <code>d2</code>.
 </p>
 </div>
 <div class="listingblock">
@@ -15222,13 +15219,13 @@ RegexMatch("s")</code></pre>
 <p>la subcadena que coincide: <code>m.match</code></p>
 </li>
 <li>
-<p>las subcadenas que coinciden en forma de matriz de cadenas: <code>m.captures</code></p>
+<p>las subcadenas que coinciden en forma de arreglo de cadenas: <code>m.captures</code></p>
 </li>
 <li>
 <p>la primera posición en la que se encuentra el patrón: <code>m.offset</code></p>
 </li>
 <li>
-<p>las posiciones de las subcadenas que coinciden en forma de matriz: <code>m.offsets</code></p>
+<p>las posiciones de las subcadenas que coinciden en forma de arreglo: <code>m.offsets</code></p>
 </li>
 </ul>
 </div>
@@ -15245,9 +15242,9 @@ julia&gt; m.offset
 </div>
 </div>
 <div class="sect2">
-<h3 id="_matrices">Matrices</h3>
+<h3 id="_arreglos">Arreglos</h3>
 <div class="paragraph">
-<p>En el <a href="#chap10">Arreglos</a> usamos un objeto de matriz unidimensional, con un índice para acceder a sus elementos. Sin embargo, en Julia las matrices son multidimensionales.</p>
+<p>En el <a href="#chap10">Arreglos</a> usamos un objeto de arreglo unidimensional, con un índice para acceder a sus elementos. Sin embargo, en Julia las matrices son multidimensionales.</p>
 </div>
 <div class="paragraph">
 <p>Creemos una <em>matriz</em> de ceros de 2 por 3:
@@ -15264,7 +15261,7 @@ Array{Float64,2}</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>El tipo de esta matriz es una matriz que contiene números de punto flotante. Esta matriz es de 2 dimensiones.
+<p>El tipo de esta matriz es un arreglo que contiene números de punto flotante. Esta matriz es de 2 dimensiones.
 </p>
 </div>
 <div class="paragraph">
@@ -15484,7 +15481,7 @@ CodeInfo(
 </div>
 </div>
 <div class="paragraph">
-<p>La macro <code>@code_lowered</code> devuelve una matriz de una <em>representación intermedia</em> del código que utiliza el compilador para generar código optimizado.
+<p>La macro <code>@code_lowered</code> devuelve un arreglo de una <em>representación intermedia</em> del código que utiliza el compilador para generar código optimizado.
 </p>
 </div>
 <div class="paragraph">
@@ -15513,7 +15510,7 @@ CodeInfo(
 <div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; @code_llvm sumacuadrada(3.0, 4.0)
 ;  @ none:2 within `sumacuadrada'
-define double @julia_sumacuadrada_20132(double, double) {
+define double @julia_sumacuadrada_19234(double, double) {
 top:
 ; ┌ @ intfuncs.jl:244 within `literal_pow'
 ; │┌ @ float.jl:405 within `*'
@@ -16309,7 +16306,7 @@ trabajando con la entrada mínima que provoca el error. Debería tener sentencia
 </div>
 <div id="footer">
 <div id="footer-text">
-Ultima actualización 2020-02-11 10:26:44 -0800
+Ultima actualización 2020-02-18 13:04:47 -0800
 </div>
 </div>
 <script type="text/x-mathjax-config">
