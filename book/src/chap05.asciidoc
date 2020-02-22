@@ -312,7 +312,7 @@ Cada vez que se llama a una función, Julia crea un marco que contiene las varia
 (((marco)))
 
 [[fig05-1]]
-.Stack diagram
+.Diagrama de pila
 image::images/fig51.svg[]
 
 <<fig05-1>> muestra un diagrama de pila para +cuentaregresiva+ utilizando +n=3+. 
