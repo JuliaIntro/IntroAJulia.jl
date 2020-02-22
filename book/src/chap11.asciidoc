@@ -368,7 +368,7 @@ Para entender por qué, considere <<fig11-2>>, que muestra el _gráfico de llama
 (((gráfico de llamadas)))((("diagrama", "gráfico de llamadas", see="gráfico de llamadas")))
 
 [[fig11-2]]
-.Call graph
+.Gráfico de llamadas
 image::images/fig112.svg[]
 
 Un gráfico de llamadas muestra un conjunto de cuadros de funciones, con líneas que conectan cada cuadro con los cuadros de las funciones a las que llama. En la parte superior del gráfico, +fibonacci+ con +n = 4+ llama a +fibonacci+ con +n = 3+ y +n = 2+. A su vez, +fibonacci+ con +n = 3+ llama a +fibonacci+ con +n = 2+ y +n = 1+. Y así sucesivamente.
