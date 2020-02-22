@@ -1,5 +1,5 @@
 [colophon]
-== License
+== Licencia
 
 
 Copyright © 2018 Allen Downey, Ben Lauwens. Todos los derechos reservados.
