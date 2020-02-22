@@ -14,7 +14,7 @@ using PiensaEnJulia
 
 ## Cómo contribuir
 
-Si tiene una sugerencia o corrección, por favor haga un pull request en GitHub.
+Si tiene una sugerencia o corrección, por favor abra un "issue" en GitHub.
 
 
 ## Compilando el libro
