@@ -411,7 +411,7 @@ Hay varias formas de relación entre tipos:
 (((dependencia)))
 
 [[fig18-1]]
-.Type diagram
+.Diagrama de tipo
 image::images/fig181.svg[]
 
 Cada una de las flechas superiores representa una relación ES-UN; en este caso, indica que Mano tiene como supertipo a ConjuntoDeCartas.

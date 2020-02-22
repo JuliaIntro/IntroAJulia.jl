@@ -379,7 +379,7 @@ Cada función se representa por un _marco_. Un marco es un recuadro con el nombr
 (((marco)))
 
 [[fig03-1]]
-.Stack diagram
+.Diagrama de pila
 image::images/fig31.svg[]
 
 Los marcos se ordenan de tal manera que cada función llama a la función inmediatamente inferior. En este ejemplo, +imprimirdosveces+ fue llamado por +concatenar_dos+, y +concatenar_dos+ fue llamado por +Main+, que es un nombre especial para la función de más alto nivel. Cuando se crea una variable afuera de cualquier función, pertenece a +Main+.

@@ -19,7 +19,7 @@ julia> x = 7
 La primera vez que se muestra +x+ su valor es 5, y la segunda vez su valor es 7
 
 [[fig07-1]]
-.State diagram
+.Diagrama de estado
 image::images/fig71.svg[]
 
 <<fig07-1>> muestra el aspecto de una _asignación múltiple_ en un diagrama de estado.

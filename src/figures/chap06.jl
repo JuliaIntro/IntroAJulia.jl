@@ -6,7 +6,7 @@ function fig06_1(output::Symbol, font::String, scale::Float64)
   \node[draw, fill=mycolor, minimum width=8cm, minimum height=0.5cm](c1) at(0,-0.75){};
   \node[anchor=east] (n1) at(-3.5, -0.75) {\tt n};
   \node[anchor=west] (n1v) at (-2.5, -0.75) {\tt 3};
-  \node[anchor=east] (r1) at(-0.5, -0.75) {\tt recursión};
+  \node[anchor=east] (r1) at(-0.5, -0.75) {\tt recursion};
   \node[anchor=west] (r1v) at (0.5, -0.75) {\tt 2};
   \node[anchor=east] (e1) at(2.5, -0.75) {\tt resultado};
   \node[anchor=west] (e1v) at (3.5, -0.75) {\tt 6};
@@ -17,7 +17,7 @@ function fig06_1(output::Symbol, font::String, scale::Float64)
   \node[draw, fill=mycolor, minimum width=8cm, minimum height=0.5cm](c2) at(0,-1.5){};
   \node[anchor=east] (n1) at(-3.5, -1.5) {\tt n};
   \node[anchor=west] (n1v) at (-2.5, -1.5) {\tt 2};
-  \node[anchor=east] (r1) at(-0.5, -1.5) {\tt recursión};
+  \node[anchor=east] (r1) at(-0.5, -1.5) {\tt recursion};
   \node[anchor=west] (r1v) at (0.5, -1.5) {\tt 1};
   \node[anchor=east] (e1) at(2.5, -1.5) {\tt resultado};
   \node[anchor=west] (e1v) at (3.5, -1.5) {\tt 2};
@@ -28,7 +28,7 @@ function fig06_1(output::Symbol, font::String, scale::Float64)
   \node[draw, fill=mycolor, minimum width=8cm, minimum height=0.5cm](c3) at(0,-2.25){};
   \node[anchor=east] (n1) at(-3.5, -2.25) {\tt n};
   \node[anchor=west] (n1v) at (-2.5, -2.25) {\tt 1};
-  \node[anchor=east] (r1) at(-0.5, -2.25) {\tt recursión};
+  \node[anchor=east] (r1) at(-0.5, -2.25) {\tt recursion};
   \node[anchor=west] (r1v) at (0.5, -2.25) {\tt 1};
   \node[anchor=east] (e1) at(2.5, -2.25) {\tt resultado};
   \node[anchor=west] (e1v) at (3.5, -2.25) {\tt 1};

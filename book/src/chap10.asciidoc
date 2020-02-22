@@ -89,7 +89,7 @@ El segundo elemento de +numeros+, que era 123, ahora es 5.
 (((diaframa de estado)))
 
 [[fig10-1]]
-.State diagram
+.Diagrama de estado
 image::images/fig101.svg[]
 
 Los arreglos son representados mediante cuadros con elementos del arreglo en su interior. El arreglo +quesos+ hace referencia a un arreglo con tres elementos indexados +1+, +2+ y +3+. El arreglo +numeros+ contiene dos elementos. El diagrama muestra que el valor del segundo elemento de +numeros+ se ha reasignado de +123+ a +5+. Finalmente, +vacio+ hace referencia a un arreglo sin elementos.
@@ -519,7 +519,7 @@ b = "banana"
 Sabemos que +a+ y +b+ apuntan a una cadena, pero no sabemos si están apuntando a la _misma_ cadena. Hay dos estados posibles, los cuales se muestran en la Figura 10-2.
 (((diagrama de estado)))
 
-.State diagrams.
+.Diagramas de estado.
 image::images/fig102.svg[]
 
 
@@ -551,10 +551,10 @@ false
 ----
 
 Entonces el diagrama de estado se ve así <<fig10-3>>.
-(((state diagram)))
+(((diagrama de estado)))
 
 [[fig10-3]]
-.State diagram
+.Diagrama de estado
 image::images/fig103.svg[]
 
 
@@ -581,7 +581,7 @@ true
 El diagrama de estado sería como este <<fig10-4>>.
 
 [[fig10-4]]
-.State diagram
+.Diagrama de estado
 image::images/fig104.svg[]
 
 
@@ -646,7 +646,7 @@ El parámetro +t+ y la variable +letras+ son alias de un mismo objeto. El diagra
 (((diagrama de pila)))
 
 [[fig10-5]]
-.Stack diagram
+.Diagrama de estado
 image::images/fig105.svg[]
 
 Como el arreglo está compartido por dos marcos, lo dibujamos entre ambos.

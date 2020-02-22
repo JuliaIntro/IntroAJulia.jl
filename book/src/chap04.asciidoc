@@ -49,7 +49,7 @@ end
 ----
 
 [[fig04-1]]
-.Moving the turtle forward
+.Haciendo avanzar a la tortuga
 image::images/fig41.svg[]
 
 
@@ -548,7 +548,7 @@ end
 Escriba un conjunto de funciones generales que permitan dibujar flores como en <<fig04-2>>.
 
 [[fig04-2]]
-.Turtle flowers
+.Flores con Turtle
 image::images/fig42.svg[]
 
 [[ex04-9]]
@@ -557,7 +557,7 @@ image::images/fig42.svg[]
 Escriba un conjunto de funciones generales que puedan dibujar formas como en <<fig04-3>>.
 
 [[fig04-3]]
-.Turtle pies
+.Polígonos con Turtle
 image::images/fig43.svg[]
 
 [[ex04-10]]
@@ -573,5 +573,5 @@ Debería escribir una función para cada letra, con nombres +dibujar_a+, +dibuja
 Lea sobre espirales en https://es.wikipedia.org/wiki/Espiral; luego escriba un programa que dibuje una espiral de Arquímedes como en <<fig04-4>>.
 
 [[fig04-4]]
-.Archimedan spiral
+.Espiral de Arquímedes
 image::images/fig44.svg[]

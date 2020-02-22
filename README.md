@@ -14,14 +14,15 @@ using PiensaEnJulia
 
 ## Cómo contribuir
 
-Si tiene una sugerencia o corrección, abra un problema aquí en GitHub.
+Si tiene una sugerencia o corrección, por favor haga un pull request en GitHub.
 
 
 ## Compilando el libro
 
-Ocasionalmente, algunos de ustedes querrán compilar el libro ellos
-mismos a partir de los archivos de origen en este repositorio. Aquí
-está el esquema general para hacer esto:
+Es posible que desee compilar usted mismo el libro 
+a partir de los archivos fuente de este repositorio. Aquí
+se describe el esquema general para ello:
+
 
 * Descargue Julia y asegúrese de que puede iniciarlo desde una línea
   de comandos como `bash`. 

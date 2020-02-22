@@ -13,11 +13,11 @@ La interfaz del notebook permite mezclar texto (en modo Markdown) y código con 
 Puedes encontrar más documentación en el sitio web de Jupyter: http://jupyter.org/documentation.
 
 [[figb-1]]
-.Initial screen
+.Pantalla inicial
 image::images/screenshot0.png[]
 
 [[figb-2]]
-.Terminal session
+.Sesión de terminal
 image::images/screenshot1.png[]
 
 [[figb-3]]

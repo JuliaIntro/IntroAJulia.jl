@@ -35,7 +35,7 @@ Hora(11, 59, 30)
 El diagrama de objeto para el objeto +Hora+ luce así <<fig16-1>>.
 
 [[fig16-1]]
-.Object diagram
+.Diagrama de objeto
 image::images/fig161.svg[]
 
 ==== Ejercicio 16-1
