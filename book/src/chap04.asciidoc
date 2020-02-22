@@ -548,7 +548,7 @@ end
 Escriba un conjunto de funciones generales que permitan dibujar flores como en <<fig04-2>>.
 
 [[fig04-2]]
-.Turtle flowers
+.Flores con Turtle
 image::images/fig42.svg[]
 
 [[ex04-9]]
