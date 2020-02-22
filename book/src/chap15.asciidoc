@@ -57,7 +57,7 @@ Un diagrama de estado que muestra un objeto y sus atributos se denomina _diagram
 (((diagrama de objeto)))((("diagrama", "objeto", see="diagrama de objeto")))
 
 [[fig15-1]]
-.Object diagram
+.Diagrama de objeto
 image::images/fig151.svg[]
 
 
@@ -175,7 +175,7 @@ Rectangulo(100.0, 200.0, MPunto(0.0, 0.0))
 (((embebido)))(((diagrama de objeto)))
 
 [[fig15-2]]
-.Object diagram
+.Diagrama de objeto
 image::images/fig152.svg[]
 
 
