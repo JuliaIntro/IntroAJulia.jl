@@ -387,7 +387,7 @@ El valor de retorno +2+ se multiplica por +n+, que es +3+, y el resultado, +6+, 
 --
 
 [[fig06-1]]
-.Stack diagram
+.Diagrama de pila
 image::images/fig61.svg[]
 
 
