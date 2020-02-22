@@ -559,7 +559,7 @@ fact(4)
 
 Si estás confundido con el flujo de ejecución, este tipo de salida puede ser útil. Desarrollar un buen andamiaje toma tiempo, pero un poco de andamiaje puede evitarnos mucha depuración.
 
-=== Glossary
+=== Glosario
 
 variable temporal::
 Variable usada para almacenar un valor intermedio en un cálculo complejo.
