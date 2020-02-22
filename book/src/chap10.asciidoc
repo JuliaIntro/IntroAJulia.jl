@@ -646,7 +646,7 @@ El parámetro +t+ y la variable +letras+ son alias de un mismo objeto. El diagra
 (((diagrama de pila)))
 
 [[fig10-5]]
-.Stack diagram
+.Diagrama de estado
 image::images/fig105.svg[]
 
 Como el arreglo está compartido por dos marcos, lo dibujamos entre ambos.
