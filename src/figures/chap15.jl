@@ -24,9 +24,9 @@ function fig15_2(output::Symbol, font::String, scale::Float64)
   \node[anchor=east](caja) at (-2.75, 0) {\tt caja};
   \node[draw, fill=mycolor, minimum width=3.5cm, minimum height=1.5cm](Rectangulo) at(0,0){};
   \node[anchor=west] at (-1.75, 1) {\tt Rectangulo};
-  \node[anchor=east] (w) at(-0.5, 0.55) {\tt width};
+  \node[anchor=east] (w) at(-0.5, 0.55) {\tt ancho};
   \node[anchor=west] (wv) at (0.5, 0.55) {\tt 100.0};
-  \node[anchor=east] (h) at(-0.5, 0) {\tt height};
+  \node[anchor=east] (h) at(-0.5, 0) {\tt alto};
   \node[anchor=west] (hv) at (0.5, 0) {\tt 200.0};
   \node[anchor=east] (esquina) at(-0.5, -0.5) {\tt esquina};
   \draw[-latex] (caja) -- (Rectangulo);

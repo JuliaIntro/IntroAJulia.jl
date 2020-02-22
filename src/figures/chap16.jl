@@ -9,7 +9,7 @@ function fig16_1(output::Symbol, font::String, scale::Float64)
   \node[anchor=west] (mv) at (0.75, 0) {\tt 59};
   \node[anchor=east] (s) at(-0.25, -0.5) {\tt segundo};
   \node[anchor=west] (sv) at (0.75, -0.5) {\tt 30};
-  \draw[-latex] (tiempo) -- (Hora);
+  \draw[-latex] (time) -- (Hora);
   \draw[-latex] (h) -- (hv);
   \draw[-latex] (m) -- (mv);
   \draw[-latex] (s) -- (sv);

@@ -4,11 +4,10 @@
 
 Copyright © 2018 Allen Downey, Ben Lauwens. Todos los derechos reservados.
 
-_Think Julia_ está disponible bajo la Licencia Creative Commons Attribution-NonCommercial 3.0 Unported. Los autores mantienen una versión en línea en https://piensaenjulia.github.io/PiensaEnJulia.jl/latest/book.html
+https://piensaenjulia.github.io/PiensaEnJulia.jl/latest/book.html[Este libro] está disponible bajo la https://creativecommons.org/licenses/by-nc/3.0/deed.es[Licencia Creative Commons Atribución-NoComercial 3.0 No portada]. Es una traducción de https://benlauwens.github.io/ThinkJulia.jl/latest/book.html[ThinkJulia], que tiene la misma licencia. Una lista de las diferencias entre ThinkJulia y este libro está disponible en <<cambios,Apéndice C>>.
 
 *Ben Lauwens* es profesor de matemáticas en Royal Military Academy (RMA Bélgica). Tiene un doctorado en ingeniería y maestrías de KU Leuven y RMA, y una licenciatura de RMA.
 
 *Allen Downey* es profesor de informática en Olin College of Engineering. Ha dado clases en Wellesley College, Colby College y U.C. Berkeley Tiene un doctorado en informática de U.C. Berkeley, y maestrías y licenciaturas del MIT.
 
-La versión en inglés de este libro está disponible en: https://benlauwens.github.io/ThinkJulia.jl/latest/book.html
 

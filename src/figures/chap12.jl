@@ -18,7 +18,7 @@ end
 
 function fig12_2(output::Symbol, font::String, scale::Float64)
   p = TikzPicture(L"""
-  \node(hist) [draw, fill=mycolor, minimum width=7.5cm, minimum height=3cm]{};
+  \node(hist) [draw, fill=mycolor, minimum width=8.2cm, minimum height=3cm]{};
   \node[anchor=east](nc) at(-0.25,1.25) {\tt ("Cortázar","Julio")};
   \node[anchor=west](c) at(0.75,1.25) {\tt "08700 100 222"};
   \draw[-latex](nc)--(c);

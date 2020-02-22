@@ -71,54 +71,7 @@ El siguiente paquete puede ser de utilidad, y se puede agregar directamente a Ju
 
 La forma más fácil de ejecutar un código de Julia es en https://juliabox.com, iniciando una sesión de prueba gratuita. Es posible utilizar la interfaz REPL y notebooks. Si desea que Julia esté instalada localmente en su computadora, puede descargar JuliaPro de Julia Computing gratuitamente desde https://juliacomputing.com/products/juliapro.html. Consiste en una versión reciente de Julia, el IDE de Juno basado en Atom y varios paquetes de Julia preinstalados. Si eres más aventurero, puedes descargar Julia desde https://julialang.org, instalar el editor que te gusta, por ejemplo Atom o Visual Studio Code, y activar los complementos para su integración de Julia. Para una instalación local, también puedes agregar el paquete +IJulia+ y ejecutar un notebook Jupyter en su computadora.
 
-Este libro tiene como objetivo ayudarlo a hacer su trabajo. En general, puede usar código de ejemplo en sus programas y documentación. No necesita contactarnos para obtener permiso a menos que esté reproduciendo una parte importante del código. Por ejemplo, escribir un programa que use varios fragmentos de código de este libro no requiere permiso. Vender o distribuir un CD-ROM de ejemplos de los libros de O’Reilly requiere permiso. Responder una pregunta citando este libro y citando código de ejemplo no requiere permiso. La incorporación de una cantidad significativa de código de ejemplo de este libro en la documentación de su producto requiere permiso.
-
 Apreciamos, pero no requerimos, la atribución. Una atribución generalmente incluye el título, autor, editor y ISBN. Por ejemplo: “Piensa en Julia de Ben Lauwens y Allen B; Downey (O'Reilly). Copyright 2019 Allen Downey, Ben Lauwens, 978-1-492-04503-8."
-
-Si cree que su uso de código de ejemplo está fuera del uso permitido o del permiso otorgado anteriormente, no dude en comunicarse con nosotros a pass:[<a class="email" href="mailto:permissions@oreilly.com"><em>permissions@oreilly.com</em></a>].
-
-=== O'Reilly Safari
-
-[role = "safarienabled"]
-[NOTE]
-====
-pass:[<a href="http://oreilly.com/safari" class="orm:hideurl"><em class="hyperlink">Safari</em></a>] (anteriormente Safari Books Online) es una plataforma de referencia y capacitación basada en membresía para empresas, gobiernos, educadores e individuos.
-====
-
-Los miembros tienen acceso a miles de libros, videos de capacitación, diferentes formas de aprendizaje, tutoriales interactivos y listas de reproducción seleccionadas de más de 250 editoriales, incluidos O'Reilly Media, Harvard Business Review, Prentice Hall Professional, Addison-Wesley Professional, Microsoft Press, Sams, Que , Peachpit Press, Adobe, Focal Press, Cisco Press, John Wiley & Sons, Syngress, Morgan Kaufmann, IBM Redbooks, Packt, Adobe Press, FT Press, Apress, Manning, New Riders, McGraw-Hill, Jones & Bartlett y Course Technology, entre otros.
-
-Para obtener más información, visite pass:[<a href="http://oreilly.com/safari" class="orm:hideurl"><em>http://oreilly.com/safari</em></a>]. 
-
-=== Cómo contactarnos
-
-Por favor envíe sus comentarios y preguntas sobre este libro al editor:
-
-++++
-<ul class="simplelist">
-  <li>O’Reilly Media, Inc.</li>
-  <li>1005 Gravenstein Highway North</li>
-  <li>Sebastopol, CA 95472</li>
-  <li>800-998-9938 (in the United States or Canada)</li>
-  <li>707-829-0515 (international or local)</li>
-  <li>707-829-0104 (fax)</li>
-</ul>
-++++
-
-Tenemos una página web para este libro, donde se colocan las erratas, ejemplos y cualquier información adicional. Puede acceder a esta página con el enlace:$$http://oreilly.com/catalog/0636920215707$$[].
-
-++++
-<!--Don't forget to update the link above.-->
-++++
-
-Para comentar o hacer preguntas técnicas sobre este libro, envíe un correo electrónico a ass:[<a class="email" href="mailto:bookquestions@oreilly.com"><em>bookquestions@oreilly.com</em></a>].
-
-Para obtener más información sobre nuestros libros, cursos, conferencias y noticias, visite nuestro sitio web en el enlace:$$http://www.oreilly.com$$[].
-
-Encuéntranos en Facebook: link:$$http://facebook.com/oreilly$$[]
-
-Síganos en Twitter: link:$$http://twitter.com/oreillymedia$$[]
-
-Véanos en YouTube: link:$$http://www.youtube.com/oreillymedia$$[]
 
 === Agradecimientos
 

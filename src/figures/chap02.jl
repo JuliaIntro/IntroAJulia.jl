@@ -1,8 +1,8 @@
 function fig02_1(output::Symbol, font::String, scale::Float64)
   p = TikzPicture(L"""
   \node[draw, fill=mycolor, minimum width=10.5cm, minimum height=1.5cm]{};
-  \node[anchor=east] (me) at(-3.75, 0.5) {\tt message};
-  \node[anchor=west] (mev) at (-2.75, 0.5) {\tt "And now for something completely different"};
+  \node[anchor=east] (me) at(-3.75, 0.5) {\tt mensaje};
+  \node[anchor=west] (mev) at (-2.75, 0.5) {\tt "Y ahora, algo completamente diferente"};
   \draw[-latex] (me) -- (mev);
   \node[anchor=east] (n) at(-3.75, 0) {\tt n};
   \node[anchor=west] (nv) at (-2.75, 0) {\tt 17};

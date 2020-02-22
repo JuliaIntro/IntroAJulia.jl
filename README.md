@@ -1,6 +1,6 @@
 ## Piensa en Julia: Cómo Pensar como un Informático
 
-Una introducción a la programación con el lenguaje de computación científica Julia. Una versión en línea está disponible en https://piensaenjulia.github.io/PiensaEnJulia.jl/  
+Una introducción a la programación en el lenguaje informático científico Julia. Una versión en línea está disponible en https://piensaenjulia.github.io/PiensaEnJulia.jl/  
 Para una versión en inglés, vea [ThinkJulia](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html).
 
 ## PiensaEnJulia.jl
@@ -22,6 +22,7 @@ Si tiene una sugerencia o corrección, por favor haga un pull request en GitHub.
 Es posible que desee compilar usted mismo el libro 
 a partir de los archivos fuente de este repositorio. Aquí
 se describe el esquema general para ello:
+
 
 * Descargue Julia y asegúrese de que puede iniciarlo desde una línea
   de comandos como `bash`. 
