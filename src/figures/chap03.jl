@@ -21,7 +21,7 @@ function fig03_1(output::Symbol, font::String, scale::Float64)
   \draw[-latex] (cc) -- (ccv);
   \node[anchor=east] at(-4,-2.75){\tt printtwice};
   \node[draw, fill=mycolor, minimum width=7cm, minimum height=0.5cm] at(0,-2.75){};
-  \node[anchor=east] (b) at(-2.25, -2.75) {\tt bruce};
+  \node[anchor=east] (b) at(-2.25, -2.75) {\tt juan};
   \node[anchor=west] (bv) at (-1.25, -2.75) {\tt "Hola hola chao chao."};
   \draw[-latex] (b) -- (bv);
   """; options= "scale=$scale, transform shape", preamble="""
