@@ -557,7 +557,7 @@ image::images/fig42.svg[]
 Escriba un conjunto de funciones generales que puedan dibujar formas como en <<fig04-3>>.
 
 [[fig04-3]]
-.Turtle pies
+.Polígonos con Turtle
 image::images/fig43.svg[]
 
 [[ex04-10]]
