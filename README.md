@@ -21,7 +21,7 @@ Si tiene una sugerencia o corrección, por favor haga un pull request en GitHub.
 
 Es posible que desee compilar usted mismo el libro 
 a partir de los archivos fuente de este repositorio. Aquí
-se describe el esquema general para hacer esto:
+se describe el esquema general para ello:
 
 * Descargue Julia y asegúrese de que puede iniciarlo desde una línea
   de comandos como `bash`. 
