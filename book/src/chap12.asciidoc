@@ -444,14 +444,14 @@ Hay dos formas de representar tuplas en un diagrama de estado. La versión más 
 (((diagrama de estado)))
 
 [[fig12-1]]
-.State diagram
+.Diagrama de estado
 image::images/fig121.svg[]
 
 Pero en un diagrama más grande, es posible que desee omitir algunos detalles. Por ejemplo, un diagrama del directorio telefónico puede verse como en <<fig12-2>>.
 (((diagrama de estado)))
 
 [[fig12-2]]
-.State diagram
+.Diagrama de estado
 image::images/fig122.svg[]
 
 Aquí las tuplas se muestran usando la sintaxis de Julia para tener un esquema más simple. El número de teléfono del diagrama es el número de reclamos de la BBC, así que no intentes llamar.
