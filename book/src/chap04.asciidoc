@@ -49,7 +49,7 @@ end
 ----
 
 [[fig04-1]]
-.Moving the turtle forward
+.Haciendo avanzar a la tortuga
 image::images/fig41.svg[]
 
 
