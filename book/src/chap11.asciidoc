@@ -343,7 +343,7 @@ Dict{Any,Any} with 2 entries:
 ----
 
 [[fig11-1]]
-.State diagram
+.Diagrama de estado
 image::images/fig111.svg[]
 
 <<fig11-1>> es un diagrama de estado que muestra +hist+ e +inverso+. Un diccionario se representa como un cuadro con los pares clave-valor dentro. En este libro, si los valores son enteros, números de punto flotante o cadenas de texto, se dibujan dentro del cuadro, y las matrices (generalmente) se dibujan fuera del cuadro, solo para mantener el diagrama simple.
