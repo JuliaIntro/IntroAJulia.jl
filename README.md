@@ -5,7 +5,7 @@ Para una versión en inglés, vea [ThinkJulia](https://benlauwens.github.io/Thin
 
 ## PiensaEnJulia.jl
 
-Todo el código utilizado en este libro está disponible en este repositorio. Este repositorio contiene el texto del libro y también funciona como un paquete de Julia que proporciona el código utilizado en el libro, por ejemplo, en el capítulo 4 (Diseño de interfaz).
+Todo el código utilizado en este libro está disponible en este repositorio. Este repositorio contiene el texto del libro y también funciona como un paquete de Julia para proporcionar el código utilizado en el libro, por ejemplo, en el capítulo 4 (Diseño de interfaz).
 
 ```julia
 Pkg.add(PackageSpec(url="https://github.com/PiensaEnJulia/PiensaEnJulia.jl.git"))
