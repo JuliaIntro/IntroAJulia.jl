@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
 <meta name="author" content="Ben Lauwens y Allen Downey, Traducido por Pamela Alejandra Bustamante Faúndez">
-<title>Piensa en Julia: Cómo Pensar como un Informático</title>
+<title>Introducción a la Programación en Julia</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -439,7 +439,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
-<h1>Piensa en Julia: Cómo Pensar como un Informático</h1>
+<h1>Introducción a la Programación en Julia</h1>
 <div class="details">
 <span id="author" class="author">Ben Lauwens y Allen Downey</span><br>
 <span id="author2" class="author">Traducido por Pamela Alejandra Bustamante Faúndez</span><br>
@@ -447,7 +447,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toc" class="toc2">
 <div id="toctitle">Tabla de Contenido</div>
 <ul class="sectlevel1">
-<li><a href="#_license">License</a></li>
+<li><a href="#_licencia">Licencia</a></li>
 <li><a href="#_dedicatoria">Dedicatoria</a></li>
 <li><a href="#_prefacio">Prefacio</a>
 <ul class="sectlevel2">
@@ -549,7 +549,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#one_more_example">Un Ejemplo Más</a></li>
 <li><a href="#_tipos_de_comprobación">Tipos de Comprobación</a></li>
 <li><a href="#deb06">Depuración</a></li>
-<li><a href="#_glossary">Glossary</a></li>
+<li><a href="#_glosario_6">Glosario</a></li>
 <li><a href="#_ejercicios_7">Ejercicios</a></li>
 </ul>
 </li>
@@ -563,7 +563,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#square_roots">Raíces Cuadradas</a></li>
 <li><a href="#_algoritmos">Algoritmos</a></li>
 <li><a href="#_depuración_6">Depuración</a></li>
-<li><a href="#_glosario_6">Glosario</a></li>
+<li><a href="#_glosario_7">Glosario</a></li>
 <li><a href="#_ejercicios_8">Ejercicios</a></li>
 </ul>
 </li>
@@ -582,7 +582,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_el_operador">El operador <code>∈</code></a></li>
 <li><a href="#_comparación_de_cadenas">Comparación de Cadenas</a></li>
 <li><a href="#deb08">Depuración</a></li>
-<li><a href="#_glosario_7">Glosario</a></li>
+<li><a href="#_glosario_8">Glosario</a></li>
 <li><a href="#_ejercicios_9">Ejercicios</a></li>
 </ul>
 </li>
@@ -593,7 +593,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#search">Búsqueda</a></li>
 <li><a href="#_bucle_con_índices">Bucle con índices</a></li>
 <li><a href="#_depuración_7">Depuración</a></li>
-<li><a href="#_glosario_8">Glosario</a></li>
+<li><a href="#_glosario_9">Glosario</a></li>
 <li><a href="#_ejercicios_11">Ejercicios</a></li>
 </ul>
 </li>
@@ -612,7 +612,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_alias_poner_sobrenombres">Alias (poner sobrenombres)</a></li>
 <li><a href="#_arreglos_como_argumentos">Arreglos como argumentos</a></li>
 <li><a href="#_depuración_8">Depuración</a></li>
-<li><a href="#_glosario_9">Glosario</a></li>
+<li><a href="#_glosario_10">Glosario</a></li>
 <li><a href="#_ejercicios_12">Ejercicios</a></li>
 </ul>
 </li>
@@ -626,7 +626,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#memos">Pistas</a></li>
 <li><a href="#global_variables">Variables Globales</a></li>
 <li><a href="#_depuración_9">Depuración</a></li>
-<li><a href="#_glosario_10">Glosario</a></li>
+<li><a href="#_glosario_11">Glosario</a></li>
 <li><a href="#_ejercicios_13">Ejercicios</a></li>
 </ul>
 </li>
@@ -640,7 +640,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_diccionarios_y_tuplas">Diccionarios y Tuplas</a></li>
 <li><a href="#_secuencias_de_secuencias">Secuencias de Secuencias</a></li>
 <li><a href="#_depuración_10">Depuración</a></li>
-<li><a href="#_glosario_11">Glosario</a></li>
+<li><a href="#_glosario_12">Glosario</a></li>
 <li><a href="#_ejercicios_14">Ejercicios</a></li>
 </ul>
 </li>
@@ -656,7 +656,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#markov_analysis">Análisis de Markov</a></li>
 <li><a href="#_estructuras_de_datos">Estructuras de Datos</a></li>
 <li><a href="#_depuración_11">Depuración</a></li>
-<li><a href="#_glosario_12">Glosario</a></li>
+<li><a href="#_glosario_13">Glosario</a></li>
 <li><a href="#_ejercicios_15">Ejercicios</a></li>
 </ul>
 </li>
@@ -672,7 +672,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_objetos_de_comando">Objetos de Comando</a></li>
 <li><a href="#_modulos">Modulos</a></li>
 <li><a href="#_depuración_12">Depuración</a></li>
-<li><a href="#_glosario_13">Glosario</a></li>
+<li><a href="#_glosario_14">Glosario</a></li>
 <li><a href="#_ejercicios_16">Ejercicios</a></li>
 </ul>
 </li>
@@ -686,7 +686,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_instancias_como_valores_de_retorno">Instancias como Valores de Retorno</a></li>
 <li><a href="#_copiado">Copiado</a></li>
 <li><a href="#_depuración_13">Depuración</a></li>
-<li><a href="#_glosario_14">Glosario</a></li>
+<li><a href="#_glosario_15">Glosario</a></li>
 <li><a href="#_ejercicios_17">Ejercicios</a></li>
 </ul>
 </li>
@@ -697,7 +697,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#modifiers">Modificadores</a></li>
 <li><a href="#prototyping_versus_planning">Desarrollo de prototipos frente a la planificación</a></li>
 <li><a href="#chap16_debugging">Depuración</a></li>
-<li><a href="#_glosario_15">Glosario</a></li>
+<li><a href="#_glosario_16">Glosario</a></li>
 <li><a href="#_ejercicios_18">Ejercicios</a></li>
 </ul>
 </li>
@@ -713,7 +713,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_programación_genérica">Programación Genérica</a></li>
 <li><a href="#_interfaz_e_implementación">Interfaz e implementación</a></li>
 <li><a href="#_depuración_14">Depuración</a></li>
-<li><a href="#_glosario_16">Glosario</a></li>
+<li><a href="#_glosario_17">Glosario</a></li>
 <li><a href="#_ejercicios_19">Ejercicios</a></li>
 </ul>
 </li>
@@ -730,7 +730,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_diagramas_de_tipos">Diagramas de tipos</a></li>
 <li><a href="#interactive">Depuración</a></li>
 <li><a href="#_encapsulado_de_datos">Encapsulado de Datos</a></li>
-<li><a href="#_glosario_17">Glosario</a></li>
+<li><a href="#_glosario_18">Glosario</a></li>
 <li><a href="#_exercises">Exercises</a></li>
 </ul>
 </li>
@@ -747,7 +747,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_metaprogramación">Metaprogramación</a></li>
 <li><a href="#_datos_faltantes">Datos Faltantes</a></li>
 <li><a href="#_llamar_a_código_de_c_y_fortran">Llamar a Código de C y Fortran</a></li>
-<li><a href="#_glossary_2">Glossary</a></li>
+<li><a href="#_glossary">Glossary</a></li>
 </ul>
 </li>
 <li><a href="#chap20">20. Extra: Base y Librería Estándar</a>
@@ -760,7 +760,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_interfaces">Interfaces</a></li>
 <li><a href="#_módulo_interactive_utilities">Módulo Interactive Utilities</a></li>
 <li><a href="#_depuración_15">Depuración</a></li>
-<li><a href="#_glosario_18">Glosario</a></li>
+<li><a href="#_glosario_19">Glosario</a></li>
 </ul>
 </li>
 <li><a href="#chap21">21. Depuración</a>
@@ -778,27 +778,20 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div id="content">
-<div id="preamble">
-<div class="sectionbody">
-<div class="paragraph">
-<p>Este libro aún no está completamente terminado; Se realizarán más cambios en el texto a medida que se revise el libro.</p>
-</div>
-</div>
-</div>
 <div class="sect1">
-<h2 id="_license">License</h2>
+<h2 id="_licencia">Licencia</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Copyright © 2018 Allen Downey, Ben Lauwens. Todos los derechos reservados.</p>
 </div>
 <div class="paragraph">
-<p><a href="https://piensaenjulia.github.io/PiensaEnJulia.jl/latest/book.html">Este libro</a> está disponible bajo la <a href="https://creativecommons.org/licenses/by-nc/3.0/deed.es">Licencia Creative Commons Atribución-NoComercial 3.0 No portada</a>. Es una traducción de <a href="https://benlauwens.github.io/ThinkJulia.jl/latest/book.html">ThinkJulia</a>, que tiene la misma licencia. Una lista de las diferencias entre ThinkJulia y este libro está disponible en <a href="#cambios">Apéndice C</a>.</p>
+<p><a href="https://JuliaIntro.github.io/IntroAJulia.jl/latest/book.html">Este libro</a> está disponible bajo la <a href="https://creativecommons.org/licenses/by-nc/3.0/deed.es">Licencia Creative Commons Atribución-NoComercial 3.0 No portada</a>. Es una traducción de <a href="https://benlauwens.github.io/ThinkJulia.jl/latest/book.html">ThinkJulia</a>, el cual tiene la misma licencia. Una lista de las diferencias entre ThinkJulia y este libro está disponible en el <a href="#cambios">Apéndice C</a>.</p>
 </div>
 <div class="paragraph">
-<p><strong>Ben Lauwens</strong> es profesor de matemáticas en Royal Military Academy (RMA Bélgica). Tiene un doctorado en ingeniería y maestrías de KU Leuven y RMA, y una licenciatura de RMA.</p>
+<p><strong>Ben Lauwens</strong> es profesor de matemáticas en Royal Military Academy (RMA Bélgica). Tiene un doctorado en ingeniería y maestrías de KU Leuven y RMA, además de una licenciatura de RMA.</p>
 </div>
 <div class="paragraph">
-<p><strong>Allen Downey</strong> es profesor de informática en Olin College of Engineering. Ha dado clases en Wellesley College, Colby College y U.C. Berkeley Tiene un doctorado en informática de U.C. Berkeley, y maestrías y licenciaturas del MIT.</p>
+<p><strong>Allen Downey</strong> es profesor de informática en Olin College of Engineering. Ha dado clases en Wellesley College, Colby College y U.C. Berkeley. Tiene un doctorado en informática de U.C. Berkeley, y maestrías y licenciaturas del MIT.</p>
 </div>
 </div>
 </div>
@@ -874,7 +867,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Los nuevos conceptos se introducen gradualmente y los temas más avanzados se describen en capítulos posteriores.</p>
 </div>
 <div class="paragraph">
-<p>Piensa en Julia puede ser usado como un curso de un semestre de nivel secundario o universitario.</p>
+<p>"Intro a Julia" puede ser usado como un curso de un semestre de nivel secundario o universitario.</p>
 </div>
 </div>
 <div class="sect2">
@@ -948,16 +941,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_usando_los_códigos_de_ejemplo">Usando los códigos de ejemplo</h3>
 <div class="paragraph">
-<p>Todo el código utilizado en este libro está disponible en un repositorio de Git en GitHub: <a href="https://github.com/PiensaEnJulia/PiensaEnJulia.jl" class="bare">https://github.com/PiensaEnJulia/PiensaEnJulia.jl</a>. Si no está familiarizado con Git, es un sistema de control de versiones que le permite realizar seguimiento a los archivos que componen un proyecto. Una colección de archivos controlados por Git se denomina "repositorio". GitHub es un servicio de hosting que proporciona almacenamiento para repositorios de Git y una interfaz web conveniente.</p>
+<p>Todo el código utilizado en este libro está disponible en un repositorio de Git en GitHub: <a href="https://github.com/JuliaIntro/IntroAJulia.jl" class="bare">https://github.com/JuliaIntro/IntroAJulia.jl</a>. Si no está familiarizado con Git, es un sistema de control de versiones que le permite realizar seguimiento a los archivos que componen un proyecto. Una colección de archivos controlados por Git se denomina "repositorio". GitHub es un servicio de hosting que proporciona almacenamiento para repositorios de Git y una interfaz web conveniente.</p>
 </div>
 <div class="paragraph">
-<p>El siguiente paquete puede ser de utilidad, y se puede agregar directamente a Julia. Simplemente escriba <strong><code>add https://github.com/PiensaEnJulia/PiensaEnJulia.jl</code></strong> en el REPL, en modo Pkg.</p>
+<p>El siguiente paquete puede ser de utilidad, y se puede agregar directamente a Julia. Simplemente escriba <strong><code>add https://github.com/JuliaIntro/IntroAJulia.jl</code></strong> en el REPL, en modo Pkg.</p>
 </div>
 <div class="paragraph">
 <p>La forma más fácil de ejecutar un código de Julia es en <a href="https://juliabox.com" class="bare">https://juliabox.com</a>, iniciando una sesión de prueba gratuita. Es posible utilizar la interfaz REPL y notebooks. Si desea que Julia esté instalada localmente en su computadora, puede descargar JuliaPro de Julia Computing gratuitamente desde <a href="https://juliacomputing.com/products/juliapro.html" class="bare">https://juliacomputing.com/products/juliapro.html</a>. Consiste en una versión reciente de Julia, el IDE de Juno basado en Atom y varios paquetes de Julia preinstalados. Si eres más aventurero, puedes descargar Julia desde <a href="https://julialang.org" class="bare">https://julialang.org</a>, instalar el editor que te gusta, por ejemplo Atom o Visual Studio Code, y activar los complementos para su integración de Julia. Para una instalación local, también puedes agregar el paquete <code>IJulia</code> y ejecutar un notebook Jupyter en su computadora.</p>
-</div>
-<div class="paragraph">
-<p>Apreciamos, pero no requerimos, la atribución. Una atribución generalmente incluye el título, autor, editor y ISBN. Por ejemplo: “Piensa en Julia de Ben Lauwens y Allen B; Downey (O&#8217;Reilly). Copyright 2019 Allen Downey, Ben Lauwens, 978-1-492-04503-8."</p>
 </div>
 </div>
 <div class="sect2">
@@ -981,10 +971,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_lista_de_colaboradores">Lista de Colaboradores</h3>
 <div class="paragraph">
-<p>Si tiene una sugerencia o corrección, envíe un correo electrónico a <a href="mailto:ben.lauwens@gmail.com">ben.lauwens@gmail.com</a> o abra un issue en GitHub. Si se realiza un cambio basado en sus comentarios, será agregado a la lista de contribuyentes (a menos que solicite ser omitido).</p>
+<p>Si tiene una sugerencia o corrección, abra un <a href="https://github.com/JuliaIntro/IntroAJulia.jl/issues">issue</a> en GitHub. Si se realiza un cambio basado en sus comentarios, será agregado a la lista de contribuyentes (a menos que solicite ser omitido).</p>
 </div>
 <div class="paragraph">
-<p>Avíseme con qué versión del libro está trabajando y en qué formato. Si incluye al menos parte de la oración en la que aparece el error, eso facilita la búsqueda. Los números de página y sección también son útiles, pero no es tan fácil trabajar con ellos. ¡Gracias!</p>
+<p>Avísenos con qué versión del libro está trabajando y en qué formato. Si incluye al menos parte de la oración en la que aparece el error, eso facilita la búsqueda. Los números de página y sección también son útiles, pero no es tan fácil trabajar con ellos. ¡Gracias!</p>
 </div>
 <div class="openblock small">
 <div class="content">
@@ -2430,14 +2420,14 @@ ERROR: UndefVarError: concat not defined</code></pre>
  </p>
 </div>
 <div class="paragraph">
-<p>Cada función se representa por un <em>marco</em>. Un marco es un recuadro con el nombre de una función a un costado, y los parámetros y variables de la función dentro. El diagrama de pila para el ejemplo anterior se muestra en <a href="#fig03-1">Stack diagram</a>.
+<p>Cada función se representa por un <em>marco</em>. Un marco es un recuadro con el nombre de una función a un costado, y los parámetros y variables de la función dentro. El diagrama de pila para el ejemplo anterior se muestra en <a href="#fig03-1">Diagrama de pila</a>.
 </p>
 </div>
 <div id="fig03-1" class="imageblock">
 <div class="content">
 <img src="images/fig31.svg" alt="fig31">
 </div>
-<div class="title">Figura 2. Stack diagram</div>
+<div class="title">Figura 2. Diagrama de pila</div>
 </div>
 <div class="paragraph">
 <p>Los marcos se ordenan de tal manera que cada función llama a la función inmediatamente inferior. En este ejemplo, <code>imprimirdosveces</code> fue llamado por <code>concatenar_dos</code>, y <code>concatenar_dos</code> fue llamado por <code>Main</code>, que es un nombre especial para la función de más alto nivel. Cuando se crea una variable afuera de cualquier función, pertenece a <code>Main</code>.</p>
@@ -2717,7 +2707,7 @@ Nothing</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-@julia-eval chap03-ex" data-lang="@julia-eval chap03-ex">using PiensaEnJulia</code></pre>
+<pre class="highlight"><code class="language-@julia-eval chap03-ex" data-lang="@julia-eval chap03-ex">using IntroAJulia</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -2866,7 +2856,7 @@ println("-")</code></pre>
 <p>Este capítulo presenta un segundo estudio de caso, que muestra el proceso de diseñar funciones que trabajen en conjunto.</p>
 </div>
 <div class="paragraph">
-<p>Se presentan gráficos turtle, que es una forma de crear dibujos a través de la programación. Los gráficos turtle no están incluidos en la Biblioteca Estándar, por lo que se debe agregar el módulo PiensaEnJulia a su configuración de Julia.</p>
+<p>Se presentan gráficos turtle, que es una forma de crear dibujos a través de la programación. Los gráficos turtle no están incluidos en la Biblioteca Estándar, por lo que se debe agregar el módulo IntroAJulia a su configuración de Julia.</p>
 </div>
 <div class="paragraph">
 <p>Los ejemplos de este capítulo se pueden ejecutar en un notebook gráfico en JuliaBox, el cual combina código, texto formateado, matemáticas y multimedia en un solo documento (vea <a href="#juliabox">JuliaBox</a>).
@@ -2884,7 +2874,7 @@ println("-")</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-jlcon" data-lang="jlcon">(v1.2) pkg&gt; add https://github.com/PiensaEnJulia/PiensaEnJulia.jl</code></pre>
+<pre class="highlight"><code class="language-jlcon" data-lang="jlcon">(v1.2) pkg&gt; add https://github.com/JuliaIntro/IntroAJulia.jl</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2896,14 +2886,14 @@ println("-")</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; using PiensaEnJulia
+<pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; using IntroAJulia
 
 julia&gt; 🐢 = Turtle()
 Luxor.Turtle(0.0, 0.0, true, 0.0, (0.0, 0.0, 0.0))</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>El módulo <code>PiensaEnJulia</code> proporciona una función llamada <code>Turtle</code> (tortuga en español) que crea un objeto <code>Luxor.Turtle</code>, el cual asignamos a una variable llamada <code>🐢</code> (<strong><code>\:turtle: TAB</code></strong>).
+<p>El módulo <code>IntroAJulia</code> proporciona una función llamada <code>Turtle</code> (tortuga en español) que crea un objeto <code>Luxor.Turtle</code>, el cual asignamos a una variable llamada <code>🐢</code> (<strong><code>\:turtle: TAB</code></strong>).
 </p>
 </div>
 <div class="paragraph">
@@ -2921,7 +2911,7 @@ end</code></pre>
 <div class="content">
 <img src="images/fig41.svg" alt="fig41">
 </div>
-<div class="title">Figura 3. Moving the turtle forward</div>
+<div class="title">Figura 3. Haciendo avanzar a la tortuga</div>
 </div>
 <div class="paragraph">
 <p>La palabra reservada <code>@svg</code> ejecuta una macro que dibuja una imagen SVG. Las macros son una característica importante pero avanzada de Julia.
@@ -2935,7 +2925,7 @@ end</code></pre>
 </p>
 </div>
 <div class="paragraph">
-<p>Además, cada tortuga está sosteniendo un lápiz, que puede estar hacia arriba o hacia abajo; si el lápiz está hacia abajo, la tortuga deja un rastro cuando se mueve. <a href="#fig04-1">Moving the turtle forward</a> muestra el rastro dejado por la tortuga. Las funciones <code>penup</code> y <code>pendown</code> significan "lápiz hacia arriba" y "lápiz hacia abajo".
+<p>Además, cada tortuga está sosteniendo un lápiz, que puede estar hacia arriba o hacia abajo; si el lápiz está hacia abajo, la tortuga deja un rastro cuando se mueve. <a href="#fig04-1">Haciendo avanzar a la tortuga</a> muestra el rastro dejado por la tortuga. Las funciones <code>penup</code> y <code>pendown</code> significan "lápiz hacia arriba" y "lápiz hacia abajo".
 </p>
 </div>
 <div class="paragraph">
@@ -3539,25 +3529,25 @@ end</code></pre>
 <div class="sect3">
 <h4 id="ex04-8">Ejercicio 4-9</h4>
 <div class="paragraph">
-<p>Escriba un conjunto de funciones generales que permitan dibujar flores como en <a href="#fig04-2">Turtle flowers</a>.</p>
+<p>Escriba un conjunto de funciones generales que permitan dibujar flores como en <a href="#fig04-2">Flores con Turtle</a>.</p>
 </div>
 <div id="fig04-2" class="imageblock">
 <div class="content">
 <img src="images/fig42.svg" alt="fig42">
 </div>
-<div class="title">Figura 4. Turtle flowers</div>
+<div class="title">Figura 4. Flores con Turtle</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="ex04-9">Ejercicio 4-10</h4>
 <div class="paragraph">
-<p>Escriba un conjunto de funciones generales que puedan dibujar formas como en <a href="#fig04-3">Turtle pies</a>.</p>
+<p>Escriba un conjunto de funciones generales que puedan dibujar formas como en <a href="#fig04-3">Polígonos con Turtle</a>.</p>
 </div>
 <div id="fig04-3" class="imageblock">
 <div class="content">
 <img src="images/fig43.svg" alt="fig43">
 </div>
-<div class="title">Figura 5. Turtle pies</div>
+<div class="title">Figura 5. Polígonos con Turtle</div>
 </div>
 </div>
 <div class="sect3">
@@ -3572,13 +3562,13 @@ end</code></pre>
 <div class="sect3">
 <h4 id="ex04-11">Ejercicio 4-12</h4>
 <div class="paragraph">
-<p>Lea sobre espirales en <a href="https://es.wikipedia.org/wiki/Espiral" class="bare">https://es.wikipedia.org/wiki/Espiral</a>; luego escriba un programa que dibuje una espiral de Arquímedes como en <a href="#fig04-4">Archimedan spiral</a>.</p>
+<p>Lea sobre espirales en <a href="https://es.wikipedia.org/wiki/Espiral" class="bare">https://es.wikipedia.org/wiki/Espiral</a>; luego escriba un programa que dibuje una espiral de Arquímedes como en <a href="#fig04-4">Espiral de Arquímedes</a>.</p>
 </div>
 <div id="fig04-4" class="imageblock">
 <div class="content">
 <img src="images/fig44.svg" alt="fig44">
 </div>
-<div class="title">Figura 6. Archimedan spiral</div>
+<div class="title">Figura 6. Espiral de Arquímedes</div>
 </div>
 </div>
 </div>
@@ -3968,10 +3958,10 @@ end</code></pre>
 <div class="content">
 <img src="images/fig51.svg" alt="fig51">
 </div>
-<div class="title">Figura 7. Stack diagram</div>
+<div class="title">Figura 7. Diagrama de pila</div>
 </div>
 <div class="paragraph">
-<p><a href="#fig05-1">Stack diagram</a> muestra un diagrama de pila para <code>cuentaregresiva</code> utilizando <code>n=3</code>.</p>
+<p><a href="#fig05-1">Diagrama de pila</a> muestra un diagrama de pila para <code>cuentaregresiva</code> utilizando <code>n=3</code>.</p>
 </div>
 <div class="paragraph">
 <p>Como siempre, la parte superior de la pila es el marco para <code>Main</code>. Está vacío pues no se crearon variables en <code>Main</code>, ni tampoco se pasaron argumentos.</p>
@@ -4247,7 +4237,7 @@ A conditional statement with a series of alternative branches.
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; time()
-1.582059889961293e9</code></pre>
+1.583353352367274e9</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4343,7 +4333,7 @@ recursion(3, 0)</code></pre>
 </ol>
 </div>
 <div class="paragraph">
-<p>Los siguientes ejercicios utilizan el módulo <code>PiensaEnJulia</code>, descrito en <a href="#chap04">Estudio de Caso: Diseño de Interfaz</a>:</p>
+<p>Los siguientes ejercicios utilizan el módulo <code>IntroAJulia</code>, descrito en <a href="#chap04">Estudio de Caso: Diseño de Interfaz</a>:</p>
 </div>
 </div>
 <div class="sect3">
@@ -4909,10 +4899,10 @@ end</code></pre>
 <div class="content">
 <img src="images/fig61.svg" alt="fig61">
 </div>
-<div class="title">Figura 9. Stack diagram</div>
+<div class="title">Figura 9. Diagrama de pila</div>
 </div>
 <div class="paragraph">
-<p><a href="#fig06-1">Stack diagram</a>  muestra cómo se ve el diagrama de pila para esta secuencia de llamadas a funciones.
+<p><a href="#fig06-1">Diagrama de pila</a>  muestra cómo se ve el diagrama de pila para esta secuencia de llamadas a funciones.
 </p>
 </div>
 <div class="paragraph">
@@ -5136,7 +5126,7 @@ returning 1
 </div>
 </div>
 <div class="sect2">
-<h3 id="_glossary">Glossary</h3>
+<h3 id="_glosario_6">Glosario</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">variable temporal</dt>
@@ -5333,10 +5323,10 @@ julia&gt; x = 7
 <div class="content">
 <img src="images/fig71.svg" alt="fig71">
 </div>
-<div class="title">Figura 10. State diagram</div>
+<div class="title">Figura 10. Diagrama de estado</div>
 </div>
 <div class="paragraph">
-<p><a href="#fig07-1">State diagram</a> muestra el aspecto de una <em>asignación múltiple</em> en un diagrama de estado.
+<p><a href="#fig07-1">Diagrama de estado</a> muestra el aspecto de una <em>asignación múltiple</em> en un diagrama de estado.
 </p>
 </div>
 <div class="paragraph">
@@ -5738,7 +5728,7 @@ end</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_glosario_6">Glosario</h3>
+<h3 id="_glosario_7">Glosario</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">asignación múltiple</dt>
@@ -6513,7 +6503,7 @@ ERROR: BoundsError: attempt to access String
 </div>
 </div>
 <div class="sect2">
-<h3 id="_glosario_7">Glosario</h3>
+<h3 id="_glosario_8">Glosario</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">secuencia</dt>
@@ -6732,7 +6722,7 @@ end</code></pre>
 <div class="sect2">
 <h3 id="reading_word_lists">Leer listas de palabras</h3>
 <div class="paragraph">
-<p>Para los ejercicios de este capítulo necesitamos una lista de palabras en español. Hay muchas listas de palabras disponibles en la Web, pero la más adecuada para nuestro propósito es una de las listas de palabras recopiladas y contribuidas al dominio público por Ismael Olea (see <a href="http://olea.org/proyectos/lemarios/" class="bare">http://olea.org/proyectos/lemarios/</a>). Esta lista de 87900 palabras se encuentra en la página de Olea con el nombre de archivo <em>lemario-general-del-espanol.txt</em>. También es posible descargar una copia desde <a href="https://github.com/PiensaEnJulia/PiensaEnJulia.jl/blob/master/data/palabras.txt" class="bare">https://github.com/PiensaEnJulia/PiensaEnJulia.jl/blob/master/data/palabras.txt</a>.
+<p>Para los ejercicios de este capítulo necesitamos una lista de palabras en español. Hay muchas listas de palabras disponibles en la Web, pero la más adecuada para nuestro propósito es una de las listas de palabras recopiladas y contribuidas al dominio público por Ismael Olea (see <a href="http://olea.org/proyectos/lemarios/" class="bare">http://olea.org/proyectos/lemarios/</a>). Esta lista de 87900 palabras se encuentra en la página de Olea con el nombre de archivo <em>lemario-general-del-espanol.txt</em>. También es posible descargar una copia desde <a href="https://github.com/JuliaIntro/IntroAJulia.jl/blob/master/data/palabras.txt" class="bare">https://github.com/JuliaIntro/IntroAJulia.jl/blob/master/data/palabras.txt</a>.
 </p>
 </div>
 <div class="paragraph">
@@ -7082,7 +7072,7 @@ end</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_glosario_8">Glosario</h3>
+<h3 id="_glosario_9">Glosario</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">objeto archivo o file stream</dt>
@@ -7291,14 +7281,14 @@ julia&gt; print(numeros)
 <p>El segundo elemento de <code>numeros</code>, que era 123, ahora es 5.</p>
 </div>
 <div class="paragraph">
-<p><a href="#fig10-1">State diagram</a> muestra los diagramas de estado para <code>quesos</code>, <code>numeros</code> y <code>vacio</code>.
+<p><a href="#fig10-1">Diagrama de estado</a> muestra los diagramas de estado para <code>quesos</code>, <code>numeros</code> y <code>vacio</code>.
 </p>
 </div>
 <div id="fig10-1" class="imageblock">
 <div class="content">
 <img src="images/fig101.svg" alt="fig101">
 </div>
-<div class="title">Figura 11. State diagram</div>
+<div class="title">Figura 11. Diagrama de estado</div>
 </div>
 <div class="paragraph">
 <p>Los arreglos son representados mediante cuadros con elementos del arreglo en su interior. El arreglo <code>quesos</code> hace referencia a un arreglo con tres elementos indexados <code>1</code>, <code>2</code> y <code>3</code>. El arreglo <code>numeros</code> contiene dos elementos. El diagrama muestra que el valor del segundo elemento de <code>numeros</code> se ha reasignado de <code>123</code> a <code>5</code>. Finalmente, <code>vacio</code> hace referencia a un arreglo sin elementos.</p>
@@ -7797,7 +7787,7 @@ b = "banana"</code></pre>
 <div class="content">
 <img src="images/fig102.svg" alt="fig102">
 </div>
-<div class="title">Figura 12. State diagrams.</div>
+<div class="title">Figura 12. Diagramas de estado.</div>
 </div>
 <div class="paragraph">
 <p>En un caso, <code>a</code> y <code>b</code> se refieren a dos objetos diferentes que tienen el mismo valor. En el segundo caso, se refieren al mismo objeto.</p>
@@ -7830,14 +7820,14 @@ false</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Entonces el diagrama de estado se ve así <a href="#fig10-3">State diagram</a>.
+<p>Entonces el diagrama de estado se ve así <a href="#fig10-3">Diagrama de estado</a>.
 </p>
 </div>
 <div id="fig10-3" class="imageblock">
 <div class="content">
 <img src="images/fig103.svg" alt="fig103">
 </div>
-<div class="title">Figura 13. State diagram</div>
+<div class="title">Figura 13. Diagrama de estado</div>
 </div>
 <div class="paragraph">
 <p>En este caso, diríamos que los dos arreglos son <em>equivalentes</em>, porque tienen los mismos elementos, pero no <em>idénticos</em>, porque no son el mismo objeto. Si dos objetos son idénticos, también son equivalentes, pero si son equivalentes, no son necesariamente idénticos.
@@ -7863,13 +7853,13 @@ true</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>El diagrama de estado sería como este <a href="#fig10-4">State diagram</a>.</p>
+<p>El diagrama de estado sería como este <a href="#fig10-4">Diagrama de estado</a>.</p>
 </div>
 <div id="fig10-4" class="imageblock">
 <div class="content">
 <img src="images/fig104.svg" alt="fig104">
 </div>
-<div class="title">Figura 14. State diagram</div>
+<div class="title">Figura 14. Diagrama de estado</div>
 </div>
 <div class="paragraph">
 <p>La asociación de una variable con un objeto se llama <em>referencia</em>. En este ejemplo, hay dos referencias al mismo objeto.
@@ -7945,14 +7935,14 @@ julia&gt; print(letras)
 </div>
 </div>
 <div class="paragraph">
-<p>El parámetro <code>t</code> y la variable <code>letras</code> son alias de un mismo objeto. El diagrama de estado es así <a href="#fig10-5">Stack diagram</a>.
+<p>El parámetro <code>t</code> y la variable <code>letras</code> son alias de un mismo objeto. El diagrama de estado es así <a href="#fig10-5">Diagrama de estado</a>.
 </p>
 </div>
 <div id="fig10-5" class="imageblock">
 <div class="content">
 <img src="images/fig105.svg" alt="fig105">
 </div>
-<div class="title">Figura 15. Stack diagram</div>
+<div class="title">Figura 15. Diagrama de estado</div>
 </div>
 <div class="paragraph">
 <p>Como el arreglo está compartido por dos marcos, lo dibujamos entre ambos.</p>
@@ -8157,7 +8147,7 @@ julia&gt; println(t2)
 </div>
 </div>
 <div class="sect2">
-<h3 id="_glosario_9">Glosario</h3>
+<h3 id="_glosario_10">Glosario</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">arreglo</dt>
@@ -8851,10 +8841,10 @@ Dict{Any,Any} with 2 entries:
 <div class="content">
 <img src="images/fig111.svg" alt="fig111">
 </div>
-<div class="title">Figura 16. State diagram</div>
+<div class="title">Figura 16. Diagrama de estado</div>
 </div>
 <div class="paragraph">
-<p><a href="#fig11-1">State diagram</a> es un diagrama de estado que muestra <code>hist</code> e <code>inverso</code>. Un diccionario se representa como un cuadro con los pares clave-valor dentro. En este libro, si los valores son enteros, números de punto flotante o cadenas de texto, se dibujan dentro del cuadro, y las matrices (generalmente) se dibujan fuera del cuadro, solo para mantener el diagrama simple.
+<p><a href="#fig11-1">Diagrama de estado</a> es un diagrama de estado que muestra <code>hist</code> e <code>inverso</code>. Un diccionario se representa como un cuadro con los pares clave-valor dentro. En este libro, si los valores son enteros, números de punto flotante o cadenas de texto, se dibujan dentro del cuadro, y las matrices (generalmente) se dibujan fuera del cuadro, solo para mantener el diagrama simple.
 </p>
 </div>
 <div class="admonitionblock note">
@@ -8884,14 +8874,14 @@ Dict{Any,Any} with 2 entries:
 </p>
 </div>
 <div class="paragraph">
-<p>Para entender por qué, considere <a href="#fig11-2">Call graph</a>, que muestra el <em>gráfico de llamadas</em> para la función <code>fibonacci</code> con <code>n = 4</code>:
+<p>Para entender por qué, considere <a href="#fig11-2">Gráfico de llamadas</a>, que muestra el <em>gráfico de llamadas</em> para la función <code>fibonacci</code> con <code>n = 4</code>:
 </p>
 </div>
 <div id="fig11-2" class="imageblock">
 <div class="content">
 <img src="images/fig112.svg" alt="fig112">
 </div>
-<div class="title">Figura 17. Call graph</div>
+<div class="title">Figura 17. Gráfico de llamadas</div>
 </div>
 <div class="paragraph">
 <p>Un gráfico de llamadas muestra un conjunto de cuadros de funciones, con líneas que conectan cada cuadro con los cuadros de las funciones a las que llama. En la parte superior del gráfico, <code>fibonacci</code> con <code>n = 4</code> llama a <code>fibonacci</code> con <code>n = 3</code> y <code>n = 2</code>. A su vez, <code>fibonacci</code> con <code>n = 3</code> llama a <code>fibonacci</code> con <code>n = 2</code> y <code>n = 1</code>. Y así sucesivamente.</p>
@@ -9123,7 +9113,7 @@ end</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_glosario_10">Glosario</h3>
+<h3 id="_glosario_11">Glosario</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">mapeo</dt>
@@ -9822,24 +9812,24 @@ end</code></pre>
 <p>Este bucle recorre los pares clave-valor en <code>directorio</code>, los cuales son tuplas. Asigna los elementos de la clave de cada tupla a <code>apellido</code> y <code>nombre</code>, y el valor a <code>numero</code>, luego imprime el nombre y el número de teléfono correspondiente.</p>
 </div>
 <div class="paragraph">
-<p>Hay dos formas de representar tuplas en un diagrama de estado. La versión más detallada muestra los índices y elementos tal como aparecen en un arreglo. Por ejemplo, la tupla <code>("Cortázar", "Julio")</code> se vería como en <a href="#fig12-1">State diagram</a>.
+<p>Hay dos formas de representar tuplas en un diagrama de estado. La versión más detallada muestra los índices y elementos tal como aparecen en un arreglo. Por ejemplo, la tupla <code>("Cortázar", "Julio")</code> se vería como en <a href="#fig12-1">Diagrama de estado</a>.
 </p>
 </div>
 <div id="fig12-1" class="imageblock">
 <div class="content">
 <img src="images/fig121.svg" alt="fig121">
 </div>
-<div class="title">Figura 18. State diagram</div>
+<div class="title">Figura 18. Diagrama de estado</div>
 </div>
 <div class="paragraph">
-<p>Pero en un diagrama más grande, es posible que desee omitir algunos detalles. Por ejemplo, un diagrama del directorio telefónico puede verse como en <a href="#fig12-2">State diagram</a>.
+<p>Pero en un diagrama más grande, es posible que desee omitir algunos detalles. Por ejemplo, un diagrama del directorio telefónico puede verse como en <a href="#fig12-2">Diagrama de estado</a>.
 </p>
 </div>
 <div id="fig12-2" class="imageblock">
 <div class="content">
 <img src="images/fig122.svg" alt="fig122">
 </div>
-<div class="title">Figura 19. State diagram</div>
+<div class="title">Figura 19. Diagrama de estado</div>
 </div>
 <div class="paragraph">
 <p>Aquí las tuplas se muestran usando la sintaxis de Julia para tener un esquema más simple. El número de teléfono del diagrama es el número de reclamos de la BBC, así que no intentes llamar.</p>
@@ -9893,7 +9883,7 @@ end</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_glosario_11">Glosario</h3>
+<h3 id="_glosario_12">Glosario</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">tupla</dt>
@@ -10195,7 +10185,7 @@ Dict{Any,Any} with 2 entries:
 <div class="sect2">
 <h3 id="_histograma_de_palabras">Histograma de Palabras</h3>
 <div class="paragraph">
-<p>Debes hacer los ejercicios anteriores antes de continuar. También necesitarás <a href="https://github.com/PiensaEnJulia/PiensaEnJulia.jl/blob/master/data/DonQuijote.txt" class="bare">https://github.com/PiensaEnJulia/PiensaEnJulia.jl/blob/master/data/DonQuijote.txt</a>.</p>
+<p>Debes hacer los ejercicios anteriores antes de continuar. También necesitarás <a href="https://github.com/JuliaIntro/IntroAJulia.jl/blob/master/data/DonQuijote.txt" class="bare">https://github.com/JuliaIntro/IntroAJulia.jl/blob/master/data/DonQuijote.txt</a>.</p>
 </div>
 <div class="paragraph">
 <p>Aquí hay un programa que lee un archivo y construye un histograma de las palabras en el archivo:
@@ -10716,7 +10706,7 @@ Que es más bello vivir cantando</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_glosario_12">Glosario</h3>
+<h3 id="_glosario_13">Glosario</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">determinístico</dt>
@@ -11110,7 +11100,7 @@ end</code></pre>
 </p>
 </div>
 <div class="paragraph">
-<p>PiensaEnJulia proporciona una interfaz para <code>GDBM</code> (GNU dbm), que permite crear y actualizar archivos de base de datos. A modo de ejemplo, crearemos una base de datos que contenga pies de foto para archivos de imagen.
+<p>IntroAJulia proporciona una interfaz para <code>GDBM</code> (GNU dbm), que permite crear y actualizar archivos de base de datos. A modo de ejemplo, crearemos una base de datos que contenga pies de foto para archivos de imagen.
 </p>
 </div>
 <div class="paragraph">
@@ -11119,7 +11109,7 @@ end</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; using PiensaEnJulia
+<pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; using IntroAJulia
 
 julia&gt; bd = DBM("piedefoto", "c")
 DBM(&lt;piedefoto&gt;)</code></pre>
@@ -11446,7 +11436,7 @@ String "1 2\t 3\n 4"</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_glosario_13">Glosario</h3>
+<h3 id="_glosario_14">Glosario</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">persistente</dt>
@@ -11621,14 +11611,14 @@ Punto(3.0, 4.0)</code></pre>
 <p>Cada objeto es una instancia de algún tipo, por lo que "objeto" e "instancia" son intercambiables. Pero en este capítulo se utiliza "instancia" para indicar que hablamos de un tipo definido por el programador.</p>
 </div>
 <div class="paragraph">
-<p>Un diagrama de estado que muestra un objeto y sus atributos se denomina <em>diagrama de objeto</em>; ver <a href="#fig15-1">Object diagram</a>.
+<p>Un diagrama de estado que muestra un objeto y sus atributos se denomina <em>diagrama de objeto</em>; ver <a href="#fig15-1">Diagrama de objeto</a>.
 </p>
 </div>
 <div id="fig15-1" class="imageblock">
 <div class="content">
 <img src="images/fig151.svg" alt="fig151">
 </div>
-<div class="title">Figura 20. Object diagram</div>
+<div class="title">Figura 20. Diagrama de objeto</div>
 </div>
 </div>
 <div class="sect2">
@@ -11768,14 +11758,14 @@ Rectangulo(100.0, 200.0, MPunto(0.0, 0.0))</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p><a href="#fig15-2">Object diagram</a> muestra el estado de este objeto. Un objeto es <em>embebido</em> si es atributo de otro objeto. Debido a que el atributo <code>esquina</code> se refiere a un objeto mutable, se dibuja fuera del objeto <code>Rectangulo</code>.
+<p><a href="#fig15-2">Diagrama de objeto</a> muestra el estado de este objeto. Un objeto es <em>embebido</em> si es atributo de otro objeto. Debido a que el atributo <code>esquina</code> se refiere a un objeto mutable, se dibuja fuera del objeto <code>Rectangulo</code>.
 </p>
 </div>
 <div id="fig15-2" class="imageblock">
 <div class="content">
 <img src="images/fig152.svg" alt="fig152">
 </div>
-<div class="title">Figura 21. Object diagram</div>
+<div class="title">Figura 21. Diagrama de objeto</div>
 </div>
 </div>
 <div class="sect2">
@@ -12015,7 +12005,7 @@ false</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_glosario_14">Glosario</h3>
+<h3 id="_glosario_15">Glosario</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">estructura</dt>
@@ -12144,13 +12134,13 @@ Hora(11, 59, 30)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>El diagrama de objeto para el objeto <code>Hora</code> luce así <a href="#fig16-1">Object diagram</a>.</p>
+<p>El diagrama de objeto para el objeto <code>Hora</code> luce así <a href="#fig16-1">Diagrama de objeto</a>.</p>
 </div>
 <div id="fig16-1" class="imageblock">
 <div class="content">
 <img src="images/fig161.svg" alt="fig161">
 </div>
-<div class="title">Figura 22. Object diagram</div>
+<div class="title">Figura 22. Diagrama de objeto</div>
 </div>
 <div class="sect3">
 <h4 id="_ejercicio_16_1">Ejercicio 16-1</h4>
@@ -12424,7 +12414,7 @@ end</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_glosario_15">Glosario</h3>
+<h3 id="_glosario_16">Glosario</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">desarrollo de prototipos</dt>
@@ -13089,7 +13079,7 @@ julia&gt; sum((t1, t2, t3))
 </div>
 </div>
 <div class="sect2">
-<h3 id="_glosario_16">Glosario</h3>
+<h3 id="_glosario_17">Glosario</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">anotación de tipo</dt>
@@ -13584,9 +13574,9 @@ end</code></pre>
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; mazo = Mazo()
 A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ 10♣ J♣ Q♣ K♣ A♦ 2♦ 3♦ 4♦ 5♦ 6♦ 7♦ 8♦ 9♦ 10♦ J♦ Q♦ K♦ A♥ 2♥ 3♥ 4♥ 5♥ 6♥ 7♥ 8♥ 9♥ 10♥ J♥ Q♥ K♥ A♠ 2♠ 3♠ 4♠ 5♠ 6♠ 7♠ 8♠ 9♠ 10♠ J♠ Q♠ K♠
 julia&gt; shuffle!(mazo)
-6♣ 9♠ 10♠ 8♠ 8♣ Q♣ 9♦ 3♦ 6♥ 4♥ J♣ 7♦ 2♠ 5♣ 3♣ 2♥ 10♥ 6♠ Q♥ 4♦ 2♦ 4♣ 10♦ J♥ 8♥ 5♠ K♣ 3♠ 7♥ A♠ K♠ A♦ 9♥ 6♦ 9♣ Q♠ J♦ K♦ 3♥ 7♠ A♥ A♣ Q♦ 5♦ 2♣ 7♣ 5♥ 8♦ 10♣ J♠ 4♠ K♥
+2♠ A♣ 10♥ 5♥ 7♥ 2♣ 8♣ 7♦ 6♦ A♥ 3♠ 9♣ 2♦ J♥ J♠ K♦ K♥ 10♣ 2♥ A♦ Q♥ A♠ 8♥ 7♣ J♣ 9♥ 5♦ 3♦ 4♠ 3♥ 6♠ 4♥ 9♠ 5♠ 4♣ 10♠ K♠ K♣ 9♦ 10♦ 3♣ Q♣ Q♦ 6♣ 8♦ 6♥ 5♣ 7♠ J♦ 4♦ 8♠ Q♠
 julia&gt; naipe = pop!(mazo)
-K♥
+Q♠
 julia&gt; push!(mano, naipe)</code></pre>
 </div>
 </div>
@@ -13645,7 +13635,7 @@ end</code></pre>
 <div class="content">
 <img src="images/fig181.svg" alt="fig181">
 </div>
-<div class="title">Figura 23. Type diagram</div>
+<div class="title">Figura 23. Diagrama de tipo</div>
 </div>
 <div class="paragraph">
 <p>Cada una de las flechas superiores representa una relación ES-UN; en este caso, indica que Mano tiene como supertipo a ConjuntoDeCartas.</p>
@@ -13801,7 +13791,7 @@ end</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_glosario_17">Glosario</h3>
+<h3 id="_glosario_18">Glosario</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">codificar</dt>
@@ -14828,7 +14818,7 @@ end</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_glossary_2">Glossary</h3>
+<h3 id="_glossary">Glossary</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">clausura</dt>
@@ -15510,7 +15500,7 @@ CodeInfo(
 <div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; @code_llvm sumacuadrada(3.0, 4.0)
 ;  @ none:2 within `sumacuadrada'
-define double @julia_sumacuadrada_19234(double, double) {
+define double @julia_sumacuadrada_19235(double, double) {
 top:
 ; ┌ @ intfuncs.jl:244 within `literal_pow'
 ; │┌ @ float.jl:405 within `*'
@@ -15589,7 +15579,7 @@ top:
 </div>
 </div>
 <div class="sect2">
-<h3 id="_glosario_18">Glosario</h3>
+<h3 id="_glosario_19">Glosario</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">regex</dt>
@@ -16233,10 +16223,10 @@ trabajando con la entrada mínima que provoca el error. Debería tener sentencia
 <p>JuliaBox permite ejecutar Julia en su navegador. Ingrese a la página <a href="https://www.juliabox.com" class="bare">https://www.juliabox.com</a>, inicie sesión y comience a usar el entorno Jupyter.</p>
 </div>
 <div class="paragraph">
-<p>La pantalla inicial se muestra en <a href="#figb-1">Initial screen</a>. El botón "new" (nuevo) permite la creación de un notebook de Julia, un archivo de texto (text file), una carpeta (folder) o una sesión de terminal (terminal session).</p>
+<p>La pantalla inicial se muestra en <a href="#figb-1">Pantalla inicial</a>. El botón "new" (nuevo) permite la creación de un notebook de Julia, un archivo de texto (text file), una carpeta (folder) o una sesión de terminal (terminal session).</p>
 </div>
 <div class="paragraph">
-<p>En una sesión de terminal, el comando <strong><code>julia</code></strong> inicia REPL como se muestra en <a href="#figb-2">Terminal session</a>.</p>
+<p>En una sesión de terminal, el comando <strong><code>julia</code></strong> inicia REPL como se muestra en <a href="#figb-2">Sesión de terminal</a>.</p>
 </div>
 <div class="paragraph">
 <p>La interfaz del notebook permite mezclar texto (en modo Markdown) y código con su respectiva salida. <a href="#figb-3">Notebook</a> muestra un ejemplo.</p>
@@ -16248,13 +16238,13 @@ trabajando con la entrada mínima que provoca el error. Debería tener sentencia
 <div class="content">
 <img src="images/screenshot0.png" alt="screenshot0">
 </div>
-<div class="title">Figura 25. Initial screen</div>
+<div class="title">Figura 25. Pantalla inicial</div>
 </div>
 <div id="figb-2" class="imageblock">
 <div class="content">
 <img src="images/screenshot1.png" alt="screenshot1">
 </div>
-<div class="title">Figura 26. Terminal session</div>
+<div class="title">Figura 26. Sesión de terminal</div>
 </div>
 <div id="figb-3" class="imageblock">
 <div class="content">
@@ -16268,7 +16258,7 @@ trabajando con la entrada mínima que provoca el error. Debería tener sentencia
 <h2 id="cambios">Apéndice C: Cambios de ThinkJulia</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Este libro es una traducción de <a href="https://benlauwens.github.io/ThinkJulia.jl/latest/book.html">ThinkJulia</a>, que está disponible bajo la <a href="https://creativecommons.org/licenses/by-nc/3.0/deed.es">Licencia Creative Commons Atribución-NoComercial 3.0 No portada</a>. Esta licencia requiere que los trabajos derivados (como este libro) enumeren los cambios que se hicieron en el trabajo derivado en comparación con la fuente.</p>
+<p>Este libro es una traducción de <a href="https://benlauwens.github.io/ThinkJulia.jl/latest/book.html">ThinkJulia</a>, que está disponible bajo la <a href="https://creativecommons.org/licenses/by-nc/3.0/deed.es">Licencia Creative Commons Atribución-NoComercial 3.0 No portada</a>. Esta licencia requiere que los trabajos derivados (como este libro) enumeren los cambios realizados en relación a la fuente.</p>
 </div>
 <div class="paragraph">
 <p>Las diferencias en este libro de ThinkJulia incluyen lo siguiente:</p>
@@ -16279,13 +16269,13 @@ trabajando con la entrada mínima que provoca el error. Debería tener sentencia
 <p>Traducción del inglés al español.</p>
 </li>
 <li>
-<p>Se cambiaron muchas frases idiomáticas que no serán familiares para los lectores en español ("Se cayó el centavo").</p>
+<p>Se cambiaron muchas frases idiomáticas que no serían familiares para los hispanohablantes ("Se cayó el centavo").</p>
 </li>
 <li>
-<p>En lugar de usar el texto de la novela "Emma" en el Capítulo 13, se usa el texto de "DonQuijote".</p>
+<p>En vez de usar el texto de la novela "Emma" en el Capítulo 13, se usa el texto de "Don Quijote".</p>
 </li>
 <li>
-<p>Debido a que O&#8217;Reilly no financió la traducción y no ha hecho planes para un libro impreso, hemos eliminado algunas de las referencias a O&#8217;Reilly en el prefacio.</p>
+<p>Debido a que O&#8217;Reilly no financió la traducción, hemos eliminado algunas de las referencias a O&#8217;Reilly en el prefacio.</p>
 </li>
 </ul>
 </div>
@@ -16306,7 +16296,7 @@ trabajando con la entrada mínima que provoca el error. Debería tener sentencia
 </div>
 <div id="footer">
 <div id="footer-text">
-Ultima actualización 2020-02-18 13:04:47 -0800
+Ultima actualización 2020-03-04 12:22:30 -0800
 </div>
 </div>
 <script type="text/x-mathjax-config">
