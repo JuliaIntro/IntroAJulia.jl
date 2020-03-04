@@ -2,7 +2,7 @@ Si estás aprendiendo a programar, Julia es un excelente lenguaje compilado en t
 
 Julia fue diseñado desde un principio para tener un alto rendimiento. Este lenguaje de propósito general no solo es ideal para el análisis numérico y la computación científica, sino también para la programación web o scripting. Mediante los ejercicios de cada capítulo, podrás ejercitar los conceptos de programación que has aprendido.
 
-Piensa en Julia es ideal para estudiantes de secundaria o de universidad, así como también para estudiantes autodidactas, estudiantes educados en casa y profesionales que necesiten aprender conceptos básicos de programación.
+Intro A Julia es ideal para estudiantes de secundaria o de universidad, así como también para estudiantes autodidactas, estudiantes educados en casa y profesionales que necesiten aprender conceptos básicos de programación.
 
 * Comience con lo básico, incluida la sintaxis y la semántica del lenguaje
 
