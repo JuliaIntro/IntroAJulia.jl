@@ -590,7 +590,7 @@ recursion(3, 0)
 
 . Escriba una documento que explique todo lo que alguien necesitaría saber para usar esta función (y nada más).
 
-Los siguientes ejercicios utilizan el módulo +PiensaEnJulia+, descrito en <<chap04>>:
+Los siguientes ejercicios utilizan el módulo +IntroAJulia+, descrito en <<chap04>>:
 
 [[ex05-5]]
 ==== Ejercicio 5-6

@@ -400,7 +400,7 @@ Para probarla, escriba una función llamada +probarraiz+ que imprima una tabla c
 
 [source,@julia-eval]
 ----
-using PiensaEnJulia
+using IntroAJulia
 io = IOBuffer()
 testsquareroot(io)
 out = String(take!(io))

@@ -92,7 +92,7 @@ su función debe devolver +pass:['a']+ con probabilidad latexmath:[\(\frac{2}{3}
 
 === Histograma de Palabras
 
-Debes hacer los ejercicios anteriores antes de continuar. También necesitarás https://github.com/PiensaEnJulia/PiensaEnJulia.jl/blob/master/data/DonQuijote.txt.
+Debes hacer los ejercicios anteriores antes de continuar. También necesitarás https://github.com/JuliaIntro/IntroAJulia.jl/blob/master/data/DonQuijote.txt.
 
 Aquí hay un programa que lee un archivo y construye un histograma de las palabras en el archivo:
 (((procesararchivo)))((("función", "definida por el programador", "procesararchivo", see="procesararchivo")))(((procesarlinea)))((("función", "definida por el programador", "procesarlinea", see="procesarlinea")))

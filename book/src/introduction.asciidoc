@@ -35,7 +35,7 @@ Este libro es para cualquier persona que quiera aprender a programar. No se requ
 
 Los nuevos conceptos se introducen gradualmente y los temas más avanzados se describen en capítulos posteriores.
 
-_Piensa en Julia_ puede ser usado como un curso de un semestre de nivel secundario o universitario.
+_Intro A Julia_ puede ser usado como un curso de un semestre de nivel secundario o universitario.
 
 === Convenciones utilizadas en este libro
 
@@ -67,9 +67,9 @@ Esto indica una advertencia o precaución.
 
 === Usando los códigos de ejemplo
 
-Todo ((("code examples in this book")))((("Git")))((("GitHub")))((("repository")))((("online resources", "Julia")))el código utilizado en este libro está disponible en un repositorio de Git en GitHub: https://github.com/PiensaEnJulia/PiensaEnJulia.jl. Si no está familiarizado con Git, es un sistema de control de versiones que le permite realizar seguimiento a los archivos que componen un proyecto. Una colección de archivos controlados por Git se denomina “repositorio”. GitHub es un servicio de hosting que proporciona almacenamiento para repositorios de Git y una interfaz web conveniente.
+Todo ((("code examples in this book")))((("Git")))((("GitHub")))((("repository")))((("online resources", "Julia")))el código utilizado en este libro está disponible en un repositorio de Git en GitHub: https://github.com/JuliaIntro/IntroAJulia.jl. Si no está familiarizado con Git, es un sistema de control de versiones que le permite realizar seguimiento a los archivos que componen un proyecto. Una colección de archivos controlados por Git se denomina “repositorio”. GitHub es un servicio de hosting que proporciona almacenamiento para repositorios de Git y una interfaz web conveniente.
 
-El ((("packages", "installing")))((("add command, in REPL")))siguiente paquete puede ser de utilidad, y se puede agregar directamente a Julia. Simplemente escriba pass:[<code>add <a href="https://github.com/PiensaEnJulia/PiensaEnJulia.jl">https://github.com/PiensaEnJulia/PiensaEnJulia.jl</a></code>] en el REPL, en modo Pkg. Vea <<turtles>>.
+El ((("packages", "installing")))((("add command, in REPL")))siguiente paquete puede ser de utilidad, y se puede agregar directamente a Julia. Simplemente escriba pass:[<code>add <a href="https://github.com/JuliaIntro/IntroAJulia.jl">https://github.com/JuliaIntro/IntroAJulia.jl</a></code>] en el REPL, en modo Pkg. Vea <<turtles>>.
 
 La ((("Julia", "running")))forma más fácil de ejecutar un código de Julia es en https://juliabox.com, iniciando una sesión gratuita. Es posible utilizar la interfaz REPL y notebooks. Si ((("Julia", "installing")))desea que Julia esté instalada localmente en su computadora, puede descargar https://juliacomputing.com/products/juliapro.html[JuliaPro] de Julia Computing gratuitamente. Consiste en una versión reciente de Julia, el IDE Juno basado en Atom y varios paquetes de Julia preinstalados. Si eres más aventurero, puedes descargar Julia desde https://julialang.org, instalar el editor que te gusta (por ejemplo Atom o Visual Studio Code), y activar los complementos para su integración de Julia. Para ((("IJulia package")))una instalación local, también puedes agregar el paquete +IJulia+ y ejecutar un notebook Jupyter en su computadora.
 

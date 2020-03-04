@@ -590,7 +590,7 @@ Escriba una función llamada +justificar_a_la_derecha+ que tome una cadena +s+ c
 
 [source, @julia-eval chap03-ex]
 ----
-using PiensaEnJulia
+using IntroAJulia
 ----
 
 [source, @julia-repl chap03-ex]

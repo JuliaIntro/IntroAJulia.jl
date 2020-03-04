@@ -1,4 +1,4 @@
-using PiensaEnJulia: makefigs, expandcodeblocks, deploybook
+using IntroAJulia: makefigs, expandcodeblocks, deploybook
 
 const root = dirname(@__FILE__)
 const src = joinpath(root, "src")
@@ -137,7 +137,7 @@ if "deploy" in ARGS
   end
   deploybook(
     root = root,
-    repo = "github.com/PiensaEnJulia/PiensaEnJulia.jl",
+    repo = "github.com/JuliaIntro/IntroAJulia.jl",
     target = target,
     branch = "gh-pages",
     latest = "master",

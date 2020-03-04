@@ -1,6 +1,6 @@
-name = "PiensaEnJulia"
+name = "IntroAJulia"
 uuid = "196a5f1a-c2cd-11e9-0ac3-8b12d691bf53"
-authors = ["Christian Peel <chris.peel@ieee.org>"]
+authors = ["Pamela Alejandra Bustamante Faúndez <pebustamante@uc.cl>"]
 version = "0.1.0"
 
 [deps]
