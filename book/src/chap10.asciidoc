@@ -940,7 +940,7 @@ julia> sumaanidada(t)
 [[ex10-2]]
 ==== Ejercicio 10-2
 
-Escriba una función llamada +sumaacumulada+ que tome un arreglo de números y devuelva la suma acumulativa; es decir, un nuevo arreglo donde el latexmath:[\(i\)]ésimo elemento es la suma de los primeros latexmath:[\(i\)] elementos del arreglo original. Por ejemplo:
+Escriba una función llamada +sumaacumulada+ que tome un arreglo de números y devuelva la suma acumulativa; es decir, un nuevo arreglo donde el latexmath:[i]ésimo elemento es la suma de los primeros latexmath:[i] elementos del arreglo original. Por ejemplo:
 (((sumaacumulada)))((("función", "definida por el programador", "sumaacumulada", see="sumaacumulada")))
 
 [source,@julia-repl-test chap10]

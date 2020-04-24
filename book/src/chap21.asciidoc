@@ -267,14 +267,14 @@ agregarcarta(juego.manos[i], cartaseleccionada)
 
 La versión explícita es más fácil de leer porque los nombres de variables nos entregan documentación adicional, y es más fácil de depurar porque se pueden comprobar los tipos de las variables intermedias y mostrar sus valores.
 
-Otro problema que puede suceder con las expresiones grandes es que el orden de evaluación puede no ser el que usted esperaba. Por ejemplo, si está traduciendo la expresión latexmath:[\(\frac{x}{2\pi}\)] a Julia, podría escribir:
+Otro problema que puede suceder con las expresiones grandes es que el orden de evaluación puede no ser el que usted esperaba. Por ejemplo, si está traduciendo la expresión latexmath:[\frac{x}{2\pi}] a Julia, podría escribir:
 
 [source,julia]
 ----
 y = x / 2 * π
 ----
 
-Esto no es correcto, ya que la multiplicación y la división tienen la misma precedencia, y se evalúan de izquierda a derecha. Así que esa expresión calcula latexmath:[\(\frac{x\pi}{2}\)].
+Esto no es correcto, ya que la multiplicación y la división tienen la misma precedencia, y se evalúan de izquierda a derecha. Así que esa expresión calcula latexmath:[\frac{x\pi}{2}].
 
 Una buena forma de depurar expresiones es añadir paréntesis para que sea explícito el orden de evaluación:
 

@@ -20,7 +20,7 @@ julia> π_val = 3.141592653589793
 3.141592653589793
 ----
 
-Este ejemplo hace tres asignaciones. La primera asigna una cadena a una nueva variable llamada +mensaje+; la segunda le asigna a la variable +n+ el entero +17+; el tercero asigna el valor (aproximado) de latexmath:[\(\pi\)] a la variable +π_val+ (*+\pi TAB+*).
+Este ejemplo hace tres asignaciones. La primera asigna una cadena a una nueva variable llamada +mensaje+; la segunda le asigna a la variable +n+ el entero +17+; el tercero asigna el valor (aproximado) de latexmath:[\pi] a la variable +π_val+ (*+\pi TAB+*).
 
 Una forma común de representar variables en papel es escribir el nombre de la variable con una flecha apuntando a su valor. Este tipo de figura se llama "diagrama de estado" porque muestra en qué estado se encuentra cada una de las variables. La Figura 1, <<fig02-1>>, muestra el resultado del ejemplo anterior.
 (((diagrama de estado)))((("diagrama", "estado", see="diagrama de estado")))
@@ -193,7 +193,7 @@ Cuando una expresión contiene más de un operador, el orden de evaluación depe
 * __MU__ltiplicación y __D__ivisión tienen mayor precedencia que la __A__dición y __S__ustracción. Entonces +2*3-1+ es 5, no 4, y +pass:[6+4/2]+ es 8, no 5.
 (((pass:[*])))(((pass:[/])))(((pass:[+])))(((pass:[-])))
 
-* Los operadores con la misma precedencia se evalúan de izquierda a derecha (excepto potencias). Entonces, en la expresión +grados/2*π+, la división ocurre primero y el resultado se multiplica por +π+. Para dividir entre latexmath:[\(2\pi\)], puede usar paréntesis, escribir +grados/2/π+ o +grados/2π+.
+* Los operadores con la misma precedencia se evalúan de izquierda a derecha (excepto potencias). Entonces, en la expresión +grados/2*π+, la división ocurre primero y el resultado se multiplica por +π+. Para dividir entre latexmath:[2\pi], puede usar paréntesis, escribir +grados/2/π+ o +grados/2π+.
 
 [OBSERVACION]
 ====
@@ -213,7 +213,7 @@ En general, no se puede realizar operaciones matemáticas con cadenas, incluso s
 ----
 
 Pero hay dos excepciones, +*+ y +pass:[^]+.
-(((pase: [*]))) (((pase: [^])))
+(((pass:[*]))) (((pass:[^])))
 
 El operador +pass:[*]+ realiza _concatenación de cadenas_, lo que significa que une las cadenas de extremo a extremo. Por ejemplo:
 ((("cadena", "concatenación", see="concatenar")))((("concatenar")))
@@ -404,7 +404,7 @@ Repitiendo el consejo del capítulo anterior, cada vez que aprenda algo nuevo, d
 Practique usando Julia REPL como una calculadora:
 (((calculadora)))
 
-. El volumen de una esfera con radio latexmath:[\(r\)] es latexmath:[\(\frac{4}{3} \pi r^3\)]. ¿Cuál es el volumen de una esfera con radio 5?
+. El volumen de una esfera con radio latexmath:[r] es latexmath:[\frac{4}{3} \pi r^3]. ¿Cuál es el volumen de una esfera con radio 5?
 
 . Supongamos que el precio de venta de un libro es de $ 24.95, pero las librerías obtienen un descuento del 40%. El envío cuesta $3 por la primera copia y 75 centavos por cada copia adicional. ¿Cuál es el costo total al por mayor de 60 copias?
 

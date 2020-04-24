@@ -19,17 +19,17 @@ Una alternativa es usar números enteros para _codificar_ los valores y palos. E
 
 Por ejemplo, esta tabla muestra una correspondencia entre palos y códigos (números) enteros:
 
-* +♠+  latexmath:[\(\mapsto\)]  4
+* +♠+  latexmath:[\mapsto]  4
 
-* +♥+  latexmath:[\(\mapsto\)]  3
+* +♥+  latexmath:[\mapsto]  3
 
-* +♦+  latexmath:[\(\mapsto\)]  2
+* +♦+  latexmath:[\mapsto]  2
 
-* +♣+  latexmath:[\(\mapsto\)]  1
+* +♣+  latexmath:[\mapsto]  1
 
 Este código facilita la comparación de naipes; los palos más altos se asignan a los números más altos, por lo tanto podemos comparar los palos al comparar sus códigos.
 
-Estamos usando el símbolo latexmath:[\(\mapsto\)] para dejar en claro que estas asignaciones no son parte de Julia. Forman parte del diseño del programa, pero no aparecen explícitamente en el código.
+Estamos usando el símbolo latexmath:[\mapsto] para dejar en claro que estas asignaciones no son parte de Julia. Forman parte del diseño del programa, pero no aparecen explícitamente en el código.
 
 La definición de estructura de +Naipe+ se ve así:
 (((Naipe)))((("tipo", "definida por el programador", "Naipe", see="Naipe")))

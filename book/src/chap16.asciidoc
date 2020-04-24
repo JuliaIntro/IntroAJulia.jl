@@ -324,4 +324,4 @@ Julia proporciona objetos de tiempo similares a los objetos +Hora+ de este capí
 
 . Para dos personas nacidas en días diferentes, hay un día en que una tiene el doble de edad que la otra. Ese es su Día Doble. Escriba un programa que tome dos cumpleaños y calcule su Día doble.
 
-. Desafío: Escriba una versión más general que calcule el día en que una persona es latexmath:[\(n\)] veces mayor que la otra.
+. Desafío: Escriba una versión más general que calcule el día en que una persona es latexmath:[n] veces mayor que la otra.

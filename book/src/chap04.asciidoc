@@ -165,11 +165,11 @@ Agregue otro parámetro, llamado +lon+, a cuadrado. Modifique el cuerpo para que
 [[ex04-4]]
 ==== Ejercicio 4-5
 
-Haga una copia de +cuadrado+ y cambie su nombre a +polígono+. Agregue otro parámetro llamado +n+ y modifique el cuerpo para que dibuje un polígono regular de latexmath:[\(n\)]-lados.
+Haga una copia de +cuadrado+ y cambie su nombre a +polígono+. Agregue otro parámetro llamado +n+ y modifique el cuerpo para que dibuje un polígono regular de latexmath:[n]-lados.
 
 [TIP]
 ====
-Los ángulos exteriores de un polígono regular de latexmath:[\(n\)]-lados son latexmath:[\(\frac{360}{n}\)] grados.
+Los ángulos exteriores de un polígono regular de latexmath:[n]-lados son latexmath:[\frac{360}{n}] grados.
 ====
 
 [[ex04-5]]
@@ -281,7 +281,7 @@ function circulo(t, r)
 end
 ----
 
-La primera línea calcula la circunferencia de un círculo con radio latexmath:[\(r\)] usando la fórmula latexmath:[\(2 \pi r\)]. +n+ es el número de segmentos de línea de nuestra aproximación a un círculo, y +len+ es la longitud de cada segmento. Por lo tanto, +polígono+ dibuja un polígono de 50 lados que se aproxima a un círculo de radio +r+.
+La primera línea calcula la circunferencia de un círculo con radio latexmath:[r] usando la fórmula latexmath:[2 \pi r]. +n+ es el número de segmentos de línea de nuestra aproximación a un círculo, y +len+ es la longitud de cada segmento. Por lo tanto, +polígono+ dibuja un polígono de 50 lados que se aproxima a un círculo de radio +r+.
 
 Una limitante de esta solución es que +n+ es constante, lo que significa que para círculos muy grandes, los segmentos de línea son demasiado largos, y para círculos pequeños, perdemos tiempo dibujando segmentos muy pequeños. Una solución sería generalizar la función tomando +n+ como parámetro. Esto le daría al usuario (quien llama a círculo) más control, pero la interfaz sería menos pulcra.
 
