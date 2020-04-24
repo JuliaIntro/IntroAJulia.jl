@@ -788,10 +788,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><a href="https://JuliaIntro.github.io/IntroAJulia.jl/latest/book.html">Este libro</a> está disponible bajo la <a href="https://creativecommons.org/licenses/by-nc/3.0/deed.es">Licencia Creative Commons Atribución-NoComercial 3.0 No portada</a>. Es una traducción de <a href="https://benlauwens.github.io/ThinkJulia.jl/latest/book.html">ThinkJulia</a>, el cual tiene la misma licencia. Una lista de las diferencias entre ThinkJulia y este libro está disponible en el <a href="#cambios">Apéndice C</a>.</p>
 </div>
 <div class="paragraph">
+<p>Un PDF de este libro está <a href="https://JuliaIntro.github.io/IntroAJulia.jl/latest/book.pdf">disponible aquí</a>.</p>
+</div>
+<div class="paragraph">
 <p><strong>Ben Lauwens</strong> es profesor de matemáticas en Royal Military Academy (RMA Bélgica). Tiene un doctorado en ingeniería y maestrías de KU Leuven y RMA, además de una licenciatura de RMA.</p>
 </div>
 <div class="paragraph">
 <p><strong>Allen Downey</strong> es profesor de informática en Olin College of Engineering. Ha dado clases en Wellesley College, Colby College y U.C. Berkeley. Tiene un doctorado en informática de U.C. Berkeley, y maestrías y licenciaturas del MIT.</p>
+</div>
+<div class="paragraph">
+<p><span class="small">Versión v0.5.0 <a href="https://github.com/JuliaIntro/IntroAJulia.jl/commit/b3c2968a73b83bc5bcd50e7d3d5385c8c4bdeece">(b3c2968)</a></span></p>
 </div>
 </div>
 </div>
@@ -1086,7 +1092,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   (_)     | (_) (_)    |
    _ _   _| |_  __ _   |  Type "?" for help, "]?" for Pkg help.
   | | | | | | |/ _` |  |
-  | | |_| | | | (_| |  |  Version 1.3.1 (2019-12-30)
+  | | |_| | | | (_| |  |  Version 1.4.0 (2020-03-21)
  _/ |\__'_|_|_|\__'_|  |  Official https://julialang.org/ release
 |__/                   |
 
@@ -1106,7 +1112,7 @@ julia&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Los fragmentos de código se pueden copiar y pegar textualmente, incluido el prompt "<code>julia&gt;</code>" y cualquier salida.</p>
+<p>Los fragmentos de código se pueden copiar y pegar textualmente, incluido el prompt <code>julia&gt;</code> y cualquier salida.</p>
 </div>
 <div class="paragraph">
 <p>Ahora estás listo para comenzar. De aquí en adelante, ya sabrás cómo iniciar Julia REPL y ejecutar el código.</p>
@@ -1130,7 +1136,7 @@ julia&gt;</pre>
 <p>Las comillas en el programa marcan el principio y el final del texto que se mostrará; no aparecen en el resultado.</p>
 </div>
 <div class="paragraph">
-<p>Los paréntesis indican que <code>printl</code> es una función. Se estudiarán funciones en <a href="#chap03">Funciones</a>.</p>
+<p>Los paréntesis indican que <code>println</code> es una función. Se estudiarán funciones en <a href="#chap03">Funciones</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1221,7 +1227,7 @@ String</code></pre>
 <p>¡Esto no es lo que esperábamos! Julia entiende <code>1,000,000</code> como una secuencia de enteros separados por comas. Más adelante aprenderemos más sobre este tipo de secuencias.</p>
 </div>
 <div class="paragraph">
-<p>Sin embargo, puedes   obtener el resultado esperado usando 1_000_000.</p>
+<p>Sin embargo, puedes   obtener el resultado esperado usando <code>1_000_000</code>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1725,7 +1731,7 @@ x + 1</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Pero hay dos excepciones, <code><strong></code> y <code>^</code>.
+<p>Pero hay dos excepciones, <code>*</code> y <code>^</code>.
  </p>
 </div>
 <div class="paragraph">
@@ -4237,7 +4243,7 @@ A conditional statement with a series of alternative branches.
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; time()
-1.583353352367274e9</code></pre>
+1.587769915506401e9</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4258,7 +4264,7 @@ A conditional statement with a series of alternative branches.
 </div>
 </div>
 <div class="paragraph">
-<p>para cualquier valor de latexmath: [\ (n \)] mayor que 2.</p>
+<p>para cualquier valor de \(\ (n \) mayor que 2.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -4368,7 +4374,7 @@ end</code></pre>
 <div class="title">Figura 8. Una curva de Koch</div>
 </div>
 <div class="paragraph">
-<p>La curva de Koch es un fractal que luce como <a href="#fig05-2">Una curva de Koch</a>. Para dibujar una curva de Koch con longitud latexmath: [\(x\)], todo lo que tiene que hacer es
+<p>La curva de Koch es un fractal que luce como <a href="#fig05-2">Una curva de Koch</a>. Para dibujar una curva de Koch con longitud \(x\), todo lo que tiene que hacer es
 </p>
 </div>
 <div class="olist arabic">
@@ -5893,7 +5899,7 @@ julia&gt; eval(expr)
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; 'x'
 'x': ASCII/Unicode U+0078 (category Ll: Letter, lowercase)
 julia&gt; '🍌'
-'🍌': Unicode U+01f34c (category So: Symbol, other)
+'🍌': Unicode U+1F34C (category So: Symbol, other)
 julia&gt; typeof('x')
 Char</code></pre>
 </div>
@@ -5944,7 +5950,7 @@ julia&gt; letra = fruta[1]
 julia&gt; fruta[i+1]
 'a': ASCII/Unicode U+0061 (category Ll: Letter, lowercase)
 julia&gt; fruta[end-1]
-'n': ASCII/Unicode U+006e (category Ll: Letter, lowercase)</code></pre>
+'n': ASCII/Unicode U+006E (category Ll: Letter, lowercase)</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -11190,7 +11196,7 @@ julia&gt; t = [1, 2, 3];
 julia&gt; serialize(io, t)
 24
 julia&gt; print(take!(io))
-UInt8[0x37, 0x4a, 0x4c, 0x08, 0x04, 0x00, 0x00, 0x00, 0x15, 0x00, 0x08, 0xe2, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]</code></pre>
+UInt8[0x37, 0x4a, 0x4c, 0x09, 0x04, 0x00, 0x00, 0x00, 0x15, 0x00, 0x08, 0xe2, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -13574,9 +13580,9 @@ end</code></pre>
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; mazo = Mazo()
 A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ 10♣ J♣ Q♣ K♣ A♦ 2♦ 3♦ 4♦ 5♦ 6♦ 7♦ 8♦ 9♦ 10♦ J♦ Q♦ K♦ A♥ 2♥ 3♥ 4♥ 5♥ 6♥ 7♥ 8♥ 9♥ 10♥ J♥ Q♥ K♥ A♠ 2♠ 3♠ 4♠ 5♠ 6♠ 7♠ 8♠ 9♠ 10♠ J♠ Q♠ K♠
 julia&gt; shuffle!(mazo)
-2♠ A♣ 10♥ 5♥ 7♥ 2♣ 8♣ 7♦ 6♦ A♥ 3♠ 9♣ 2♦ J♥ J♠ K♦ K♥ 10♣ 2♥ A♦ Q♥ A♠ 8♥ 7♣ J♣ 9♥ 5♦ 3♦ 4♠ 3♥ 6♠ 4♥ 9♠ 5♠ 4♣ 10♠ K♠ K♣ 9♦ 10♦ 3♣ Q♣ Q♦ 6♣ 8♦ 6♥ 5♣ 7♠ J♦ 4♦ 8♠ Q♠
+10♣ 10♥ A♥ J♣ 7♠ 9♦ 2♠ 6♥ 2♥ 9♣ 8♠ 6♠ 7♦ 4♦ A♦ 3♦ 10♠ Q♥ 8♥ A♣ 5♣ J♠ 5♦ 3♣ J♥ 2♣ 5♥ 8♣ A♠ 7♣ 10♦ Q♦ Q♠ Q♣ K♦ 6♦ 4♣ 9♥ K♥ 4♥ J♦ K♣ 3♥ 3♠ 4♠ 9♠ 5♠ K♠ 6♣ 2♦ 8♦ 7♥
 julia&gt; naipe = pop!(mazo)
-Q♠
+7♥
 julia&gt; push!(mano, naipe)</code></pre>
 </div>
 </div>
@@ -15500,9 +15506,9 @@ CodeInfo(
 <div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; @code_llvm sumacuadrada(3.0, 4.0)
 ;  @ none:2 within `sumacuadrada'
-define double @julia_sumacuadrada_19235(double, double) {
+define double @julia_sumacuadrada_19445(double, double) {
 top:
-; ┌ @ intfuncs.jl:244 within `literal_pow'
+; ┌ @ intfuncs.jl:261 within `literal_pow'
 ; │┌ @ float.jl:405 within `*'
     %2 = fmul double %0, %0
     %3 = fmul double %1, %1
@@ -15523,7 +15529,7 @@ top:
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; @code_native sumacuadrada(3.0, 4.0)
 	.section	__TEXT,__text,regular,pure_instructions
 ; ┌ @ none:2 within `sumacuadrada'
-; │┌ @ intfuncs.jl:244 within `literal_pow'
+; │┌ @ intfuncs.jl:261 within `literal_pow'
 ; ││┌ @ none:2 within `*'
 	vmulsd	%xmm0, %xmm0, %xmm0
 	vmulsd	%xmm1, %xmm1, %xmm1
@@ -16113,7 +16119,7 @@ trabajando con la entrada mínima que provoca el error. Debería tener sentencia
 <tr>
 <th class="tableblock halign-left valign-top">Carácter</th>
 <th class="tableblock halign-left valign-top">Tab completion sequence</th>
-<th class="tableblock halign-left valign-top">representaciónASCII</th>
+<th class="tableblock halign-left valign-top">representación ASCII</th>
 </tr>
 </thead>
 <tbody>
@@ -16296,7 +16302,7 @@ trabajando con la entrada mínima que provoca el error. Debería tener sentencia
 </div>
 <div id="footer">
 <div id="footer-text">
-Ultima actualización 2020-03-04 12:22:30 -0800
+Ultima actualización 2020-04-24 16:11:54 -0700
 </div>
 </div>
 <script type="text/x-mathjax-config">
