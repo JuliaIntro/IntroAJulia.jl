@@ -13,7 +13,7 @@ Como de costumbre, se recomienda intentar resolver los ejercicios antes de leer 
 [[ex13-1]]
 ==== Ejercicio 13-1
 
-Escriba un programa que lea un archivo, divida cada línea en palabras, elimine el espacio en blanco y la puntuación de las palabras, y luego las convierta en minúsculas.
+Escriba un programa que lea un archivo, divida cada línea en palabras, elimine el espacio en blanco y la puntuación de las palabras y luego las convierta en minúsculas.
 
 [TIP]
 ====
@@ -31,7 +31,7 @@ Modifique su programa del ejercicio anterior para leer el libro que descargó, o
 
 Luego, modifique el programa para contar la cantidad total de palabras en el libro y la cantidad de veces que se usa cada palabra.
 
-Imprima la cantidad de palabras diferentes que se usan en el libro. Compare diferentes libros de diferentes autores, escritos en diferentes épocas. ¿Qué autor usa el vocabulario más extenso?
+Imprima la cantidad de palabras diferentes que se usan en el libro. Compare diferentes libros de diferentes autores, escritos en diferentes épocas. ¿Qué autor usa un vocabulario más extenso?
 
 [[ex13-3]]
 ==== Ejercicio 13-3
@@ -41,14 +41,14 @@ Modifique el programa del ejercicio anterior para imprimir las 20 palabras más 
 [[ex13-4]]
 ==== Ejercicio 13-4
 
-Modifique el programa anterior para que lea una lista de palabras y luego imprima todas las palabras del libro que no estén en la lista de palabras. ¿Cuántos de ellos son errores tipográficos? ¿Cuántos de ellos son palabras comunes que deberían estar en la lista de palabras, y cuántos de ellos son términos realmente macabros?
+Modifique el programa anterior para que lea una lista de palabras y luego imprima todas las palabras del libro que no estén en la lista de palabras. ¿Cuántos de ellos son errores tipográficos? ¿Cuántos de ellos son palabras comunes que deberían estar en la lista de palabras? ¿ Cuántos de ellos son términos realmente macabros?
 
 === Números aleatorios
 
-Dadas las mismas entradas, la mayor parte de los programas generan la misma salida cada vez que los ejecutamos, por lo que se dice que son deterministas. Normalmente el determinismo es algo bueno, ya que esperamos que un cálculo nos entregue siempre el mismo resultado. Para algunas aplicaciones, sin embargo, queremos que el computador sea impredecible. Por ejemplo en los juegos, pero hay otros casos.
+Dadas las mismas entradas, la mayor parte de los programas generan la misma salida cada vez que los ejecutamos, por lo que se dice que son deterministas. Normalmente el determinismo es algo bueno, ya que esperamos que un cálculo nos entregue siempre el mismo resultado. Para algunas aplicaciones, sin embargo, queremos que el computador sea impredecible. Por ejemplo en los juegos, entre otros casos.
 (((determinístico)))
 
-Hacer que un programa sea realmente no determinista resulta difícil, pero hay formas de que al menos parezca no determinista. Una de ellas es usar algoritmos para generar números _pseudoaleatorios_. Los números pseudoaleatorios no son verdaderamente aleatorios porque se generan mediante un cálculo determinista, pero al mirar estos números es casi imposible distinguirlos de lo aleatorio.
+Hacer que un programa sea realmente no determinista resulta difícil, pero hay formas de que hacer que al menos parezca no determinista. Una de ellas es usar algoritmos para generar números _pseudoaleatorios_. Los números pseudoaleatorios no son verdaderamente aleatorios porque se generan mediante un cálculo determinista pero al mirar estos números es casi imposible distinguirlos de lo aleatorio.
 (((pseudoaleatorio)))
 
 La función +rand+ devuelve un numero de punto flotante entre +0.0+ y +1.0+ (incluyendo 0.0 pero no 1.0). Cada vez que usted llama a +rand+ obtiene el siguiente numero de una larga serie. Para ver un ejemplo, ejecute este bucle:
@@ -92,7 +92,7 @@ su función debe devolver +pass:['a']+ con probabilidad latexmath:[\frac{2}{3}] 
 
 === Histograma de Palabras
 
-Debes hacer los ejercicios anteriores antes de continuar. También necesitarás https://github.com/JuliaIntro/IntroAJulia.jl/blob/master/data/DonQuijote.txt.
+Debe hacer los ejercicios anteriores antes de continuar. También necesitará https://github.com/JuliaIntro/IntroAJulia.jl/blob/master/data/DonQuijote.txt.
 
 Aquí hay un programa que lee un archivo y construye un histograma de las palabras en el archivo:
 (((procesararchivo)))((("función", "definida por el programador", "procesararchivo", see="procesararchivo")))(((procesarlinea)))((("función", "definida por el programador", "procesarlinea", see="procesarlinea")))
@@ -133,7 +133,7 @@ Este programa lee _DonQuijote.txt_, que contiene el texto de _Don Quijote_ de Mi
 +procesararchivo+ recorre las líneas del archivo, pasando una línea a la vez a +procesarlinea+. El histograma +hist+ se está utilizando como acumulador.
 (((acumulador)))
 
-+procesarlinea+ usa la función +replace+ para reemplazar los guiones por espacios antes de usar +split+ para dividir la línea en un arreglo de cadenas. Recorre el conjunto de palabras y usa +filter+, +isletter+ y +lowercase+ para eliminar los signos de puntuación y convertir las palabras a minúsculas. (Decir que las cadenas se "convierten" es incorrecto; recuerde que las cadenas son inmutables, por lo que una función como +lowercase+ devuelve cadenas nuevas).
++procesarlinea+ usa la función +replace+ para reemplazar los guiones por espacios antes de usar +split+ para dividir la línea en un arreglo de cadenas. Recorre el conjunto de palabras y usa +filter+, +isletter+ y +lowercase+ para eliminar los signos de puntuación y convertir las palabras a minúsculas. (Decir que las cadenas se "convierten" es incorrecto, recuerde que las cadenas son inmutables, por lo que una función como +lowercase+ devuelve cadenas nuevas).
 (((replace)))(((split)))(((isletter)))(((lowercase)))(((get!)))(((filter)))((("función", "Base", "filter", see="filter")))
 
 Finalmente, +procesarlinea+ actualiza el histograma creando un nuevo elemento o incrementando uno existente.
@@ -173,7 +173,7 @@ Observación: No se considera el encabezado del archivo de texto, sólo el libro
 
 === Palabras Más Comunes
 
-Para encontrar las palabras más comunes, podemos hacer un arreglo de tuplas, donde cada tupla contiene una palabra y su frecuencia, y ordenarla. La siguiente función toma un histograma y devuelve un arreglo de tuplas de frecuencia de palabras:
+Para encontrar las palabras más comunes, podemos hacer un arreglo de tuplas, donde cada tupla contiene una palabra y su frecuencia, y ordenarlas. La siguiente función toma un histograma y devuelve un arreglo de tuplas de frecuencia de palabras:
 (((mascomun)))((("función", "definida por el programador", "mascomun", see="mascomun")))(((reverse)))(((sort)))
 
 [source,@julia-setup chap13]
@@ -218,7 +218,7 @@ Este código se puede simplificar usando como argumento la palabra reservada +re
 
 === Parametros Opcionales
 
-Hemos visto funciones integradas de Julia que toman argumentos opcionales. También es posible escribir funciones definidas por el programador con argumentos opcionales. Por ejemplo, aquí hay una función que imprime las palabras más comunes en un histograma:
+Se han tratado funciones integradas de Julia que toman argumentos opcionales. También es posible escribir funciones definidas por el programador con argumentos opcionales. Por ejemplo, aquí hay una función que imprime las palabras más comunes en un histograma:
 (((argumento opcional)))(((imprimirmascomun)))((("función", "definida por el programador", "imprimirmascomun", see="imprimirmascomun")))
 
 [source,@julia-setup chap13]
@@ -232,7 +232,7 @@ function imprimirmascomun(hist, num=10)
 end
 ----
 
-El primer parámetro es obligatorio; el segundo es opcional. El _valor predeterminado_ de +num+ es +10+.
+El primer parámetro es obligatorio y el segundo es opcional. El _valor predeterminado_ de +num+ es +10+.
 (((valor predeterminado)))
 
 Si solo pasas un argumento:
@@ -257,9 +257,9 @@ Si una función tiene parámetros obligatorios y opcionales, los parámetros obl
 [[dictionary_subtraction]]
 === Resta de Diccionario
 
-Encontrar las palabras de un libro que no están en la lista de palabras de +palabras.txt+ es un problema similar a una resta de conjuntos; es decir, queremos encontrar todas las palabras de un conjunto (las palabras en el libro) que no están en el otro (las palabras en la lista).
+Encontrar las palabras de un libro que no están en la lista de palabras de +palabras.txt+ es un problema similar a una resta de conjuntos, es decir, se quiere encontrar todas las palabras de un conjunto (las palabras en el libro) que no están en el otro (las palabras en la lista).
 
-+resta+ toma los diccionarios +d1+ y +d2+ y devuelve un nuevo diccionario que contiene todas las claves de +d1+ que no están en +d2+. Como realmente no nos importan los valores, los fijamos como +nothing+.
++resta+ toma los diccionarios +d1+ y +d2+ y devuelve un nuevo diccionario que contiene todas las claves de +d1+ que no están en +d2+. Como realmente no importan los valores, se fijan como +nothing+.
 (((resta)))((("función", "definida por el programador", "resta", see="resta")))(((nothing)))(((∩)))((("operador", "Base", "∩", see="∩")))
 
 [source,@julia-setup chap13]
@@ -275,7 +275,7 @@ function resta(d1, d2)
 end
 ----
 
-Para encontrar las palabras en el libro que no están en +palabras.txt+, podemos usar +procesararchivo+ para construir un histograma para +palabras.txt+, y luego la función +resta+:
+Para encontrar las palabras en el libro que no están en +palabras.txt+, se ouede usar +procesararchivo+ para construir un histograma para +palabras.txt+, y luego la función +resta+:
 
 [source,julia]
 ----
@@ -302,7 +302,7 @@ Algunas de estas palabras son conjugaciones de verbos. Otros, como "solene", ya 
 [[ex13-6]]
 ==== Ejercicio 13-6
 
-Julia proporciona una estructura de datos llamada +Set+ que proporciona muchas operaciones comunes de conjuntos. Puede leer sobre ellas en <<collections_and_data_structures>>, o leer la documentación en https://docs.julialang.org/en/v1/base/collections/#Set-Like-Collections-1.
+Julia proporciona una estructura de datos llamada +Set+ que permite muchas operaciones comunes de conjuntos. Puede leer sobre ellas en <<collections_and_data_structures>>, o consultar la documentación en https://docs.julialang.org/en/v1/base/collections/#Set-Like-Collections-1.
 
 Escriba un programa que use la resta de conjuntos para encontrar palabras en el libro que no están en la lista de palabras.
 
@@ -324,7 +324,7 @@ function palabraalazar(h)
 end
 ----
 
-Este algoritmo funciona, pero no es muy eficiente; cada vez que elige una palabra aleatoria, reconstruye el arreglo, que es tan grande como el libro original. Una mejora es construir el arreglo una vez y luego hacer múltiples selecciones, pero el arreglo sigue siendo grande.
+Este algoritmo funciona pero no es muy eficiente ya que cada vez que elige una palabra aleatoria, reconstruye el arreglo, que es tan grande como el libro original. Una mejora es construir el arreglo una vez y luego hacer múltiples selecciones, pero el arreglo sigue siendo grande.
 
 Una alternativa es:
 
@@ -345,16 +345,16 @@ Escriba un programa que use este algoritmo para elegir una palabra aleatoria del
 [[markov_analysis]]
 === Análisis de Markov
 
-Si elige palabras del libro al azar, puedes tener una idea del vocabulario usado, pero probablemente no obtendremos una oración:
+Si elige palabras del libro al azar, puede tener una idea del vocabulario usado, pero probablemente no se va a obtener una oración:
 
 [source]
 ----
 rocinante pláticas sazón ojos Dulcinea Dios
 ----
 
-Una serie de palabras aleatorias rara vez tiene sentido porque no hay relación entre palabras sucesivas. Por ejemplo, en una oración real, esperaría que un artículo como "el" sea seguido por un sustantivo, y probablemente no un verbo o un adverbio.
+Una serie de palabras aleatorias rara vez tiene sentido porque no hay relación entre palabras sucesivas. Por ejemplo, en una oración real, se esperaría que un artículo como "el" fuese seguido por un sustantivo y probablemente no un verbo o un adverbio.
 
-Una forma de medir este tipo de relaciones es con el análisis de Markov, que define para una secuencia dada de palabras, la probabilidad de las palabras que podrían venir después. Por ejemplo, en la canción _La vida es un carnaval_ (de Celiz Cruz):
+Una forma de medir este tipo de relaciones es con el análisis de Markov, que define para una secuencia dada de palabras la probabilidad de las palabras que podrían venir después. Por ejemplo, en la canción _La vida es un carnaval_ (de Celiz Cruz):
 (((análisis de Markov)))
 
 [verse]
@@ -381,7 +381,7 @@ En este texto, la frase "que piense" siempre va seguida de la palabra "que", per
 El resultado del análisis de Markov es un mapeo de cada prefijo (como "que piense" y "piense que") a todos los sufijos posibles (como "la" y "esto").
 (((prefijo)))(((sufijo)))
 
-Dada esta asignación, puede generar un texto aleatorio comenzando con cualquier prefijo y eligiendo aleatoriamente entre los posibles sufijos. A continuación, puede combinar el final del prefijo y el nuevo sufijo para formar el siguiente prefijo y repetir.
+Dada esta asignación, se puede generar un texto aleatorio comenzando con cualquier prefijo y eligiendo aleatoriamente entre los posibles sufijos. A continuación, puede combinar el final del prefijo y el nuevo sufijo para formar el siguiente prefijo y repetir.
 
 Por ejemplo, si comienza con el prefijo "Que la", la siguiente palabra será "vida", porque el prefijo solo aparece dos veces en el texto y siempre está seguido de este sufijo. El siguiente prefijo es "la vida", por lo que el siguiente sufijo podría ser "siempre" o "es".
 
@@ -392,9 +392,9 @@ En este ejemplo, la longitud del prefijo siempre es dos, pero puede hacer análi
 
 Análisis de Markov:
 
-. Escriba un programa que lea un texto desde un archivo y realice análisis de Markov. El resultado debe ser un diccionario que asocie prefijos y una colección de posibles sufijos. La colección puede ser un arreglo, tupla o diccionario; depende de usted hacer una elección adecuada. Puede probar su programa con una longitud de prefijo de dos, pero debe escribir el programa de manera tal que sea fácil probar con otras longitudes.
+. Escriba un programa que lea un texto desde un archivo y realice un análisis de Markov. El resultado debe ser un diccionario que asocie prefijos y una colección de posibles sufijos. La colección puede ser un arreglo, tupla o diccionario, depende de usted hacer una elección adecuada. Puede probar su programa con una longitud de prefijo de dos pero debe escribir el programa de manera tal que sea fácil probar con otras longitudes.
 
-. Agregue una función al programa anterior para generar texto aleatorio basado en análisis de Markov. Aquí hay un ejemplo de Don Quijote con longitud de prefijo 2:
+. Agregue una función al programa anterior para generar un texto aleatorio basado en análisis de Markov. Aquí hay un ejemplo de Don Quijote con longitud de prefijo 2:
 +
 [quote]
 ____
@@ -405,13 +405,13 @@ Para este ejemplo, se dejó la puntuación anexa a las palabras. El resultado es
 +
 ¿Qué sucede si aumenta la longitud del prefijo? ¿El texto aleatorio tiene más sentido?
 
-. Una vez que su programa esté funcionando, podrías probar combinando texto de dos o más libros, el texto aleatorio que genere combinará el vocabulario y las frases de las fuentes de maneras interesantes.
+. Una vez que su programa esté funcionando, podría probar combinando texto de dos o más libros. El texto aleatorio que genere combinará el vocabulario y las frases de las fuentes de maneras interesantes.
 
 Crédito: Este estudio de caso se basa en un ejemplo de Kernighan y Pike, The Practice of Programming, Addison-Wesley, 1999.
 
 [TIP]
 =====
-Debes hacer este ejercicio antes de continuar.
+Debe hacer este ejercicio antes de continuar.
 =====
 
 === Estructuras de Datos
@@ -430,22 +430,22 @@ Para los prefijos, las opciones más obvias son cadena, arreglo de cadenas o tup
 
 Para los sufijos, puede ser un arreglo o un histograma (diccionario).
 
-¿Cómo se elige? El primer paso es pensar en las operaciones que deberá implementar para cada estructura de datos. Para los prefijos, debemos ser capaces de eliminar palabras del principio y agregarlas al final. Por ejemplo, si el prefijo actual es "que piense" y la siguiente palabra es "que", debe poder formar el siguiente prefijo, "piense que".
+¿Cómo se elige? El primer paso es pensar en las operaciones que deberá implementar para cada estructura de datos. Para los prefijos, se debe ser capaz de eliminar palabras del principio y agregarlas al final. Por ejemplo, si el prefijo actual es "que piense" y la siguiente palabra es "que", debe poder formar el siguiente prefijo, "piense que".
 
 Para los prefijos, podría elegir un arreglo, ya que en él es fácil agregar y eliminar elementos.
 
-Para la colección de sufijos, las operaciones que debemos realizar incluyen agregar un nuevo sufijo (o aumentar la frecuencia de uno existente) y elegir un sufijo aleatorio.
+Para la colección de sufijos, las operaciones que se deben realizar incluyen agregar un nuevo sufijo (o aumentar la frecuencia de uno existente) y elegir un sufijo aleatorio.
 
-Agregar un nuevo sufijo es igualmente fácil para la implementación del arreglo o del histograma. Elegir un elemento aleatorio de un arreglo es fácil; elegir eficientemente de un histograma es más difícil (ver <<ex13-7>>).
+Agregar un nuevo sufijo es igualmente fácil para la implementación del arreglo o del histograma. Elegir un elemento aleatorio de un arreglo es fácil pero elegir eficientemente de un histograma es más difícil (ver <<ex13-7>>).
 
-Hasta ahora hemos hablado principalmente sobre la facilidad de implementación, pero hay otros factores a considerar al elegir las estructuras de datos. Uno es el tiempo de ejecución. A veces hay una razón teórica para esperar que una estructura de datos sea más rápida que otra; por ejemplo, anteriormente se mencionó que el operador +in+ es más rápido para los diccionarios que para los arreglos, al menos cuando el número de elementos es grande.
+Hasta ahora se ha hablado principalmente sobre la facilidad de implementación, pero hay otros factores a considerar al elegir las estructuras de datos. Uno es el tiempo de ejecución. A veces hay una razón teórica para esperar que una estructura de datos sea más rápida que otra. Por ejemplo, anteriormente se mencionó que el operador +in+ es más rápido para los diccionarios que para los arreglos, al menos cuando el número de elementos es grande.
 
-Pero generalmente no se sabe de antemano qué implementación será más rápida. Una opción es implementar ambos y ver cuál es mejor. Este enfoque se llama _benchmarking_. Una alternativa práctica es elegir la estructura de datos que sea más fácil de implementar y luego ver si es lo suficientemente rápida para la aplicación prevista. Si es así, no hay necesidad de continuar. Si no, hay herramientas, como el módulo +Profile+, que pueden identificar los lugares en un programa que toman más tiempo.
+Aunque generalmente no se sabe de antemano qué implementación será más rápida, una opción es implementar ambos y ver cuál es mejor. Este enfoque se llama _benchmarking_. Una alternativa práctica es elegir la estructura de datos que sea más fácil de implementar y luego ver si es lo suficientemente rápida para la aplicación prevista. Si es así, no hay necesidad de continuar. Si no, hay herramientas, como el módulo +Profile+, que pueden identificar los lugares en un programa que toman más tiempo.
 (((benchmarking)))
 
-El otro factor a considerar es el espacio de almacenamiento. Por ejemplo, usar un histograma para la colección de sufijos puede tomar menos espacio porque solo tiene que almacenar cada palabra una vez, sin importar cuántas veces aparezca en el texto. En algunos casos, ahorrar espacio también puede hacer que su programa se ejecute más rápido. En el peor de los casos, su programa podría no ejecutarse si se queda sin memoria. Pero para muchas aplicaciones, el espacio es una consideración secundaria después del tiempo de ejecución.
+El otro factor a considerar es el espacio de almacenamiento. Por ejemplo, usar un histograma para la colección de sufijos puede tomar menos espacio porque solo tiene que almacenar cada palabra una vez, sin importar cuántas veces aparezca en el texto. En algunos casos, ahorrar espacio también puede hacer que su programa se ejecute más rápido. En el peor de los casos, su programa podría no ejecutarse si se queda sin memoria pero para muchas aplicaciones el espacio es una consideración secundaria después del tiempo de ejecución.
 
-Una última reflexión: en esta discusión, he dado a entender que deberíamos usar una estructura de datos para el análisis y la generación. Pero dado que estas son fases separadas, también sería posible usar una estructura para el análisis y luego convertirla en otra estructura para la generación. Esto sería conveniente si el tiempo ahorrado durante la generación excede el tiempo dedicado a la conversión.
+Una última reflexión: en esta discusión, se ha dado a entender que se debería usar una estructura de datos para el análisis y la generación. Pero dado que estas son fases separadas, también sería posible usar una estructura para el análisis y luego convertirla en otra estructura para la generación. Esto sería conveniente si el tiempo ahorrado durante la generación excede el tiempo dedicado a la conversión.
 
 [TIP]
 ====
@@ -459,7 +459,7 @@ Cuando está depurando un programa, y especialmente si está tratando de resolve
 (((depuración)))
 
 Lee:: 
-Examina tu código, léelo y verifica que dice lo que querías decir.
+Examine su código, léalo y verifique que dice lo que quería decir.
 
 Ejecuta::
 Experimente haciendo cambios y ejecutando diferentes versiones. A menudo, si muestra lo correcto en el lugar correcto del programa, el problema se vuelve obvio, pero para ello a veces tiene que desarrollar andamiaje.
@@ -468,26 +468,26 @@ Reflexiona::
 ¡Tómese un tiempo para pensar! ¿Qué tipo de error es: de sintaxis, tiempo de ejecución o semántica? ¿Qué información puede obtener de los mensajes de error o de la salida del programa? ¿Qué tipo de error podría causar el problema que estás viendo? ¿Qué cambió antes de que apareciera el problema?
 
 Habla::
-Si le explica el problema a otra persona, a veces puede encontrar la respuesta incluso antes de terminar de hacer la pregunta. Generalmente no necesitas a otra persona; incluso podrías hablar con un pato de goma. Este es el origen de la conocida estrategia llamada depuración del pato de goma. Esto es real, vea https://en.wikipedia.org/wiki/Rubber_duck_debugging.
+Si le explica el problema a otra persona, a veces puede encontrar la respuesta incluso antes de terminar de hacer la pregunta. Generalmente no es necesaria otra persona, incluso se podría hablar con un pato de goma. Este es el origen de la conocida estrategia llamada depuración del pato de goma. Esto es real, vea https://en.wikipedia.org/wiki/Rubber_duck_debugging.
 (((depuración del pato de goma)))
 
 Vuelve atrás:: 
-En ocasiones, lo mejor que puede hacer es retroceder, deshacer los cambios recientes, hasta regresar a un programa que funcione y que comprenda. Una vez logrado esto, puedes comenzar a reconstruir.
+En ocasiones, lo mejor que puede hacer es retroceder, deshacer los cambios recientes hasta regresar a un programa que funcione y que comprenda. Una vez logrado esto, puede comenzar a reconstruir.
 
 Los programadores principiantes a veces se atascan en una de estas actividades y olvidan las otras. Cada actividad viene con su propia forma de fallar.
 
 Por ejemplo, leer su código podría ayudar si el problema es un error tipográfico, pero no si el problema es un malentendido conceptual. Si no comprende lo que hace su programa, puede leerlo 100 veces y nunca ver el error, porque el error está en su cabeza.
 
-Ejecutar experimentos puede ayudar, especialmente si ejecuta pruebas pequeñas y simples. Pero si ejecuta experimentos sin pensar o leer su código, puede caer en un patrón que llamo "programación de caminata aleatoria", que es el proceso de hacer cambios aleatorios hasta que el programa haga lo correcto. No hace falta decir que la programación de caminata aleatoria puede llevar mucho tiempo.
+Ejecutar experimentos puede ayudar, especialmente si ejecuta pruebas pequeñas y simples, pero si ejecuta experimentos sin pensar o leer su código, puede caer en un patrón llamado "programación de caminata aleatoria", que es el proceso de hacer cambios aleatorios hasta que el programa haga lo correcto. No hace falta decir que la programación de caminata aleatoria puede llevar mucho tiempo.
 (((programación de caminata aleatoria)))
 
-Tienes que tomarte el tiempo para pensar. La depuración es como una ciencia experimental. Debes tener al menos una hipótesis sobre la causa del problema. Si hay dos o más opciones, trate de pensar en una prueba que elimine una de ellas.
+La persona que programa tiene que tomarse su tiempo para pensar. La depuración es como una ciencia experimental. Debe tener al menos una hipótesis sobre la causa del problema. Si hay dos o más opciones, trate de pensar en una prueba que elimine una de ellas.
 
-Pero incluso las mejores técnicas de depuración fallarán si hay demasiados errores, o si el código que está tratando de corregir es demasiado grande y complicado. A veces, la mejor opción es volver atrás, simplificando el programa hasta que llegue a algo que funcione y que comprenda.
+Incluso las mejores técnicas de depuración fallarán si hay demasiados errores, o si el código que está tratando de corregir es demasiado grande y complicado. A veces, la mejor opción es volver atrás, simplificando el programa hasta que llegue a algo que funcione y que comprenda.
 
-Los programadores principiantes a menudo son reacios a volver atrás porque no pueden soportar eliminar una línea de código (incluso si es incorrecto). Si te hace sentir mejor, copia tu programa en otro archivo antes de comenzar a eliminarlo. Luego puedes copiar las piezas una por una.
+Los programadores principiantes a menudo son reacios a volver atrás porque no pueden soportar eliminar una línea de código (incluso si es incorrecto). Si le hace sentir mejor, copie su programa en otro archivo antes de comenzar a eliminarlo. Luego puede copiar las piezas una por una.
 
-Encontrar un error difícil requiere leer, ejecutar, reflexionar y, a veces, volver atrás. Si te quedas atascado en una de estas actividades, prueba las otras.
+Encontrar un error difícil requiere leer, ejecutar, reflexionar y, a veces, volver atrás. Si se queda atascado en una de estas actividades, pruebe las otras.
 
 === Glosario
 
@@ -496,7 +496,7 @@ Perteneciente a un programa que hace lo mismo cada vez que se ejecuta, a partir 
 (((determinístico)))
 
 pseudoaleatorio::
-Perteneciente a una secuencia de números que parecen ser aleatorios, pero son generados por un programa determinista.
+Perteneciente a una secuencia de números que parecen ser aleatorios, pero que son generados por un programa determinista.
 (((pseudoaleatorio)))
 
 valor por defecto (o valor por omisión)::
@@ -512,7 +512,7 @@ El proceso de elegir entre estructuras de datos implementando alternativas y pro
 (((benchmarking)))
 
 depuración del pato de goma::
-Depuración en dónde se explica el problema a un objeto inanimado, tal como un pato de goma. Articular el problema puede ayudarte a resolverlo, incluso si el pato de goma no sabe de Julia.
+Depuración en dónde se explica el problema a un objeto inanimado, tal como un pato de goma. Articular el problema puede ayudarle a resolverlo, incluso si el pato de goma no sabe de Julia.
 (((depuración del pato de goma)))
 
 
@@ -541,7 +541,7 @@ donde latexmath:[s] y latexmath:[c] son parámetros que dependen del idioma y el
 \end{equation}
 ++++
 
-Entonces, si graficas latexmath:[\log f] versus latexmath:[\log r], debería obtener una línea recta con pendiente latexmath:[-s] e intercepto latexmath:[\log c].
+Entonces, si se grafica latexmath:[\log f] versus latexmath:[\log r], se debería obtener una línea recta con pendiente latexmath:[-s] e intercepto latexmath:[\log c].
 
 Escriba un programa que lea un texto de un archivo, cuente las frecuencias de las palabras e imprima una línea para cada palabra, en orden descendente de frecuencia, con  latexmath:[\log f] y latexmath:[\log r].
 
