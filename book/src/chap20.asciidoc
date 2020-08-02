@@ -1,10 +1,10 @@
 [[chap20]]
 == Extra: Base y Librería Estándar
 
-Julia tiene todo lo necesario. El módulo +Base+ contiene las funciones, tipos y macros más útiles. Los cuales están disponibles directamente en Julia.
+Julia tiene todo lo necesario. El módulo +Base+ contiene las funciones, tipos y macros más útiles, los cuales están disponibles directamente en Julia.
 (((Base)))
 
-Julia también posee una gran cantidad de módulos especializados en su Biblioteca Estándar (módulos para Fechas, Computación Distribuida, Álgebra Lineal, Perfiles, Números Aleatorios, entre otros). Las funciones, los tipos y las macros definidos en la Biblioteca estándar deben importarse antes de poder usarse:
+Julia también posee una gran cantidad de módulos especializados en su Biblioteca Estándar (módulos para fechas, computación distribuida, álgebra lineal, perfiles, números aleatorios, entre otros). Las funciones, los tipos y las macros definidos en la Biblioteca Estándar deben importarse antes de poder usarse:
 
 * +import _Module_+ importa el modulo, y +_Module.fn_(x)+ llama a la función +_fn_+
 (((import)))((("keyword", "import", see="import")))
@@ -13,7 +13,7 @@ Julia también posee una gran cantidad de módulos especializados en su Bibliote
 
 Además, es posible agregar más funciones a una gran cantidad de paquetes (https://juliaobserver.com).
 
-Este capítulo no es un reemplazo de la documentación oficial de Julia. Solo se dan algunos ejemplos para ilustrar lo que es posible hacer, sin ser exhaustivo. Las funciones ya vistas no están incluidas. Se puede encontrar una explicación más completa en https://docs.julialang.org.
+Este capítulo no es un reemplazo de la documentación oficial de Julia. Sólo se dan algunos ejemplos para ilustrar lo que es posible hacer, sin ser exhaustivo. Las funciones ya vistas no están incluidas. Se puede encontrar una explicación más completa en https://docs.julialang.org.
 
 
 === Midiendo el Rendimiento
@@ -35,7 +35,7 @@ julia> @time fibonacci(40)
 102334155
 ----
 
-+@time+ imprime el tiempo que tardó en ejecutarse la función, el número de asignaciones (allocations) y la memoria asignada antes de devolver el resultado. La función fibonacci (que guarda resultados previos) es mucho más rápida pero necesita más memoria.
++@time+ imprime el tiempo que tardó en ejecutarse la función, el número de asignaciones (allocations) y la memoria asignada antes de devolver el resultado. La función fibonacci, que guarda resultados previos, es mucho más rápida pero necesita más memoria.
 
 [quote]
 ____
@@ -45,8 +45,7 @@ ____
 [TIP]
 ====
 
-
-Para comparar dos algoritmos, estos deben implementarse como funciones. Una función en Julia se compila la primera vez que se ejecuta, por lo tanto, se debe excluir la primera vez que se llama a estas funciones al medir el rendimiento; de lo contrario, también se mediría el tiempo de compilación.
+Para comparar dos algoritmos, estos deben implementarse como funciones. Una función en Julia se compila la primera vez que se ejecuta, por lo tanto, se debe excluir la primera vez que se llama a estas funciones al medir el rendimiento. De lo contrario, también se mediría el tiempo de compilación.
 
 El paquete +BenchmarkTools+ (https://github.com/JuliaCI/BenchmarkTools.jl) proporciona la macro +@btime+ que realiza una evaluación comparativa de la manera correcta. ¡Así que úsela!
 ====
@@ -55,7 +54,7 @@ El paquete +BenchmarkTools+ (https://github.com/JuliaCI/BenchmarkTools.jl) propo
 [[collections_and_data_structures]]
 === Colecciones y Estructuras de Datos
 
-En <<dictionary_subtraction>> usamos diccionarios para encontrar las palabras que aparecían en un documento y que no aparecían en un arreglo de palabras. La función que escribimos tomaba +d1+, que contenía las palabras del documento como claves, y +d2+, que contenía el arreglo de palabras. Y devolvía un diccionario que contenía las claves de +d1+ que no estaban en +d2+. 
+En <<dictionary_subtraction>> se usan diccionarios para encontrar las palabras que aparecían en un documento y que no aparecían en un arreglo de palabras. La función que se escribió tomaba +d1+, que contenía las palabras del documento como claves, y +d2+, que contenía el arreglo de palabras. Devolvía un diccionario que contenía las claves de +d1+ que no estaban en +d2+. 
 (((resta)))
 
 [source,@julia-setup]
@@ -72,9 +71,9 @@ end
 ----
 
 
-En todos estos diccionarios, los valores son +nothing+ porque nunca los usamos. Con esto estamos desperdiciando espacio de almacenamiento.
+En todos estos diccionarios, los valores son +nothing+ porque nunca son usados. Con esto se está desperdiciando espacio de almacenamiento.
 
-Julia ofrece otro tipo integrado llamado conjunto, que se comporta como una colección de claves de diccionario sin valores. Agregar elementos a un conjunto es rápido; también lo es verificar si un elemento forma parte de él. Además, los conjuntos proporcionan funciones y operadores para calcular operaciones de conjuntos.
+Julia ofrece otro tipo integrado llamado _conjunto_, que se comporta como una colección de claves de diccionario sin valores. Agregar elementos a un conjunto es rápido y también lo es verificar si un elemento forma parte de él. Además, los conjuntos proporcionan funciones y operadores para calcular operaciones de conjuntos.
 (((Set)))((("tipo", "Base", "Set", see="Set")))
 
 Por ejemplo, la resta de conjuntos está disponible como una función llamada +setdiff+. Entonces reescribiendo +resta+:
@@ -157,7 +156,7 @@ Reescriba la función +evita+ de <<chap09>> usando conjuntos.
 También se pueden usar números complejos en Julia. La constante global +im+ está asociada al número complejo latexmath:[$\mathrm{i}$], que representa la raíz cuadrada principal de latexmath:[$-1$].
 (((números complejos)))(((im)))
 
-Ahora podemos verificar la identidad de Euler,
+Ahora se puede verificar la identidad de Euler,
 (((identidad de Euler)))
 
 [source,@julia-repl-test]
@@ -169,7 +168,7 @@ julia> ℯ^(im*π)+1
 El símbolo +ℯ+ (*+\euler TAB+*) es la base de los logaritmos naturales.
 (((ℯ))) 
 
-Analicemos la naturaleza compleja de las funciones trigonométricas:
+Se puede analizar la naturaleza compleja de las funciones trigonométricas:
 
 [latexmath]
 ++++
@@ -178,7 +177,7 @@ Analicemos la naturaleza compleja de las funciones trigonométricas:
 \end{equation}
 ++++
 
-Podemos probar esta fórmula para diferentes valores de latexmath:[x].
+Se puede probar esta fórmula para diferentes valores de latexmath:[x].
 
 [source,@julia-repl-test]
 ----
@@ -192,7 +191,7 @@ Aquí se muestra otro ejemplo del operador punto. Julia también permite usar va
 
 === Cadenas
 
-En <<chap08>> y <<chap09>>, realizamos algunas búsquedas en cadenas. Además, Julia puede usar _expresiones regulares_ (o _regexes_) compatibles con Perl, lo que facilita la tarea de encontrar patrones complejos en cadenas.
+En <<chap08>> y <<chap09>>, se realizan algunas búsquedas en cadenas. Además, Julia puede usar _expresiones regulares_ (o _regexes_) compatibles con Perl, lo que facilita la tarea de encontrar patrones complejos en cadenas.
 (((regex)))
 
 La función +usasolo+ se puede implementar como una expresión regular:
@@ -232,10 +231,10 @@ En este caso, la interpolación de cadenas no está permitida. La función +matc
 
 Podemos extraer la siguiente información de un objeto regexmatch:
 
-* la subcadena que coincide: +m.match+
-* las subcadenas que coinciden en forma de arreglo de cadenas: +m.captures+
-* la primera posición en la que se encuentra el patrón: +m.offset+
-* las posiciones de las subcadenas que coinciden en forma de arreglo: +m.offsets+
+* La subcadena que coincide: +m.match+
+* Las subcadenas que coinciden en forma de arreglo de cadenas: +m.captures+
+* La primera posición en la que se encuentra el patrón: +m.offset+
+* Las posiciones de las subcadenas que coinciden en forma de arreglo: +m.offsets+
 
 [source,@julia-repl-test chap20]
 ----
@@ -249,9 +248,9 @@ Las expresiones regulares son extremadamente poderosas y el manual de PERL http:
 
 === Arreglos
 
-En el <<chap10>> usamos un objeto de arreglo unidimensional, con un índice para acceder a sus elementos. Sin embargo, en Julia las matrices son multidimensionales.
+En el <<chap10>> se usa un objeto de arreglo unidimensional, con un índice para acceder a sus elementos. Sin embargo, en Julia las matrices son multidimensionales.
 
-Creemos una _matriz_ de ceros de 2 por 3:
+Se puede crear una _matriz_ de ceros de 2 por 3:
 (((zeros)))((("función", "Base", "zeros", see="zeros")))(((matrix)))
 
 [source,@julia-repl-test chap20]
@@ -361,7 +360,7 @@ ____
 
 En <<one_more_example>> implementamos la función +fib+ que devuelve el elemento latexmath:[n]-ésimo de la secuencia de Fibonnaci.
 
-Recorrer los valores de una colección, lo cual es llamado iteración, es una interfaz de este tipo. Creemos un iterador que devuelva la secuencia de Fibonacci:
+Recorrer los valores de una colección, lo cual recibe el nombre de iteración, es una interfaz de este tipo. Se puede crear un iterador que devuelva la secuencia de Fibonacci:
 (((iterador)))(((Fibonacci)))((("tipo", "definida por el programador", "Fibonacci", see="Fibonacci")))(((iterate)))((("función", "Base", "iterate", see="iterate")))
 
 [source,@julia-setup chap20]
@@ -373,11 +372,11 @@ Base.iterate(::Fibonacci{T}) where {T<:Real} = (zero(T), (one(T), one(T)))
 Base.iterate(::Fibonacci{T}, state::Tuple{T, T}) where {T<:Real} = (state[1], (state[2], state[1] + state[2]))
 ----
 
-Implementamos un tipo paramétrico +Fibonacci+ sin atributos, un constructor externo y dos métodos +iterate+. Se llama al primer método +iterate+ para inicializar el iterador, y este devuelve una tupla que consta de un primer valor: 0, y un estado. El estado en este caso es una tupla que contiene el segundo y el tercer valor: 1 y 1.
+Se implementa un tipo paramétrico +Fibonacci+ sin atributos, un constructor externo y dos métodos +iterate+. Se llama al primer método +iterate+ para inicializar el iterador, y este devuelve una tupla que consta de un primer valor: 0, y un estado. El estado en este caso es una tupla que contiene el segundo y el tercer valor: 1 y 1.
 
 Se llama al segundo método +iterate+ para obtener el siguiente valor de la secuencia de Fibonacci, y devuelve una tupla que tiene como primer elemento el siguiente valor y como segundo elemento el estado que es una tupla con los dos valores siguientes.
 
-Ahora podemos usar +Fibonacci+ en un bucle +for+:
+Ahora se puede usar +Fibonacci+ en un bucle +for+:
 (((sentencia for)))
 
 [source,@julia-repl-test chap20]
@@ -414,12 +413,12 @@ Este es un ejemplo de cómo una interfaz bien definida permite que una implement
 
 === Módulo Interactive Utilities
 
-Ya hemos visto el módulo +InteractiveUtils+ en <<interactive>>. La macro +@which+ es solo una de las tantas opciones.
+Ya se ha visto el módulo +InteractiveUtils+ en <<interactive>>. La macro +@which+ es solo una de las tantas opciones.
 (((InteractiveUtils)))(((@which)))
 
 La biblioteca LLVM transforma el código de Julia en código de máquina, en varios pasos. Podemos visualizar la salida de cada etapa.
 
-Veamos un ejemplo simple:
+Aquí se muestra un ejemplo simple:
 (((sumacuadrada)))((("función", "definida por el programador", "sumacuadrada", see="sumacuadrada")))
 
 [source,@julia-setup chap20]
@@ -509,7 +508,7 @@ julia> @warn "¡Oh vosotros los que entráis, abandonad la depuración con print
 └ @ Main REPL[1]:1
 ----
 
-Las sentencias de depuración (debug) no tienen que eliminarse del código. Por ejemplo, en contraste con el +@warn+ anterior
+Las sentencias de depuración (debug) no tienen que eliminarse del código. Por ejemplo, en contraste con el +@warn+ anterior,
 (((sentencia de depuración)))(((@debug)))((("macro", "Base", "@debug", see="@debug")))
 
 [source,jlcon]
