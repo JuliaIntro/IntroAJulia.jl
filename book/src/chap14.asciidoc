@@ -5,22 +5,22 @@ Este capítulo presenta el concepto de persistencia, que alude a los programas q
 
 === Persistencia
 
-La mayoría de los programas que hemos visto hasta ahora han sido transitorios, es decir se ejecutan por un corto tiempo y generan una salida, pero cuando finalizan, sus datos desaparecen. Si ejecuta el programa nuevamente, este comienza de cero.
+La mayoría de los programas que hemos visto hasta ahora han sido transitorios, es decir, se ejecutan por un tiempo corto y generan una salida pero cuando finalizan, sus datos desaparecen. Si ejecuta el programa nuevamente, este comienza de cero.
 (((transitorio)))
 
-Otros programas son _persistentes_; se ejecutan durante un largo período de tiempo (o todo el tiempo), mantienen al menos parte de sus datos en almacenamiento permanente (en un disco duro, por ejemplo), y si se apagan y vuelven a comenzar, retoman donde lo dejaron.
+Otros programas, en cambio, son _persistentes_, se ejecutan durante un largo período de tiempo (o todo el tiempo), mantienen al menos parte de sus datos en almacenamiento permanente (en un disco duro, por ejemplo) y si se apagan y vuelven a comenzar, retoman donde lo dejaron.
 (((persistente)))
 
-Ejemplos de programas persistentes son los sistemas operativos, que se ejecutan siempre que una computadora esté encendida, y los servidores web, que se ejecutan todo el tiempo, esperando que lleguen solicitudes a la red.
+Ejemplos de programas persistentes son los sistemas operativos, que se ejecutan siempre que una computadora esté encendida, y los servidores web, que se ejecutan todo el tiempo esperando a que lleguen solicitudes a la red.
 
-Una de las formas más simples para que los programas mantengan sus datos es leyendo y escribiendo _archivos de texto_. Ya hemos visto programas que leen archivos de texto; en este capítulo veremos programas que los escriben.
+Una de las formas más simples para que los programas mantengan sus datos es leyendo y escribiendo _archivos de texto_. Ya se han visto programas que leen archivos de texto y en este capítulo se van a ver programas que los escriben.
 
 Otra alternativa es almacenar el estado del programa en una base de datos. En este capítulo también se presentará cómo usar una base de datos simple.
 
 [[reading_and_writing]]
 === Lectura y Escritura
 
-Un archivo de texto es una secuencia de caracteres almacenados en un medio permanente, como un disco duro o una memoria flash. Ya vimos cómo abrir y leer un archivo en <<reading_word_lists>>.
+Un archivo de texto es una secuencia de caracteres almacenados en un medio permanente, como un disco duro o una memoria flash. Ya se vio cómo abrir y leer un archivo en <<reading_word_lists>>.
 
 Para escribir un archivo, debe abrirlo usando el modo +"w"+ (de write) como segundo parámetro:
 (((open)))
@@ -42,7 +42,7 @@ julia> write(fout, linea1)
 31
 ----
 
-El valor de retorno es el número de caracteres que se escribieron. El objeto de archivo _fout_ lleva registro de dónde quedó por última vez, por lo que si llama a +write+ nuevamente, esta agrega nuevos datos al final del archivo.
+El valor de retorno es el número de caracteres que se escribieron. El objeto de archivo _fout_ lleva el registro de dónde se quedó por última vez, por lo que si llama a +write+ nuevamente, esta agrega nuevos datos al final del archivo.
 
 [source,@julia-repl-test chap14]
 ----
@@ -52,7 +52,7 @@ julia> write(fout, linea2)
 30
 ----
 
-Cuando hayas terminado de escribir, debes cerrar el archivo.
+Cuando el usuario haya terminado de escribir, debe cerrar el archivo.
 (((close)))
 
 [source,@julia-repl-test chap14]
@@ -61,12 +61,12 @@ julia> close(fout)
 
 ----
 
-Si no cierra el archivo, se cierra cuando finaliza el programa.
+Si no cierra el archivo, este se cierra cuando finaliza el programa.
 
 
 === Formateo
 
-El argumento de write tiene que ser una cadena, por lo que si queremos poner otros valores en un archivo, tenemos que convertirlos en cadenas. La forma más fácil de hacerlo es con la función +string+, o con interpolación de cadenas:
+El argumento de write tiene que ser una cadena, por lo que si queremos poner otros valores en un archivo, tenemos que convertirlos a una cadena. La forma más fácil de hacerlo es con la función +string+ o con interpolación de cadenas:
 (((string)))(((interpolación de cadenas)))
 
 [source,@julia-repl-test chap14]
@@ -90,7 +90,7 @@ julia> println(fout, "He visto $camellos camellos.")
 
 [TIP]
 ====
-Una alternativa más potente es la macro +@printf+, que imprime utilizando cadenas con especificación de formato al más puro estilo C, lo cual puede leer en https://docs.julialang.org/en/v1/stdlib/Printf/
+Una alternativa más potente es la macro +@printf+, que imprime utilizando cadenas con especificación de formato al más puro estilo C, lo cual se puede leer en https://docs.julialang.org/en/v1/stdlib/Printf/
 (((@printf)))((("macro", "Printf", "@printf", see="@printf")))(((formateando)))
 ====
 
@@ -100,7 +100,7 @@ Una alternativa más potente es la macro +@printf+, que imprime utilizando caden
 Los archivos están organizados en _directorios_ (también llamados "carpetas"). Cada programa en ejecución tiene su propio "directorio actual", que es el directorio que usará por defecto para para la mayoría de las operaciones. Por ejemplo, cuando abre un archivo para leer, Julia lo busca en el directorio actual.
 (((directorio)))((("carpeta", see="directorio actual")))
 
-La función +pwd+ devuelve el nombre del directorio actual:
+La función +pwd+ (en inglés "print working directory") devuelve el nombre del directorio actual:
 (((pwd)))((("función", "Base", "pwd", see="pwd")))
 
 [source,jlcon]
@@ -114,10 +114,10 @@ julia> cwd = pwd()
 Una cadena como +"/home/ben"+ que identifica un archivo o directorio se llama _ruta_ o _path_.
 (((ruta)))
 
-Un nombre de archivo simple, como +memo.txt+ también se considera una ruta, pero es una _ruta relativa_ porque comienza en el directorio actual. Si el directorio actual es +/home/ben+, el nombre de archivo +memo.txt+ se referiría a +/home/ben/memo.txt+.
+Un nombre de archivo simple, como +memo.txt+ también se considera una ruta aunque es una _ruta relativa_ porque comienza en el directorio actual. Si el directorio actual es +/home/ben+, el nombre de archivo +memo.txt+ se refiere a +/home/ben/memo.txt+.
 (((ruta relativa)))((("ruta", "relativa", see="ruta relativa")))
 
-Una ruta que comienza con +/+ no depende del directorio actual. Este tipo de ruta se llama una ruta absoluta. Para encontrar la ruta absoluta de un archivo, puede usar +abspath+:
+Una ruta que comienza con +/+ no depende del directorio actual. Este tipo de ruta se llama _ruta absoluta_. Para encontrar la ruta absoluta de un archivo, puede usar +abspath+:
 (((ruta absoluta)))((("ruta", "absoluta", see="ruta absoluta")))(((abspath)))((("función", "Base", "abspath", see="abspath")))
 
 [source,jlcon]
@@ -146,7 +146,7 @@ julia> isdir("/home/ben")
 true
 ----
 
-Del mismo modo, +isfile+ comprueba si se trata de un archivo.
+Del mismo modo, +isfile+ comprueba que se trate de un archivo.
 (((isfile)))((("función", "Base", "isfile", see="isfile")))
 
 +readdir+ devuelve un arreglo de los archivos (y otros directorios) en el directorio dado:
@@ -161,7 +161,7 @@ julia> readdir(cwd)
  "fotos"
 ----
 
-Para mostrar el funcionamiento de estas funciones, el siguiente ejemplo "recorre" un directorio, imprime los nombres de todos los archivos y se llama a si misma, de manera recursiva, en todos los directorios.
+Para mostrar el comportamiento de estas funciones, el siguiente ejemplo "recorre" un directorio, imprime los nombres de todos los archivos y se llama a sí misma, de manera recursiva, en todos los directorios.
 (((recorrer)))((("función", "definida por el programador", "recorrer", see="recorrer")))
 
 [source,@julia-setup chap14]
@@ -178,7 +178,7 @@ function recorrer(nombredir)
 end
 ----
 
-+joinpath+ toma un directorio y un nombre de archivo, y los une en una ruta completa.
++joinpath+ toma un directorio y un nombre de archivo y los une en una ruta completa.
 (((joinpath)))((("función", "Base", "joinpath", see="joinpath")))
 
 [TIP]
@@ -200,9 +200,9 @@ julia> fin = open("archivo_malo")
 ERROR: SystemError: opening file "archivo_malo": No such file or directory
 ----
 
-Si intentas abrir un archivo pero no tienes permiso para acceder a él, obtienes el error de sistema "Permission denied" (Permiso denegado).
+Si el usuario intenta abrir un archivo pero no tiene permiso para acceder a él, obtiene el error de sistema "Permission denied" (Permiso denegado).
 
-Para evitar estos errores, se podrían usar funciones como +ispath+ e +isfile+, pero tomaría mucho tiempo y líneas de código verificar todas las posibilidades.
+Para evitar estos errores se podrían usar funciones como +ispath+ e +isfile+ pero tomaría mucho tiempo y líneas de código verificar todas las posibilidades.
 
 Es más fácil intentar lidiar con los problemas a medida que ocurren, que es exactamente lo que hace la sentencia +try+. La sintaxis es similar a una sentencia +if+:
 (((sentencia try)))((("sentencia", "try", see="sentencia try")))(((try)))((("palabra reservada", "try", see="try")))(((catch)))((("palabra reservada", "catch", see="catch")))(((end)))
@@ -216,12 +216,12 @@ catch exc
 end
 ----
 
-Julia comienza ejecutando el bloque +try+. Si todo resulta bien, se saltará el bloque +catch+ y finalizará. Si ocurre una excepción, Julia saltara fuera del bloque +try+ y ejecutará el bloque +catch+.
+Julia comienza ejecutando el bloque +try+. Si nada falla, se saltará el bloque +catch+ y finalizará. Si ocurre una excepción, Julia saltará fuera del bloque +try+ y ejecutará el bloque +catch+.
 
-Gestionar una excepcion con +try+ recibe el nombre de _capturar_ una excepcion. En este ejemplo, el bloque +catch+ muestra un mensaje de error que no es muy útil. En general, capturar una excepcion te da la oportunidad de corregir el problema, volverlo a intentar o, al menos, terminar el programa con elegancia.
+Gestionar una excepción con +try+ recibe el nombre de _capturar_ una excepción. En este ejemplo, el bloque +catch+ muestra un mensaje de error que no es muy útil. En general, capturar una excepción da la oportunidad de corregir el problema, volverlo a intentar o, al menos, terminar el programa con elegancia.
 (((capturar una excepcion)))
 
-Cuando el código realiza cambios de estado o usa recursos, como archivos, generalmente se deben hacer ciertas cosas al finalizar la programación del código, como cerrar los archivos. Las excepciones pueden complicar esta tarea, ya que se podría salir antes de lo esperado de un bloque de código. La palabra reservada +finally+ permite ejecutar un código al salir de un bloque de código determinado, independientemente de cómo salga:
+Cuando el código realiza cambios de estado o usa recursos, como archivos, generalmente se deben hacer ciertas cosas al finalizar la programación del código, como por ejemplo cerrar los archivos. Las excepciones pueden complicar esta tarea, ya que se podría salir antes de lo esperado de un bloque de código. La palabra reservada +finally+ permite ejecutar un código al salir de un bloque de código determinado, independientemente de cómo salga:
 (((finally)))((("palabra reservada", "finally", see="finally")))
 
 [source,julia]
@@ -241,10 +241,10 @@ En este ejemplo, la función +close+ siempre se ejecutará.
 [[databases]]
 === Bases de datos
 
-Una _base de datos_ es un archivo que esta organizado para almacenar datos. La mayoría de las bases de datos están organizadas como diccionarios, en el sentido de que realizan asociaciones entre claves y valores. La diferencia mas importante entre un diccionario y una base de datos, es que la base de datos se encuentra en el disco (u otro almacenamiento permanente), de modo que su contenido se conserva despues de que el programa finaliza. 
+Una _base de datos_ es un archivo que está organizado para almacenar datos. La mayoría de las bases de datos están organizadas como diccionarios, en el sentido de que realizan asociaciones entre claves y valores. La diferencia más importante entre un diccionario y una base de datos, es que la base de datos se encuentra en el disco (u otro almacenamiento permanente), de modo que su contenido se conserva después de que el programa haya finalizado. 
 (((base de datos)))
 
-IntroAJulia proporciona una interfaz para +GDBM+ (GNU dbm), que permite crear y actualizar archivos de base de datos. A modo de ejemplo, crearemos una base de datos que contenga pies de foto para archivos de imagen.
+IntroAJulia proporciona una interfaz para +GDBM+ (GNU dbm), que permite crear y actualizar archivos de base de datos. A modo de ejemplo, se crea una base de datos que contiene pies de foto para archivos de imagen.
 (((GDBM)))
 
 Abrir una base de datos es similar a abrir otros archivos:
@@ -260,7 +260,7 @@ DBM(<piedefoto>)
 
 El modo "c" significa que la base de datos debe crearse si no existe. El resultado es un objeto de base de datos que se puede usar (para la mayoría de las operaciones) como un diccionario.
 
-Cuando creas un nuevo elemento, +GDBM+ actualiza el archivo de base de datos:
+Cuando se crea un nuevo elemento, +GDBM+ actualiza el archivo de base de datos:
 (((operador corchete)))
 
 [source,@julia-repl-test chap14]
@@ -288,7 +288,7 @@ julia> bd["luismi.png"]
 "Foto de Luis Miguel cantando."
 ----
 
-Algunas funciones que tienen un diccionario como argumento, con +claves+ y +valores+, no funcionan con objetos de base de datos. Pero la iteración con un bucle +for+ sí:
+Algunas funciones que tienen un diccionario como argumento, con +claves+ y +valores+, no funcionan con objetos de base de datos. No obstante, la iteración con un bucle +for+ sí:
 (((sentencia for)))(((iteración)))
 
 [source,julia]
@@ -312,7 +312,7 @@ julia> close(bd)
 
 Una limitación de +GDBM+ es que las claves y los valores deben ser cadenas o conjuntos de bytes. Si intenta utilizar cualquier otro tipo, se producirá un error.
 
-Las funciones +serialize+ y +deserialize+ pueden ser útiles. Traducen casi cualquier tipo de objeto en un arreglo de bytes (un iobuffer) adecuada para el almacenamiento en una base de datos, y luego traducen los arreglos de bytes nuevamente en objetos:
+Las funciones +serialize+ y +deserialize+ pueden ser útiles. Traducen casi cualquier tipo de objeto en un arreglo de bytes (un iobuffer) adecuado para el almacenamiento en una base de datos y luego traducen los arreglos de bytes nuevamente en objetos:
 (((Serialización)))((("módulo", "Serialización", see="Serialización")))(((serialize)))((("función", "Serialización", "serialize", see="serialize)))(((IOBuffer)))((("tipo", "Base", "IOBuffer", see="IOBuffer")))(((take!)))((("función", "Base", "take!", see="take!")))
 
 [source,@julia-repl-test chap14]
@@ -329,7 +329,7 @@ julia> print(take!(io))
 UInt8[0x37, 0x4a, 0x4c, 0x09, 0x04, 0x00, 0x00, 0x00, 0x15, 0x00, 0x08, 0xe2, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
 ----
 
-El formato no es obvio para nosotros; pero es fácil de interpretar para Julia. +deserialize+ reconstituye el objeto:
+El formato no es intuitivo para nosotros pero es fácil de interpretar para Julia. +deserialize+ reconstituye el objeto:
 (((deserialize)))((("función", "Serialización", "deserialize", see="deserialize")))
 
 [source,@julia-repl-test chap14]
@@ -363,7 +363,7 @@ false
 En otras palabras, la serialización y luego la deserialización tienen el mismo efecto que copiar el objeto.
 (((copiar)))
 
-Puedes usar esto para almacenar valores que no sean cadenas en una base de datos.
+Esto se puede usar para almacenar valores que no sean cadenas en una base de datos.
 
 [TIP]
 ====
@@ -376,7 +376,7 @@ De hecho, el almacenamiento de valores que no son cadenas en una base de datos e
 La mayoría de los sistemas operativos proporcionan una interfaz de línea de comandos, también conocida como _shell_. Las shells generalmente proporcionan comandos para navegar por el sistema de archivos y ejecutar aplicaciones. Por ejemplo, en Unix puede cambiar los directorios con +cd+, mostrar el contenido de un directorio con +ls+ e iniciar un navegador web escribiendo (por ejemplo) +firefox+.
 (((shell)))(((cd)))
 
-Cualquier programa que pueda iniciar desde la shell también puede iniciarse desde Julia usando un _objeto de comando_:
+Cualquier programa que se pueda iniciar desde la shell también puede iniciarse desde Julia usando un _objeto de comando_:
 (((objeto de comando)))(((comillas invertidas)))((("``", see="comillas invertidas")))
 
 [source,@julia-repl-test chap14]
@@ -398,7 +398,7 @@ hola
 
 +hola+ es la salida del comando echo, enviado a +STDOUT+. La función +run+ devuelve un objeto de proceso y genera un +ErrorException+ si el comando externo no se ejecuta correctamente.
 
-Si desea leer la salida del comando externo, se puede usar +read+ en su lugar:
+Si se desea leer la salida del comando externo, se puede usar +read+ en su lugar:
 (((read)))
 
 [source,@julia-repl-test chap14]
@@ -462,8 +462,7 @@ julia> include("wc.jl")
 9
 ----
 
-Los módulos permiten crear espacios de trabajo separados, es decir, nuevos global scopes (ámbitos de tipo global). Una sentencia tiene 
-global scope si tiene efecto en todo el prorgama.
+Los módulos permiten crear espacios de trabajo separados, es decir, nuevos global scopes (ámbitos de tipo global). Una sentencia tiene  global scope si tiene efecto en todo el prorgama.
 
 Un módulo comienza con la palabra reservada +module+ y termina con +end+. Al usar módulos, se evitan los conflictos de nombres entre sus propias definiciones de nivel superior y las que se encuentran en el código de otra persona. +import+ permite controlar qué nombres de otros módulos están visibles y +export+ especifica cuáles de sus nombres son públicos, es decir, aquellos que se pueden usar fuera del módulo sin tener el prefijo del nombre del módulo.
 (((ámbito)))(((module)))((("palabra reservada", "module", see="module")))(((end)))(((import)))((("palabra reservada", "import", see="import")))(((export)))((("palabra reservada", "export", see="export")))(((ContarLineas)))((("module", "ContarLineas", see="ContarLineas")))((("función", "ContarLineas", "contarlineas", see="contarlineas")))
@@ -500,7 +499,7 @@ Escriba este ejemplo en un archivo llamado _wc.jl_, inclúyalo en REPL (con incl
 
 [WARNING]
 ====
-Si importa un módulo que ya se ha importado, Julia no hace nada. No se vuelve a leer el archivo, incluso si ha cambiado.
+Si importa un módulo que ya se ha importado, Julia no hace nada. No se vuelve a leer el archivo, incluso si ha sido modificado.
 
 Si desea volver a cargar un módulo, debe reiniciar REPL. El paquete +Revise+ puede ayudarlo a no reiniciar tan seguido (vea https://github.com/timholy/Revise.jl).
 ====
@@ -508,7 +507,7 @@ Si desea volver a cargar un módulo, debe reiniciar REPL. El paquete +Revise+ pu
 
 === Depuración
 
-Al leer y escribir archivos, puedes tener problemas con los espacios en blanco. Estos errores pueden ser difíciles de depurar porque los espacios, las tabulaciones y las nuevas líneas son generalmente invisibles:
+Al leer y escribir archivos, el usuario puede tener problemas con los espacios en blanco. Estos errores pueden ser difíciles de depurar porque los espacios, las tabulaciones y las nuevas líneas son generalmente invisibles:
 (((\n)))(((\t)))
 
 [source,jlcon]
@@ -539,10 +538,10 @@ String "1 2\t 3\n 4"
 Esto puede ser útil para la depuración.
 (((depuración)))
 
-Otro problema con el que te puedes encontrar es que en diferentes sistemas operativos se usan diferentes caracteres para indicar el final de una línea. Algunos sistemas usan una nueva línea, representada por +\n+. Otros usan un carácter de retorno +\r+. Algunos usan ambos. Si usas un archivo en diferentes sistemas, estas inconsistencias podrían causar problemas.
+Otro problema con el que es fácil encontrarse es que en diferentes sistemas operativos se usan diferentes caracteres para indicar el final de una línea. Algunos sistemas usan una nueva línea, representada por +\n+. Otros usan un carácter de retorno +\r+. Algunos usan ambos. Si un archivo es usado en diferentes sistemas, estas inconsistencias podrían causar problemas.
 (((\r)))
 
-Para la mayoría de los sistemas, hay aplicaciones para convertir de un formato a otro. Puede encontrarlas (y leer más sobre este tema) en https://en.wikipedia.org/wiki/Newline. O, por supuesto, podrías escribir una tú mismo.
+Para la mayoría de los sistemas, hay aplicaciones para convertir de un formato a otro. Puede encontrarlas (y leer más sobre este tema) en https://en.wikipedia.org/wiki/Newline. O, por supuesto, podría escribir una usted mismo.
 
 
 === Glosario
@@ -615,5 +614,5 @@ En una gran colección de archivos MP3, puede haber más de una copia de la mism
 
 . Para reconocer duplicados, puede usar +md5sum+ o +md5+ para calcular una "suma de verificación" para cada archivo. Si dos archivos tienen la misma suma de verificación, probablemente tengan el mismo contenido.
 
-. Para verificar, puede usar el comando de Unix +diff+.
+. Para verificarlo, puede usar el comando de Unix +diff+.
 
