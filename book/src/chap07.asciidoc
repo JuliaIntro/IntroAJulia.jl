@@ -316,7 +316,7 @@ Para comprender qué es un algoritmo, podría ayudar empezar con algo que no es 
 
 Pero si fueras "flojo", podrías haber aprendido algunos trucos. Por ejemplo, para encontrar el producto de latexmath:[n] y 9, puedes escribir latexmath:[n-1] como el primer dígito y latexmath:[10-n] como el segundo dígito. Este truco es una solución general para multiplicar cualquier número de un solo dígito por 9. ¡Este es un algoritmo!
 
-Del mismo modo, las técnicas que aprendió para la suma con “llevamos tanto”, la resta con “pedimos prestado tanto”, y la división “larga o con galera o de casita” son todas ellas algoritmos. Una de las características de los algoritmos es que no requieren inteligencia para realizarlos. Son procesos mecánicos donde cada paso se sigue de acuerdo com un conjunto simple de reglas.
+Del mismo modo, las técnicas que aprendió para la suma con “llevamos tanto”, la resta con “pedimos prestado tanto”, y la división “larga o con galera o de casita” son todas ellas algoritmos. Una de las características de los algoritmos es que no requieren inteligencia para realizarlos. Son procesos mecánicos donde cada paso se sigue de acuerdo con un conjunto simple de reglas.
 
 Ejecutar algoritmos es aburrido, pero diseñarlos es interesante, intelectualmente desafiante y son una parte central de la informática.
 
@@ -351,7 +351,6 @@ Asignación donde el nuevo valor de la variable depende del antiguo.
 
 inicialización::
 Asignación que le da un valor inicial a una variable que será actualizada.
-An assignment that gives an initial value to a variable that will be updated.
 (((inicialización)))
 
 incremento::

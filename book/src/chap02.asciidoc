@@ -181,7 +181,7 @@ Ahora coloque las mismas sentencias en un script y ejecútelo. ¿Cuál es el res
 
 === Orden de operaciones
 
-Cuando una expresión contiene más de un operador, el orden de evaluación depende de las _reglas de precedencia_. Julia sigue la convención matemática para el order de evaluación de los operadores matemáticos. El acrónimo _PAPOMUDAS_ es una forma útil de recordar estas reglas:
+Cuando una expresión contiene más de un operador, el orden de evaluación depende de las _reglas de precedencia_. Julia sigue la convención matemática para el orden de evaluación de los operadores matemáticos. El acrónimo _PAPOMUDAS_ es una forma útil de recordar estas reglas:
 (((orden de operaciones)))(((PAPOMUDAS)))
 
 * __PA__réntesis: tienen la mayor precedencia y se pueden utilizar para forzar la evaluación de una expresión en el orden que desee. Dado que las expresiones entre paréntesis se evalúan primero, +2*(3-1)+ es 4, y +pass:[(1+1)^(5-2)]+ es 8. También puede usar paréntesis para hacer una expresión más fácil de leer, como en +(minuto*100)/60+, incluso si no cambia el resultado.
@@ -195,7 +195,7 @@ Cuando una expresión contiene más de un operador, el orden de evaluación depe
 
 * Los operadores con la misma precedencia se evalúan de izquierda a derecha (excepto potencias). Entonces, en la expresión +grados/2*π+, la división ocurre primero y el resultado se multiplica por +π+. Para dividir entre latexmath:[2\pi], puede usar paréntesis, escribir +grados/2/π+ o +grados/2π+.
 
-[OBSERVACION]
+[OBSERVACIÓN]
 ====
 No se esfuerce demasiado en recordar el orden de las operaciones. Si el orden no es evidente mirando la expresión, use paréntesis para que sí lo sea.
 ====

@@ -147,7 +147,7 @@ while indice <= sizeof(frutas)
 end
 ----
 
-Este bucle recorre la cadena y muestra cada letra en una línea distinta. La condición del bucle es +index pass:[&lt;=] sizeof(fruta)+, de modo que cuando el indice es mayor al número de bytes en la cadena, la condición es +falsa+, y no se ejecuta el cuerpo del bucle.
+Este bucle recorre la cadena y muestra cada letra en una línea distinta. La condición del bucle es +index pass:[&lt;=] sizeof(fruta)+, de modo que cuando el índice es mayor al número de bytes en la cadena, la condición es +falsa+, y no se ejecuta el cuerpo del bucle.
 
 La función +firstindex+ devuelve el primer índice de bytes válido. La palabra reservada +global+ antes de +indice+ indica que queremos reasignar la variable +indice+ definida en +Main+ (ver <<variables_globales>>).
 (((global)))(((firstindex)))((("función", "Base", "firstindex", see="firstindex")))
@@ -238,7 +238,7 @@ julia> saludo = "¡Hola, mundo!"
 julia> saludo[3] = 'J'
 ERROR: MethodError: no method matching setindex!(::String, ::Char, ::Int64)
 ----
-Nota del traductor: De acuerdo con la codificación de caracteres en utf-8 ó latin-1, el carácter de exclamación ‘¡’, en la variable saludo ocupa dos posiciones, de ahí que la letra ‘H’ esté localizada en el índice 3.
+Nota del traductor: De acuerdo con la codificación de caracteres en utf-8 o latin-1, el carácter de exclamación ‘¡’, en la variable saludo ocupa dos posiciones, de ahí que la letra ‘H’ esté localizada en el índice 3.
 
 La razón del error es que las cadenas son _inmutables_, lo que significa que no se puede cambiar una cadena existente. Lo más que puedes hacer es crear una nueva cadena que sea una variación de la original:
 (((immutable)))
@@ -296,7 +296,7 @@ function busqueda(palabra, letra)
 end
 ----
 
-En cierto sentido, la funcion busqueda es lo contrario del operador +[]+. En lugar de tomar un índice y extraer el carácter correspondiente, toma un carácter y encuentra el índice donde aparece el carácter. Si el carácter no se encuentra, la función devuelve -1.
+En cierto sentido, la función búsqueda es lo contrario del operador +[]+. En lugar de tomar un índice y extraer el carácter correspondiente, toma un carácter y encuentra el índice donde aparece el carácter. Si el carácter no se encuentra, la función devuelve -1.
 
 Este es el primer ejemplo que hemos visto de una sentencia return dentro de un bucle. Si +palabra[indice] == letra+, la función devuelve inmediatamente el índice, escapando del bucle prematuramente.
 
@@ -422,7 +422,7 @@ if palabra == "banana"
 end
 ----
 
-Otras operaciones de comparación son útiles para ordenar alfabeticamente palabras:
+Otras operaciones de comparación son útiles para ordenar alfabéticamente palabras:
 (((orden alfabético)))
 
 [source,@julia-setup chap08]

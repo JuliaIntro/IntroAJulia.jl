@@ -200,7 +200,7 @@ else
 end
 ----
 
-La condicional externa contiene dos ramas. La primera rama contiene una sentencia simple. La segunda rama contiene otra sentencia if, que tiene dos ramas propias. Estas dos ramas son ambas sentencias simples, aunque podrían ser sentencias condicionales.
+La condicional externa contiene dos ramas. La primera rama contiene una sentencia simple. La segunda rama contiene otra sentencia +if+, que tiene dos ramas propias. Estas dos ramas son ambas sentencias simples, aunque podrían ser sentencias condicionales.
 
 Aunque la sangría no obligatoria de las sentencias hace evidente su estructura, las condicionales anidadas muy pronto se vuelven difíciles de leer. Se recomienda evitarlas cuando pueda.
 (((sangría)))
@@ -423,7 +423,7 @@ Lo mismo aplica para los errores de tiempo de ejecución. Suponga que está trat
 [latexmath]
 ++++
 \begin{equation}
-{S/R_{\mathrm{db}} = 10 \log_{10} \frac{P_{\mathrm{señal}}}{P_{\mathrm{ruido}}}\ .}
+{S/R_{\mathrm{dB}} = 10 \log_{10} \frac{P_{\mathrm{señal}}}{P_{\mathrm{ruido}}}\ .}
 \end{equation}
 ++++
 
@@ -432,8 +432,8 @@ En Julia, se podría escribir algo como esto:
 [source,julia]
 ----
 intensidad_señal = 9
-intendidad_ruido = 10
-relacion = intensidad_señal ÷ intendidad_ruido
+intensidad_ruido = 10
+relacion = intensidad_señal ÷ intensidad_ruido
 decibeles = 10 * log10(relacion)
 print(decibeles)
 ----
@@ -494,7 +494,6 @@ Una de las secuencias alternativas de sentencias en una sentencia condicional.
 
 condicional encadenada::
 Una sentencia condicional con una serie de ramas alternativas.
-A conditional statement with a series of alternative branches.
 (((condicional encadenada)))
 
 condicional anidada::
@@ -556,7 +555,7 @@ para cualquier valor de latexmath:[\ (n ] mayor que 2.
 [[ex05-3]]
 ==== Ejercicio 5-4
 
-Si tienes tres barras, estas podrían o no formar un triángulo. Por ejemplo, si una de las barras tiene 12 centimetros de largo y las otras dos tienen un centimetro de largo, no es posible que las barras pequeñas puedan juntarse al medio. Para cualquier trío de longitudes, hay una prueba simple para ver si es posible formar un triángulo:
+Si tienes tres barras, estas podrían o no formar un triángulo. Por ejemplo, si una de las barras tiene 12 centímetros de largo y las otras dos tienen un centímetro de largo, no es posible que las barras pequeñas puedan juntarse al medio. Para cualquier trío de longitudes, hay una prueba simple para ver si es posible formar un triángulo:
 
 [TIP]
 ====

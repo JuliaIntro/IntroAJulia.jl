@@ -5,7 +5,7 @@ El objetivo de ((("informáticos, habilidades de", seealso="programación")))est
 
 La ((("resolución de problemas")))habilidad más importante para un informático es la resolución de problemas. Esto implica ser capaz de formular problemas, pensar soluciones de manera creativa y poder expresar una solución clara y precisa. Como resultado, el proceso de aprender a programar es una excelente oportunidad para practicar habilidades de resolución de problemas. Es por ello que este capítulo se llama "El camino de la programación".
 
-Por una parte, aprenderás a programar, lo cual es beneficioso por si solo. Por otra, la programación se constituirá como un medio para un fin. A medida que avancemos este fin será más claro.
+Por una parte, aprenderás a programar, lo cual es beneficioso por sí solo. Por otra, la programación se constituirá como un medio para un fin. A medida que avancemos este fin será más claro.
 
 === ¿Qué es un programa?
 Un _programa_ ((("programas")))es una secuencia de instrucciones que especifican cómo hacer un cálculo. El cálculo puede ser de naturaleza matemática; tal como resolver un sistema de ecuaciones, o encontrar las raíces de un polinomio, pero también puede ser un cálculo simbólico; como encontrar y reemplazar texto en un documento, o bien algo gráfico; tal como procesar una imagen o reproducir un video.
@@ -185,7 +185,7 @@ Poesía::
 Las palabras se usan por sus sonidos y significados. El poema en conjunto crea un efecto o una respuesta emocional. La ambigüedad no solo es común sino a menudo deliberada.
 
 Prosa::
-El significado literal de las palabras es más importante, y la estructura aporta significado. La prosa es más fácil de análizar que la poesía, pero a menudo sigue siendo ambigua.
+El significado literal de las palabras es más importante, y la estructura aporta significado. La prosa es más fácil de analizar que la poesía, pero a menudo sigue siendo ambigua.
 
 Programas ::
 El significado de un programa computacional es inequívoco y literal, y puede entenderse por completo mediante el análisis de los componentes léxicos y la estructura.
@@ -197,7 +197,7 @@ Los lenguajes formales son más densos que los naturales, por lo que lleva más 
 
 Los programadores ((("errores (bugs)")))((("depuración", "emociones de la, manejando las")))cometen errores. Los errores de programación se denominan _bugs_ y el proceso para rastrearlos se denomina _debugging_ o _depuración_.
 
-La programación, y especialmente la depuración, pueden provocar emociones negativas. Frente a un error difícil de solucionar, puedes sentir  enojo, verguenza, y cansancio.
+La programación, y especialmente la depuración, pueden provocar emociones negativas. Frente a un error difícil de solucionar, puedes sentir enojo, vergüenza, y cansancio.
 
 Existe evidencia de que las personas responden naturalmente a las computadoras como si fueran personas. Cuando trabajan bien, los consideramos compañeros de equipo, y cuando son obstinados o groseros, les respondemos de la misma manera que respondemos a personas groseras y obstinadas. footnote:[Reeves, Byron, and Clifford Ivar Nass. 1996. “The Media Equation: How People Treat Computers, Television, and New Media Like Real People and Places.” Chicago, IL: Center for the Study of Language and Information; New York: Cambridge University Press.]
 
