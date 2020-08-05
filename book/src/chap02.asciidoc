@@ -43,7 +43,7 @@ Los caracteres Unicode se pueden ingresar mediante autocompletado por tabulació
 El carácter guión bajo, +_+, puede formar parte del nombre de una variable. Generalmente se usa como separador en nombres con varias palabras, como por ejemplo en +tu_nombre+ o +velocidad_aerodinámica_de_una_golondrina_sin_cargamento+.
 (((carácter guión bajo)))(((abreviaturas tipo LaTeX)))
 
-Si le das un nombre inválido a una variable, tendrás un error de sintaxis:
+Si se le un nombre inválido a una variable, aparece un error de sintaxis:
 (((error de sintaxis)))((("error", "sintaxis", see="error de sintaxis")))
 
 [source, jlcon]
@@ -112,7 +112,7 @@ Cuando escribe una sentencia, REPL la ejecuta, es decir, hace lo que dice la sen
 
 === Modo script
 
-Hasta ahora hemos ejecutado Julia en _modo interactivo_, lo que significa que hemos interactuado directamente con el REPL. El modo interactivo es una buena manera de comenzar, pero si está trabajando con varias líneas de código, puede resultar incomodo.
+Hasta ahora se ha ejecutado Julia en _modo interactivo_, lo que significa que se ha interactuado directamente con el REPL. El modo interactivo es una buena manera de comenzar, pero si está trabajando con varias líneas de código, puede resultar incómodo.
 (((modo interactivo)))
 
 Una alternativa es guardar el código en un archivo de órdenes o _script_ y luego utilizar Julia en _modo script_ para ejecutarlo. Por convención, los scripts de Julia tienen nombres que terminan en _.jl_.
@@ -168,7 +168,7 @@ Notar que la sentencia de asignación +x = 2+ no tiene salida.
 
 ==== Ejercicio 2-1
 
-Para comprobar si ha comprendido, escriba las siguientes sentencias en Julia REPL y vea lo que hace cada una:
+Para comprobar que ha comprendido lo recientemente explicado, escriba las siguientes sentencias en Julia REPL y vea lo que hace cada una:
 
 [source,julia]
 ----
@@ -202,7 +202,7 @@ No se esfuerce demasiado en recordar el orden de las operaciones. Si el orden no
 
 === Operaciones con cadenas
 
-En general, no se puede realizar operaciones matemáticas con cadenas, incluso si las cadenas parecen números, por lo que lo siguiente es inválido:
+En general, no se pueden realizar operaciones matemáticas con cadenas, aunque las cadenas puedan parecer números, por lo que lo siguiente es inválido:
 (((operación con cadenas)))(((operador, cadenas)))
 
 [source,julia]
@@ -212,7 +212,7 @@ En general, no se puede realizar operaciones matemáticas con cadenas, incluso s
 "tercero" + "talismán"
 ----
 
-Pero hay dos excepciones, +*+ y +pass:[^]+.
+No obstante, hay dos excepciones, +*+ y +pass:[^]+.
 (((pass:[*]))) (((pass:[^])))
 
 El operador +pass:[*]+ realiza _concatenación de cadenas_, lo que significa que une las cadenas de extremo a extremo. Por ejemplo:
@@ -228,7 +228,7 @@ julia> primer_str * segundo_str
 "automóvil"
 ----
 
-El operador +^+ también funciona con cadenas; realiza repeticiones. Por ejemplo, +"Spam"pass:[^]3+ es +"SpamSpamSpam"+. Si uno de los valores es una cadena, el otro tiene que ser un número entero.
+El operador +^+ también funciona con cadenas y realiza repeticiones. Por ejemplo, +"Spam"pass:[^]3+ es +"SpamSpamSpam"+. Si uno de los valores es una cadena, el otro tiene que ser un número entero.
 ((("cadena", "repetición", see="repetición")))((("repetición")))
 
 De manera análoga, este uso de +pass:[*]+ y +^+ también tiene sentido en la multiplicación y potencia. Así como +4pass:[^]3+ es equivalente a +4*4*4+, esperamos que el +"Spam"pass:[^]3+ sea lo mismo que el +pass:["Spam"*"Spam"*"Spam"]+, y lo es.
@@ -247,14 +247,14 @@ Por esta razón, es una buena idea agregar notas a sus programas para explicar e
 porcentaje = (minuto * 100) / 60
 ----
 
-En este caso, el comentario aparece solo en una línea. También puede poner comentarios al final de una línea:
+En este caso, el comentario aparece sólo en una línea. También puede poner comentarios al final de una línea:
 
 [source, julia]
 ----
 porcentaje = (minuto * 100) / 60    # porcentaje de una hora
 ----
 
-Todo, desde el +#+ hasta el final de la línea se ignora, no tiene ningún efecto en la ejecución del programa.
+Todo, desde el +#+ hasta el final de la línea se ignora y no tiene ningún efecto en la ejecución del programa.
 
 Los comentarios son más útiles cuando documentan características no obvias del código. Es razonable suponer que el lector puede averiguar qué hace el código, por lo tanto es más útil explicar _por qué_.
 
@@ -274,7 +274,7 @@ v = 5   # velocidad en metros/segundo.
 
 [ATENCIÓN]
 ====
-Los nombres de las variables tienen que ser descriptivos pueden reducir la necesidad de comentarios, pero no tan largos como para dificultar la lectura del código.
+Los nombres de las variables tienen que ser descriptivos para así reducir la necesidad de comentarios, pero no tan largos como para dificultar la lectura del código.
 ====
 
 
@@ -296,9 +296,9 @@ Los errores de tiempo de ejecución son raros en los programas simples que verá
 (((error de tiempo de ejecución)))((("error", "tiempo de ejecución", see="error de tiempo de ejecución")))(((excepción,see="error de tiempo de ejecución")))
 
 Error semántico ::
-El tercer tipo de error es "semántico", es decir, relacionado con el significado. Si hay un error semántico en su programa, se ejecutará sin generar mensajes de error, pero no hará lo correcto. Hará algo más. Específicamente, hará lo que usted le dijo que hiciera.
+El tercer tipo de error es "semántico", es decir, relacionado con el significado. Si hay un error semántico en su programa, se ejecutará sin generar mensajes de error, pero no hará lo correcto sino que hará otra cosa. Específicamente, hará lo que usted le dijo que hiciera.
 +
-Identificar errores semánticos puede ser complicado porque requiere que trabajes a la inversa, analizando la salida del programa para intentar descubrir qué está haciendo.
+Identificar errores semánticos puede ser complicado porque requiere que se trabaje a la inversa, analizando la salida del programa para intentar descubrir qué está haciendo.
 (((error semántico))) ((("error", "semántico",see="error semántico")))
 
 === Glosario
@@ -308,7 +308,7 @@ Un nombre que hace referencia a un valor.
 (((variable)))
 
 asignación::
-Una sentencia que asigna un valor a una variable
+Una sentencia que asigna un valor a una variable.
 (((asignación)))
 
 diagrama de estado::
@@ -336,7 +336,7 @@ Una sección de código que representa un comando o acción. Hasta ahora, las se
 (((sentencia)))
 
 ejecutar::
-Ejecutar una sentencia y hacer lo que esta dice.
+Ejecutar una sentencia y hacer lo que ésta dice.
 (((ejecutar)))
 
 modo interactivo::
@@ -391,12 +391,12 @@ Repitiendo el consejo del capítulo anterior, cada vez que aprenda algo nuevo, d
 
 . ¿Y con +x=y=1+?
 
-. En algunos lenguajes, cada sentencia termina con un punto y coma, +;+. ¿Qué sucede si pones un punto y coma al final de una sentencia en Julia?
+. En algunos lenguajes, cada sentencia termina con un punto y coma:  +;+. ¿Qué sucede si pone un punto y coma al final de una sentencia en Julia?
 (((pass:[;])))
 
-. ¿Qué pasa si pones un punto al final de una sentencia?
+. ¿Qué pasa si pone un punto al final de una sentencia?
 
-. En notación matemática puedes multiplicar +x+ e +y+ de esta manera: +x y+. ¿Qué pasa si intentas eso en Julia? ¿Y qué sucede con 5x?
+. En notación matemática puede multiplicar +x+ e +y+ de esta manera: +x y+. ¿Qué pasa si intenta eso en Julia? ¿Y qué sucede con 5x?
 
 [[ex02-2]]
 ==== Ejercicio 2-3
@@ -408,4 +408,4 @@ Practique usando Julia REPL como una calculadora:
 
 . Supongamos que el precio de venta de un libro es de $ 24.95, pero las librerías obtienen un descuento del 40%. El envío cuesta $3 por la primera copia y 75 centavos por cada copia adicional. ¿Cuál es el costo total al por mayor de 60 copias?
 
-. Si salgo de mi casa a las 6:52 a.m. y corro 1 milla a un ritmo relajado (8:15 min. por milla), luego 3 millas más rápido (7:12 min. por milla) y 1 milla a ritmo relajado nuevamente, ¿a qué hora llego a casa para desayunar?
+. Si una persona sale de casa a las 6:52 a.m. y corre 1 milla a un ritmo relajado (8:15 min. por milla), luego 3 millas más rápido (7:12 min. por milla) y 1 milla a ritmo relajado nuevamente, ¿a qué hora llega a casa para desayunar?

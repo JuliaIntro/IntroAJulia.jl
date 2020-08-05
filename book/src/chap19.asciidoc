@@ -1,9 +1,9 @@
 [[chap19]]
 == Extra: Sintaxis
 
-Uno de los objetivos de este libro es enseñarle lo justo y necesario de Julia. Se explica una sola forma de hacer las cosas, y en ocasiones se deja como ejercicio al lector una segunda manera.
+Uno de los objetivos de este libro es enseñarle lo justo y necesario de Julia. Se explica una sola forma de hacer las cosas y, en ocasiones, se deja como ejercicio al lector una segunda manera.
 
-Ahora veremos algunos temas que hemos dejado de lado, que sí son útiles. Julia proporciona una serie de características que no son realmente necesarias (se puede escribir un buen código sin ellas), pero a veces permiten escribir un código más conciso, legible y/o eficiente.
+Ahora se verán algunos temas que se han dejado de lado pero que son útiles. Julia proporciona una serie de características que no son realmente necesarias (se puede escribir un buen código sin ellas), pero a veces permiten escribir un código más conciso, legible y/o eficiente.
 
 En este capítulo y el siguiente se discute aquello que se ha omitido en los capítulos anteriores:
 
@@ -25,13 +25,13 @@ julia> x.a
 1
 ----
 
-En las tuplas con nombre, se puede acceder a los atributos con su nombre utilizando la sintaxis de punto +(x.a)+.
+En las tuplas con nombre se puede acceder a los atributos con su nombre utilizando la sintaxis de punto +(x.a)+.
 (((tupla con nombre)))(((sintaxis de punto)))
 
 
 === Funciones
 
-Las funciones en Julia también se pueden definir mediante una sintaxis compacta.
+Las funciones en Julia también se pueden definir mediante una sintaxis compacta, de la siguiente forma:
 
 [source,@julia-repl-test]
 ----
@@ -90,7 +90,7 @@ Los _argumentos con nombre_ en una función se especifican después de un punto 
 
 ==== Clausuras
 
-Una _clausura_ es una técnica que permite que una función capture una variable definida fuera del ambito de la función.
+Una _clausura_ es una técnica que permite que una función capture una variable definida fuera del ámbito de la función.
 
 [source,@julia-repl-test]
 ----
@@ -151,7 +151,7 @@ En el ejemplo, la primera macro +@show+ muestra la variable local +x+, la variab
 
 ==== Bloques +do+
 
-En <<reading_and_writing>> cerramos el archivo después de terminar de escribir en él. Esto se puede hacer automáticamente usando un _Bloque do_:
+En <<reading_and_writing>> se cierra el archivo después de terminar de escribir en él. Esto se puede hacer automáticamente usando un _Bloque do_:
 (((do)))((("palabra reservada", "do", see="do")))
 
 [source,@julia-repl-test chap19]
@@ -211,7 +211,7 @@ julia> a % 2 == 0 ? println("par") : println("impar")
 par
 ----
 
-La expresión que va antes de +?+ es una expresión de condición. Si la condición es +true+, se evalúa la expresión que va antes de +:+; de lo contrario, se evalúa la expresión que va después de +:+.
+La expresión que va antes de +?+ es una expresión de condición. Si la condición es +true+, se evalúa la expresión que va antes de +:+.e lo contrario, se evalúa la expresión que va después de +:+.
 
 ==== Evaluación de cortocircuito
 
@@ -289,7 +289,7 @@ julia> for val in Channel(fib)
 
 ==== Tipos Primitivos
 
-Un tipo concreto compuesto por bits se llama _tipo primitivo_. A diferencia de la mayoría de los lenguajes, en Julia podemos declarar nuestros propios tipos primitivos. Los tipos primitivos estándar se definen de la misma manera:
+Un tipo concreto compuesto por bits se llama _tipo primitivo_. A diferencia de la mayoría de los lenguajes, en Julia se puede declarar nuestros propios tipos primitivos. Los tipos primitivos estándar se definen de la misma manera:
 (((tipo primitivo)))((("palabra reservada", "tipo primitivo", see="tipo primitivo")))
 
 [source,julia]
@@ -300,7 +300,7 @@ primitive type Char <: AbstractChar 32 end
 primitive type Int64 <: Signed 64 end
 ----
 
-El número en las sentencias especifica cuántos bits se requieren.
+El número en las sentencias especifica cuántos bits son necesarios.
 
 El siguiente ejemplo crea un tipo primitivo +Byte+ y un constructor:
 (((Byte)))((("tipo", "definida por el programador", "Byte", see="Byte")))
@@ -473,7 +473,7 @@ julia> typeof(ans)
 UInt8
 ----
 
-Podemos agregar nuestros propios métodos +convert+:
+Se pueden agregar nuestros propios métodos +convert+:
 [source,@julia-repl-test chap19]
 ----
 julia> Base.convert(::Type{Punto{T}}, x::Array{T, 1}) where {T<:Real} = Punto(x...)
@@ -640,7 +640,7 @@ julia> y
 Los _datos faltantes_ se pueden representar a través del objeto +missing+, que es la instancia única del tipo +Missing+.
 (((datos faltantes)))(((faltantes)))(((Missing)))((("type", "Base", "Missing", see="Missing")))
 
-Los arreglos pueden contener datos faltantes:
+Los arreglos pueden contener datos que faltan, missing values en inglés:
 
 [source,@julia-repl-test chap19]
 ----
@@ -650,9 +650,9 @@ julia> a = [1, missing]
   missing
 ----
 
-El tipo de dicho arreglo es +Union{Missing, T}+, donde +T+ es el tipo de los valores que realmente tenemos en el arreglo.
+El tipo de dicho arreglo es +Union{Missing, T}+, dónde +T+ es el tipo de los valores que realmente tenemos en el arreglo.
 
-Las funciones de reducción devuelven +missing+ cuando se invocan con arreglos que contienen valores faltantes
+Las funciones de reducción devuelven +missing+ cuando se invocan con arreglos que contienen valores que faltan
 
 [source,@julia-repl-test chap19]
 ----
@@ -660,7 +660,7 @@ julia> sum(a)
 missing
 ----
 
-En este caso, se puede usar la función +skipmissing+ para omitir los valores faltantes:
+En este caso, se puede usar la función +skipmissing+ para omitir los valores que faltan:
 (((skipmissing)))((("función", "Base", "skipmissing", see="skipmissing")))
 
 [source,@julia-repl-test chap19]
@@ -693,7 +693,7 @@ Un objeto dbm tiene un atributo +handle+ de tipo +Ptr{Cvoid}+. Este atributo con
 
 * el tipo de retorno: +Cvoid+,
 
-* una tupla de tipos de argumentos: +(Ptr{Cvoid},)+ y
+* una tupla de tipos de argumentos: +(Ptr{Cvoid},)+ 
 
 * los valores del argumento: +handle+.
 
@@ -758,12 +758,11 @@ Permite convertir un valor de un tipo a otro.
 (((conversión)))
 
 promoción::
-Conversión de valores de diferentes tipos a un soloa tipo común.
+Conversión de valores de diferentes tipos a un solo a tipo común.
 (((promoción)))
 
 expresión::
 Tipo de Julia que contiene una construcción de lenguaje.
-Julia type that holds a language construct.
 (((expresión)))
 
 macro::
@@ -772,7 +771,7 @@ Forma de incluir el código generado en el cuerpo final de un programa.
 
 funciones generadas::
 Funciones capaces de generar código especializado según el tipo de los argumentos.
-(((funciones generadass)))
+(((funciones generadas)))
 
 datos faltantes::
 Instancias que representan datos sin valor.

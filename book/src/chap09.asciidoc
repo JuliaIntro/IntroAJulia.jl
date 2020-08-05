@@ -1,12 +1,12 @@
 [[chap09]]
 == Estudio de Caso: Juego de Palabras
 
-Este capítulo presenta un segundo estudio de caso, que consiste en resolver puzzles buscando palabras que tengan ciertas propiedades. Por ejemplo, buscaremos palabras cuyas letras aparezcan en orden alfabético. Además, se presentará otra forma de desarrollar programas: la reducción a un problema previamente resuelto.
+Este capítulo presenta un segundo estudio de caso, que consiste en resolver puzzles buscando palabras que tengan ciertas propiedades. Por ejemplo, se buscarán palabras cuyas letras aparezcan en orden alfabético. Además, se presentará otra forma de desarrollar programas: la reducción a un problema previamente resuelto.
 
 [[reading_word_lists]]
 === Leer listas de palabras
 
-Para los ejercicios de este capítulo necesitamos una lista de palabras en español. Hay muchas listas de palabras disponibles en la Web, pero la más adecuada para nuestro propósito es una de las listas de palabras recopiladas y contribuidas al dominio público por Ismael Olea (see http://olea.org/proyectos/lemarios/). Esta lista de 87900 palabras se encuentra en la página de Olea con el nombre de archivo _lemario-general-del-espanol.txt_. También es posible descargar una copia desde https://github.com/JuliaIntro/IntroAJulia.jl/blob/master/data/palabras.txt.
+Para los ejercicios de este capítulo se necesita una lista de palabras en español. Hay muchas listas de palabras disponibles en la Web, pero la más adecuada para nuestro propósito es una de las listas de palabras recopiladas y contribuidas al dominio público por Ismael Olea (see http://olea.org/proyectos/lemarios/). Esta lista de 87900 palabras se encuentra en la página de Olea con el nombre de archivo _lemario-general-del-espanol.txt_. También es posible descargar una copia desde https://github.com/JuliaIntro/IntroAJulia.jl/blob/master/data/palabras.txt.
 (((lemario)))
 
 Este archivo es un archivo de texto simple, por lo que puede ser abierto con un editor de texto o leído con Julia. La función integrada +open+ toma el nombre del archivo como parámetro y devuelve un objeto archivo que puede ser usado para la lectura del archivo.
@@ -26,7 +26,7 @@ IOStream(<file palabras.txt>)
 
 +fin+ es un objeto archivo que puede ser utilizado como entrada y cuando se deja de utilizar, debe cerrarse con +close(fin)+.
 
-Julia tiene integrada varias funciones de lectura, entre ellas +readline+, que lee los caracteres del archivo hasta que llega a un +salto de línea+, devolviendo el resultado como una cadena:
+Julia tiene integradas varias funciones de lectura, entre ellas +readline+, que lee los caracteres del archivo hasta que llega a un +salto de línea+, devolviendo el resultado como una cadena:
 (((file stream)))(((input)))(((readline)))((("función", "Base", "readline", see="readline")))(((close)))
 
 [source,@julia-repl chap09]
@@ -71,7 +71,7 @@ En 1927 Enrique Jardiel Poncela publicó cinco historias cortas, omitiendo en ca
 
 De hecho, es difícil pensar oraciones que no utilicen esta letra. Intentarlo es complicado, pero con la práctica se vuelve más fácil.
 
-Bueno, a lo que vinimos.
+Bueno, volviendo al tema importante.
 
 Escriba una función llamada +notiene_e+ que devuelva +true+ si una palabra dada no tiene la letra +'e'+.
 (((notiene_e)))((("función", "definida por el programador", "notiene_e", see="notiene_e")))
@@ -89,13 +89,13 @@ Modifique su programa de la sección anterior para solicitar al usuario que ingr
 [[ex09-4]]
 ==== Ejercicio 9-4
 
-Escriba una función llamada +usasolo+ que tome una palabra y una cadena de letras, y que devuelva +true+ si la palabra contiene solo letras de la lista. ¿Puedes hacer una oración usando solo las letras +oneacmil+? Aparte de +"¿El camino?"+
+Escriba una función llamada +usasolo+ que tome una palabra y una cadena de letras, y que devuelva +true+ si la palabra contiene solo letras de la lista. ¿Puede hacer una oración usando solo las letras +oneacmil+? Aparte de +"¿El camino?"+
 (((usasolo)))((("función", "definida por el programador", "usasolo", see="usasolo")))
 
 [[ex09-5]]
 ==== Ejercicio 9-5
 
-Escriba una función llamada +usatodo+ que tome una palabra y una cadena de letras, y que devuelva +true+ si la palabra usa todas las letras requeridas al menos una vez. ¿Cuántas palabras usan todas las vocales +aeiou+? 
+Escriba una función llamada +usatodo+ que tome una palabra y una cadena de letras y que devuelva +true+ si la palabra usa todas las letras requeridas al menos una vez. ¿Cuántas palabras usan todas las vocales +aeiou+? 
 (((usatodo)))((("función", "definida por el programador", "usatodo", see="usatodo")))
 
 [[ex09-6]]
@@ -122,7 +122,7 @@ function notiene_e(palabra)
 end
 ----
 
-El bucle +for+ recorre los caracteres de palabra. Si encontramos la letra +'e'+, podemos devolver inmediatamente +false+; de lo contrario tenemos que pasar a la siguiente letra. Si salimos del bucle normalmente, eso significa que no encontramos una +'e'+, por lo que devolvemos +true+.
+El bucle +for+ recorre los caracteres de palabra. Si encontramos la letra +'e'+, puede devolver inmediatamente +false+, de lo contrario hay que pasar a la siguiente letra. Si se sale del bucle normalmente, eso significa que no se encontró una +'e'+, por lo que la función devuelve +true+.
 
 Esta función podría ser escrita de manera más concisa usando el operador +∉+ (*+\notin TAB+*), pero se comienza con esta versión porque muestra la lógica del patrón de búsqueda.
 (((∉)))((("operador", "Base", "∉", see="∉")))
@@ -142,7 +142,7 @@ function evita(palabra, prohibidas)
 end
 ----
 
-Se devuelve +false+ tan pronto como se encuentre una letra prohibida; si llegamos al final del ciclo, se devuelve +true+.
+Se devuelve +false+ tan pronto como se encuentre una letra prohibida, si llegamos al final del ciclo, se devuelve +true+.
 
 +usasolo+ es similar, excepto que el sentido de la condición se invierte:
 (((usasolo)))
@@ -159,7 +159,7 @@ function usasolo(palabra, disponibles)
 end
 ----
 
-En vez de un conjunto de letras prohibidas, se tiene un conjunto de letras disponibles. Si encontramos una letra en +palabra+ que no está en +disponible+, se devuelve +false+.
+En vez de un conjunto de letras prohibidas, se tiene un conjunto de letras disponibles. Si se encuentra una letra en +palabra+ que no está en +disponible+, se devuelve +false+.
 
 +usatodo+ es similar, excepto que se invierte el papel de la palabra y la cadena de letras:
 (((usatodo)))
@@ -178,7 +178,7 @@ end
 
 En lugar de recorrer las letras de la palabra, el bucle recorre las letras requeridas. Si alguna de las letras requeridas no aparece en la palabra, se devuelve +false+.
 
-Si pensáramos como un informático reconoceríamos que +usatodo+ es una instancia de un problema previamente resuelto, y podríamos haber escrito:
+Si se pensara como un informático se reconocería que +usatodo+ es una instancia de un problema previamente resuelto y se podría haber escrito:
 
 [source,@julia-setup chap09]
 ----
@@ -193,7 +193,7 @@ Este es un ejemplo de una forma de desarrollar programas llamada _reducción a u
 
 === Bucle con índices
 
-Las funciones de la sección anterior fueron escritas con ciclos +for+ porque solo se necesitaban los caracteres en las cadenas, no hubo necesidad de trabajar con los índices. 
+Las funciones de la sección anterior fueron escritas con ciclos +for+ porque solo se necesitaban los caracteres en las cadenas y no hubo necesidad de trabajar con los índices. 
 
 Para +esabecedaria+ tenemos que comparar letras adyacentes, lo cual es un poco complicado con un ciclo +for+:
 (((esabecedaria)))(((sentencia for)))
@@ -255,9 +255,9 @@ El ciclo comienza en +i=1+ y +j=nextind(palabra, 1)+ y termina cuando +j>sizeof(
 
 Si el siguiente carácter es menor (va antes en el alfabeto) que el actual, entonces la palabra no tiene sus letras en orden alfabético, y se devuelve +false+.
 
-Si llegamos al final del ciclo sin encontrar letras que imposibiliten el orden alfabético, entonces la palabra pasa la prueba. Para convencerse de que el ciclo termina correctamente, considere como ejemplo la palabra +"Abel"+.
+Si se llega al final del ciclo sin encontrar letras que imposibiliten el orden alfabético, entonces la palabra pasa la prueba. Para convencerse de que el ciclo termina correctamente, considere como ejemplo la palabra +"Abel"+.
 
-A continuación se muestra una versión de +espalindromo+ que usa dos índices; uno comienza al principio de la palabra y aumenta su valor; el otro comienza al final y disminuye su valor.
+A continuación se muestra una versión de +espalindromo+ que usa dos índices: uno comienza al principio de la palabra y aumenta su valor y el otro comienza al final y disminuye su valor.
 (((espalindromo)))
 
 [source,@julia-setup chap09]
@@ -294,14 +294,14 @@ Usando +esreverso+ de <<deb08>>.
 Comprobar el correcto funcionamiento de los programas es difícil. Las funciones de este capítulo son relativamente fáciles de probar porque se pueden verificar los resultados a mano. Aun así, es casi imposible elegir un conjunto de palabras que permitan evaluar todos los posibles errores.
 (((depuración)))
 
-Tomando +notiene_e+ como ejemplo, hay dos casos obvios que verificar: las palabras que tienen una +'e'+ deberían devolver +false+, y las palabras que no, deberían devolver +true+. No deberían haber problemas para encontrar un ejemplo de cada uno.
+Tomando +notiene_e+ como ejemplo, hay dos casos obvios que verificar: las palabras que tienen una +'e'+ deberían devolver +false+ y las palabras que no, deberían devolver +true+. No deberían haber problemas para encontrar un ejemplo de cada uno.
 
 Dentro de cada caso, hay algunos subcasos menos obvios. Entre las palabras que tienen una "e", se deben probar las palabras con una "e" al principio, al final y al medio. Además, se deben probar palabras largas, cortas y muy cortas, como una cadena vacía. La cadena vacía es un ejemplo de un "caso especial" no obvio donde pueden originarse errores.
 (((caso especial)))
 
 Además de las instancias de prueba generadas, también puede probar su programa con una lista de palabras como +palabras.txt+. Al escanear el resultado, es posible que pueda detectar errores, pero tenga cuidado: puede detectar un tipo de error (palabras que no deberían incluirse, pero lo están) y no otro (palabras que deberían incluirse, pero no lo están).
 
-Por lo general, las pruebas pueden ayudarlo a encontrar errores, pero no es fácil generar un buen conjunto de instancias de prueba, e incluso si lo hace, no puede estar seguro de que su programa sea correcto. Según un informático muy famoso:
+Por lo general, las pruebas pueden ayudarlo a encontrar errores, pero no es fácil generar un buen conjunto de instancias de prueba e incluso si lo hace, no puede estar seguro de que su programa sea correcto. Según un informático muy famoso:
 (((Dijkstra, Edsger W.)))
 
 [quote,  Edsger W. Dijkstra]
