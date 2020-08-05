@@ -1,7 +1,7 @@
 [[chap18]]
 == Subtipos
 
-En el capítulo anterior se presentó el dispatch múltiple y los métodos polimórficos. Al no especificar el tipo de los argumentos de un método, este se puede invocar con argumentos de cualquier tipo. Ahora se entrará en cómo especificar un subconjunto de tipos permitidos en las especificaciones de un método.
+En el capítulo anterior se presentó el dispatch múltiple y los métodos polimórficos. Al no especificar el tipo de los argumentos de un método, este se puede invocar con argumentos de cualquier tipo. Ahora se verá cómo especificar un subconjunto de tipos permitidos en las especificaciones de un método.
 
 En este capítulo se explica el concepto de subtipo usando tipos que representan naipes, mazos de naipes y manos de póker.
 
@@ -417,7 +417,7 @@ Cada una de las flechas superiores representa una relación ES-UN. En este caso,
 
 Cada una de las flechas inferiores representa una relación TIENE-UN; en este caso, un Mazo tiene referencias a objetos Naipe.
 
-El asterisco (+pass:[*]+) cerca de la flecha es una _multiplicidad_ e indica cuántos Naipes tiene un Mazo. Una multiplicidad puede ser un número simple, como +52+, un rango, +como 5:7+ o un asterisco, lo cual indica que un Mazo puede tener cualquier número de Naipes.
+El asterisco (+pass:[*]+) cerca de la flecha es una _multiplicidad_ e indica cuántos Naipes tiene un Mazo. Una multiplicidad puede ser un número simple, como +52+; un rango, +como 5:7+ o un asterisco, lo cual indica que un Mazo puede tener cualquier número de Naipes.
 (((multiplicidad)))
 
 No hay dependencias en este diagrama. Normalmente se mostrarían con una flecha achurada. Si hay muchas dependencias, a veces se omiten.
@@ -429,7 +429,7 @@ Un diagrama más detallado podría mostrar que un Mazo en realidad contiene un a
 
 Utilizar subtipos puede dificultar la depuración ya que al llamar a una función con un objeto como argumento, puede ser complicado determinar qué método se invocará.
 
-Al escribir una función que funciona con objetos +Mano+, se busca que funcione con todo tipo de +Manos+, como +ManoDePoker+, +ManoDeBridge+, etc. Si el usuario invoca un método como +sort!+, podría obtener el método definido para un tipo abstracto +Mano+, pero si existiera un método +sort!+ que tuviera como argumento cualquiera de estos subtipos de +Mano+, obtendría esa versión. Este comportamiento suele ser algo bueno, pero puede ser confuso.
+Al escribir una función que funciona con objetos +Mano+, se busca que funcione con todo tipo de +Mano+ s, como +ManoDePoker+, +ManoDeBridge+, etc. Si el usuario invoca un método como +sort!+, podría obtener el método definido para un tipo abstracto +Mano+, pero si existiera un método +sort!+ que tuviera como argumento cualquiera de estos subtipos de +Mano+, obtendría esa versión. Este comportamiento suele ser algo bueno, pero puede ser confuso.
 
 [source,@julia-setup chap18a]
 ----
@@ -630,7 +630,7 @@ agregarping(pong, ping)
 [[ex18-2]]
 ==== Ejercicio 18-5
 
-Escriba un método llamado +repartir!+ que tome tres parámetros: un +Mazo+, el número de manos y el número de naipes por mano. Debería crear el número apropiado de objetos +Mano+, repartir el número apropiado de naipes por mano y devolver un arreglo de +Mano+s.
+Escriba un método llamado +repartir!+ que tome tres parámetros: un +Mazo+, el número de manos y el número de naipes por mano. Debería crear el número apropiado de objetos +Mano+, repartir el número apropiado de naipes por mano y devolver un arreglo de +Mano+ s.
 (((repartir!)))((("función", "definida por el programador", "repartir!", see="repartir!")))
 
 [[ex18-3]]
