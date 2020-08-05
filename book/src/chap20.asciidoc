@@ -54,7 +54,7 @@ El paquete +BenchmarkTools+ (https://github.com/JuliaCI/BenchmarkTools.jl) propo
 [[collections_and_data_structures]]
 === Colecciones y Estructuras de Datos
 
-En <<dictionary_subtraction>> se usan diccionarios para encontrar las palabras que aparecían en un documento y que no aparecían en un arreglo de palabras. La función que se escribió tomaba +d1+, que contenía las palabras del documento como claves, y +d2+, que contenía el arreglo de palabras. Devolvía un diccionario que contenía las claves de +d1+ que no estaban en +d2+. 
+En <<dictionary_subtraction>> se usan diccionarios para encontrar las palabras que aparecían en un documento y que no aparecían en un arreglo de palabras. La función que se escribió tomaba +d1+, que contenía las palabras del documento como claves, y +d2+, que contenía el arreglo de palabras. Y devolvía un diccionario que contenía las claves de +d1+ que no estaban en +d2+. 
 (((resta)))
 
 [source,@julia-setup]
