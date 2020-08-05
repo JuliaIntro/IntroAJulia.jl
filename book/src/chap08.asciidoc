@@ -23,7 +23,7 @@ Un valor +Char+ representa un único carácter y está entre comillas simples:
 julia> 'x'
 'x': ASCII/Unicode U+0078 (category Ll: Letter, lowercase)
 julia> '🍌'
-'🍌': Unicode U+01f34c (category So: Symbol, other)
+'🍌': Unicode U+1F34C (category So: Symbol, other)
 julia> typeof('x')
 Char
 ----
@@ -68,7 +68,7 @@ julia> i = 1
 julia> fruta[i+1]
 'a': ASCII/Unicode U+0061 (category Ll: Letter, lowercase)
 julia> fruta[end-1]
-'n': ASCII/Unicode U+006e (category Ll: Letter, lowercase)
+'n': ASCII/Unicode U+006E (category Ll: Letter, lowercase)
 ----
 
 Pero el valor del índice tiene que ser un número entero. De lo contrario se obtiene:

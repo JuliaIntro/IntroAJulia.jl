@@ -1,13 +1,14 @@
 [colophon]
 == Licencia
 
-
 Copyright © 2018 Allen Downey, Ben Lauwens. Todos los derechos reservados.
 
-https://piensaenjulia.github.io/PiensaEnJulia.jl/latest/book.html[Este libro] está disponible bajo la https://creativecommons.org/licenses/by-nc/3.0/deed.es[Licencia Creative Commons Atribución-NoComercial 3.0 No portada]. Es una traducción de https://benlauwens.github.io/ThinkJulia.jl/latest/book.html[ThinkJulia], el cual tiene la misma licencia. Una lista de las diferencias entre ThinkJulia y este libro está disponible en el <<cambios,Apéndice C>>.
+https://JuliaIntro.github.io/IntroAJulia.jl/latest/book.html[Este libro] está disponible bajo la https://creativecommons.org/licenses/by-nc/3.0/deed.es[Licencia Creative Commons Atribución-NoComercial 3.0 No portada]. Es una traducción de https://benlauwens.github.io/ThinkJulia.jl/latest/book.html[ThinkJulia], el cual tiene la misma licencia. Una lista de las diferencias entre ThinkJulia y este libro está disponible en el <<cambios,Apéndice C>>.
+
+Un PDF de este libro está https://JuliaIntro.github.io/IntroAJulia.jl/latest/book.pdf[disponible aquí].
 
 *Ben Lauwens* es profesor de matemáticas en Royal Military Academy (RMA Bélgica). Tiene un doctorado en ingeniería y maestrías de KU Leuven y RMA, además de una licenciatura de RMA.
 
 *Allen Downey* es profesor de informática en Olin College of Engineering. Ha dado clases en Wellesley College, Colby College y U.C. Berkeley. Tiene un doctorado en informática de U.C. Berkeley, y maestrías y licenciaturas del MIT.
 
-
+[small]#Versión v0.5.0 https://github.com/JuliaIntro/IntroAJulia.jl[(Github)]#

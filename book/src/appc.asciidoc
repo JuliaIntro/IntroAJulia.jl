@@ -12,6 +12,6 @@ Las diferencias en este libro de ThinkJulia incluyen lo siguiente:
 
 * En vez de usar el texto de la novela "Emma" en el Capítulo 13, se usa el texto de "Don Quijote".
 
-* Debido a que O'Reilly no financió la traducción y no ha hecho planes para un libro impreso, hemos eliminado algunas de las referencias a O'Reilly en el prefacio.
+* Debido a que O'Reilly no financió la traducción, hemos eliminado algunas de las referencias a O'Reilly en el prefacio.
 
 

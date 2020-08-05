@@ -282,7 +282,7 @@ Y volvemos a +Main+.
 Una función que se llama a si misma es _recursiva_; el proceso de ejecución se llama _recursividad_.
 (((función recursiva)))(((recursividad)))
 
-Como otro ejemplo, podemos escribir una función que imprima una cadena latexmath:[\(n\)] veces.
+Como otro ejemplo, podemos escribir una función que imprima una cadena latexmath:[n] veces.
 (((printn)))((("función", "definida por el programador", "printn", see="printn")))
 
 [source,julia]
@@ -299,7 +299,7 @@ end
 Si +n pass:[&lt;]= 0+, se usa la sentencia +return+ para salir de la función. El flujo de la ejecución vuelve inmediatamente a la sentencia de llamada a función y no se ejecutan las líneas restantes de la función.
 (((return)))((("palabra reservada", "return", see="return")))(((sentencia return)))((("sentencia", "return", see="return statement")))
 
-El resto de la función es similar a +cuenta regresiva+: muestra +s+ y luego se llama a si mismo para mostrar +s+ latexmath:[\(n-1\)] veces más. Así que el número de lineas mostradas es latexmath:[\(1 + (n - 1)\)], es decir latexmath:[\(n\)].
+El resto de la función es similar a +cuenta regresiva+: muestra +s+ y luego se llama a si mismo para mostrar +s+ latexmath:[n-1] veces más. Así que el número de lineas mostradas es latexmath:[1 + (n - 1)], es decir latexmath:[n].
 
 Para ejemplos simples como este, es más fácil usar un ciclo +for+. Veremos ejemplos que son difíciles de escribir con un ciclo +for+, y fáciles de escribir con recursividad.
 
@@ -324,7 +324,7 @@ Los cuatro marcos de +cuentaregresiva+ tienen diferentes valores del parámetro 
 
 ==== Ejercicio 5-1
 
-Como ejercicio, dibuje un diagrama de pila para +printn+, llamada con +s = "Hola"+ y +n = 2+. Luego escriba una función llamada +hacer_n+, que tome como argumentos una función y un número +n+, y que luego llame a la función dada latexmath:[\(n\)] veces.
+Como ejercicio, dibuje un diagrama de pila para +printn+, llamada con +s = "Hola"+ y +n = 2+. Luego escriba una función llamada +hacer_n+, que tome como argumentos una función y un número +n+, y que luego llame a la función dada latexmath:[n] veces.
 
 === Recursión infinita
 Si una recursión nunca alcanza un caso base, continúa haciendo llamadas recursivas para siempre, y el programa nunca termina. Esto se conoce como _recursión infinita_, y generalmente no es una buena idea. Aquí hay un código con una recursión infinita:
@@ -536,7 +536,7 @@ Escriba un script que lea la hora actual y la convierta a una hora del día en h
 [[ex05-2]]
 ==== Ejercicio 5-3
 
-El último teorema de Fermat dice que no hay enteros positivos latexmath:[\(a\)], latexmath:[\(b\)], and latexmath:[\(c\)] tal que
+El último teorema de Fermat dice que no hay enteros positivos latexmath:[a], latexmath:[b], and latexmath:[c] tal que
 (((último teorema de Fermat)))
 
 [latexmath]
@@ -546,7 +546,7 @@ El último teorema de Fermat dice que no hay enteros positivos latexmath:[\(a\)]
 \end{equation}
 ++++
 
-para cualquier valor de latexmath: [\ (n \)] mayor que 2.
+para cualquier valor de latexmath:[\ (n ] mayor que 2.
 
 . Escriba una función llamada +verificarfermat+ que tome cuatro parámetros—+a+, +b+, +c+ and +n+— y que verifique si el teorema de Fermat es válido. Si +n+ es mayor que 2 y +pass:[a^n + b^n == c^n]+ el programa debería imprimir, "¡Santo cielo, Fermat estaba equivocado!" De lo contrario, el programa debería imprimir, "No, eso no funciona".
 (((verificarfermat)))((("función", "definida por el programador", "verificarfermat", see="verificarfermat")))
@@ -590,7 +590,7 @@ recursion(3, 0)
 
 . Escriba una documento que explique todo lo que alguien necesitaría saber para usar esta función (y nada más).
 
-Los siguientes ejercicios utilizan el módulo +PiensaEnJulia+, descrito en <<chap04>>:
+Los siguientes ejercicios utilizan el módulo +IntroAJulia+, descrito en <<chap04>>:
 
 [[ex05-5]]
 ==== Ejercicio 5-6
@@ -621,24 +621,24 @@ end
 .Una curva de Koch
 image::images/fig52.svg[]
 
-La curva de Koch es un fractal que luce como <<fig05-2>>. Para dibujar una curva de Koch con longitud latexmath: [\(x\)], todo lo que tiene que hacer es
+La curva de Koch es un fractal que luce como <<fig05-2>>. Para dibujar una curva de Koch con longitud latexmath:[x], todo lo que tiene que hacer es
 (((curva de Koch)))(((fractal)))
 
-. Dibuje una curva de Koch con longitud latexmath:[\(\frac{x}{3}\)].
+. Dibuje una curva de Koch con longitud latexmath:[\frac{x}{3}].
 
 . Gire a la izquierda 60 grados.
 
-. Dibuje una curva de Koch con longitud latexmath:[\(\frac{x}{3}\)].
+. Dibuje una curva de Koch con longitud latexmath:[\frac{x}{3}].
 
 . Gire a la derecha 120 grados.
 
-. Dibuje una curva de Koch con longitud latexmath:[\(\frac{x}{3}\)].
+. Dibuje una curva de Koch con longitud latexmath:[\frac{x}{3}].
 
 . Gire a la izquierda 60 grados.
 
-. Dibuje una curva de Koch con longitud latexmath:[\(\frac{x}{3}\)].
+. Dibuje una curva de Koch con longitud latexmath:[\frac{x}{3}].
 
-La excepción es cuando latexmath:[\(x\)] es menor que 3: en ese caso, puede dibujar una línea recta con una longitud latexmath:[\(x\)].
+La excepción es cuando latexmath:[x] es menor que 3: en ese caso, puede dibujar una línea recta con una longitud latexmath:[x].
 
 . Escribe una función llamada +koch+ que tome una tortuga y una longitud como parámetros, y que use la tortuga para dibujar una curva de Koch con la longitud dada.
 (((koch)))((("función", "definida por el programador", "koch", see="koch")))

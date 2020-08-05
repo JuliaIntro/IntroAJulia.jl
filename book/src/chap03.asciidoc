@@ -87,7 +87,7 @@ radianes = 0.7
 altura = sin(radianes)
 ----
 
-Este segundo ejemplo encuentra la razón seno (en inglés sine) de la variable +radianes+. El nombre de esta variable es una pista de que la función +sin+ y las otras funciones trigonométricas (+cos+, +tan+, etc.) toman argumentos en radianes. Para convertir grados a radianes, se debe dividir por 180 y multiplicar por latexmath:[\(\pi\)]:
+Este segundo ejemplo encuentra la razón seno (en inglés sine) de la variable +radianes+. El nombre de esta variable es una pista de que la función +sin+ y las otras funciones trigonométricas (+cos+, +tan+, etc.) toman argumentos en radianes. Para convertir grados a radianes, se debe dividir por 180 y multiplicar por latexmath:[\pi]:
 (((sin)))((("función", "Base", "sin", see="sin")))(((función trigonométrica)))
 
 [source,@julia-repl-test]
@@ -100,7 +100,7 @@ julia> sin(radianes)
 0.7071067811865475
 ----
 
-El valor de la variable +π+ es una aproximación de punto flotante de latexmath:[\(\pi \)], con una precisión de aproximadamente 16 dígitos.
+El valor de la variable +π+ es una aproximación de punto flotante de latexmath:[\pi ], con una precisión de aproximadamente 16 dígitos.
 (((Pi)))
 
 Si sabe de trigonometría, puede verificar el resultado anterior comparándolo con la raíz cuadrada de dos dividido por dos:
@@ -590,7 +590,7 @@ Escriba una función llamada +justificar_a_la_derecha+ que tome una cadena +s+ c
 
 [source, @julia-eval chap03-ex]
 ----
-using PiensaEnJulia
+using IntroAJulia
 ----
 
 [source, @julia-repl chap03-ex]

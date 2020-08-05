@@ -88,11 +88,11 @@ Dict{Any,Any} with 2 entries:
   'b' => 1
 ----
 
-su función debe devolver +pass:['a']+ con probabilidad latexmath:[\(\frac{2}{3}\)] y +pass:['b']+ con probabilidad latexmath:[\(\frac{1}{3}\)].
+su función debe devolver +pass:['a']+ con probabilidad latexmath:[\frac{2}{3}] y +pass:['b']+ con probabilidad latexmath:[\frac{1}{3}].
 
 === Histograma de Palabras
 
-Debes hacer los ejercicios anteriores antes de continuar. También necesitarás https://github.com/PiensaEnJulia/PiensaEnJulia.jl/blob/master/data/DonQuijote.txt.
+Debes hacer los ejercicios anteriores antes de continuar. También necesitarás https://github.com/JuliaIntro/IntroAJulia.jl/blob/master/data/DonQuijote.txt.
 
 Aquí hay un programa que lee un archivo y construye un histograma de las palabras en el archivo:
 (((procesararchivo)))((("función", "definida por el programador", "procesararchivo", see="procesararchivo")))(((procesarlinea)))((("función", "definida por el programador", "procesarlinea", see="procesarlinea")))
@@ -330,9 +330,9 @@ Una alternativa es:
 
 . Use las +claves+ para obtener un arreglo de palabras del libro.
 
-. Cree un arreglo que contenga la suma acumulada de las frecuencias de palabras (vea <<ex10-2>>). El último elemento en este arreglo es el número total de palabras en el libro, latexmath:[\(n\)].
+. Cree un arreglo que contenga la suma acumulada de las frecuencias de palabras (vea <<ex10-2>>). El último elemento en este arreglo es el número total de palabras en el libro, latexmath:[n].
 
-. Elija un número aleatorio del 1 al latexmath:[\(n\)]. Use búsqueda binaria (vea <<ex10-10>>) para encontrar el índice donde se insertará el número aleatorio en la suma acumulada.
+. Elija un número aleatorio del 1 al latexmath:[n]. Use búsqueda binaria (vea <<ex10-10>>) para encontrar el índice donde se insertará el número aleatorio en la suma acumulada.
 (((búsqueda de bisección)))
 
 . Use el índice para encontrar la palabra correspondiente en el arreglo de palabras.
@@ -523,7 +523,7 @@ Depuración en dónde se explica el problema a un objeto inanimado, tal como un 
 
 El "rango" de una palabra es su posición en un arreglo de palabras ordenadas por frecuencia: la palabra más común tiene rango 1, la segunda más común tiene rango 2, etc.
 
-La ley de Zipf describe una relación entre los rangos y las frecuencias de las palabras en idiomas naturales (https://en.wikipedia.org/wiki/Zipfpass:[&apos;]s_law). Específicamente, predice que la frecuencia, latexmath:[\(f\)], de la palabra con rango latexmath:[\(r\)] es:
+La ley de Zipf describe una relación entre los rangos y las frecuencias de las palabras en idiomas naturales (https://en.wikipedia.org/wiki/Zipfpass:[&apos;]s_law). Específicamente, predice que la frecuencia, latexmath:[f], de la palabra con rango latexmath:[r] es:
 (((ley de Zipf)))
 
 [latexmath]
@@ -532,7 +532,7 @@ La ley de Zipf describe una relación entre los rangos y las frecuencias de las 
 {f = c r^{-s}}
 \end{equation}
 ++++
-donde latexmath:[\(s\)] y latexmath:[\(c\)] son parámetros que dependen del idioma y el texto. Si aplicas logaritmo a ambos lados de esta ecuación, obtienes:
+donde latexmath:[s] y latexmath:[c] son parámetros que dependen del idioma y el texto. Si aplicas logaritmo a ambos lados de esta ecuación, obtienes:
 
 [latexmath]
 ++++
@@ -541,9 +541,9 @@ donde latexmath:[\(s\)] y latexmath:[\(c\)] son parámetros que dependen del idi
 \end{equation}
 ++++
 
-Entonces, si graficas latexmath:[\(\log f\)] versus latexmath:[\(\log r\)], debería obtener una línea recta con pendiente latexmath:[\(-s\)] e intercepto latexmath:[\(\log c\)].
+Entonces, si graficas latexmath:[\log f] versus latexmath:[\log r], debería obtener una línea recta con pendiente latexmath:[-s] e intercepto latexmath:[\log c].
 
-Escriba un programa que lea un texto de un archivo, cuente las frecuencias de las palabras e imprima una línea para cada palabra, en orden descendente de frecuencia, con  latexmath:[\(\log f\)] y latexmath:[\(\log r\)].
+Escriba un programa que lea un texto de un archivo, cuente las frecuencias de las palabras e imprima una línea para cada palabra, en orden descendente de frecuencia, con  latexmath:[\log f] y latexmath:[\log r].
 
 Instale una librería para graficar:
 (((Plots)))((("módulo", "Plots", see="Plots")))

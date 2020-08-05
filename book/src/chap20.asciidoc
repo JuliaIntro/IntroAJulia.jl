@@ -178,7 +178,7 @@ Analicemos la naturaleza compleja de las funciones trigonométricas:
 \end{equation}
 ++++
 
-Podemos probar esta fórmula para diferentes valores de latexmath:[\(x\)].
+Podemos probar esta fórmula para diferentes valores de latexmath:[x].
 
 [source,@julia-repl-test]
 ----
@@ -359,7 +359,7 @@ ____
 Si parece un pato, nada como un pato y grazna como un pato, entonces probablemente _sea_ un pato.
 ____
 
-En <<one_more_example>> implementamos la función +fib+ que devuelve el elemento latexmath:[\(n\)]-ésimo de la secuencia de Fibonnaci.
+En <<one_more_example>> implementamos la función +fib+ que devuelve el elemento latexmath:[n]-ésimo de la secuencia de Fibonnaci.
 
 Recorrer los valores de una colección, lo cual es llamado iteración, es una interfaz de este tipo. Creemos un iterador que devuelva la secuencia de Fibonacci:
 (((iterador)))(((Fibonacci)))((("tipo", "definida por el programador", "Fibonacci", see="Fibonacci")))(((iterate)))((("función", "Base", "iterate", see="iterate")))
@@ -484,7 +484,7 @@ Y finalmente se genera el _código de máquina_:
 julia> @code_native sumacuadrada(3.0, 4.0)
 	.section	__TEXT,__text,regular,pure_instructions
 ; ┌ @ none:2 within `sumacuadrada'
-; │┌ @ intfuncs.jl:244 within `literal_pow'
+; │┌ @ intfuncs.jl:261 within `literal_pow'
 ; ││┌ @ none:2 within `*'
 	vmulsd	%xmm0, %xmm0, %xmm0
 	vmulsd	%xmm1, %xmm1, %xmm1

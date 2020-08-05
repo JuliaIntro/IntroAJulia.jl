@@ -8,7 +8,7 @@ A esta altura, ya debe saber cómo usar funciones para tener un código más org
 Hemos utilizado muchos tipos integrados en Julia; ahora vamos a definir un nuevo tipo. A modo de ejemplo, crearemos un tipo llamado +Punto+ que represente un punto en un espacio bidimensional.
 (((tipo)))(((Punto)))((("tipo", "definida por el programador", "Punto", see="Punto")))
 
-En notación matemática, los puntos suelen escribirse entre paréntesis con una coma que separa las coordenadas. Por ejemplo, latexmath:[\(\left(0,0\right)\)] representa el origen, y latexmath:[\(\left(x,y\right)\)] representa el punto localizado latexmath:[\(x\)] unidades a la derecha y latexmath:[\(y\)] unidades hacia arriba del origen.
+En notación matemática, los puntos suelen escribirse entre paréntesis con una coma que separa las coordenadas. Por ejemplo, latexmath:[\left(0,0\right)] representa el origen, y latexmath:[\left(x,y\right)] representa el punto localizado latexmath:[x] unidades a la derecha y latexmath:[y] unidades hacia arriba del origen.
 
 Hay varias formas en que podríamos representar puntos del plano cartesiano en Julia:
 
@@ -422,7 +422,7 @@ Un diagrama que muestra objetos, sus atributos y valores de atributos.
 . Escriba una definición de un tipo llamado +Circulo+, que tenga atributos +centro+ y +radio+, donde +centro+ es un objeto +Punto+ y +radio+ es un número.
 (((Circulo)))((("tipo", "definida por el programador", "Circulo", see="Circulo")))
 
-. Crear instancia de un objeto circulo, que represente a un círculo con centro en latexmath:[\(\left(150, 100\right)\)] y radio 75.
+. Crear instancia de un objeto circulo, que represente a un círculo con centro en latexmath:[\left(150, 100\right)] y radio 75.
 
 . Escriba una función llamada +puntoencirculo+ que tome un objeto +Circulo+ y un objeto +Punto+, y devuelva +true+ si el punto se encuentra dentro o en el límite del círculo.
 (((puntoencirculo)))((("función", "definida por el programador", "puntoencirculo", see="puntoencirculo")))

@@ -22,10 +22,8 @@ ifdef::preface-title[:preface-title: Prefacio]
 :version-label: Versión
 :warning-caption: Aviso
 
-= Piensa en Julia: Cómo Pensar como un Informático
+= Introducción a la Programación en Julia
 Ben Lauwens y Allen Downey; Traducido por Pamela Alejandra Bustamante Faúndez
-
-Este libro aún no está completamente terminado; Se realizarán más cambios en el texto a medida que se revise el libro.
 
 include::colophon.asciidoc[]
 

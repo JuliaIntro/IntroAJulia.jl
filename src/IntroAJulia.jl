@@ -1,4 +1,4 @@
-module PiensaEnJulia
+module IntroAJulia
 
   __precompile__(false)
 
@@ -12,7 +12,7 @@ module PiensaEnJulia
 
   const depsjl_path = joinpath(dirname(@__FILE__), "..", "deps", "deps.jl")
   if !isfile(depsjl_path)
-      error("PiensaEnJulia not installed properly, run Pkg.build(\"PiensaEnJulia\"), restart Julia and try again")
+      error("IntroAJulia not installed properly, run Pkg.build(\"IntroAJulia\"), restart Julia and try again")
   end
   include(depsjl_path)
 

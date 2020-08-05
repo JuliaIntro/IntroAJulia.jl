@@ -56,7 +56,7 @@ julia> 1 + 1
 2
 ----
 
-Los fragmentos de código se pueden copiar y pegar textualmente, incluido el prompt "+julia>+" y cualquier salida.
+Los fragmentos de código se pueden copiar y pegar textualmente, incluido el prompt +julia>+ y cualquier salida.
 
 Ahora estás listo para comenzar. De aquí en adelante, ya sabrás cómo iniciar Julia REPL y ejecutar el código.
 
@@ -75,7 +75,7 @@ Este ((("sentencia de impresión", "función println")))((("output", "sentencia 
 
 Las comillas en el programa marcan el principio y el final del texto que se mostrará; no aparecen en el resultado.
 
-Los paréntesis indican que +printl+ es una función. Se estudiarán funciones en <<chap03>>.
+Los paréntesis indican que +println+ es una función. Se estudiarán funciones en <<chap03>>.
 
 
 === Operadores aritméticos
@@ -151,18 +151,18 @@ julia> 1,000,000
 
 ¡Esto no es lo que esperábamos! Julia entiende +1,000,000+ como una secuencia de enteros separados por comas. Más adelante aprenderemos más sobre este tipo de secuencias.
 
-Sin embargo, puedes ((("guión bajo ($$_$$)", "en enteros"))) ((("$$_$$ (guión bajo)", "en enteros", primary-sortas="* guión bajo"))) obtener el resultado esperado usando 1_000_000.
+Sin embargo, puedes ((("guión bajo ($$_$$)", "en enteros"))) ((("$$_$$ (guión bajo)", "en enteros", primary-sortas="* guión bajo"))) obtener el resultado esperado usando +1_000_000+.
 
 === Lenguajes formales y naturales
 _Los lenguajes naturales_ ((("lenguaje natural", id="ch1nat", range="startofrange")))son los idiomas hablados, como el español, inglés y francés. No fueron diseñados por personas (aunque las personas intentan imponerles un orden); sino que evolucionaron naturalmente.
 
 _Los lenguajes formales_ ((("lenguaje formal", id="ch1nat2", range="startofrange")))son idiomas diseñados por personas para propósitos específicos. Por ejemplo, la notación que usan los matemáticos es un lenguaje formal particularmente útil para denotar relaciones entre números y símbolos. Los químicos usan un lenguaje formal para representar su estructura química de las moléculas. Los ((("lenguaje de programación", id="ch1nat3", range="startofrange")))lenguajes de programación también son lenguajes formales, y han sido diseñados para expresar cálculos.
 
-Los lenguajes formales ((("sintaxis", id="ch1nat4", range="startofrange")))tienden a tener reglas estrictas de sintaxis que gobiernan la estructura de las sentencias. Por ejemplo, en matemáticas, la sentencia latexmath:[\(3 + 3 = 6\)] tiene la sintaxis correcta, pero latexmath:[\(3 += 3 \$ 6\)] no. En química, latexmath:[\(\mathrm{H_2O}\)] es una fórmula sintácticamente correcta, pero latexmath:[\(\mathrm{_2Zz}\)] no lo es.
+Los lenguajes formales ((("sintaxis", id="ch1nat4", range="startofrange")))tienden a tener reglas estrictas de sintaxis que gobiernan la estructura de las sentencias. Por ejemplo, en matemáticas, la sentencia latexmath:[3 + 3 = 6] tiene la sintaxis correcta, pero latexmath:[3 += 3 \$ 6] no. En química, latexmath:[\mathrm{H_2O}] es una fórmula sintácticamente correcta, pero latexmath:[\mathrm{_2Zz}] no lo es.
 
-Las reglas de sintaxis ((("componentes léxicos", id="ch1nat5", range="startofrange"))) ((("estructura", id="ch1nat6", range= "startofrange")))  pueden ser de dos tipos, correspondientes a componentes léxicos y a la estructura. Los componentes léxicos son los elementos básicos del lenguaje, como palabras, números y elementos químicos. Uno de los problemas con latexmath:[\(3 += 3 \$ 6\)] es que latexmath:[\(\$\)] no es un componente léxico válido en matemáticas (al menos hasta donde conocemos). Del mismo modo, latexmath:[\(\mathrm{_2Zz}\)] no es válido porque no hay ningún elemento con la abreviatura latexmath:[\(\mathrm{Zz}\)].
+Las reglas de sintaxis ((("componentes léxicos", id="ch1nat5", range="startofrange"))) ((("estructura", id="ch1nat6", range= "startofrange")))  pueden ser de dos tipos, correspondientes a componentes léxicos y a la estructura. Los componentes léxicos son los elementos básicos del lenguaje, como palabras, números y elementos químicos. Uno de los problemas con latexmath:[3 += 3 \$ 6] es que latexmath:[\$] no es un componente léxico válido en matemáticas (al menos hasta donde conocemos). Del mismo modo, latexmath:[\mathrm{_2Zz}] no es válido porque no hay ningún elemento con la abreviatura latexmath:[\mathrm{Zz}].
 
-El segundo tipo de regla de sintaxis se refiere a la forma en que se combinan los componentes léxicos. La ecuación latexmath:[\(3 += 3 \)] no es válida porque aunque latexmath:[\(+\)] y latexmath:[\(=\)] son componentes léxicos válidos, no puedes tener uno justo después el otro. Del mismo modo, en una fórmula química, el subíndice viene después del nombre del elemento, no antes.
+El segundo tipo de regla de sintaxis se refiere a la forma en que se combinan los componentes léxicos. La ecuación latexmath:[3 += 3 ] no es válida porque aunque latexmath:[+] y latexmath:[=] son componentes léxicos válidos, no puedes tener uno justo después el otro. Del mismo modo, en una fórmula química, el subíndice viene después del nombre del elemento, no antes.
 
 Esta es un@ oración en espa$ol bien estructurada con c*mponentes léxicos no válidos. Esta oración léxicos todos componentes los tiene, pero estructura una no válida con.
 

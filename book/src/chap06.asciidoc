@@ -101,7 +101,7 @@ Conforme vaya escribiendo funciones más extensas puede empezar a dedicar más t
 Para lidiar con programas de complejidad creciente, se sugiere una técnica llamada desarrollo incremental. El objetivo del desarrollo incremental es evitar largas sesiones de depuración, adicionando y probando solamente pequeñas porciones de código cada vez.
 (((desarrollo incremental)))
 
-Por ejemplo, suponga que desea encontrar la distancia entre dos puntos dados por las coordenadas latexmath:[\(\left(x_1, y_1\right)\)] y latexmath:[\(\left(x_2, y_2\right)\)]. Por el teorema de Pitágoras, la distancia es:
+Por ejemplo, suponga que desea encontrar la distancia entre dos puntos dados por las coordenadas latexmath:[\left(x_1, y_1\right)] y latexmath:[\left(x_2, y_2\right)]. Por el teorema de Pitágoras, la distancia es:
 (((teorema de Pitágoras)))
 
 [latexmath]
@@ -137,7 +137,7 @@ distance(1, 2, 4, 6)
 
 Se eligen estos valores de tal forma que la distancia horizontal sea igual a 3 y la distancia vertical sea igual a 4; de esa manera el resultado es 5 (la hipotenusa del triángulo 3-4-5). Cuando se comprueba una función, es útil conocer la respuesta correcta.
 
-Hasta el momento hemos confirmado que la función es sintácticamente correcta, por lo que podemos empezar a agregar líneas de código. El paso lógico siguiente es encontrar las diferencias latexmath:[\(x_2 - x_1\)] y latexmath:[\(y_2 - y_1\)]. En la siguiente versión de la función almacenaremos estos valores en variables temporales y las mostraremos con el macro +@show+.
+Hasta el momento hemos confirmado que la función es sintácticamente correcta, por lo que podemos empezar a agregar líneas de código. El paso lógico siguiente es encontrar las diferencias latexmath:[x_2 - x_1] y latexmath:[y_2 - y_1]. En la siguiente versión de la función almacenaremos estos valores en variables temporales y las mostraremos con el macro +@show+.
 ((("@show")))((("macro", "Base", "@show", see="@show")))
 
 [source,@julia-setup]
@@ -316,7 +316,7 @@ Para darle una idea de lo que puede hacer con las herramientas que ha aprendido 
 vorpal::
 Un adjetivo usado para describir algo que es vorpal.
 
-Si ves esta definición en el diccionario, podrías molestarte. Por otro lado, si buscas la definición de la función factorial, denotada con el símbolo latexmath:[\(!\)], podrías encontrar algo como esto:
+Si ves esta definición en el diccionario, podrías molestarte. Por otro lado, si buscas la definición de la función factorial, denotada con el símbolo latexmath:[!], podrías encontrar algo como esto:
 (((función factorial)))
 
 [latexmath]
@@ -329,9 +329,9 @@ Si ves esta definición en el diccionario, podrías molestarte. Por otro lado, s
 \end{cases}}
 \end{equation}
 ++++
-Esta definición dice que el factorial de 0 es 1, y el factorial de cualquier otro valor latexmath:[\(n\)], es latexmath:[\(n\)]  multiplicado por el factorial de latexmath:[\(n-1\)].
+Esta definición dice que el factorial de 0 es 1, y el factorial de cualquier otro valor latexmath:[n], es latexmath:[n]  multiplicado por el factorial de latexmath:[n-1].
 
-Entonces latexmath:[\(3!\)] es 3 veces latexmath:[\(2!\)], que es 2 veces latexmath:[\(1!\)], que es 1 vez latexmath:[\(0!\)]. Es decir, latexmath:[\(3!\)] es igual a 3 por 2 por 1 por 1, que es 6.
+Entonces latexmath:[3!] es 3 veces latexmath:[2!], que es 2 veces latexmath:[1!], que es 1 vez latexmath:[0!]. Es decir, latexmath:[3!] es igual a 3 por 2 por 1 por 1, que es 6.
 
 Si se puede escribir una definición recursiva, se puede escribir un programa de Julia para evaluarlo. El primer paso es decidir cuáles deberían ser los parámetros. En este caso, debe quedar claro que factorial toma valores enteros:
 (((fact)))((("función", "definida por el programador", "fact", see="fact")))
@@ -414,7 +414,7 @@ De hecho, ya estás haciendo este salto de fe cuando usas funciones integradas d
 
 Lo mismo ocurre cuando llamas a una de tus propias funciones. Por ejemplo, en <<boolean_functions>>, escribimos una función llamada +esdivisible+ que determina si un número es divisible por otro. Una vez que nos hayamos convencido de que esta función es correcta —al examinar y probar el código—, podemos usar la función sin mirar nuevamente el cuerpo.
 
-Lo mismo aplica a los programas recursivos. Cuando llegue a la llamada recursiva, en lugar de seguir el flujo de ejecución, debe suponer que la llamada recursiva funciona (devuelve el resultado correcto) y luego preguntarse: "Suponiendo que pueda encontrar el factorial de latexmath:[\(n-1\)], ¿puedo calcular el factorial de latexmath:[\(n\)]? ”Está claro que puedes, multiplicando por latexmath:[\(n\)].
+Lo mismo aplica a los programas recursivos. Cuando llegue a la llamada recursiva, en lugar de seguir el flujo de ejecución, debe suponer que la llamada recursiva funciona (devuelve el resultado correcto) y luego preguntarse: "Suponiendo que pueda encontrar el factorial de latexmath:[n-1], ¿puedo calcular el factorial de latexmath:[n]? ”Está claro que puedes, multiplicando por latexmath:[n].
 
 Por supuesto, es un poco extraño suponer que la función funciona correctamente cuando no ha terminado de escribirla, ¡pero por eso se llama un salto de fe!
 
@@ -616,7 +616,7 @@ println(c(x, y+3, x+y))
 [[ex06-2]]
 ==== Ejercicio 6-5
 
-La función de Ackermann, latexmath:[\(A(m, n)\)], se define:
+La función de Ackermann, latexmath:[A(m, n)], se define:
 (((función Ackermann)))
 
 [latexmath]
@@ -672,7 +672,7 @@ Veremos cómo funcionan en <<chap08>>.
 [[ex06-4]]
 ==== Ejercicio 6-7
 
-Un número, latexmath:[\(a\)], es una potencia de latexmath:[\(b\)] si es divisible por latexmath:[\(b\)] y latexmath:[\(\frac{a}{b}\)] es una potencia de latexmath:[\(b\)]. Escriba una función llamada +espotencia+ que tome los parámetros +a+ y +b+ y devuelva +true+ si +a+ es una potencia de +b+.
+Un número, latexmath:[a], es una potencia de latexmath:[b] si es divisible por latexmath:[b] y latexmath:[\frac{a}{b}] es una potencia de latexmath:[b]. Escriba una función llamada +espotencia+ que tome los parámetros +a+ y +b+ y devuelva +true+ si +a+ es una potencia de +b+.
 (((espotencia)))((("función", "definida por el programador", "espotencia", see="espotencia")))
 
 [TIP]
@@ -683,9 +683,9 @@ Tendrás que pensar en el caso base.
 [[ex06-5]]
 ==== Ejercicio 6-8
 
-El máximo común divisor (MCD) de latexmath:[\(a\)] y latexmath:[\(b\)] es el número más grande que los divide a ambos con resto 0.
+El máximo común divisor (MCD) de latexmath:[a] y latexmath:[b] es el número más grande que los divide a ambos con resto 0.
 
-Una forma de encontrar el MCD de dos números se basa en la observación de que si latexmath:[\(r\)] es el resto cuando latexmath:[\(a\)] se divide por latexmath:[\(b\)], entonces +mcd(a, b) = mcd(b, r)+. Como caso base, podemos usar +mcd(a, 0) = a+.
+Una forma de encontrar el MCD de dos números se basa en la observación de que si latexmath:[r] es el resto cuando latexmath:[a] se divide por latexmath:[b], entonces +mcd(a, b) = mcd(b, r)+. Como caso base, podemos usar +mcd(a, 0) = a+.
 
 Escriba una función llamada +mcd+ que tome los parámetros +a+ y +b+ y devuelva su máximo divisor común.
 (((mcd)))((("función", "definida por el programador", "mcd", see="mcd")))

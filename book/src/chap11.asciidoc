@@ -526,10 +526,10 @@ A medida que trabaja con conjuntos de datos más grandes, la depuración mediant
 
 * Reduzca la entrada:
 +
-Si es posible, reduzca el tamaño del conjunto de datos. Por ejemplo, si el programa lee un archivo de texto, comience con solo las primeras 10 líneas, o con el ejemplo más pequeño que pueda encontrar que produzca errores. No debe editar los archivos, sino modificar el programa para que solo lea las primeras latexmath:[\(n\)] líneas.
+Si es posible, reduzca el tamaño del conjunto de datos. Por ejemplo, si el programa lee un archivo de texto, comience con solo las primeras 10 líneas, o con el ejemplo más pequeño que pueda encontrar que produzca errores. No debe editar los archivos, sino modificar el programa para que solo lea las primeras latexmath:[n] líneas.
 (((reducir el tamaño)))
 +
-Si hay un error, puede reducir latexmath:[\(n\)] al valor más pequeño que manifieste el error, y luego aumentarlo gradualmente a medida que encuentre y corrija errores.
+Si hay un error, puede reducir latexmath:[n] al valor más pequeño que manifieste el error, y luego aumentarlo gradualmente a medida que encuentre y corrija errores.
 
 * Revisar resúmenes y tipos
 +
