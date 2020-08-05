@@ -4,16 +4,16 @@ Julia fue diseñado desde un principio para tener un alto rendimiento. Este leng
 
 Intro A Julia es ideal para estudiantes de secundaria o de universidad, así como también para estudiantes autodidactas, estudiantes educados en casa y profesionales que necesiten aprender conceptos básicos de programación.
 
-* Comience con lo básico, incluida la sintaxis y la semántica del lenguaje
+* Comience con lo básico, incluida la sintaxis y la semántica del lenguaje.
 
-* Entienda claramente cada concepto de programación
+* Entienda claramente cada concepto de programación.
 
-* Aprenda sobre valores, variables, sentencias, funciones y estructuras de datos de manera progresiva
+* Aprenda sobre valores, variables, sentencias, funciones y estructuras de datos de manera progresiva.
 
-* Descubra cómo trabajar con archivos y bases de datos
+* Descubra cómo trabajar con archivos y bases de datos.
 
-* Comprenda los tipos, métodos y dispatch múltiple
+* Comprenda los tipos, métodos y dispatch múltiple.
 
-* Utilice técnicas de depuración para corregir sintaxis, tiempo de ejecución y errores semánticos
+* Utilice técnicas de depuración para corregir sintaxis, tiempo de ejecución y errores semánticos.
 
-* Explore el diseño de la interfaz y las estructuras de datos a través de estudios de casos
+* Explore el diseño de la interfaz y las estructuras de datos a través de estudios de casos.

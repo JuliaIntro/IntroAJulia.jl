@@ -1,24 +1,24 @@
 [[chap15]]
 == Estructuras y Objetos
 
-A esta altura, ya debe saber cómo usar funciones para tener un código más organizado, y cómo usar los tipos integrados de Julia para organizar sus datos. El siguiente paso es aprender a construir sus propios tipos para organizar tanto el código como los datos. Este es un gran tema, y por lo tanto tomará un par de capítulos abarcar todo.
+A esta altura, ya debe saber cómo usar funciones para tener un código más organizado y cómo usar los tipos integrados de Julia para organizar sus datos. El siguiente paso es aprender a construir sus propios tipos para organizar tanto el código como los datos. Este es un gran tema y, por lo tanto, tomará un par de capítulos abarcar todo.
 
 === Tipos Compuestos
 
-Hemos utilizado muchos tipos integrados en Julia; ahora vamos a definir un nuevo tipo. A modo de ejemplo, crearemos un tipo llamado +Punto+ que represente un punto en un espacio bidimensional.
+Se han utilizado muchos tipos integrados en Julia y ahora se va a definir un nuevo tipo. A modo de ejemplo, se crea un tipo llamado +Punto+ que representa un punto en un espacio bidimensional.
 (((tipo)))(((Punto)))((("tipo", "definida por el programador", "Punto", see="Punto")))
 
-En notación matemática, los puntos suelen escribirse entre paréntesis con una coma que separa las coordenadas. Por ejemplo, latexmath:[\left(0,0\right)] representa el origen, y latexmath:[\left(x,y\right)] representa el punto localizado latexmath:[x] unidades a la derecha y latexmath:[y] unidades hacia arriba del origen.
+En notación matemática, los puntos suelen escribirse entre paréntesis con una coma que separa las coordenadas. Por ejemplo, latexmath:[\left(0,0\right)] representa el origen y latexmath:[\left(x,y\right)] representa el punto localizado latexmath:[x] unidades a la derecha y latexmath:[y] unidades hacia arriba del origen.
 
-Hay varias formas en que podríamos representar puntos del plano cartesiano en Julia:
+Hay varias formas en que se podrían representar puntos del plano cartesiano en Julia:
 
-* Podríamos almacenar las coordenadas por separado en dos variables, +x+ e +y+.
+* Almacenando las coordenadas por separado en dos variables, +x+ e +y+.
 
-* Podríamos almacenar las coordenadas como elementos de un arreglo o tupla.
+* Almacenando las coordenadas como elementos de un arreglo o tupla.
 
-* Podríamos crear un nuevo tipo para representar puntos como objetos.
+* Creando un nuevo tipo para representar puntos como objetos.
 
-Crear un nuevo tipo exige un poco más de esfuerzo que las otras opciones, pero tiene algunas ventajas que veremos pronto.
+Crear un nuevo tipo exige un poco más de esfuerzo que las otras dos opciones pero tiene algunas ventajas, como pronto se verá.
 
 Un _tipo compuesto_ definido por el programador también se denomina _estructura_ (struct en inglés). La definición de +estructura+ de un punto se ve así:
 (((tipo compuesto)))(((struct)))((("palabra reservada", "struct", see="struct")))(((end)))
@@ -34,7 +34,7 @@ end
 El encabezado indica que la nueva estructura se llama +Punto+. El cuerpo define los _atributos_ o _campos_ de la estructura. La estructura de +Punto+ tiene dos campos: +x+ e +y+.
 (((atributo)))((("campo", see="atributo")))
 
-Una estructura es como una fábrica que crea objetos. Para crear un punto, debes llamar a +Punto+ como si fuera una función que tiene como argumentos los valores de los campos. Cuando +Punto+ se usa como una función, se llama _constructor_.
+Una estructura es como una fábrica que crea objetos. Para crear un punto, se debe llamar a +Punto+ como si fuera una función que tiene como argumentos los valores de los campos. Cuando +Punto+ se usa como una función, se llama _constructor_.
 (((constructor)))
 
 [source,@julia-repl-test chap15]
@@ -43,17 +43,17 @@ julia> p = Punto(3.0, 4.0)
 Punto(3.0, 4.0)
 ----
 
-El valor de retorno es una referencia a un objeto +Punto+, el cual asignamos a +p+.
+El valor de retorno es una referencia a un objeto +Punto+, el cual es asignado a +p+.
 (((referencia)))
 
 La creación de un nuevo objeto se llama _instanciación_, y el objeto creado es una _instancia_ del tipo.
 (((instanciación)))(((instancia)))
 
-Cuando imprimes una instancia, Julia te dice a qué tipo pertenece y cuáles son los valores de los atributos.
+Cuando se imprime una instancia Julia dice a qué tipo pertenece y cuáles son los valores de los atributos.
 
-Cada objeto es una instancia de algún tipo, por lo que "objeto" e "instancia" son intercambiables. Pero en este capítulo se utiliza "instancia" para indicar que hablamos de un tipo definido por el programador.
+Cada objeto es una instancia de algún tipo, por lo que "objeto" e "instancia" son intercambiables. No obstante, en este capítulo se utiliza "instancia" para indicar que se está hablando de un tipo definido por el programador.
 
-Un diagrama de estado que muestra un objeto y sus atributos se denomina _diagrama de objeto_; ver <<fig15-1>>.
+Un diagrama de estado que muestra un objeto y sus atributos se denomina _diagrama de objeto_ (ver <<fig15-1>>).
 (((diagrama de objeto)))((("diagrama", "objeto", see="diagrama de objeto")))
 
 [[fig15-1]]
@@ -74,7 +74,7 @@ julia> p.y
 4.0
 ----
 
-La expresión +p.x+ significa: "Ve al objeto al que se apunta +p+ y obtén el valor de +x+". En el ejemplo, asignamos ese valor a una variable llamada +x+. No hay conflicto entre la variable +x+ y el atributo +x+.
+La expresión +p.x+ significa: "Vaya al objeto al que se apunta +p+ y obtenga el valor de +x+". En el ejemplo, se asigna ese valor a una variable llamada +x+. No hay conflicto entre la variable +x+ y el atributo +x+.
 
 Puede usar esa notación de punto como parte de cualquier expresión. Por ejemplo:
 
@@ -84,7 +84,7 @@ julia> distancia = sqrt(p.x^2 + p.y^2)
 5.0
 ----
 
-Sin embargo, las estructuras son inmutables por defecto, después de la construcción los campos no pueden cambiar su valor:
+Sin embargo, las estructuras son inmutables por defecto y después de la construcción los campos no pueden cambiar su valor:
 (((immutable)))
 
 [source,@julia-repl-test chap15]
@@ -93,7 +93,7 @@ julia> p.y = 1.0
 ERROR: setfield! immutable struct of type Punto cannot be changed
 ----
 
-Esto puede parecer extraño al principio, pero tiene varias ventajas:
+Esto puede parecer extraño al principio pero tiene varias ventajas:
 
 * Puede ser más eficiente.
 
@@ -131,13 +131,13 @@ julia> blanco.y = 4.0
 
 === Rectángulos
 
-A veces, decidir cuáles deberían ser los campos de un objeto es fácil, pero en otros casos no. Por ejemplo, imagine que queremos un tipo que represente un rectángulo. ¿Qué campos usarías para especificar la ubicación y el tamaño de un rectángulo? Puedes ignorar el ángulo. Para simplificar las cosas, supongamos que el rectángulo es vertical u horizontal.
+A veces, decidir cuáles deberían ser los campos de un objeto es fácil, pero en otros casos no. Por ejemplo, imagine que se quiere un tipo que represente un rectángulo. ¿Qué campos usaría para especificar la ubicación y el tamaño de un rectángulo? Puede ignorar el ángulo. Para simplificar las cosas, suponga que el rectángulo es vertical u horizontal.
 
 Hay al menos dos posibilidades:
 
 * Puede especificar una esquina del rectángulo (o el centro), el ancho y la altura.
 
-* Podría especificar dos esquinas opuestas.
+* Puede especificar dos esquinas opuestas.
 
 Es difícil decir que una opción es mejor que la otra, por lo que implementaremos la primera, a modo de ejemplo.
 (((Rectangulo)))((("tipo", "definida por el programador", "Rectangulo", see="Rectangulo")))
@@ -158,10 +158,10 @@ end
 
 El texto escrito entre comillas triples es llamado cadena de documentación (o docstring), y permite documentar. La documentación es el acto de comentar convenientemente cada una de las partes que tiene el programa.
 
-En este ejemplo, la cadena de documentación (o docstring) enumera los atributos. Los atributos ancho y alto son números, y esquina es un objeto +Punto+ que especifica la esquina inferior izquierda.
+En este ejemplo, la cadena de documentación (o docstring) enumera los atributos. Los atributos ancho y alto son números y esquina es un objeto +Punto+ que especifica la esquina inferior izquierda.
 (((docstring)))
 
-Para representar un rectángulo, debe crear una instancia del tipo +Rectangulo+:
+Para representar un rectángulo debe crear una instancia del tipo +Rectangulo+:
 
 [source,@julia-repl-test chap15]
 ----
@@ -239,7 +239,7 @@ julia> moverpunto!(p, 1.0, 2.0)
 ERROR: setfield! immutable struct of type Punto cannot be changed
 ----
 
-Sin embargo, puede modificar el valor de un atributo mutable de un objeto inmutable. Por ejemplo, +moverrectangulo!+ tiene como argumentos un objeto +Rectangulo+ y dos números, +dx+ y +dy+. Esta función usa +moverpunto!+ para mover la esquina del rectángulo:
+Sin embargo, se puede modificar el valor de un atributo mutable de un objeto inmutable. Por ejemplo, +moverrectangulo!+ tiene como argumentos un objeto +Rectangulo+ y dos números, +dx+ y +dy+. Esta función usa +moverpunto!+ para mover la esquina del rectángulo:
 
 [source,@julia-setup chap15]
 ----
@@ -249,8 +249,6 @@ end
 ----
 
 Ahora +p+ en +moverpunto!+ es un alias para +rect.esquina+, por lo que cuando +p+ se modifica, +rect.esquina+ también cambia:
-
-Now +p+ in +movepoint!+ is an alias for +rect.corner+, so when +p+ is modified, +rect.corner+ changes also:
 
 [source,@julia-repl-test chap15]
 ----
@@ -286,9 +284,9 @@ function encontrarcentro(rect)
 end
 ----
 
-La expresión +rect.corner.x+ significa, “Ve al objeto al que +rect+ apunta y seleccione el atributo llamado +esquina+; luego vaya a ese objeto y seleccione el atributo llamado +x+".
+La expresión +rect.corner.x+ significa: “Vaya al objeto al que +rect+ apunta y seleccione el atributo llamado +esquina+. Luego vaya a ese objeto y seleccione el atributo llamado +x+""".
 
-A continución vemos un ejemplo que toma +caja+ como argumento y asigna el +Punto+ resultante a +centro+:
+A continución se observa un ejemplo que toma +caja+ como argumento y asigna el +Punto+ resultante a +centro+:
 
 [source,@julia-repl-test chap15]
 ----
@@ -299,7 +297,7 @@ Punto(51.0, 102.0)
 
 === Copiado
 
-El uso de alias puede hacer que un programa sea difícil de leer, ya que los cambios hechos en un lugar pueden tener efectos inesperados en otro lugar. Es difícil estar al tanto de todas las variables a las que puede apuntar un objeto dado.
+El uso de alias puede hacer que un programa sea difícil de leer ya que los cambios hechos en un lugar pueden tener efectos inesperados en otro lugar. Es difícil estar al tanto de todas las variables a las que puede apuntar un objeto dado.
 (((alias)))
 
 Copiar un objeto es, muchas veces, una alternativa a la creación de un alias. Julia provee una función llamada copy que puede duplicar cualquier objeto:
@@ -376,7 +374,7 @@ julia> isdefined(p, :z)
 false
 ----
 
-El primer argumento puede ser cualquier objeto; el segundo argumento es el símbolo +:+ seguido del nombre del atributo.
+El primer argumento puede ser cualquier objeto y el segundo argumento es el símbolo +:+ seguido del nombre del atributo.
 (((:)))(((Symbol)))((("tipo", "Base", "Symbol", see="Symbol")))
 
 === Glosario
@@ -406,7 +404,7 @@ Un objeto que se almacena como atributo de otro objeto.
 (((objeto embebido)))
 
 deep copy o copia profunda::
-Copiar el contenido de un objeto, y cualquier objeto embebido en él, y a su vez, cualquier objeto embebido en ellos, y así sucesivamente. Implementado por la función +deepcopy+.
+Copiar el contenido de un objeto, y cualquier objeto embebido en él y, a su vez, cualquier objeto embebido en ellos, y así sucesivamente. Implementado por la función +deepcopy+.
 (((deep copy)))
 
 diagrama de objeto::
@@ -419,12 +417,12 @@ Un diagrama que muestra objetos, sus atributos y valores de atributos.
 [[ex15-1]]
 ==== Ejercicio 15-3
 
-. Escriba una definición de un tipo llamado +Circulo+, que tenga atributos +centro+ y +radio+, donde +centro+ es un objeto +Punto+ y +radio+ es un número.
+. Escriba una definición de un tipo llamado +Circulo+ que tenga atributos +centro+ y +radio+ y dónde +centro+ sea un objeto +Punto+ y +radio+ un número.
 (((Circulo)))((("tipo", "definida por el programador", "Circulo", see="Circulo")))
 
-. Crear instancia de un objeto circulo, que represente a un círculo con centro en latexmath:[\left(150, 100\right)] y radio 75.
+. Cree una instancia de un objeto +Circulo+ que represente a un círculo con centro en latexmath:[\left(150, 100\right)] y radio 75.
 
-. Escriba una función llamada +puntoencirculo+ que tome un objeto +Circulo+ y un objeto +Punto+, y devuelva +true+ si el punto se encuentra dentro o en el límite del círculo.
+. Escriba una función llamada +puntoencirculo+ que tome un objeto +Circulo+ y un objeto +Punto+ y devuelva +true+ si el punto se encuentra dentro o en el límite del círculo.
 (((puntoencirculo)))((("función", "definida por el programador", "puntoencirculo", see="puntoencirculo")))
 
 . Escriba una función llamada +rectencirculo+ que tome un objeto +Circulo+ y un objeto +Rectangulo+ y devuelva +true+ si el rectángulo se encuentra completamente dentro o en el límite del círculo.

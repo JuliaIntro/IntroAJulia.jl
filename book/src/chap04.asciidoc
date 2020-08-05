@@ -35,7 +35,7 @@ julia> 🐢 = Turtle()
 Luxor.Turtle(0.0, 0.0, true, 0.0, (0.0, 0.0, 0.0))
 ----
 
-El módulo +IntroAJulia+ proporciona una función llamada +Turtle+ (tortuga en español) que crea un objeto +Luxor.Turtle+, el cual asignamos a una variable llamada +🐢+ (*+\:turtle: TAB+*).
+El módulo +IntroAJulia+ proporciona una función llamada +Turtle+ (tortuga en español) que crea un objeto +Luxor.Turtle+, el cual es asignado a una variable llamada +🐢+ (*+\:turtle: TAB+*).
 (((Turtle)))((("tipo", "Luxor", "Turtle", see="Turtle")))
 
 Una vez que crea una tortuga, puede llamar a una función para "moverla", y así hacer un dibujo con ella. Por ejemplo, para mover la tortuga hacia adelante (forward en inglés):
@@ -84,7 +84,7 @@ Ahora modifique la macro para que dibuje un cuadrado. ¡No sigas hasta haberlo t
 [[simple_repetition]]
 === Repetición Simple
 
-Es probable que hayas escrito algo como esto:
+Es probable que haya escrito algo como esto:
 (((repetition)))
 
 [source,julia]
@@ -101,7 +101,7 @@ Es probable que hayas escrito algo como esto:
 end
 ----
 
-Podemos hacer lo mismo de manera más concisa con una sentencia +for+:
+Se puede hacer lo mismo de manera más concisa con una sentencia +for+:
 (((sentencia for)))((("sentencia", "for", see="sentencia for")))(((for)))((("palabra reservada", "for", see="for")))(((in)))((("palabra reservada", "in", see="in")))
 
 [source,@julia-repl-test]
@@ -115,7 +115,7 @@ julia> for i in 1:4
 ¡Hola!
 ----
 
-Este es el uso más simple de la sentencia +for+; veremos más usos después. Pero esto debería ser suficiente para reescribir su programa que dibuja un cuadrado. No continúes hasta que lo hagas.
+Este es el uso más simple de la sentencia +for+, aunque se verán más usos después. Ésto debería ser suficiente para reescribir su programa que dibuja un cuadrado. No continúe hasta que lo hagas.
 
 Aquí hay una sentencia +for+ que dibuja un cuadrado:
 
@@ -136,11 +136,11 @@ La sintaxis de una sentencia +for+ es similar a la definición de una función. 
 Una sentencia +for+ también es llamada _bucle_ porque el flujo de ejecución recorre el cuerpo y luego vuelve a la parte superior. En este caso, ejecuta el cuerpo cuatro veces.
 (((bucle)))
 
-Esta versión es en realidad un poco diferente del código anterior que dibujaba un cuadrado porque hace otro giro después de dibujar el último lado del cuadrado. El giro adicional lleva más tiempo, pero simplifica el código si hacemos lo mismo en cada iteración del ciclo. Esta versión también tiene el efecto de dejar a la tortuga nuevamente en la posición inicial, mirando hacia la dirección inicial.
+Esta versión es en realidad un poco diferente del código anterior que dibujaba un cuadrado porque hace otro giro después de dibujar el último lado del cuadrado. El giro adicional lleva más tiempo, pero simplifica el código si se hace lo mismo en cada iteración del ciclo. Esta versión también tiene el efecto de dejar a la tortuga nuevamente en la posición inicial, mirando hacia la dirección inicial.
 
 === Ejercicios
 
-Los siguientes ejercicios usan tortugas. Son divertidos, pero también tienen un trasfondo. Mientras trabaja en ellos, piense cuál es este trasfondo.
+Los siguientes ejercicios usan tortugas. Son divertidos, pero también tienen un trasfondo. Mientras trabaja en ellos, piense cuál es ese trasfondo.
 
 [TIP]
 ====
@@ -160,7 +160,7 @@ Escriba una llamada a función que pase +t+ como argumento a +cuadrado+, y luego
 [[ex04-3]]
 ==== Ejercicio 4-4
 
-Agregue otro parámetro, llamado +lon+, a cuadrado. Modifique el cuerpo para que la longitud de los lados sea +lon+, y luego modifique la llamada a función agregando este segundo argumento. Ejecute la macro nuevamente. Prueba con un rango de valores para +lon+.
+Agregue otro parámetro, llamado +lon+, a cuadrado. Modifique el cuerpo para que la longitud de los lados sea +lon+, y luego modifique la llamada a función agregando este segundo argumento. Ejecute la macro nuevamente. Pruebe con un rango de valores para +lon+.
 
 [[ex04-4]]
 ==== Ejercicio 4-5
@@ -175,7 +175,7 @@ Los ángulos exteriores de un polígono regular de latexmath:[n]-lados son latex
 [[ex04-5]]
 ==== Ejercicio 4-6
 
-Escriba una función llamada +círculo+ que tome un turtle +t+, y un radio +r+ como parámetros, y que dibuje un círculo aproximado llamando a +polígono+ con una longitud y número de lados apropiados. Pruebe su función con un rango de valores de +r+.
+Escriba una función llamada +círculo+ que tome un turtle +t+ y un radio +r+ como parámetros, y que dibuje un círculo aproximado llamando a +polígono+ con una longitud y número de lados apropiados. Pruebe su función con un rango de valores de +r+.
 
 [TIP]
 ====
@@ -185,7 +185,7 @@ Calcule la circunferencia del círculo y asegúrese de que +len * n == circunfer
 [[ex04-6]]
 ==== Ejercicio 4-7
 
-Haga una versión más general de +circulo+ llamada +arco+ que tome un parámetro adicional +angulo+, que determina qué fracción de un círculo dibujar. +angulo+ está en grados, entonces cuando +angulo= 360+, +arco+ debería dibujar un círculo completo.
+Haga una versión más general de +circulo+ llamada +arco+ que tome un parámetro adicional +angulo+ y que determine qué fracción de un círculo dibujar. +angulo+ está en grados, entonces cuando +angulo= 360+, +arco+ debería dibujar un círculo completo.
 
 
 === Encapsulación
@@ -283,7 +283,7 @@ end
 
 La primera línea calcula la circunferencia de un círculo con radio latexmath:[r] usando la fórmula latexmath:[2 \pi r]. +n+ es el número de segmentos de línea de nuestra aproximación a un círculo, y +len+ es la longitud de cada segmento. Por lo tanto, +polígono+ dibuja un polígono de 50 lados que se aproxima a un círculo de radio +r+.
 
-Una limitante de esta solución es que +n+ es constante, lo que significa que para círculos muy grandes, los segmentos de línea son demasiado largos, y para círculos pequeños, perdemos tiempo dibujando segmentos muy pequeños. Una solución sería generalizar la función tomando +n+ como parámetro. Esto le daría al usuario (quien llama a círculo) más control, pero la interfaz sería menos pulcra.
+Una limitante de esta solución es que +n+ es constante, lo que significa que para círculos muy grandes, los segmentos de línea son demasiado largos, y para círculos pequeños, perdemos tiempo dibujando segmentos muy pequeños. Una solución sería generalizar la función tomando +n+ como parámetro. Esto le daría al usuario (quien llama a círculo) más control pero la interfaz sería menos pulcra.
 
 La _interfaz_ de una función es un resumen de cómo se usa: ¿cuáles son los parámetros? ¿Qué hace la función? ¿Y cuál es el valor de retorno? Una interfaz es "pulcra" si le permite al usuario que la llama hacer lo que quiera sin tener que lidiar con detalles innecesarios.
 (((interfaz)))
@@ -310,7 +310,7 @@ Agregar 3 a +n+ garantiza que el polígono tenga al menos 3 lados.
 [[refactoring]]
 === Refactorización
 
-Cuando escribimos +circulo+, pudimos reutilizar +poligono+ ya que un polígono de muchos lados es una buena aproximación de un círculo. Pero +arco+ no es tan versatil; no podemos usar +poligono+ o +circulo+ para dibujar un arco.
+Cuando se escribió +circulo+, se pudo reutilizar +poligono+ ya que un polígono de muchos lados es una buena aproximación de un círculo. Pero +arco+ no es tan versátil; no se puede usar +poligono+ o +circulo+ para dibujar un arco.
 
 Una alternativa es comenzar con una copia de +poligono+ y transformarla en +arco+. El resultado podría verse así:
 (((arco)))((("función", "programmer-defined", "arco", see="arco")))
@@ -329,7 +329,7 @@ function arco(t, r, angulo)
 end
 ----
 
-La segunda mitad de esta función se parece a +poligono+, pero no podemos reutilizar +poligono+ sin cambiar la interfaz. Podríamos generalizar +poligono+ para tomar un +angulo+ como tercer argumento, ¡pero entonces +poligono+ ya no sería un nombre apropiado! En su lugar, llamemos a esta función más general +polilinea+:
+La segunda mitad de esta función se parece a +poligono+, pero no se puede reutilizar +poligono+ sin cambiar la interfaz. Se podría generalizar +poligono+ para tomar un +angulo+ como tercer argumento, ¡pero entonces +poligono+ ya no sería un nombre apropiado! En su lugar, se puede llamar a esta función más general +polilinea+:
 (((polyline)))((("function", "definida por el programador", "polyline", see="polyline")))
 
 [source,julia]
@@ -342,7 +342,7 @@ function polilinea(t, n, lon, angulo)
 end
 ----
 
-Ahora podemos reescribir +poligono+ y +arco+ usando +polilinea+:
+Ahora se puede reescribir +poligono+ y +arco+ usando +polilinea+:
 (((polygon)))(((arc)))
 
 [source,julia]
@@ -361,7 +361,7 @@ function arco(t, r, angulo)
 end
 ----
 
-Finalmente, podemos reescribir +circulo+ usando +arco+:
+Finalmente, se puede reescribir +circulo+ usando +arco+:
 (((circle)))
 
 [source,julia]
@@ -371,15 +371,15 @@ function circle(t, r)
 end
 ----
 
-Este proceso, que reorganiza un programa para mejorar las interfaces y facilitar la reutilización del código, se denomina _refactorización_. En este caso, notamos que había un código similar en +arco+ y +poligono+, por lo que lo "factorizamos" en +polilinea+.
+Este proceso, que reorganiza un programa para mejorar las interfaces y facilitar la reutilización del código, se denomina _refactorización_. En este caso, se observa que había un código similar en +arco+ y +poligono+, por lo que lo "factorizamos" en +polilinea+.
 (((refactorización))
 
-Si hubiéramos planeado con anticipación, podríamos haber escrito +polilinea+ primero y haber evitado la refactorización, pero a menudo no se sabe lo suficiente al comienzo de un proyecto para diseñar todas las interfaces. Una vez que se comienza a programar, se comprende mejor el problema. A veces, refactorizar es una señal de que has aprendido algo.
+Si se hubiese planeado con anticipación, se podría haber escrito +polilinea+ primero y haber evitado la refactorización, pero a menudo no se sabe lo suficiente al comienzo de un proyecto para diseñar todas las interfaces. Una vez que se comienza a programar, se comprende mejor el problema. A veces, refactorizar es una señal de que se ha aprendido algo.
 
 
 === Un Plan de Desarrollo
 
-Un _plan de desarrollo de programa_ es un proceso para escribir programas. El proceso que utilizamos en este estudio de caso es "encapsulado y generalización". Los pasos de este proceso son:
+Un _plan de desarrollo de programa_ es un proceso para escribir programas. El proceso que se utiliza en este estudio de caso es "encapsulado y generalización". Los pasos de este proceso son:
 (((plan de desarrollo de programa)))
 
 . Comience escribiendo un pequeño programa sin definiciones de funciones.
@@ -392,12 +392,12 @@ Un _plan de desarrollo de programa_ es un proceso para escribir programas. El pr
 
 . Busque oportunidades para mejorar el programa refactorizando. Por ejemplo, si tiene un código similar en varios lugares, considere factorizarlo en una función general apropiada.
 
-Este proceso tiene algunos inconvenientes, veremos alternativas más adelante, pero puede ser útil si no sabe de antemano cómo dividir el programa en funciones. Este enfoque permite diseñar conforme avancemos.
+Este proceso tiene algunos inconvenientes, se explorarán alternativas más adelante, pero puede ser útil si no sabe de antemano cómo dividir el programa en funciones. Este enfoque permite diseñar conforme se avanza.
 
 
 === Docstring
 
-Un _docstring_ es una cadena que va antes de una función, y que explica la interfaz ("doc" es la abreviatura de "documentación"). Aquí hay un ejemplo:
+Un _docstring_ es una cadena que va antes de una función y que explica la interfaz ("doc" es la abreviatura de "documentación"). Aquí hay un ejemplo:
 (((docstring)))(((comillas triples)))((("pass:[&quot;&quot;&quot;]", see="comillas triples")))
 
 [source,julia]
@@ -445,7 +445,7 @@ Una interfaz es como un contrato entre una función y el usuario. El usuario ace
 
 Por ejemplo, +polilinea+ requiere cuatro argumentos: +t+ tiene que ser una tortuga; +n+ tiene que ser un número entero; +lon+ debería ser un número positivo; y +angulo+ tiene que ser un número, en grados.
 
-Estos requisitos se llaman _precondiciones_ porque se supone que son verdaderos antes de que la función comience a ejecutarse. Por el contrario, las condiciones al final de la función son _postcondiciones_. Las _postcondiciones_ incluyen el efecto deseado de la función (como dibujar segmentos de línea) y cualquier efecto secundario (como mover la tortuga o hacer otros cambios).
+Estos requisitos se llaman _precondiciones_ porque se supone que son verdaderos antes de que la función comience a ejecutarse. Por el contrario, las condiciones al final de la función son _postcondiciones_. Las postcondiciones incluyen el efecto deseado de la función (como dibujar segmentos de línea) y cualquier efecto secundario (como mover la tortuga o hacer otros cambios).
 (((precondición)))(((postcondición)))
 
 Las condiciones previas son responsabilidad del usuario. Si el usuario viola una precondición (¡debidamente documentada!) y la función no funciona correctamente, el error está en el usuario, no en la función.
@@ -510,7 +510,6 @@ Un requisito que debe cumplir la función antes de que finalice.
 ==== Ejercicio 4-8
 
 Copie y pegue el código de este capítulo en un notebook.
-Enter the code in this chapter in a notebook.
 
 . Dibuje un diagrama de pila que muestre el estado del programa mientras ejecuta +circulo(🐢,radio)+. Puede hacer la aritmética a mano o agregar sentencias de impresión al código.
 
@@ -524,7 +523,7 @@ arco(t, r, angulo)
 
 Dibuja un arco con el radio y el ángulo dados:
 
-    t: tuortuga
+    t: tortuga
     r: radio
     angulo: ángulo subtendido por el arco, en grados 
 """

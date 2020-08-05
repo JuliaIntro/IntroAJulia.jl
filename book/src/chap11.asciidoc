@@ -6,13 +6,13 @@ Este capítulo presenta otro tipo integrado llamado diccionario.
 
 === Un Diccionario es un Mapeo 
 
-Un _diccionario_ es como una matriz, pero más general. En una matriz, los índices tienen que ser enteros; en un diccionario pueden ser (casi) de cualquier tipo.
+Un _diccionario_ es como una matriz pero más general. En una matriz, los índices tienen que ser enteros; en un diccionario pueden ser (casi) de cualquier tipo.
 (((diccionario)))
 
 Un diccionario contiene una colección de índices, llamados _claves_, y una colección de valores. Cada clave está asociada a un solo valor. La asociación entre una clave y un valor se denomina _par clave-valor_ o, a veces, item.
 (((clave)))(((valor)))(((par clave-valor)))(((item)))
 
-En lenguaje matemático, un diccionario representa un _mapeo_ de las claves a los valores, es decir, cada clave apunta a un valor. A modo de ejemplo, crearemos un diccionario que asocie palabras en español con palabras en inglés. En este diccionario, las claves y los valores son cadenas.
+En lenguaje matemático, un diccionario representa un _mapeo_ de las claves a los valores, es decir, cada clave apunta a un valor. A modo de ejemplo, se crea un diccionario que asocia palabras en español con palabras en inglés. En este diccionario, las claves y los valores son cadenas.
 (((mapeo)))
 
 La función +Dict+ crea un nuevo diccionario sin elementos. Como +Dict+ es el nombre de una función integrada de Julia, debe evitar usarla como nombre de variable.
@@ -27,7 +27,7 @@ Dict{Any,Any} with 0 entries
 El tipo de este diccionario está compuesto por el tipo de las claves y de los valores, entre llaves. En este caso, las claves y los valores son de tipo +Any+.
 (((llaves)))((("{}", see="llaves")))(((Any)))((("tipo", "Base", "Any", see="Any")))
 
-El diccionario está vacio. Para agregar elementos a él, se pueden usar corchetes:
+El diccionario está vacío. Para agregar elementos a él, se pueden usar corchetes:
 (((corchetes)))
 
 [source,@julia-repl-test chap11]
@@ -36,7 +36,7 @@ julia> ing_a_esp["one"] = "uno";
 
 ----
 
-Esta línea de código crea un elemento con la clave "one" que apunta al valor "uno". Si imprimimos el diccionario nuevamente, vemos un par clave-valor con una flecha +pass:[=&gt;]+ entre la clave y el valor:
+Esta línea de código crea un elemento con la clave "one" que apunta al valor "uno". Si se imprime el diccionario nuevamente, se ve un par clave-valor con una flecha +pass:[=&gt;]+ entre la clave y el valor:
 (((pass:[=&gt;])))
 
 [source,@julia-repl-test chap11]
@@ -46,7 +46,7 @@ Dict{Any,Any} with 1 entry:
   "one" => "uno"
 ----
 
-Este formato de salida también es un formato de entrada. Por ejemplo, puedes crear un nuevo diccionario con tres items de la siguiente manera:
+Este formato de salida también es un formato de entrada. Por ejemplo, se puede crear un nuevo diccionario con tres ítems de la siguiente manera:
 
 [source,@julia-repl-test chap11]
 ----
@@ -72,9 +72,9 @@ julia> ing_a_esp["two"]
 "dos"
 ----
 
-La clave "two" nos da el valor "dos", así que el orden de los items no importa.
+La clave "two" da el valor "dos", así que el orden de los ítems no importa.
 
-Si la clave no está en el diccionario, recibimos un mensaje de error:
+Si la clave no está en el diccionario, se da un mensaje de error:
 (((KeyError)))((("error", "Base", "KeyError", see="KeyError")))
 
 [source,@julia-repl-test chap11]
@@ -83,7 +83,7 @@ julia> ing_a_esp["four"]
 ERROR: KeyError: key "four" not found
 ----
 
-La función +length+ también funciona con diccionarios; devuelve el número de pares clave-valor:
+La función +length+ también funciona con diccionarios y devuelve el número de pares clave-valor:
 (((length)))
 
 [source,@julia-repl-test chap11]
@@ -133,17 +133,17 @@ Para los diccionarios, Julia usa un algoritmo llamado _tabla hash_ que tiene una
 [[dictionary_collection_counters]]
 === Diccionario como una Colección de Frecuencias
 
-Suponga que tienes una cadena y deseas contar cuántas veces aparece cada letra. Hay varias formas de hacerlo:
+Suponga que tiene una cadena y desea contar cuántas veces aparece cada letra. Hay varias formas de hacerlo:
 
-* Podrías crear 27 variables, una para cada letra del alfabeto. Luego, recorrer la cadena y, para cada carácter, incrementar el contador correspondiente, probablemente utilizando condiciones encadenadas.
+* Podría crear 27 variables, una para cada letra del alfabeto. Luego, recorrer la cadena y, para cada carácter, incrementar el contador correspondiente, probablemente utilizando condiciones encadenadas.
 
-* Podrías crear una matriz con 27 elementos. Luego, podrías convertir cada carácter en un número (usando la función integrada +Int+), usar el número como índice en la matriz e incrementar el contador apropiado.
+* Podría crear una matriz con 27 elementos. Luego, podría convertir cada carácter en un número (usando la función integrada +Int+), usar el número como índice en la matriz e incrementar el contador apropiado.
 
-* Puedes crear un diccionario con caracteres como claves y contadores como los valores correspondientes. La primera vez que veas un carácter, agregarías un elemento al diccionario. Después de eso, incrementarías el valor de un elemento existente.
+* Puede crear un diccionario con caracteres como claves y contadores como los valores correspondientes. La primera vez que vea un carácter, agregaría un elemento al diccionario. Después de eso, incrementaría el valor de un elemento existente.
 
 Cada una de estas opciones realiza el mismo cálculo, pero la implementación es diferente.
 
-Una _implementación_ es una forma de realizar un cálculo. Algunas implementaciones son mejores que otras, por ejemplo, una ventaja de la implementación del diccionario es que no tenemos que saber de antemano qué letras aparecen en la cadena y solo tenemos que agregar las letras que aparecen.
+Una _implementación_ es una forma de realizar un cálculo. Algunas implementaciones son mejores que otras, por ejemplo, una ventaja de la implementación del diccionario es que no hace falta saber de antemano qué letras aparecen en la cadena y solo hay que agregar las letras que aparecen.
 (((implementación)))
 
 Así es como se vería el código:
@@ -184,7 +184,7 @@ Dict{Any,Any} with 8 entries:
   'b' => 1
 ----
 
-El histograma indica que las letras +'a'+ y +'b'+ aparecen una vez; +'o'+ aparece dos veces, y así sucesivamente.
+El histograma indica que las letras +'a'+ y +'b'+ aparecen una vez, +'o'+ aparece dos veces, y así sucesivamente.
 
 Los diccionarios tienen una función llamada +get+ que toma como argumentos un diccionario, una clave y un valor predeterminado. Si la clave aparece en el diccionario, +get+ devuelve el valor correspondiente; de lo contrario, devuelve el valor predeterminado. Por ejemplo:
 (((get)))((("función", "Base", "get", see="get")))
@@ -253,7 +253,7 @@ s 1
 Dado un diccionario +d+ y una clave +k+, es fácil encontrar el valor correspondiente +v = d[k]+. Esta operación se llama _búsqueda_.
 (((lookup)))
 
-Pero, ¿qué pasa si tenemos +v+ y queremos encontrar +k+? Existen dos problemas: primeramente, puede haber más de una clave que apunta al valor +v+. Dependiendo de lo que queramos, es posible que podamos elegir una de estas claves, o que tengamos que hacer una matriz que las contenga a todas. En segundo lugar, no hay una sintaxis simple para hacer una búsqueda inversa; solo debemos buscar.
+Pero, ¿qué pasa si se tiene +v+ y se quiere encontrar +k+? Existen dos problemas: primeramente, puede haber más de una clave que apunta al valor +v+. Dependiendo de lo que se quiera, es posible que se pueda elegir una de estas claves, o que se tenga que hacer una matriz que las contenga a todas. En segundo lugar, no hay una sintaxis simple para hacer una búsqueda inversa; solo se debe buscar.
 (((reverse lookup)))
 
 A continuación se muestra una función que toma un valor y que devuelve la primera clave que apunta a ese valor:
@@ -285,7 +285,7 @@ julia> key = busquedainversa(h, 2)
 'r': ASCII/Unicode U+0072 (category Ll: Letter, lowercase)
 ----
 
-Y una no exitosa:
+y una no exitosa:
 
 [source,@julia-repl-test chap11]
 ----
@@ -306,7 +306,7 @@ Una búsqueda inversa es mucho más lenta que una búsqueda directa. Si tiene qu
 
 === Diccionarios y Matrices
 
-Las matrices pueden aparecer como valores en un diccionario. Por ejemplo, si tenemos un diccionario que asigna frecuencias a letras, y queremos invertirlo; es decir, tener un diccionario que asigne letras a frecuencias. Dado que pueden haber varias letras con la misma frecuencia, cada valor en el diccionario invertido debería ser una matriz de letras.
+Las matrices pueden aparecer como valores en un diccionario. Por ejemplo, si se tiene un diccionario que asigna frecuencias a letras, y se quiere invertir, es decir, tener un diccionario que asigne letras a frecuencias. Dado que pueden haber varias letras con la misma frecuencia, cada valor en el diccionario invertido debería ser una matriz de letras.
 
 Aquí hay una función que invierte un diccionario:
 (((invertirdic)))((("función", "definida por el programador", "invertirdic", see="invertirdic")))
@@ -327,7 +327,7 @@ function invertirdic(d)
 end
 ----
 
-Cada vez que recorremos el bucle, se asigna a la variable +clave+ una clave de +d+, y a +val+ el valor correspondiente. Si +val+ no está en el diccionario +inverso+, significa que no hemos visto este valor antes, por lo que creamos un nuevo item y lo inicializamos con un _singleton_ (una matriz que contiene un solo elemento). De lo contrario, hemos visto este valor antes, por lo que agregamos la clave correspondiente a la matriz.
+Cada vez que se recorre el bucle, se asigna a la variable +clave+ una clave de +d+, y a +val+ el valor correspondiente. Si +val+ no está en el diccionario +inverso+, significa que no se ha visto este valor antes, por lo que se crea un nuevo item y se inicializa con un _singleton_ (una matriz que contiene un solo elemento). De lo contrario, se ha visto este valor antes, por lo que se agrega la clave correspondiente a la matriz.
 (((singleton)))
 
 Aquí hay un ejemplo:
@@ -373,7 +373,7 @@ image::images/fig112.svg[]
 
 Un gráfico de llamadas muestra un conjunto de cuadros de funciones, con líneas que conectan cada cuadro con los cuadros de las funciones a las que llama. En la parte superior del gráfico, +fibonacci+ con +n = 4+ llama a +fibonacci+ con +n = 3+ y +n = 2+. A su vez, +fibonacci+ con +n = 3+ llama a +fibonacci+ con +n = 2+ y +n = 1+. Y así sucesivamente.
 
-Cuente cuántas veces se llama a +fibonacci(0)+ y +fibonacci(1)+. Esta es una solución ineficiente al problema, y empeora a medida que el argumento aumenta en tamaño.
+Cuente cuántas veces se llama a +fibonacci(0)+ y +fibonacci(1)+. Esta es una solución ineficiente al problema y empeora a medida que el argumento aumenta en tamaño.
 
 Una solución es llevar un registro de los valores que ya se han calculado almacenándolos en un diccionario. Un valor que ya ha sido calculado y almacenado para un uso posterior se le denomina _pista_. Aquí hay una implementación de fibonacci con pistas:
 (((pista)))
@@ -394,9 +394,9 @@ end
 
 El diccionario llamado +anteriores+ mantiene un registro de los valores de Fibonacci que ya conocemos. El programa comienza con dos pares: +0+ corresponde a +1+ y +1+ corresponde a +1+.
 
-Siempre que se llama a +fibonacci+, se comprueba si el diccionario contiene el resultado ya calculado. Si está ahi, la función puede devolver el valor inmediatamente. Si no, tiene que calcular el nuevo valor, añadirlo al diccionario y devolverlo.
+Siempre que se llama a +fibonacci+, se comprueba si el diccionario contiene el resultado ya calculado. Si está ahí, la función puede devolver el valor inmediatamente. Si no, tiene que calcular el nuevo valor, añadirlo al diccionario y devolverlo.
 
-Si ejecuta esta versión de +fibonacci+ y la compara con la original, se dará cuenta de que es mucho más rápida.
+Si ejecuta esta versión de +fibonacci+ y la compara con la original, se dará cuenta que es mucho más rápida.
 
 [[global_variables]]
 === Variables Globales 
@@ -418,7 +418,7 @@ function ejemplo1()
 end
 ----
 
-Si intentas reasignar una variable global, te sorprenderás. El siguiente ejemplo trata de llevar registro sobre si se ha llamado o no a una función:
+Si intenta reasignar una variable global, se sorprenderá. El siguiente ejemplo trata de llevar registro sobre si se ha llamado o no a una función:
 
 [source,@julia-setup]
 ----
@@ -429,7 +429,7 @@ function ejemplo2()
 end
 ----
 
-Pero si lo ejecutas, verás que el valor de +ha_sido_llamada+ no cambia. El problema es que +ejemplo2 + crea una nueva variable local llamada +ha_sido_llamada+. La variable local desaparece cuando finaliza la función y no tiene efecto en la variable global.
+Pero si lo ejecuta, verá que el valor de +ha_sido_llamada+ no cambia. El problema es que +ejemplo2 + crea una nueva variable local llamada +ha_sido_llamada+. La variable local desaparece cuando finaliza la función y no tiene efecto en la variable global.
 
 Para reasignar una variable global dentro de una función, debe _declarar_ la variable global antes de usarla:
 (((declaración)))(((reasignación))
@@ -458,7 +458,7 @@ function ejemplo3()
 end
 ----
 
-Si lo ejecutas obtienes:
+Si lo ejecuta obtiene:
 (((UndefVarError)))
 
 [source,@julia-repl-test chap11]
@@ -467,7 +467,7 @@ julia> ejemplo3()
 ERROR: UndefVarError: conteo not defined
 ----
 
-Julia asume que +conteo+ es local, y bajo esa suposición lo estás leyendo antes de escribirlo. La solución, nuevamente, es declarar +conteo+ como global.
+Julia asume que +conteo+ es local, y bajo esa suposición lo está leyendo antes de escribirlo. La solución, nuevamente, es declarar +conteo+ como global.
 
 [source,@julia-setup]
 ----
@@ -479,7 +479,7 @@ function ejemplo3()
 end
 ----
 
-Si una variable global se refiere a un valor mutable, puedes modificar el valor sin declarar la variable global:
+Si una variable global se refiere a un valor mutable, puede modificar el valor sin declarar la variable global:
 
 [source,@julia-setup]
 ----
@@ -502,7 +502,7 @@ function ejemplo5()
 end
 ----
 
-Para mejorar el rendimiento, puedes declarar la variable global como constante. Con esto, ya no se puede reasignar la variable, pero si se refiere a un valor mutable, sí se puede modificar el valor.
+Para mejorar el rendimiento, puede declarar la variable global como constante. Con esto, ya no se puede reasignar la variable, pero si se refiere a un valor mutable, sí se puede modificar el valor.
 (((const)))((("palabra reservada", "const", see="const")))(((variable global constante)))
 
 [source,@julia-setup]
@@ -521,7 +521,7 @@ Las variables globales pueden ser útiles, pero si tiene muchas de ellas y las m
 
 === Depuración
 
-A medida que trabaja con conjuntos de datos más grandes, la depuración mediante la impresió y verificación de la salida de manera manual puede tornarse difícil. Aquí hay algunas sugerencias para depurar grandes conjuntos de datos:
+A medida que trabaja con conjuntos de datos más grandes, la depuración mediante la impresión y verificación de la salida de manera manual puede tornarse difícil. Aquí hay algunas sugerencias para depurar grandes conjuntos de datos:
 (((depuración)))
 
 * Reduzca la entrada:
@@ -529,11 +529,11 @@ A medida que trabaja con conjuntos de datos más grandes, la depuración mediant
 Si es posible, reduzca el tamaño del conjunto de datos. Por ejemplo, si el programa lee un archivo de texto, comience con solo las primeras 10 líneas, o con el ejemplo más pequeño que pueda encontrar que produzca errores. No debe editar los archivos, sino modificar el programa para que solo lea las primeras latexmath:[n] líneas.
 (((reducir el tamaño)))
 +
-Si hay un error, puede reducir latexmath:[n] al valor más pequeño que manifieste el error, y luego aumentarlo gradualmente a medida que encuentre y corrija errores.
+Si hay un error, puede reducir latexmath:[n] al valor más pequeño que manifieste el error y luego aumentarlo gradualmente a medida que encuentre y corrija errores.
 
 * Revisar resúmenes y tipos
 +
-En lugar de imprimir y verificar todo el conjunto de datos, considere imprimir resúmenes de los datos: por ejemplo, el número de elementos en un diccionario o el total de una serie de números.
+En lugar de imprimir y verificar todo el conjunto de datos, considere imprimir resúmenes de los datos. Por ejemplo, el número de elementos en un diccionario o el total de una serie de números.
 (((verificar)))
 +
 Una causa común de los errores de tiempo de ejecución son los valores de tipo incorrecto. Para depurar este tipo de error, generalmente es suficiente imprimir el tipo de un valor.
