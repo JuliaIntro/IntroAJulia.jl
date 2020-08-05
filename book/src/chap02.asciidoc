@@ -195,7 +195,7 @@ Cuando una expresión contiene más de un operador, el orden de evaluación depe
 
 * Los operadores con la misma precedencia se evalúan de izquierda a derecha (excepto potencias). Entonces, en la expresión +grados/2*π+, la división ocurre primero y el resultado se multiplica por +π+. Para dividir entre latexmath:[2\pi], puede usar paréntesis, escribir +grados/2/π+ o +grados/2π+.
 
-[OBSERVACIÓN]
+[TIP]
 ====
 No se esfuerce demasiado en recordar el orden de las operaciones. Si el orden no es evidente mirando la expresión, use paréntesis para que sí lo sea.
 ====
