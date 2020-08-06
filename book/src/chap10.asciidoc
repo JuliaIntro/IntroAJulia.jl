@@ -603,9 +603,9 @@ julia> print(a)
 ----
 
 [WARNING]
-====
+
 Aunque este comportamiento puede ser útil, a veces puede inducir a errores. En general, es más seguro evitar los alias cuando se trabaje con objetos mutables.
-==== 
+
 
 No hay problema con los alias al trabajar con objetos inmutables, tales como cadenas de texto. En este ejemplo: 
 
@@ -680,7 +680,7 @@ julia> print(t3)
 [1, 2, 3, 4]
 ----
 
-El resultado de +vcat+ es unn nuevo arreglo. El arreglo original no ha sufrido cambios.
+El resultado de +vcat+ es un nuevo arreglo. El arreglo original no ha sufrido cambios.
 
 Esta diferencia es importante al momento de escribir funciones que modifican arreglos.
 
