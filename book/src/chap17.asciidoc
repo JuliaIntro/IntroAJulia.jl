@@ -381,7 +381,7 @@ julia> inicio + duracion
 11:20:00
 ----
 
-Al aplicar el operador +pass:[+]+ a objetos +Hora+, Julia invoca el método recién agregado. Cuando REPL muestra el resultado, Julia invoca a +show+. ¡Hay muchas cosas teniendo lugar pero que no se observan!
+Al aplicar el operador +pass:[+]+ a objetos +Hora+, Julia invoca el método recién agregado. Cuando REPL muestra el resultado, Julia invoca a +show+. ¡Hay muchas cosas ocurriendo pero que no se observan!
 
 Ampliar el comportamiento de los operadores de modo que funcionen con tipos definidos por el usuario/programador se denomina _sobrecarga del operador_.
 (((sobrecarga del operador)))
