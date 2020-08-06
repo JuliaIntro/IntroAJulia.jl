@@ -211,7 +211,7 @@ julia> a % 2 == 0 ? println("par") : println("impar")
 par
 ----
 
-La expresión que va antes de +?+ es una expresión de condición. Si la condición es +true+, se evalúa la expresión que va antes de +:+.e lo contrario, se evalúa la expresión que va después de +:+.
+La expresión que va antes de +?+ es una expresión de condición. Si la condición es +true+, se evalúa la expresión que va antes de +:+. De lo contrario, se evalúa la expresión que va después de +:+.
 
 ==== Evaluación de cortocircuito
 
@@ -758,7 +758,7 @@ Permite convertir un valor de un tipo a otro.
 (((conversión)))
 
 promoción::
-Conversión de valores de diferentes tipos a un solo a tipo común.
+Conversión de valores de diferentes tipos a un solo tipo común.
 (((promoción)))
 
 expresión::

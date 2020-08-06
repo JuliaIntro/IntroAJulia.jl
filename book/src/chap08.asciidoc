@@ -224,7 +224,7 @@ Una cadena vacía no contiene caracteres y tiene una longitud de 0, pero aparte 
 
 ==== Ejercicio 8-3
 
-Continuando este ejemplo, ¿qué cree que significa +str[:]+? Prueba y verá.
+Continuando este ejemplo, ¿qué cree que significa +str[:]+? Pruebe y verá.
 
 === Las Cadenas son Inmutables
 
@@ -439,7 +439,7 @@ end
 // Pamela, I'm not sure what's going on in the following. Do you really want this?
 // Laura: I've rewritten the below paragraph so that it's easier to understand. What do you think?
 
-Julia no maneja las letras mayúsculas y minúsculas del mismo modo que son manejada en cualquier lengua hablada. Todas las letras mayúsculas van antes de las letras minúsculas, según el estándar de codificación. Por lo tanto:
+Julia no maneja las letras mayúsculas y minúsculas del mismo modo que son manejadas en cualquier lengua hablada. Todas las letras mayúsculas van antes de las letras minúsculas, según el estándar de codificación. Por lo tanto:
 
 [source,julia chap08]
 ----
@@ -670,7 +670,7 @@ Use esto para escribir una versión de una línea de código de +espalindromo+ d
 [[ex08-4]]
 ==== Exercise 8-10
 
-Las siguientes funciones están _destinadas_ a verificar si una cadena contiene letras minúsculas pero algunas de ellas son incorrectas. Para cada función, describa qué hace realmente la función (suponiendo que el parámetro es una cadena).
+Las siguientes funciones están _destinadas_ a verificar si una cadena contiene letras minúsculas, pero algunas de ellas son incorrectas. Para cada función, describa qué hace realmente la función (suponiendo que el parámetro es una cadena).
 
 [source,@julia-setup]
 ----

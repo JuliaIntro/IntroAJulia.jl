@@ -127,7 +127,7 @@ for queso in quesos
 end
 ----
 
-Esto funciona bien si solo se necesita leer los elementos del arreglo pero si se desea escribir o actualizar los elementos es necesario utilizar índices. Una forma común de hacerlo es usando la función integrada +eachindex+:
+Esto funciona bien si solo se necesita leer los elementos del arreglo, pero si se desea escribir o actualizar los elementos es necesario utilizar índices. Una forma común de hacerlo es usando la función integrada +eachindex+:
 (((eachindex)))((("función", "Base", "eachindex", see="eachindex")))
 
 [source,@julia-setup chap10]

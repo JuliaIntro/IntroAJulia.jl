@@ -1,7 +1,7 @@
 [[chap18]]
 == Subtipos
 
-En el capítulo anterior se presentó el dispatch múltiple y los métodos polimórficos. Al no especificar el tipo de los argumentos de un método, este se puede invocar con argumentos de cualquier tipo. Ahora se entrará en cómo especificar un subconjunto de tipos permitidos en las especificaciones de un método.
+En el capítulo anterior se presentó el dispatch múltiple y los métodos polimórficos. Al no especificar el tipo de los argumentos de un método, este se puede invocar con argumentos de cualquier tipo. Ahora se verá cómo especificar un subconjunto de tipos permitidos en las especificaciones de un método.
 
 En este capítulo se explica el concepto de subtipo usando tipos que representan naipes, mazos de naipes y manos de póker.
 
@@ -207,7 +207,7 @@ function Base.push!(mazo::Mazo, naipe::Naipe)
 end
 ----
 
-Un método como este, que usa otro método sin hacer mucho más, se llama _enchapado_. La metáfora proviene de la carpintería, donde un enchapado es una capa fina de madera de alta calidad que se pega a la superfície de una pieza de madera de baja calidad para mejorar su apariencia.
+Un método como este, que usa otro método sin hacer mucho más, se llama _enchapado_. La metáfora proviene de la carpintería, donde un enchapado es una capa fina de madera de alta calidad que se pega a la superficie de una pieza de madera de baja calidad para mejorar su apariencia.
 (((enchapado)))
 
 En este caso, +push!+ es un método "fino" que expresa una operación de arreglos adecuada para los mazos. Mejora la apariencia o interfaz, de la implementación.
@@ -417,7 +417,7 @@ Cada una de las flechas superiores representa una relación ES-UN. En este caso,
 
 Cada una de las flechas inferiores representa una relación TIENE-UN; en este caso, un Mazo tiene referencias a objetos Naipe.
 
-El asterisco (+pass:[*]+) cerca de la flecha es una _multiplicidad_ e indica cuántos Naipes tiene un Mazo. Una multiplicidad puede ser un número simple, como +52+, un rango, +como 5:7+ o un asterisco, lo cual indica que un Mazo puede tener cualquier número de Naipes.
+El asterisco (+pass:[*]+) cerca de la flecha es una _multiplicidad_ e indica cuántos Naipes tiene un Mazo. Una multiplicidad puede ser un número simple, como +52+; un rango, +como 5:7+ o un asterisco, lo cual indica que un Mazo puede tener cualquier número de Naipes.
 (((multiplicidad)))
 
 No hay dependencias en este diagrama. Normalmente se mostrarían con una flecha achurada. Si hay muchas dependencias, a veces se omiten.
@@ -630,7 +630,7 @@ agregarping(pong, ping)
 [[ex18-2]]
 ==== Ejercicio 18-5
 
-Escriba un método llamado +repartir!+ que tome tres parámetros: un +Mazo+, el número de manos y el número de naipes por mano. Debería crear el número apropiado de objetos +Mano+, repartir el número apropiado de naipes por mano y devolver un arreglo de +Mano+s.
+Escriba un método llamado +repartir!+ que tome tres parámetros: un +Mazo+, el número de manos y el número de naipes por mano. Debería crear el número apropiado de objetos +Mano+, repartir el número apropiado de naipes por mano y devolver un arreglo de +Manos+.
 (((repartir!)))((("función", "definida por el programador", "repartir!", see="repartir!")))
 
 [[ex18-3]]
@@ -664,8 +664,7 @@ Cinco cartas consecutivas del mismo palo.
 
 El objetivo de este ejercicio es estimar la probabilidad de tener cada una de estas manos.
 
-. Agregue métodos llamados +tienepareja+, +tienedoblepareja+, etc.
- que devuelvan +true+ o +false+ según si la mano cumple o no con los criterios relevantes. Su código debería funcionar correctamente para manos que contengan cualquier número de naipes (aunque 5 y 7 son los tamaños más comunes).
+. Agregue métodos llamados +tienepareja+, +tienedoblepareja+, etc. que devuelvan +true+ o +false+ según si la mano cumple o no con los criterios relevantes. Su código debería funcionar correctamente para manos que contengan cualquier número de naipes (aunque 5 y 7 son los tamaños más comunes).
 (((tienepareja)))((("función", "definida por el programador", "tienepareja", see="tienepareja")))(((tienedoblepareja)))((("función", "definida por el programador", "tienedoblepareja", see="tienedoblepareja")))
 
 . Escriba un método llamado +clasificar+ que descubra la clasificación de mayor valor para una mano, y defina el atributo +etiqueta+ con esta clasificación. Por ejemplo, una mano de 7 cartas que contiene un color y una pareja, debe etiquetarse como "color".

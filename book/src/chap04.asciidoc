@@ -115,7 +115,7 @@ julia> for i in 1:4
 ¡Hola!
 ----
 
-Este es el uso más simple de la sentencia +for+, aunque se verán más usos después. Ésto debería ser suficiente para reescribir su programa que dibuja un cuadrado. No continúe hasta que lo hagas.
+Este es el uso más simple de la sentencia +for+, aunque se verán más usos después. Ésto debería ser suficiente para reescribir su programa que dibuja un cuadrado. No continúe hasta que lo haga.
 
 Aquí hay una sentencia +for+ que dibuja un cuadrado:
 

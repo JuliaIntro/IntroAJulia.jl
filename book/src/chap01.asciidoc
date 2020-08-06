@@ -189,7 +189,7 @@ Prosa::
 El significado literal de las palabras es más importante, y la estructura aporta significado. La prosa es más fácil de análizar que la poesía, pero a menudo sigue siendo ambigua.
 
 Programas::
-El significado de un programa computacional es inequívoco y literal y puede entenderse por completo mediante el análisis de los componentes léxicos y la estructura.
+El significado de un programa computacional es inequívoco y literal, y puede entenderse por completo mediante el análisis de los componentes léxicos y la estructura.
 
 Los lenguajes formales son más densos que los naturales, por lo que lleva más tiempo leerlos. Además, la estructura es importante, por lo que no siempre es mejor leer de arriba a abajo, y de izquierda a derecha. En cambio, aprenderás a analizar el programa mentalmente, identificando los componentes léxicos e interpretando la estructura. Finalmente, los detalles importan. Pequeños errores de ortografía y puntuación, que pueden pasar desapercibidos en los lenguajes naturales, pueden hacer una gran diferencia en un lenguaje formal (((range="endofrange", startref="ch1nat")))((((range="endofrange", startref="ch1nat2")))((((range="endofrange", startref="ch1nat3")))(((range="endofrange", startref="ch1nat4")))((((range="endofrange", startref="ch1nat5")))(((range="endofrange", startref="ch1nat6"))).
 

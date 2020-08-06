@@ -124,7 +124,7 @@ a = b
 b = temp
 ----
 
-Esta solución resulta aparatosa y la asignación de tuplas soluciona este problema elegantemente:
+Esta solución resulta aparatosa. La asignación de tuplas soluciona este problema elegantemente:
 (((asignación de tupla)))
 
 [source,julia]

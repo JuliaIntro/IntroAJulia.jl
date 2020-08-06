@@ -3,7 +3,7 @@
 
 Al depurar, es necesario distinguir entre los diferentes tipos de errores para rastrearlos más rápidamente:
 
-* Los errores de sintaxis se descubren cuando el intérprete traduce el código fuente a código de bytes. Estos errores indican que hay un error en la estructura del programa. Por ejemplo, omitir la palabra reservada +end+ al final de un bloque de funciones genera el mensaje +ERROR: LoadError: syntax: incomplete: function requires end+.
+* Los errores de sintaxis se descubren cuando el intérprete traduce el código fuente a código de bytes. Estos errores indican que hay una falla en la estructura del programa. Por ejemplo, omitir la palabra reservada +end+ al final de un bloque de funciones genera el mensaje +ERROR: LoadError: syntax: incomplete: function requires end+.
 (((error de sintaxis)))
 
 * Los errores en tiempo de ejecución se presentan si algo falla mientras se ejecuta el programa. La mayoría de los mensajes de error en tiempo de ejecución indican dónde ocurrió el error y qué funciones se estaban ejecutando. Ejemplo: Una recursión infinita eventualmente causa el error en tiempo de ejecución +ERROR: StackOverflowError+.
@@ -101,7 +101,7 @@ Si no obtiene este error pero sospecha que hay un problema con un método o func
 
 * Si ninguno de esos pasos funciona, comience a probar otros bucles, y otras funciones y métodos recursivos.
 
-* Si esto no funciona, quizás es porque usted no entiende el flujo de ejecución de tu programa. Vea <<flow_of_execution>>.
+* Si esto no funciona, quizás es porque usted no entiende el flujo de ejecución de su programa. Vea <<flow_of_execution>>.
 
 
 [[infinite_loop]]

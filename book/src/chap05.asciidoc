@@ -119,7 +119,7 @@ if x > 0
 end
 ----
 
-La expresión booleana después de +if+ se llama _condición_. Si es verdadera, se ejecuta la instrucción con sangría. Si no, no ocurre nada.
+La expresión booleana después de +if+ se llama _condición_. Si es verdadera, se ejecuta la instrucción con sangría. Si no, nada ocurre.
 (((condition)))
 
 Las sentencias +if+ tienen la misma estructura que las definiciones de función: un encabezado seguido del cuerpo, terminado con la palabra reservada +end+ (en español "fin"). Las sentencias como este se denominan _sentencias compuestas_.
@@ -324,7 +324,7 @@ Los cuatro marcos de +cuentaregresiva+ tienen diferentes valores del parámetro 
 
 ==== Ejercicio 5-1
 
-Como ejercicio, dibuje un diagrama de pila para +printn+, llamada con +s = "Hola"+ y +n = 2+. Luego escriba una función llamada +hacer_n+, que tome como argumentos una función y un número +n+ y que luego llame a la función dada latexmath:[n] veces.
+Como ejercicio, dibuje un diagrama de pila para +printn+, llamada con +s = "Hola"+ y +n = 2+. Luego escriba una función llamada +hacer_n+, que tome como argumentos una función y un número +n+, y que luego llame a la función dada latexmath:[n] veces.
 
 === Recursión infinita
 Si una recursión nunca alcanza un caso base, continúa haciendo llamadas recursivas para siempre y el programa nunca termina. Esto se conoce como _recursión infinita_ y generalmente no es una buena idea. Aquí hay un código con una recursión infinita:

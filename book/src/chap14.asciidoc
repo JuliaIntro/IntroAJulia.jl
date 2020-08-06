@@ -66,7 +66,7 @@ Si no cierra el archivo, este se cierra cuando finaliza el programa.
 
 === Formateo
 
-El argumento de write tiene que ser una cadena, por lo que si queremos poner otros valores en un archivo, tenemos que convertirlos a una cadena. La forma más fácil de hacerlo es con la función +string+ o con interpolación de cadenas:
+El argumento de write tiene que ser una cadena, por lo que si queremos poner otros valores en un archivo, tenemos que convertirlos a cadenas. La forma más fácil de hacerlo es con la función +string+ o con interpolación de cadenas:
 (((string)))(((interpolación de cadenas)))
 
 [source,@julia-repl-test chap14]
@@ -90,7 +90,7 @@ julia> println(fout, "He visto $camellos camellos.")
 
 [TIP]
 ====
-Una alternativa más potente es la macro +@printf+, que imprime utilizando cadenas con especificación de formato al más puro estilo C, lo cual se puede leer en https://docs.julialang.org/en/v1/stdlib/Printf/
+Una alternativa más potente es la macro +@printf+, que imprime utilizando cadenas con especificación de formato al más puro estilo C. Puede leer más sobre esto en https://docs.julialang.org/en/v1/stdlib/Printf/
 (((@printf)))((("macro", "Printf", "@printf", see="@printf")))(((formateando)))
 ====
 
@@ -462,7 +462,7 @@ julia> include("wc.jl")
 9
 ----
 
-Los módulos permiten crear espacios de trabajo separados, es decir, nuevos global scopes (ámbitos de tipo global). Una sentencia tiene  global scope si tiene efecto en todo el prorgama.
+Los módulos permiten crear espacios de trabajo separados, es decir, nuevos global scopes (ámbitos de tipo global). Una sentencia tiene  global scope si tiene efecto en todo el programa.
 
 Un módulo comienza con la palabra reservada +module+ y termina con +end+. Al usar módulos, se evitan los conflictos de nombres entre sus propias definiciones de nivel superior y las que se encuentran en el código de otra persona. +import+ permite controlar qué nombres de otros módulos están visibles y +export+ especifica cuáles de sus nombres son públicos, es decir, aquellos que se pueden usar fuera del módulo sin tener el prefijo del nombre del módulo.
 (((ámbito)))(((module)))((("palabra reservada", "module", see="module")))(((end)))(((import)))((("palabra reservada", "import", see="import")))(((export)))((("palabra reservada", "export", see="export")))(((ContarLineas)))((("module", "ContarLineas", see="ContarLineas")))((("función", "ContarLineas", "contarlineas", see="contarlineas")))

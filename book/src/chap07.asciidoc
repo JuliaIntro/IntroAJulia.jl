@@ -406,7 +406,7 @@ out = String(take!(io))
 println(out)
 ----
 
-La primera columna es un número, +a+, la segunda columna es la raíz cuadrada de +a+ calculada con +miraiz+, la tercera columna es la raíz cuadrada calculada con la función integrada +sqrt+ y la cuarta columna es el valor absoluto de la diferencia entre las dos estimaciones.
+La primera columna es un número, +a+; la segunda columna es la raíz cuadrada de +a+ calculada con +miraiz+; la tercera columna es la raíz cuadrada calculada con la función integrada +sqrt+ y la cuarta columna es el valor absoluto de la diferencia entre las dos estimaciones.
 
 [[ex07-2]]
 ==== Exercise 7-3
