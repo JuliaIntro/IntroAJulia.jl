@@ -113,7 +113,7 @@ Por ejemplo, suponga que desea encontrar la distancia entre dos puntos dados por
 
 El primer paso es considerar qué aspecto tendría la función distancia en Julia. En otras palabras, ¿cuáles son las entradas (parámetros) y cuál es la salida (valor de retorno)?
 
-En este caso las entradas son los dos puntos, que se pueden representar usando cuatro números. El valor devuelto es la distancia, un valor de punto flotante.
+En este caso las entradas son los dos puntos, que se pueden representar usando cuatro números. El valor devuelto es la distancia, que es un número de punto flotante.
 
 He aquí una primera versión de la función:
 (((distancia)))((("función", "definida por el progamador", "distancia", see="distancia")))
