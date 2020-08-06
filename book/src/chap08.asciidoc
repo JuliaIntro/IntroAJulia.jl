@@ -1,7 +1,7 @@
 [[chap08]]
 == Cadenas
 
-Las cadenas son diferentes de los números enteros, flotantes y booleanos. Una cadena es una _secuencia_, es decir, es una colección ordenada de valores. En este capítulo veremos cómo acceder a los caracteres que forman una cadena, y conoceremos algunas funciones integradas en Julia relacionadas con cadenas.
+Las cadenas son diferentes de los números enteros, flotantes y booleanos. Una cadena es una _secuencia_, es decir, una colección ordenada de valores. En este capítulo se verá cómo acceder a los caracteres que forman una cadena y se conocerán algunas funciones integradas en Julia relacionadas con cadenas.
 (((cadena)))(((secuencia)))
 
 [[characters]]
@@ -71,7 +71,7 @@ julia> fruta[end-1]
 'n': ASCII/Unicode U+006E (category Ll: Letter, lowercase)
 ----
 
-Pero el valor del índice tiene que ser un número entero. De lo contrario se obtiene:
+No obstante, el valor del índice tiene que ser un número entero. De lo contrario se obtiene:
 (((MethodError)))((("error", "Core", "MethodError", see="MethodError")))
 
 [source,@julia-repl-test chap08]
@@ -128,7 +128,7 @@ julia> frutas[2]
 ERROR: StringIndexError("🍌 🍎 🍐", 2)
 ----
 
-En el caso de +frutas+, el carácter +🍌+ es un carácter de cuatro bytes, por lo que los índices 2, 3 y 4 no son válidos y el índice del siguiente carácter es 5; el siguiente índice válido se puede calcular con +nextind(frutas, 1)+, el subsiguiente con +nextind(frutas,5)+ y así sucesivamente.
+En el caso de +frutas+, el carácter +🍌+ es un carácter de cuatro bytes, por lo que los índices 2, 3 y 4 no son válidos y el índice del siguiente carácter es 5, el siguiente índice válido se puede calcular con +nextind(frutas, 1)+, el subsiguiente con +nextind(frutas,5)+ y así sucesivamente.
 (((nextind)))((("función", "Base", "nextind", see="nextind")))
 
 
@@ -147,7 +147,7 @@ while indice <= sizeof(frutas)
 end
 ----
 
-Este bucle recorre la cadena y muestra cada letra en una línea distinta. La condición del bucle es +index pass:[&lt;=] sizeof(fruta)+, de modo que cuando el índice es mayor al número de bytes en la cadena, la condición es +falsa+, y no se ejecuta el cuerpo del bucle.
+Este bucle recorre la cadena y muestra cada letra en una línea distinta. La condición del bucle es +index pass:[&lt;=] sizeof(fruta)+, de modo que cuando el índice es mayor al número de bytes en la cadena, la condición es +falsa+ y no se ejecuta el cuerpo del bucle.
 
 La función +firstindex+ devuelve el primer índice de bytes válido. La palabra reservada +global+ antes de +indice+ indica que queremos reasignar la variable +indice+ definida en +Main+ (ver <<variables_globales>>).
 (((global)))(((firstindex)))((("función", "Base", "firstindex", see="firstindex")))
@@ -166,7 +166,7 @@ for letra in frutas
 end
 ----
 
-Cada vez que recorremos el bucle, se asigna a la variable +letra+ el siguiente carácter de la cadena. El bucle continúa hasta que no quedan más caracteres.
+Cada vez que se recorre el bucle, se asigna a la variable +letra+ el siguiente carácter de la cadena. El bucle continúa hasta que no quedan más caracteres.
 
 El ejemplo siguiente muestra cómo usar la concatenación (multiplicación de cadenas) y un bucle for para generar una serie abecedaria (es decir, una serie con elementos en orden alfabético). Por ejemplo, en el libro de Robert McCloskey _Make Way for Ducklings_, los nombres de los patitos son Jack, Kack, Lack, Mack, Nack, Ouack, Pack, y Quack. Este bucle muestra esos nombres en orden:
 
@@ -224,11 +224,11 @@ Una cadena vacía no contiene caracteres y tiene una longitud de 0, pero aparte 
 
 ==== Ejercicio 8-3
 
-Continuando este ejemplo, ¿qué crees que significa +str[:]+? Prueba y verás.
+Continuando este ejemplo, ¿qué cree que significa +str[:]+? Pruebe y verá.
 
 === Las Cadenas son Inmutables
 
-Es tentador usar el operador +[]+ en el lado izquierdo de una asignación, con la intención de cambiar un carácter en una cadena. Por ejemplo:
+Es tentador usar el operador +[]+ en el lado izquierdo de una asignación con la intención de cambiar un carácter en una cadena. Por ejemplo:
 (((operador corchete)))(((MethodError)))
 
 [source,@julia-repl-test chap08]
@@ -240,7 +240,7 @@ ERROR: MethodError: no method matching setindex!(::String, ::Char, ::Int64)
 ----
 Nota del traductor: De acuerdo con la codificación de caracteres en utf-8 o latin-1, el carácter de exclamación ‘¡’, en la variable saludo ocupa dos posiciones, de ahí que la letra ‘H’ esté localizada en el índice 3.
 
-La razón del error es que las cadenas son _inmutables_, lo que significa que no se puede cambiar una cadena existente. Lo más que puedes hacer es crear una nueva cadena que sea una variación de la original:
+La razón del error es que las cadenas son _inmutables_, lo que significa que no se puede cambiar una cadena existente. Lo máximo que se puede hacer es crear una nueva cadena que sea una variación de la original:
 (((immutable)))
 
 [source,@julia-repl-test chap08]
@@ -268,7 +268,7 @@ julia> "$saludo, $(paraquien)!"
 
 Esto es más entendible y conveniente que la concatenación de cadenas: +pass:[saludo * ", " * paraquien * "!"]+
 
-La expresión inmediatamente siguiente a +$+ se toma como la expresión cuyo valor se va a interpolar en la cadena. Por lo tanto, puedes interpolar cualquier expresión en una cadena usando paréntesis:
+La expresión inmediatamente siguiente a +$+ se toma como la expresión cuyo valor se va a interpolar en la cadena. Por lo tanto, puede interpolar cualquier expresión en una cadena usando paréntesis:
 
 [source,@julia-repl-test]
 ----
@@ -298,7 +298,7 @@ end
 
 En cierto sentido, la función búsqueda es lo contrario del operador +[]+. En lugar de tomar un índice y extraer el carácter correspondiente, toma un carácter y encuentra el índice donde aparece el carácter. Si el carácter no se encuentra, la función devuelve -1.
 
-Este es el primer ejemplo que hemos visto de una sentencia return dentro de un bucle. Si +palabra[indice] == letra+, la función devuelve inmediatamente el índice, escapando del bucle prematuramente.
+Este es el primer ejemplo de una sentencia return dentro de un bucle. Si +palabra[indice] == letra+, la función devuelve inmediatamente el índice, escapando del bucle prematuramente.
 
 Si el carácter no aparece en la cadena, entonces el programa sale del bucle normalmente y devuelve -1.
 
@@ -355,7 +355,7 @@ julia> findfirst("a", "banana")
 2:2
 ----
 
-La función +findfirst+ es más general que nuestra función; puede encontrar subcadenas, no solo caracteres:
+La función +findfirst+ es más general que la función creada: puede encontrar subcadenas, no solo caracteres:
 
 [source,@julia-repl-test]
 ----
@@ -363,7 +363,7 @@ julia> findfirst("na", "banana")
 3:4
 ----
 
-Por defecto, +findfirst+ comienza la búsqueda al comienzo de la cadena, pero la función +findnext+ toma un tercer argumento: el +indice+ donde debería comenzar:
+Por defecto, +findfirst+ empieza la búsqueda al comienzo de la cadena pero la función +findnext+ toma un tercer argumento: el +indice+ donde debería comenzar:
 (((findnext)))((("función", "definida por el programador", "findnext", see="findnext")))
 
 [source,@julia-repl-test]
@@ -437,8 +437,9 @@ end
 ----
 
 // Pamela, I'm not sure what's going on in the following. Do you really want this?
+// Laura: I've rewritten the below paragraph so that it's easier to understand. What do you think?
 
-Julia no maneja las letras mayúsculas y minúsculas como nosotros. Todas las letras mayúsculas van antes de las letras minúsculas. Por lo tanto:
+Julia no maneja las letras mayúsculas y minúsculas del mismo modo que son manejadas en cualquier lengua hablada. Todas las letras mayúsculas van antes de las letras minúsculas, según el estándar de codificación. Por lo tanto:
 
 [source,julia chap08]
 ----
@@ -478,13 +479,13 @@ function esreverso(palabra1, palabra2)
 end
 ----
 
-La primera sentencia +if+ verifica si las palabras tienen la misma longitud. Si no, se devuelve +false+ inmediatamente. De lo contrario, para el resto de la función, podemos suponer que las palabras tienen la misma longitud. Este es un ejemplo del patrón guardián.
+La primera sentencia +if+ verifica si las palabras tienen la misma longitud. Si no, se devuelve +false+ inmediatamente. De lo contrario, para el resto de la función, se puede suponer que las palabras tienen la misma longitud. Este es un ejemplo del patrón guardián.
 
 +i+ y +j+ son índices: +i+ recorre +palabra1+ de derecha a izquierda mientras que +j+ recorre +palabra2+ de izquierda a derecha. Si dos letras no coinciden, se devuelve +false+ inmediatamente. Si el ciclo termina y todas las letras coinciden, se devuelve +true+.
 
 La función +lastindex+ devuelve el último índice de bytes válido de una cadena y +prevind+ el índice válido anterior a un carácter.
 
-Si probamos esta función con las palabras "amor" y "roma", esperamos el valor de retorno +true+, pero obtenemos +false+:
+Si se prueba esta función con las palabras "amor" y "roma", se espera el valor de retorno +true+, pero se obtiene +false+:
 
 [source,@julia-repl-test chap08]
 ----
@@ -492,7 +493,7 @@ julia> esreverso("amor", "roma")
 false
 ----
 
-Para depurar este tipo de error, primeramente imprimamos los valores de los índices:
+Para depurar este tipo de error, primeramente se imprimen los valores de los índices:
 
 // [source,julia]
 // ----
@@ -578,7 +579,7 @@ Esta vez se ha producido un +BoundsError+. El valor de +i+ es 5, que está fuera
 
 ==== Ejercicio 8-6
 
-Ejecute el programa en papel, cambiando los valores de +i+ y +j+ durante cada iteración. Encuentre y arregle el segundo error en esta función.
+Ejecute el programa en papel cambiando los valores de +i+ y +j+ durante cada iteración. Encuentre y arregle el segundo error en esta función.
 
 === Glosario
 
@@ -650,7 +651,7 @@ Hay una función integrada llamada +count+ que es similar a la función en <<loo
 [[ex08-3]]
 ==== Ejercicio 8-9
 
-Una porción de cadena puede tomar un tercer índice. El primero especifica el inicio, el tercero el final y el segundo el "tamaño del paso"; es decir, el número de espacios entre caracteres sucesivos. Un tamaño de paso de 2 significa cada un caracter; 3 significa cada dos, etc.
+Una porción de cadena puede tomar un tercer índice. El primero especifica el inicio, el tercero el final y el segundo el "tamaño del paso", es decir, el número de espacios entre caracteres sucesivos. Un tamaño de paso de 2 significa cada un caracter; 3 significa cada dos, etc.
 (((porción)))
 
 [source,@julia-repl-test]
@@ -750,4 +751,4 @@ julia> Char(Int('A') + 32)
 ====
 
 
-Algunos chistes ofensivos en Internet están codificados en ROT13, que es un cifrado César con desplazamiento 13. Si no te ofendes fácilmente, encuentra y decodifica algunos de ellos.
+Algunos chistes ofensivos en Internet están codificados en ROT13, que es un cifrado César con desplazamiento 13. Si no se ofende fácilmente, encuentre y decodifice algunos de ellos.

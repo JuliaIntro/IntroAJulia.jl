@@ -1,12 +1,12 @@
 [[chap16]]
 == Estructuras y Funciones
 
-Ahora que sabemos cómo crear tipos compuestos, el siguiente paso es escribir funciones que tomen objetos definidos por el programador como parámetros, y que devuelvan otros como resultados. En este capítulo también se presenta el "estilo de programación funcional" y dos nuevas formas de desarrollar programas.
+Ahora que se ha tratado cómo crear tipos compuestos, el siguiente paso es escribir funciones que tomen objetos definidos por el programador como parámetros y que devuelvan otros como resultados. En este capítulo también se presenta el "estilo de programación funcional" y dos nuevas formas de desarrollar programas.
 
 [[time]]
 === Tiempo
 
-Como otro ejemplo de tipo compuesto, definiremos una +estructura+ llamada +Hora+ que registra la hora del día. La definición de esta estructura se muestra a continuación:
+Como otro ejemplo de tipo compuesto, se define una +estructura+ llamada +Hora+ que registra la hora del día. La definición de esta estructura se muestra a continuación:
 (((Hora)))((("tipo", "definida por el programador", "Hora", see="Hora")))
 
 [source,@julia-setup chap16]
@@ -45,13 +45,13 @@ Escriba una función llamada +imprimirhora+ que tome un objeto +Hora+ y lo impri
 
 ==== Ejercicio 16-2
 
-Escriba una función booleana llamada +estadespues+ que tome dos objetos +Hora+: +t1+ y +t2+, y devuelva +true+ si la hora +t1+ está después que +t2+, y +false+ de lo contrario. Desafío: no use sentencias +if+.
+Escriba una función booleana llamada +estadespues+ que tome dos objetos +Hora+: +t1+ y +t2+ y devuelva +true+ si la hora +t1+ está después que +t2+ y +false+ de lo contrario. Desafío: no use sentencias +if+.
 (((estadespues)))((("función", "definida por el programador", "estadespues", see="estadespues")))
 
 
 === Funciones Puras
 
-En las siguientes secciones escribiremos dos versiones de una función que calcula la suma de horas. La primera versión muestra un tipo de función llamado función pura, y la segunda un tipo llamado modificador. Además, estas versiones permitirán mostrar un nuevo plan de desarrollo de programas que llamaremos _desarrollo de prototipos_, que es una forma de abordar un problema complejo comenzando con un prototipo simple y lidiando gradualmente con las complicaciones.
+En las siguientes secciones se escriben dos versiones de una función que calcula la suma de horas. La primera versión muestra un tipo de función llamado función pura y la segunda un tipo llamado modificador. Además, estas versiones permitirán mostrar un nuevo plan de desarrollo de programas llamado _desarrollo de prototipos_, una forma de abordar un problema complejo comenzando con un prototipo simple y lidiando gradualmente con las complicaciones.
 (((función pura)))(((desarrollo de prototipos)))
 
 Este es un primer prototipo de la función +sumahora+:
@@ -66,7 +66,7 @@ end
 
 La función crea un nuevo objeto +Hora+, inicializa sus atributos y devuelve una referencia al nuevo objeto. A esto se le llama _función pura_ porque no modifica ninguno de los objetos que se le pasan como argumento, y no tiene efectos (como mostrar un valor o tomar una entrada del usuario) más que devolver un valor.
 
-Para probar esta función, crearemos dos objetos +Hora+: +inicio+, que contiene la hora de inicio de una película, como _Roma_, y +duracion+, que contiene la duración de la película, que es dos horas y 15 minutos.
+Para probar esta función, se crean dos objetos +Hora+: +inicio+, que contiene la hora de inicio de una película, como _Roma_, y +duracion+, que contiene la duración de la película, que es dos horas y 15 minutos.
 
 +sumahora+ calcula cuándo se terminará la película.
 
@@ -90,7 +90,7 @@ julia> imprimirhora(finaliza)
 11:65:00
 ----
 
-El resultado +11:65:00+ no es lo que queríamos. El problema es que esta función no considera los casos en los que el número de segundos o minutos suma más que sesenta. Cuando ocurre eso, debemos "acarrear" (como en una suma) los segundos sobrantes a la columna de los minutos, o los minutos extras a la columna de las horas. He aquí una versión corregida de la función:
+El resultado +11:65:00+ no es lo que se buscaba. El problema es que esta función no considera los casos en los que el número de segundos o minutos suma más que sesenta. Cuando esto ocurre, debemos "acarrear" (como en una suma) los segundos sobrantes a la columna de los minutos o los minutos extras a la columna de las horas. He aquí una versión corregida de la función:
 
 [source,@julia-setup chap16]
 ----
@@ -110,7 +110,7 @@ function sumahora(t1, t2)
 end
 ----
 
-Aunque esta función es correcta, es muy larga. Más adelante veremos una alternativa más corta.
+Aunque esta función es correcta, es muy larga. Más adelante se explorará una alternativa más corta.
 
 [[modifiers]]
 === Modificadores
@@ -118,7 +118,7 @@ Aunque esta función es correcta, es muy larga. Más adelante veremos una altern
 Hay veces en las que es útil que una función modifique uno o más de los objetos que recibe como parámetros. En ese caso, los cambios son visibles en el nivel en donde se ubica la sentencia de llamada. Estas funciones se llaman _modificadores_.
 (((modificador)))
 
-La función +incrementar!+, que agrega un número dado de segundos a un objeto +Hora+, puede escribirse naturalmente como un modificador. Aquí mostramos un prototipo de la función:
+La función +incrementar!+, que agrega un número dado de segundos a un objeto +Hora+, puede escribirse naturalmente como un modificador. Aquí se muestra un prototipo de la función:
 (((incrementar!)))((("función", "definida por el programador", "incrementar!", see="incrementar!")))
 
 [source,@julia-setup chap16]
@@ -136,40 +136,40 @@ function incrementar!(tiempo, segundos)
 end
 ----
 
-La primera línea realiza la suma de los segundos; las restantes se ocupan de los casos especiales que vimos antes.
+La primera línea realiza la suma de los segundos y las restantes se ocupan de los casos especiales vistos anteriormente.
 
 ¿Es correcta esta función? ¿Qué ocurre si el parámetro +segundos+ es mucho mayor que sesenta?
 
-En tal caso, no es suficiente con acarrear una vez; debemos seguir haciéndolo hasta que +tiempo.segundo+ sea menor que sesenta. Una solución es sustituir las sentencias +if+ por sentencias +while+. Esta función sería correcta, pero no es la solución más eficiente.
+En tal caso, no es suficiente con acarrear una vez, debemos seguir haciéndolo hasta que +tiempo.segundo+ sea menor que sesenta. Una solución es sustituir las sentencias +if+ por sentencias +while+. Esta función sería correcta pero no es la solución más eficiente.
 
 ==== Ejercicio 16-3
 
 Escriba una versión correcta de +incrementar!+ sin bucles.
 
-Todo lo que se pueda hacer con modificadores también puede lograrse con funciones puras. De hecho, algunos lenguajes de programación solo permiten funciones puras. Hay ciertas evidencias de que los programas que usan funciones puras son más rápidos de desarrollar y menos propensos a errores que los programas que usan modificadores. Sin embargo, a veces los modificadores son utiles, y en algunos casos los programas funcionales (es decir, con funciones puras) tienden a ser menos eficientes.
+Todo lo que se pueda hacer con modificadores también puede lograrse con funciones puras. De hecho, algunos lenguajes de programación solo permiten funciones puras. Hay ciertas evidencias de que los programas que usan funciones puras son más rápidos de desarrollar y menos propensos a errores que los programas que usan modificadores. Sin embargo, a veces los modificadores son útiles y en algunos casos los programas funcionales (es decir, con funciones puras) tienden a ser menos eficientes.
 
-En general, recomendamos que escriba funciones puras siempre que sea razonable, y recurra a los modificadores sólo si hay una ventaja convincente. Este enfoque podría llamarse _estilo de programación funcional_.
+En general, recomendamos que escriba funciones puras siempre que sea razonable y recurra a los modificadores sólo si hay una ventaja convincente. Este enfoque podría llamarse _estilo de programación funcional_.
 (((estilo de programación funcional)))
 
 ==== Ejercicio 16-4
 
-Escriba una versión "pura" de +incrementar!+, que cree y devuelva un nuevo objeto +Hora+ en vez de modificar el parámetro.
+Escriba una versión "pura" de +incrementar!+ que cree y devuelva un nuevo objeto +Hora+ en vez de modificar el parámetro.
 
 
 [[prototyping_versus_planning]]
 === Desarrollo de prototipos frente a la planificación
 
-El desarrollo de programas que veremos ahora se llama “desarrollo de prototipos”. En cada una de las funciones anteriores, escribimos un prototipo que realizaba el cálculo básico, y luego lo probamos sobre unos cuantos casos, corrigiendo las fallas a medida que las encontrábamos.
+El desarrollo de programas que veremos ahora se llama “desarrollo de prototipos”. En cada una de las funciones anteriores, escribimos un prototipo que realizaba el cálculo básico y luego lo probamos sobre unos cuantos casos, corrigiendo los errores a medida que iban apareciendo.
 (((plan de desarrollo de programa)))(((desarrollo de prototipos)))
 
-Este enfoque puede ser efectivo, especialmente si aún no tiene un conocimiento profundo del problema. Pero las correcciones incrementales pueden generar código innecesariamente complicado (que considere muchos casos especiales) y poco confiable (es difícil saber si ha encontrado todos los errores).
+Este enfoque puede ser efectivo, especialmente si aún no tiene un conocimiento profundo del problema. No obstante, las correcciones incrementales pueden generar código innecesariamente complicado (que considere muchos casos especiales) y poco confiable (es difícil saber si ha encontrado todos los errores).
 
-Una alternativa es el _desarrollo planificado_, en el que la comprensión del problema en profundidad puede facilitar en gran medida la programación. En el caso de sumahora, podemos ver un objeto Hora como ¡un numero de tres dígitos en base 60 (vea https://en.wikipedia.org/wiki/Sexagesimal )!. El atributo segundo es la “columna de unidades”, el atributo minuto es la “columna de los sesentas” y el atributo hora es la “columna de los tres mil seiscientos”.
+Una alternativa es el _desarrollo planificado_, en el que la comprensión del problema en profundidad puede facilitar en gran medida la programación. En el caso de sumahora, se puede ver un objeto Hora como ¡un número de tres dígitos en base 60 (vea https://en.wikipedia.org/wiki/Sexagesimal )!. El atributo segundo es la “columna de unidades”, el atributo minuto es la “columna de los sesentas” y el atributo hora es la “columna de los tres mil seiscientos”.
 (((desarrollo planificado)))
 
-Cuando escribimos +sumahora+ e +incrementar!+, efectivamente estábamos sumando en base 60, por eso tuvimos que "acarrear" de una columna a la siguiente.
+Cuando se escribía +sumahora+ e +incrementar!+, efectivamente se estaba sumando en base 60, por eso se tuvo que "acarrear" de una columna a la siguiente.
 
-Esta observación sugiere otro enfoque para el problema: podemos convertir los objetos +Hora+ en enteros y aprovechar el hecho de que la computadora sabe realizar aritmética con enteros.
+Esta observación sugiere otro enfoque para el problema: se pueden convertir los objetos +Hora+ en enteros y aprovechar el hecho de que la computadora sabe realizar aritmética con enteros.
 
 La siguiente función convierte un objeto Hora en un entero:
 (((horaaentero)))((("función", "definida por el programador", "horaaentero", see="horaaentero")))
@@ -212,23 +212,22 @@ Esta versión es más corta que la original y más fácil de verificar.
 
 Reescriba +incrementar!+ usando +horaaentero+ y +enteroahora+.
 
+Convertir de base 60 a base 10, y viceversa, es más difícil que solo trabajar con los tiempos. El cambio de base es más abstracto pero la intuición humana para tratar con las horas es mejor.
 
-Convertir de base 60 a base 10, y viceversa, es más difícil que solo trabajar con los tiempos. El cambio de base es más abstracto; nuestra intuición para tratar con las horas es mejor.
+Si al usuario se le ocurre tratar los tiempos como números de base 60 e invierte un poco de tiempo en escribir las funciones de conversión (+horaaentero+ y +enteroahora+), obtiene un programa más corto, fácil de leer y depurar y confiable.
 
-Pero si se nos ocurre tratar los tiempos como números base 60, e invertimos un poco de tiempo en escribir las funciones de conversión (+horaaentero+ y +enteroahora+), obtenemos un programa más corto, fácil de leer y depurar, y confiable.
+El cambio de base también hace que sea más fácil añadir funcionalidades posteriormente. Por ejemplo, imagine restar dos +Horas+ para hallar el intervalo entre ellas. El enfoque simple sería implementar una resta con "préstamo" pero usar funciones de conversión sería más fácil y con mayor probabilidad correcto.
 
-También hace que sea más fácil añadir funcionalidades posteriormente. Por ejemplo, imagine restar dos +Horas+ para hallar el intervalo entre ellas. El enfoque simple sería implementar una resta con "préstamo". Pero usar funciones de conversión sería más fácil y con mayor probabilidad correcto.
-
-Irónicamente, a veces hacer un poblema más complejo (o más general) lo hace más fácil (porque hay menos casos especiales y por lo tanto, el margen de error es menor).
+Irónicamente, a veces hacer un poblema más complejo (o más general) lo hace más fácil porque hay menos casos especiales y por lo tanto, el margen de error es menor.
 
 
 [[chap16_debugging]]
 === Depuración
 
-Un objeto +Hora+ está bien definido si los valores de +minuto+ y +segundo+ están entre 0 y 60 (incluido 0 pero no 60) y si +hora+ es positivo. +hora+ y +minuto+ deben ser valores enteros, pero podríamos permitir que +segundo+ sea fraccional.
+Un objeto +Hora+ está bien definido si los valores de +minuto+ y +segundo+ están entre 0 y 60 (incluido 0 pero no 60) y si +hora+ es positivo. +hora+ y +minuto+ deben ser valores enteros, pero se podría permitir que +segundo+ sea fraccional.
 (((depuración)))
 
-Los requisitos como estos se denominan _invariantes_ porque siempre deben ser verdaderos. Dicho de otra manera, si no son ciertas, algo está mal.
+Los requisitos como estos se denominan _invariantes_ porque siempre deben ser verdaderos. Dicho de otra manera, si no son ciertos, algo está mal.
 (((invariante)))
 
 Escribir código para verificar invariantes puede ayudar a detectar errores y encontrar sus causas. Por ejemplo, podría tener una función como +eshoravalida+ que tome un objeto +Hora+ y devuelva +false+ si viola una invariante:
@@ -273,7 +272,7 @@ function sumahora(t1, t2)
 end
 ----
 
-Las macros +@assert+ son útiles porque permiten distinguir el código que trata condiciones normales, del código que verifica los errores.
+Las macros +@assert+ son útiles porque permiten distinguir el código que trata condiciones normales del código que verifica los errores.
 
 
 === Glosario
@@ -283,7 +282,7 @@ Una forma de desarrollar programas que involucra generar un prototipo del progra
 (((desarrollo de prototipos)))
 
 desarrollo planificado::
-Una forma de desarrollar programas que implica una profunda comprensión del problema, y más planificación que desarrollo incremental o desarrollo de prototipos.
+Una forma de desarrollar programas que implica una profunda comprensión del problema y más planificación que desarrollo incremental o desarrollo de prototipos.
 (((desarrollo planificado)))
 
 función pura::
@@ -311,7 +310,7 @@ Una condición que nunca debería cambiar durante la ejecución de un programa.
 Escriba una función llamada +multhora+ que tome un objeto +Hora+ y un número, y devuelva un nuevo objeto +Hora+ que contenga el producto entre +Hora+ original y el número.
 (((multhora)))((("función", "definida por el programador", "multhora", see="multhora")))
 
-Luego use +multhora+ para escribir una función que tome un objeto +Hora+ que represente el tiempo de duración de una carrera, y un número que represente la distancia, y devuelva un objeto +Hora+ que represente el ritmo promedio (minutos por kilómetro).
+Luego use +multhora+ para escribir una función que tome un objeto +Hora+ que represente el tiempo de duración de una carrera, y un número que represente la distancia y devuelva un objeto +Hora+ que represente el ritmo promedio (minutos por kilómetro).
 
 [[ex16-2]]
 ==== Ejercicio 16-7
@@ -320,7 +319,7 @@ Julia proporciona objetos de tiempo similares a los objetos +Hora+ de este capí
 
 . Escriba un programa que tome la fecha actual e imprima el día de la semana.
 
-. Escriba un programa que tome como entrada una fecha de cumpleaños, e imprima la edad del usuario y la cantidad de días, horas, minutos y segundos hasta su próximo cumpleaños.
+. Escriba un programa que tome como entrada una fecha de cumpleaños e imprima la edad del usuario y la cantidad de días, horas, minutos y segundos hasta su próximo cumpleaños.
 
 . Para dos personas nacidas en días diferentes, hay un día en que una tiene el doble de edad que la otra. Ese es su Día Doble. Escriba un programa que tome dos cumpleaños y calcule su Día doble.
 

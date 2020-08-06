@@ -1,7 +1,7 @@
 [[chap07]]
 == Iteración
 
-Este capítulo se centra en la iteración, que es la capacidad de ejecutar repetidamente un bloque de sentencias. Hemos visto dos tipos de iteración: usando recursión en <<recursion>>, y usando ciclos +for+, en <<simple_repetition>>. En este capítulo veremos otro tipo más: usando sentencias +while+. Primeramente, se introducirán algunos términos sobre asignación de variables.
+Este capítulo se centra en la iteración, que es la capacidad de ejecutar repetidamente un bloque de sentencias. Se han visto dos tipos de iteración: usando recursión en <<recursion>> y usando ciclos +for+, en <<simple_repetition>>. En este capítulo veremos otro tipo más: usando sentencias +while+. Primeramente, se introducirán algunos términos sobre asignación de variables.
 (((iteración)))(((recursión)))(((sentencia for)))
 
 === Asignación múltiple
@@ -56,7 +56,7 @@ Está permitido definir una función con el mismo nombre de una variable definid
 
 === Actualización de variables
 
-Una de las formas más comunes de asignación múltiple es la actualización, donde el nuevo valor de la variable depende del anterior.
+Una de las formas más comunes de asignación múltiple es la actualización, dónde el nuevo valor de la variable depende del anterior.
 (((update)))
 
 [source,@julia-repl-test chap07]
@@ -87,15 +87,15 @@ julia> y = y + 1
 1
 ----
 
-Actualizar una variable sumándole 1 de denomina un _incremento_; y restándole 1 de llama un _decremento_.
+Actualizar una variable sumándole 1 se denomina un _incremento_ y restándole 1 se llama un _decremento_.
 (((incremento)))(((decremento)))
 
 === La Sentencia +while+
 
-Las computadoras se usan a menudo para automatizar tareas repetitivas. Realizar repetidamente tareas idénticas o similares sin cometer errores es algo que las computadoras hacen bien y que los seres humanos hacemos limitadamente. La ejecución repetida de un conjunto de sentencias se llama _iteración_. 
+Las computadoras se usan a menudo para automatizar tareas repetitivas. Realizar repetidamente tareas idénticas o similares sin cometer errores es algo que las computadoras hacen bien y que los seres humanos hacen limitadamente. La ejecución repetida de un conjunto de sentencias se llama _iteración_. 
 (((iteración)))
 
-Ya hemos visto dos funciones, +cuenta regresiva+ y +printn+, que iteran usando recursividad. Por ser la iteración tan común, Julia proporciona varias características que la hacen más fácil. Una es la sentencia +for+ que vimos en <<simple_repetition>>, a la cual volveremos más adelante. 
+Ya se han visto dos funciones, +cuenta regresiva+ y +printn+, que iteran usando recursividad. Por ser la iteración tan común, Julia proporciona varias características que la hacen más fácil. Una es la sentencia +for+ que se vio en <<simple_repetition>>, a la cual se volverá más adelante. 
 (((recursión)))(((sentencia for)))
 
 Otra característica es la _sentencia_ +while+. Aquí hay una versión de +cuentaregresiva+ que muestra el uso de la sentencia +while+:
@@ -130,7 +130,7 @@ Este tipo de flujo de llama bucle porque el tercer paso vuelve a la parte superi
 El cuerpo del bucle debería cambiar el valor de una o más variables de manera que, en algún momento, la condición sea falsa y el bucle termine. En caso contrario, el bucle se repetirá indefinidamente, lo cual se llama _bucle infinito_. Una interminable fuente de diversión para los informáticos es la observación de que las instrucciones del champú “Enjabone, enjuague, repita”, son un bucle infinito.
 (((bucle infinito)))
 
-En el caso de +cuentaregresiva+, podemos probar que el bucle termina: si +n+ es cero o negativo, el ciclo no se produce. En otro caso, el valor de +n+ se hace más pequeño cada vez que pasa por el bucle, así en cierto momento llegaremos a 0. 
+En el caso de +cuentaregresiva+, podemos probar que el bucle termina: si +n+ es cero o negativo, el ciclo no se produce. En otro caso, el valor de +n+ se hace más pequeño cada vez que pasa por el bucle, así en cierto momento se llega a 0. 
 
 En otros casos no es tan fácil decirlo. Por ejemplo:
 (((seq)))((("función", "definida por el programador", "seq", see="seq")))
@@ -153,9 +153,9 @@ La condición de este bucle es +n != 1+, de manera que el bucle continuará hast
 
 Cada vez que pasa por el bucle, el programa muestra como salida el valor de +n+ y luego comprueba si es par o impar. Si es par, el valor de +n+ se divide por dos. Si es impar, el valor de +n+ se sustituye por +pass:[n*3 + 1]+. Por ejemplo, si el argumento pasado a la función seq es 3, los valores resultantes +n+ son 3, 10, 5, 16, 8, 4, 2, 1.
 
-Puesto que n a veces aumenta y a veces disminuye, no hay una prueba obvia de que +n+ alcanzará alguna vez el valor 1, o de que el programa vaya a terminar. Para algunos valores particulares de +n+, podemos probar que sí termina. Por ejemplo, si el valor de inicio es una potencia de dos, entonces el valor de +n+ será par cada vez que se pasa por el bucle, hasta que llegue a 1. El ejemplo anterior produce dicha secuencia si se inicia con 16.
+Puesto que n a veces aumenta y a veces disminuye, no hay una prueba obvia de que +n+ alcance alguna vez el valor 1, o de que el programa vaya a terminar. Para algunos valores particulares de +n+, se puede probar que sí termina. Por ejemplo, si el valor de inicio es una potencia de dos, entonces el valor de +n+ será par cada vez que se pasa por el bucle, hasta que llegue a 1. El ejemplo anterior produce dicha secuencia si se inicia con 16.
 
-Lo díficil es preguntarnos si se puede probar que este programa termina para todos los valores positivos de +n+. Hasta ahora, nadie ha sido capaz de probar que lo hace o ¡que no lo hace! (Vea https://es.wikipedia.org/wiki/Conjetura_de_Collatz.)
+Lo díficil es preguntarse si se puede probar que este programa termina para todos los valores positivos de +n+. Hasta ahora, nadie ha sido capaz de probar que lo hace o ¡que no lo hace! (Vea https://es.wikipedia.org/wiki/Conjetura_de_Collatz.)
 (((conjetura de Collatz)))
 
 ==== Ejercicio 7-1
@@ -217,7 +217,7 @@ Si +i+ es divisible por 3, la sentencia continue detiene la iteración actual y 
 [[square_roots]]
 === Raíces Cuadradas
 
-Los bucles son comúnmente utilizados en programas que calculan resultados numéricos, que comienzan con una respuesta aproximada, y que es iterativamente mejorada.
+Los bucles son comúnmente utilizados en programas que calculan resultados numéricos y que comienzan con una respuesta aproximada que es iterativamente mejorada.
 
 Por ejemplo, una forma de calcular raíces cuadradas es el método de Newton. Suponga que desea conocer la raíz cuadrada de latexmath:[a]. Si comienza con casi cualquier estimación latexmath:[x], puede calcular una mejor aproximación con la siguiente fórmula:
 (((método de Newton)))
@@ -241,7 +241,7 @@ julia> y = (x + a/x) / 2
 2.1666666666666665
 ----
 
-El resultado está más cerca de la respuesta correcta (latexmath:[\sqrt 4 = 2]). Si repetimos el proceso con la nueva estimación, se acerca aún más:
+El resultado está más cerca de la respuesta correcta (latexmath:[\sqrt 4 = 2]). Si se repite el proceso con la nueva estimación, se acerca aún más:
 
 [source,@julia-repl-test chap07]
 ----
@@ -265,7 +265,7 @@ julia> y = (x + a/x) / 2
 2.0000000000262146
 ----
 
-En general, no sabemos de antemano cuántos pasos se necesitan para llegar a la respuesta correcta, pero sabemos que hemos llegado a ella cuando la estimación deja de cambiar:
+En general, no se sabe de antemano cuántos pasos se necesitan para llegar a la respuesta correcta, pero se sabe que se ha llegado a ella cuando la estimación deja de cambiar:
 
 [source,@julia-repl-test chap07]
 ----
@@ -279,7 +279,7 @@ julia> y = (x + a/x) / 2
 2.0
 ----
 
-Cuando +y == x+, podemos detenernos. A continuación se muestra un ciclo que comienza con una estimación inicial, +x+, la cual mejora hasta que deja de cambiar:
+Cuando +y == x+, ya se pueden detener los cómputos. A continuación se muestra un ciclo que comienza con una estimación inicial, +x+, la cual mejora hasta que deja de cambiar:
 
 [source,julia]
 ----
@@ -309,28 +309,28 @@ Donde +ε+ (*+\varepsilon TAB+*) toma un valor como +0.0000001+, y representa el
 
 === Algoritmos
 
-El método de Newton es un ejemplo de un _algoritmo_: es un proceso mecánico que permite resolver una categoría de problemas (en este caso, el cálculo de raíces cuadradas).
+El método de Newton es un ejemplo de un _algoritmo_, un proceso mecánico que permite resolver una categoría de problemas (en este caso, el cálculo de raíces cuadradas).
 (((algoritmo)))
 
-Para comprender qué es un algoritmo, podría ayudar empezar con algo que no es un algoritmo. Cuando aprendiste a multiplicar números de un solo dígito, probablemente memorizaste la tabla de multiplicar. En efecto, memorizaste 100 soluciones específicas. Ese tipo de conocimiento no es un algoritmo.
+Para comprender qué es un algoritmo, podría ayudar empezar con algo que no es un algoritmo. Cuando aprendió a multiplicar números de un solo dígito, probablemente memorizó la tabla de multiplicar. En efecto, memorizó 100 soluciones específicas. Ese tipo de conocimiento no es un algoritmo.
 
-Pero si fueras "flojo", podrías haber aprendido algunos trucos. Por ejemplo, para encontrar el producto de latexmath:[n] y 9, puedes escribir latexmath:[n-1] como el primer dígito y latexmath:[10-n] como el segundo dígito. Este truco es una solución general para multiplicar cualquier número de un solo dígito por 9. ¡Este es un algoritmo!
+Pero si fuera "flojo", podría haber aprendido algunos trucos. Por ejemplo, para encontrar el producto de latexmath:[n] y 9, puede escribir latexmath:[n-1] como el primer dígito y latexmath:[10-n] como el segundo dígito. Este truco es una solución general para multiplicar cualquier número de un solo dígito por 9. ¡Esto sí es un algoritmo!
 
 Del mismo modo, las técnicas que aprendió para la suma con “llevamos tanto”, la resta con “pedimos prestado tanto”, y la división “larga o con galera o de casita” son todas ellas algoritmos. Una de las características de los algoritmos es que no requieren inteligencia para realizarlos. Son procesos mecánicos donde cada paso se sigue de acuerdo con un conjunto simple de reglas.
 
-Ejecutar algoritmos es aburrido, pero diseñarlos es interesante, intelectualmente desafiante y son una parte central de la informática.
+Ejecutar algoritmos es aburrido, pero diseñarlos es interesante, intelectualmente desafiante y constituyen una parte central de la informática.
 
-Algunas de las cosas que las personas hacen naturalmente, sin dificultad o conscientemente, son las más difíciles de expresar en algoritmos. Comprender el lenguaje natural es un buen ejemplo. Todos lo hacemos, pero hasta ahora nadie ha podido explicar _cómo_ lo hacemos, al menos no en forma de algoritmo.
+Algunas de las cosas que las personas hacen naturalmente, sin dificultad o conscientemente, son las más difíciles de expresar en algoritmos. Comprender el lenguaje natural es un buen ejemplo. Todo el mundo lo hace, pero hasta ahora nadie ha podido explicar _cómo_ se hace, al menos no en forma de algoritmo.
 
 === Depuración
 
-A medida que comienzas a escribir programas más extensos, es posible que pases más tiempo depurando. Más código significa más posibilidades de cometer un error y más lugares en dónde se pueden esconder los errores.
+A medida que comience a escribir programas más extensos, es posible que pase más tiempo depurando. Más código significa más posibilidades de cometer un error y más lugares dónde se pueden esconder los errores.
 (((depuración)))
 
-Una forma de reducir el tiempo de depuración es "depurar por bisección". Por ejemplo, si hay 100 líneas en su programa y las revisas una a la vez, serían 100 revisiones.
+Una forma de reducir el tiempo de depuración es "depurar por bisección". Por ejemplo, si hay 100 líneas en su programa y las revisa una a la vez, serían 100 revisiones.
 (((depuración por bisección)))
 
-Es mejor tratar de dividir el problema en dos. Busque en la mitad del programa, o cerca, un valor intermedio que pueda verificar. Agregue una sentencia de impresión (o algo que permita verificar) y ejecute el programa.
+Es mejor tratar de dividir el problema en dos. Busque en la mitad del programa o un valor intermedio que pueda verificar. Agregue una sentencia de impresión (o algo que permita verificar) y ejecute el programa.
 (((sentencia print)))
 
 Si esta verificación es incorrecta, debe haber un problema en la primera mitad del programa. Si es correcta, el problema está en la segunda mitad.
@@ -354,11 +354,11 @@ Asignación que le da un valor inicial a una variable que será actualizada.
 (((inicialización)))
 
 incremento::
-Actualización que incrementa el valor de la variable (usualmente en 1)
+Actualización que incrementa el valor de la variable (usualmente en 1).
 (((incremento)))
 
 decremento::
-Actualización que disminuye el valor de la variable.
+Actualización que disminuye el valor de la variable (usualmente en 1).
 (((decremento)))
 
 iteración::
@@ -391,7 +391,7 @@ Proceso general para resolver una categoría de problemas.
 [[ex07-1]]
 ==== Ejercicio 7-2
 
-Copie el bucle de <<square_roots>> e insértelo en una función llamada +miraiz+, que tome +a+ como parámetro, elija un valor razonable de +x+ y devuelva una estimación de la raíz cuadrada de +a+.
+Copie el bucle de <<square_roots>> e insértelo en una función llamada +miraiz+ que tome +a+ como parámetro, elija un valor razonable de +x+ y devuelva una estimación de la raíz cuadrada de +a+.
 (((miraiz)))((("función", "definida por el programador", "miraiz", see="miraiz")))
 
 Para probarla, escriba una función llamada +probarraiz+ que imprima una tabla como esta:
@@ -406,7 +406,7 @@ out = String(take!(io))
 println(out)
 ----
 
-La primera columna es un número, +a+; la segunda columna es la raíz cuadrada de +a+ calculada con +miraiz+; la tercera columna es la raíz cuadrada calculada con la función integrada +sqrt+; la cuarta columna es el valor absoluto de la diferencia entre las dos estimaciones.
+La primera columna es un número, +a+; la segunda columna es la raíz cuadrada de +a+ calculada con +miraiz+; la tercera columna es la raíz cuadrada calculada con la función integrada +sqrt+ y la cuarta columna es el valor absoluto de la diferencia entre las dos estimaciones.
 
 [[ex07-2]]
 ==== Exercise 7-3
@@ -431,7 +431,7 @@ julia> eval(expr)
 1.7724538509055159
 ----
 
-Escriba una función llamada +evalbucle+ que iterativamente solicite una entrada al usuario, tome la entrada resultante y la evalúe usando +eval+, pasa posteriormente imprimir el resultado. Debe continuar hasta que el usuario ingrese +listo+, y luego devolver el valor de la última expresión que evaluó.
+Escriba una función llamada +evalbucle+ que iterativamente solicite una entrada al usuario, tome la entrada resultante, la evalúe usando +eval+ y pase posteriormente a imprimir el resultado. Debe continuar hasta que el usuario ingrese +listo+ y luego devolver el valor de la última expresión que evaluó.
 (((evalbucle)))((("función", "definida por el programador", "evalbucle", see="evalbucle")))
 
 [[ex07-3]]

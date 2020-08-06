@@ -17,13 +17,21 @@ El primer paso en la depuración es averiguar el tipo de error al que se enfrent
 
 === Errores de Sintaxis
 
-Los errores de sintaxis suelen ser fáciles de corregir una vez que se descubre cuáles son. Desafortunadamente, muchas veces los mensajes de error no son útiles. Los mensajes más comunes son +ERROR: LoadError: syntax: incomplete: premature end of input+ y +ERROR: LoadError: syntax: unexpected "="+, los cuales no son muy informativos.
+Los errores de sintaxis suelen ser fáciles de corregir una vez se descubre cuáles son. Desafortunadamente, muchas veces los mensajes de error no son útiles. Los mensajes más comunes son 
+
++ERROR: LoadError: syntax: incomplete: premature end of input+ 
+
+y 
+
++ERROR: LoadError: syntax: unexpected "="+, 
+
+los cuales no son muy informativos.
 
 Por otro lado, el mensaje indica en qué parte del programa se produjo el problema. En realidad, indica dónde Julia notó que había un problema, que no es necesariamente dónde está el error. A veces, el error es anterior a la ubicación del mensaje de error, generalmente en la línea anterior.
 
-Si está programando incrementalmente, debería tener casi localizado el error. Estará en la última línea que agregó.
+Si está programando incrementalmente, el usuario debería tener casi localizado el error ya que estará en la última línea que agregó.
 
-Si está copiando código de un libro, comience comparando su código con el código del libro. Verifique cada letra. Al mismo tiempo, recuerde que el libro puede contener errores, por lo que si ve algo que parece un error de sintaxis, es posible que lo sea.
+Si está copiando código de un libro, comience comparando su código con el código del libro y verifique cada letra. Al mismo tiempo, recuerde que el libro puede contener errores, por lo que si ve algo que parece un error de sintaxis, es posible que lo sea.
 
 Aquí hay algunas formas de evitar los errores de sintaxis más comunes:
 
@@ -33,7 +41,7 @@ Aquí hay algunas formas de evitar los errores de sintaxis más comunes:
 
 . Asegúrese de que las cadenas tengan su par de comillas de apertura y cierre. Asegúrese de que todas las comillas sean "comillas rectas", y no otro tipo de "comillas".
 
-. Si tiene cadenas que ocupan varias líneas con triples comillas, asegúrese de que ha terminado la cadena correctamente. Una cadena sin terminar puede provocar un error invalid token al final de su programa, o puede hacer que la siguiente parte del programa sea tratada como una cadena hasta llegar a la siguiente cadena. ¡El segundo caso podría no presentar mensaje de error!
+. Si tiene cadenas que ocupan varias líneas con triples comillas, asegúrese de que ha terminado la cadena correctamente. Una cadena sin terminar puede provocar un error _invalid token_ al final de su programa, o puede hacer que la siguiente parte del programa sea tratada como una cadena hasta llegar a la siguiente cadena. ¡El segundo caso podría no presentar mensaje de error!
 
 . Un paréntesis sin cerrar —+(+, +{+, or +[+— hace que Julia continúe con la línea siguiente como parte de la sentencia actual. Generalmente, se produce un error casi inmediatamente en la siguiente línea.
 
@@ -71,7 +79,7 @@ Una vez que su programa es sintácticamente correcto, Julia puede leerlo y al me
 
 ==== Mi programa no hace absolutamente nada
 
-Este problema es común cuando su archivo consta de funciones y clases, pero en realidad no llama a ninguna función para iniciar la ejecución. Esto puede ser intencional si solo se busca importar este módulo para suministrar clases y funciones.
+Este problema es común cuando su archivo consta de funciones y clases, pero en realidad no llama a ninguna función para iniciar la ejecución. Esto puede ser intencional si sólo se busca importar este módulo para suministrar clases y funciones.
 
 Si no es intencional, asegúrese de que haya una llamada a la función en el programa, y asegúrese de que el flujo de ejecución pase por esta llamada (vea <<flow_of_execution>>).
 (((flujo de ejecución)))
@@ -81,7 +89,7 @@ Si no es intencional, asegúrese de que haya una llamada a la función en el pro
 
 Si un programa se detiene y parece no estar haciendo nada, está "congelado". Generalmente eso significa que está atrapado en un bucle infinito o en una recursión infinita.
 
-* Si hay un bucle en particular que le resulta sospechoso de provocar el pproblema, agregue una sentencia de impresión justo antes del bucle que diga "entrando al bucle" y otra inmediatamente posterior que diga "saliendo del bucle".
+* Si hay un bucle en particular que le resulta sospechoso de poder provocar el problema, agregue una sentencia de impresión justo antes del bucle que diga "entrando al bucle" y otra inmediatamente posterior que diga "saliendo del bucle".
 +
 Ejecute el programa. Si recibe el primer mensaje y no el segundo, tiene un bucle infinito. Vea <<infinite_loop>>.
 (((bucle infinito)))
@@ -93,13 +101,13 @@ Si no obtiene este error pero sospecha que hay un problema con un método o func
 
 * Si ninguno de esos pasos funciona, comience a probar otros bucles, y otras funciones y métodos recursivos.
 
-* Si esto no funciona, quizás es porque no entiendes el flujo de ejecución de tu programa. Vea <<flow_of_execution>>.
+* Si esto no funciona, quizás es porque usted no entiende el flujo de ejecución de su programa. Vea <<flow_of_execution>>.
 
 
 [[infinite_loop]]
 ===== Bucle Infinito
 
-Si crees tener un bucle infinito y crees saber cuál es, añade una sentencia de impresión que imprima los valores de las variables de la condición al final del bucle junto con el valor de la condición.
+Si cree tener un bucle infinito y cree saber cuál es, añada una sentencia de impresión que imprima los valores de las variables de la condición al final del bucle junto con el valor de la condición.
 
 Por ejemplo:
 
@@ -113,13 +121,14 @@ while x > 0 && y < 0
 end
 ----
 
-Ahora, cuando ejecute el programa en modo de depuración, verá el valor de las variables y la condición en cada iteración. En la última iteración, la condición debe ser +false+. Si el ciclo continúa, podrá ver los valores de +x+ e +y+, y podrá averiguar por qué no
-se actualizan correctamente.
+Ahora, cuando ejecute el programa en modo de depuración, verá el valor de las variables y la condición en cada iteración. En la última iteración, la condición debe ser +false+. Si el ciclo continúa, podrá ver los valores de +x+ e +y+, y podrá averiguar por qué no se actualizan correctamente.
 
 [[infinite_recursion]]
 ===== Recursión Infinita
 
-La mayoría de las veces, una recursión infinita hace que el programa se ejecute durante un tiempo y luego produzca un error +ERROR: LoadError: StackOverflowError+.
+La mayoría de las veces, una recursión infinita hace que el programa se ejecute durante un tiempo y luego produzca un error 
+
++ERROR: LoadError: StackOverflowError+.
 (((StackOverflowError)))
 
 Si sospecha que una función o un método está causando una recursión infinita, comience por asegurarse de que hay un caso base. En otras palabras, debería haber una condición que haga que la función devuelva un valor sin hacer otra llamada recursiva. Si no, necesita revisar el algoritmo y encontrar ese caso base.
@@ -137,7 +146,7 @@ Ahora, cuando ejecute el programa, se imprimirá una mensaje en cada función a 
 
 Si algo sale mal durante la ejecución, Julia imprime un mensaje que incluye el nombre de la excepción, la línea del programa donde sucedió el problema y un trazado inverso.
 
-El trazado inverso identifica la función que se está ejecutando y la función que la llamó, y luego la función que llamó a esa, y así sucesivamente. En otras palabras, traza la ruta de las llamadas a las funciones que le llevaron a donde se encuentra. También incluye los numeros de las líneas de su archivo donde suceden todas esas llamadas.
+El trazado inverso identifica la función que se está ejecutando y la función que la llamó, y luego la función que llamó a esa, y así sucesivamente. En otras palabras, traza la ruta de las llamadas a las funciones que le llevaron a donde se encuentra. También incluye los números de las líneas de su archivo dónde suceden todas esas llamadas.
 
 El primer paso es examinar el lugar del programa donde ocurrió el error y ver si puede adivinar lo que sucedió. Estos son algunos de los errores en tiempo de ejecución más comunes:
 
@@ -205,27 +214,25 @@ Un símbolo en el entorno (o ámbito) actual no está definido.
 
 Uno de los problemas de usar sentencias print en la depuración es que puede terminar ahogado por tanta información. Hay dos formas de resolver esto: simplificar la salida o simplificar el programa.
 
-Para simplificar la salida, puede eliminar o comentar (convertir en comentarios) las sentencias print que no sean útiles, o combinarlas, o dar a la salida un formato que la haga más comprensible.
+Para simplificar la salida, puede eliminar o comentar (convertir en comentarios no evaluados cómo órdenes del programa) las sentencias print que no sean útiles o combinarlas. También puede dar a la salida un formato que la haga más comprensible.
 
-Para simplificar el programa puede hacer varias cosas. Primero, reducir la escala del problema en el que está trabajando el programa. Por ejemplo, si está buscando algo en una lista, búsquelo en una lista pequeña. Si el programa acepta entradas del usuario, ingrese la entrada más simple que provoque el problema.
+Para simplificar el programa puede hacer varias cosas. Primero, puede reducir la escala del problema en el que está trabajando el programa. Por ejemplo, si está buscando algo en una lista, búsquelo en una lista pequeña. Si el programa acepta entradas del usuario, ingrese la entrada más simple que provoque el problema.
 
-Segundo, "limpie" el programa. Elimine el código muerto y reorganice el programa para hacerlo tan legible como sea posible. Por ejemplo, si sospecha que el problema está en una parte del programa con un anidamiento muy profundo, pruebe a reescribir esa parte con una estructura más simple. Si sospecha de una función muy larga, trate de dividirla en funciones más pequeñas y pruébelas separadamente.
+Segundo, puede "limpiar" el programa. Elimine el código muerto y reorganice el programa para hacerlo tan legible como sea posible. Por ejemplo, si sospecha que el problema está en una parte del programa con un anidamiento (nesting) muy profundo, pruebe a reescribir esa parte con una estructura más simple. Si sospecha de una función muy larga, trate de dividirla en funciones más pequeñas y pruébelas separadamente.
 (((código muerto)))
 
-Generalmente, el proceso de encontrar el caso de prueba mínimo te lleva al error. Si encuentra que un programa funciona en una situación pero no en otra, eso le dará una pista sobre lo que está sucediendo.
+Generalmente, el proceso de encontrar el caso de prueba mínimo lleva el usuario a encontrar el error. Si encuentra que un programa funciona en una situación pero no en otra, eso le dará una pista sobre lo que está sucediendo.
 
 De forma parecida, reescribir una porción de código puede ayudarle a encontrar errores sutiles. Si realiza un cambio que cree que no debería afectar el programa, pero lo hace, entonces eso puede darle una pista.
 
 
 === Errores Semánticos 
 
-En cierto modo, los errores semánticos son los más difíciles de corregir, ya que el intérprete no entrega información sobre lo
-que está mal. Sólo usted sabe lo que se supone que debe hacer el programa.
+En cierto modo, los errores semánticos son los más difíciles de corregir, ya que el intérprete no entrega información sobre lo que está mal. Sólo usted sabe lo que se supone que debe hacer el programa.
 
-El primer paso es hacer una conexión entre el código y el comportamiento que está viendo. Necesita una hipótesis sobre lo que realmente
-está haciendo el programa. Una de las dificultades que nos encontramos para ello es la alta velocidad de los computadores.
+El primer paso es hacer una conexión entre el código y el comportamiento que está viendo. Necesita una hipótesis sobre lo que realmente está haciendo el programa. Una de las dificultades que nos encontramos es la alta velocidad de los computadores.
 
-A menudo desearía ralentizar el programa a una velocidad humana. El tiempo que lleva colocar unas sentencias print en los lugares adecuados suele ser menor que el que lleva configurar un depurador, poner y quitar puntos de interrupción, y “hacer avanzar” al programa hasta donde se produce el error.
+A menudo sería deseable ralentizar el programa a una velocidad humana. El tiempo que lleva colocar unas sentencias print en los lugares adecuados suele ser menor que el que lleva configurar un depurador, poner y quitar puntos de interrupción y “hacer avanzar” al programa hasta donde se produce el error.
 
 
 ==== Mi programa no funciona
@@ -236,7 +243,7 @@ Debería hacerse estas preguntas:
 
 * ¿Ocurre algo que no debería? Busque el código en su programa que realiza esa función y vea si se ejecuta cuando no debe.
 
-* ¿Hay alguna sección del código que cause un efecto que no esperaba? asegurese de que entiende el código en cuestión, especialmente si incluye funciones o métodos de otros módulos de Julia. Lea la documentación de las funciones a las que llama. Pruébelas escribiendo casos de prueba simples y comprobando sus resultados.
+* ¿Hay alguna sección del código que cause un efecto que no esperaba? Asegúrese de que entiende el código en cuestión, especialmente si incluye funciones o métodos de otros módulos de Julia. Lea la documentación de las funciones a las que llama. Pruébelas escribiendo casos de prueba simples y comprobando sus resultados.
 
 Para programar necesitará tener un modelo mental de cómo funcionan los programas. Si escribe un programa que no hace lo que esperaba de él, muchas veces el problema no estará en el programa, sino en su modelo mental.
 (((modelo mental)))
@@ -265,7 +272,7 @@ cartaseleccionada = sacarcarta(juego.manos[vecino])
 agregarcarta(juego.manos[i], cartaseleccionada)
 ----
 
-La versión explícita es más fácil de leer porque los nombres de variables nos entregan documentación adicional, y es más fácil de depurar porque se pueden comprobar los tipos de las variables intermedias y mostrar sus valores.
+La versión explícita es más fácil de leer porque los nombres de variables nos entregan documentación adicional y es más fácil de depurar porque se pueden comprobar los tipos de las variables intermedias y mostrar sus valores.
 
 Otro problema que puede suceder con las expresiones grandes es que el orden de evaluación puede no ser el que usted esperaba. Por ejemplo, si está traduciendo la expresión latexmath:[\frac{x}{2\pi}] a Julia, podría escribir:
 
@@ -274,7 +281,7 @@ Otro problema que puede suceder con las expresiones grandes es que el orden de e
 y = x / 2 * π
 ----
 
-Esto no es correcto, ya que la multiplicación y la división tienen la misma precedencia, y se evalúan de izquierda a derecha. Así que esa expresión calcula latexmath:[\frac{x\pi}{2}].
+Esto no es correcto, ya que la multiplicación y la división tienen la misma precedencia, y se evalúan de izquierda a derecha. De este modo, la anterior expresión calcula latexmath:[\frac{x\pi}{2}].
 
 Una buena forma de depurar expresiones es añadir paréntesis para que sea explícito el orden de evaluación:
 
@@ -283,7 +290,7 @@ Una buena forma de depurar expresiones es añadir paréntesis para que sea expl�
 y = x / (2 * π)
 ----
 
-Siempre que no esté seguro del orden de evaluación, utilice paréntesis. El programa no sólo será correcto (en el sentido de que hace lo que usted quiere), sino que además será más legible para otras personas que no hayan memorizado las reglas de precedencia.
+Siempre que no esté seguro del orden de evaluación, utilice paréntesis. El programa no sólo será correcto (en el sentido de que hace lo que usted quiere), sino que además será más legible para otras personas que no hayan memorizado las reglas de precedencia y que lean el código.
 
 ==== Tengo una función que no devuelve lo que esperaba.
 
@@ -311,7 +318,7 @@ Primero, intente alejarse del computador durante unos minutos. Trabajar con un c
 
 * Frustración y/o furia.
 
-* Creencias supersticiosas (“el computador me odia”) y pensamiento mágico (“el programa sólo funciona cuando me pongo el gorro hacia atrás”).
+* Creencias supersticiosas (“el computador me odia”) y pensamiento mágico (“el programa sólo funciona cuando me pongo la gorra hacia atrás”).
 
 * Programar dando palos de ciego (el empeño de programar escribiendo todos los programas posibles y eligiendo el que hace lo correcto).
 
@@ -323,14 +330,13 @@ A veces lleva tiempo encontrar un error. Muchas veces encontramos errores cuando
 
 Sucede. Incluso los mejores programadores se atascan de vez en cuando. A veces trabaja durante tanto tiempo en un programa que no puede ver el error. Lo que necesita es un par de ojos nuevos.
 
-Antes de llamar a alguien, asegúrese de estar preparado. Su programa debería ser tan simple como sea posible, y usted debería estar
-trabajando con la entrada mínima que provoca el error. Debería tener sentencias print en los lugares adecuados (y lo que dicen debería ser comprensible). Debería entender el problema lo bastante bien como para describirlo de manera concisa.
+Antes de llamar a alguien, asegúrese de estar preparado. Su programa debería ser tan simple como sea posible, y usted debería estar trabajando con la entrada mínima que provoca el error. Debería tener sentencias print en los lugares adecuados (y lo que dicen debería ser comprensible) y debería también entender el problema lo bastante bien como para describirlo de manera concisa.
 
-Cuando llame a alguien para que le ayude, asegúrese de darles la información que necesitan:
+Cuando llame a alguien para que le ayude, asegúrese de darle la información que necesitan:
 
 * Si hay un mensaje de error, ¿cuál es y qué parte del programa señala?
 
-* ¿Qué fue lo último que hizo antes de que apareciera el error? ¿Cuáles son las últimas líneas de cúdigo que escribió, o cuál es el nuevo caso de prueba que falla?
+* ¿Qué fue lo último que hizo antes de que apareciera el error? ¿Cuáles son las últimas líneas de código que escribió o cuál es el nuevo caso de prueba que falla?
 
 * ¿Qué ha intentado hasta ahora y qué ha averiguado?
 

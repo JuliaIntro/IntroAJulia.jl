@@ -21,7 +21,7 @@ julia> (1 + 2) :: Int64
 
 Esto ayuda a verificar que el programa funciona de la manera esperada.
 
-El operador +::+ también se puede agregar al lado izquierdo de una asignación, o como parte de una declaración.
+El operador +::+ también se puede agregar al lado izquierdo de una asignación o como parte de una declaración.
 (((devolverfloat)))((("función", "definida por el programador", "devolverfloat", see="devolverfloat")))
 
 [source,@julia-repl-test]
@@ -90,7 +90,7 @@ julia> imprimirhora(inicio)
 09:45:00
 ----
 
-Para agregar un _método_ a la función +imprimirhora+; con el fin de que esta solo acepte como argumento un objeto +Hora+, todo lo que tenemos que hacer es agregar +::+ seguido de +Hora+ al argumento +tiempo+ en la definición de función:
+Para agregar un _método_ a la función +imprimirhora+; con el fin de que esta solo acepte como argumento un objeto +Hora+, todo lo que hay que hacer es agregar +::+ seguido de +Hora+ al argumento +tiempo+ en la definición de función:
 (((método)))
 
 [source,@julia-setup chap17a]
@@ -111,7 +111,7 @@ julia> imprimirhora(inicio)
 09:45:00
 ----
 
-Ahora redefinamos el primer método sin la anotación de tipo +::+, lo cual permite un argumento de cualquier tipo:
+Se redefine el primer método sin la anotación de tipo +::+, lo cual permite un argumento de cualquier tipo:
 
 [source,@julia-setup chap17a]
 ----
@@ -120,7 +120,7 @@ function imprimirhora(tiempo)
 end
 ----
 
-Si llama a la función +imprimirhora+ con un objeto diferente de +Hora+, se obtendrá:
+Si se llama a la función +imprimirhora+ con un objeto diferente de +Hora+, se obtendrá:
 
 [source,@julia-repl-test chap17a]
 ----
@@ -161,7 +161,7 @@ function incrementar(tiempo::Hora, segundos::Int64)
 end
 ----
 
-Tenga en cuenta que ahora, +incrementar+ es una función pura, no un modificador.
+Tenga en cuenta que ahora +incrementar+ es una función pura, no un modificador.
 
 Así es como se llama a la función incrementar:
 
@@ -173,7 +173,7 @@ julia> incrementar(inicio, 1337)
 Hora(10, 7, 17)
 ----
 
-Si colocamos los argumentos en el orden incorrecto, obtendremos un error:
+Si se colocan los argumentos en el orden incorrecto, se obtiene un error:
 (((MethodError)))
 
 [source,@julia-repl-test chap17a]
@@ -194,7 +194,7 @@ function estadespues(t1::Hora, t2::Hora)
 end
 ----
 
-Por cierto, los argumentos opcionales permiten definir múltiples métodos. Por ejemplo, esta definición:
+Hace falta destacar que los argumentos opcionales permiten definir múltiples métodos. Por ejemplo, esta definición:
 
 [source,@julia-setup]
 ----
@@ -226,7 +226,7 @@ Hora(hora, minuto, segundo)
 Hora(hora::Int64, minuto::Int64, segundo::Int64)
 ----
 
-También podemos agregar nuestros propios métodos de _constructores externos_:
+También se pueden agregar métodos propios de _constructores externos_:
 (((constructor externo)))((("constructor", "externo", see="constructor externo")))
 
 [source,@julia-setup chap17a]
@@ -239,7 +239,7 @@ end
 Este método se llama _constructor de copia_ porque el nuevo objeto +Hora+ es una copia de su argumento.
 (((constructor de copia)))((("constructor", "copia", see="constructor de copia")))
 
-Para imponer invariantes, necesitamos métodos de _constructor interno_:
+Para imponer invariantes se necesitan métodos de _constructor interno_:
 (((constructor interno)))((("constructor", "interno", see="constructor interno")))
 
 [source,@julia-setup chap17b]
@@ -266,11 +266,11 @@ Hora(hora::Int64, minuto::Int64)
 Hora(hora::Int64, minuto::Int64, segundo::Int64)
 ----
 
-Un método de constructor interno siempre se define dentro del bloque de una declaración de tipo, y tiene acceso a una función especial llamada +new+ que crea objetos del tipo recién declarado.
+Un método de constructor interno siempre se define dentro del bloque de una declaración de tipo y tiene acceso a una función especial llamada +new+ que crea objetos del tipo recién declarado.
 
 [WARNING]
 ====
-Si se define algún constructor interno, el constructor por defecto ya no está disponible. Tienes que escribir explícitamente todos los constructores internos que necesitas.
+Si se define algún constructor interno, el constructor por defecto ya no está disponible. Se tienen que escribir explícitamente todos los constructores internos necesarios.
 ====
 
 También existe un método sin argumentos de la función local +new+:
@@ -294,13 +294,13 @@ mutable struct Hora
 end
 ----
 
-Esto permite construir estructuras de datos recursivas, es decir, una estructura donde uno de los atributos es la estructura misma. En este caso, la estructura debe ser mutable porque sus atributos se modifican después de la creación de instancias.
+Esto permite construir estructuras de datos recursivas, es decir, una estructura donde uno de los atributos es la estructura misma. En este caso, la estructura debe ser mutable ya que sus atributos se modifican después de la creación de instancias.
 (((estructuras de datos recursivas)))
 
 
 === +show+
 
-+show+ es una función especial que devuelve la representación de cadena de un objeto. Por ejemplo, a continuación se muestra el método +show+ para objetos +Hora+:
++show+ es una función especial que devuelve la representación de cadena de un objeto. A continuación se muestra el método +show+ para objetos +Hora+:
 (((show)))
 
 [source,@julia-setup chap17b]
@@ -312,9 +312,9 @@ function Base.show(io::IO, tiempo::Hora)
 end
 ----
 
-Esta función guarda como cadena de texto una hora dada, en el archivo al que io hace referencia.
+Esta función guarda como cadena de texto una hora dada en el archivo al que io hace referencia.
 
-El prefijo +Base+ es necesario porque queremos agregar un nuevo método a la función +Base.show+.
+El prefijo +Base+ es necesario si se quiere agregar un nuevo método a la función +Base.show+.
 
 Cuando se imprime un objeto, Julia llama a la función +show+ (esto ocurre siempre, y como agregamos un nuevo método a la función +Base.show+, entonces se muestra Hora con el formato que queremos):
 
@@ -324,7 +324,7 @@ julia> tiempo = Hora(9, 45, 0)
 09:45:00
 ----
 
-Personalmente, cuando escribo un nuevo tipo compuesto, casi siempre empiezo escribiendo un constructor externo; lo que facilita la creación de instancias de objetos, y +show+; que es útil para la depuración.
+Al escribir un nuevo tipo compuesto, casi siempre es preferible empezar escribiendo un constructor externo, puesto que facilita la creación de instancias de objetos y +show+, que es útil para la depuración.
 
 ==== Ejercicio 17-2
 
@@ -353,7 +353,7 @@ end;
 
 === Sobrecarga de Operadores
 
-Es posible cambiar la definición de los operadores cuando se aplican a tipos definidos por el usuario. Esto se hace definiendo métodos del operador. Por ejemplo, si definimos un método llamado +pass:[+]+ con dos argumentos +Hora+, podríamos usar el operador +pass:[+]+ en los objetos +Hora+.
+Es posible cambiar la definición de los operadores cuando se aplican a tipos definidos por el usuario. Esto se hace definiendo métodos del operador. Por ejemplo, si se define un método llamado +pass:[+]+ con dos argumentos +Hora+, se puede usar el operador +pass:[+]+ en los objetos +Hora+.
 
 Así es como se vería la definición:
 
@@ -369,7 +369,7 @@ end
 
 La sentencia import agrega el operador +pass:[+]+ al ámbito local (local scope) para que se puedan agregar métodos.
 
-A continuación se muestra cómo usar este operador para objetos Hora.
+A continuación se muestra cómo usar este operador para objetos Hora:
 
 [source,@julia-repl-test chap17b]
 ----
@@ -381,7 +381,7 @@ julia> inicio + duracion
 11:20:00
 ----
 
-Al aplicar el operador +pass:[+]+ a objetos +Hora+, Julia invoca el método recién agregado. Cuando REPL muestra el resultado, Julia invoca a +show+. ¡Hay muchas cosas pasando que no vemos!
+Al aplicar el operador +pass:[+]+ a objetos +Hora+, Julia invoca el método recién agregado. Cuando REPL muestra el resultado, Julia invoca a +show+. ¡Hay muchas cosas ocurriendo pero que no se observan!
 
 Ampliar el comportamiento de los operadores de modo que funcionen con tipos definidos por el usuario/programador se denomina _sobrecarga del operador_.
 (((sobrecarga del operador)))
@@ -389,7 +389,7 @@ Ampliar el comportamiento de los operadores de modo que funcionen con tipos defi
 
 === Dispatch Múltiple 
 
-En la sección anterior sumamos dos objetos +Hora+. Imagine que ahora queremos sumar un número entero a un objeto +Hora+:
+En la sección anterior se sumaron dos objetos +Hora+. Imagine que ahora se quiere sumar un número entero a un objeto +Hora+:
 
 [source,@julia-setup chap17b]
 ----
@@ -408,7 +408,7 @@ julia> inicio + 1337
 10:07:17
 ----
 
-La suma es un operador conmutativo, por lo que debemos agregar otro método.
+La suma es un operador conmutativo, por lo que se debe agregar otro método.
 
 [source,@julia-setup chap17b]
 ----
@@ -417,7 +417,7 @@ function +(segundos::Int64, tiempo::Hora)
 end
 ----
 
-Y obtenemos el mismo resultado:
+Y se obtiene el mismo resultado:
 
 [source,@julia-repl-test chap17b]
 ----
@@ -430,9 +430,9 @@ La elección del método a ejecutar cuando se aplica una función se llama _disp
 
 ==== Ejercicio 17-3
 
-Escribir los siguientes métodos +pass:[+]+ para objetos Punto:
+Escriba los siguientes métodos +pass:[+]+ para objetos Punto:
 
-* Si ambos operandos son objetos Punto, el método debería devolver un nuevo objeto Punto cuya coordenada +x+ sea la suma de las coordenadas +x+ de los operandos. De manera análoga para la coordenada +y+.
+* Si ambos operandos son objetos Punto, el método debería devolver un nuevo objeto Punto cuya coordenada +x+ sea la suma de las coordenadas +x+ de los operandos. De manera análoga, haga lo mismo para la coordenada +y+.
 
 * Si el primer o el segundo operando es una tupla, el método debe agregar el primer elemento de la tupla a la coordenada +x+ y el segundo elemento a la coordenada +y+, y devolver un nuevo objeto Punto con el resultado.
 
@@ -441,7 +441,7 @@ Escribir los siguientes métodos +pass:[+]+ para objetos Punto:
 
 El dispatch múltiple es útil cuando es necesario, pero (afortunadamente) no siempre lo es. A menudo puede evitarse escribiendo funciones que funcionen correctamente para argumentos de diferentes tipos.
 
-Muchas de las funciones que hemos escrito para cadenas también funcionan para otros tipos de secuencia. Por ejemplo, en <<dictionary_collection_counters>> usamos +histograma+ para contar la cantidad de veces que cada letra aparece en una palabra.
+Muchas de las funciones que se han visto para cadenas también funcionan para otros tipos de secuencia. Por ejemplo, en <<dictionary_collection_counters>> se usa +histograma+ para contar la cantidad de veces que cada letra aparece en una palabra.
 (((histograma)))
 
 [source,@julia-setup chap17]
@@ -494,26 +494,24 @@ julia> sum((t1, t2, t3))
 
 Si todas las operaciones realizadas dentro de la función se pueden aplicar al tipo, la función se puede aplicar al tipo.
 
-El mejor tipo de polimorfismo es el que no se busca; cuando usted descubre que una función que había escrito se puede aplicar a un tipo para el que nunca la había planeado.
+El mejor tipo de polimorfismo es el que no se busca: cuando usted descubre que una función que había escrito se puede aplicar a un tipo para el que nunca la había planeado.
 (((polimorfismo)))
 
 
 === Interfaz e implementación
 
-Uno de los objetivos del dispatch múltiple es hacer que el software sea más fácil de mantener, lo que significa poder mantener el programa funcionando cuando otras partes del sistema cambian, y modificar el programa para cumplir con los nuevos requisitos.
+Uno de los objetivos del dispatch múltiple es hacer que el software sea más fácil de mantener, lo que significa poder mantener el programa funcionando cuando otras partes del sistema cambian y modificar el programa para cumplir con los nuevos requisitos.
 
 Una técnica de diseño que ayuda a lograr ese objetivo es mantener las interfaces separadas de las implementaciones. Esto significa que los métodos que tienen un argumento con anotación de tipo no deberían depender de cómo se representan los atributos de ese tipo.
 (((interfaz)))(((implementación)))
 
-Por ejemplo, en este capítulo desarrollamos una estructura que representa una hora del día. Los métodos que tienen un argumento con anotación de este tipo incluyen +horaaentero+, +estadespues+ y +pass:[+]+.
+Por ejemplo, en este capítulo se desarrolla una estructura que representa una hora del día. Los métodos que tienen un argumento con anotación de este tipo incluyen +horaaentero+, +estadespues+ y +pass:[+]+.
 
-Podríamos implementar esos métodos de varias maneras. Los detalles de la implementación dependen de cómo representamos +Hora+. En este capítulo, los atributos de un objeto +Hora+ son +hora+, +minuto+ y +segundo+.
+Se pueden implementar esos métodos de varias maneras. Los detalles de la implementación dependen de cómo se represente +Hora+. En este capítulo, los atributos de un objeto +Hora+ son +hora+, +minuto+ y +segundo+.
 
 Otra opción sería reemplazar estos atributos con un solo entero que represente el número de segundos desde la medianoche. Esta implementación haría que algunas funciones, como +estadespues+, sean más fáciles de escribir, pero hace que otras sean más difíciles.
 
-Después de implementar un tipo, puede descubrir una mejor implementación. Si otras partes del programa están usando su tipo, cambiar la interfaz puede llevar mucho tiempo y ser propenso a errores.
-
-Pero si hizo un buen diseñó de interfaz, puede cambiar la implementación sin cambiar la interfaz, lo que significa que otras partes del programa no tienen que cambiar.
+Después de implementar un tipo, puede descubrir una mejor implementación. Si otras partes del programa están usando su tipo, cambiar la interfaz puede llevar mucho tiempo y ser propenso a errores. No obstante, si hizo un buen diseñó de interfaz, puede cambiar la implementación sin cambiar la interfaz, lo que significa que otras partes del programa no tienen que cambiar.
 
 
 === Depuración
@@ -594,7 +592,7 @@ Cambie los atributos de +Hora+ para que sea un solo número entero que represent
 Escriba una definición para un tipo llamado +Canguro+, con un atributo llamado +contenidodemarsupio+ de tipo +Arreglo+ y los siguientes métodos:
 (((Canguro)))((("tipo", "definida por el programador", "Canguro", see="Canguro")))
 
-* Un constructor que inicializa +contenidodemarsupio+ a un arreglo vacío.
+* Un constructor que inicialice +contenidodemarsupio+ a un arreglo vacío.
 
 * Un método llamado +ponerenmarsupio+ que tome un objeto +Canguro+ y un objeto de cualquier tipo y lo agregue a +contenidodemarsupio+.
 (((ponerenmarsupio)))((("función", "definida por el programador", "ponerenmarsupio", see="ponerenmarsupio")))

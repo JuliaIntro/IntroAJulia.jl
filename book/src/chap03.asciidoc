@@ -6,7 +6,7 @@ En el contexto de la programación, una _función_ es una secuencia de sentencia
 
 === Llamada a función
 
-Ya hemos visto un ejemplo de una llamada a función:
+Ya se ha visto un ejemplo de una llamada a función:
 (((Llamada a función)))
 
 [source,@julia-repl-test]
@@ -21,7 +21,7 @@ El nombre de esta función es +println+. La expresión entre paréntesis se llam
 Es común decir que una función "toma" un argumento y "devuelve" un resultado. El resultado también se llama _valor de retorno_.
 (((valor de retorno)))
 
-Julia tiene funciones integradas que convierten valores de un tipo a otro. La función +parse+ toma una cadena y si es posible, la convierte en cualquier tipo de número, en caso contrario arroja error:
+Julia tiene funciones integradas que convierten valores de un tipo a otro. La función +parse+ toma una cadena y, si es posible, la convierte en cualquier tipo de número, en caso contrario arroja error:
 (((conversión de tipo)))((("función", "Base", "parse", see="parse")))(((ArgumentError)))((("error", "Core", "ArgumentError", see="ArgumentError")))
 
 [source,@julia-repl-test]
@@ -133,7 +133,7 @@ E incluso llamadas a función:
 x = exp(log(x + 1))
 ----
 
-Casi en cualquier lugar donde se pueda colocar un valor, se puede colocar una expresión arbitraria, con una excepción: el lado izquierdo de una sentencia de asignación debe ser un nombre de variable. Cualquier otra expresión en el lado izquierdo genera un error de sintaxis (veremos excepciones a esta regla más adelante).
+Casi en cualquier lugar donde se pueda colocar un valor, se puede colocar una expresión arbitraria, con una excepción: el lado izquierdo de una sentencia de asignación debe ser un nombre de variable. Cualquier otra expresión en el lado izquierdo genera un error de sintaxis (se verán excepciones a esta regla más adelante).
 (((error de sintaxis)))
 
 [source,@julia-eval chap03]
@@ -158,7 +158,7 @@ Hasta ahora, solo hemos usado las funciones integradas en Julia, pero también e
 [source,@julia-setup chap03]
 ----
 function imprimirletras()
-    println("Jueguemos en el bosque")
+    println("Juguemos en el bosque")
     println("mientras el lobo no está.")
 end
 ----
@@ -180,7 +180,7 @@ Si escribe una definición de función en modo interactivo, Julia REPL inserta u
 [source,jlcon]
 ----
 julia> function imprimirletras()
-        println("Jueguemos en el bosque")
+        println("Juguemos en el bosque")
 
 ----
 
@@ -191,11 +191,11 @@ La sintaxis para llamar a la nueva función es la misma que para las funciones i
 [source,@julia-repl-test chap03]
 ----
 julia> imprimirletras()
-Jueguemos en el bosque
+Juguemos en el bosque
 mientras el lobo no está.
 ----
 
-Una vez que haya definido una función, puede usarla dentro de otra función. Por ejemplo, para repetir el estribillo anterior, podríamos escribir una función llamada +repetirletras+:
+Una vez definida una función, puede usarla dentro de otra función. Por ejemplo, para repetir el estribillo anterior, se podría escribir una función llamada +repetirletras+:
 (((repetirletras)))((("función", "definida por el programador", "repetirletras", see="repetirletras")))
 
 [source,@julia-setup chap03]
@@ -206,14 +206,14 @@ function repetirletras()
 end
 ----
 
-Y luego llamamos a +repetirletras+:
+Y luego llamar a +repetirletras+:
 
 [source, @ julia-repl-test chap03]
 ----
 julia> repetirletras()
-Jueguemos en el bosque
+Juguemos en el bosque
 mientras el lobo no está.
-Jueguemos en el bosque
+Juguemos en el bosque
 mientras el lobo no está.
 ----
 
@@ -250,7 +250,7 @@ Ahora mueva la llamada a función hacia abajo y coloque la definición de +impri
 
 === Flujo de ejecución
 
-Para asegurar de que una función sea definida antes de su primer uso, debe conocer el orden en que se ejecutan las instrucciones, lo que se denomina _flujo de ejecución_.
+Para asegurarse de que una función sea definida antes de su primer uso, debe conocer el orden en que se ejecutan las instrucciones, lo que se denomina _flujo de ejecución_.
 (((flujo de ejecución)))
 
 La ejecución siempre comienza con la primera sentencia del programa. Las sentencias se ejecutan una a la vez, en orden descendente.
@@ -259,7 +259,7 @@ Las definiciones de función no alteran el flujo de ejecución del programa, per
 
 Una llamada a función es como un desvío en el flujo de ejecución. En lugar de pasar a la siguiente sentencia, el flujo salta al cuerpo de la función, ejecuta las sentencias que están allí y luego regresa para continuar el código donde lo dejó.
 
-Esto suena bastante simple, hasta que tenemos en cuenta que una función puede llamar a otra. Mientras se está ejecutando una función, el programa podría tener que ejecutar las sentencias de otra función. Luego, mientras ejecuta esa nueva función, ¡el programa podría tener que ejecutar otra función más!
+Esto suena bastante simple, hasta que se tiene en cuenta que una función puede llamar a otra. Mientras se está ejecutando una función, el programa podría tener que ejecutar las sentencias de otra función. Luego, mientras ejecuta esa nueva función, ¡el programa podría tener que ejecutar otra función más!
 
 Afortunadamente, Julia es capaz de hacer el seguimiento de sus movimientos, así que cada vez que una función termina, el programa retoma la función que la llamó justo donde la dejó. Cuando llega al final del programa, la ejecución termina.
 
@@ -268,7 +268,7 @@ En resumen, cuando lee un programa, no siempre debe leer de arriba hacia abajo. 
 
 === Parámetros y argumentos
 
-Algunas de las funciones que hemos visto requieren argumentos. Por ejemplo, la función +cos+ necesita un número como argumento. Algunas funciones toman más de un argumento; por ejemplo +parse+ toma dos: un número y una cadena.
+Algunas de las funciones que se han visto requieren argumentos. Por ejemplo, la función +cos+ necesita un número como argumento. Algunas funciones toman más de un argumento; por ejemplo +parse+ toma dos: un número y una cadena.
 (((parámetro))) (((argumento))) (((analizar))) (((sin)))
 
 Dentro de la función, los argumentos se asignan a variables llamadas _parámetros_. A continuación se muestra un ejemplo de definición de función que toma un argumento:
@@ -365,7 +365,7 @@ julia> println(concat)
 ERROR: UndefVarError: concat not defined
 ----
 
-Los parámetros también son locales. Por ejemplo, afuera de la función +imprimirdosveces+, no existe +juan+.
+Los parámetros también son locales. Por ejemplo, fuera de la función +imprimirdosveces+, no existe +juan+.
 (((parámetro)))
 
 
@@ -407,10 +407,10 @@ El orden de las funciones en el trazado inverso es el opuesto del orden de los r
 
 === Funciones productivas y funciones nulas
 
-Algunas de las funciones que hemos utilizado, como las funciones matemáticas, devuelven resultados. A este tipo de funciones las llamaremos funciones productivas, a falta de un nombre mejor. Otras funciones como +imprimirdosveces+, realizan una acción pero no devuelven un valor. Estas se llaman _funciones nulas_.
+Algunas de las funciones que hemos utilizado, como las funciones matemáticas, devuelven resultados. A este tipo de funciones se les llamará funciones productivas, a falta de un nombre mejor. Otras funciones como +imprimirdosveces+, realizan una acción pero no devuelven un valor. Estas se llaman _funciones nulas_.
 (((función productiva))) (((función nula)))
 
-Cuando llamamos a una función productiva, casi siempre queremos hacer algo con el resultado; por ejemplo, asignarlo a una variable o usarlo como parte de una expresión:
+Cuando se llama a una función productiva, casi siempre se quiere hacer algo con el resultado; por ejemplo, asignarlo a una variable o usarlo como parte de una expresión:
 
 [source, julia]
 ----
@@ -472,7 +472,7 @@ Puede que no esté claro por qué vale la pena dividir un programa en funciones.
 
 * Las funciones pueden hacer que un programa sea más corto al eliminar código repetitivo. Además, si realiza un cambio, solo tiene que hacerlo en un solo lugar.
 
-* Dividir un programa largo en funciones le permite depurar las partes de a una en una, y luego unirlas.
+* Dividir un programa largo en funciones le permite depurar las partes de una en una y luego unirlas.
 
 * Las funciones bien diseñadas pueden ser útiles para muchos programas. Una vez que escribe y depura uno, puede reutilizarla.
 
@@ -481,10 +481,10 @@ Puede que no esté claro por qué vale la pena dividir un programa en funciones.
 
 === Depuración
 
-Una de las habilidades más importantes que adquirirás es la depuración. Aunque puede ser frustrante, la depuración es una de las partes más intelectualmente gratificantes, desafiantes e interesantes de la programación.
+Una de las habilidades más importantes que adquirirá es la depuración. Aunque puede ser frustrante, la depuración es una de las partes más intelectualmente gratificantes, desafiantes e interesantes de la programación.
 (((depuración)))
 
-La depuración puede ser vista como un trabajo de detective. Te enfrentas a pistas, y tienes que inferir los procesos y eventos que generaron los resultados que ves.
+La depuración puede ser vista como un trabajo de detective. El programador se enfrenta a pistas y tiene que inferir los procesos y eventos que generaron los resultados que ve.
 
 La depuración también es como una ciencia experimental. Una vez que se tiene una idea de lo que está mal, se modifica el programa y se intenta nuevamente. Si la hipótesis era correcta, se puede predecir el resultado de la modificación y así estar un paso más cerca de un programa totalmente funcional. Si la hipótesis era incorrecta, se tiene que encontrar una nueva. Como Sherlock Holmes señaló:
 
@@ -579,7 +579,7 @@ Una lista de las funciones que se están ejecutando, las cuales son impresas cua
 
 [TIP]
 ====
-Estos ejercicios deben realizarse utilizando sólo lo que hemos aprendido hasta ahora.
+Estos ejercicios deben realizarse utilizando sólo lo que se ha tratado hasta ahora.
 ====
 
 [[ex03-1]]
@@ -638,7 +638,7 @@ dosveces(imprimirpalabra)
 
 . Use la versión modificada de +dosveces+ para llamar a +imprimirdosveces+ dos veces, pasando +"palabra"+ como argumento.
 
-. 5.	Defina una nueva función llamada +cuatroveces+ que tome un objeto de función y un valor, y que llame a la función cuatro veces, pasando el valor como parámetro. Debe haber solo dos sentencias en el cuerpo de esta función, no cuatro.
+. Defina una nueva función llamada +cuatroveces+ que tome un objeto de función y un valor, y que llame a la función cuatro veces, pasando el valor como parámetro. Debe haber solo dos sentencias en el cuerpo de esta función, no cuatro.
 (((cuatroveces))) ((("función", "definida por el programador", "cuatroveces", see = "cuatroveces")))
 
 [[ex03-3]]

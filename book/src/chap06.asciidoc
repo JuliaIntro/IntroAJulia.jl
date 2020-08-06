@@ -1,12 +1,12 @@
 [[chap06]]
 == Funciones productivas
 
-Muchas de las funciones de Julia que hemos utilizado, como las funciones matemáticas, producen valores de retorno. Todas las funciones que hemos escrito hasta ahora son nulas, es decir, tienen un efecto (como imprimir un valor) pero devuelven el valor +nothing+. En este capítulo aprenderemos a escribir funciones productivas.
+Muchas de las funciones de Julia que se han utilizado, como las funciones matemáticas, producen valores de retorno. Todas las funciones que se han escrito hasta ahora son nulas, es decir, tienen un efecto (como imprimir un valor) pero devuelven el valor +nothing+. En este capítulo se enseña a escribir funciones productivas.
 (((función productiva)))
 
 === Valores de retorno
 
-Llamar a la función genera un valor de retorno, que generalmente asignamos a una variable o usamos como parte de una expresión.
+Llamar a la función genera un valor de retorno, que generalmente se asigna a una variable o se usa como parte de una expresión.
 
 [source,julia]
 ----
@@ -14,7 +14,7 @@ e = exp(1.0)
 altura = radio * sin(radio)
 ----
 
-Las funciones que hemos escrito hasta ahora son nulas. Coloquialmente hablando, no tienen valor de retorno; de manera formal, su valor de retorno es +nothing+. En este capítulo, (finalmente) vamos a escribir funciones productivas. El primer ejemplo es +area+, que devuelve el área de un círculo dado un radio:
+Las funciones que se han escrito hasta ahora son nulas. Coloquialmente hablando, no tienen valor de retorno; de manera formal, su valor de retorno es +nothing+. En este capítulo, (finalmente) se van a escribir funciones productivas. El primer ejemplo es +area+, que devuelve el área de un círculo dado un radio:
 (((nothing)))(((área)))((("funcion", "definida por el programador", "área", see="área")))
 
 [source,@julia-setup]
@@ -24,7 +24,7 @@ function area(radio)
     return a
 end
 ----
-Hemos visto la sentencia +return+ antes, pero en una función productiva la sentencia +return+ incluye una expresión. Esta sentencia significa: "Retorne inmediatamente de esta función y use la siguiente expresión como valor de retorno". La expresión dada puede ser arbitrariamente complicada; así pues, podríamos haber escrito esta función más concisamente:
+Se ha visto la sentencia +return+ antes pero en una función productiva la sentencia +return+ incluye una expresión. Esta sentencia significa: "Retorne inmediatamente de esta función y use la siguiente expresión como valor de retorno". La expresión dada puede ser arbitrariamente complicada. Así pues, se podría haber escrito esta función más concisamente:
 (((sentencia return)))
 
 [source,@julia-setup]
@@ -56,7 +56,7 @@ end
 Dado que estas sentencias return están en una condicional alternativa, solo se ejecuta una.
 (((condicional alternativa)))
 
-En cuanto se ejecuta una sentencia return, la función termina sin ejecutar ninguna de las sentencias siguientes. El código que aparezca después de la sentencia return, o en cualquier otro lugar al que el flujo de ejecución nunca llegará, se llama código muerto.
+En cuanto se ejecuta una sentencia return, la función termina sin ejecutar ninguna de las sentencias siguientes. El código que aparece después de la sentencia return, o en cualquier otro lugar al que el flujo de ejecución nunca llegará, se llama código muerto.
 (((flujo de ejecución)))(((código muerto)))
 
 En una función productiva, es una buena idea asegurarse que cualquier posible recorrido del programa llegue a una sentencia return. Por ejemplo:
@@ -73,7 +73,7 @@ function valorabsoluto(x)
 end
 ----
 
-Esta versión no es correcta porque si +x+ es igual a 0, ninguna de las condiciones es verdadera, y la función termina sin alcanzar una sentencia return. Si el flujo de ejecución llega al final de la función, el valor de retorno es +nothing+, que claramente no es el valor absoluto de 0.
+Esta versión no es correcta porque si +x+ es igual a 0, ninguna de las condiciones es verdadera y la función termina sin alcanzar una sentencia return. Si el flujo de ejecución llega al final de la función, el valor de retorno es +nothing+, que claramente no es el valor absoluto de 0.
 
 [source,@julia-repl-test chap06]
 ----
@@ -113,9 +113,10 @@ Por ejemplo, suponga que desea encontrar la distancia entre dos puntos dados por
 
 El primer paso es considerar qué aspecto tendría la función distancia en Julia. En otras palabras, ¿cuáles son las entradas (parámetros) y cuál es la salida (valor de retorno)?
 
-En este caso las entradas son los dos puntos, que podemos representar usando cuatro números. El valor devuelto es la distancia, que es un valor de punto flotante.
+En este caso las entradas son los dos puntos, que se pueden representar usando cuatro números. El valor devuelto es la distancia, que es un número de punto flotante.
 
-Escribamos una primera versión de la función:
+
+He aquí una primera versión de la función:
 (((distancia)))((("función", "definida por el programador", "distancia", see="distancia")))
 
 [source,@julia-setup chap06]
@@ -125,19 +126,19 @@ function distancia(x₁, y₁, x₂, y₂)
 end
 ----
 
-Obviamente esta versión de la función no calcula distancias; siempre devuelve cero. Pero es correcta sintácticamente y se ejecutará, lo que implica que la podemos probar antes de hacerla más compleja. Los números de subíndice están disponibles en la codificación de caracteres Unicode (*+\_1 TAB+*, *+\_2 TAB+*, etc.).
+Obviamente esta versión de la función no calcula distancias sino que siempre devuelve cero. Aun así, es correcta sintácticamente hablando y se ejecutará, lo que implica que se puede probar antes de hacerla más compleja. Los números de subíndice están disponibles en la codificación de caracteres Unicode (*+\_1 TAB+*, *+\_2 TAB+*, etc.).
 (((carácter Unicode)))
 
-Para probar la nueva función, la llamamos con una muestra de valores:
+Para probar la nueva función, se llama con una muestra de valores:
 
 [source,@julia-repl-test chap06]
 ----
 distance(1, 2, 4, 6)
 ----
 
-Se eligen estos valores de tal forma que la distancia horizontal sea igual a 3 y la distancia vertical sea igual a 4; de esa manera el resultado es 5 (la hipotenusa del triángulo 3-4-5). Cuando se comprueba una función, es útil conocer la respuesta correcta.
+Se eligen estos valores de tal forma que la distancia horizontal sea igual a 3 y la distancia vertical sea igual a 4 y de esa manera el resultado es 5 (la hipotenusa del triángulo 3-4-5). Cuando se comprueba una función, es útil conocer la respuesta correcta.
 
-Hasta el momento hemos confirmado que la función es sintácticamente correcta, por lo que podemos empezar a agregar líneas de código. El paso lógico siguiente es encontrar las diferencias latexmath:[x_2 - x_1] y latexmath:[y_2 - y_1]. En la siguiente versión de la función almacenaremos estos valores en variables temporales y las mostraremos con el macro +@show+.
+Hasta el momento se ha podido confirmar que la función es sintácticamente correcta, por lo que se puede empezar a agregar líneas de código. El paso lógico siguiente es encontrar las diferencias latexmath:[x_2 - x_1] y latexmath:[y_2 - y_1]. En la siguiente versión de la función se almacenarán estos valores en variables temporales y se mostrarán con el macro +@show+.
 ((("@show")))((("macro", "Base", "@show", see="@show")))
 
 [source,@julia-setup]
@@ -150,9 +151,9 @@ function distancia(x₁, y₁, x₂, y₂)
 end
 ----
 
-Si la función trabaja bien, las salidas deben ser +dx = 3+ y +dy = 4+. Si es así, sabemos que la función está obteniendo los parámetros correctos y realizando el primer cálculo correctamente. Si no, entonces sólo hay unas pocas líneas que revisar.
+Si la función trabaja bien, las salidas deben ser +dx = 3+ y +dy = 4+. Si es así, se sabe que la función está obteniendo los parámetros correctos y realizando el primer cálculo correctamente. Si no, entonces sólo hay unas pocas líneas que revisar.
 
-A continuación calculamos la suma de los cuadrados de +dx+ y +dy+:
+A continuación se calcula la suma de los cuadrados de +dx+ y +dy+:
 
 [source,@julia-setup]
 ----
@@ -165,7 +166,7 @@ function distancia(x₁, y₁, x₂, y₂)
 end
 ----
 
-De nuevo queremos ejecutar el programa en esta etapa y comprobar la salida (que debería ser 25). Los números en superíndice también están disponibles (*+\^2 TAB+*). Finalmente, se puede usar +sqrt+ para calcular y devolver el resultado:
+De nuevo se quiere ejecutar el programa en esta etapa y comprobar la salida (que debería ser 25). Los números en superíndice también están disponibles (*+\^2 TAB+*). Finalmente, se puede usar +sqrt+ para calcular y devolver el resultado:
 (((sqrt)))
 
 [source,@julia-setup]
@@ -178,20 +179,20 @@ function distancia(x₁, y₁, x₂, y₂)
 end
 ----
 
-Si esto funciona correctamente, habremos terminado. Si no, podríamos mostrar el valor de la variable resultado antes de la sentencia de retorno.
+Si esto funciona correctamente, ya se habría terminado. Si no, se podría mostrar el valor de la variable resultado antes de la sentencia de retorno.
 
-La versión final de la función no muestra nada cuando se ejecuta; sólo retorna un valor. Las sentencias print que escribimos son útiles para la depuración, pero una vez que el programa esté funcionando correctamente, se deben eliminar. El código eliminado se llama _andamiaje_ porque es útil para construir el programa pero no es parte del producto final.
+La versión final de la función no muestra nada cuando se ejecuta, sólo retorna un valor. Las sentencias print que se escriben son útiles para la depuración, pero una vez que el programa esté funcionando correctamente, se deben eliminar. El código eliminado se llama _andamiaje_ porque es útil para construir el programa pero no es parte del producto final.
 (((andamiaje)))
 
 Al principio, debería añadir solamente una o dos líneas de código cada vez. Conforme vaya ganando experiencia, puede que se encuentre escribiendo y depurando fragmentos mayores de código. Sin embargo, el proceso de desarrollo incremental puede ahorrarle mucho tiempo de depuración.
 
 Los aspectos clave del proceso son:
 
-. Inicie con un programa que funcione y hágale pequeños cambios incrementales. En cualquier momento, si hay un error, sabrá exactamente dónde está.
+. Iniciar con un programa que funcione y hacerle pequeños cambios incrementales. En cualquier momento, si hay un error, sabrá exactamente dónde está.
 
-. Use variables temporales para guardar valores intermedios para que pueda mostrarlos y verificarlos.
+. Usar variables temporales para guardar valores intermedios para que pueda mostrarlos y verificarlos.
 
-. Una vez que el programa está funcionando, tal vez prefiera eliminar parte del andamiaje o consolidar múltiples sentencias en expresiones compuestas, pero sólo si eso no hace que el programa sea difícil de leer.
+. Una vez que el programa esté funcionando, tal vez prefiera eliminar parte del andamiaje o consolidar múltiples sentencias en expresiones compuestas, pero sólo si eso no hace que el programa sea difícil de leer.
 
 ==== Ejercicio 6-2
 
@@ -199,24 +200,24 @@ Use la técnica de desarrollo incremental para escribir una función llamada +hi
 
 === Composición
 
-Ahora, como usted esperaría, se puede llamar a una función desde otra. Como ejemplo, escribiremos una función que tome dos puntos, el centro del círculo y un punto del perímetro, y calcule el área del círculo.
+Ahora, como usted esperaría, se puede llamar a una función desde otra. Como ejemplo, se escribe una función que tome dos puntos, el centro del círculo y un punto del perímetro, y calcule el área del círculo.
 (((composición)))
 
-Suponga que el punto central está almacenado en las variables +xc+ y +yc+, y que el punto del perímetro lo está en +xp+ y +yp+. El primer paso es hallar el radio del círculo, que es la distancia entre los dos puntos. Hemos escrito la función distancia que realiza esta tarea:
+Suponga que el punto central está almacenado en las variables +xc+ y +yc+, y que el punto del perímetro lo está en +xp+ y +yp+. El primer paso es hallar el radio del círculo, que es la distancia entre los dos puntos. La función distancia que realiza esta tarea sería:
 
 [source,julia]
 ----
 radio = distancia(xc, yc, xp, yp)
 ----
 
-El siguiente paso es encontrar el área del círculo usando este radio. De nuevo usaremos una de las funciones definidas previamente:
+El siguiente paso es encontrar el área del círculo usando este radio. De nuevo se usa una de las funciones definidas previamente:
 
 [source,julia]
 ----
 resultado = area(radio)
 ----
 
-Envolviendo todo en una función, obtenemos:
+Envolviendo todo en una función, se obtiene:
 (((areacirculo)))((("función", "definida por el programador", "areacirculo", see="areacirculo")))
 
 [source,@julia-setup]
@@ -228,7 +229,7 @@ function areacirculo(xc, yc, xp, yp)
 end
 ----
 
-Las variables temporales +radio+ y +resultado+ son útiles para el desarrollo y la depuración, pero una vez que el programa está funcionando, podemos hacerlo más conciso componiendo las llamadas a función:
+Las variables temporales +radio+ y +resultado+ son útiles para el desarrollo y la depuración, pero una vez que el programa está funcionando, se puede hacer más conciso componiendo las llamadas a función:
 (((variable temporal)))
 
 [source,@julia-setup]
@@ -255,7 +256,7 @@ function esdivisible(x, y)
     end
 end
 ----
-Es común dar a las funciones booleanas nombres que suenan como preguntas que tienen como respuesta un si ó un no; es_divisible devuelve +true+ o +false+ para indicar si +x+ es o no divisible por +y+.
+Es común dar a las funciones booleanas nombres que suenan como preguntas que tienen como respuesta un si ó un no, esdivisible devuelve +true+ o +false+ para indicar si +x+ es o no divisible por +y+.
 
 Por ejemplo:
 
@@ -267,7 +268,7 @@ julia> esdivisible(6, 3)
 true
 ----
 
-El resultado del operador +==+ es booleano, por lo tanto podemos escribir la función de una manera más concisa devolviendo el resultado directamente:
+El resultado del operador +==+ es booleano, por lo tanto se puede escribir la función de una manera más concisa devolviendo el resultado directamente:
 (((==)))
 
 [source,@julia-setup]
@@ -296,7 +297,7 @@ if esdivisible(x, y) == true
 end
 ----
 
-Pero la comparación extra con +true+ es innecesaria.
+pero la comparación extra con +true+ es innecesaria.
 
 ==== Ejercicio 6-3
 
@@ -304,19 +305,19 @@ Escriba la función +entremedio(x,y,z)+ que devuelva +true+ si +x ≤ y ≤ z+, 
 
 === Más recursividad
 
-Solo hemos cubierto una pequeña parte de Julia, pero le puede interesar saber que esta parte ya es un lenguaje de programación _completo_, lo que significa que cualquier cómputo puede expresarse en este lenguaje. Cualquier programa que se haya escrito podría reescribirse usando solo lo que ha aprendido hasta ahora (en realidad, necesitaría algunos comandos para controlar dispositivos como el mouse, discos, etc., pero eso es todo).
+Solo se ha cubierto una pequeña parte de Julia pero le puede interesar saber que esta parte ya es un lenguaje de programación _completo_, lo que significa que cualquier cómputo puede expresarse en este lenguaje. Cualquier programa que se haya escrito podría reescribirse usando solo lo que ha aprendido hasta ahora (en realidad, necesitaría algunos comandos para controlar dispositivos como el mouse, discos, etc., pero eso es todo).
 (((recursión)))(((lenguaje de programación completo)))((("lenguaje de programación", "completo", see="lenguaje de programación completo")))
 
-Probar esa afirmación es un ejercicio no trivial realizado por primera vez por Alan Turing, uno de los primeros científicos de la computación (algunos argumentarían que era matemático, pero muchos de los primeros científicos informáticos comenzaron como matemáticos). En consecuencia, esto se conoce como la Tesis de Turing. Para una discusión más completa (y precisa) de la Tesis de Turing, se recomienda el libro de Michael Sipser _Introducción a la Teoría de la Computación_.
+Probar esta afirmación es un ejercicio no trivial realizado por primera vez por Alan Turing, uno de los primeros científicos de la computación (algunos argumentarían que era matemático, pero muchos de los primeros científicos informáticos comenzaron como matemáticos). En consecuencia, esto se conoce como la Tesis de Turing. Para una discusión más completa (y precisa) de la Tesis de Turing, se recomienda el libro de Michael Sipser _Introducción a la Teoría de la Computación_.
 (((Turing, Alan)))(((tesis de Turing)))
 
-Para darle una idea de lo que puede hacer con las herramientas que ha aprendido hasta ahora, evaluaremos algunas funciones matemáticas definidas recursivamente. Una definición recursiva es similar a una definición circular, en el sentido de que la definición contiene una referencia a lo que está siendo definido. Una definición verdaderamente circular no es muy útil:
+Para darle una idea de lo que puede hacer con las herramientas que ha aprendido hasta ahora, se evalúan algunas funciones matemáticas definidas recursivamente. Una definición recursiva es similar a una definición circular, en el sentido de que la definición contiene una referencia a lo que está siendo definido. Una definición verdaderamente circular no es muy útil:
 (((definición recursiva)))(((definición circular)))
 
 vorpal::
 Un adjetivo usado para describir algo que es vorpal.
 
-Si ves esta definición en el diccionario, podrías molestarte. Por otro lado, si buscas la definición de la función factorial, denotada con el símbolo latexmath:[!], podrías encontrar algo como esto:
+Si esta definición apareciese en el diccionario, la persona que la leyera podría molestarse. Por otro lado, si se busca la definición de la función factorial, denotada con el símbolo latexmath:[!], se encuentra encontrar algo como esto:
 (((función factorial)))
 
 [latexmath]
@@ -352,7 +353,7 @@ function fact(n)
 end
 ----
 
-De lo contrario, y esto es lo interesante, tenemos que hacer una llamada recursiva para encontrar el factorial de +n-1+ y luego multiplicarlo por +n+:
+De lo contrario, y esto es lo interesante, se tiene que hacer una llamada recursiva para encontrar el factorial de +n-1+ y luego multiplicarlo por +n+:
 
 [source,@julia-setup]
 ----
@@ -371,13 +372,13 @@ El flujo de ejecución de este programa es similar al flujo de +cuentaregresiva+
 
 [small]
 --
-Como +3+ no es +0+, tomamos la segunda rama y calculamos el factorial de +n-1+ ...
+Como +3+ no es +0+, se toma la segunda rama y se calcula el factorial de +n-1+ ...
 
-pass:[&#8193;]Como +2+ no es +0+, tomamos la segunda rama y calculamos el factorial de +n-1+ ...
+pass:[&#8193;]Como +2+ no es +0+, se toma la segunda rama y se calcula el factorial de +n-1+ ...
 
-pass:[&#8193;&#8193;]Como +1+ no es +0+, tomamos la segunda rama y calculamos el factorial de + n-1 + ...
+pass:[&#8193;&#8193;]Como +1+ no es +0+, se toma la segunda rama y se calcula el factorial de + n-1 + ...
 
-pass:[&#8193;&#8193;&#8193;]Como +0+ es igual a +0+, tomamos la primera rama y devolvemos +1+ sin realizar pass:[<br/>&#8193;&#8193;&#8193;&#8193;] más llamadas recursivas.
+pass:[&#8193;&#8193;&#8193;]Como +0+ es igual a +0+, se toma la primera rama y devuelve +1+ sin realizar pass:[<br/>&#8193;&#8193;&#8193;&#8193;] más llamadas recursivas.
 
 pass:[&#8193;&#8193;]El valor de retorno, +1+, se multiplica por +n+, que es +1+, y se devuelve el +resultado+.
 
@@ -405,16 +406,16 @@ Julia tiene la función +factorial+ para calcular el factorial de un número ent
 ====
 
 
-=== Salto de fe
+=== Salto de fe 
 
-Seguir el flujo de ejecución es una forma de leer programas, pero puede llegar a ser abrumador. Una alternativa es lo que llamamos el "salto de fe". Cuando llega a una llamada de función, en lugar de seguir el flujo de ejecución, asume que la función funciona correctamente y devuelve el resultado correcto.
+Seguir el flujo de ejecución es una forma de leer programas, pero puede llegar a ser abrumador. Una alternativa es lo que se conoce como el "salto de fe"(en inglés, "leap of faith"). Cuando llega a una llamada de función, en lugar de seguir el flujo de ejecución, asume que la función funciona correctamente y devuelve el resultado correcto.
 (((salto de fe)))
 
-De hecho, ya estás haciendo este salto de fe cuando usas funciones integradas de Julia. Cuando llamas a +cos+ o +exp+, no examinas los cuerpos de esas funciones. Simplemente asumes que funcionan porque las personas que las escribieron eran buenos programadores.
+De hecho, ya se está haciendo este salto de fe cuando se usan funciones integradas de Julia. Cuando se llaman a +cos+ o +exp+, no se examinan los cuerpos de esas funciones. Simplemente se asume que funcionan porque las personas que las escribieron eran buenos programadores.
 
-Lo mismo ocurre cuando llamas a una de tus propias funciones. Por ejemplo, en <<boolean_functions>>, escribimos una función llamada +esdivisible+ que determina si un número es divisible por otro. Una vez que nos hayamos convencido de que esta función es correcta —al examinar y probar el código—, podemos usar la función sin mirar nuevamente el cuerpo.
+Lo mismo ocurre cuando el usuario llama a una de sus propias funciones. Por ejemplo, en <<boolean_functions>>, se escribe una función llamada +esdivisible+ que determina si un número es divisible por otro. Una vez que se confirme que esta función es correcta —al examinar y probar el código—, se puede usar la función sin mirar nuevamente el cuerpo.
 
-Lo mismo aplica a los programas recursivos. Cuando llegue a la llamada recursiva, en lugar de seguir el flujo de ejecución, debe suponer que la llamada recursiva funciona (devuelve el resultado correcto) y luego preguntarse: "Suponiendo que pueda encontrar el factorial de latexmath:[n-1], ¿puedo calcular el factorial de latexmath:[n]?" Está claro que puedes, multiplicando por latexmath:[n].
+Lo mismo aplica a los programas recursivos. Cuando llegue a la llamada recursiva, en lugar de seguir el flujo de ejecución, debe suponer que la llamada recursiva funciona (devuelve el resultado correcto) y luego preguntarse: "Suponiendo que pueda encontrar el factorial de latexmath:[n-1], ¿se puede calcular el factorial de latexmath:[n]?" Está claro que es posible, multiplicando por latexmath:[n].
 
 Por supuesto, es un poco extraño suponer que la función funciona correctamente cuando no ha terminado de escribirla, ¡pero por eso se llama un salto de fe!
 
@@ -452,11 +453,11 @@ function fib(n)
 end
 ----
 
-Si intentas seguir el flujo de ejecución en esta función, incluso para valores bastante pequeños de +n+, su cabeza podría estallar. Haciendo un salto de fe, es decir, asumiendo que las dos llamadas recursivas funcionan correctamente, entonces está claro que se obtiene el resultado correcto al sumarlas.
+Si intenta seguir el flujo de ejecución en esta función, incluso para valores bastante pequeños de +n+, su cabeza podría estallar. Haciendo un salto de fe, es decir, asumiendo que las dos llamadas recursivas funcionan correctamente, entonces está claro que se obtiene el resultado correcto al sumarlas.
 
 === Tipos de Comprobación
 
-¿Qué pasa si llamamos a +fact+ con +1.5+ como argumento?
+¿Qué pasa si se llama a +fact+ con +1.5+ como argumento?
 (((StackOverflowError)))
 
 [source,jlcon]
@@ -467,15 +468,15 @@ Stacktrace:
  [1] fact(::Float64) at ./REPL[3]:2
 ----
 
-Parece una recursión infinita. ¿Como es esto posible? La función tiene un caso base (cuando +n == 0+). Pero si +n+ no es un número entero, podemos _perdernos_ el caso base y hacer recursión para siempre.
+Parece una recursión infinita. ¿Como es esto posible? La función tiene un caso base (cuando +n == 0+). Pero si +n+ no es un número entero, es posible _perderse_ el caso base y hacer recursión para siempre.
 (((recursión infinita)))
 
-En la primera llamada recursiva, el valor de +n+ es +0.5+. En el siguiente, es +-0.5+. A partir de ahí, se vuelve más pequeño (más negativo), pero nunca será +0+.
+En la primera llamada recursiva, el valor de +n+ es +0.5+. En la siguiente, es +-0.5+. A partir de ahí, se vuelve más pequeño (más negativo), pero nunca será +0+.
 
-Tenemos dos opciones. Podemos intentar generalizar la función factorial para trabajar con números de punto flotante, o podemos hacer que +fact+ verifique el tipo del argumento. La primera opción se llama función gamma, y está un poco más allá del alcance de este libro. Entonces intentaremos con la segunda.
+Existen dos opciones. Se puede intentar generalizar la función factorial para trabajar con números de punto flotante, o se puede hacer que +fact+ verifique el tipo del argumento. La primera opción se llama función gamma y está un poco más allá del alcance de este libro. En este libro se proseguirá con la segunda.
 (((función gamma)))
 
-Podemos usar el operador integrado +isa+ para verificar el tipo de argumento. También podemos asegurarnos de que el argumento sea positivo:
+Se puede usar el operador integrado +isa+ para verificar el tipo de argumento. También se puede asegurarnos de que el argumento sea positivo:
 (((isa)))(((fact)))
 
 [source,@julia-setup chap06]
@@ -493,7 +494,7 @@ function fact(n)
 end
 ----
 
-El primer caso base se hace cargo de números no enteros; el segundo de enteros negativos. En ambos casos, el programa imprime un mensaje de error y devuelve +nothing+ para indicar que algo salió mal:
+El primer caso base se hace cargo de números no enteros y el segundo de enteros negativos. En ambos casos, el programa imprime un mensaje de error y devuelve +nothing+ para indicar que algo salió mal:
 
 [source,@julia-repl-test chap06]
 ----
@@ -503,12 +504,12 @@ julia> fact(-2)
 ERROR: Factorial is not defined for negative integers.
 ----
 
-Si superamos ambas verificaciones, sabemos que +n+ es positivo o cero, por lo que podemos probar que la recursión termina.
+Si se superan ambas verificaciones, se sabe que +n+ es positivo o cero, por lo que es posible probar que la recursión termina.
 
 Este programa muestra un patrón a veces llamado _guardian_. Los dos primeros condicionales actúan como guardianes, protegiendo el código que sigue de los valores que pueden causar un error. Los guardianes hacen posible demostrar que el código es correcto.
 (((guardian)))
 
-En <<catching_exceptions>> veremos una alternativa más flexible para imprimir un mensaje de error: generar una excepción.
+En <<catching_exceptions>> se explorará una alternativa más flexible para imprimir un mensaje de error: generar una excepción.
 
 [[deb06]]
 === Depuración
@@ -516,17 +517,17 @@ En <<catching_exceptions>> veremos una alternativa más flexible para imprimir u
 Dividir un código extenso en pequeñas funciones crea naturalmente puntos de control para la depuración. Si un programa no está funcionando, existen tres posibilidades a considerar:
 (((depuración)))
 
-* Hay algo incorrecto en los argumentos de la función; se viola una condición previa.
+* Hay algo incorrecto en los argumentos de la función, se viola una condición previa.
 (((precondición)))
 
-* Hay algo incorrecto en la función; se viola una condición posterior.
+* Hay algo incorrecto en la función, se viola una condición posterior.
 (((postcondición)))
 
 * Hay algo incorrecto en el valor de retorno o la forma en que se está utilizando.
 
-Para descartar la primera posibilidad, puedes agregar una sentencia de impresión al comienzo de la función para mostrar los valores de los parámetros (y tal vez sus tipos). O puedes escribir líneas de código que verifiquen las condiciones previas de manera explícita.
+Para descartar la primera posibilidad, puede agregar una sentencia de impresión al comienzo de la función para mostrar los valores de los parámetros (y tal vez sus tipos) o bien escribir líneas de código que verifiquen las condiciones previas de manera explícita.
 
-Si los parámetros están bien, agregue una sentencia de impresión antes de cada sentencia return y muestre el valor de retorno. Si es posible, verifique el resultado a mano. Considere llamar a la función con valores que faciliten la verificación del resultado (como en <<incremental_development>>).
+Si los parámetros están bien, agregue una sentencia de impresión antes de cada sentencia return y muestre el valor de retorno. Si es posible, verifique el resultado a mano. Considere también llamar a la función con valores que faciliten la verificación del resultado (como en <<incremental_development>>).
 
 Si la función parece estar funcionando, revise la llamada a función para asegurarse de que el valor de retorno se está utilizando correctamente (¡o incluso si se está utilizando!).
 
@@ -557,7 +558,7 @@ end
 fact(4)
 ----
 
-Si estás confundido con el flujo de ejecución, este tipo de salida puede ser útil. Desarrollar un buen andamiaje toma tiempo, pero un poco de andamiaje puede evitarnos mucha depuración.
+Si está confundido con el flujo de ejecución, este tipo de salida puede ser útil. Desarrollar un buen andamiaje toma tiempo, pero un poco de andamiaje puede ahorrar al usuario mucha depuración.
 
 === Glosario
 
@@ -578,7 +579,7 @@ Código que se usa durante el desarrollo de un programa pero que no es parte de 
 (((andamiaje)))
 
 guardián::
-Un patrón de programación que usa una sentencia condicional para verificar y manejar circunstancias que puedan causar un error.
+Un patrón de programación que usa una sentencia condicional para verificar y manejar circunstancias que pueden causar un error.
 (((guardián)))
 
 
@@ -640,7 +641,7 @@ Vea https://en.wikipedia.org/wiki/Ackermann_function. Escriba una función llama
 Un palíndromo es una palabra que se escribe igual en un sentido que en otro, como "ana" y "radar". De manera recursiva, una palabra es un palíndromo si la primera y la última letra son iguales y lo que está entre ellas es un palíndromo.
 (((palíndromo)))
 
-Las siguientes son funciones que toman un argumento de tipo cadena y devuelven la primera letra, la última, y las intermedias:
+Las siguientes funciones toman un argumento de tipo cadena y devuelven la primera letra, la última, y las intermedias:
 (((primera)))((("función", "definida por el programador", "primera", see="primera")))(((ultima)))((("función", "definida por el programador", "ultima", see="ultima")))(((medio)))((("función", "definida por el programador", "medio", see="medio")))
 
 [source,@julia-setup]
@@ -662,9 +663,9 @@ function medio(palabra)
 end
 ----
 
-Veremos cómo funcionan en <<chap08>>.
+Se verá cómo funcionan en <<chap08>>.
 
-. Prueba estas funciones. ¿Qué sucede si llamas a la función medio con una cadena de dos letras? ¿Y con una cadena de una letra? ¿Qué pasa con la cadena vacía +""+, que no contiene letras?
+. Pruebe estas funciones. ¿Qué sucede si llama a la función medio con una cadena de dos letras? ¿Y con una cadena de una letra? ¿Qué pasa con la cadena vacía +""+, que no contiene letras?
 
 . Escriba una función llamada +espalindromo+ que tome un argumento de tipo cadena y devuelva +true+ si es un palíndromo y +false+ de lo contrario. Recuerde que puede usar la función integrada +length+ para verificar la longitud de una cadena.
 (((espalindromo)))((("función", "definida por el programador", "espalindromo", see="espalindromo")))(((length)))
@@ -677,7 +678,7 @@ Un número, latexmath:[a], es una potencia de latexmath:[b] si es divisible por 
 
 [TIP]
 ====
-Tendrás que pensar en el caso base.
+Tendrá que pensar en el caso base.
 ====
 
 [[ex06-5]]

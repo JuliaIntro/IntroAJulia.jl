@@ -1,11 +1,11 @@
 [[chap12]]
 == Tuplas
 
-Este capítulo presenta otro tipo integrado; las tuplas, y luego muestra cómo los arreglos, los diccionarios y las tuplas funcionan en conjunto. También se presenta una característica útil para los arreglos de longitud variable como argumento: los operadores de recopilación y dispersión.
+Este capítulo presenta otro tipo integrado: las tuplas. Luego, muestra cómo los arreglos, los diccionarios y las tuplas funcionan en conjunto. También se presenta una característica útil para los arreglos de longitud variable como argumento: los operadores de recopilación y dispersión.
 
 === Las Tuplas son Immutables
 
-Una tupla es una secuencia de valores. Los valores pueden ser de cualquier tipo, y están indexados por enteros, por lo que las tuplas son muy parecidas a los arreglos. La diferencia más importante es que las tuplas son inmutables y que cada elemento puede tener su propio tipo.
+Una tupla es una secuencia de valores. Estos valores pueden ser de cualquier tipo y están indexados por enteros, por lo que las tuplas son muy parecidas a los arreglos. La diferencia más importante es que las tuplas son inmutables y que cada elemento puede tener su propio tipo.
 (((tupla)))(((immutable)))
 
 Una tupla es una lista de valores separados por comas:
@@ -100,7 +100,7 @@ ERROR: MethodError: no method matching setindex!(::NTuple{5,Char}, ::Char, ::Int
 
 Como las tuplas son inmutables, sus elementos no se pueden modificar.
 
-Los operadores relacionales funcionan con las tuplas y otras secuencias; Julia comienza comparando el primer elemento de cada secuencia. Si son iguales, pasa a los siguientes elementos, y así sucesivamente, hasta que encuentra elementos que difieren. Los elementos posteriores no se consideran (incluso si son realmente grandes).
+Los operadores relacionales funcionan con las tuplas y otras secuencias, Julia comienza comparando el primer elemento de cada secuencia. Si son iguales, pasa a los siguientes elementos, y así sucesivamente, hasta que encuentra elementos que difieren. Los elementos posteriores no se consideran (incluso si son realmente grandes).
 (((operador relacional)))
 
 [source,@julia-repl-test]
@@ -114,7 +114,7 @@ true
 
 === Asignación de tupla
 
-De vez en cuando, es útil intercambiar los valores de dos variables. Para hacerlo con sentencias de asignación convencionales debemos usar una variable temporal. Por ejemplo, para intercambiar a y b:
+De vez en cuando, es útil intercambiar los valores de dos variables. Para hacerlo con sentencias de asignación convencionales se debe usar una variable temporal. Por ejemplo, para intercambiar a y b:
 (((asignación)))
 
 [source,julia]
@@ -132,7 +132,7 @@ Esta solución resulta aparatosa. La asignación de tuplas soluciona este proble
 a, b = b, a
 ----
 
-El lado izquierdo es una tupla de variables; el lado derecho es una tupla de expresiones. Cada valor se asigna a su respectiva variable. Todas las expresiones del lado derecho se evalúan antes de las asignaciones.
+El lado izquierdo es una tupla de variables y el lado derecho es una tupla de expresiones. Cada valor se asigna a su respectiva variable. Todas las expresiones del lado derecho se evalúan antes de las asignaciones.
 
 El número de variables de la izquierda tiene que ser menor o igual que el número de valores a la derecha:
 (((BoundsError)))
@@ -157,7 +157,7 @@ julia> unombre, dominio = split(addr, '@');
 
 ----
 
-El valor de retorno de +split+ es un arreglo con dos elementos; el primer elemento se asigna a +unombre+, y el segundo a +dominio+.
+El valor de retorno de +split+ es un arreglo con dos elementos: el primer elemento se asigna a +unombre+, y el segundo a +dominio+.
 
 [source,@julia-repl-test chap12]
 ----
@@ -170,7 +170,7 @@ julia> dominio
 
 === Tuplas como valor de retorno
 
-Estrictamente hablando, una función solo puede devolver un valor, pero si el valor es una tupla, el efecto es el mismo que devolver múltiples valores. Por ejemplo, si desea dividir dos enteros y calcular el cociente y el resto, es ineficiente calcular +x ÷ y+ y luego +x % y+. Es mejor calcular ambos al mismo tiempo.
+Estrictamente hablando, una función solo puede devolver un valor pero si el valor es una tupla, el efecto es el mismo que devolver múltiples valores. Por ejemplo, si desea dividir dos enteros y calcular el cociente y el resto, es ineficiente calcular +x ÷ y+ y luego +x % y+. Es mejor calcular ambos al mismo tiempo.
 (((÷)))(((%)))
 
 La función integrada +divrem+ toma dos argumentos y devuelve una tupla de dos valores: el cociente y el resto. El resultado puede ser almacenado como una tupla:
@@ -226,7 +226,7 @@ julia> imprimirtodo(1, 2.0, '3')
 (1, 2.0, '3')
 ----
 
-El opuesto de la recopilación es la _dispersión_. Si tiene una secuencia de valores y desea pasarla a una función como argumento múltiple, puede usar el operador +pass:[...]+ . Por ejemplo, +divrem+ toma exactamente dos argumentos; no funciona con tuplas:
+El opuesto de la recopilación es la _dispersión_. Si tiene una secuencia de valores y desea pasarla a una función como argumento múltiple, puede usar el operador +pass:[...]+ . Por ejemplo, +divrem+ toma exactamente dos argumentos y no funciona con tuplas:
 (((dispersión)))(((MethodError)))
 
 [source,@julia-repl-test chap12]
@@ -237,7 +237,7 @@ julia> divrem(t)
 ERROR: MethodError: no method matching divrem(::Tuple{Int64,Int64})
 ----
 
-Pero si "dispersamos" la tupla, funciona:
+No obstante, si "dispersamos" la tupla, funciona:
 
 [source,@julia-repl-test chap12]
 ----
@@ -300,10 +300,10 @@ julia> for par in zip(s, t)
 ('c', 3)
 ----
 
-Un objeto zip es un tipo de _iterador_, que es cualquier objeto que itera a través de una secuencia. Los iteradores son, de cierto modo, similares a los arreglos, pero a diferencia de los arreglos, no se puede usar un índice para seleccionar un elemento de un iterador.
+Un objeto zip es un tipo de _iterador_, que es cualquier objeto que itera a través de una secuencia. Los iteradores son, en cierto modo, similares a los arreglos, pero a diferencia de estos últimos, no se puede usar un índice para seleccionar un elemento de un iterador.
 (((iterador)))
 
-Si desea usar operadores y funciones de arreglos, puedes usar un objeto zip para hacer un arreglo:
+Si desea usar operadores y funciones de arreglos, puede usar un objeto zip para hacer un arreglo:
 (((collect)))
 
 [source,@julia-repl-test chap12]
@@ -315,9 +315,9 @@ julia> collect(zip(s, t))
  ('c', 3)
 ----
 
-El resultado es una serie de tuplas; en este ejemplo, cada tupla contiene un carácter de la cadena y el elemento correspondiente del arreglo.
+El resultado es una serie de tuplas. En este ejemplo, cada tupla contiene un carácter de la cadena y el elemento correspondiente del arreglo.
 
-Si las secuencias no tienen el mismo largo, el resultado tiene el largo de la más corta.
+Si las secuencias no tienen la misma longitud, el resultado tiene la longitud de la más corta.
 
 [source,@julia-repl-test]
 ----
@@ -347,7 +347,7 @@ julia> for (letra, numero) in t
 En cada iteración del ciclo, Julia selecciona la siguiente tupla en el arreglo y asigna estos elementos a letra y número. Los paréntesis de +(letra, número)+ son obligatorios.
 (((paréntesis)))
 
-Si combinamos +zip+, +for+ y asignación de tuplas, tendremos una forma para recorrer dos (o más) secuencias al mismo tiempo. Por ejemplo, la función +coinciden+ toma dos secuencias, +t1+ y +t2+, y devuelve +true+ si hay un índice +i+ tal que +t1[i] == t2[i]+:
+Combinando +zip+, +for+ y asignación de tuplas, se obtiene una forma para recorrer dos (o más) secuencias al mismo tiempo. Por ejemplo, la función +coinciden+ toma dos secuencias, +t1+ y +t2+, y devuelve +true+ si hay un índice +i+ tal que +t1[i] == t2[i]+:
 (((coinciden)))((("función", "Base", "coinciden", see="coinciden")))
 
 [source,@julia-setup chap12]
@@ -375,7 +375,7 @@ julia> for (indice, elemento) in enumerate("abc")
 3 c
 ----
 
-El resultado de +enumerate+ es un objeto enumerate, el cual hace una iteración sobre una secuencia de pares, donde cada par contiene un índice (a partir de 1) y un elemento de la secuencia dada.
+El resultado de +enumerate+ es un objeto enumerate, el cual hace una iteración sobre una secuencia de pares, dónde cada par contiene un índice (a partir de 1) y un elemento de la secuencia dada.
 
 
 === Diccionarios y Tuplas
@@ -397,7 +397,7 @@ b 2
 
 Como es de esperar, en un diccionario los elementos no están en un orden particular.
 
-Ahora, si queremos hacer lo contrario, podemos usar una serie de tuplas para inicializar un nuevo diccionario:
+Ahora, si se quiere hacer lo contrario, se puede usar una serie de tuplas para inicializar un nuevo diccionario:
 
 [source,@julia-repl-test]
 ----
@@ -422,14 +422,14 @@ Dict{Char,Int64} with 3 entries:
   'b' => 2
 ----
 
-Es común usar tuplas como claves en los diccionarios. Por ejemplo, un directorio telefónico puede asignar números de teléfono a una tupla con apellido y nombre. Suponiendo que hemos definido +apellido+, +nombre+ y +numero+, podríamos escribir:
+Es común usar tuplas como claves en los diccionarios. Por ejemplo, un directorio telefónico puede asignar números de teléfono a una tupla con apellido y nombre. Suponiendo que se ha definido +apellido+, +nombre+ y +numero+, podríamos escribir:
 
 [source,julia]
 ----
 directorio[apellido, nombre] = numero
 ----
 
-La expresión entre paréntesis es una tupla. Podríamos usar asignación de tuplas para recorrer este diccionario.
+La expresión entre paréntesis es una tupla. Se podría usar asignación de tuplas para recorrer este diccionario.
 
 [source,julia]
 ----
@@ -438,7 +438,7 @@ for ((apellido, nombre), numero) in directorio
 end
 ----
 
-Este bucle recorre los pares clave-valor en +directorio+, los cuales son tuplas. Asigna los elementos de la clave de cada tupla a +apellido+ y +nombre+, y el valor a +numero+, luego imprime el nombre y el número de teléfono correspondiente.
+Este bucle recorre los pares clave-valor en +directorio+, los cuales son tuplas. Asigna los elementos de la clave de cada tupla a +apellido+ y +nombre+ y el valor a +numero+, luego imprime el nombre y el número de teléfono correspondiente.
 
 Hay dos formas de representar tuplas en un diagrama de estado. La versión más detallada muestra los índices y elementos tal como aparecen en un arreglo. Por ejemplo, la tupla +("Cortázar", "Julio")+ se vería como en <<fig12-1>>.
 (((diagrama de estado)))
@@ -459,32 +459,32 @@ Aquí las tuplas se muestran usando la sintaxis de Julia para tener un esquema m
 
 === Secuencias de Secuencias
 
-Nos hemos centrado en los arreglos de tuplas, pero casi todos los ejemplos de este capítulo también funcionan con arreglos de arreglos, tuplas de tuplas y tuplas de arreglos. Para evitar enumerar todas las posibles combinaciones, a veces es más fácil hablar sobre secuencias de secuencias.
+Hasta ahora, el capítulo se ha centrado en los arreglos de tuplas, pero casi todos los ejemplos que se han visto también funcionan con arreglos de arreglos, tuplas de tuplas y tuplas de arreglos. Para evitar enumerar todas las posibles combinaciones, a veces es más fácil hablar sobre secuencias de secuencias.
 (((secuencias de secuencias)))
 
 En muchos contextos, los diferentes tipos de secuencias (cadenas, arreglos y tuplas) se pueden usar indistintamente. Entonces, ¿cómo elegir uno u otro?
 (((cadena)))(((arreglo)))(((tupla)))
 
-Para comenzar con lo mas obvio, las cadenas son más limitadas que las demás secuencias, porque los elementos deben ser caracteres. Además son inmutables. Si necesitas poder cambiar los caracteres en una cadena (en vez de crear una nueva), puede que lo mas adecuado sea elegir un arreglo de caracteres.
+Para comenzar con lo mas obvio, las cadenas son más limitadas que las demás secuencias, porque los elementos deben ser caracteres. Además son inmutables. Si se necesita poder cambiar los caracteres en una cadena (en vez de crear una nueva), puede que lo mas adecuado sea elegir un arreglo de caracteres.
 (((immutable)))
 
-Los arreglos se usan con mas frecuencia que las tuplas, principalmente porque son mutables. Pero hay algunos casos donde es posible que prefieras usar tuplas:
+Los arreglos se usan con mas frecuencia que las tuplas, principalmente porque son mutables. No obstante, hay algunos casos donde es posible que sea preferible usar tuplas:
 (((mutable)))
 
 * En algunos contextos, como en una sentencia return, resulta sintácticamente más simple crear una tupla que un arreglo.
 
-*  Si estas pasando una secuencia como argumento de una función, el uso de tuplas reduce los comportamientos potencialmente indeseados debido a la creacion de alias. 
+*  Si se pasa una secuencia como argumento de una función, el uso de tuplas reduce los comportamientos potencialmente indeseados debido a la creación de alias. 
 (((alias)))
 
 * Por rendimiento. El compilador puede especializarse en este tipo.
 
-Dado que las tuplas son inmutables, no tienen funciones como +sort!+ y +reverse!+, que modifiquen arreglos ya existentes. Sin embargo, Julia proporciona las funciones integradas +sort+, que toma un arreglo y devuelve una secuencia nueva con los mismos elementos ordenados, y +reverse+, que toma cualquier secuencia y devuelve una secuencia nueva del mismo tipo con los mismos elementos en el orden contrario.
+Dado que las tuplas son inmutables, no tienen funciones como +sort!+ y +reverse!+ que modifiquen arreglos ya existentes. Sin embargo, Julia proporciona las funciones integradas +sort+, que toma un arreglo y devuelve una secuencia nueva con los mismos elementos ordenados, y +reverse+, que toma cualquier secuencia y devuelve una secuencia nueva del mismo tipo con los mismos elementos en el orden contrario.
 (((sort)))(((sort!)))(((reverse)))(((reverse!)))(((zip)))((("función", "Base", "reverse", see="reverse")))(((zip)))((("función", "Base", "reverse!", see="reverse!")))
 
 
 === Depuración
 
-Los arreglos, diccionarios y tuplas son ejemplos de _estructuras de datos_; en este capítulo estamos comenzando a ver estructuras de datos compuestas, como arreglos o tuplas, y diccionarios que contienen tuplas como claves y arreglos como valores. Las estructuras de datos compuestas son utiles, pero también resultan propensas a lo que yo llamo _errores de forma_; es decir, errores causados cuando una estructura de datos tiene el tipo, tamaño o estructura incorrecta. Por ejemplo, si estás esperando una lista con un entero y te paso simplemente un entero (no en una lista), no funcionará.
+Los arreglos, diccionarios y tuplas son ejemplos de _estructuras de datos_. En este capítulo se empiezan a ver estructuras de datos compuestas, como arreglos o tuplas, y diccionarios que contienen tuplas como claves y arreglos como valores. Las estructuras de datos compuestas son útiles, aunque también resultan propensas a lo que se llaman _errores de forma_, es decir, errores causados cuando una estructura de datos tiene el tipo, tamaño o estructura incorrecta. Por ejemplo, si está esperando una lista con un entero y se le pasa simplemente un entero (no en una lista), no funcionará.
 (((depuración)))(((estructuras de datos)))(((errores de forma)))
 
 Julia permite añadir el tipo a elementos de una secuencia. Esto se detalla en <<chap17>>. Especificar el tipo elimina muchos errores de forma.
@@ -497,15 +497,15 @@ Una secuencia inmutable de elementos donde cada elemento puede tener su propio t
 (((tupla)))
 
 asignación en tupla::
-Una asignacion con una secuencia en el lado derecho y una tupla de variables en el izquierdo. Primero se evalua el lado derecho y luego sus elementos son asignados a las variables de la izquierda.
+Una asignación con una secuencia en el lado derecho y una tupla de variables en el izquierdo. Primero se evalúa el lado derecho y luego sus elementos son asignados a las variables de la izquierda.
 (((asignación en tupla)))
 
 reunir::
-La operacion de armar una tupla con argumentos de longitud variable.
+La operación de armar una tupla con argumentos de longitud variable.
 (((reunir)))
 
 dispersar::
-La operacion de tratar una secuencia como una lista de argumentos. 
+La operación de tratar una secuencia como una lista de argumentos. 
 (((dispersar)))
 
 objeto zip::
@@ -513,7 +513,7 @@ El resultado de llamar a la función integrada +zip+; un objeto que itera a trav
 (((objeto zip)))
 
 iterador::
-Un objeto que puede iterar a través de una secuencia, pero que no tiene los operadores y funciones de arreglos.
+Un objeto que puede iterar a través de una secuencia pero que no tiene los operadores y funciones de arreglos.
 (((iterador)))
 
 estructura de datos::
@@ -555,14 +555,14 @@ Aquí hay un ejemplo de cómo se vería la salida:
 Es posible que desee crear un diccionario que asigne a una colección de letras una serie de palabras que se puedan deletrear con esas letras. La pregunta es, ¿cómo representar la colección de letras de una manera que pueda usarse como clave?
 ====
 
-. Modifique el programa anterior para que imprima primero el arreglo más largo de anagramas, seguida de la segunda más larga, y así sucesivamente.
+. Modifique el programa anterior para que imprima primero el arreglo más largo de anagramas, seguido del segundo más larga, y así sucesivamente.
 
 . En Scrabble, un "bingo" es cuando juegas las siete fichas de tu atril, junto con una letra del tablero, para formar una palabra de ocho letras. ¿Qué colección de 8 letras forman parte del bingo más probable?
 
 [[ex12-3]]
 ==== Ejercicio 12-4
 
-Dos palabras metatizan si se puede transformar una en la otra intercambiando dos letras; por ejemplo, "conversar" y "conservar". Escriba un programa que encuentre todos los pares de metátesis en el diccionario.
+Dos palabras metatizan si se puede transformar una en la otra intercambiando dos letras como es el caso de "conversar" y "conservar". Escriba un programa que encuentre todos los pares de metátesis en el diccionario.
 (((pares de metátesis)))
 
 [TIP]
@@ -582,23 +582,23 @@ Aquí hay otro Puzzle de Car Talk (https://www.cartalk.com/puzzler/browse):
 ____
 ¿Cuál es la palabra en español más larga, que sigue siendo una palabra en español válida a medida que se eliminan sus letras una a una?
 
-Las letras se pueden eliminar de cualquier extremo o del medio, pero no se puede reordenar ninguna de ellas. Cada vez que eliminas una letra, te quedas con otra palabra en español. Eventualmente terminarás con una letra, la cual también será una palabra en español que puedes encontrar en el diccionario. Se desea saber cuál es la palabra más larga y cuántas letras tiene.
+Las letras se pueden eliminar de cualquier extremo o del medio, pero no se puede reordenar ninguna de ellas. Cada vez que elimina una letra, se queda con otra palabra en español. Eventualmente terminará con una letra, la cual también será una palabra en español que puede encontrar en el diccionario. Se desea saber cuál es la palabra más larga y cuántas letras tiene.
 
-A modo de ejemplo, pensemos en la palabra: Palote. ¿De acuerdo? Comienzas con palote, eliminas la letra p y queda alote, luego quitamos la t y nos quedamos con aloe, tomamos la e y tenemos alo, quitando la o tenemos al, y finalmente, eliminando la l nos queda a.
+A modo de ejemplo, piense en la palabra: Palote. ¿De acuerdo? Comienza con palote, elimina la letra p y queda alote, luego se quita la t y queda aloe, se toma la e y se tiene alo, quitando la o se tiene al, y finalmente, eliminando la l queda a.
 ____
 
-Escriba un programa que encuentre todas las palabras que se pueden reducir de esta manera, y luego encuentre la más larga.
+Escriba un programa que encuentre todas las palabras que se pueden reducir de esta manera y luego encuentre la más larga.
 
 [TIP]
 ====
 Este ejercicio es un poco más desafiante que el resto, así que aquí hay algunas sugerencias:
 
-. Es posible que quieras escribir una función que tome una palabra y calcule un arreglo de todas las palabras que se pueden formar al eliminar una letra. Estos son los "hijos" de la palabra.
+. Es posible que quiera escribir una función que tome una palabra y calcule un arreglo de todas las palabras que se pueden formar al eliminar una letra. Estos son los "hijos" de la palabra.
 
 . De manera recursiva, una palabra es reducible si alguno de sus hijos es reducible. Como caso base, puede considerar la cadena vacía reducible. 
 (((reducible)))
 
-. La lista de palabras _palabras.txt_ no tiene la cadena vacía, por lo que tendrás que agregarla.
+. La lista de palabras _palabras.txt_ no tiene la cadena vacía, por lo que tendrá que agregarla.
 
 . Para mejorar el rendimiento de su programa, es posible que desee guardar las palabras que se sabe que son reducibles.
 (((pista)))
