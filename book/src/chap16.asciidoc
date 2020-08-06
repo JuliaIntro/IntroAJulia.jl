@@ -307,10 +307,10 @@ Una condición que nunca debería cambiar durante la ejecución de un programa.
 [[ex16-1]]
 ==== Ejercicio 16-6
 
-Escriba una función llamada +multhora+ que tome un objeto +Hora+ y un número y devuelva un nuevo objeto +Hora+ que contenga el producto entre +Hora+ original y el número.
+Escriba una función llamada +multhora+ que tome un objeto +Hora+ y un número, y devuelva un nuevo objeto +Hora+ que contenga el producto entre +Hora+ original y el número.
 (((multhora)))((("función", "definida por el programador", "multhora", see="multhora")))
 
-Luego use +multhora+ para escribir una función que tome un objeto +Hora+ que represente el tiempo de duración de una carrera y un número que represente la distancia y devuelva un objeto +Hora+ que represente el ritmo promedio (minutos por kilómetro).
+Luego use +multhora+ para escribir una función que tome un objeto +Hora+ que represente el tiempo de duración de una carrera, y un número que represente la distancia y devuelva un objeto +Hora+ que represente el ritmo promedio (minutos por kilómetro).
 
 [[ex16-2]]
 ==== Ejercicio 16-7
