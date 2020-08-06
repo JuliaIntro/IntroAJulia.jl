@@ -95,7 +95,7 @@ Escriba una función llamada +usasolo+ que tome una palabra y una cadena de letr
 [[ex09-5]]
 ==== Ejercicio 9-5
 
-Escriba una función llamada +usatodo+ que tome una palabra y una cadena de letras y que devuelva +true+ si la palabra usa todas las letras requeridas al menos una vez. ¿Cuántas palabras usan todas las vocales +aeiou+? 
+Escriba una función llamada +usatodo+ que tome una palabra y una cadena de letras, y que devuelva +true+ si la palabra usa todas las letras requeridas al menos una vez. ¿Cuántas palabras usan todas las vocales +aeiou+? 
 (((usatodo)))((("función", "definida por el programador", "usatodo", see="usatodo")))
 
 [[ex09-6]]
@@ -257,7 +257,7 @@ Si el siguiente carácter es menor (va antes en el alfabeto) que el actual, ento
 
 Si se llega al final del ciclo sin encontrar letras que imposibiliten el orden alfabético, entonces la palabra pasa la prueba. Para convencerse de que el ciclo termina correctamente, considere como ejemplo la palabra +"Abel"+.
 
-A continuación se muestra una versión de +espalindromo+ que usa dos índices: uno comienza al principio de la palabra y aumenta su valor y el otro comienza al final y disminuye su valor.
+A continuación se muestra una versión de +espalindromo+ que usa dos índices: uno comienza al principio de la palabra y aumenta su valor, y el otro comienza al final y disminuye su valor.
 (((espalindromo)))
 
 [source,@julia-setup chap09]
