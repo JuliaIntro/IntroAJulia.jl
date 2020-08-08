@@ -13,7 +13,7 @@ Espero que disfrute al trabajar con este libro, y que le ayude a aprender a prog
 
 _Ben Lauwens_
 
-=== ¿A quién está dirigido este libro?
+=== ¿Por qué Julia?
 
 Julia fue lanzado originalmente en 2012 por Alan Edelman, Stefan Karpinski, Jeff Bezanson y Viral Shah. Es un lenguaje de programación gratuito y de código abierto.
 
@@ -28,7 +28,7 @@ La elección de un lenguaje de programación es siempre subjetiva. Para mí, las
 
 Julia es un lenguaje de programación único, ya que resuelve el problema de los dos idiomas. No se necesita de ningún otro lenguaje de programación para escribir código de alto rendimiento. Esto no significa que ocurra automáticamente. Es responsabilidad del programador optimizar el código que produzca cuellos de botella, pero esto puede hacerse en Julia.
 
-=== ¿Para quién es este libro?
+=== ¿A quién está dirigido este libro?
 
 Este libro es para cualquier persona que quiera aprender a programar. No se requieren conocimientos previos formales.
 
