@@ -34,7 +34,7 @@ Este libro es para cualquier persona que quiera aprender a programar. No se requ
 
 Los nuevos conceptos se introducen gradualmente y los temas más avanzados se describen en capítulos posteriores.
 
-"Intro a Julia" puede ser usado como un curso de un semestre de nivel secundario o universitario.
+_Intro a Julia_ puede ser usado como un curso de un semestre de nivel secundario o universitario.
 
 === Convenciones utilizadas en este libro
 
