@@ -9,7 +9,7 @@ Todo el material estaba disponible en notebooks de Jupyter, en un repositorio de
 
 Fue un camino difícil. En agosto de 2018 se lanzó Julia v1.0 y, como todos mis colegas programadores de Julia, tuve que hacer una migración del código. Todos los ejemplos en el libro fueron probados durante la conversión de los archivos fuente a archivos ASCIIDoc compatibles con O'Reilly. Tanto la cadena de herramientas como el código de los ejemplos tenían que ser compatibles con Julia v1.0. Afortunadamente no hay conferencias en agosto...
 
-Espero que disfrutes al trabajar con este libro, y que te ayude a aprender a programar y pensar como un informático, al menos un poquito.
+Espero que disfrute al trabajar con este libro, y que le ayude a aprender a programar y pensar como un informático, al menos un poquito.
 
 _Ben Lauwens_
 
@@ -69,7 +69,7 @@ Todo el código utilizado en este libro está disponible en un repositorio de Gi
 
 El siguiente paquete puede ser de utilidad, y se puede agregar directamente a Julia. Simplemente escriba *+pass:[add https://github.com/JuliaIntro/IntroAJulia.jl]+* en el REPL, en modo Pkg.
 
-La forma más fácil de ejecutar un código de Julia es en https://juliabox.com, iniciando una sesión de prueba gratuita. Es posible utilizar la interfaz REPL y notebooks. Si desea que Julia esté instalada localmente en su computadora, puede descargar JuliaPro de Julia Computing gratuitamente desde https://juliacomputing.com/products/juliapro.html. Consiste en una versión reciente de Julia, el IDE de Juno basado en Atom y varios paquetes de Julia preinstalados. Si eres más aventurero, puedes descargar Julia desde https://julialang.org, instalar el editor que te gusta, por ejemplo Atom o Visual Studio Code, y activar los complementos para su integración de Julia. Para una instalación local, también puedes agregar el paquete +IJulia+ y ejecutar un notebook Jupyter en su computadora.
+La forma más fácil de ejecutar un código de Julia es en https://juliabox.com, iniciando una sesión de prueba gratuita. Es posible utilizar la interfaz REPL y notebooks. Si desea que Julia esté instalada localmente en su computadora, puede descargar JuliaPro de Julia Computing gratuitamente desde https://juliacomputing.com/products/juliapro.html. Consiste en una versión reciente de Julia, el IDE de Juno basado en Atom y varios paquetes de Julia preinstalados. Si es más aventurero, puede descargar Julia desde https://julialang.org, instale el editor que le guste, por ejemplo Atom o Visual Studio Code, y active los complementos para su integración de Julia. Para una instalación local, también puede agregar el paquete +IJulia+ y ejecutar un notebook Jupyter en su computadora.
 
 === Agradecimientos
 
