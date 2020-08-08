@@ -7,7 +7,7 @@ Conocía el libro _Think Python_ de Allen Downey que contiene todos los elemento
 
 Todo el material estaba disponible en notebooks de Jupyter, en un repositorio de GitHub. Después de publicar un mensaje en el sitio Discourse de Julia sobre el progreso de mi curso, los comentarios fueron abrumadores. Aparentemente, un libro sobre conceptos básicos de programación con Julia como primer lenguaje de programación era algo que faltaba en el universo de Julia. Contacté a Allen para ver si podía iniciar oficialmente la versión de _Think Python_ para Julia y su respuesta fue inmediata: "¡adelante!", me puso en contacto con su editor de O'Reilly Media y ahora, un año después, estoy haciendo los retoques finales a este libro.
 
-Fue un camino difícil. En agosto de 2018 se lanzó Julia v1.0 y, como todos mis colegas programadores de Julia, tuve que hacer una migración del código. Todos los ejemplos en el libro se prueban durante la conversión de los archivos fuente a archivos ASCIIDoc compatibles con O'Reilly. Tanto la cadena de herramientas como el código de los ejemplos tenían que ser compatibles con Julia v1.0. Afortunadamente no hay conferencias en agosto...
+Fue un camino difícil. En agosto de 2018 se lanzó Julia v1.0 y, como todos mis colegas programadores de Julia, tuve que hacer una migración del código. Todos los ejemplos en el libro fueron probados durante la conversión de los archivos fuente a archivos ASCIIDoc compatibles con O'Reilly. Tanto la cadena de herramientas como el código de los ejemplos tenían que ser compatibles con Julia v1.0. Afortunadamente no hay conferencias en agosto...
 
 Espero que disfrutes al trabajar con este libro, y que te ayude a aprender a programar y pensar como un informático, al menos un poquito.
 
