@@ -21,7 +21,7 @@ Si tiene alguna sugerencia o corrección, por favor abra un "issue" en GitHub.
 Es posible que desee compilar el libro a partir de los archivos fuente de este repositorio. Aquí se describe el esquema general para ello:
 
 * Descargue Julia y asegúrese de que puede iniciarlo desde una línea de comandos como `bash`. 
-* Asegúrese de tener tanto `ruby` (requerido por un asciidoctor) como` python` (usado por pygments). 
+* Asegúrese de tener tanto `ruby` (requerido por asciidoctor) como` python` (usado por pygments). 
 * Descargue asciidoctor, por ejemplo, utilizando `brew install asciidoctor` en MacOS. 
 * Instale el paquete de python `pygments`, utilizando un comando como `pip install pygments`. 
 * Clone este repositorio, por ejemplo con el comando:
