@@ -24,7 +24,7 @@ La elección de un lenguaje de programación es siempre subjetiva. Para mí, las
 - Julia es un lenguaje de tipo dinámico que se puede usar fácilmente de forma interactiva.
 - Julia tiene una sintaxis de alto nivel que es fácil de aprender.
 - Julia es un lenguaje de programación con tipos opcionales, cuyos tipos de datos (definidos por el usuario) hacen que el código sea más claro y robusto.
-- Julia tiene una biblioteca estándar extendida y numerosos paquetes de terceros están disponibles.
+- Julia tiene una biblioteca estándar amplia y numerosos paquetes de terceros están disponibles.
 
 Julia es un lenguaje de programación único, ya que resuelve el problema de los dos idiomas. No se necesita de ningún otro lenguaje de programación para escribir código de alto rendimiento. Esto no significa que ocurra automáticamente. Es responsabilidad del programador optimizar el código que produzca cuellos de botella, pero esto puede hacerse en Julia.
 
