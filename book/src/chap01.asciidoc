@@ -27,7 +27,7 @@ Se verifican ciertas condiciones y se ejecuta el código apropiado.
 Repetición::
 Se realiza ((("repetición", see="iteración")))alguna acción repetidamente, generalmente con alguna variación.
 
-Aunque no lo creas, eso es todo lo que se debe hacer. Cada programa que has usado, sin importar su complejidad, está construido en base a instrucciones que se parecen bastante a estas. De esta manera, la programación puede entenderse como el proceso de dividir una tarea compleja y larga en pequeñas subtareas lo suficientemente simples como para realizarse con una de estas instrucciones básicas.
+Aunque no lo crea, eso es todo lo que se debe hacer. Cada programa que ha usado, sin importar su complejidad, está construido basándose en instrucciones que se parecen bastante a estas. De esta manera, la programación puede entenderse como el proceso de dividir una tarea compleja y larga en pequeñas subtareas lo suficientemente simples como para realizarse con una de estas instrucciones básicas.
 
 === Ejecutando Julia
 Uno ((("Julia", "ejecutando")))de los desafíos al comenzar a utilizar Julia es su instalación, además del software relacionado. Si está familiarizado con su sistema operativo y se siente cómodo con la interfaz de línea de comandos, no tendrá problemas. No obstante, para los principiantes puede ser difícil aprender sobre administración de sistema y programación al mismo tiempo.
