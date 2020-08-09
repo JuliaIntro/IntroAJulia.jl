@@ -178,7 +178,7 @@ Redundancia::
 Para compensar la ambigüedad y reducir los malentendidos, los lenguajes naturales emplean mucha redundancia. Como resultado, a menudo tienen un uso excesivo de palabras. Los lenguajes formales son menos redundantes y más concisos.
 
 Literalidad::
-Los lenguajes naturales están llenos de modismos y metáforas. Si se dice: "Caí en la cuenta", probablemente no haya una cuenta y nada se caiga (este modismo significa que alguien entendió algo después de un período de confusión). Los idiomas formales significan exactamente lo que dicen.
+Los lenguajes naturales están llenos de modismos y metáforas. Si se dice: "Caí en la cuenta", probablemente no haya una cuenta y nada se caiga (este modismo significa que alguien entendió algo después de un período de confusión). Los lenguajes formales significan exactamente lo que dicen.
 
 Debido a que todo el mundo crece hablando lenguajes naturales, a veces es difícil adaptarse a los lenguajes formales. La diferencia entre lenguaje formal y natural es como la diferencia entre poesía y prosa:
 
