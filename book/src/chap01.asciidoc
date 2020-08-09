@@ -167,7 +167,7 @@ El segundo tipo de reglas de sintaxis se refiere a la forma en que se combinan l
 _Esta es un@ oración en espa$ol bien estructurada con c*mponentes léxicos no válidos_.
 _Esta oración léxicos todos componentes los tiene, pero estructura una no válida con_.
 
-Cuando ((("análisis de sintaxis"))) se lee una oración en español o en un idioma formal, se tiene que descubrir la estructura (aunque en un lenguaje natural se hace inconscientemente). Este proceso se llama _parsing_ o _análisis de sintaxis_.
+Cuando ((("análisis de sintaxis"))) se lee una oración en español o en un lenguaje formal, se tiene que descubrir la estructura (aunque en un lenguaje natural se hace inconscientemente). Este proceso se llama _parsing_ o _análisis de sintaxis_.
 
 Aunque los lenguajes formales y naturales tienen muchas características en común (componentes léxicos, estructura y sintaxis), existen algunas diferencias:
 
