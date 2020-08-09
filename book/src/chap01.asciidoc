@@ -151,7 +151,7 @@ julia> 1,000,000
 
 ¡Esto no es lo que se podría esperar! Julia entiende +1,000,000+ como una secuencia de enteros separados por comas. Más adelante aprenderemos más sobre este tipo de secuencias.
 
-Sin embargo, puedes ((("guión bajo ($$_$$)", "en enteros"))) ((("$$_$$ (guión bajo)", "en enteros", primary-sortas="* guión bajo"))) obtener el resultado esperado usando +1_000_000+.
+Sin embargo, puede ((("guión bajo ($$_$$)", "en enteros"))) ((("$$_$$ (guión bajo)", "en enteros", primary-sortas="* guión bajo"))) obtener el resultado esperado usando +1_000_000+.
 
 === Lenguajes formales y naturales
 _Los lenguajes naturales_ ((("lenguaje natural", id="ch1nat", range="startofrange")))son los idiomas hablados, como el español, el inglés o el francés, no fueron diseñados por personas (aunque las personas intentan imponerles un orden) sino que evolucionaron naturalmente.
