@@ -295,7 +295,7 @@ El segundo tipo de error es el error en tiempo de ejecución, llamado así porqu
 Los errores en tiempo de ejecución son raros en los programas simples que verá en los primeros capítulos, por lo que puede pasar un tiempo antes de que encuentre uno.
 (((error de tiempo de ejecución)))((("error", "tiempo de ejecución", see="error de tiempo de ejecución")))(((excepción,see="error de tiempo de ejecución")))
 
-Error semántico ::
+Error semántico::
 El tercer tipo de error es "semántico", es decir, relacionado con el significado. Si hay un error semántico en su programa, se ejecutará sin generar mensajes de error, pero no hará lo correcto sino que hará otra cosa. Específicamente, hará lo que usted le dijo que hiciera.
 +
 Identificar errores semánticos puede ser complicado porque requiere que se trabaje a la inversa, analizando la salida del programa para intentar descubrir qué está haciendo.
@@ -319,7 +319,7 @@ palabra clave::
 Una palabra reservada que se utiliza para definir la sintaxis y estructura de un programa; no puede usar palabras reservadas como +if+, +function+ y +while+ como nombres de variables.
 (((palabra clave)))
 
-operando ::
+operando::
 Uno de los valores en los que opera un operador.
 (((operando)))
 
@@ -351,7 +351,7 @@ script::
 Un programa almacenado en un archivo.
 (((script)))
 
-precedencia del operador ::
+precedencia del operador::
 Reglas que rigen el orden en que se evalúan las expresiones que involucran múltiples operadores matemáticos y operandos.
 (((precedencia del operador)))
 
@@ -367,7 +367,7 @@ error de sintaxis::
 Un error en un programa que hace que sea imposible de analizar (y, por lo tanto, imposible de ejecutar).
 (((error de sintaxis)))
 
-error en tiempo de ejecución o excepción ::
+error en tiempo de ejecución o excepción::
 Un error que se detecta mientras se ejecuta el programa.
 (((Error de tiempo de ejecución)))
 
@@ -375,7 +375,7 @@ semántica::
 El significado de un programa.
 (((semántica)))
 
-error semántico ::
+error semántico::
 Un error en un programa que hace que haga algo diferente a lo que pretendía el programador.
 (((error semántico)))
 
