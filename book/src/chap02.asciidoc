@@ -20,7 +20,7 @@ julia> π_val = 3.141592653589793
 3.141592653589793
 ----
 
-Este ejemplo hace tres asignaciones. La primera asigna una cadena a una nueva variable llamada +mensaje+; la segunda le asigna a la variable +n+ el entero +17+; el tercero asigna el valor (aproximado) de latexmath:[\pi] a la variable +π_val+ (*+\pi TAB+*).
+Este ejemplo hace tres asignaciones. La primera asigna una cadena a una nueva variable llamada +mensaje+; la segunda le asigna a la variable +n+ el entero +17+; la tercera asigna el valor (aproximado) de latexmath:[\pi] a la variable +π_val+ (*+\pi TAB+*).
 
 Una forma común de representar variables en papel es escribir el nombre de la variable con una flecha apuntando a su valor. Este tipo de figura se llama "diagrama de estado" porque muestra en qué estado se encuentra cada una de las variables. La Figura 1, <<fig02-1>>, muestra el resultado del ejemplo anterior.
 (((diagrama de estado)))((("diagrama", "estado", see="diagrama de estado")))
@@ -64,11 +64,11 @@ Resulta que +struct+ es una de las _palabras reservadas_ de Julia. Julia usa las
 Julia tiene las siguientes palabras reservadas:
 ----
 abstract type    baremodule   begin      break       catch
-const            continue     do         else        elseif      
+const            continue     do         else        elseif
 end              export       finally    for         function
-global           if           import     importall   in         
+global           if           import     importall   in
 let              local        macro      module      mutable struct
-primitive type   quote        return     try         using            
+primitive type   quote        return     try         using
 struct           where        while
 ----
 
