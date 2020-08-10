@@ -292,7 +292,7 @@ Si hay un error de sintaxis en cualquier parte de su programa, Julia muestra un 
 Error en tiempo de ejecución::
 El segundo tipo de error es el error en tiempo de ejecución, llamado así porque aparece durante la ejecución del programa. Estos errores también se denominan _excepciones_ porque generalmente indican que ha sucedido algo excepcional (y malo).
 +
-Los errores de tiempo de ejecución son raros en los programas simples que verá en los primeros capítulos, por lo que puede pasar un tiempo antes de que encuentre uno.
+Los errores en tiempo de ejecución son raros en los programas simples que verá en los primeros capítulos, por lo que puede pasar un tiempo antes de que encuentre uno.
 (((error de tiempo de ejecución)))((("error", "tiempo de ejecución", see="error de tiempo de ejecución")))(((excepción,see="error de tiempo de ejecución")))
 
 Error semántico ::
