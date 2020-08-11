@@ -527,7 +527,7 @@ Un nombre usado dentro de una función para referirse al valor pasado como argum
 (((parámetro)))
 
 Llamada a función::
-Una sentencia que ejecuta una función. Compuesta del nombre de la función seguido por la lista de argumentos que usa entre paréntesis.
+Una sentencia que ejecuta una función. Compuesta por el nombre de la función seguido por la lista de argumentos que usa entre paréntesis.
 (((Llamada a función)))
 
 argumento::
