@@ -562,7 +562,7 @@ flujo de ejecución::
 El orden en que las sentencias se ejecutan.
 (((flujo de ejecución)))
 
-diagrama de pila ::
+diagrama de pila::
 Una representación gráfica de una pila de funciones, sus variables y los valores a los que se refieren.
 (((diagrama de pila)))
 
