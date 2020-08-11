@@ -78,7 +78,7 @@ proporción = potencia_de_señal/potencia_de_ruido
 decibelios = 10*log10(proporción)
 ----
 
-Este primer ejemplo utiliza la función +log10+ para calcular la proporción entre señal y ruido en decibelios (suponiendo que +potencia_de_señal+ y +potencia_de_ruido+ están definidos). También existe la función +log+, que calcula logaritmo natural.
+Este primer ejemplo utiliza la función +log10+ para calcular la proporción entre señal y ruido en decibelios (suponiendo que +potencia_de_señal+ y +potencia_de_ruido+ están definidos). También existe la función +log+, que calcula el logaritmo natural.
 (((log)))((("función", "Base", "log",see="log")))((("función logaritmo", see="log")))
 
 [source,julia]
@@ -146,7 +146,7 @@ horas = 2;
 julia> minutos = horas * 60 # derecha
 120
 julia> horas * 60 = minutos # malo!
-ERROR: syntax: "60" is not a valid function argument name 
+ERROR: syntax: "60" is not a valid function argument name
 ----
 (ERROR: sintaxis: "60" no es un nombre de argumento de función válido)
 
@@ -572,7 +572,7 @@ Un recuadro que en un diagrama de pila representa una llamada de función. Conti
 
 trazado inverso::
 Una lista de las funciones que se están ejecutando, las cuales son impresas cuando ocurre una excepción.
-(((trazado inverso))) 
+(((trazado inverso)))
 
 
 === Ejercicios
