@@ -474,7 +474,7 @@ Puede que no esté claro por qué vale la pena dividir un programa en funciones.
 
 * Dividir un programa largo en funciones le permite depurar las partes de una en una y luego unirlas.
 
-* Las funciones bien diseñadas pueden ser útiles para muchos programas. Una vez que escribe y depura uno, puede reutilizarla.
+* Las funciones bien diseñadas pueden ser útiles para muchos programas. Una vez que escribe y depura una, puede reutilizarla.
 
 * En Julia, las funciones pueden mejorar mucho el rendimiento.
 
