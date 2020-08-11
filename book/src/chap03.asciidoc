@@ -143,9 +143,9 @@ horas = 2;
 
 [source,@julia-repl-test chap03]
 ----
-julia> minutos = horas * 60 # derecha
+julia> minutos = horas * 60 # bien
 120
-julia> horas * 60 = minutos # malo!
+julia> horas * 60 = minutos # mal!
 ERROR: syntax: "60" is not a valid function argument name
 ----
 (ERROR: sintaxis: "60" no es un nombre de argumento de función válido)
