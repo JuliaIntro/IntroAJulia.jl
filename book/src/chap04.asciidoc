@@ -276,7 +276,7 @@ El siguiente paso es escribir +circulo+, que toma un radio +r+ como parámetro. 
 function circulo(t, r)
     circunferencia = 2 * π * r
     n = 50
-    len = circunferencia / n
+    lon = circunferencia / n
     poligono(t, n, lon)
 end
 ----
@@ -405,7 +405,7 @@ Un _docstring_ es una cadena que va antes de una función y que explica la inter
 """
 polilinea(t, n, lon, angulo)
 
-Dibuja n segmentos de línea de la longitud dada y con 
+Dibuja n segmentos de línea de la longitud dada y con
 ángulo entre ellos (en grados) dado. t es una tortuga.
 """
 function polilinea(t, n, lon, angulo)
@@ -424,7 +424,7 @@ help?> polilinea
 search:
 
   polilinea(t, n, lon, angulo)
-  
+
   Dibuja n segmentos de línea de la longitud dada y con ángulo entre ellos (en grados) dado. t es una tortuga.
 ----
 
@@ -525,7 +525,7 @@ Dibuja un arco con el radio y el ángulo dados:
 
     t: tortuga
     r: radio
-    angulo: ángulo subtendido por el arco, en grados 
+    angulo: ángulo subtendido por el arco, en grados
 """
 function arco(t, r, angulo)
     arco_lon = 2 * π * r * abs(angulo) / 360
