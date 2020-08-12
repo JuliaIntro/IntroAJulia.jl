@@ -471,7 +471,7 @@ bucle::
 Una parte de un programa que puede ejecutarse repetidamente.
 (((bucle)))
 
-encapsulado::
+encapsulación::
 El proceso de transformar una secuencia de sentencias en una definición de función.
 (((encapsulado)))
 
