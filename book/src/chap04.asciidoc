@@ -366,8 +366,8 @@ Finalmente, se puede reescribir +circulo+ usando +arco+:
 
 [source,julia]
 ----
-function circle(t, r)
-    arc(t, r, 360)
+function circulo(t, r)
+    arco(t, r, 360)
 end
 ----
 
