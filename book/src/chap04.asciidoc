@@ -511,7 +511,7 @@ Un requisito que debe cumplir la función antes de que finalice.
 
 Copie y pegue el código de este capítulo en un notebook.
 
-. Dibuje un diagrama de pila que muestre el estado del programa mientras ejecuta +circulo(🐢,radio)+. Puede hacer la aritmética a mano o agregar sentencias de impresión al código.
+. Dibuje un diagrama de pila que muestre el estado del programa mientras ejecuta +circulo(🐢, radio)+. Puede hacer la aritmética a mano o agregar sentencias de impresión al código.
 
 . La versión de +arco+ en <<refactoring>> no es muy precisa ya que la aproximación lineal del círculo siempre queda por afuera del círculo verdadero. Como resultado, la tortuga termina a unos pocos píxeles del destino correcto. La siguiente solución muestra una forma de reducir el efecto de este error. Lea el código y vea si tiene sentido. Si dibuja un diagrama, es posible que entienda mejor cómo funciona.
 (((arco)))
