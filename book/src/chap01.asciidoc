@@ -5,10 +5,10 @@ El objetivo de ((("informáticos, habilidades de", seealso="programación")))est
 
 La ((("resolución de problemas")))habilidad más importante para un informático es la resolución de problemas. Esto implica ser capaz de formular problemas, pensar soluciones de manera creativa y poder expresar una solución clara y precisa. Como resultado, el proceso de aprender a programar es una excelente oportunidad para practicar habilidades de resolución de problemas. Es por ello que este capítulo se llama "El camino de la programación".
 
-Por una parte, aprenderás a programar, lo cual es beneficioso por sí solo. Por otra, la programación se constituirá como un medio para un fin. A medida que avancemos, este fin será más claro.
+Por una parte, aprenderá a programar, lo cual es beneficioso por sí solo. Por otra, la programación se constituirá como un medio para un fin. A medida que avancemos, este fin será más claro.
 
 === ¿Qué es un programa?
-Un _programa_ ((("programas")))es una secuencia de instrucciones que especifican cómo hacer un cálculo. El cálculo puede ser de naturaleza matemática; tal como resolver un sistema de ecuaciones o encontrar las raíces de un polinomio, pero también puede ser un cálculo simbólico; como encontrar y reemplazar texto en un documento, o bien algo gráfico; tal como procesar una imagen o reproducir un video.
+Un _programa_ ((("programas")))es una secuencia de instrucciones que especifican cómo hacer un cálculo. El cálculo puede ser de naturaleza matemática, tal como resolver un sistema de ecuaciones o encontrar las raíces de un polinomio, pero también puede ser un cálculo simbólico, como encontrar y reemplazar texto en un documento, o bien algo gráfico, tal como procesar una imagen o reproducir un video.
 
 Los detalles ((("instrucciones", seealso="sentencias")))difieren para cada lenguaje, pero algunas instrucciones básicas aparecen en casi todos los lenguajes:
 
@@ -27,7 +27,7 @@ Se verifican ciertas condiciones y se ejecuta el código apropiado.
 Repetición::
 Se realiza ((("repetición", see="iteración")))alguna acción repetidamente, generalmente con alguna variación.
 
-Aunque no lo creas, eso es todo lo que se debe hacer. Cada programa que has usado, sin importar su complejidad, está construido en base a instrucciones que se parecen bastante a estas. De esta manera, la programación puede entenderse como el proceso de dividir una tarea compleja y larga en pequeñas subtareas lo suficientemente simples como para realizarse con una de estas instrucciones básicas.
+Aunque no lo crea, eso es todo lo que se debe hacer. Cada programa que ha usado, sin importar su complejidad, está construido basándose en instrucciones que se parecen bastante a estas. De esta manera, la programación puede entenderse como el proceso de dividir una tarea compleja y larga en pequeñas subtareas lo suficientemente simples como para realizarse con una de estas instrucciones básicas.
 
 === Ejecutando Julia
 Uno ((("Julia", "ejecutando")))de los desafíos al comenzar a utilizar Julia es su instalación, además del software relacionado. Si está familiarizado con su sistema operativo y se siente cómodo con la interfaz de línea de comandos, no tendrá problemas. No obstante, para los principiantes puede ser difícil aprender sobre administración de sistema y programación al mismo tiempo.
@@ -151,23 +151,23 @@ julia> 1,000,000
 
 ¡Esto no es lo que se podría esperar! Julia entiende +1,000,000+ como una secuencia de enteros separados por comas. Más adelante aprenderemos más sobre este tipo de secuencias.
 
-Sin embargo, puedes ((("guión bajo ($$_$$)", "en enteros"))) ((("$$_$$ (guión bajo)", "en enteros", primary-sortas="* guión bajo"))) obtener el resultado esperado usando +1_000_000+.
+Sin embargo, puede ((("guión bajo ($$_$$)", "en enteros"))) ((("$$_$$ (guión bajo)", "en enteros", primary-sortas="* guión bajo"))) obtener el resultado esperado usando +1_000_000+.
 
 === Lenguajes formales y naturales
-_Los lenguajes naturales_ ((("lenguaje natural", id="ch1nat", range="startofrange")))son los idiomas hablados, como el español, el inglés o el francés, no fueron diseñados por personas (aunque las personas intentan imponerles un orden) sino que evolucionaron naturalmente.
+_Los lenguajes naturales_ ((("lenguaje natural", id="ch1nat", range="startofrange")))son los lenguajes hablados, como el español, el inglés o el francés, no fueron diseñados por personas (aunque las personas intentan imponerles un orden) sino que evolucionaron naturalmente.
 
-_Los lenguajes formales_ ((("lenguaje formal", id="ch1nat2", range="startofrange")))son idiomas diseñados por personas para propósitos específicos. Por ejemplo, la notación que usan los matemáticos es un lenguaje formal particularmente útil para denotar relaciones entre números y símbolos. Los químicos usan un lenguaje formal para representar la estructura química de las moléculas. Los ((("lenguaje de programación", id="ch1nat3", range="startofrange")))lenguajes de programación también son lenguajes formales y han sido diseñados para expresar cálculos.
+_Los lenguajes formales_ ((("lenguaje formal", id="ch1nat2", range="startofrange")))son lenguajes diseñados por personas para propósitos específicos. Por ejemplo, la notación que usan los matemáticos es un lenguaje formal particularmente útil para denotar relaciones entre números y símbolos. Los químicos usan un lenguaje formal para representar la estructura química de las moléculas. Los ((("lenguaje de programación", id="ch1nat3", range="startofrange")))lenguajes de programación también son lenguajes formales y han sido diseñados para expresar cálculos.
 
 Los lenguajes formales ((("sintaxis", id="ch1nat4", range="startofrange")))tienden a tener reglas estrictas de sintaxis que gobiernan la estructura de las sentencias. Por ejemplo, en matemáticas, la sentencia latexmath:[3 + 3 = 6] tiene la sintaxis correcta, pero latexmath:[3 += 3 \$ 6] no. En química, latexmath:[\mathrm{H_2O}] es una fórmula sintácticamente correcta, pero latexmath:[\mathrm{_2Zz}] no lo es.
 
 Las reglas de sintaxis ((("componentes léxicos", id="ch1nat5", range="startofrange"))) ((("estructura", id="ch1nat6", range= "startofrange")))  pueden ser de dos tipos, correspondientes a componentes léxicos y a la estructura. Los componentes léxicos son los elementos básicos del lenguaje, como palabras, números y elementos químicos. Uno de los problemas con latexmath:[3 += 3 \$ 6] es que latexmath:[\$] no es un componente léxico válido en matemáticas (al menos hasta donde conocemos). Del mismo modo, latexmath:[\mathrm{_2Zz}] no es válido porque no hay ningún elemento con la abreviatura latexmath:[\mathrm{Zz}].
 
-El segundo tipo de reglas de sintaxis se refiere a la forma en que se combinan los componentes léxicos. La ecuación latexmath:[3 += 3 ] no es válida porque aunque latexmath:[+] y latexmath:[=] son componentes léxicos válidos, no puedes tener uno justo después el otro. Del mismo modo, en una fórmula química, el subíndice viene después del nombre del elemento, no antes.
+El segundo tipo de reglas de sintaxis se refiere a la forma en que se combinan los componentes léxicos. La ecuación latexmath:[3 += 3 ] no es válida porque aunque latexmath:[+] y latexmath:[=] son componentes léxicos válidos, no se puede tener uno justo después el otro. Del mismo modo, en una fórmula química, el subíndice viene después del nombre del elemento, no antes.
 
-_Esta es un@ oración en espa$ol bien estructurada con c*mponentes léxicos no válidos_. 
+_Esta es un@ oración en espa$ol bien estructurada con c*mponentes léxicos no válidos_.
 _Esta oración léxicos todos componentes los tiene, pero estructura una no válida con_.
 
-Cuando ((("análisis de sintaxis"))) se lee una oración en español o en un idioma formal, se tiene que descubrir la estructura (aunque en un lenguaje natural se hace inconscientemente). Este proceso se llama _parsing_ o _análisis de sintaxis_.
+Cuando ((("análisis de sintaxis"))) se lee una oración en español o en un lenguaje formal, se tiene que descubrir la estructura (aunque en un lenguaje natural se hace inconscientemente). Este proceso se llama _parsing_ o _análisis de sintaxis_.
 
 Aunque los lenguajes formales y naturales tienen muchas características en común (componentes léxicos, estructura y sintaxis), existen algunas diferencias:
 
@@ -178,7 +178,7 @@ Redundancia::
 Para compensar la ambigüedad y reducir los malentendidos, los lenguajes naturales emplean mucha redundancia. Como resultado, a menudo tienen un uso excesivo de palabras. Los lenguajes formales son menos redundantes y más concisos.
 
 Literalidad::
-Los lenguajes naturales están llenos de modismos y metáforas. Si se dice: "Caí en la cuenta", probablemente no haya una cuenta y nada se caiga (este modismo significa que alguien entendió algo después de un período de confusión). Los idiomas formales significan exactamente lo que dicen.
+Los lenguajes naturales están llenos de modismos y metáforas. Si se dice: "Caí en la cuenta", probablemente no haya una cuenta y nada se caiga (este modismo significa que alguien entendió algo después de un período de confusión). Los lenguajes formales significan exactamente lo que dicen.
 
 Debido a que todo el mundo crece hablando lenguajes naturales, a veces es difícil adaptarse a los lenguajes formales. La diferencia entre lenguaje formal y natural es como la diferencia entre poesía y prosa:
 
@@ -191,14 +191,14 @@ El significado literal de las palabras es más importante, y la estructura aport
 Programas::
 El significado de un programa computacional es inequívoco y literal, y puede entenderse por completo mediante el análisis de los componentes léxicos y la estructura.
 
-Los lenguajes formales son más densos que los naturales, por lo que lleva más tiempo leerlos. Además, la estructura es importante, por lo que no siempre es mejor leer de arriba a abajo, y de izquierda a derecha. En cambio, aprenderás a analizar el programa mentalmente, identificando los componentes léxicos e interpretando la estructura. Finalmente, los detalles importan. Pequeños errores de ortografía y puntuación, que pueden pasar desapercibidos en los lenguajes naturales, pueden hacer una gran diferencia en un lenguaje formal (((range="endofrange", startref="ch1nat")))((((range="endofrange", startref="ch1nat2")))((((range="endofrange", startref="ch1nat3")))(((range="endofrange", startref="ch1nat4")))((((range="endofrange", startref="ch1nat5")))(((range="endofrange", startref="ch1nat6"))).
+Los lenguajes formales son más densos que los naturales, por lo que lleva más tiempo leerlos. Además, la estructura es importante, por lo que no siempre es mejor leer de arriba a abajo, y de izquierda a derecha. En cambio, aprenderá a analizar el programa mentalmente, identificando los componentes léxicos e interpretando la estructura. Finalmente, los detalles importan. Pequeños errores de ortografía y puntuación, que pueden pasar desapercibidos en los lenguajes naturales, pueden hacer una gran diferencia en un lenguaje formal (((range="endofrange", startref="ch1nat")))((((range="endofrange", startref="ch1nat2")))((((range="endofrange", startref="ch1nat3")))(((range="endofrange", startref="ch1nat4")))((((range="endofrange", startref="ch1nat5")))(((range="endofrange", startref="ch1nat6"))).
 
 
 === Depuración
 
 Los programadores ((("errores (bugs)")))((("depuración", "emociones de la, manejando las")))cometen errores. Los errores de programación se denominan _bugs_ y el proceso para rastrearlos se denomina _debugging_ o _depuración_.
 
-La programación, y especialmente la depuración, pueden provocar emociones negativas. Frente a un error difícil de solucionar, puedes sentir enojo, vergüenza, y cansancio.
+La programación, y especialmente la depuración, pueden provocar emociones negativas. Frente a un error difícil de solucionar, puede sentir enojo, vergüenza, y cansancio.
 
 Existe evidencia de que las personas responden naturalmente a las computadoras como si fueran personas. Cuando trabajan bien, se los considera compañeros de equipo, y cuando son obstinados o groseros, se los trata de la misma manera que a personas groseras y obstinadas. footnote:[Reeves, Byron, and Clifford Ivar Nass. 1996. “The Media Equation: How People Treat Computers, Television, and New Media Like Real People and Places.” Chicago, IL: Center for the Study of Language and Information; New York: Cambridge University Press.]
 

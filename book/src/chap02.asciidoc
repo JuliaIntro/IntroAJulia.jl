@@ -20,7 +20,7 @@ julia> π_val = 3.141592653589793
 3.141592653589793
 ----
 
-Este ejemplo hace tres asignaciones. La primera asigna una cadena a una nueva variable llamada +mensaje+; la segunda le asigna a la variable +n+ el entero +17+; el tercero asigna el valor (aproximado) de latexmath:[\pi] a la variable +π_val+ (*+\pi TAB+*).
+Este ejemplo hace tres asignaciones. La primera asigna una cadena a una nueva variable llamada +mensaje+; la segunda le asigna a la variable +n+ el entero +17+; la tercera asigna el valor (aproximado) de latexmath:[\pi] a la variable +π_val+ (*+\pi TAB+*).
 
 Una forma común de representar variables en papel es escribir el nombre de la variable con una flecha apuntando a su valor. Este tipo de figura se llama "diagrama de estado" porque muestra en qué estado se encuentra cada una de las variables. La Figura 1, <<fig02-1>>, muestra el resultado del ejemplo anterior.
 (((diagrama de estado)))((("diagrama", "estado", see="diagrama de estado")))
@@ -64,11 +64,11 @@ Resulta que +struct+ es una de las _palabras reservadas_ de Julia. Julia usa las
 Julia tiene las siguientes palabras reservadas:
 ----
 abstract type    baremodule   begin      break       catch
-const            continue     do         else        elseif      
+const            continue     do         else        elseif
 end              export       finally    for         function
-global           if           import     importall   in         
+global           if           import     importall   in
 let              local        macro      module      mutable struct
-primitive type   quote        return     try         using            
+primitive type   quote        return     try         using
 struct           where        while
 ----
 
@@ -292,10 +292,10 @@ Si hay un error de sintaxis en cualquier parte de su programa, Julia muestra un 
 Error en tiempo de ejecución::
 El segundo tipo de error es el error en tiempo de ejecución, llamado así porque aparece durante la ejecución del programa. Estos errores también se denominan _excepciones_ porque generalmente indican que ha sucedido algo excepcional (y malo).
 +
-Los errores de tiempo de ejecución son raros en los programas simples que verá en los primeros capítulos, por lo que puede pasar un tiempo antes de que encuentre uno.
+Los errores en tiempo de ejecución son raros en los programas simples que verá en los primeros capítulos, por lo que puede pasar un tiempo antes de que encuentre uno.
 (((error de tiempo de ejecución)))((("error", "tiempo de ejecución", see="error de tiempo de ejecución")))(((excepción,see="error de tiempo de ejecución")))
 
-Error semántico ::
+Error semántico::
 El tercer tipo de error es "semántico", es decir, relacionado con el significado. Si hay un error semántico en su programa, se ejecutará sin generar mensajes de error, pero no hará lo correcto sino que hará otra cosa. Específicamente, hará lo que usted le dijo que hiciera.
 +
 Identificar errores semánticos puede ser complicado porque requiere que se trabaje a la inversa, analizando la salida del programa para intentar descubrir qué está haciendo.
@@ -319,7 +319,7 @@ palabra clave::
 Una palabra reservada que se utiliza para definir la sintaxis y estructura de un programa; no puede usar palabras reservadas como +if+, +function+ y +while+ como nombres de variables.
 (((palabra clave)))
 
-operando ::
+operando::
 Uno de los valores en los que opera un operador.
 (((operando)))
 
@@ -351,7 +351,7 @@ script::
 Un programa almacenado en un archivo.
 (((script)))
 
-precedencia del operador ::
+precedencia del operador::
 Reglas que rigen el orden en que se evalúan las expresiones que involucran múltiples operadores matemáticos y operandos.
 (((precedencia del operador)))
 
@@ -367,7 +367,7 @@ error de sintaxis::
 Un error en un programa que hace que sea imposible de analizar (y, por lo tanto, imposible de ejecutar).
 (((error de sintaxis)))
 
-error en tiempo de ejecución o excepción ::
+error en tiempo de ejecución o excepción::
 Un error que se detecta mientras se ejecuta el programa.
 (((Error de tiempo de ejecución)))
 
@@ -375,7 +375,7 @@ semántica::
 El significado de un programa.
 (((semántica)))
 
-error semántico ::
+error semántico::
 Un error en un programa que hace que haga algo diferente a lo que pretendía el programador.
 (((error semántico)))
 

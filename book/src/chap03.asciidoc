@@ -78,7 +78,7 @@ proporción = potencia_de_señal/potencia_de_ruido
 decibelios = 10*log10(proporción)
 ----
 
-Este primer ejemplo utiliza la función +log10+ para calcular la proporción entre señal y ruido en decibelios (suponiendo que +potencia_de_señal+ y +potencia_de_ruido+ están definidos). También existe la función +log+, que calcula logaritmo natural.
+Este primer ejemplo utiliza la función +log10+ para calcular la proporción entre señal y ruido en decibelios (suponiendo que +potencia_de_señal+ y +potencia_de_ruido+ están definidos). También existe la función +log+, que calcula el logaritmo natural.
 (((log)))((("función", "Base", "log",see="log")))((("función logaritmo", see="log")))
 
 [source,julia]
@@ -143,10 +143,10 @@ horas = 2;
 
 [source,@julia-repl-test chap03]
 ----
-julia> minutos = horas * 60 # derecha
+julia> minutos = horas * 60 # bien
 120
-julia> horas * 60 = minutos # malo!
-ERROR: syntax: "60" is not a valid function argument name 
+julia> horas * 60 = minutos # mal!
+ERROR: syntax: "60" is not a valid function argument name
 ----
 (ERROR: sintaxis: "60" no es un nombre de argumento de función válido)
 
@@ -474,7 +474,7 @@ Puede que no esté claro por qué vale la pena dividir un programa en funciones.
 
 * Dividir un programa largo en funciones le permite depurar las partes de una en una y luego unirlas.
 
-* Las funciones bien diseñadas pueden ser útiles para muchos programas. Una vez que escribe y depura uno, puede reutilizarla.
+* Las funciones bien diseñadas pueden ser útiles para muchos programas. Una vez que escribe y depura una, puede reutilizarla.
 
 * En Julia, las funciones pueden mejorar mucho el rendimiento.
 
@@ -527,7 +527,7 @@ Un nombre usado dentro de una función para referirse al valor pasado como argum
 (((parámetro)))
 
 Llamada a función::
-Una sentencia que ejecuta una función. Compuesta del nombre de la función seguido por la lista de argumentos que usa entre paréntesis.
+Una sentencia que ejecuta una función. Compuesta por el nombre de la función seguido por la lista de argumentos que usa entre paréntesis.
 (((Llamada a función)))
 
 argumento::
@@ -562,7 +562,7 @@ flujo de ejecución::
 El orden en que las sentencias se ejecutan.
 (((flujo de ejecución)))
 
-diagrama de pila ::
+diagrama de pila::
 Una representación gráfica de una pila de funciones, sus variables y los valores a los que se refieren.
 (((diagrama de pila)))
 
@@ -572,7 +572,7 @@ Un recuadro que en un diagrama de pila representa una llamada de función. Conti
 
 trazado inverso::
 Una lista de las funciones que se están ejecutando, las cuales son impresas cuando ocurre una excepción.
-(((trazado inverso))) 
+(((trazado inverso)))
 
 
 === Ejercicios
