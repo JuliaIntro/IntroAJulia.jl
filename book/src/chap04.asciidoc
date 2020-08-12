@@ -297,8 +297,8 @@ En lugar de saturar la interfaz, es mejor elegir un valor apropiado de +n+ depen
 function circulo(t, r)
     circunferencia = 2 * π * r
     n = trunc(circunferencia / 3) + 3
-    len = circunferencia / n
-    poligono(t, n, len)
+    lon = circunferencia / n
+    poligono(t, n, lon)
 end
 ----
 
