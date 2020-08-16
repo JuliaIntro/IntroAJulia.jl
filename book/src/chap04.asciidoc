@@ -276,12 +276,12 @@ El siguiente paso es escribir +circulo+, que toma un radio +r+ como parámetro. 
 function circulo(t, r)
     circunferencia = 2 * π * r
     n = 50
-    len = circunferencia / n
+    lon = circunferencia / n
     poligono(t, n, lon)
 end
 ----
 
-La primera línea calcula la circunferencia de un círculo con radio latexmath:[r] usando la fórmula latexmath:[2 \pi r]. +n+ es el número de segmentos de línea de nuestra aproximación a un círculo, y +len+ es la longitud de cada segmento. Por lo tanto, +polígono+ dibuja un polígono de 50 lados que se aproxima a un círculo de radio +r+.
+La primera línea calcula la circunferencia de un círculo con radio latexmath:[r] usando la fórmula latexmath:[2 \pi r]. +n+ es el número de segmentos de línea de nuestra aproximación a un círculo, y +lon+ es la longitud de cada segmento. Por lo tanto, +polígono+ dibuja un polígono de 50 lados que se aproxima a un círculo de radio +r+.
 
 Una limitante de esta solución es que +n+ es constante, lo que significa que para círculos muy grandes, los segmentos de línea son demasiado largos, y para círculos pequeños, perdemos tiempo dibujando segmentos muy pequeños. Una solución sería generalizar la función tomando +n+ como parámetro. Esto le daría al usuario (quien llama a círculo) más control pero la interfaz sería menos pulcra.
 
@@ -297,8 +297,8 @@ En lugar de saturar la interfaz, es mejor elegir un valor apropiado de +n+ depen
 function circulo(t, r)
     circunferencia = 2 * π * r
     n = trunc(circunferencia / 3) + 3
-    len = circunferencia / n
-    poligono(t, n, len)
+    lon = circunferencia / n
+    poligono(t, n, lon)
 end
 ----
 
@@ -366,8 +366,8 @@ Finalmente, se puede reescribir +circulo+ usando +arco+:
 
 [source,julia]
 ----
-function circle(t, r)
-    arc(t, r, 360)
+function circulo(t, r)
+    arco(t, r, 360)
 end
 ----
 
@@ -379,7 +379,7 @@ Si se hubiese planeado con anticipación, se podría haber escrito +polilinea+ p
 
 === Un Plan de Desarrollo
 
-Un _plan de desarrollo de programa_ es un proceso para escribir programas. El proceso que se utiliza en este estudio de caso es "encapsulado y generalización". Los pasos de este proceso son:
+Un _plan de desarrollo de programa_ es un proceso para escribir programas. El proceso que se utiliza en este estudio de caso es "encapsulación y generalización". Los pasos de este proceso son:
 (((plan de desarrollo de programa)))
 
 . Comience escribiendo un pequeño programa sin definiciones de funciones.
@@ -405,7 +405,7 @@ Un _docstring_ es una cadena que va antes de una función y que explica la inter
 """
 polilinea(t, n, lon, angulo)
 
-Dibuja n segmentos de línea de la longitud dada y con 
+Dibuja n segmentos de línea de la longitud dada y con
 ángulo entre ellos (en grados) dado. t es una tortuga.
 """
 function polilinea(t, n, lon, angulo)
@@ -424,7 +424,7 @@ help?> polilinea
 search:
 
   polilinea(t, n, lon, angulo)
-  
+
   Dibuja n segmentos de línea de la longitud dada y con ángulo entre ellos (en grados) dado. t es una tortuga.
 ----
 
@@ -471,7 +471,7 @@ bucle::
 Una parte de un programa que puede ejecutarse repetidamente.
 (((bucle)))
 
-encapsulado::
+encapsulación::
 El proceso de transformar una secuencia de sentencias en una definición de función.
 (((encapsulado)))
 
@@ -511,7 +511,7 @@ Un requisito que debe cumplir la función antes de que finalice.
 
 Copie y pegue el código de este capítulo en un notebook.
 
-. Dibuje un diagrama de pila que muestre el estado del programa mientras ejecuta +circulo(🐢,radio)+. Puede hacer la aritmética a mano o agregar sentencias de impresión al código.
+. Dibuje un diagrama de pila que muestre el estado del programa mientras ejecuta +circulo(🐢, radio)+. Puede hacer la aritmética a mano o agregar sentencias de impresión al código.
 
 . La versión de +arco+ en <<refactoring>> no es muy precisa ya que la aproximación lineal del círculo siempre queda por afuera del círculo verdadero. Como resultado, la tortuga termina a unos pocos píxeles del destino correcto. La siguiente solución muestra una forma de reducir el efecto de este error. Lea el código y vea si tiene sentido. Si dibuja un diagrama, es posible que entienda mejor cómo funciona.
 (((arco)))
@@ -525,7 +525,7 @@ Dibuja un arco con el radio y el ángulo dados:
 
     t: tortuga
     r: radio
-    angulo: ángulo subtendido por el arco, en grados 
+    angulo: ángulo subtendido por el arco, en grados
 """
 function arco(t, r, angulo)
     arco_lon = 2 * π * r * abs(angulo) / 360
