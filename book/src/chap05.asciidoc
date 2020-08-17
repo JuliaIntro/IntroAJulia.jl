@@ -299,7 +299,7 @@ end
 Si +n pass:[&lt;]= 0+, se usa la sentencia +return+ para salir de la función. El flujo de la ejecución vuelve inmediatamente a la sentencia de llamada a función y no se ejecutan las líneas restantes de la función.
 (((return)))((("palabra reservada", "return", see="return")))(((sentencia return)))((("sentencia", "return", see="return statement")))
 
-El resto de la función es similar a +cuenta regresiva+: muestra +s+ y luego se llama a sí mismo para mostrar +s+ latexmath:[n-1] veces más de modo que el número de lineas mostradas es latexmath:[1 + (n - 1)], es decir latexmath:[n].
+El resto de la función es similar a +cuenta regresiva+: muestra +s+ y luego se llama a sí misma para mostrar +s+ latexmath:[n-1] veces más de modo que el número de lineas mostradas es latexmath:[1 + (n - 1)], es decir latexmath:[n].
 
 Para ejemplos simples como este, es más fácil usar un ciclo +for+. Se mostrarán ejemplos que son difíciles de escribir con un ciclo +for+ y fáciles de escribir con recursividad.
 
