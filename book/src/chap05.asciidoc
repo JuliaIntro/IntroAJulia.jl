@@ -550,7 +550,7 @@ para cualquier valor de latexmath:[\ (n ] mayor que 2.
 . Escriba una función llamada +verificarfermat+ que tome cuatro parámetros—+a+, +b+, +c+ y +n+— y que verifique si el teorema de Fermat es válido. Si +n+ es mayor que 2 y +pass:[a^n + b^n == c^n]+ el programa debería imprimir, "¡Santo cielo, Fermat estaba equivocado!" De lo contrario, el programa debería imprimir, "No, eso no funciona".
 (((verificarfermat)))((("función", "definida por el programador", "verificarfermat", see="verificarfermat")))
 
-. Escriba una función que solicite al usuario ingresar valores para +a+, +b+, +c+ and +n+, que los convierta en enteros y que use +verificarfermat+ para verificar si violan el teorema de Fermat.
+. Escriba una función que solicite al usuario ingresar valores para +a+, +b+, +c+ y +n+, que los convierta en enteros y que use +verificarfermat+ para verificar si violan el teorema de Fermat.
 
 [[ex05-3]]
 ==== Ejercicio 5-4
