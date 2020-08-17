@@ -255,7 +255,7 @@ end
 
 Si +n+ es 0 o negativo, muestra la palabra +"Despegue!"+. En otro caso, muestra el valor +n+ y luego llama a la función +cuentaregresiva+, pasándole +n-1+ como argumento.
 
-Qué sucede si llamamos a una función como esta?
+¿Qué sucede si llamamos a una función como esta?
 
 [source,@julia-repl-test chap05]
 ----
