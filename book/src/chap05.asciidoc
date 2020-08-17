@@ -389,7 +389,7 @@ julia> println("¿Cuántos dejaron su casa, su tierra o su posesión?"); numero 
 julia> parse(Int64, numero)
 115
 ----
-Pero si el usuario no escribe una cadena, obtendrá un error:
+Pero si el usuario no escribe una cadena de dígitos, obtendrá un error:
 (((parse)))
 
 [source,jlcon]
