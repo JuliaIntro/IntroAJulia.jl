@@ -79,7 +79,7 @@ El operador +==+ es un operador relacional. El resto de operadores relacionales 
 
 [source,julia]
 ----
-      x != y               # x no es igual a y 
+      x != y               # x no es igual a y
       x ≠ y                # (\ne TAB)
       x > y                # x es mayor que y
       x < y                # x es menor que y
@@ -122,7 +122,7 @@ end
 La expresión booleana después de +if+ se llama _condición_. Si es verdadera, se ejecuta la instrucción con sangría. Si no, nada ocurre.
 (((condition)))
 
-Las sentencias +if+ tienen la misma estructura que las definiciones de función: un encabezado seguido del cuerpo, terminado con la palabra reservada +end+ (en español "fin"). Las sentencias como este se denominan _sentencias compuestas_.
+Las sentencias +if+ tienen la misma estructura que las definiciones de función: un encabezado seguido del cuerpo, terminado con la palabra reservada +end+ (en español "fin"). Las sentencias como esta se denominan _sentencias compuestas_.
 (((sentencia compuesta)))(((end)))
 
 No hay límite en el número de sentencias que pueden aparecer en el cuerpo. A veces es útil tener un cuerpo sin sentencias (por lo general, como un marcador de posición para el código que aún no se ha escrito).
@@ -184,7 +184,7 @@ Cada condición se comprueba en orden. Si la primera es falsa, se comprueba la s
 
 === Condicionales anidadas
 
-Una condicional puede estar anidada ("nested" en inglés) dentro de otra. Podríamos haber escrito el ejemplo de la sección anterior de la siguiente manera: 
+Una condicional puede estar anidada ("nested" en inglés) dentro de otra. Podríamos haber escrito el ejemplo de la sección anterior de la siguiente manera:
 (((condicional anidada)))
 
 [source,julia]
@@ -315,7 +315,7 @@ Cada vez que se llama a una función, Julia crea un marco que contiene las varia
 .Diagrama de pila
 image::images/fig51.svg[]
 
-<<fig05-1>> muestra un diagrama de pila para +cuentaregresiva+ utilizando +n=3+. 
+<<fig05-1>> muestra un diagrama de pila para +cuentaregresiva+ utilizando +n=3+.
 
 Como siempre, la parte superior de la pila es el marco para +Main+. Está vacío pues no se crearon variables en +Main+ ni tampoco se pasaron argumentos.
 
@@ -646,4 +646,3 @@ La excepción es cuando latexmath:[x] es menor que 3: en ese caso, puede dibujar
 (((copodenieve)))((("función", "definida por el programador", "copodenieve", see="copodenieve")))
 
 . La curva de Koch se puede generalizar de varias maneras. Consulte https://en.wikipedia.org/wiki/Koch_snowflake para ver ejemplos e implementar su favorito.
-
