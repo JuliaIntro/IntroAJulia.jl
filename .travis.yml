@@ -1,43 +1,34 @@
 ## Documentation: http://docs.travis-ci.com/user/languages/julia/
 language: julia
-os:
-  - linux
-  - osx
-julia:
-  - 0.7
-  - 1.0
-  - nightly
+
 notifications:
   email: false
+
 git:
   depth: 99999999
-install:
-  - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get install lmodern texlive-luatex texlive-xetex texlive-latex-extra pgf; else brew cask install mactex-no-gui; fi
-  - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get install ttf-ubuntu-font-family fonts-dejavu; else brew tap homebrew/cask-fonts; brew cask install font-ubuntu font-dejavu-sans; fi
-  - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get install pdf2svg; else brew install pdf2svg; fi
-  - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get install libgdbm3; else brew upgrade gdbm; fi
-  - if [ $TRAVIS_OS_NAME = osx ]; then export PATH=$PATH:/usr/local/texlive/2018/bin/x86_64-darwin; fi
-  - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get install asciidoctor; else brew install asciidoctor; fi
-  - julia -e 'using Pkg; pkg"dev BinaryProvider"'
-#addons:
-#  apt_packages:
-#    - lmodern
-#    - fonts-dejavu
-#    - ttf-ubuntu-font-family
-#    - texlive-luatex
-#    - texlive-xetex
-#    - texlive-latex-extra
-#    - pgf
-#    - pdf2svg
-#    - libgdbm3
-#matrix:
-#  allow_failures:
-#  - julia: nightly
 
-after_success:
-  # generate documentation
-  #- mkdir ~/.fonts
-  #- cp ~/.julia/v0.6/ThinkJulia/fonts/* ~/.fonts
-  #- cp ~/.julia/v0.7/ThinkJulia/fonts/* ~/.fonts
-  #- luaotfload-tool --update
-  #- if [ $TRAVIS_OS_NAME = osx ]; then julia -e 'using ThinkJulia; cd(joinpath(splitdir(pathof(ThinkJulia))[1], "..", "book")); ARGS=("images","html","deploy"); include("make.jl")'; fi
+jobs:
+  allow_failures:
+    - julia: nightly
+  include:
+    - stage: deploy-site
+      julia: 1.4
+      os: linux
+      dist: focal
+      if: type != pull_request
+      script:
+        - julia --project -e 'using Pkg; pkg"build"'
+        - mkdir -p book/build
+        - julia --project=book -e 'using Pkg; pkg"dev ."; pkg"instantiate"'
+        - julia --project=book -e 'ARGS=["build", "images", "html"]; cd("book"); include("make.jl")'
+        - julia --project=book deploy.jl
+      addons:
+        apt_packages:
+          - asciidoctor
+          - texlive-luatex
+          - pdf2svg
+          - lmodern
+          - fonts-dejavu
+          - ttf-ubuntu-font-family
+          - texlive-xetex
+          - texlive-latex-extra
