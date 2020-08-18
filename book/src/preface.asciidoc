@@ -97,7 +97,7 @@ Avísenos con qué versión del libro está trabajando y en qué formato. Si inc
 - Zigu Zhao encontró algunos errores en el Capítulo 8.
 - Oleg Soloviev detectó un error en la url al agregar el paquete +ThinkJulia+.
 - Aaron Ang encontró algunos problemas de representación y nomenclatura.
-- Sergey Volkov encontró un enlace caido en el Capítulo 7.
+- Sergey Volkov encontró un enlace caído en el Capítulo 7.
 - Sean McAllister sugirió mencionar el excelente paquete +BenchmarkTools+.
 - Carlos Bolech envió una larga lista de correcciones y sugerencias.
 - Krishna Kumar corrigió el ejemplo de Markov en el Capítulo 18.
