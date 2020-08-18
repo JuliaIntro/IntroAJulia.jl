@@ -16,3 +16,5 @@ book/src/notes.asciidoc
 deps/usr
 deps/build.log
 deps/deps.jl
+book/piedefoto
+book/salida.txt
