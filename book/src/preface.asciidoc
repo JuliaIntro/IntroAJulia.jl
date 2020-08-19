@@ -3,7 +3,7 @@
 
 En enero de 2018 comencé a preparar un curso de programación pensado para estudiantes que no tuvieran experiencia previa en programación. Quería usar Julia como lenguaje de programación, y descubrí que no existía ningún libro para aprender a programar que usara Julia como primer lenguaje de programación. Hay tutoriales maravillosos que explican los conceptos clave de Julia, pero ninguno de ellos se dedicaba lo suficiente a enseñar a pensar como programador.
 
-Conocía el libro http://shop.oreilly.com/product/0636920045267.do[_Think Python_] de Allen Downey, el cual contiene todos los elementos clave para aprender a programar correctamente. Sin embargo, este libro se basa en el lenguaje de programación Python. Mi primer borrador del curso fue una mezcla de muchas referencias, pero a medida que trabajaba en él, el contenido comenzó a parecerse cada vez más a los capítulos de _Think Python_. Pronto, la idea de desarrollar mi curso como base para trasladar ese libro a _Julia_ se hizo realidad.
+Conocía el libro http://shop.oreilly.com/product/0636920045267.do[_Think Python_] de Allen Downey, el cual contiene todos los elementos clave para aprender a programar correctamente. Sin embargo, este libro se basa en el lenguaje de programación Python. Mi primer borrador del curso fue una mezcla de muchas referencias, pero a medida que trabajaba en este, el contenido comenzó a parecerse cada vez más a los capítulos de _Think Python_. Pronto, la idea de desarrollar mi curso como base para trasladar ese libro a _Julia_ se hizo realidad.
 
 Todo el material estaba disponible en un repositorio de GitHub, en forma de notebooks de Jupyter. Después de publicar un mensaje en el sitio Discourse de Julia sobre el progreso de mi curso, los comentarios fueron abrumadores. Aparentemente, un libro sobre conceptos básicos de programación con Julia como primer lenguaje de programación era algo que faltaba en el universo de Julia. Contacté a Allen para ver si podía iniciar oficialmente la versión de _Think Python_ para Julia y su respuesta fue inmediata: “¡adelante!”, me puso en contacto con su editor de O'Reilly Media y ahora, un año después, estoy haciendo los retoques finales a este libro.
 
@@ -26,7 +26,7 @@ La elección de un lenguaje de programación es siempre subjetiva. Para mí, las
 - Julia es un lenguaje de programación con tipos opcionales, cuyos tipos de datos (definidos por el usuario) hacen que el código sea claro y robusto.
 - Julia tiene una biblioteca estándar extendida, además, están disponibles numerosos paquetes de terceros.
 
-Julia es un lenguaje de programación único, ya que resuelve el problema de los dos idiomas. No se necesita de ningún otro lenguaje de programación para escribir código de alto rendimiento. Esto no significa que ocurra automáticamente. Es responsabilidad del programador optimizar el código que produzca cuellos de botella, pero esto puede hacerse directamente en Julia.
+Julia es un lenguaje de programación único, ya que resuelve el problema de los dos idiomas. No se necesita de ningún otro lenguaje de programación para escribir código de alto rendimiento. Esto no significa que ocurra automáticamente. Es responsabilidad del programador optimizar el código que genere cuellos de botella, aunque esto puede hacerse directamente en Julia.
 
 === ¿A quién está dirigido este libro?
 
@@ -69,7 +69,7 @@ Todo el código utilizado en este libro está disponible en un repositorio de Gi
 
 El siguiente paquete puede ser de utilidad, y se puede agregar directamente a Julia. Simplemente escriba *+pass:[add https://github.com/JuliaIntro/IntroAJulia.jl]+* en el REPL, en modo Pkg.
 
-La forma más fácil de ejecutar un código de Julia es yendo a https://juliabox.com, e iniciar una sesión de prueba gratuita. Es posible utilizar tanto las interfaces REPL como de notebooks. Si desea tner Julia instalada localmente en su computadora, puede descargar https://juliacomputing.com/products/juliapro.html[JuliaPro] de Julia Computing gratuitamente. Consiste en una versión reciente de Julia, el IDE de Juno basado en Atom y varios paquetes de Julia preinstalados. Si es más aventurero, puede descargar Julia desde https://julialang.org, instale el editor que prefiera, por ejemplo Atom o Visual Studio Code, activando los complementos para su integración de Julia. Para una instalación local, también puede agregar el paquete +IJulia+ que permite ejecutar un notebook Jupyter en su computadora.
+La forma más fácil de ejecutar un código de Julia es yendo a https://juliabox.com, e iniciar una sesión de prueba gratuita. Es posible utilizar tanto las interfaces REPL como de notebooks. Si desea tner Julia instalada localmente en su computadora, puede descargar https://juliacomputing.com/products/juliapro.html[JuliaPro] de Julia Computing gratuitamente. Consiste en una versión reciente de Julia, el IDE de Juno basado en Atom y varios paquetes de Julia preinstalados. Si es más aventurero, puede descargar Julia desde https://julialang.org, instale el editor que prefiera, por ejemplo Atom o Visual Studio Code, activando los complementos para su integración de Julia. En el caso de una instalación local, también puede agregar el paquete +IJulia+ que le permite ejecutar un notebook de Jupyter en su computadora.
 
 === Agradecimientos
 
