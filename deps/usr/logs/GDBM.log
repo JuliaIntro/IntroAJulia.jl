@@ -1,0 +1,438 @@
+`/bin/bash -c 'save_history() {
+    if [[ "false" == "true" ]]; then
+        echo " ---> $BASH_COMMAND" >&2
+    fi
+    history -s "$BASH_COMMAND"
+    history -a
+}
+
+save_env() {
+    set +x
+    set > /meta/.env
+    # Ignore read-only variables
+    for l in BASHOPTS BASH_VERSINFO UID EUID PPID SHELLOPTS; do
+        grep -v "^$l=" /meta/.env > /meta/.env2
+        mv /meta/.env2 /meta/.env
+    done
+    echo "cd $(pwd)" >> /meta/.env
+}
+
+# If /meta is mounted, then we want to save history and environment
+if [[ -d /meta ]]; then
+    trap save_history DEBUG
+    trap save_env INT TERM EXIT ERR
+fi
+
+# Stop if we hit any errors.
+set -e
+
+cd $WORKSPACE/srcdir
+cd gdbm-1.18/
+if [ $target = "i686-w64-mingw32" ] || [ $target = "x86_64-w64-mingw32" ]; then
+patch -Np1 -i ../*gdbm-1.15-win32.patch
+autoreconf -f
+fi
+./configure --prefix=$prefix --host=$target --without-readline --disable-dependency-tracking --disable-silent-rules
+make
+make install
+exit
+
+
+'`
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for x86_64-linux-gnu-strip... /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-strip
+checking for a thread-safe mkdir -p... build-aux/install-sh -c -d
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking whether make supports nested variables... (cached) yes
+checking for x86_64-linux-gnu-gcc... /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc accepts -g... yes
+checking for /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc option to accept ISO C89... none needed
+checking whether /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc understands -c and -o together... yes
+checking for style of include used by make... GNU
+checking dependency style of /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc... none
+checking how to run the C preprocessor... /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -E
+checking build system type... x86_64-unknown-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+checking how to print strings... printf
+checking for a sed that does not truncate output... /bin/sed
+checking for grep that handles long lines and -e... /bin/grep
+checking for egrep... /bin/grep -E
+checking for fgrep... /bin/grep -F
+checking for ld used by /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc... /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-ld
+checking if the linker (/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-ld) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-nm
+checking the name lister (/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-nm) interface... BSD nm
+checking whether ln -s works... yes
+checking the maximum length of command line arguments... 98304
+checking whether the shell understands some XSI constructs... yes
+checking whether the shell understands "+="... yes
+checking how to convert x86_64-unknown-linux-gnu file names to x86_64-pc-linux-gnu format... func_convert_file_noop
+checking how to convert x86_64-unknown-linux-gnu file names to toolchain format... func_convert_file_noop
+checking for /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-ld option to reload object files... -r
+checking for x86_64-linux-gnu-objdump... /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-objdump
+checking how to recognize dependent libraries... pass_all
+checking for x86_64-linux-gnu-dlltool... no
+checking for dlltool... no
+checking how to associate runtime and link libraries... printf %s\n
+checking for x86_64-linux-gnu-ar... /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-ar
+checking for archiver @FILE support... @
+checking for x86_64-linux-gnu-strip... (cached) /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-strip
+checking for x86_64-linux-gnu-ranlib... /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-ranlib
+checking command to parse /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-nm output from /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc object... ok
+checking for sysroot... no
+checking for x86_64-linux-gnu-mt... no
+checking for mt... no
+checking if : is a manifest tool... no
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for dlfcn.h... yes
+checking for objdir... .libs
+checking if /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc supports -fno-rtti -fno-exceptions... no
+checking for /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc option to produce PIC... -fPIC -DPIC
+checking if /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc PIC flag -fPIC -DPIC works... yes
+checking if /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc static flag -static works... yes
+checking if /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc supports -c -o file.o... yes
+checking if /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc supports -c -o file.o... (cached) yes
+checking whether the /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc linker (/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-ld -m elf_x86_64) supports shared libraries... yes
+checking whether -lc should be explicitly linked in... no
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... yes
+checking for bison... bison -y
+checking for flex... flex
+checking lex output file root... lex.yy
+checking lex library... none needed
+checking whether yytext is a pointer... no
+checking for gzip... /bin/gzip
+checking for base64... /bin/base64
+checking for special C compiler options needed for large files... no
+checking for _FILE_OFFSET_BITS value needed for large files... no
+checking for an ANSI C-conforming const... yes
+checking for unsigned long long int... yes
+checking for TLS qualifier... __thread
+checking whether NLS is requested... yes
+checking for msgfmt... no
+checking for gmsgfmt... :
+checking for xgettext... no
+checking for msgmerge... no
+checking for ld used by GCC... /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-ld -m elf_x86_64
+checking if the linker (/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-ld -m elf_x86_64) is GNU ld... yes
+checking for shared library run path origin... done
+checking for CFPreferencesCopyAppValue... no
+checking for CFLocaleCopyCurrent... no
+checking for GNU gettext in libc... yes
+checking whether to use NLS... yes
+checking where the gettext function comes from... libc
+checking sys/file.h usability... yes
+checking sys/file.h presence... yes
+checking for sys/file.h... yes
+checking sys/termios.h usability... yes
+checking sys/termios.h presence... yes
+checking for sys/termios.h... yes
+checking for string.h... (cached) yes
+checking locale.h usability... yes
+checking locale.h presence... yes
+checking for locale.h... yes
+checking getopt.h usability... yes
+checking getopt.h presence... yes
+checking for getopt.h... yes
+checking for main in -ldbm... no
+checking for main in -lndbm... no
+checking for ftruncate... yes
+checking for flock... yes
+checking for lockf... yes
+checking for fsync... yes
+checking for setlocale... yes
+checking for getopt_long... yes
+checking for stdlib.h... (cached) yes
+checking for unistd.h... (cached) yes
+checking for sys/param.h... yes
+checking for getpagesize... yes
+checking for working mmap... yes
+checking for msync... yes
+checking for off_t... yes
+checking size of off_t... 8
+checking for struct stat.st_blksize... yes
+checking for tputs in -lncurses... no
+checking for tputs in -lcurses... no
+checking for tputs in -ltermcap... no
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating tests/Makefile
+config.status: creating tests/atlocal
+config.status: creating po/Makefile.in
+config.status: creating Makefile
+config.status: creating src/Makefile
+config.status: creating src/gdbm.h
+config.status: creating doc/Makefile
+config.status: creating compat/Makefile
+config.status: creating autoconf.h
+config.status: executing depfiles commands
+config.status: executing libtool commands
+config.status: executing po-directories commands
+config.status: creating po/POTFILES
+config.status: creating po/Makefile
+config.status: executing tests/atconfig commands
+config.status: executing status commands
+
+*******************************************************************
+GDBM settings summary:
+
+Compatibility library ......................... no
+Memory mapped I/O ............................. yes
+GNU Readline .................................. no
+Debugging support ............................. no
+*******************************************************************
+
+make  all-recursive
+make[1]: Entering directory '/workspace/srcdir/gdbm-1.18'
+Making all in po
+make[2]: Entering directory '/workspace/srcdir/gdbm-1.18/po'
+make[2]: Leaving directory '/workspace/srcdir/gdbm-1.18/po'
+Making all in src
+make[2]: Entering directory '/workspace/srcdir/gdbm-1.18/src'
+make  all-am
+make[3]: Entering directory '/workspace/srcdir/gdbm-1.18/src'
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o err.o err.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o mem.o mem.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o parseopt.o parseopt.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o progname.o progname.c
+rm -f libgdbmapp.a
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-ar cru libgdbmapp.a err.o mem.o parseopt.o progname.o 
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-ranlib libgdbmapp.a
+/bin/bash ../libtool  --tag=CC   --mode=compile /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o gdbmclose.lo gdbmclose.c
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c gdbmclose.c  -fPIC -DPIC -o .libs/gdbmclose.o
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c gdbmclose.c -o gdbmclose.o >/dev/null 2>&1
+/bin/bash ../libtool  --tag=CC   --mode=compile /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o gdbmcount.lo gdbmcount.c
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c gdbmcount.c  -fPIC -DPIC -o .libs/gdbmcount.o
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c gdbmcount.c -o gdbmcount.o >/dev/null 2>&1
+/bin/bash ../libtool  --tag=CC   --mode=compile /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o gdbmdelete.lo gdbmdelete.c
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c gdbmdelete.c  -fPIC -DPIC -o .libs/gdbmdelete.o
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c gdbmdelete.c -o gdbmdelete.o >/dev/null 2>&1
+/bin/bash ../libtool  --tag=CC   --mode=compile /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o gdbmdump.lo gdbmdump.c
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c gdbmdump.c  -fPIC -DPIC -o .libs/gdbmdump.o
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c gdbmdump.c -o gdbmdump.o >/dev/null 2>&1
+/bin/bash ../libtool  --tag=CC   --mode=compile /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o gdbmerrno.lo gdbmerrno.c
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c gdbmerrno.c  -fPIC -DPIC -o .libs/gdbmerrno.o
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c gdbmerrno.c -o gdbmerrno.o >/dev/null 2>&1
+/bin/bash ../libtool  --tag=CC   --mode=compile /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o gdbmexists.lo gdbmexists.c
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c gdbmexists.c  -fPIC -DPIC -o .libs/gdbmexists.o
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c gdbmexists.c -o gdbmexists.o >/dev/null 2>&1
+/bin/bash ../libtool  --tag=CC   --mode=compile /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o gdbmexp.lo gdbmexp.c
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c gdbmexp.c  -fPIC -DPIC -o .libs/gdbmexp.o
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c gdbmexp.c -o gdbmexp.o >/dev/null 2>&1
+/bin/bash ../libtool  --tag=CC   --mode=compile /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o gdbmfdesc.lo gdbmfdesc.c
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c gdbmfdesc.c  -fPIC -DPIC -o .libs/gdbmfdesc.o
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c gdbmfdesc.c -o gdbmfdesc.o >/dev/null 2>&1
+/bin/bash ../libtool  --tag=CC   --mode=compile /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o gdbmfetch.lo gdbmfetch.c
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c gdbmfetch.c  -fPIC -DPIC -o .libs/gdbmfetch.o
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c gdbmfetch.c -o gdbmfetch.o >/dev/null 2>&1
+/bin/bash ../libtool  --tag=CC   --mode=compile /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o gdbmload.lo gdbmload.c
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c gdbmload.c  -fPIC -DPIC -o .libs/gdbmload.o
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c gdbmload.c -o gdbmload.o >/dev/null 2>&1
+/bin/bash ../libtool  --tag=CC   --mode=compile /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o gdbmopen.lo gdbmopen.c
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c gdbmopen.c  -fPIC -DPIC -o .libs/gdbmopen.o
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c gdbmopen.c -o gdbmopen.o >/dev/null 2>&1
+/bin/bash ../libtool  --tag=CC   --mode=compile /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o gdbmimp.lo gdbmimp.c
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c gdbmimp.c  -fPIC -DPIC -o .libs/gdbmimp.o
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c gdbmimp.c -o gdbmimp.o >/dev/null 2>&1
+/bin/bash ../libtool  --tag=CC   --mode=compile /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o gdbmreorg.lo gdbmreorg.c
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c gdbmreorg.c  -fPIC -DPIC -o .libs/gdbmreorg.o
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c gdbmreorg.c -o gdbmreorg.o >/dev/null 2>&1
+/bin/bash ../libtool  --tag=CC   --mode=compile /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o gdbmseq.lo gdbmseq.c
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c gdbmseq.c  -fPIC -DPIC -o .libs/gdbmseq.o
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c gdbmseq.c -o gdbmseq.o >/dev/null 2>&1
+/bin/bash ../libtool  --tag=CC   --mode=compile /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o gdbmsetopt.lo gdbmsetopt.c
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c gdbmsetopt.c  -fPIC -DPIC -o .libs/gdbmsetopt.o
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c gdbmsetopt.c -o gdbmsetopt.o >/dev/null 2>&1
+/bin/bash ../libtool  --tag=CC   --mode=compile /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o gdbmstore.lo gdbmstore.c
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c gdbmstore.c  -fPIC -DPIC -o .libs/gdbmstore.o
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c gdbmstore.c -o gdbmstore.o >/dev/null 2>&1
+/bin/bash ../libtool  --tag=CC   --mode=compile /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o gdbmsync.lo gdbmsync.c
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c gdbmsync.c  -fPIC -DPIC -o .libs/gdbmsync.o
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c gdbmsync.c -o gdbmsync.o >/dev/null 2>&1
+/bin/bash ../libtool  --tag=CC   --mode=compile /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o base64.lo base64.c
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c base64.c  -fPIC -DPIC -o .libs/base64.o
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c base64.c -o base64.o >/dev/null 2>&1
+/bin/bash ../libtool  --tag=CC   --mode=compile /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o bucket.lo bucket.c
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c bucket.c  -fPIC -DPIC -o .libs/bucket.o
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c bucket.c -o bucket.o >/dev/null 2>&1
+/bin/bash ../libtool  --tag=CC   --mode=compile /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o falloc.lo falloc.c
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c falloc.c  -fPIC -DPIC -o .libs/falloc.o
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c falloc.c -o falloc.o >/dev/null 2>&1
+/bin/bash ../libtool  --tag=CC   --mode=compile /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o findkey.lo findkey.c
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c findkey.c  -fPIC -DPIC -o .libs/findkey.o
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c findkey.c -o findkey.o >/dev/null 2>&1
+/bin/bash ../libtool  --tag=CC   --mode=compile /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o fullio.lo fullio.c
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c fullio.c  -fPIC -DPIC -o .libs/fullio.o
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c fullio.c -o fullio.o >/dev/null 2>&1
+/bin/bash ../libtool  --tag=CC   --mode=compile /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o hash.lo hash.c
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c hash.c  -fPIC -DPIC -o .libs/hash.o
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c hash.c -o hash.o >/dev/null 2>&1
+/bin/bash ../libtool  --tag=CC   --mode=compile /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o lock.lo lock.c
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c lock.c  -fPIC -DPIC -o .libs/lock.o
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c lock.c -o lock.o >/dev/null 2>&1
+/bin/bash ../libtool  --tag=CC   --mode=compile /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o mmap.lo mmap.c
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c mmap.c  -fPIC -DPIC -o .libs/mmap.o
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c mmap.c -o mmap.o >/dev/null 2>&1
+/bin/bash ../libtool  --tag=CC   --mode=compile /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o recover.lo recover.c
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c recover.c  -fPIC -DPIC -o .libs/recover.o
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c recover.c -o recover.o >/dev/null 2>&1
+/bin/bash ../libtool  --tag=CC   --mode=compile /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o update.lo update.c
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c update.c  -fPIC -DPIC -o .libs/update.o
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c update.c -o update.o >/dev/null 2>&1
+/bin/bash ../libtool  --tag=CC   --mode=compile /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o version.lo version.c
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c version.c  -fPIC -DPIC -o .libs/version.o
+libtool: compile:  /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I.. -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\" -g -O2 -c version.c -o version.o >/dev/null 2>&1
+/bin/bash ../libtool  --tag=CC   --mode=link /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc  -g -O2 -version-info 6:0:0  -o libgdbm.la -rpath /workspace/destdir/lib gdbmclose.lo gdbmcount.lo gdbmdelete.lo gdbmdump.lo gdbmerrno.lo gdbmexists.lo gdbmexp.lo gdbmfdesc.lo gdbmfetch.lo gdbmload.lo gdbmopen.lo gdbmimp.lo gdbmreorg.lo gdbmseq.lo gdbmsetopt.lo gdbmstore.lo gdbmsync.lo base64.lo bucket.lo falloc.lo findkey.lo fullio.lo hash.lo lock.lo mmap.lo recover.lo update.lo version.lo   
+libtool: link: /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -shared  -fPIC -DPIC  .libs/gdbmclose.o .libs/gdbmcount.o .libs/gdbmdelete.o .libs/gdbmdump.o .libs/gdbmerrno.o .libs/gdbmexists.o .libs/gdbmexp.o .libs/gdbmfdesc.o .libs/gdbmfetch.o .libs/gdbmload.o .libs/gdbmopen.o .libs/gdbmimp.o .libs/gdbmreorg.o .libs/gdbmseq.o .libs/gdbmsetopt.o .libs/gdbmstore.o .libs/gdbmsync.o .libs/base64.o .libs/bucket.o .libs/falloc.o .libs/findkey.o .libs/fullio.o .libs/hash.o .libs/lock.o .libs/mmap.o .libs/recover.o .libs/update.o .libs/version.o    -O2   -Wl,-soname -Wl,libgdbm.so.6 -o .libs/libgdbm.so.6.0.0
+libtool: link: (cd ".libs" && rm -f "libgdbm.so.6" && ln -s "libgdbm.so.6.0.0" "libgdbm.so.6")
+libtool: link: (cd ".libs" && rm -f "libgdbm.so" && ln -s "libgdbm.so.6.0.0" "libgdbm.so")
+libtool: link: /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-ar cru .libs/libgdbm.a  gdbmclose.o gdbmcount.o gdbmdelete.o gdbmdump.o gdbmerrno.o gdbmexists.o gdbmexp.o gdbmfdesc.o gdbmfetch.o gdbmload.o gdbmopen.o gdbmimp.o gdbmreorg.o gdbmseq.o gdbmsetopt.o gdbmstore.o gdbmsync.o base64.o bucket.o falloc.o findkey.o fullio.o hash.o lock.o mmap.o recover.o update.o version.o
+libtool: link: /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-ranlib .libs/libgdbm.a
+libtool: link: ( cd ".libs" && rm -f "libgdbm.la" && ln -s "../libgdbm.la" "libgdbm.la" )
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o datconv.o datconv.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o gram.o gram.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o input-argv.o input-argv.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o input-file.o input-file.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o lex.o lex.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o gdbmtool.o gdbmtool.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o var.o var.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o util.o util.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o input-std.o input-std.c
+/bin/bash ../libtool  --tag=CC   --mode=link /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc  -g -O2   -o gdbmtool datconv.o gram.o input-argv.o input-file.o lex.o gdbmtool.o var.o util.o  input-std.o ./libgdbmapp.a ./libgdbm.la  
+libtool: link: /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -g -O2 -o .libs/gdbmtool datconv.o gram.o input-argv.o input-file.o lex.o gdbmtool.o var.o util.o input-std.o  ./libgdbmapp.a ./.libs/libgdbm.so -Wl,-rpath -Wl,/workspace/destdir/lib
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o gdbm_load.o gdbm_load.c
+/bin/bash ../libtool  --tag=CC   --mode=link /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc  -g -O2   -o gdbm_load gdbm_load.o ./libgdbmapp.a ./libgdbm.la  
+libtool: link: /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -g -O2 -o .libs/gdbm_load gdbm_load.o  ./libgdbmapp.a ./.libs/libgdbm.so -Wl,-rpath -Wl,/workspace/destdir/lib
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -DHAVE_CONFIG_H -I. -I..  -DIN_GDBM -DLOCALEDIR=\"/workspace/destdir/share/locale\"    -g -O2 -c -o gdbm_dump.o gdbm_dump.c
+/bin/bash ../libtool  --tag=CC   --mode=link /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc  -g -O2   -o gdbm_dump gdbm_dump.o ./libgdbmapp.a ./libgdbm.la  
+libtool: link: /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -g -O2 -o .libs/gdbm_dump gdbm_dump.o  ./libgdbmapp.a ./.libs/libgdbm.so -Wl,-rpath -Wl,/workspace/destdir/lib
+make[3]: Leaving directory '/workspace/srcdir/gdbm-1.18/src'
+make[2]: Leaving directory '/workspace/srcdir/gdbm-1.18/src'
+Making all in doc
+make[2]: Entering directory '/workspace/srcdir/gdbm-1.18/doc'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/workspace/srcdir/gdbm-1.18/doc'
+Making all in tests
+make[2]: Entering directory '/workspace/srcdir/gdbm-1.18/tests'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/workspace/srcdir/gdbm-1.18/tests'
+make[2]: Entering directory '/workspace/srcdir/gdbm-1.18'
+make[2]: Leaving directory '/workspace/srcdir/gdbm-1.18'
+make[1]: Leaving directory '/workspace/srcdir/gdbm-1.18'
+Making install in po
+make[1]: Entering directory '/workspace/srcdir/gdbm-1.18/po'
+installing da.gmo as /workspace/destdir/share/locale/da/LC_MESSAGES/gdbm.mo
+installing de.gmo as /workspace/destdir/share/locale/de/LC_MESSAGES/gdbm.mo
+installing eo.gmo as /workspace/destdir/share/locale/eo/LC_MESSAGES/gdbm.mo
+installing es.gmo as /workspace/destdir/share/locale/es/LC_MESSAGES/gdbm.mo
+installing fi.gmo as /workspace/destdir/share/locale/fi/LC_MESSAGES/gdbm.mo
+installing fr.gmo as /workspace/destdir/share/locale/fr/LC_MESSAGES/gdbm.mo
+installing ja.gmo as /workspace/destdir/share/locale/ja/LC_MESSAGES/gdbm.mo
+installing pl.gmo as /workspace/destdir/share/locale/pl/LC_MESSAGES/gdbm.mo
+installing pt_BR.gmo as /workspace/destdir/share/locale/pt_BR/LC_MESSAGES/gdbm.mo
+installing sr.gmo as /workspace/destdir/share/locale/sr/LC_MESSAGES/gdbm.mo
+installing sv.gmo as /workspace/destdir/share/locale/sv/LC_MESSAGES/gdbm.mo
+installing uk.gmo as /workspace/destdir/share/locale/uk/LC_MESSAGES/gdbm.mo
+installing vi.gmo as /workspace/destdir/share/locale/vi/LC_MESSAGES/gdbm.mo
+if test "gdbm" = "gettext-tools"; then \
+  ../build-aux/install-sh -c -d /workspace/destdir/share/gettext/po; \
+  for file in Makefile.in.in remove-potcdate.sin quot.sed boldquot.sed en@quot.header en@boldquot.header insert-header.sin Rules-quot   Makevars.template; do \
+    /usr/bin/install -c -m 644 ./$file \
+		    /workspace/destdir/share/gettext/po/$file; \
+  done; \
+  for file in Makevars; do \
+    rm -f /workspace/destdir/share/gettext/po/$file; \
+  done; \
+else \
+  : ; \
+fi
+make[1]: Leaving directory '/workspace/srcdir/gdbm-1.18/po'
+Making install in src
+make[1]: Entering directory '/workspace/srcdir/gdbm-1.18/src'
+make  install-am
+make[2]: Entering directory '/workspace/srcdir/gdbm-1.18/src'
+make[3]: Entering directory '/workspace/srcdir/gdbm-1.18/src'
+ ../build-aux/install-sh -c -d '/workspace/destdir/lib'
+ /bin/bash ../libtool   --mode=install /usr/bin/install -c   libgdbm.la '/workspace/destdir/lib'
+libtool: install: /usr/bin/install -c .libs/libgdbm.so.6.0.0 /workspace/destdir/lib/libgdbm.so.6.0.0
+libtool: install: (cd /workspace/destdir/lib && { ln -s -f libgdbm.so.6.0.0 libgdbm.so.6 || { rm -f libgdbm.so.6 && ln -s libgdbm.so.6.0.0 libgdbm.so.6; }; })
+libtool: install: (cd /workspace/destdir/lib && { ln -s -f libgdbm.so.6.0.0 libgdbm.so || { rm -f libgdbm.so && ln -s libgdbm.so.6.0.0 libgdbm.so; }; })
+libtool: install: /usr/bin/install -c .libs/libgdbm.lai /workspace/destdir/lib/libgdbm.la
+libtool: install: /usr/bin/install -c .libs/libgdbm.a /workspace/destdir/lib/libgdbm.a
+libtool: install: chmod 644 /workspace/destdir/lib/libgdbm.a
+libtool: install: /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-ranlib /workspace/destdir/lib/libgdbm.a
+libtool: finish: PATH="/opt/x86_64-linux-gnu/bin:/opt/x86_64-linux-gnu/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/sbin" ldconfig -n /workspace/destdir/lib
+----------------------------------------------------------------------
+Libraries have been installed in:
+   /workspace/destdir/lib
+
+If you ever happen to want to link against installed libraries
+in a given directory, LIBDIR, you must either use libtool, and
+specify the full pathname of the library, or use the `-LLIBDIR'
+flag during linking and do at least one of the following:
+   - add LIBDIR to the `LD_LIBRARY_PATH' environment variable
+     during execution
+   - add LIBDIR to the `LD_RUN_PATH' environment variable
+     during linking
+   - use the `-Wl,-rpath -Wl,LIBDIR' linker flag
+
+See any operating system documentation about shared libraries for
+more information, such as the ld(1) and ld.so(8) manual pages.
+----------------------------------------------------------------------
+ ../build-aux/install-sh -c -d '/workspace/destdir/bin'
+  /bin/bash ../libtool   --mode=install /usr/bin/install -c gdbmtool gdbm_load gdbm_dump '/workspace/destdir/bin'
+libtool: install: /usr/bin/install -c .libs/gdbmtool /workspace/destdir/bin/gdbmtool
+libtool: install: /usr/bin/install -c .libs/gdbm_load /workspace/destdir/bin/gdbm_load
+libtool: install: /usr/bin/install -c .libs/gdbm_dump /workspace/destdir/bin/gdbm_dump
+ ../build-aux/install-sh -c -d '/workspace/destdir/include'
+ /usr/bin/install -c -m 644 gdbm.h '/workspace/destdir/include'
+make[3]: Leaving directory '/workspace/srcdir/gdbm-1.18/src'
+make[2]: Leaving directory '/workspace/srcdir/gdbm-1.18/src'
+make[1]: Leaving directory '/workspace/srcdir/gdbm-1.18/src'
+Making install in doc
+make[1]: Entering directory '/workspace/srcdir/gdbm-1.18/doc'
+make[2]: Entering directory '/workspace/srcdir/gdbm-1.18/doc'
+make[2]: Nothing to be done for 'install-exec-am'.
+ ../build-aux/install-sh -c -d '/workspace/destdir/share/info'
+ /usr/bin/install -c -m 644 ./gdbm.info '/workspace/destdir/share/info'
+ ../build-aux/install-sh -c -d '/workspace/destdir/share/man/man1'
+ /usr/bin/install -c -m 644 gdbm_dump.1 gdbm_load.1 gdbmtool.1 '/workspace/destdir/share/man/man1'
+ ../build-aux/install-sh -c -d '/workspace/destdir/share/man/man3'
+ /usr/bin/install -c -m 644 gdbm.3 '/workspace/destdir/share/man/man3'
+make[2]: Leaving directory '/workspace/srcdir/gdbm-1.18/doc'
+make[1]: Leaving directory '/workspace/srcdir/gdbm-1.18/doc'
+Making install in tests
+make[1]: Entering directory '/workspace/srcdir/gdbm-1.18/tests'
+make[2]: Entering directory '/workspace/srcdir/gdbm-1.18/tests'
+make[2]: Nothing to be done for 'install-exec-am'.
+make[2]: Nothing to be done for 'install-data-am'.
+make[2]: Leaving directory '/workspace/srcdir/gdbm-1.18/tests'
+make[1]: Leaving directory '/workspace/srcdir/gdbm-1.18/tests'
+make[1]: Entering directory '/workspace/srcdir/gdbm-1.18'
+make[2]: Entering directory '/workspace/srcdir/gdbm-1.18'
+make[2]: Nothing to be done for 'install-exec-am'.
+make[2]: Nothing to be done for 'install-data-am'.
+make[2]: Leaving directory '/workspace/srcdir/gdbm-1.18'
+make[1]: Leaving directory '/workspace/srcdir/gdbm-1.18'

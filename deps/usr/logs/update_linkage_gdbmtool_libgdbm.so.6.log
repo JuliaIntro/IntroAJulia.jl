@@ -1,0 +1,1 @@
+`/usr/local/bin/patchelf --replace-needed libgdbm.so.6 ../lib/libgdbm.so.6 bin/gdbmtool`

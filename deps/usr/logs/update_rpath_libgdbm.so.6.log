@@ -1,0 +1,1 @@
+`/usr/local/bin/patchelf --set-rpath /workspace/destdir/lib:../lib bin/gdbmtool`

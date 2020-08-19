@@ -1,0 +1,5 @@
+┌ Warning: platform_key() is deprecated, use platform_key_abi() from now on
+│   caller = ip:0x0
+└ @ Core :-1
+[ Info: Downloading https://github.com/BenLauwens/GDBMBuilder/releases/download/v1.18/GDBM.v1.18.0.x86_64-linux-gnu.tar.gz to /home/travis/build/JuliaIntro/IntroAJulia.jl/deps/usr/downloads/GDBM.v1.18.0.x86_64-linux-gnu.tar.gz...
+[00:14:22] #=#=#                                                                         [00:14:22] ##O#- #                                                                       [00:14:22] [00:14:22] ######################################################################## 100.0%##O=#  #                                                                      [00:14:22] [00:14:22] ##############################                                            42.0%[00:14:22] ######################################################################## 100.0%
