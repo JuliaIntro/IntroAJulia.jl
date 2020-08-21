@@ -1,7 +1,7 @@
 [preface]
 == Prefacio
 
-En enero de 2018 comencé a preparar un curso de programación dirigido a estudiantes que no tuvieran experiencia previa en programación. Quería usar Julia como lenguaje de programación, pero descubrí que no existía ningún libro para aprender a programar que usara Julia como primer lenguaje de programación. Hay tutoriales maravillosos que explican los conceptos clave de Julia, pero ninguno de ellos se dedicaba lo suficiente a enseñar a pensar como un programador.
+En enero de 2018 comencé a preparar un curso de programación dirigido a estudiantes que no tuvieran experiencia previa en programación. Quería usar Julia como lenguaje de programación, pero descubrí que no existía ningún libro para aprender a programar que usara Julia como primer lenguaje de programación. Hay tutoriales maravillosos que explican los conceptos clave de Julia, pero ninguno de ellos se dedicaba lo suficiente a enseñar a pensar como programador.
 
 Conocía el libro http://shop.oreilly.com/product/0636920045267.do[_Think Python_] de Allen Downey que contiene todos los elementos clave para aprender a programar correctamente. Sin embargo, este libro se basa en el lenguaje de programación Python. Mi primer borrador del curso fue una mezcla de muchas referencias, pero a medida que trabajaba en él, el contenido comenzó a parecerse cada vez más a los capítulos de _Think Python_. De pronto, la idea de desarrollar mi curso como base para traspasar ese libro a Julia se hizo realidad.
 

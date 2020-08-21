@@ -23,7 +23,8 @@ ifdef::preface-title[:preface-title: Prefacio]
 :warning-caption: Aviso
 
 = Introducción a la Programación en Julia
-Ben Lauwens y Allen Downey; Traducido por Pamela Alejandra Bustamante Faúndez
+Ben Lauwens y Allen Downey.
+Traducido por Pamela Alejandra Bustamante Faúndez
 
 include::colophon.asciidoc[]
 
@@ -79,5 +80,4 @@ include::appb.asciidoc[]
 
 include::appc.asciidoc[]
 
-include::index.asciidoc[]    
-    
+include::index.asciidoc[]
