@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<meta name="author" content="Ben Lauwens y Allen Downey, Traducido por Pamela Alejandra Bustamante Faúndez">
+<meta name="author" content="Ben Lauwens y Allen Downey.">
 <title>Introducción a la Programación en Julia</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -441,8 +441,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>Introducción a la Programación en Julia</h1>
 <div class="details">
-<span id="author" class="author">Ben Lauwens y Allen Downey</span><br>
-<span id="author2" class="author">Traducido por Pamela Alejandra Bustamante Faúndez</span><br>
+<span id="author" class="author">Ben Lauwens y Allen Downey.</span><br>
+<span id="revdate">Traducido por Pamela Alejandra Bustamante Faúndez</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Tabla de Contenido</div>
@@ -475,7 +475,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#chap02">2. Variables, expresiones y sentencias</a>
 <ul class="sectlevel2">
 <li><a href="#_sentencias_de_asignación">Sentencias de asignación</a></li>
-<li><a href="#_nombres_de_variables">Nombres de variables</a></li>
+<li><a href="#_nombres_de_variables">Nombres de variables </a></li>
 <li><a href="#_expresiones_y_sentencias">Expresiones y sentencias</a></li>
 <li><a href="#_modo_script">Modo script</a></li>
 <li><a href="#_orden_de_operaciones">Orden de operaciones</a></li>
@@ -813,19 +813,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="_prefacio">Prefacio</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>En enero de 2018 comencé a preparar un curso de programación pensado en estudiantes que no tuvieran experiencia previa en programación. Quería usar Julia como lenguaje de programación, y descubrí que no existía ningún libro para aprender a programar que usara Julia como primer lenguaje de programación. Hay tutoriales maravillosos que explican los conceptos clave de Julia, pero ninguno de ellos se dedicaba lo suficiente a enseñar a pensar como un programador.</p>
+<p>En enero de 2018 comencé a preparar un curso de programación pensado para estudiantes que no tuvieran experiencia previa en programación. Quería usar Julia como lenguaje de programación, y descubrí que no existía ningún libro para aprender a programar que usara Julia como primer lenguaje de programación. Hay tutoriales maravillosos que explican los conceptos clave de Julia, pero ninguno de ellos se dedicaba lo suficiente a enseñar a pensar como programador.</p>
 </div>
 <div class="paragraph">
-<p>Conocía el libro <em>Think Python</em> de Allen Downey que contiene todos los elementos clave para aprender a programar correctamente. Sin embargo, este libro se basa en el lenguaje de programación Python. Mi primer borrador del curso fue una mezcla de muchas referencias, pero a medida que trabajaba en él, el contenido comenzó a parecerse cada vez más a los capítulos de <em>Think Python</em>. La idea de desarrollar mi curso como base para traspasar ese libro a Julia se hizo realidad.</p>
+<p>Conocía el libro <a href="http://shop.oreilly.com/product/0636920045267.do"><em>Think Python</em></a> de Allen Downey, el cual contiene todos los elementos clave para aprender a programar correctamente. Sin embargo, este libro se basa en el lenguaje de programación Python. Mi primer borrador del curso fue una mezcla de muchas referencias, pero a medida que trabajaba en este, el contenido comenzó a parecerse cada vez más a los capítulos de <em>Think Python</em>. Pronto, la idea de desarrollar mi curso como base para trasladar ese libro a <em>Julia</em> se hizo realidad.</p>
 </div>
 <div class="paragraph">
-<p>Todo el material estaba disponible en notebooks de Jupyter, en un repositorio de GitHub. Después de publicar un mensaje en el sitio Discourse de Julia sobre el progreso de mi curso, los comentarios fueron abrumadores. Aparentemente, un libro sobre conceptos básicos de programación con Julia como primer lenguaje de programación era algo que faltaba en el universo de Julia. Contacté a Allen para ver si podía iniciar oficialmente la versión de <em>Think Python</em> para Julia y su respuesta fue inmediata: "¡adelante!", me puso en contacto con su editor de O&#8217;Reilly Media y ahora, un año después, estoy haciendo los retoques finales a este libro.</p>
+<p>Todo el material estaba disponible en un repositorio de GitHub, en forma de notebooks de Jupyter. Después de publicar un mensaje en el sitio Discourse de Julia sobre el progreso de mi curso, los comentarios fueron abrumadores. Aparentemente, un libro sobre conceptos básicos de programación con Julia como primer lenguaje de programación era algo que faltaba en el universo de Julia. Contacté a Allen para ver si podía iniciar oficialmente la versión de <em>Think Python</em> para Julia y su respuesta fue inmediata: “¡adelante!”, me puso en contacto con su editor de O&#8217;Reilly Media y ahora, un año después, estoy haciendo los retoques finales a este libro.</p>
 </div>
 <div class="paragraph">
-<p>Fue un camino difícil. En agosto de 2018 se lanzó Julia v1.0 y, como todos mis colegas programadores de Julia, tuve que hacer una migración del código. Todos los ejemplos en el libro fueron probados durante la conversión de los archivos fuente a archivos ASCIIDoc compatibles con O&#8217;Reilly. Tanto la cadena de herramientas como el código de los ejemplos tenían que ser compatibles con Julia v1.0. Afortunadamente no hay conferencias en agosto&#8230;&#8203;</p>
+<p>Fue un camino difícil. En Agosto de 2018 se lanzó Julia v1.0, y como todos mis colegas programadores de Julia, tuve que hacer una migración del código. Todos los ejemplos en el libro se prueban durante la conversión de los archivos fuente a archivos ASCIIDoc compatibles con O&#8217;Reilly. Tanto la cadena de herramientas como el código de los ejemplos tenían que ser compatibles con Julia v1.0. Afortunadamente no hay cursos en Agosto&#8230;&#8203;</p>
 </div>
 <div class="paragraph">
-<p>Espero que disfrute al trabajar con este libro, y que le ayude a aprender a programar y pensar como un informático, al menos un poquito.</p>
+<p>Espero que disfrutes al trabajar con este libro, y que te ayude a aprender a programar y pensar como informático, al menos un poco.</p>
 </div>
 <div class="paragraph">
 <p><em>Ben Lauwens</em></p>
@@ -844,7 +844,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Julia está desarrollado como un lenguaje de programación de alto rendimiento.</p>
 </li>
 <li>
-<p>Julia usa dispatch múltiple que le permite al programador elegir entre diferentes patrones de programación de acuerdo a la aplicación.</p>
+<p>Julia usa envío múltiple “multiple dispatch”, que le permite al programador elegir entre diferentes patrones de programación de acuerdo a la aplicación.</p>
 </li>
 <li>
 <p>Julia es un lenguaje de tipo dinámico que se puede usar fácilmente de forma interactiva.</p>
@@ -853,33 +853,33 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Julia tiene una sintaxis de alto nivel que es fácil de aprender.</p>
 </li>
 <li>
-<p>Julia es un lenguaje de programación con tipos opcionales, cuyos tipos de datos (definidos por el usuario) hacen que el código sea más claro y robusto.</p>
+<p>Julia es un lenguaje de programación con tipos opcionales, cuyos tipos de datos (definidos por el usuario) hacen que el código sea claro y robusto.</p>
 </li>
 <li>
-<p>Julia tiene una biblioteca estándar amplia y numerosos paquetes de terceros están disponibles.</p>
+<p>Julia tiene una biblioteca estándar extendida, además, están disponibles numerosos paquetes de terceros.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Julia es un lenguaje de programación único, ya que resuelve el problema de los dos idiomas. No se necesita de ningún otro lenguaje de programación para escribir código de alto rendimiento. Esto no significa que ocurra automáticamente. Es responsabilidad del programador optimizar el código que produzca cuellos de botella, pero esto puede hacerse en Julia.</p>
+<p>Julia es un lenguaje de programación único, ya que resuelve el problema de los dos idiomas. No se necesita de ningún otro lenguaje de programación para escribir código de alto rendimiento. Esto no significa que ocurra automáticamente. Es responsabilidad del programador optimizar el código que genere cuellos de botella, aunque esto puede hacerse directamente en Julia.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_a_quién_está_dirigido_este_libro">¿A quién está dirigido este libro?</h3>
 <div class="paragraph">
-<p>Este libro es para cualquier persona que quiera aprender a programar. No se requieren conocimientos previos formales.</p>
+<p>Este libro es para cualquier persona que quiera aprender a programar. No se requieren conocimientos formales previos.</p>
 </div>
 <div class="paragraph">
-<p>Los nuevos conceptos se introducen gradualmente y los temas más avanzados se describen en capítulos posteriores.</p>
+<p>Los nuevos conceptos se introducen gradualmente, y los temas más avanzados se describen en capítulos posteriores.</p>
 </div>
 <div class="paragraph">
-<p><em>Intro a Julia</em> puede ser usado como un curso de un semestre de nivel secundario o universitario.</p>
+<p><em>Introducción a Julia</em> puede ser usado como un curso de un semestre de nivel secundario o universitario.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_convenciones_utilizadas_en_este_libro">Convenciones utilizadas en este libro</h3>
 <div class="paragraph">
-<p>En este libro se utilizan las siguientes convenciones tipográficas:</p>
+<p>En este libro se siguen las siguientes convenciones tipográficas:</p>
 </div>
 <div class="dlist">
 <dl>
@@ -889,7 +889,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </dd>
 <dt class="hdlist1"><code>Ancho constante</code></dt>
 <dd>
-<p>Se utiliza para mostrar código de programas, así como dentro de los párrafos para referirse a elementos del programa como nombres de variables o funciones, bases de datos, tipos de datos, variables de entorno, sentencias y palabras reservadas.</p>
+<p>Se utiliza para mostrar código de programas, así como dentro de los párrafos para referirse a elementos del programa, como nombres de variables o funciones, bases de datos, tipos de datos, variables de entorno, sentencias y palabras reservadas.</p>
 </dd>
 <dt class="hdlist1"><strong><code>Ancho constante en negrita</code></strong></dt>
 <dd>
@@ -947,31 +947,31 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_usando_los_códigos_de_ejemplo">Usando los códigos de ejemplo</h3>
 <div class="paragraph">
-<p>Todo el código utilizado en este libro está disponible en un repositorio de Git en GitHub: <a href="https://github.com/JuliaIntro/IntroAJulia.jl" class="bare">https://github.com/JuliaIntro/IntroAJulia.jl</a>. Si no está familiarizado con Git, es un sistema de control de versiones que le permite realizar seguimiento a los archivos que componen un proyecto. Una colección de archivos controlados por Git se denomina "repositorio". GitHub es un servicio de hosting que proporciona almacenamiento para repositorios de Git y una interfaz web conveniente.</p>
+<p>Todo el código utilizado en este libro está disponible en un repositorio de Git en GitHub: <a href="https://github.com/JuliaIntro/IntroAJulia.jl" class="bare">https://github.com/JuliaIntro/IntroAJulia.jl</a>. Si no está familiarizado con Git, es un sistema de control de versiones que le permite realizar seguimiento a los archivos que componen un proyecto. Una colección de archivos controlados por Git se denomina “repositorio”. GitHub es un servicio de hosting que proporciona almacenamiento para repositorios de Git, y una interfaz web conveniente.</p>
 </div>
 <div class="paragraph">
 <p>El siguiente paquete puede ser de utilidad, y se puede agregar directamente a Julia. Simplemente escriba <strong><code>add https://github.com/JuliaIntro/IntroAJulia.jl</code></strong> en el REPL, en modo Pkg.</p>
 </div>
 <div class="paragraph">
-<p>La forma más fácil de ejecutar un código de Julia es en <a href="https://juliabox.com" class="bare">https://juliabox.com</a>, iniciando una sesión de prueba gratuita. Es posible utilizar la interfaz REPL y notebooks. Si desea que Julia esté instalada localmente en su computadora, puede descargar JuliaPro de Julia Computing gratuitamente desde <a href="https://juliacomputing.com/products/juliapro.html" class="bare">https://juliacomputing.com/products/juliapro.html</a>. Consiste en una versión reciente de Julia, el IDE de Juno basado en Atom y varios paquetes de Julia preinstalados. Si es más aventurero, puede descargar Julia desde <a href="https://julialang.org" class="bare">https://julialang.org</a>, instale el editor que le guste, por ejemplo Atom o Visual Studio Code, y active los complementos para su integración con Julia. Para una instalación local, también puede agregar el paquete <code>IJulia</code> y ejecutar un notebook Jupyter en su computadora.</p>
+<p>La forma más fácil de ejecutar un código de Julia es yendo a <a href="https://juliabox.com" class="bare">https://juliabox.com</a>, e iniciar una sesión de prueba gratuita. Es posible utilizar tanto las interfaces REPL como de notebooks. Si desea tner Julia instalada localmente en su computadora, puede descargar <a href="https://juliacomputing.com/products/juliapro.html">JuliaPro</a> de Julia Computing gratuitamente. Consiste en una versión reciente de Julia, el IDE de Juno basado en Atom y varios paquetes de Julia preinstalados. Si es más aventurero, puede descargar Julia desde <a href="https://julialang.org" class="bare">https://julialang.org</a>, instale el editor que prefiera, por ejemplo Atom o Visual Studio Code, activando los complementos para su integración de Julia. En el caso de una instalación local, también puede agregar el paquete <code>IJulia</code> que le permite ejecutar un notebook de Jupyter en su computadora.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_agradecimientos">Agradecimientos</h3>
 <div class="paragraph">
-<p>Realmente quiero agradecer a Allen por escribir Think Python y permitirme traspasar este libro a Julia. ¡Tu entusiasmo es contagioso!</p>
+<p>Realmente quiero agradecer a Allen por escribir Think Python, y permitirme trasladar este libro a Julia. ¡Tu entusiasmo es contagioso!</p>
 </div>
 <div class="paragraph">
 <p>También me gustaría agradecer a los revisores técnicos de este libro, que hicieron muchas sugerencias útiles: Tim Besard, Bart Janssens y David P. Sanders.</p>
 </div>
 <div class="paragraph">
-<p>Gracias a Melissa Potter de O&#8217;Reilly Media por hacer de este un libro mejor. Me obligaste a hacer las cosas bien y hacer que este libro sea lo más original posible.</p>
+<p>Gracias a Melissa Potter de O&#8217;Reilly Media por hacer de este un mejor libro. Me obligaste a hacer las cosas bien, y hacer que este libro sea lo más original posible.</p>
 </div>
 <div class="paragraph">
-<p>Gracias a Matt Hacker de O&#8217;Reilly Media que me ayudó con la cadena de herramientas Atlas y algunos problemas al destacar la sintaxis.</p>
+<p>Gracias a Matt Hacker de O&#8217;Reilly Media que me ayudó con la cadena de herramientas Atlas, y algunos problemas al destacar la sintaxis.</p>
 </div>
 <div class="paragraph">
-<p>Gracias a todos los estudiantes que trabajaron con una versión inicial de este libro y a todos los colaboradores (enumerados a continuación) que enviaron correcciones y sugerencias.</p>
+<p>Gracias a todos los estudiantes que trabajaron con una versión temprana de este libro, y a todos los colaboradores (enumerados a continuación) que enviaron correcciones y sugerencias.</p>
 </div>
 </div>
 <div class="sect2">
@@ -980,7 +980,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Si tiene una sugerencia o corrección, abra un <a href="https://github.com/JuliaIntro/IntroAJulia.jl/issues">issue</a> en GitHub. Si se realiza un cambio basado en sus comentarios, será agregado a la lista de contribuyentes (a menos que solicite ser omitido).</p>
 </div>
 <div class="paragraph">
-<p>Avísenos con qué versión del libro está trabajando y en qué formato. Si incluye al menos parte de la oración en la que aparece el error, eso facilita la búsqueda. Los números de página y sección también son útiles, pero no es tan fácil trabajar con ellos. ¡Gracias!</p>
+<p>Avísenos con qué versión del libro está trabajando, y en qué formato. Si incluye al menos parte de la oración en la que aparece el error, eso facilita la búsqueda. Los números de página y sección también son útiles, pero no es tan fácil trabajar con ellos. ¡Gracias!</p>
 </div>
 <div class="openblock small">
 <div class="content">
@@ -1027,18 +1027,18 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="chap01">1. El camino de la programación</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>El objetivo de este libro es enseñarle a pensar como un informático. Esta manera de pensar combina las mejores características de las matemáticas, la ingeniería y las ciencias naturales. Los informáticos, al igual que los matemáticos, usan lenguajes formales para expresar ideas (específicamente cálculos). También diseñan estructuras, ensamblan componentes para formar sistemas y evalúan los costos y beneficios entre alternativas, así como lo hacen también los ingenieros. Además, observan el comportamiento de sistemas complejos, elaboran hipótesis y prueban predicciones, como los científicos.</p>
+<p>El objetivo de este libro es enseñarle a pensar como un informático. Esta manera de pensar combina las mejores características de las matemáticas, la ingeniería y las ciencias naturales. Los informáticos, al igual que los matemáticos, usan lenguajes formales para expresar ideas (específicamente cálculos). De manera similar a los ingenieros, diseñan estructuras, ensamblan componentes para formar sistemas, evaluando los costos y beneficios entre las alternativas. Además, observan el comportamiento de sistemas complejos, elaboran hipótesis y prueban predicciones, como los científicos.</p>
 </div>
 <div class="paragraph">
-<p>La habilidad más importante para un informático es la resolución de problemas. Esto implica ser capaz de formular problemas, pensar soluciones de manera creativa y poder expresar una solución clara y precisa. Como resultado, el proceso de aprender a programar es una excelente oportunidad para practicar habilidades de resolución de problemas. Es por ello que este capítulo se llama "El camino de la programación".</p>
+<p>La habilidad más importante para un informático es la <em>resolución de problemas</em>. Esto implica ser capaz de formular problemas, encontrar soluciones creativas, expresando una solución de forma clara y precisa. Como resultado, el proceso de aprender a programar es una excelente oportunidad para practicar habilidades de resolución de problemas. Es por ello que este capítulo se llama "El camino de la programación".</p>
 </div>
 <div class="paragraph">
-<p>Por una parte, aprenderá a programar, lo cual es beneficioso por sí solo. Por otra, la programación se constituirá como un medio para un fin. A medida que avancemos, este fin será más claro.</p>
+<p>Por una parte, aprenderá a programar, que es una habilidad muy útil por sí misma. Pero, además, la programación se constituirá como un medio para un fin. A medida que avancemos, este fin será más claro.</p>
 </div>
 <div class="sect2">
 <h3 id="_qué_es_un_programa">¿Qué es un programa?</h3>
 <div class="paragraph">
-<p>Un <em>programa</em> es una secuencia de instrucciones que especifican cómo hacer un cálculo. El cálculo puede ser de naturaleza matemática, tal como resolver un sistema de ecuaciones o encontrar las raíces de un polinomio, pero también puede ser un cálculo simbólico, como encontrar y reemplazar texto en un documento, o bien algo gráfico, tal como procesar una imagen o reproducir un video.</p>
+<p>Un <em>programa</em> es una secuencia de instrucciones que especifica cómo hacer un cálculo. El cálculo puede ser de naturaleza matemática, tal como resolver un sistema de ecuaciones o encontrar las raíces de un polinomio, pero también puede ser un cálculo simbólico, como buscar y reemplazar texto en un documento, o bien algo gráfico, tal como procesar una imagen o reproducir un video.</p>
 </div>
 <div class="paragraph">
 <p>Los detalles difieren para cada lenguaje, pero algunas instrucciones básicas aparecen en casi todos los lenguajes:</p>
@@ -1068,7 +1068,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </dl>
 </div>
 <div class="paragraph">
-<p>Aunque no lo crea, eso es todo lo que se debe hacer. Cada programa que ha usado, sin importar su complejidad, está construido basándose en instrucciones que se parecen bastante a estas. De esta manera, la programación puede entenderse como el proceso de dividir una tarea compleja y larga en pequeñas subtareas lo suficientemente simples como para realizarse con una de estas instrucciones básicas.</p>
+<p>Aunque no lo crea, eso es todo lo que se debe hacer. Cada programa que ha usado, sin importar su complejidad, está construido basándose en instrucciones que se asemejan a estas. De esta manera, la programación puede entenderse como el proceso de dividir una tarea compleja y larga, en pequeñas subtareas lo suficientemente simples como para realizarse con una de estas instrucciones básicas.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1100,10 +1100,10 @@ julia&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Las primeras líneas contienen información sobre el REPL, por lo que esto puede mostrarse diferente en su ordenador. Debe verificar que la versión sea al menos <code>1.0.0</code>.</p>
+<p>Las primeras líneas contienen información sobre el REPL, por lo que esto puede mostrarse diferente en su computadora. Debe verificar que la versión sea al menos <code>1.0.0</code>.</p>
 </div>
 <div class="paragraph">
-<p>La última línea es un <em>prompt</em> que indica que el REPL está listo para que usted ingrese el código. Si escribe una línea de código y presiona Enter, REPL muestra el resultado:</p>
+<p>El última línea es un <em>prompt</em> que indica que el REPL está listo para que se ingrese una instrucción. Si escribe una línea de código y presiona Enter, la REPL muestra el resultado:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1115,13 +1115,13 @@ julia&gt;</pre>
 <p>Los fragmentos de código se pueden copiar y pegar textualmente, incluido el prompt <code>julia&gt;</code> y cualquier salida.</p>
 </div>
 <div class="paragraph">
-<p>Ahora ya está listo para comenzar. De aquí en adelante, ya sabrá cómo iniciar Julia REPL y ejecutar el código.</p>
+<p>Ahora ya está listo para comenzar. De aquí en adelante, ya sabrá cómo iniciar la REPL de Julia, y ejecutar su código.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_el_primer_programa">El primer programa</h3>
 <div class="paragraph">
-<p>Tradicionalmente, el primer programa que se escribe en un nuevo lenguaje se llama "¡Hola, mundo!" porque todo lo que hace es mostrar las palabras "¡Hola, mundo!". En Julia, se ve así:</p>
+<p>Tradicionalmente, el primer programa que se escribe en un nuevo lenguaje se llama “¡Hola, mundo!”, porque todo lo que hace es mostrar las palabras “¡Hola, mundo!”. En Julia, se ve así:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1133,7 +1133,7 @@ julia&gt;</pre>
 <p>Este  es un ejemplo de una <em>sentencia de impresión</em>, aunque en realidad no imprime nada en papel. Muestra un resultado en la pantalla.</p>
 </div>
 <div class="paragraph">
-<p>Las comillas en el programa marcan el principio y el final del texto que se mostrará y no aparecerán en el resultado.</p>
+<p>Las comillas en el programa marcan el principio y el final del texto que se mostrará, y no aparecerán en el resultado.</p>
 </div>
 <div class="paragraph">
 <p>Los paréntesis indican que <code>println</code> es una función. Se estudiarán funciones en <a href="#chap03">Funciones</a>.</p>
@@ -1142,10 +1142,10 @@ julia&gt;</pre>
 <div class="sect2">
 <h3 id="_operadores_aritméticos">Operadores aritméticos</h3>
 <div class="paragraph">
-<p>Después de nuestro programa "¡Hola, Mundo!", el siguiente paso es la aritmética. Julia tiene <em>operadores</em>, los cuales son símbolos que representan cálculos como la suma y la multiplicación.</p>
+<p>Después de nuestro programa “¡Hola, mundo!”, el siguiente paso es la aritmética. Julia tiene <em>operadores</em>, los cuales son símbolos que representan cálculos como la suma y la multiplicación.</p>
 </div>
 <div class="paragraph">
-<p>Los  operadores <code>+</code>, <code>-</code>, y <code>*</code> realizan sumas, restas y multiplicaciones respectivamente, como en los siguientes ejemplos:</p>
+<p>Los  operadores <code>+</code>, <code>-</code>, y <code>*</code> realizan las operaciones de suma, resta y multiplicación respectivamente, como se muestra en los siguientes ejemplos:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1170,7 +1170,7 @@ julia&gt; 6 * 7
 <p>Quizás se pregunte por qué el resultado es <code>42.0</code> en vez de <code>42</code>. Esto será explicado en la siguiente sección.</p>
 </div>
 <div class="paragraph">
-<p>Finalmente, el  operador <code>^</code> realiza potencias, es decir, eleva un número a una potencia:</p>
+<p>Finalmente, el  operador <code>^</code> realiza la potencición, es decir, eleva un número a una potencia:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1204,7 +1204,7 @@ String</code></pre>
 <p>Los enteros pertenecen al tipo <code>Int64</code>, las cadenas pertenecen a <code>String</code> y los números de punto flotante pertenecen a <code>Float64</code>.</p>
 </div>
 <div class="paragraph">
-<p>¿Qué  pasa con los valores "2" y "42.0"? Parecen números, pero están entre comillas como si fueran cadenas. Estos valores también son cadenas:</p>
+<p>¿Qué  pasa con los valores <code>"2"</code> y <code>"42.0"</code>? Parecen números, pero están entre comillas como si fueran cadenas. Estos valores también son cadenas:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1233,54 +1233,53 @@ String</code></pre>
 <div class="sect2">
 <h3 id="_lenguajes_formales_y_naturales">Lenguajes formales y naturales</h3>
 <div class="paragraph">
-<p><em>Los lenguajes naturales</em> son los lenguajes hablados, como el español, el inglés o el francés, no fueron diseñados por personas (aunque las personas intentan imponerles un orden) sino que evolucionaron naturalmente.</p>
+<p><em>Los lenguajes naturales</em> son los lenguajes hablados, como el español, el inglés o el francés, no fueron diseñados por personas (aunque las personas intentan imponerles un orden); sino que evolucionaron naturalmente.</p>
 </div>
 <div class="paragraph">
 <p><em>Los lenguajes formales</em> son lenguajes diseñados por personas para propósitos específicos. Por ejemplo, la notación que usan los matemáticos es un lenguaje formal particularmente útil para denotar relaciones entre números y símbolos. Los químicos usan un lenguaje formal para representar la estructura química de las moléculas. Los lenguajes de programación también son lenguajes formales y han sido diseñados para expresar cálculos.</p>
 </div>
 <div class="paragraph">
-<p>Los lenguajes formales tienden a tener reglas estrictas de sintaxis que gobiernan la estructura de las sentencias. Por ejemplo, en matemáticas, la sentencia \(3 + 3 = 6\) tiene la sintaxis correcta, pero \(3 += 3 \$ 6\) no. En química, \(\mathrm{H_2O}\) es una fórmula sintácticamente correcta, pero \(\mathrm{_2Zz}\) no lo es.</p>
+<p>Los lenguajes formales tienden a dictar reglas estrictas de <em>sintaxis</em> que gobiernan la estructura de las sentencias. Por ejemplo, en matemáticas, la sentencia \(3 + 3 = 6\) tiene la sintaxis correcta, pero \(3 += 3 \$ 6\) no. En química, \(\mathrm{H_2O}\) es una fórmula sintácticamente correcta, pero \(\mathrm{_2Zz}\) no lo es.</p>
 </div>
 <div class="paragraph">
-<p>Las reglas de sintaxis    pueden ser de dos tipos, correspondientes a componentes léxicos y a la estructura. Los componentes léxicos son los elementos básicos del lenguaje, como palabras, números y elementos químicos. Uno de los problemas con \(3 += 3 \$ 6\) es que \(\$\) no es un componente léxico válido en matemáticas (al menos hasta donde conocemos). Del mismo modo, \(\mathrm{_2Zz}\) no es válido porque no hay ningún elemento con la abreviatura \(\mathrm{Zz}\).</p>
+<p>Las reglas de sintaxis   pueden ser de dos tipos, correspondientes a <em>componentes léxicos</em> y a <em>estructura</em>. Los componentes léxicos son los elementos básicos del lenguaje, como palabras, números y elementos químicos. Uno de los problemas con \(3 += 3 \$ 6\) es que \(\$\) no es un componente léxico válido en matemáticas (al menos hasta donde conocemos). Del mismo modo, \(\mathrm{_2Zz}\) no es válido porque no existe ningún elemento con la abreviatura \(\mathrm{Zz}\).</p>
 </div>
 <div class="paragraph">
-<p>El segundo tipo de reglas de sintaxis se refiere a la forma en que se combinan los componentes léxicos. La ecuación \(3 += 3 \) no es válida porque aunque \(+\) y \(=\) son componentes léxicos válidos, no se puede tener uno justo después el otro. Del mismo modo, en una fórmula química, el subíndice viene después del nombre del elemento, no antes.</p>
+<p>El segundo tipo de reglas de sintaxis se refiere a la forma en que se combinan los componentes léxicos. La ecuación \(3 += 3 \) no es válida porque aunque \(+\) y \(=\) son componentes léxicos válidos, no se puede tener uno justo después el otro. Del mismo modo, en una fórmula química, el subíndice se coloca después del nombre del elemento, no antes.</p>
 </div>
 <div class="paragraph">
-<p><em>Esta es un@ oración en espa$ol bien estructurada con c*mponentes léxicos no válidos</em>.
-<em>Esta oración léxicos todos componentes los tiene, pero estructura una no válida con</em>.</p>
+<p><em>Esta es un@ oración en espa$ol bien estructurada con c*mponentes léxicos no válidos</em>. <em>Esta oración léxicos todos componentes los tiene, pero estructura una no válida con</em>.</p>
 </div>
 <div class="paragraph">
-<p>Cuando  se lee una oración en español o en un lenguaje formal, se tiene que descubrir la estructura (aunque en un lenguaje natural se hace inconscientemente). Este proceso se llama <em>parsing</em> o <em>análisis de sintaxis</em>.</p>
+<p>Cuando  se lee una oración en español, o en un lenguaje formal, se tiene que descubrir la estructura (aunque en un lenguaje natural se hace inconscientemente). Este proceso se llama <em>parsing</em> o <em>análisis de sintaxis</em>.</p>
 </div>
 <div class="paragraph">
-<p>Aunque los lenguajes formales y naturales tienen muchas características en común (componentes léxicos, estructura y sintaxis), existen algunas diferencias:</p>
+<p>Aunque los lenguajes formales y naturales tienen muchas características en común—componentes léxicos, estructura y sintaxis—existen algunas diferencias:</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Ambigüedad</dt>
 <dd>
-<p>Los lenguajes naturales están llenos de ambigüedad, esto es abordado mediante el uso del contexto y otro tipo de información. Los lenguajes formales están diseñados para ser casi o completamente inequívocos, lo que significa que cualquier declaración tiene exactamente un significado, independientemente del contexto.</p>
+<p>Los lenguajes naturales están llenos de ambigüedades, este problema es abordado mediante el uso del contexto y otra información. Los lenguajes formales están diseñados para ser casi completamente precisos, lo que significa que cualquier declaración tiene exactamente un significado, independientemente del contexto.</p>
 </dd>
 <dt class="hdlist1">Redundancia</dt>
 <dd>
-<p>Para compensar la ambigüedad y reducir los malentendidos, los lenguajes naturales emplean mucha redundancia. Como resultado, a menudo tienen un uso excesivo de palabras. Los lenguajes formales son menos redundantes y más concisos.</p>
+<p>Para compensar la ambigüedad y reducir los malentendidos, los lenguajes naturales emplean mucha redundancia. Como resultado, a menudo hace un uso excesivo de palabras. Los lenguajes formales son menos redundantes y más concisos.</p>
 </dd>
 <dt class="hdlist1">Literalidad</dt>
 <dd>
-<p>Los lenguajes naturales están llenos de modismos y metáforas. Si se dice: "Caí en la cuenta", probablemente no haya una cuenta y nada se caiga (este modismo significa que alguien entendió algo después de un período de confusión). Los lenguajes formales significan exactamente lo que dicen.</p>
+<p>Los lenguajes naturales están llenos de modismos y metáforas. Si se dice: “Caí en la cuenta”", probablemente no haya una cuenta, y nada que se caiga (este modismo significa que alguien entendió algo después de un período de confusión). Por otro lado, los lenguajes formales significan exactamente lo que expresan.</p>
 </dd>
 </dl>
 </div>
 <div class="paragraph">
-<p>Debido a que todo el mundo crece hablando lenguajes naturales, a veces es difícil adaptarse a los lenguajes formales. La diferencia entre lenguaje formal y natural es como la diferencia entre poesía y prosa:</p>
+<p>Debido a que todo el mundo crece hablando lenguajes naturales, a veces es difícil adaptarse a los lenguajes formales. La diferencia entre lenguaje formal y natural es como la diferencia entre la poesía y la prosa:</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Poesía</dt>
 <dd>
-<p>Las palabras se usan por sus sonidos y significados. El poema en conjunto crea un efecto o una respuesta emocional. La ambigüedad no solo es común sino a menudo deliberada.</p>
+<p>Las palabras se usan por sus sonidos y significados. El poema en conjunto crea un efecto o una respuesta emocional. La ambigüedad no sólo es común sino a menudo, deliberada.</p>
 </dd>
 <dt class="hdlist1">Prosa</dt>
 <dd>
@@ -1288,12 +1287,12 @@ String</code></pre>
 </dd>
 <dt class="hdlist1">Programas</dt>
 <dd>
-<p>El significado de un programa computacional es inequívoco y literal, y puede entenderse por completo mediante el análisis de los componentes léxicos y la estructura.</p>
+<p>El significado de un programa computacional es inequívoco y literal, y puede entenderse por completo mediante el análisis de los componentes léxicos y de estructura.</p>
 </dd>
 </dl>
 </div>
 <div class="paragraph">
-<p>Los lenguajes formales son más densos que los naturales, por lo que lleva más tiempo leerlos. Además, la estructura es importante, por lo que no siempre es mejor leer de arriba a abajo, y de izquierda a derecha. En cambio, aprenderá a analizar el programa mentalmente, identificando los componentes léxicos e interpretando la estructura. Finalmente, los detalles importan. Pequeños errores de ortografía y puntuación, que pueden pasar desapercibidos en los lenguajes naturales, pueden hacer una gran diferencia en un lenguaje formal .</p>
+<p>Los lenguajes formales son más densos que los naturales, por lo que lleva más tiempo leerlos. Además, la estructura es importante, por lo que no siempre es mejor leer de arriba a abajo, y de izquierda a derecha. En cambio, aprenderá a analizar el programa mentalmente, identificando los componentes léxicos e interpretando la estructura. Finalmente, los detalles son importantes. Pequeños errores de ortografía y puntuación, que pueden pasar desapercibidos en los lenguajes naturales, pueden hacer una gran diferencia en un lenguaje formal .</p>
 </div>
 </div>
 <div class="sect2">
@@ -1302,7 +1301,7 @@ String</code></pre>
 <p>Los programadores cometen errores. Los errores de programación se denominan <em>bugs</em> y el proceso para rastrearlos se denomina <em>debugging</em> o <em>depuración</em>.</p>
 </div>
 <div class="paragraph">
-<p>La programación, y especialmente la depuración, pueden provocar emociones negativas. Frente a un error difícil de solucionar, puede sentir enojo, vergüenza, y cansancio.</p>
+<p>La programación, y especialmente la depuración, pueden provocar emociones negativas. Frente a un error difícil de solucionar, puede sentir enojo, vergüenza, ó cansancio.</p>
 </div>
 <div class="paragraph">
 <p>Existe evidencia de que las personas responden naturalmente a las computadoras como si fueran personas. Cuando trabajan bien, se los considera compañeros de equipo, y cuando son obstinados o groseros, se los trata de la misma manera que a personas groseras y obstinadas. <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></p>
@@ -1331,15 +1330,15 @@ String</code></pre>
 </dd>
 <dt class="hdlist1">REPL</dt>
 <dd>
-<p>Un programa que de manera reiterada lee una entrada, la ejecuta y genera resultados.</p>
+<p>Un programa, que de manera reiterada lee una entrada, la ejecuta y genera resultados.</p>
 </dd>
 <dt class="hdlist1">prompt</dt>
 <dd>
-<p>Caracteres mostrados por el REPL para indicar que está listo para recibir información del usuario.</p>
+<p>Caracteres mostrados por el REPL para indicar que está listo para recibir información de entrada de parte del usuario.</p>
 </dd>
 <dt class="hdlist1">sentencia de impresión (print)</dt>
 <dd>
-<p>Una instrucción que hace que Julia REPL muestre un valor en la pantalla.</p>
+<p>Una instrucción que hace que el REPL de Julia muestre un valor en la pantalla.</p>
 </dd>
 <dt class="hdlist1">operador</dt>
 <dd>
@@ -1405,14 +1404,14 @@ String</code></pre>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>Es una buena idea leer este libro frente a un computador para hacer los ejemplos y ejercicios conforme avance.</p>
+<p>Es una buena idea leer este libro frente a una computadora, para hacer los ejemplos y ejercicios conforme avance.</p>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="ex01-1">Ejercicio 1-1</h4>
 <div class="paragraph">
-<p>Siempre que esté experimentando con algo nuevo, debe intentar cometer errores. Por ejemplo, en el programa "¡Hola, Mundo!", ¿Qué sucede si omite una de las comillas? ¿Qué pasa si omite ambas? ¿Qué pasa si escribe <code>println</code> mal?</p>
+<p>Siempre que esté experimentando con algo nuevo, debe intentar cometer errores. Por ejemplo, en el programa “¡Hola, mundo!”, ¿Qué sucede si omite una de las comillas? ¿Qué pasa si omite ambas? ¿Qué ocurre si escribe mal <code>println</code>?</p>
 </div>
 <div class="paragraph">
 <p>Este tipo de ejercicios le ayuda a recordar lo que leyó; también le ayuda a programar, porque puede saber qué significan los mensajes de error. Es mejor cometer errores ahora y a propósito, en lugar de después y accidentalmente.</p>
@@ -1429,7 +1428,7 @@ String</code></pre>
 <p>Se puede usar un signo menos para escribir un número negativo, como <code>-2</code>. ¿Qué sucede si pone un signo + antes de un número? ¿Qué pasa con <code>2++2</code>?</p>
 </li>
 <li>
-<p>En notación matemática, los ceros a la derecha no son incompatibles, como 02. ¿Qué pasa si intenta esto en Julia?</p>
+<p>En notación matemática, los ceros a la izquierda son correctos, como en <code>02</code>. ¿Qué pasa si intenta esto en Julia?</p>
 </li>
 <li>
 <p>¿Qué sucede si tiene dos valores sin operador entre ellos?</p>
@@ -1440,7 +1439,7 @@ String</code></pre>
 <div class="sect3">
 <h4 id="ex01-2">Ejercicio 1-2</h4>
 <div class="paragraph">
-<p>Inicie el Julia REPL y úselo como una calculadora.</p>
+<p>Inicie el REPL de Julia, y úselo como una calculadora.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1452,7 +1451,7 @@ String</code></pre>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>Hay 1,61 kilómetros en una milla.</p>
+<p>Hay 1.61 kilómetros en una milla.</p>
 </div>
 </div>
 </div>
@@ -1490,10 +1489,10 @@ julia&gt; π_val = 3.141592653589793
 </div>
 </div>
 <div class="paragraph">
-<p>Este ejemplo hace tres asignaciones. La primera asigna una cadena a una nueva variable llamada <code>mensaje</code>; la segunda le asigna a la variable <code>n</code> el entero <code>17</code>; la tercera asigna el valor (aproximado) de \(\pi\) a la variable <code>π_val</code> (<strong><code>\pi TAB</code></strong>).</p>
+<p>Este ejemplo realiza tres asignaciones. La primera asigna una cadena a una nueva variable llamada <code>mensaje</code>; la segunda le asigna el entero <code>17</code> a la variable <code>n</code>; la tercera asigna el valor (aproximado) de <code>π</code> a la variable <code>π_val</code> (<strong><code>\pi TAB</code></strong>).</p>
 </div>
 <div class="paragraph">
-<p>Una forma común de representar variables en papel es escribir el nombre de la variable con una flecha apuntando a su valor. Este tipo de figura se llama "diagrama de estado" porque muestra en qué estado se encuentra cada una de las variables. La Figura 1, <a href="#fig02-1">Diagrama de estado</a>, muestra el resultado del ejemplo anterior.
+<p>Una forma común de representar variables en papel es escribir el nombre de la variable con una flecha apuntando a su valor. Este tipo de figura se llama “diagrama de estado” porque muestra en qué estado se encuentra cada una de las variables. La Figura 1, <a href="#fig02-1">Diagrama de estado</a>, muestra el resultado del ejemplo anterior.
 </p>
 </div>
 <div id="fig02-1" class="imageblock">
@@ -1504,23 +1503,18 @@ julia&gt; π_val = 3.141592653589793
 </div>
 </div>
 <div class="sect2">
-<h3 id="_nombres_de_variables">Nombres de variables</h3>
-<div class="paragraph">
-<p></p>
-</div>
+<h3 id="_nombres_de_variables">Nombres de variables </h3>
 <div class="paragraph">
 <p>Los programadores generalmente eligen nombres representativos para sus variables, es decir, nombres que explican para qué se usa o qué contiene la variable.</p>
 </div>
 <div class="paragraph">
-<p>Los nombres de las variables pueden ser tan largos como se desee. Pueden contener casi todos los caracteres Unicode (consulte <a href="#caracteres">[caracteres]</a>), pero no pueden comenzar con un número. Es válido usar letras mayúsculas, pero lo común es usar solo minúsculas para nombres de variables.</p>
+<p>Los nombres de las variables pueden ser tan largos como se desee. Pueden contener casi todos los caracteres <em>Unicode</em> (consulte <a href="#caracteres">[caracteres]</a>), pero no pueden comenzar con un número. Es válido usar letras mayúsculas, pero lo común es usar solo minúsculas para nombres de variables.</p>
 </div>
 <div class="paragraph">
-<p>Los caracteres Unicode se pueden ingresar mediante autocompletado por tabulación de las abreviaturas tipo LaTeX en el REPL de Julia.
-</p>
+<p>Los caracteres <em>Unicode</em> se pueden ingresar mediante autocompletado por tabulación de las abreviaturas tipo LaTeX en el REPL de Julia. </p>
 </div>
 <div class="paragraph">
-<p>El carácter guión bajo, <code>_</code>, puede formar parte del nombre de una variable. Generalmente se usa como separador en nombres con varias palabras, como por ejemplo en <code>tu_nombre</code> o <code>velocidad_aerodinámica_de_una_golondrina_sin_cargamento</code>.
-</p>
+<p>El carácter guión bajo, <code>_</code>, puede formar parte del nombre de una variable. Generalmente se usa como separador en nombres con varias palabras, como por ejemplo en <code>tu_nombre</code> o <code>velocidad_aerodinamica_de_una_golondrina_sin_cargamento</code>. </p>
 </div>
 <div class="paragraph">
 <p>Si se le da un nombre inválido a una variable, aparece un error de sintaxis:
@@ -1578,7 +1572,7 @@ julia&gt; n + 25
 </div>
 </div>
 <div class="paragraph">
-<p>Cuando escribe una expresión en el prompt, REPL la <em>evalúa</em>, lo que significa que encuentra el valor de la expresión. En este ejemplo, <code>n</code> tiene el valor 17 previamente asignado y <code>n+25</code> retorna el valor 42.
+<p>Cuando escribe una expresión en el prompt, el REPL la <em>evalúa</em>, lo que significa que encuentra el valor de la expresión. En este ejemplo, <code>n</code> tiene el valor 17 previamente asignado y <code>n+25</code> retorna el valor 42.
 </p>
 </div>
 <div class="paragraph">
@@ -1604,15 +1598,15 @@ julia&gt; println(n)
 <div class="sect2">
 <h3 id="_modo_script">Modo script</h3>
 <div class="paragraph">
-<p>Hasta ahora se ha ejecutado Julia en <em>modo interactivo</em>, lo que significa que se ha interactuado directamente con el REPL. El modo interactivo es una buena manera de comenzar, pero si está trabajando con varias líneas de código, puede resultar incómodo.
+<p>Hasta ahora se ha ejecutado Julia en <em>modo interactivo</em>, lo que significa que se ha interactuado directamente con el REPL. Este modo es una buena manera de comenzar, pero si está trabajando con varias líneas de código, puede resultar incómodo.
 </p>
 </div>
 <div class="paragraph">
-<p>Una alternativa es guardar el código en un archivo de órdenes o <em>script</em> y luego utilizar Julia en <em>modo script</em> para ejecutarlo. Por convención, los scripts de Julia tienen nombres que terminan en <em>.jl</em>.
+<p>Una alternativa es guardar el código en un archivo de órdenes o <em>script</em> y luego utilizar Julia en <em>modo script</em> para ejecutarlo. Por convención, los scripts de Julia tienen nombres que terminan con la extensión <em>.jl</em>.
 </p>
 </div>
 <div class="paragraph">
-<p>Si sabe cómo crear y ejecutar un <em>script</em> en su computadora, está listo para comenzar. De lo contrario, es recomendable usar JuliaBox nuevamente. Abra un archivo de texto, escriba el script y guárdelo con una extensión <em>.jl</em>. El script se puede ejecutar en una terminal con el comando <strong><code>julia nombre_del_script.jl</code></strong>.
+<p>Si sabe cómo crear y ejecutar un <em>script</em> en su computadora, está listo para comenzar. De lo contrario, es recomendable usar <em>JuliaBox</em> nuevamente. Abra un archivo de texto, escriba el script y guárdelo con la extensión <em>.jl</em>. El script se puede ejecutar en una terminal con el comando <strong><code>julia nombre_del_script.jl</code></strong>.
 </p>
 </div>
 <div class="paragraph">
@@ -1630,10 +1624,10 @@ julia&gt; millas * 1.61
 </div>
 </div>
 <div class="paragraph">
-<p>La primera línea asigna un valor a <code>millas</code> y muestra el valor. La segunda línea es una expresión, por lo que REPL la evalúa y muestra el resultado. Gracias al código anterior sabemos que una maratón tiene unos 42 kilómetros.</p>
+<p>La primera línea asigna un valor a <code>millas</code> y muestra el valor. La segunda línea es una expresión, por lo que el REPL la evalúa y muestra el resultado. Gracias al código anterior sabemos que una maratón tiene unos 42 kilómetros.</p>
 </div>
 <div class="paragraph">
-<p>Pero si escribe el mismo código en un script y lo ejecuta, no obtendrá ningún resultado. En el modo script, una expresión, por sí sola, no tiene ningún efecto visible. Julia evalúa la expresión, pero no muestra el valor a menos que se lo indique:</p>
+<p>Pero, si escribe el mismo código en un script y lo ejecuta, no obtendrá ningún resultado. En el modo script, una expresión, por sí sola, no tiene ningún efecto visible. Julia evalúa la expresión, pero no muestra el valor a menos que se lo indique:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1662,7 +1656,8 @@ println(x)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>2</pre>
+<pre class="highlight"><code class="language-julia" data-lang="julia">1
+2</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1671,7 +1666,7 @@ println(x)</code></pre>
 <div class="sect3">
 <h4 id="_ejercicio_2_1">Ejercicio 2-1</h4>
 <div class="paragraph">
-<p>Para comprobar que ha comprendido lo recientemente explicado, escriba las siguientes sentencias en Julia REPL y vea lo que hace cada una:</p>
+<p>Para comprobar que ha comprendido lo recientemente explicado, escriba las siguientes sentencias en el REPL de Julia y vea lo que hace cada una:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1694,7 +1689,7 @@ x + 1</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p><em>PA</em>réntesis: tienen la mayor precedencia y se pueden utilizar para forzar la evaluación de una expresión en el orden que desee. Dado que las expresiones entre paréntesis se evalúan primero, <code>2*(3-1)</code> es 4, y <code>(1+1)^(5-2)</code> es 8. También puede usar paréntesis para hacer una expresión más fácil de leer, como en <code>(minuto*100)/60</code>, incluso si no cambia el resultado.
+<p><em>PA</em>réntesis: tienen la mayor precedencia y se pueden utilizar para forzar la evaluación de una expresión en el orden que se desee. Dado que las expresiones entre paréntesis se evalúan primero, <code>2*(3-1)</code> es 4, y <code>(1+1)^(5-2)</code> es 8. También puede usar paréntesis para hacer una expresión más fácil de leer, como en <code>(minuto*100)/60</code>, incluso si no cambia el resultado.
 </p>
 </li>
 <li>
@@ -1757,7 +1752,7 @@ julia&gt; primer_str * segundo_str
 </div>
 </div>
 <div class="paragraph">
-<p>El operador <code>^</code> también funciona con cadenas y realiza repeticiones. Por ejemplo, <code>"Spam"^3</code> es <code>"SpamSpamSpam"</code>. Si uno de los valores es una cadena, el otro tiene que ser un número entero.
+<p>El operador <code>^</code> también funciona con cadenas generando repeticiones. Por ejemplo, <code>"Spam"^3</code> es <code>"SpamSpamSpam"</code>. Si uno de los valores es una cadena, el otro tiene que ser un número entero.
 </p>
 </div>
 <div class="paragraph">
@@ -1809,12 +1804,19 @@ porcentaje = (minuto * 100) / 60</code></pre>
 <pre class="highlight"><code class="language-julia" data-lang="julia">v = 5   # velocidad en metros/segundo.</code></pre>
 </div>
 </div>
-<div class="exampleblock">
-<div class="content">
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Observación</div>
+</td>
+<td class="content">
 <div class="paragraph">
 <p>Los nombres de las variables tienen que ser descriptivos para así reducir la necesidad de comentarios, pero no tan largos como para dificultar la lectura del código.</p>
 </div>
-</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -1827,7 +1829,7 @@ porcentaje = (minuto * 100) / 60</code></pre>
 <dl>
 <dt class="hdlist1">Error de sintaxis</dt>
 <dd>
-<p>"Sintaxis" se refiere a la estructura de un programa y las reglas sobre esa estructura. Por ejemplo, los paréntesis deben presentarse de a pares, por lo que <code>(1+2)</code> es válido, pero <code>8)</code> es un error de sintaxis.</p>
+<p>“Sintaxis” se refiere a la estructura de un programa y las reglas sobre esa estructura. Por ejemplo, los paréntesis deben presentarse de a pares, por lo que <code>(1+2)</code> es válido, pero <code>8)</code> es un error de sintaxis.</p>
 <div class="paragraph">
 <p>Si hay un error de sintaxis en cualquier parte de su programa, Julia muestra un mensaje de error y se cierra, no pudiendo ejecutar el programa. Durante sus primeras semanas como programador, puede pasar mucho tiempo rastreando errores de sintaxis. A medida que gane experiencia, cometerá menos errores y los encontrará más rápido.
 </p>
@@ -1843,13 +1845,13 @@ porcentaje = (minuto * 100) / 60</code></pre>
 </dd>
 <dt class="hdlist1">Error semántico</dt>
 <dd>
-<p>El tercer tipo de error es "semántico", es decir, relacionado con el significado. Si hay un error semántico en su programa, se ejecutará sin generar mensajes de error, pero no hará lo correcto sino que hará otra cosa. Específicamente, hará lo que usted le dijo que hiciera.</p>
+<p>El tercer tipo de error es “semántico”, es decir, relacionado con el significado. Si hay un error semántico en su programa, este se ejecutará sin generar mensajes de error, pero no hará lo que se desea, sino que hará otra cosa. Específicamente, hará lo que usted le dijo que hiciera, (y no lo que usted desea que realice).</p>
+</dd>
+</dl>
+</div>
 <div class="paragraph">
 <p>Identificar errores semánticos puede ser complicado porque requiere que se trabaje a la inversa, analizando la salida del programa para intentar descubrir qué está haciendo.
  </p>
-</div>
-</dd>
-</dl>
 </div>
 </div>
 <div class="sect2">
@@ -1878,7 +1880,7 @@ porcentaje = (minuto * 100) / 60</code></pre>
 </dd>
 <dt class="hdlist1">operando</dt>
 <dd>
-<p>Uno de los valores en los que opera un operador.
+<p>Uno de los valores sobre los que opera un <em>operador</em>.
 </p>
 </dd>
 <dt class="hdlist1">expresión</dt>
@@ -1948,7 +1950,7 @@ porcentaje = (minuto * 100) / 60</code></pre>
 </dd>
 <dt class="hdlist1">error semántico</dt>
 <dd>
-<p>Un error en un programa que hace que haga algo diferente a lo que pretendía el programador.
+<p>Es un error en un programa, que provoca que se haga algo diferente a lo que el programador pretendía.
 </p>
 </dd>
 </dl>
@@ -1985,7 +1987,7 @@ porcentaje = (minuto * 100) / 60</code></pre>
 <div class="sect3">
 <h4 id="ex02-2">Ejercicio 2-3</h4>
 <div class="paragraph">
-<p>Practique usando Julia REPL como una calculadora:
+<p>Practique usando el REPL de Julia como una calculadora:
 </p>
 </div>
 <div class="olist arabic">
@@ -1994,10 +1996,10 @@ porcentaje = (minuto * 100) / 60</code></pre>
 <p>El volumen de una esfera con radio \(r\) es \(\frac{4}{3} \pi r^3\). ¿Cuál es el volumen de una esfera con radio 5?</p>
 </li>
 <li>
-<p>Supongamos que el precio de venta de un libro es de $ 24.95, pero las librerías obtienen un descuento del 40%. El envío cuesta $3 por la primera copia y 75 centavos por cada copia adicional. ¿Cuál es el costo total al por mayor de 60 copias?</p>
+<p>Supongamos que el precio de venta de un libro es de $24.95, pero las librerías obtienen un descuento del 40%. El envío cuesta $3 por la primera copia y 75 centavos por cada copia adicional. ¿Cuál es el costo total al por mayor de 60 copias?</p>
 </li>
 <li>
-<p>Si una persona sale de casa a las 6:52 a.m. y corre 1 milla a un ritmo relajado (8:15 min. por milla), luego 3 millas más rápido (7:12 min. por milla) y 1 milla a ritmo relajado nuevamente, ¿a qué hora llega a casa para desayunar?</p>
+<p>Si una persona sale de casa a las 6:52 a.m. y corre 1 milla a un ritmo relajado (8:15 minutos por milla), luego 3 millas más rápido (7:12 minutos por milla) y 1 milla a ritmo relajado nuevamente, ¿a qué hora llega a casa para desayunar?</p>
 </li>
 </ol>
 </div>
@@ -4253,7 +4255,7 @@ print(decibeles)</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; time()
-1.597796405012161e9</code></pre>
+1.598033295232887e9</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -13579,9 +13581,9 @@ end</code></pre>
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; mazo = Mazo()
 A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ 10♣ J♣ Q♣ K♣ A♦ 2♦ 3♦ 4♦ 5♦ 6♦ 7♦ 8♦ 9♦ 10♦ J♦ Q♦ K♦ A♥ 2♥ 3♥ 4♥ 5♥ 6♥ 7♥ 8♥ 9♥ 10♥ J♥ Q♥ K♥ A♠ 2♠ 3♠ 4♠ 5♠ 6♠ 7♠ 8♠ 9♠ 10♠ J♠ Q♠ K♠
 julia&gt; shuffle!(mazo)
-9♣ Q♠ 8♠ 10♥ 3♥ A♦ 8♥ 8♣ Q♦ 6♠ 7♣ 5♠ 3♣ 6♦ 7♦ K♦ 10♦ 2♦ K♣ 8♦ J♣ 9♦ 6♣ Q♣ K♠ 3♦ J♥ 6♥ J♠ 7♥ 3♠ 4♥ A♠ A♥ Q♥ 9♠ 5♥ 4♣ 2♣ K♥ 4♦ 2♠ 2♥ 10♠ A♣ J♦ 7♠ 5♣ 10♣ 5♦ 4♠ 9♥
+K♦ 4♣ 8♦ Q♦ 5♦ A♥ 6♦ 9♣ J♣ 10♠ 6♥ 10♣ 8♥ K♣ 10♥ 5♠ 8♣ 2♣ A♦ 10♦ 2♥ 4♥ A♣ Q♠ 3♦ 7♥ K♠ 5♥ 3♥ Q♣ 9♥ 7♠ 5♣ J♦ K♥ 6♠ 9♠ 7♣ 2♠ Q♥ 4♦ 8♠ J♥ 6♣ 7♦ J♠ 3♣ 2♦ 4♠ 9♦ A♠ 3♠
 julia&gt; naipe = pop!(mazo)
-9♥
+3♠
 julia&gt; push!(mano, naipe)</code></pre>
 </div>
 </div>
@@ -15504,7 +15506,7 @@ CodeInfo(
 <div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; @code_llvm sumacuadrada(3.0, 4.0)
 ;  @ none:2 within `sumacuadrada'
-define double @julia_sumacuadrada_20373(double, double) {
+define double @julia_sumacuadrada_20387(double, double) {
 top:
 ; ┌ @ intfuncs.jl:261 within `literal_pow'
 ; │┌ @ float.jl:405 within `*'
@@ -16311,7 +16313,7 @@ return contar</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Ultima actualización 2020-08-19 00:20:02 UTC
+Ultima actualización 2020-08-21 18:08:12 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
