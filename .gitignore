@@ -18,3 +18,4 @@ deps/build.log
 deps/deps.jl
 book/piedefoto
 book/salida.txt
+test/code_test.jl
