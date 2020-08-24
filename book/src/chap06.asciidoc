@@ -256,7 +256,7 @@ function esdivisible(x, y)
     end
 end
 ----
-Es común dar a las funciones booleanas nombres que suenan como preguntas que tienen como respuesta un si ó un no, esdivisible devuelve +true+ o +false+ para indicar si +x+ es o no divisible por +y+.
+Es común dar a las funciones booleanas nombres que suenan como preguntas que tienen como respuesta un si ó un no, +esdivisible+ devuelve +true+ o +false+ para indicar si +x+ es o no divisible por +y+.
 
 Por ejemplo:
 
