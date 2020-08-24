@@ -181,7 +181,7 @@ end
 
 Si esto funciona correctamente, ya se habría terminado. Si no, se podría mostrar el valor de la variable resultado antes de la sentencia de retorno.
 
-La versión final de la función no muestra nada cuando se ejecuta, sólo retorna un valor. Las sentencias print que se escriben son útiles para la depuración, pero una vez que el programa esté funcionando correctamente, se deben eliminar. El código eliminado se llama _andamiaje_ porque es útil para construir el programa pero no es parte del producto final.
+La versión final de la función no muestra nada cuando se ejecuta, sólo retorna un valor. Las sentencias +print+ son útiles para la depuración, pero una vez que el programa esté funcionando correctamente, se deben eliminar. El código eliminado se llama _andamiaje_ porque es útil para construir el programa pero no es parte del producto final.
 (((andamiaje)))
 
 Al principio, debería añadir solamente una o dos líneas de código cada vez. Conforme vaya ganando experiencia, puede que se encuentre escribiendo y depurando fragmentos mayores de código. Sin embargo, el proceso de desarrollo incremental puede ahorrarle mucho tiempo de depuración.
