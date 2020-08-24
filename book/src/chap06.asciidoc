@@ -53,13 +53,13 @@ function valorabsoluto(x)
 end
 ----
 
-Dado que estas sentencias return están en una condicional alternativa, solo se ejecuta una.
+Dado que estas sentencias +return+ están en una condicional alternativa, solo se ejecuta una.
 (((condicional alternativa)))
 
-En cuanto se ejecuta una sentencia return, la función termina sin ejecutar ninguna de las sentencias siguientes. El código que aparece después de la sentencia return, o en cualquier otro lugar al que el flujo de ejecución nunca llegará, se llama código muerto.
+En cuanto se ejecuta una sentencia +return+, la función termina sin ejecutar ninguna de las sentencias siguientes. El código que aparece después de la sentencia +return+, o en cualquier otro lugar al que el flujo de ejecución nunca llegará, se llama código muerto.
 (((flujo de ejecución)))(((código muerto)))
 
-En una función productiva, es una buena idea asegurarse que cualquier posible recorrido del programa llegue a una sentencia return. Por ejemplo:
+En una función productiva, es una buena idea asegurarse que cualquier posible recorrido del programa llegue a una sentencia +return+. Por ejemplo:
 
 [source,@julia-setup chap06]
 ----
@@ -73,7 +73,7 @@ function valorabsoluto(x)
 end
 ----
 
-Esta versión no es correcta porque si +x+ es igual a 0, ninguna de las condiciones es verdadera y la función termina sin alcanzar una sentencia return. Si el flujo de ejecución llega al final de la función, el valor de retorno es +nothing+, que claramente no es el valor absoluto de 0.
+Esta versión no es correcta porque si +x+ es igual a 0, ninguna de las condiciones es verdadera y la función termina sin alcanzar una sentencia +return+. Si el flujo de ejecución llega al final de la función, el valor de retorno es +nothing+, que claramente no es el valor absoluto de 0.
 
 [source,@julia-repl-test chap06]
 ----
@@ -527,7 +527,7 @@ Dividir un código extenso en pequeñas funciones crea naturalmente puntos de co
 
 Para descartar la primera posibilidad, puede agregar una sentencia de impresión al comienzo de la función para mostrar los valores de los parámetros (y tal vez sus tipos) o bien escribir líneas de código que verifiquen las condiciones previas de manera explícita.
 
-Si los parámetros están bien, agregue una sentencia de impresión antes de cada sentencia return y muestre el valor de retorno. Si es posible, verifique el resultado a mano. Considere también llamar a la función con valores que faciliten la verificación del resultado (como en <<incremental_development>>).
+Si los parámetros están bien, agregue una sentencia de impresión antes de cada sentencia +return+ y muestre el valor de retorno. Si es posible, verifique el resultado a mano. Considere también llamar a la función con valores que faciliten la verificación del resultado (como en <<incremental_development>>).
 
 Si la función parece estar funcionando, revise la llamada a función para asegurarse de que el valor de retorno se está utilizando correctamente (¡o incluso si se está utilizando!).
 
@@ -567,7 +567,7 @@ Variable usada para almacenar un valor intermedio en un cálculo complejo.
 (((variable temporal)))
 
 código muerto::
-Parte de un programa que nunca puede ser ejecutado, a menudo porque aparece después de una sentencia return.
+Parte de un programa que nunca puede ser ejecutado, a menudo porque aparece después de una sentencia +return+.
 (((código muerto)))
 
 desarrollo incremental::
