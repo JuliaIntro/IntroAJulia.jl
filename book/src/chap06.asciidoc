@@ -422,7 +422,7 @@ Por supuesto, es un poco extraño suponer que la función funciona correctamente
 [[one_more_example]]
 === Un Ejemplo Más
 
-Después de los factoriales, el ejemplo más común de una función matemática definida de manera recursiva es fibonacci, que tiene la siguiente definición (ver https://en.wikipedia.org/wiki/Fibonacci_number):
+Después de los factoriales, el ejemplo más común de una función matemática definida de manera recursiva es +fibonacci+, que tiene la siguiente definición (ver https://en.wikipedia.org/wiki/Fibonacci_number):
 (((fibonnaci function)))
 
 [latexmath]
@@ -453,7 +453,7 @@ function fib(n)
 end
 ----
 
-Si intenta seguir el flujo de ejecución en esta función, incluso para valores bastante pequeños de +n+, su cabeza podría estallar. Haciendo un salto de fe, es decir, asumiendo que las dos llamadas recursivas funcionan correctamente, entonces está claro que se obtiene el resultado correcto al sumarlas.
+Si intenta seguir el flujo de ejecución en esta función, incluso para valores bastante pequeños de +n+, su cabeza podría estallar. Dando un voto de confianza, es decir, asumiendo que las dos llamadas recursivas funcionan correctamente, entonces está claro que se obtiene el resultado correcto al sumarlas.
 
 === Tipos de Comprobación
 
@@ -476,7 +476,7 @@ En la primera llamada recursiva, el valor de +n+ es +0.5+. En la siguiente, es +
 Existen dos opciones. Se puede intentar generalizar la función factorial para trabajar con números de punto flotante, o se puede hacer que +fact+ verifique el tipo del argumento. La primera opción se llama función gamma y está un poco más allá del alcance de este libro. En este libro se proseguirá con la segunda.
 (((función gamma)))
 
-Se puede usar el operador integrado +isa+ para verificar el tipo de argumento. También se puede asegurarnos de que el argumento sea positivo:
+Se puede usar el operador integrado +isa+ para verificar el tipo de argumento. También podemos asegurarnos de que el argumento sea positivo:
 (((isa)))(((fact)))
 
 [source,@julia-setup chap06]
