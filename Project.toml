@@ -1,7 +1,7 @@
 name = "IntroAJulia"
 uuid = "196a5f1a-c2cd-11e9-0ac3-8b12d691bf53"
 authors = ["Pamela Alejandra Bustamante Faúndez <pebustamante@uc.cl>"]
-version = "0.5.0"
+version = "0.5.1"
 
 [deps]
 Base64 = "2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"

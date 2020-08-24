@@ -21,6 +21,8 @@ ifdef::preface-title[:preface-title: Prefacio]
 :untitled-label: Sin título
 :version-label: Versión
 :warning-caption: Aviso
+// Not sure why following doesn't work
+//:git-hash: {sys:git rev-parse --short HEAD}
 
 = Introducción a la Programación en Julia
 Ben Lauwens y Allen Downey.
