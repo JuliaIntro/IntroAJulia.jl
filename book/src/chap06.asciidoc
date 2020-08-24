@@ -6,7 +6,7 @@ Muchas de las funciones de Julia que se han utilizado, como las funciones matem�
 
 === Valores de retorno
 
-Llamar a la función genera un valor de retorno, que generalmente se asigna a una variable o se usa como parte de una expresión.
+Llamar a una función genera un valor de retorno, que generalmente se asigna a una variable o se usa como parte de una expresión.
 
 [source,julia]
 ----
@@ -323,7 +323,7 @@ Si esta definición apareciese en el diccionario, la persona que la leyera podr�
 [latexmath]
 ++++
 \begin{equation}
-{n! = 
+{n! =
 \begin{cases}
   1& \textrm{if}\  n = 0 \\
   n (n-1)!& \textrm{if}\  n > 0
@@ -406,7 +406,7 @@ Julia tiene la función +factorial+ para calcular el factorial de un número ent
 ====
 
 
-=== Salto de fe 
+=== Salto de fe
 
 Seguir el flujo de ejecución es una forma de leer programas, pero puede llegar a ser abrumador. Una alternativa es lo que se conoce como el "salto de fe"(en inglés, "leap of faith"). Cuando llega a una llamada de función, en lugar de seguir el flujo de ejecución, asume que la función funciona correctamente y devuelve el resultado correcto.
 (((salto de fe)))
@@ -432,7 +432,7 @@ Después de los factoriales, el ejemplo más común de una función matemática 
 \begin{cases}
     0& \textrm{if}\  n = 0 \\
     1& \textrm{if}\  n = 1 \\
-    fib(n-1) + fib(n-2)& \textrm{if}\  n > 1 
+    fib(n-1) + fib(n-2)& \textrm{if}\  n > 1
 \end{cases}}
 \end{equation}
 ++++
@@ -692,4 +692,3 @@ Escriba una función llamada +mcd+ que tome los parámetros +a+ y +b+ y devuelva
 (((mcd)))((("función", "definida por el programador", "mcd", see="mcd")))
 
 Créditos: Este ejercicio se basa en un ejemplo del libro _Estructura e interpretación de programas informáticos_ de Abelson y Sussman.
-
