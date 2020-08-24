@@ -406,18 +406,18 @@ Julia tiene la función +factorial+ para calcular el factorial de un número ent
 ====
 
 
-=== Salto de fe
+=== Voto de confianza
 
-Seguir el flujo de ejecución es una forma de leer programas, pero puede llegar a ser abrumador. Una alternativa es lo que se conoce como el "salto de fe"(en inglés, "leap of faith"). Cuando llega a una llamada de función, en lugar de seguir el flujo de ejecución, asume que la función funciona correctamente y devuelve el resultado correcto.
-(((salto de fe)))
+Seguir el flujo de ejecución es una forma de leer programas, pero puede llegar a ser abrumador. Una alternativa es lo que se conoce como el "voto de confianza"(en inglés, "leap of faith"). Cuando llega a una llamada de función, en lugar de seguir el flujo de ejecución, asume que la función funciona correctamente y devuelve el resultado correcto.
+(((voto de confianza)))
 
-De hecho, ya se está haciendo este salto de fe cuando se usan funciones integradas de Julia. Cuando se llaman a +cos+ o +exp+, no se examinan los cuerpos de esas funciones. Simplemente se asume que funcionan porque las personas que las escribieron eran buenos programadores.
+De hecho, ya se está dando este voto de confianza cuando se usan funciones integradas de Julia. Cuando se llaman a +cos+ o +exp+, no se examinan los cuerpos de esas funciones. Simplemente se asume que funcionan porque las personas que las escribieron eran buenos programadores.
 
 Lo mismo ocurre cuando el usuario llama a una de sus propias funciones. Por ejemplo, en <<boolean_functions>>, se escribe una función llamada +esdivisible+ que determina si un número es divisible por otro. Una vez que se confirme que esta función es correcta —al examinar y probar el código—, se puede usar la función sin mirar nuevamente el cuerpo.
 
 Lo mismo aplica a los programas recursivos. Cuando llegue a la llamada recursiva, en lugar de seguir el flujo de ejecución, debe suponer que la llamada recursiva funciona (devuelve el resultado correcto) y luego preguntarse: "Suponiendo que pueda encontrar el factorial de latexmath:[n-1], ¿se puede calcular el factorial de latexmath:[n]?" Está claro que es posible, multiplicando por latexmath:[n].
 
-Por supuesto, es un poco extraño suponer que la función funciona correctamente cuando no ha terminado de escribirla, ¡pero por eso se llama un salto de fe!
+Por supuesto, es un poco extraño suponer que la función funciona correctamente cuando no ha terminado de escribirla, ¡pero por eso se llama voto de confianza!
 
 [[one_more_example]]
 === Un Ejemplo Más
