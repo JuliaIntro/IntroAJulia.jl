@@ -98,7 +98,7 @@ Escriba la función +comparar+ que tome dos valores, +x+ y +y+, y que devuelva +
 Conforme vaya escribiendo funciones más extensas puede empezar a dedicar más tiempo a la depuración.
 (((depuración)))
 
-Para lidiar con programas de complejidad creciente, se sugiere una técnica llamada desarrollo incremental. El objetivo del desarrollo incremental es evitar largas sesiones de depuración, adicionando y probando solamente pequeñas porciones de código cada vez.
+Para lidiar con programas de complejidad creciente, se sugiere una técnica llamada desarrollo incremental. El objetivo del desarrollo incremental es evitar largas sesiones de depuración, añadiendo y probando solamente pequeñas porciones de código cada vez.
 (((desarrollo incremental)))
 
 Por ejemplo, suponga que desea encontrar la distancia entre dos puntos dados por las coordenadas latexmath:[\left(x_1, y_1\right)] y latexmath:[\left(x_2, y_2\right)]. Por el teorema de Pitágoras, la distancia es:
