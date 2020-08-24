@@ -483,9 +483,9 @@ Se puede usar el operador integrado +isa+ para verificar el tipo de argumento. T
 ----
 function fact(n)
     if !(n isa Int64)
-        error("Factorial is only defined for integers.")
+        error("El factorial únicamente está definido para números enteros.")
     elseif n < 0
-        error("Factorial is not defined for negative integers.")
+        error("El factorial no está definido para enteros negativos.")
     elseif n == 0
         return 1
     else
@@ -499,9 +499,9 @@ El primer caso base se hace cargo de números no enteros y el segundo de enteros
 [source,@julia-repl-test chap06]
 ----
 julia> fact("fred")
-ERROR: Factorial is only defined for integers.
+ERROR: El factorial únicamente está definido para números enteros.
 julia> fact(-2)
-ERROR: Factorial is not defined for negative integers.
+ERROR: El factorial no está definido para enteros negativos.
 ----
 
 Si se superan ambas verificaciones, se sabe que +n+ es positivo o cero, por lo que es posible probar que la recursión termina.
