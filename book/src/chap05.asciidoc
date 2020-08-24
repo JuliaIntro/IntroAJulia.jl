@@ -1,13 +1,13 @@
 [[chap05]]
 == Condicionales y recursividad
 
-El tema principal de este capítulo es la sentencia +if+, la cual permite ejecutar diferentes acciones dependiendo del estado del programa. Inicialmente se presentan dos nuevos operadores: división entera de tipo piso y módulo.
+El tema principal de este capítulo es la sentencia +if+, la cual permite ejecutar diferentes acciones dependiendo del estado del programa. Inicialmente se presentan dos nuevos operadores: división entera y módulo.
 
 
-=== División entera de tipo piso y Módulo
+=== División entera y Módulo
 
-El operador _división entera de tipo piso_, +÷+ (*+\div TAB+*), divide dos números y redondea hacia abajo el resultado. Por ejemplo, suponga que la duración de una película es de 105 minutos. Es posible que desee saber la duración en horas. La división convencional devuelve un número de punto flotante:
-(((operador de división entera de tipo piso))) ((("operador", "Base", "÷", see = "operador división entera de tipo piso"))) ((("÷", see="operador división entera de tipo piso")))
+El operador _división entera_, +÷+ (*+\div TAB+*), divide dos números y redondea hacia abajo el resultado. Por ejemplo, suponga que la duración de una película es de 105 minutos. Es posible que desee saber la duración en horas. La división convencional devuelve un número de punto flotante:
+(((operador de división entera))) ((("operador", "Base", "÷", see = "operador división entera"))) ((("÷", see="operador división entera")))
 
 [source,@julia-repl-test chap05]
 ----
@@ -17,7 +17,7 @@ julia> minutos / 60
 1.75
 ----
 
-No obstante, las horas no se suelen escribir con decimales. La división entera de tipo piso devuelve el número entero de horas, redondeado hacia abajo:
+No obstante, las horas no se suelen escribir con decimales. La división entera devuelve el número entero de horas, redondeado hacia abajo:
 
 [source,@julia-repl-test chap05]
 ----
@@ -446,7 +446,7 @@ Obteniendo:
 ----
 Este no es el resultado que esperábamos.
 
-Para encontrar el error, puede ser útil imprimir el valor de la variable "relacion", que resulta ser 0. El problema está en la línea 3, que usa la división de tipo piso en lugar de la división de punto flotante.
+Para encontrar el error, puede ser útil imprimir el valor de la variable "relacion", que resulta ser 0. El problema está en la línea 3, que usa la división entera en lugar de la división de punto flotante.
 
 [WARNING]
 ====
@@ -456,9 +456,9 @@ El usuario debe tomarse el tiempo de leer los mensajes de error cuidadosamente, 
 
 === Glosario
 
-División de tipo piso::
+División entera::
 Un operador, denotado por +÷+, que divide dos números y redondea hacia abajo (hacia el infinito negativo) a un entero.
-(((división de tipo piso)))
+(((división entera)))
 
 operador módulo::
 Un operador, denotado con el signo de porcentaje (%), que se utiliza con enteros y devuelve el resto cuando un número se divide por otro.
