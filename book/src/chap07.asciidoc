@@ -305,7 +305,7 @@ if abs(y-x) < ε
 end
 ----
 
-Donde +ε+ (*+\varepsilon TAB+*) toma un valor como +0.0000001+, y representa el error que estamos dispuestos a aceptar entre la estimación y el valor real.
+Donde +ε+ (*+\varepsilon TAB+*) toma un valor como +0.0000001+ que determina cómo de cerca es suficientemente cerca.
 
 === Algoritmos
 
