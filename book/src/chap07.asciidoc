@@ -124,7 +124,7 @@ Más formalmente, el flujo de ejecución de una sentencia +while+ es el siguient
 
 . Si es verdadera, ejecuta cada una de las sentencias en el cuerpo y regresa al paso 1.
 
-Este tipo de flujo de llama bucle porque el tercer paso vuelve a la parte superior.
+Este tipo de flujo se llama bucle porque el tercer paso vuelve a la parte superior.
 (((bucle)))
 
 El cuerpo del bucle debería cambiar el valor de una o más variables de manera que, en algún momento, la condición sea falsa y el bucle termine. En caso contrario, el bucle se repetirá indefinidamente, lo cual se llama _bucle infinito_. Una interminable fuente de diversión para los informáticos es la observación de que las instrucciones del champú “Enjabone, enjuague, repita”, son un bucle infinito.
