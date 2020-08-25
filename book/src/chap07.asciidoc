@@ -130,7 +130,7 @@ Este tipo de flujo se llama bucle porque el tercer paso vuelve a la parte superi
 El cuerpo del bucle debería cambiar el valor de una o más variables de manera que, en algún momento, la condición sea falsa y el bucle termine. En caso contrario, el bucle se repetirá indefinidamente, lo cual se llama _bucle infinito_. Una interminable fuente de diversión para los informáticos es la observación de que las instrucciones del champú “Enjabone, enjuague, repita”, son un bucle infinito.
 (((bucle infinito)))
 
-En el caso de +cuentaregresiva+, podemos probar que el bucle termina: si +n+ es cero o negativo, el ciclo no se produce. En otro caso, el valor de +n+ se hace más pequeño cada vez que pasa por el bucle, así en cierto momento se llega a 0. 
+En el caso de +cuentaregresiva+, podemos probar que el bucle termina: si +n+ es cero o negativo, el ciclo termina. En otro caso, el valor de +n+ se hace más pequeño cada vez que pasa por el bucle, así en cierto momento se llega a 0. 
 
 En otros casos no es tan fácil decirlo. Por ejemplo:
 (((seq)))((("función", "definida por el programador", "seq", see="seq")))
