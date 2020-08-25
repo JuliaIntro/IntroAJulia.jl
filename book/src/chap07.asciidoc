@@ -95,7 +95,7 @@ Actualizar una variable sumándole 1 se denomina un _incremento_ y restándole 1
 Las computadoras se usan a menudo para automatizar tareas repetitivas. Realizar repetidamente tareas idénticas o similares sin cometer errores es algo que las computadoras hacen bien y que los seres humanos hacen limitadamente. La ejecución repetida de un conjunto de sentencias se llama _iteración_. 
 (((iteración)))
 
-Ya se han visto dos funciones, +cuenta regresiva+ y +printn+, que iteran usando recursividad. Por ser la iteración tan común, Julia proporciona varias características que la hacen más fácil. Una es la sentencia +for+ que se vio en <<simple_repetition>>, a la cual se volverá más adelante. 
+Ya se han visto dos funciones, +cuentaregresiva+ y +printn+, que iteran usando recursividad. Por ser la iteración tan común, Julia proporciona varias características que la hacen más fácil. Una es la sentencia +for+ que se vio en <<simple_repetition>>, a la cual se volverá más adelante. 
 (((recursión)))(((sentencia for)))
 
 Otra característica es la _sentencia_ +while+. Aquí hay una versión de +cuentaregresiva+ que muestra el uso de la sentencia +while+:
