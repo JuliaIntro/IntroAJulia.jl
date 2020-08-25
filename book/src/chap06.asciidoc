@@ -529,7 +529,7 @@ Para descartar la primera posibilidad, puede agregar una sentencia de impresión
 
 Si los parámetros están bien, agregue una sentencia de impresión antes de cada sentencia +return+ y muestre el valor de retorno. Si es posible, verifique el resultado a mano. Considere también llamar a la función con valores que faciliten la verificación del resultado (como en <<incremental_development>>).
 
-Si la función parece estar funcionando, revise la llamada a función para asegurarse de que el valor de retorno se está utilizando correctamente (¡o incluso si se está utilizando!).
+Si la función parece estar funcionando, revise la llamada a la función para asegurarse de que el valor de retorno se está utilizando correctamente (¡o incluso si se está utilizando!).
 
 Agregar sentencias de impresión al principio y al final de una función puede ayudar a que el flujo de ejecución sea más transparente. Por ejemplo, aquí hay una versión de +fact+ con sentencias de impresión:
 (((fact)))(((flujo de ejecución)))(((sentencia print)))
@@ -540,7 +540,7 @@ function fact(n)
     espacio = " " ^ (4 * n)
     println(espacio, "factorial ", n)
     if n == 0
-        println(espacio, "returning 1")
+        println(espacio, "devolviendo 1")
         return 1
     else
         recursion = fact(n-1)
@@ -551,7 +551,7 @@ function fact(n)
 end
 ----
 
-+espacio+ es una cadena de caracteres de espacio que permite generar sangría en la salida:
++espacio+ es una cadena de caracteres de espacios que permite generar sangría en la salida:
 
 [source,@julia-repl chap06]
 ----
