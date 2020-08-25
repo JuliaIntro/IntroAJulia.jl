@@ -153,7 +153,7 @@ La condición de este bucle es +n != 1+, de manera que el bucle continuará hast
 
 Cada vez que pasa por el bucle, el programa muestra como salida el valor de +n+ y luego comprueba si es par o impar. Si es par, el valor de +n+ se divide por dos. Si es impar, el valor de +n+ se sustituye por +pass:[n*3 + 1]+. Por ejemplo, si el argumento pasado a la función seq es 3, los valores resultantes +n+ son 3, 10, 5, 16, 8, 4, 2, 1.
 
-Puesto que n a veces aumenta y a veces disminuye, no hay una prueba obvia de que +n+ alcance alguna vez el valor 1, o de que el programa vaya a terminar. Para algunos valores particulares de +n+, se puede probar que sí termina. Por ejemplo, si el valor de inicio es una potencia de dos, entonces el valor de +n+ será par cada vez que se pasa por el bucle, hasta que llegue a 1. El ejemplo anterior produce dicha secuencia si se inicia con 16.
+Puesto que +n+ a veces aumenta y a veces disminuye, no hay una prueba obvia de que +n+ alcance alguna vez el valor 1, o de que el programa vaya a terminar. Para algunos valores particulares de +n+, se puede probar que sí termina. Por ejemplo, si el valor de inicio es una potencia de dos, entonces el valor de +n+ será par cada vez que se pasa por el bucle, hasta que llegue a 1. El ejemplo anterior produce dicha secuencia si se inicia con 16.
 
 Lo díficil es preguntarse si se puede probar que este programa termina para todos los valores positivos de +n+. Hasta ahora, nadie ha sido capaz de probar que lo hace o ¡que no lo hace! (Vea https://es.wikipedia.org/wiki/Conjetura_de_Collatz.)
 (((conjetura de Collatz)))
