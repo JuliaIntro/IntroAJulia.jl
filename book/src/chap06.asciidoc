@@ -665,7 +665,7 @@ end
 
 Se verá cómo funcionan en <<chap08>>.
 
-. Pruebe estas funciones. ¿Qué sucede si llama a la función medio con una cadena de dos letras? ¿Y con una cadena de una letra? ¿Qué pasa con la cadena vacía +""+, que no contiene letras?
+. Pruebe estas funciones. ¿Qué sucede si llama a la función +medio+ con una cadena de dos letras? ¿Y con una cadena de una letra? ¿Qué pasa con la cadena vacía +""+, que no contiene letras?
 
 . Escriba una función llamada +espalindromo+ que tome un argumento de tipo cadena y devuelva +true+ si es un palíndromo y +false+ de lo contrario. Recuerde que puede usar la función integrada +length+ para verificar la longitud de una cadena.
 (((espalindromo)))((("función", "definida por el programador", "espalindromo", see="espalindromo")))(((length)))
