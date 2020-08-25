@@ -314,7 +314,7 @@ El método de Newton es un ejemplo de un _algoritmo_, un proceso mecánico que p
 
 Para comprender qué es un algoritmo, podría ayudar empezar con algo que no es un algoritmo. Cuando aprendió a multiplicar números de un solo dígito, probablemente memorizó la tabla de multiplicar. En efecto, memorizó 100 soluciones específicas. Ese tipo de conocimiento no es un algoritmo.
 
-Pero si fuera "flojo", podría haber aprendido algunos trucos. Por ejemplo, para encontrar el producto de latexmath:[n] y 9, puede escribir latexmath:[n-1] como el primer dígito y latexmath:[10-n] como el segundo dígito. Este truco es una solución general para multiplicar cualquier número de un solo dígito por 9. ¡Esto sí es un algoritmo!
+Pero si fuera "perezoso", podría haber aprendido algunos trucos. Por ejemplo, para encontrar el producto de latexmath:[n] y 9, puede escribir latexmath:[n-1] como el primer dígito y latexmath:[10-n] como el segundo dígito. Este truco es una solución general para multiplicar cualquier número de un solo dígito por 9. ¡Esto sí es un algoritmo!
 
 Del mismo modo, las técnicas que aprendió para la suma con “llevamos tanto”, la resta con “pedimos prestado tanto”, y la división “larga o con galera o de casita” son todas ellas algoritmos. Una de las características de los algoritmos es que no requieren inteligencia para realizarlos. Son procesos mecánicos donde cada paso se sigue de acuerdo con un conjunto simple de reglas.
 
