@@ -293,7 +293,7 @@ while true
 end
 ----
 
-Para la mayoría de los valores de a esto funciona bien, aunque en general no se recomienda probar igualdad entre números de punto flotante. Los números de punto flotante son aproximadamente correctos: la mayoría de los números racionales, como latexmath:[\frac{1}{3}], e irracionales, como latexmath:[\sqrt 2], no pueden ser representados exactamente con un +Float64+.
+Para la mayoría de los valores de +a+ esto funciona bien, aunque en general no se recomienda probar igualdad entre números de punto flotante. Los números de punto flotante son aproximadamente correctos: la mayoría de los números racionales, como latexmath:[\frac{1}{3}], e irracionales, como latexmath:[\sqrt 2], no pueden ser representados exactamente con un +Float64+.
 
 En lugar de verificar si +x+ e +y+ son exactamente iguales, es más seguro usar la función integrada +abs+ para calcular el valor absoluto o la magnitud de la diferencia entre ellos:
 (((abs)))
