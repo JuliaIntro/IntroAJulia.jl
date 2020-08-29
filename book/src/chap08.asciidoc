@@ -664,7 +664,7 @@ julia> fruta[1:2:6]
 
 Un tamaño de paso de -1 recorre la palabra hacia la izquierda, por lo que la porción +[end:-1:1]+ genera una cadena invertida.
 
-Use esto para escribir una versión de una línea de código de +espalindromo+ de <<ex06-3>>.
+Use esto para escribir una versión de una línea de código de +espalindroma+ de <<ex06-3>>.
 (((espalindromo)))
 
 [[ex08-4]]
