@@ -11,4 +11,7 @@ Un PDF de este libro está https://JuliaIntro.github.io/IntroAJulia.jl/latest/bo
 
 *Allen Downey* es profesor de informática en Olin College of Engineering. Ha dado clases en Wellesley College, Colby College y U.C. Berkeley. Tiene un doctorado en informática de U.C. Berkeley, y maestrías y licenciaturas del MIT.
 
-[small]#Versión v0.5.0 https://github.com/JuliaIntro/IntroAJulia.jl[(Github)]#
+[small]#Versión v0.5.1 https://github.com/JuliaIntro/IntroAJulia.jl[(Github)]#
+// Somehow want to use the following to get git hash
+//{sys:git rev-parse --short HEAD}
+

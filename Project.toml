@@ -1,7 +1,7 @@
 name = "IntroAJulia"
 uuid = "196a5f1a-c2cd-11e9-0ac3-8b12d691bf53"
 authors = ["Pamela Alejandra Bustamante Faúndez <pebustamante@uc.cl>"]
-version = "0.5.0"
+version = "0.5.1"
 
 [deps]
 Base64 = "2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"
@@ -14,3 +14,9 @@ Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
 REPL = "3fa0cd96-eef1-5676-8a61-b3b8758bbffb"
 Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 TikzPictures = "37f6aa50-8035-52d0-81c2-5a1d08754b2d"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]

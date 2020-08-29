@@ -18,3 +18,4 @@ function concatenar_dos(parte1, parte2)
     imprimirdosveces(concat)
 
 end
+
