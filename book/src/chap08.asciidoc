@@ -462,7 +462,7 @@ Cuando se usan índices para recorrer los valores en una secuencia, es difícil 
 
 [source,@julia-setup chap08]
 ----
-function esreverso(palabra1, palabra2)
+function espalindroma(palabra1, palabra2)
     if length(palabra1) != length(palabra2)
         return false
     end
@@ -489,7 +489,7 @@ Si se prueba esta función con las palabras "amor" y "roma", se espera el valor 
 
 [source,@julia-repl-test chap08]
 ----
-julia> esreverso("amor", "roma")
+julia> espalindroma("amor", "roma")
 false
 ----
 
@@ -505,7 +505,7 @@ Para depurar este tipo de error, primeramente se imprimen los valores de los ín
 
 [source,@julia-eval chap08]
 ----
-function esreverso(palabra1, palabra2)
+function espalindroma(palabra1, palabra2)
     if length(palabra1) != length(palabra2)
         return false
     end
@@ -527,7 +527,7 @@ Ahora, al ejecutar el programa, se obtiene más información:
 
 [source,@julia-repl-test chap08]
 ----
-julia> esreverso("amor", "roma")
+julia> espalindroma("amor", "roma")
 i = 1 
 j = 3
 false
@@ -539,7 +539,7 @@ Si se soluciona ese error y se ejecuta el programa nuevamente, se obtiene:
 
 [source,@julia-eval chap08]
 ----
-function esreverso(palabra1, palabra2)
+function espalindroma(palabra1, palabra2)
     if length(palabra1) != length(palabra2)
         return false
     end
@@ -559,7 +559,7 @@ end;
 
 [source,@julia-repl-test chap08]
 ----
-julia> esreverso("amor", "roma")
+julia> espalindroma("amor", "roma")
 i = 1
 j = 4
 i = 2
@@ -664,7 +664,7 @@ julia> fruta[1:2:6]
 
 Un tamaño de paso de -1 recorre la palabra hacia la izquierda, por lo que la porción +[end:-1:1]+ genera una cadena invertida.
 
-Use esto para escribir una versión de una línea de código de +espalindromo+ de <<ex06-3>>.
+Use esto para escribir una versión de una línea de código de +espalindroma+ de <<ex06-3>>.
 (((espalindromo)))
 
 [[ex08-4]]

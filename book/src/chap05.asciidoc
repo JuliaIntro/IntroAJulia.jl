@@ -1,13 +1,13 @@
 [[chap05]]
 == Condicionales y recursividad
 
-El tema principal de este capítulo es la sentencia +if+, la cual permite ejecutar diferentes acciones dependiendo del estado del programa. Inicialmente se presentan dos nuevos operadores: división entera de tipo piso y módulo.
+El tema principal de este capítulo es la sentencia +if+, la cual permite ejecutar diferentes acciones dependiendo del estado del programa. Inicialmente se presentan dos nuevos operadores: división entera y módulo.
 
 
-=== División entera de tipo piso y Módulo
+=== División entera y Módulo
 
-El operador _división entera de tipo piso_, +÷+ (*+\div TAB+*), divide dos números y redondea hacia abajo el resultado. Por ejemplo, suponga que la duración de una película es de 105 minutos. Es posible que desee saber la duración en horas. La división convencional devuelve un número de punto flotante:
-(((operador de división entera de tipo piso))) ((("operador", "Base", "÷", see = "operador división entera de tipo piso"))) ((("÷", see="operador división entera de tipo piso")))
+El operador _división entera_, +÷+ (*+\div TAB+*), divide dos números y redondea hacia abajo el resultado. Por ejemplo, suponga que la duración de una película es de 105 minutos. Es posible que desee saber la duración en horas. La división convencional devuelve un número de punto flotante:
+(((operador de división entera))) ((("operador", "Base", "÷", see = "operador división entera"))) ((("÷", see="operador división entera")))
 
 [source,@julia-repl-test chap05]
 ----
@@ -17,7 +17,7 @@ julia> minutos / 60
 1.75
 ----
 
-No obstante, las horas no se suelen escribir con decimales. La división entera de tipo piso devuelve el número entero de horas, redondeado hacia abajo:
+No obstante, las horas no se suelen escribir con decimales. La división entera devuelve el número entero de horas, redondeado hacia abajo:
 
 [source,@julia-repl-test chap05]
 ----
@@ -79,7 +79,7 @@ El operador +==+ es un operador relacional. El resto de operadores relacionales 
 
 [source,julia]
 ----
-      x != y               # x no es igual a y 
+      x != y               # x no es igual a y
       x ≠ y                # (\ne TAB)
       x > y                # x es mayor que y
       x < y                # x es menor que y
@@ -122,7 +122,7 @@ end
 La expresión booleana después de +if+ se llama _condición_. Si es verdadera, se ejecuta la instrucción con sangría. Si no, nada ocurre.
 (((condition)))
 
-Las sentencias +if+ tienen la misma estructura que las definiciones de función: un encabezado seguido del cuerpo, terminado con la palabra reservada +end+ (en español "fin"). Las sentencias como este se denominan _sentencias compuestas_.
+Las sentencias +if+ tienen la misma estructura que las definiciones de función: un encabezado seguido del cuerpo, terminado con la palabra reservada +end+ (en español "fin"). Las sentencias como esta se denominan _sentencias compuestas_.
 (((sentencia compuesta)))(((end)))
 
 No hay límite en el número de sentencias que pueden aparecer en el cuerpo. A veces es útil tener un cuerpo sin sentencias (por lo general, como un marcador de posición para el código que aún no se ha escrito).
@@ -184,7 +184,7 @@ Cada condición se comprueba en orden. Si la primera es falsa, se comprueba la s
 
 === Condicionales anidadas
 
-Una condicional puede estar anidada ("nested" en inglés) dentro de otra. Podríamos haber escrito el ejemplo de la sección anterior de la siguiente manera: 
+Una condicional puede estar anidada ("nested" en inglés) dentro de otra. Podríamos haber escrito el ejemplo de la sección anterior de la siguiente manera:
 (((condicional anidada)))
 
 [source,julia]
@@ -255,7 +255,7 @@ end
 
 Si +n+ es 0 o negativo, muestra la palabra +"Despegue!"+. En otro caso, muestra el valor +n+ y luego llama a la función +cuentaregresiva+, pasándole +n-1+ como argumento.
 
-Qué sucede si llamamos a una función como esta?
+¿Qué sucede si llamamos a una función como esta?
 
 [source,@julia-repl-test chap05]
 ----
@@ -299,7 +299,7 @@ end
 Si +n pass:[&lt;]= 0+, se usa la sentencia +return+ para salir de la función. El flujo de la ejecución vuelve inmediatamente a la sentencia de llamada a función y no se ejecutan las líneas restantes de la función.
 (((return)))((("palabra reservada", "return", see="return")))(((sentencia return)))((("sentencia", "return", see="return statement")))
 
-El resto de la función es similar a +cuenta regresiva+: muestra +s+ y luego se llama a sí mismo para mostrar +s+ latexmath:[n-1] veces más de modo que el número de lineas mostradas es latexmath:[1 + (n - 1)], es decir latexmath:[n].
+El resto de la función es similar a +cuenta regresiva+: muestra +s+ y luego se llama a sí misma para mostrar +s+ latexmath:[n-1] veces más de modo que el número de lineas mostradas es latexmath:[1 + (n - 1)], es decir latexmath:[n].
 
 Para ejemplos simples como este, es más fácil usar un ciclo +for+. Se mostrarán ejemplos que son difíciles de escribir con un ciclo +for+ y fáciles de escribir con recursividad.
 
@@ -315,7 +315,7 @@ Cada vez que se llama a una función, Julia crea un marco que contiene las varia
 .Diagrama de pila
 image::images/fig51.svg[]
 
-<<fig05-1>> muestra un diagrama de pila para +cuentaregresiva+ utilizando +n=3+. 
+<<fig05-1>> muestra un diagrama de pila para +cuentaregresiva+ utilizando +n=3+.
 
 Como siempre, la parte superior de la pila es el marco para +Main+. Está vacío pues no se crearon variables en +Main+ ni tampoco se pasaron argumentos.
 
@@ -389,7 +389,7 @@ julia> println("¿Cuántos dejaron su casa, su tierra o su posesión?"); numero 
 julia> parse(Int64, numero)
 115
 ----
-Pero si el usuario no escribe una cadena, obtendrá un error:
+Pero si el usuario no escribe una cadena de dígitos, obtendrá un error:
 (((parse)))
 
 [source,jlcon]
@@ -446,7 +446,7 @@ Obteniendo:
 ----
 Este no es el resultado que esperábamos.
 
-Para encontrar el error, puede ser útil imprimir el valor de la variable "relacion", que resulta ser 0. El problema está en la línea 3, que usa la división de tipo piso en lugar de la división de punto flotante.
+Para encontrar el error, puede ser útil imprimir el valor de la variable "relacion", que resulta ser 0. El problema está en la línea 3, que usa la división entera en lugar de la división de punto flotante.
 
 [WARNING]
 ====
@@ -456,9 +456,9 @@ El usuario debe tomarse el tiempo de leer los mensajes de error cuidadosamente, 
 
 === Glosario
 
-División de tipo piso::
+División entera::
 Un operador, denotado por +÷+, que divide dos números y redondea hacia abajo (hacia el infinito negativo) a un entero.
-(((división de tipo piso)))
+(((división entera)))
 
 operador módulo::
 Un operador, denotado con el signo de porcentaje (%), que se utiliza con enteros y devuelve el resto cuando un número se divide por otro.
@@ -547,10 +547,10 @@ El último teorema de Fermat dice que no hay enteros positivos latexmath:[a], la
 
 para cualquier valor de latexmath:[\ (n ] mayor que 2.
 
-. Escriba una función llamada +verificarfermat+ que tome cuatro parámetros—+a+, +b+, +c+ and +n+— y que verifique si el teorema de Fermat es válido. Si +n+ es mayor que 2 y +pass:[a^n + b^n == c^n]+ el programa debería imprimir, "¡Santo cielo, Fermat estaba equivocado!" De lo contrario, el programa debería imprimir, "No, eso no funciona".
+. Escriba una función llamada +verificarfermat+ que tome cuatro parámetros—+a+, +b+, +c+ y +n+— y que verifique si el teorema de Fermat es válido. Si +n+ es mayor que 2 y +pass:[a^n + b^n == c^n]+ el programa debería imprimir, "¡Santo cielo, Fermat estaba equivocado!" De lo contrario, el programa debería imprimir, "No, eso no funciona".
 (((verificarfermat)))((("función", "definida por el programador", "verificarfermat", see="verificarfermat")))
 
-. Escriba una función que solicite al usuario ingresar valores para +a+, +b+, +c+ and +n+, que los convierta en enteros y que use +verificarfermat+ para verificar si violan el teorema de Fermat.
+. Escriba una función que solicite al usuario ingresar valores para +a+, +b+, +c+ y +n+, que los convierta en enteros y que use +verificarfermat+ para verificar si violan el teorema de Fermat.
 
 [[ex05-3]]
 ==== Ejercicio 5-4
@@ -646,4 +646,3 @@ La excepción es cuando latexmath:[x] es menor que 3: en ese caso, puede dibujar
 (((copodenieve)))((("función", "definida por el programador", "copodenieve", see="copodenieve")))
 
 . La curva de Koch se puede generalizar de varias maneras. Consulte https://en.wikipedia.org/wiki/Koch_snowflake para ver ejemplos e implementar su favorito.
-
