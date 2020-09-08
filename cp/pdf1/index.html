@@ -788,7 +788,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><a href="https://JuliaIntro.github.io/IntroAJulia.jl/latest/book.html">Este libro</a> está disponible bajo la <a href="https://creativecommons.org/licenses/by-nc/3.0/deed.es">Licencia Creative Commons Atribución-NoComercial 3.0 No portada</a>. Es una traducción de <a href="https://benlauwens.github.io/ThinkJulia.jl/latest/book.html">ThinkJulia</a>, el cual tiene la misma licencia. Una lista de las diferencias entre ThinkJulia y este libro está disponible en el <a href="#cambios">Apéndice C</a>.</p>
 </div>
 <div class="paragraph">
-<p>Un PDF de este libro está <a href="https://JuliaIntro.github.io/IntroAJulia.jl/latest/book.pdf">disponible aquí</a>.</p>
+<p>Un PDF de este libro está <a href="introAjulia.pdf">disponible aquí</a>.</p>
 </div>
 <div class="paragraph">
 <p><strong>Ben Lauwens</strong> es profesor de matemáticas en Royal Military Academy (RMA Bélgica). Tiene un doctorado en ingeniería y maestrías de KU Leuven y RMA, además de una licenciatura de RMA.</p>
@@ -4267,7 +4267,7 @@ print(decibeles)</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; time()
-1.599534030095851e9</code></pre>
+1.599536100336013e9</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -13593,9 +13593,9 @@ end</code></pre>
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; mazo = Mazo()
 A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ 10♣ J♣ Q♣ K♣ A♦ 2♦ 3♦ 4♦ 5♦ 6♦ 7♦ 8♦ 9♦ 10♦ J♦ Q♦ K♦ A♥ 2♥ 3♥ 4♥ 5♥ 6♥ 7♥ 8♥ 9♥ 10♥ J♥ Q♥ K♥ A♠ 2♠ 3♠ 4♠ 5♠ 6♠ 7♠ 8♠ 9♠ 10♠ J♠ Q♠ K♠
 julia&gt; shuffle!(mazo)
-10♠ Q♣ 4♠ 8♦ 9♠ 5♦ K♣ 6♣ Q♠ 6♥ A♣ 3♦ 5♥ 6♦ 3♣ K♠ 7♣ J♥ Q♦ J♦ 10♥ 2♦ 8♠ 2♥ 7♦ K♦ A♦ 2♠ 9♥ 8♥ 10♦ 2♣ 10♣ 4♦ A♠ J♠ 4♥ J♣ 9♣ K♥ 5♠ 7♥ 4♣ 3♥ 8♣ 5♣ A♥ 7♠ 3♠ 6♠ Q♥ 9♦
+J♦ J♣ 4♦ K♣ 9♣ 4♥ 6♦ A♦ 4♠ 10♥ K♥ 6♥ K♦ 2♥ 10♦ Q♥ A♠ 2♣ 8♥ 9♥ 8♦ 8♣ 10♠ 3♦ 5♦ J♠ Q♦ 7♦ 3♥ A♥ 4♣ 6♠ 10♣ 3♠ 9♦ 3♣ Q♠ 2♦ Q♣ 5♣ K♠ 7♠ 2♠ 8♠ 5♥ 7♥ A♣ J♥ 5♠ 6♣ 7♣ 9♠
 julia&gt; naipe = pop!(mazo)
-9♦
+9♠
 julia&gt; push!(mano, naipe)</code></pre>
 </div>
 </div>
@@ -15518,7 +15518,7 @@ CodeInfo(
 <div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; @code_llvm sumacuadrada(3.0, 4.0)
 ;  @ none:2 within `sumacuadrada'
-define double @julia_sumacuadrada_20393(double, double) {
+define double @julia_sumacuadrada_20394(double, double) {
 top:
 ; ┌ @ intfuncs.jl:261 within `literal_pow'
 ; │┌ @ float.jl:405 within `*'
@@ -16325,7 +16325,7 @@ return contar</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Ultima actualización 2020-09-08 03:00:27 UTC
+Ultima actualización 2020-09-08 03:34:58 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
