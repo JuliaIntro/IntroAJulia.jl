@@ -799,6 +799,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph">
 <p><span class="small">Versión v0.5.1 <a href="https://github.com/JuliaIntro/IntroAJulia.jl">(Github)</a></span></p>
 </div>
+<div class="paragraph">
+<p>{sys:git rev-parse --short HEAD}</p>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -4255,7 +4258,7 @@ print(decibeles)</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; time()
-1.599528683035503e9</code></pre>
+1.599530424129676e9</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -13581,9 +13584,9 @@ end</code></pre>
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; mazo = Mazo()
 A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ 10♣ J♣ Q♣ K♣ A♦ 2♦ 3♦ 4♦ 5♦ 6♦ 7♦ 8♦ 9♦ 10♦ J♦ Q♦ K♦ A♥ 2♥ 3♥ 4♥ 5♥ 6♥ 7♥ 8♥ 9♥ 10♥ J♥ Q♥ K♥ A♠ 2♠ 3♠ 4♠ 5♠ 6♠ 7♠ 8♠ 9♠ 10♠ J♠ Q♠ K♠
 julia&gt; shuffle!(mazo)
-4♠ 8♠ A♠ 7♣ 7♥ Q♠ 9♥ 6♣ 6♥ 4♥ 5♦ Q♦ 2♣ 9♣ A♦ J♥ K♣ Q♣ 5♠ 6♠ J♦ 2♠ K♦ K♠ 3♣ 10♦ 8♣ K♥ J♠ 4♣ 8♦ 7♠ 9♦ 3♥ 2♦ A♥ 10♥ Q♥ 4♦ 9♠ 5♥ A♣ 8♥ 3♦ 6♦ 7♦ 10♣ 10♠ J♣ 2♥ 5♣ 3♠
+9♦ Q♥ 3♠ 6♣ 8♦ J♠ 2♥ 8♠ 7♣ 10♥ 5♥ K♣ 2♣ 5♦ 7♦ 5♣ 9♥ A♥ A♦ 10♦ 2♠ K♠ 9♣ 9♠ Q♣ Q♦ 3♥ 6♦ 6♠ 4♦ 4♣ A♣ 8♣ J♣ K♦ 4♠ 10♠ J♥ 8♥ 3♦ K♥ 10♣ 7♥ 7♠ 4♥ 2♦ J♦ 5♠ A♠ 6♥ 3♣ Q♠
 julia&gt; naipe = pop!(mazo)
-3♠
+Q♠
 julia&gt; push!(mano, naipe)</code></pre>
 </div>
 </div>
@@ -15506,7 +15509,7 @@ CodeInfo(
 <div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; @code_llvm sumacuadrada(3.0, 4.0)
 ;  @ none:2 within `sumacuadrada'
-define double @julia_sumacuadrada_20378(double, double) {
+define double @julia_sumacuadrada_20394(double, double) {
 top:
 ; ┌ @ intfuncs.jl:261 within `literal_pow'
 ; │┌ @ float.jl:405 within `*'
@@ -16313,7 +16316,7 @@ return contar</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Ultima actualización 2020-09-08 01:31:20 UTC
+Ultima actualización 2020-09-08 02:00:21 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
