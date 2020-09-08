@@ -803,13 +803,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>{sys:git rev-parse --short HEAD}</p>
 </div>
 <div class="paragraph">
-<p>git-hash-sys: {sys:git rev-parse --short HEAD}</p>
+<p>git-hash-sys: {sys: git rev-parse --short HEAD}</p>
 </div>
 <div class="paragraph">
-<p>git-hash-sys2: {sys2:git rev-parse --short HEAD}</p>
+<p>git-hash-sys2: {sys2: git rev-parse --short HEAD}</p>
 </div>
 <div class="paragraph">
-<p>git-hash-sys3: {sys3:git rev-parse --short HEAD}</p>
+<p>git-hash-sys3: {sys3: git rev-parse --short HEAD}</p>
 </div>
 </div>
 </div>
@@ -4267,7 +4267,7 @@ print(decibeles)</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; time()
-1.599603083283221e9</code></pre>
+1.599607897538556e9</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -13593,9 +13593,9 @@ end</code></pre>
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; mazo = Mazo()
 A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ 10♣ J♣ Q♣ K♣ A♦ 2♦ 3♦ 4♦ 5♦ 6♦ 7♦ 8♦ 9♦ 10♦ J♦ Q♦ K♦ A♥ 2♥ 3♥ 4♥ 5♥ 6♥ 7♥ 8♥ 9♥ 10♥ J♥ Q♥ K♥ A♠ 2♠ 3♠ 4♠ 5♠ 6♠ 7♠ 8♠ 9♠ 10♠ J♠ Q♠ K♠
 julia&gt; shuffle!(mazo)
-5♥ 8♠ 7♦ 2♠ Q♥ K♣ 10♠ 7♥ J♣ 3♣ 3♥ 9♣ 6♣ 4♦ 9♠ J♦ 3♦ 7♠ 5♣ K♥ 2♦ 8♣ 4♠ A♣ 2♣ A♠ Q♦ Q♠ 5♠ 10♣ K♠ 6♥ Q♣ 2♥ 5♦ J♠ A♦ 8♦ J♥ 10♦ K♦ 4♣ A♥ 6♠ 4♥ 3♠ 6♦ 7♣ 10♥ 9♥ 8♥ 9♦
+K♦ Q♥ 5♥ 7♣ J♦ A♥ Q♣ 3♣ 3♠ 4♦ A♣ 7♦ 4♣ 9♠ 3♥ 9♣ 3♦ 6♣ 5♣ 2♦ 9♥ 2♥ A♠ 8♦ 8♥ J♠ J♣ 6♦ J♥ Q♠ 10♠ 8♣ 4♥ 5♠ 6♥ 7♠ 6♠ 5♦ 10♦ Q♦ K♥ 7♥ 4♠ 8♠ K♣ 10♥ 2♠ 2♣ K♠ 9♦ A♦ 10♣
 julia&gt; naipe = pop!(mazo)
-9♦
+10♣
 julia&gt; push!(mano, naipe)</code></pre>
 </div>
 </div>
@@ -15518,7 +15518,7 @@ CodeInfo(
 <div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; @code_llvm sumacuadrada(3.0, 4.0)
 ;  @ none:2 within `sumacuadrada'
-define double @julia_sumacuadrada_20378(double, double) {
+define double @julia_sumacuadrada_20379(double, double) {
 top:
 ; ┌ @ intfuncs.jl:261 within `literal_pow'
 ; │┌ @ float.jl:405 within `*'
@@ -16325,7 +16325,7 @@ return contar</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Ultima actualización 2020-09-08 22:11:21 UTC
+Ultima actualización 2020-09-08 23:31:35 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
