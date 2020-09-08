@@ -4267,7 +4267,7 @@ print(decibeles)</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; time()
-1.599536100336013e9</code></pre>
+1.599537454132459e9</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -13593,9 +13593,9 @@ end</code></pre>
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; mazo = Mazo()
 A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ 10♣ J♣ Q♣ K♣ A♦ 2♦ 3♦ 4♦ 5♦ 6♦ 7♦ 8♦ 9♦ 10♦ J♦ Q♦ K♦ A♥ 2♥ 3♥ 4♥ 5♥ 6♥ 7♥ 8♥ 9♥ 10♥ J♥ Q♥ K♥ A♠ 2♠ 3♠ 4♠ 5♠ 6♠ 7♠ 8♠ 9♠ 10♠ J♠ Q♠ K♠
 julia&gt; shuffle!(mazo)
-J♦ J♣ 4♦ K♣ 9♣ 4♥ 6♦ A♦ 4♠ 10♥ K♥ 6♥ K♦ 2♥ 10♦ Q♥ A♠ 2♣ 8♥ 9♥ 8♦ 8♣ 10♠ 3♦ 5♦ J♠ Q♦ 7♦ 3♥ A♥ 4♣ 6♠ 10♣ 3♠ 9♦ 3♣ Q♠ 2♦ Q♣ 5♣ K♠ 7♠ 2♠ 8♠ 5♥ 7♥ A♣ J♥ 5♠ 6♣ 7♣ 9♠
+7♠ 5♠ 2♥ 9♦ 4♠ 7♦ 6♣ A♦ 9♣ 3♦ 10♣ 10♠ 2♦ 7♣ 3♣ 4♦ 2♣ K♦ Q♦ 3♠ 6♠ K♠ 5♦ 5♥ A♥ A♠ Q♠ 8♠ 7♥ K♣ 4♣ J♠ 9♥ 8♦ Q♥ 9♠ A♣ 6♥ 2♠ 6♦ 3♥ 8♥ 5♣ J♣ J♦ Q♣ J♥ 10♥ K♥ 10♦ 8♣ 4♥
 julia&gt; naipe = pop!(mazo)
-9♠
+4♥
 julia&gt; push!(mano, naipe)</code></pre>
 </div>
 </div>
@@ -15518,7 +15518,7 @@ CodeInfo(
 <div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; @code_llvm sumacuadrada(3.0, 4.0)
 ;  @ none:2 within `sumacuadrada'
-define double @julia_sumacuadrada_20394(double, double) {
+define double @julia_sumacuadrada_20378(double, double) {
 top:
 ; ┌ @ intfuncs.jl:261 within `literal_pow'
 ; │┌ @ float.jl:405 within `*'
@@ -16325,7 +16325,7 @@ return contar</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Ultima actualización 2020-09-08 03:34:58 UTC
+Ultima actualización 2020-09-08 03:57:31 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
