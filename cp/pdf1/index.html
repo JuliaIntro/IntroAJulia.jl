@@ -796,21 +796,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph">
 <p><strong>Allen Downey</strong> es profesor de informática en Olin College of Engineering. Ha dado clases en Wellesley College, Colby College y U.C. Berkeley. Tiene un doctorado en informática de U.C. Berkeley, y maestrías y licenciaturas del MIT.</p>
 </div>
-<div class="paragraph">
-<p><span class="small">Versión v0.5.1 <a href="https://github.com/JuliaIntro/IntroAJulia.jl">(Github)</a></span></p>
-</div>
-<div class="paragraph">
-<p>{sys:git rev-parse --short HEAD}</p>
-</div>
-<div class="paragraph">
-<p>git-hash-sys: {sys: git rev-parse --short HEAD}</p>
-</div>
-<div class="paragraph">
-<p>git-hash-sys2: {sys2: git rev-parse --short HEAD}</p>
-</div>
-<div class="paragraph">
-<p>git-hash-sys3: {sys3: git rev-parse --short HEAD}</p>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -4267,7 +4252,7 @@ print(decibeles)</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; time()
-1.599612012104728e9</code></pre>
+1.599612596161395e9</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -13593,9 +13578,9 @@ end</code></pre>
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; mazo = Mazo()
 A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ 10♣ J♣ Q♣ K♣ A♦ 2♦ 3♦ 4♦ 5♦ 6♦ 7♦ 8♦ 9♦ 10♦ J♦ Q♦ K♦ A♥ 2♥ 3♥ 4♥ 5♥ 6♥ 7♥ 8♥ 9♥ 10♥ J♥ Q♥ K♥ A♠ 2♠ 3♠ 4♠ 5♠ 6♠ 7♠ 8♠ 9♠ 10♠ J♠ Q♠ K♠
 julia&gt; shuffle!(mazo)
-7♣ 9♥ 7♦ 5♣ K♠ 2♣ K♦ A♠ J♠ 6♠ J♣ Q♣ 3♥ J♦ J♥ 10♥ 9♣ 3♣ A♣ A♦ 2♠ Q♦ 5♦ A♥ 4♠ 8♦ 6♣ 6♥ 7♥ 4♣ 8♠ 8♣ 6♦ 8♥ 9♦ K♥ 10♠ 7♠ 5♥ 2♥ Q♠ 3♦ Q♥ 10♦ 9♠ 5♠ 4♥ K♣ 3♠ 10♣ 4♦ 2♦
+2♥ 10♠ J♣ 5♣ 4♣ 8♣ 4♥ K♣ 5♥ 3♥ 8♦ 7♦ 4♦ 10♥ 6♦ 8♠ Q♦ 10♣ 9♣ K♥ Q♣ Q♠ J♦ 9♠ J♠ 8♥ 5♠ 7♠ 2♦ 3♦ K♦ 2♠ 4♠ 5♦ A♣ 10♦ A♥ 6♣ J♥ 7♣ 9♥ 3♠ Q♥ 3♣ A♦ 9♦ 6♠ 7♥ A♠ K♠ 2♣ 6♥
 julia&gt; naipe = pop!(mazo)
-2♦
+6♥
 julia&gt; push!(mano, naipe)</code></pre>
 </div>
 </div>
@@ -15518,7 +15503,7 @@ CodeInfo(
 <div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; @code_llvm sumacuadrada(3.0, 4.0)
 ;  @ none:2 within `sumacuadrada'
-define double @julia_sumacuadrada_20378(double, double) {
+define double @julia_sumacuadrada_20379(double, double) {
 top:
 ; ┌ @ intfuncs.jl:261 within `literal_pow'
 ; │┌ @ float.jl:405 within `*'
@@ -16325,7 +16310,7 @@ return contar</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Ultima actualización 2020-09-09 00:40:10 UTC
+Ultima actualización 2020-09-09 00:49:53 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
