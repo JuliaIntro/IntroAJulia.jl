@@ -47,6 +47,14 @@ function deploy()
   # Copy the build html and images folder to dst
   mv("book/build/book.html", "$dst/index.html", force=true)
   mv("book/build/images", "$dst/images", force=true)
+  pkg = split(repo, "/")[2]
+  if isfile("book/build/book.pdf")
+      mv("book/build/book.pdf", "$dst/introAjulia.pdf", force=true)
+      pdffile = "https://$user.github.io/$pkg/" *
+          (dst == "." ? "" : "$dst/") * "introAjulia.pdf"
+      @info "Here is your pdf file:"
+      @info "  \033[1;33m$pdffile\033[0m"
+  end
   rm("book/build", recursive=true)
   run(`git add $dst`)
   if !success(`git diff --cached --exit-code`) # Don't commit if there are no changes
@@ -54,7 +62,6 @@ function deploy()
     run(`git push upstream gh-pages`)
   end
 
-  pkg = split(repo, "/")[2]
   site = "https://$user.github.io/$pkg/" * (dst == "." ? "" : "$dst/") * "index.html"
   @info "Here is your site:"
   @info "  \033[1;33m$site\033[0m"

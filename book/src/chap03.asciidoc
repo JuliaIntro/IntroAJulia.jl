@@ -430,9 +430,9 @@ julia> sqrt(5)
 Pero en un script, si se llama a una función productiva, ¡el valor de retorno se pierde para siempre!
 (((modo script)))
 
-[fuente, @ julia-run]
+[source,@julia-run]
 ----
-sqrt (5)
+sqrt(5)
 ----
 
 Este script calcula la raíz cuadrada de 5, pero como no almacena ni muestra el resultado, no es muy útil.
@@ -488,7 +488,7 @@ La depuración puede ser vista como un trabajo de detective. El programador se e
 
 La depuración también es como una ciencia experimental. Una vez que se tiene una idea de lo que está mal, se modifica el programa y se intenta nuevamente. Si la hipótesis era correcta, se puede predecir el resultado de la modificación y así estar un paso más cerca de un programa totalmente funcional. Si la hipótesis era incorrecta, se tiene que encontrar una nueva. Como Sherlock Holmes señaló:
 
-[cita, A. Conan Doyle, El signo de los cuatro]
+[quote, A. Conan Doyle, El signo de los cuatro]
 ____
 Cuando todo aquello que es imposible ha sido eliminado, lo que quede, por muy improbable que parezca, es la verdad.
 ____
