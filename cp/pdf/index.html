@@ -522,14 +522,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#chap05">5. Condicionales y recursividad</a>
 <ul class="sectlevel2">
-<li><a href="#_división_entera_de_tipo_piso_y_módulo">División entera de tipo piso y Módulo</a></li>
+<li><a href="#_división_entera_y_módulo">División entera y Módulo</a></li>
 <li><a href="#_expresiones_booleanas">Expresiones booleanas</a></li>
 <li><a href="#_operadores_lógicos">Operadores Lógicos</a></li>
 <li><a href="#_ejecución_condicional">Ejecución Condicional</a></li>
 <li><a href="#_ejecución_alternativa">Ejecución alternativa</a></li>
 <li><a href="#_condicionales_encadenadas">Condicionales encadenadas</a></li>
 <li><a href="#_condicionales_anidadas">Condicionales anidadas</a></li>
-<li><a href="#recursividad">Recursividad</a></li>
+<li><a href="#recursión">Recursividad</a></li>
 <li><a href="#_diagramas_de_pila_para_funciones_recursivas">Diagramas de pila para funciones recursivas</a></li>
 <li><a href="#_recursión_infinita">Recursión infinita</a></li>
 <li><a href="#_entrada_por_teclado">Entrada por teclado</a></li>
@@ -545,7 +545,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_composición_2">Composición</a></li>
 <li><a href="#boolean_functions">Funciones Booleanas</a></li>
 <li><a href="#_más_recursividad">Más recursividad</a></li>
-<li><a href="#_salto_de_fe">Salto de fe</a></li>
+<li><a href="#_voto_de_confianza">Voto de confianza</a></li>
 <li><a href="#one_more_example">Un Ejemplo Más</a></li>
 <li><a href="#_tipos_de_comprobación">Tipos de Comprobación</a></li>
 <li><a href="#deb06">Depuración</a></li>
@@ -569,7 +569,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#chap08">8. Cadenas</a>
 <ul class="sectlevel2">
-<li><a href="#characters">Caracteres</a></li>
+<li><a href="#caracteres">Caracteres</a></li>
 <li><a href="#_una_cadena_es_una_secuencia">Una Cadena es una Secuencia</a></li>
 <li><a href="#_length"><code>length</code></a></li>
 <li><a href="#_recorrido">Recorrido</a></li>
@@ -788,22 +788,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><a href="https://JuliaIntro.github.io/IntroAJulia.jl/latest/book.html">Este libro</a> está disponible bajo la <a href="https://creativecommons.org/licenses/by-nc/3.0/deed.es">Licencia Creative Commons Atribución-NoComercial 3.0 No portada</a>. Es una traducción de <a href="https://benlauwens.github.io/ThinkJulia.jl/latest/book.html">ThinkJulia</a>, el cual tiene la misma licencia. Una lista de las diferencias entre ThinkJulia y este libro está disponible en el <a href="#cambios">Apéndice C</a>.</p>
 </div>
 <div class="paragraph">
-<p>Un PDF de este libro está <a href="https://JuliaIntro.github.io/IntroAJulia.jl/latest/book.pdf">disponible aquí</a>.</p>
+<p>Un PDF de este libro está <a href="introAjulia.pdf">disponible aquí</a>.</p>
 </div>
 <div class="paragraph">
 <p><strong>Ben Lauwens</strong> es profesor de matemáticas en Royal Military Academy (RMA Bélgica). Tiene un doctorado en ingeniería y maestrías de KU Leuven y RMA, además de una licenciatura de RMA.</p>
 </div>
 <div class="paragraph">
 <p><strong>Allen Downey</strong> es profesor de informática en Olin College of Engineering. Ha dado clases en Wellesley College, Colby College y U.C. Berkeley. Tiene un doctorado en informática de U.C. Berkeley, y maestrías y licenciaturas del MIT.</p>
-</div>
-<div class="paragraph">
-<p><span class="small">Versión v0.5.1 <a href="https://github.com/JuliaIntro/IntroAJulia.jl">(Github)</a></span></p>
-</div>
-<div class="paragraph">
-<p>{sys:git rev-parse --short HEAD}
-git-hash-sys: {sys:git rev-parse --short HEAD}
-git-hash-sys2: {sys2:git rev-parse --short HEAD}
-git-hash-sys3: {sys3:git rev-parse --short HEAD}</p>
 </div>
 </div>
 </div>
@@ -1407,12 +1398,19 @@ String</code></pre>
 </div>
 <div class="sect2">
 <h3 id="_ejercicios">Ejercicios</h3>
-<div class="exampleblock">
-<div class="content">
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Observación</div>
+</td>
+<td class="content">
 <div class="paragraph">
 <p>Es una buena idea leer este libro frente a una computadora, para hacer los ejemplos y ejercicios conforme avance.</p>
 </div>
-</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="sect3">
 <h4 id="ex01-1">Ejercicio 1-1</h4>
@@ -1454,12 +1452,19 @@ String</code></pre>
 </li>
 <li>
 <p>¿Cuántas millas hay en 10 kilómetros?</p>
-<div class="exampleblock">
-<div class="content">
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Observación</div>
+</td>
+<td class="content">
 <div class="paragraph">
 <p>Hay 1.61 kilómetros en una milla.</p>
 </div>
-</div>
+</td>
+</tr>
+</table>
 </div>
 </li>
 <li>
@@ -1514,7 +1519,7 @@ julia&gt; π_val = 3.141592653589793
 <p>Los programadores generalmente eligen nombres representativos para sus variables, es decir, nombres que explican para qué se usa o qué contiene la variable.</p>
 </div>
 <div class="paragraph">
-<p>Los nombres de las variables pueden ser tan largos como se desee. Pueden contener casi todos los caracteres <em>Unicode</em> (consulte <a href="#caracteres">[caracteres]</a>), pero no pueden comenzar con un número. Es válido usar letras mayúsculas, pero lo común es usar solo minúsculas para nombres de variables.</p>
+<p>Los nombres de las variables pueden ser tan largos como se desee. Pueden contener casi todos los caracteres <em>Unicode</em> (consulte <a href="#caracteres">Caracteres</a>), pero no pueden comenzar con un número. Es válido usar letras mayúsculas, pero lo común es usar solo minúsculas para nombres de variables.</p>
 </div>
 <div class="paragraph">
 <p>Los caracteres <em>Unicode</em> se pueden ingresar mediante autocompletado por tabulación de las abreviaturas tipo LaTeX en el REPL de Julia. </p>
@@ -2197,7 +2202,7 @@ end</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p><code>function</code> es una palabra reservada que indica que esta es una definición de función. El nombre de la función es <code>imprimirletras</code>. Las reglas para los nombres de funciones son las mismas que para los nombres de variables: pueden contener casi todos los caracteres Unicode (consulte <a href="#caracteres">[caracteres]</a>), pero el primer carácter no puede ser un número. No puede usar una palabra reservada como nombre de una función, y debe evitar tener una variable y una función con el mismo nombre.
+<p><code>function</code> es una palabra reservada que indica que esta es una definición de función. El nombre de la función es <code>imprimirletras</code>. Las reglas para los nombres de funciones son las mismas que para los nombres de variables: pueden contener casi todos los caracteres Unicode (consulte <a href="#caracteres">Caracteres</a>), pero el primer carácter no puede ser un número. No puede usar una palabra reservada como nombre de una función, y debe evitar tener una variable y una función con el mismo nombre.
 </p>
 </div>
 <div class="paragraph">
@@ -2512,7 +2517,15 @@ aurea = (sqrt(5)+1)/2</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>sqrt (5)</pre>
+<pre class="highlight"><code class="language-julia" data-lang="julia">sqrt(5)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>2.23606797749979</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3603,12 +3616,12 @@ end</code></pre>
 <h2 id="chap05">5. Condicionales y recursividad</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>El tema principal de este capítulo es la sentencia <code>if</code>, la cual permite ejecutar diferentes acciones dependiendo del estado del programa. Inicialmente se presentan dos nuevos operadores: división entera de tipo piso y módulo.</p>
+<p>El tema principal de este capítulo es la sentencia <code>if</code>, la cual permite ejecutar diferentes acciones dependiendo del estado del programa. Inicialmente se presentan dos nuevos operadores: división entera y módulo.</p>
 </div>
 <div class="sect2">
-<h3 id="_división_entera_de_tipo_piso_y_módulo">División entera de tipo piso y Módulo</h3>
+<h3 id="_división_entera_y_módulo">División entera y Módulo</h3>
 <div class="paragraph">
-<p>El operador <em>división entera de tipo piso</em>, <code>÷</code> (<strong><code>\div TAB</code></strong>), divide dos números y redondea hacia abajo el resultado. Por ejemplo, suponga que la duración de una película es de 105 minutos. Es posible que desee saber la duración en horas. La división convencional devuelve un número de punto flotante:
+<p>El operador <em>división entera</em>, <code>÷</code> (<strong><code>\div TAB</code></strong>), divide dos números y redondea hacia abajo el resultado. Por ejemplo, suponga que la duración de una película es de 105 minutos. Es posible que desee saber la duración en horas. La división convencional devuelve un número de punto flotante:
   </p>
 </div>
 <div class="listingblock">
@@ -3620,7 +3633,7 @@ julia&gt; minutos / 60
 </div>
 </div>
 <div class="paragraph">
-<p>No obstante, las horas no se suelen escribir con decimales. La división entera de tipo piso devuelve el número entero de horas, redondeado hacia abajo:</p>
+<p>No obstante, las horas no se suelen escribir con decimales. La división entera devuelve el número entero de horas, redondeado hacia abajo:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3757,7 +3770,7 @@ end</code></pre>
 </p>
 </div>
 <div class="paragraph">
-<p>Las sentencias <code>if</code> tienen la misma estructura que las definiciones de función: un encabezado seguido del cuerpo, terminado con la palabra reservada <code>end</code> (en español "fin"). Las sentencias como este se denominan <em>sentencias compuestas</em>.
+<p>Las sentencias <code>if</code> tienen la misma estructura que las definiciones de función: un encabezado seguido del cuerpo, terminado con la palabra reservada <code>end</code> (en español "fin"). Las sentencias como esta se denominan <em>sentencias compuestas</em>.
 </p>
 </div>
 <div class="paragraph">
@@ -3886,7 +3899,7 @@ end</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="recursividad">Recursividad</h3>
+<h3 id="recursión">Recursividad</h3>
 <div class="paragraph">
 <p>Está permitido que una función llame a otra y también que una función se llame a sí misma. Puede no parecer útil, pero sí lo es, como puede verse en la siguiente función:
 </p>
@@ -3907,7 +3920,7 @@ end</code></pre>
 <p>Si <code>n</code> es 0 o negativo, muestra la palabra <code>"Despegue!"</code>. En otro caso, muestra el valor <code>n</code> y luego llama a la función <code>cuentaregresiva</code>, pasándole <code>n-1</code> como argumento.</p>
 </div>
 <div class="paragraph">
-<p>Qué sucede si llamamos a una función como esta?</p>
+<p>¿Qué sucede si llamamos a una función como esta?</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3963,7 +3976,7 @@ end</code></pre>
 </p>
 </div>
 <div class="paragraph">
-<p>El resto de la función es similar a <code>cuenta regresiva</code>: muestra <code>s</code> y luego se llama a sí mismo para mostrar <code>s</code> \(n-1\) veces más de modo que el número de lineas mostradas es \(1 + (n - 1)\), es decir \(n\).</p>
+<p>El resto de la función es similar a <code>cuenta regresiva</code>: muestra <code>s</code> y luego se llama a sí misma para mostrar <code>s</code> \(n-1\) veces más de modo que el número de lineas mostradas es \(1 + (n - 1)\), es decir \(n\).</p>
 </div>
 <div class="paragraph">
 <p>Para ejemplos simples como este, es más fácil usar un ciclo <code>for</code>. Se mostrarán ejemplos que son difíciles de escribir con un ciclo <code>for</code> y fáciles de escribir con recursividad.</p>
@@ -4079,7 +4092,7 @@ julia&gt; parse(Int64, numero)
 </div>
 </div>
 <div class="paragraph">
-<p>Pero si el usuario no escribe una cadena, obtendrá un error:
+<p>Pero si el usuario no escribe una cadena de dígitos, obtendrá un error:
 </p>
 </div>
 <div class="listingblock">
@@ -4151,7 +4164,7 @@ print(decibeles)</code></pre>
 <p>Este no es el resultado que esperábamos.</p>
 </div>
 <div class="paragraph">
-<p>Para encontrar el error, puede ser útil imprimir el valor de la variable "relacion", que resulta ser 0. El problema está en la línea 3, que usa la división de tipo piso en lugar de la división de punto flotante.</p>
+<p>Para encontrar el error, puede ser útil imprimir el valor de la variable "relacion", que resulta ser 0. El problema está en la línea 3, que usa la división entera en lugar de la división de punto flotante.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -4172,7 +4185,7 @@ print(decibeles)</code></pre>
 <h3 id="_glosario_5">Glosario</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">División de tipo piso</dt>
+<dt class="hdlist1">División entera</dt>
 <dd>
 <p>Un operador, denotado por <code>÷</code>, que divide dos números y redondea hacia abajo (hacia el infinito negativo) a un entero.
 </p>
@@ -4261,7 +4274,7 @@ print(decibeles)</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; time()
-1.599531574000008e9</code></pre>
+1.60107354292256e9</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4287,11 +4300,11 @@ print(decibeles)</code></pre>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Escriba una función llamada <code>verificarfermat</code> que tome cuatro parámetros—<code>a</code>, <code>b</code>, <code>c</code> and <code>n</code>— y que verifique si el teorema de Fermat es válido. Si <code>n</code> es mayor que 2 y <code>a^n + b^n == c^n</code> el programa debería imprimir, "¡Santo cielo, Fermat estaba equivocado!" De lo contrario, el programa debería imprimir, "No, eso no funciona".
+<p>Escriba una función llamada <code>verificarfermat</code> que tome cuatro parámetros—<code>a</code>, <code>b</code>, <code>c</code> y <code>n</code>— y que verifique si el teorema de Fermat es válido. Si <code>n</code> es mayor que 2 y <code>a^n + b^n == c^n</code> el programa debería imprimir, "¡Santo cielo, Fermat estaba equivocado!" De lo contrario, el programa debería imprimir, "No, eso no funciona".
 </p>
 </li>
 <li>
-<p>Escriba una función que solicite al usuario ingresar valores para <code>a</code>, <code>b</code>, <code>c</code> and <code>n</code>, que los convierta en enteros y que use <code>verificarfermat</code> para verificar si violan el teorema de Fermat.</p>
+<p>Escriba una función que solicite al usuario ingresar valores para <code>a</code>, <code>b</code>, <code>c</code> y <code>n</code>, que los convierta en enteros y que use <code>verificarfermat</code> para verificar si violan el teorema de Fermat.</p>
 </li>
 </ol>
 </div>
@@ -4452,7 +4465,7 @@ end</code></pre>
 <div class="sect2">
 <h3 id="_valores_de_retorno">Valores de retorno</h3>
 <div class="paragraph">
-<p>Llamar a la función genera un valor de retorno, que generalmente se asigna a una variable o se usa como parte de una expresión.</p>
+<p>Llamar a una función genera un valor de retorno, que generalmente se asigna a una variable o se usa como parte de una expresión.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4506,15 +4519,15 @@ end</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Dado que estas sentencias return están en una condicional alternativa, solo se ejecuta una.
+<p>Dado que estas sentencias <code>return</code> están en una condicional alternativa, solo se ejecuta una.
 </p>
 </div>
 <div class="paragraph">
-<p>En cuanto se ejecuta una sentencia return, la función termina sin ejecutar ninguna de las sentencias siguientes. El código que aparece después de la sentencia return, o en cualquier otro lugar al que el flujo de ejecución nunca llegará, se llama código muerto.
+<p>En cuanto se ejecuta una sentencia <code>return</code>, la función termina sin ejecutar ninguna de las sentencias siguientes. El código que aparece después de la sentencia <code>return</code>, o en cualquier otro lugar al que el flujo de ejecución nunca llegará, se llama código muerto.
 </p>
 </div>
 <div class="paragraph">
-<p>En una función productiva, es una buena idea asegurarse que cualquier posible recorrido del programa llegue a una sentencia return. Por ejemplo:</p>
+<p>En una función productiva, es una buena idea asegurarse que cualquier posible recorrido del programa llegue a una sentencia <code>return</code>. Por ejemplo:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4529,7 +4542,7 @@ end</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Esta versión no es correcta porque si <code>x</code> es igual a 0, ninguna de las condiciones es verdadera y la función termina sin alcanzar una sentencia return. Si el flujo de ejecución llega al final de la función, el valor de retorno es <code>nothing</code>, que claramente no es el valor absoluto de 0.</p>
+<p>Esta versión no es correcta porque si <code>x</code> es igual a 0, ninguna de las condiciones es verdadera y la función termina sin alcanzar una sentencia <code>return</code>. Si el flujo de ejecución llega al final de la función, el valor de retorno es <code>nothing</code>, que claramente no es el valor absoluto de 0.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4566,7 +4579,7 @@ nothing</code></pre>
 </p>
 </div>
 <div class="paragraph">
-<p>Para lidiar con programas de complejidad creciente, se sugiere una técnica llamada desarrollo incremental. El objetivo del desarrollo incremental es evitar largas sesiones de depuración, adicionando y probando solamente pequeñas porciones de código cada vez.
+<p>Para lidiar con programas de complejidad creciente, se sugiere una técnica llamada desarrollo incremental. El objetivo del desarrollo incremental es evitar largas sesiones de depuración, añadiendo y probando solamente pequeñas porciones de código cada vez.
 </p>
 </div>
 <div class="paragraph">
@@ -4661,7 +4674,7 @@ end</code></pre>
 <p>Si esto funciona correctamente, ya se habría terminado. Si no, se podría mostrar el valor de la variable resultado antes de la sentencia de retorno.</p>
 </div>
 <div class="paragraph">
-<p>La versión final de la función no muestra nada cuando se ejecuta, sólo retorna un valor. Las sentencias print que se escriben son útiles para la depuración, pero una vez que el programa esté funcionando correctamente, se deben eliminar. El código eliminado se llama <em>andamiaje</em> porque es útil para construir el programa pero no es parte del producto final.
+<p>La versión final de la función no muestra nada cuando se ejecuta, sólo retorna un valor. Las sentencias <code>print</code> son útiles para la depuración, pero una vez que el programa esté funcionando correctamente, se deben eliminar. El código eliminado se llama <em>andamiaje</em> porque es útil para construir el programa pero no es parte del producto final.
 </p>
 </div>
 <div class="paragraph">
@@ -4755,7 +4768,7 @@ end</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Es común dar a las funciones booleanas nombres que suenan como preguntas que tienen como respuesta un si ó un no, esdivisible devuelve <code>true</code> o <code>false</code> para indicar si <code>x</code> es o no divisible por <code>y</code>.</p>
+<p>Es común dar a las funciones booleanas nombres que suenan como preguntas que tienen como respuesta un si ó un no, <code>esdivisible</code> devuelve <code>true</code> o <code>false</code> para indicar si <code>x</code> es o no divisible por <code>y</code>.</p>
 </div>
 <div class="paragraph">
 <p>Por ejemplo:</p>
@@ -4891,7 +4904,7 @@ end</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>El flujo de ejecución de este programa es similar al flujo de <code>cuentaregresiva</code> en <a href="#recursion">[recursion]</a>. Si llamamos a <code>fact</code> con el valor <code>3</code>:
+<p>El flujo de ejecución de este programa es similar al flujo de <code>cuentaregresiva</code> en <a href="#recursión">Recursividad</a>. Si llamamos a <code>fact</code> con el valor <code>3</code>:
 </p>
 </div>
 <div class="openblock small">
@@ -4952,13 +4965,13 @@ end</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_salto_de_fe">Salto de fe</h3>
+<h3 id="_voto_de_confianza">Voto de confianza</h3>
 <div class="paragraph">
-<p>Seguir el flujo de ejecución es una forma de leer programas, pero puede llegar a ser abrumador. Una alternativa es lo que se conoce como el "salto de fe"(en inglés, "leap of faith"). Cuando llega a una llamada de función, en lugar de seguir el flujo de ejecución, asume que la función funciona correctamente y devuelve el resultado correcto.
+<p>Seguir el flujo de ejecución es una forma de leer programas, pero puede llegar a ser abrumador. Una alternativa es lo que se conoce como el "voto de confianza"(en inglés, "leap of faith"). Cuando llega a una llamada de función, en lugar de seguir el flujo de ejecución, asume que la función funciona correctamente y devuelve el resultado correcto.
 </p>
 </div>
 <div class="paragraph">
-<p>De hecho, ya se está haciendo este salto de fe cuando se usan funciones integradas de Julia. Cuando se llaman a <code>cos</code> o <code>exp</code>, no se examinan los cuerpos de esas funciones. Simplemente se asume que funcionan porque las personas que las escribieron eran buenos programadores.</p>
+<p>De hecho, ya se está dando este voto de confianza cuando se usan funciones integradas de Julia. Cuando se llaman a <code>cos</code> o <code>exp</code>, no se examinan los cuerpos de esas funciones. Simplemente se asume que funcionan porque las personas que las escribieron eran buenos programadores.</p>
 </div>
 <div class="paragraph">
 <p>Lo mismo ocurre cuando el usuario llama a una de sus propias funciones. Por ejemplo, en <a href="#boolean_functions">Funciones Booleanas</a>, se escribe una función llamada <code>esdivisible</code> que determina si un número es divisible por otro. Una vez que se confirme que esta función es correcta —al examinar y probar el código—, se puede usar la función sin mirar nuevamente el cuerpo.</p>
@@ -4967,13 +4980,13 @@ end</code></pre>
 <p>Lo mismo aplica a los programas recursivos. Cuando llegue a la llamada recursiva, en lugar de seguir el flujo de ejecución, debe suponer que la llamada recursiva funciona (devuelve el resultado correcto) y luego preguntarse: "Suponiendo que pueda encontrar el factorial de \(n-1\), ¿se puede calcular el factorial de \(n\)?" Está claro que es posible, multiplicando por \(n\).</p>
 </div>
 <div class="paragraph">
-<p>Por supuesto, es un poco extraño suponer que la función funciona correctamente cuando no ha terminado de escribirla, ¡pero por eso se llama un salto de fe!</p>
+<p>Por supuesto, es un poco extraño suponer que la función funciona correctamente cuando no ha terminado de escribirla, ¡pero por eso se llama voto de confianza!</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="one_more_example">Un Ejemplo Más</h3>
 <div class="paragraph">
-<p>Después de los factoriales, el ejemplo más común de una función matemática definida de manera recursiva es fibonacci, que tiene la siguiente definición (ver <a href="https://en.wikipedia.org/wiki/Fibonacci_number" class="bare">https://en.wikipedia.org/wiki/Fibonacci_number</a>):
+<p>Después de los factoriales, el ejemplo más común de una función matemática definida de manera recursiva es <code>fibonacci</code>, que tiene la siguiente definición (ver <a href="https://en.wikipedia.org/wiki/Fibonacci_number" class="bare">https://en.wikipedia.org/wiki/Fibonacci_number</a>):
 </p>
 </div>
 <div class="stemblock">
@@ -5006,7 +5019,7 @@ end</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Si intenta seguir el flujo de ejecución en esta función, incluso para valores bastante pequeños de <code>n</code>, su cabeza podría estallar. Haciendo un salto de fe, es decir, asumiendo que las dos llamadas recursivas funcionan correctamente, entonces está claro que se obtiene el resultado correcto al sumarlas.</p>
+<p>Si intenta seguir el flujo de ejecución en esta función, incluso para valores bastante pequeños de <code>n</code>, su cabeza podría estallar. Dando un voto de confianza, es decir, asumiendo que las dos llamadas recursivas funcionan correctamente, entonces está claro que se obtiene el resultado correcto al sumarlas.</p>
 </div>
 </div>
 <div class="sect2">
@@ -5035,16 +5048,16 @@ Stacktrace:
 </p>
 </div>
 <div class="paragraph">
-<p>Se puede usar el operador integrado <code>isa</code> para verificar el tipo de argumento. También se puede asegurarnos de que el argumento sea positivo:
+<p>Se puede usar el operador integrado <code>isa</code> para verificar el tipo de argumento. También podemos asegurarnos de que el argumento sea positivo:
 </p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-julia" data-lang="julia">function fact(n)
     if !(n isa Int64)
-        error("Factorial is only defined for integers.")
+        error("El factorial únicamente está definido para números enteros.")
     elseif n &lt; 0
-        error("Factorial is not defined for negative integers.")
+        error("El factorial no está definido para enteros negativos.")
     elseif n == 0
         return 1
     else
@@ -5059,9 +5072,9 @@ end</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; fact("fred")
-ERROR: Factorial is only defined for integers.
+ERROR: El factorial únicamente está definido para números enteros.
 julia&gt; fact(-2)
-ERROR: Factorial is not defined for negative integers.</code></pre>
+ERROR: El factorial no está definido para enteros negativos.</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -5100,10 +5113,10 @@ ERROR: Factorial is not defined for negative integers.</code></pre>
 <p>Para descartar la primera posibilidad, puede agregar una sentencia de impresión al comienzo de la función para mostrar los valores de los parámetros (y tal vez sus tipos) o bien escribir líneas de código que verifiquen las condiciones previas de manera explícita.</p>
 </div>
 <div class="paragraph">
-<p>Si los parámetros están bien, agregue una sentencia de impresión antes de cada sentencia return y muestre el valor de retorno. Si es posible, verifique el resultado a mano. Considere también llamar a la función con valores que faciliten la verificación del resultado (como en <a href="#incremental_development">Desarrollo incremental</a>).</p>
+<p>Si los parámetros están bien, agregue una sentencia de impresión antes de cada sentencia <code>return</code> y muestre el valor de retorno. Si es posible, verifique el resultado a mano. Considere también llamar a la función con valores que faciliten la verificación del resultado (como en <a href="#incremental_development">Desarrollo incremental</a>).</p>
 </div>
 <div class="paragraph">
-<p>Si la función parece estar funcionando, revise la llamada a función para asegurarse de que el valor de retorno se está utilizando correctamente (¡o incluso si se está utilizando!).</p>
+<p>Si la función parece estar funcionando, revise la llamada a la función para asegurarse de que el valor de retorno se está utilizando correctamente (¡o incluso si se está utilizando!).</p>
 </div>
 <div class="paragraph">
 <p>Agregar sentencias de impresión al principio y al final de una función puede ayudar a que el flujo de ejecución sea más transparente. Por ejemplo, aquí hay una versión de <code>fact</code> con sentencias de impresión:
@@ -5115,7 +5128,7 @@ ERROR: Factorial is not defined for negative integers.</code></pre>
     espacio = " " ^ (4 * n)
     println(espacio, "factorial ", n)
     if n == 0
-        println(espacio, "returning 1")
+        println(espacio, "devolviendo 1")
         return 1
     else
         recursion = fact(n-1)
@@ -5127,7 +5140,7 @@ end</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p><code>espacio</code> es una cadena de caracteres de espacio que permite generar sangría en la salida:</p>
+<p><code>espacio</code> es una cadena de caracteres de espacios que permite generar sangría en la salida:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5137,7 +5150,7 @@ end</code></pre>
         factorial 2
     factorial 1
 factorial 0
-returning 1
+devolviendo 1
     devolviendo 1
         devolviendo 2
             devolviendo 6
@@ -5160,7 +5173,7 @@ returning 1
 </dd>
 <dt class="hdlist1">código muerto</dt>
 <dd>
-<p>Parte de un programa que nunca puede ser ejecutado, a menudo porque aparece después de una sentencia return.
+<p>Parte de un programa que nunca puede ser ejecutado, a menudo porque aparece después de una sentencia <code>return</code>.
 </p>
 </dd>
 <dt class="hdlist1">desarrollo incremental</dt>
@@ -5271,7 +5284,7 @@ end</code></pre>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Pruebe estas funciones. ¿Qué sucede si llama a la función medio con una cadena de dos letras? ¿Y con una cadena de una letra? ¿Qué pasa con la cadena vacía <code>""</code>, que no contiene letras?</p>
+<p>Pruebe estas funciones. ¿Qué sucede si llama a la función <code>medio</code> con una cadena de dos letras? ¿Y con una cadena de una letra? ¿Qué pasa con la cadena vacía <code>""</code>, que no contiene letras?</p>
 </li>
 <li>
 <p>Escriba una función llamada <code>espalindromo</code> que tome un argumento de tipo cadena y devuelva <code>true</code> si es un palíndromo y <code>false</code> de lo contrario. Recuerde que puede usar la función integrada <code>length</code> para verificar la longitud de una cadena.
@@ -5324,7 +5337,7 @@ end</code></pre>
 <h2 id="chap07">7. Iteración</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Este capítulo se centra en la iteración, que es la capacidad de ejecutar repetidamente un bloque de sentencias. Se han visto dos tipos de iteración: usando recursión en <a href="#recursion">[recursion]</a> y usando ciclos <code>for</code>, en <a href="#simple_repetition">Repetición Simple</a>. En este capítulo veremos otro tipo más: usando sentencias <code>while</code>. Primeramente, se introducirán algunos términos sobre asignación de variables.
+<p>Este capítulo se centra en la iteración, que es la capacidad de ejecutar repetidamente un bloque de sentencias. Se han visto dos tipos de iteración: usando recursión en <a href="#recursión">Recursividad</a> y usando ciclos <code>for</code>, en <a href="#simple_repetition">Repetición Simple</a>. En este capítulo veremos otro tipo más: usando sentencias <code>while</code>. Primeramente, se introducirán algunos términos sobre asignación de variables.
 </p>
 </div>
 <div class="sect2">
@@ -5445,7 +5458,7 @@ julia&gt; y = y + 1
 </p>
 </div>
 <div class="paragraph">
-<p>Ya se han visto dos funciones, <code>cuenta regresiva</code> y <code>printn</code>, que iteran usando recursividad. Por ser la iteración tan común, Julia proporciona varias características que la hacen más fácil. Una es la sentencia <code>for</code> que se vio en <a href="#simple_repetition">Repetición Simple</a>, a la cual se volverá más adelante.
+<p>Ya se han visto dos funciones, <code>cuentaregresiva</code> y <code>printn</code>, que iteran usando recursividad. Por ser la iteración tan común, Julia proporciona varias características que la hacen más fácil. Una es la sentencia <code>for</code> que se vio en <a href="#simple_repetition">Repetición Simple</a>, a la cual se volverá más adelante.
 </p>
 </div>
 <div class="paragraph">
@@ -5485,7 +5498,7 @@ end</code></pre>
 </ol>
 </div>
 <div class="paragraph">
-<p>Este tipo de flujo de llama bucle porque el tercer paso vuelve a la parte superior.
+<p>Este tipo de flujo se llama bucle porque el tercer paso vuelve a la parte superior.
 </p>
 </div>
 <div class="paragraph">
@@ -5493,7 +5506,7 @@ end</code></pre>
 </p>
 </div>
 <div class="paragraph">
-<p>En el caso de <code>cuentaregresiva</code>, podemos probar que el bucle termina: si <code>n</code> es cero o negativo, el ciclo no se produce. En otro caso, el valor de <code>n</code> se hace más pequeño cada vez que pasa por el bucle, así en cierto momento se llega a 0.</p>
+<p>En el caso de <code>cuentaregresiva</code>, podemos probar que el bucle termina: si <code>n</code> es cero o negativo, el ciclo termina. En otro caso, el valor de <code>n</code> se hace más pequeño cada vez que pasa por el bucle, así en cierto momento se llega a 0.</p>
 </div>
 <div class="paragraph">
 <p>En otros casos no es tan fácil decirlo. Por ejemplo:
@@ -5520,7 +5533,7 @@ end</code></pre>
 <p>Cada vez que pasa por el bucle, el programa muestra como salida el valor de <code>n</code> y luego comprueba si es par o impar. Si es par, el valor de <code>n</code> se divide por dos. Si es impar, el valor de <code>n</code> se sustituye por <code>n*3 + 1</code>. Por ejemplo, si el argumento pasado a la función seq es 3, los valores resultantes <code>n</code> son 3, 10, 5, 16, 8, 4, 2, 1.</p>
 </div>
 <div class="paragraph">
-<p>Puesto que n a veces aumenta y a veces disminuye, no hay una prueba obvia de que <code>n</code> alcance alguna vez el valor 1, o de que el programa vaya a terminar. Para algunos valores particulares de <code>n</code>, se puede probar que sí termina. Por ejemplo, si el valor de inicio es una potencia de dos, entonces el valor de <code>n</code> será par cada vez que se pasa por el bucle, hasta que llegue a 1. El ejemplo anterior produce dicha secuencia si se inicia con 16.</p>
+<p>Puesto que <code>n</code> a veces aumenta y a veces disminuye, no hay una prueba obvia de que <code>n</code> alcance alguna vez el valor 1, o de que el programa vaya a terminar. Para algunos valores particulares de <code>n</code>, se puede probar que sí termina. Por ejemplo, si el valor de inicio es una potencia de dos, entonces el valor de <code>n</code> será par cada vez que se pasa por el bucle, hasta que llegue a 1. El ejemplo anterior produce dicha secuencia si se inicia con 16.</p>
 </div>
 <div class="paragraph">
 <p>Lo díficil es preguntarse si se puede probar que este programa termina para todos los valores positivos de <code>n</code>. Hasta ahora, nadie ha sido capaz de probar que lo hace o ¡que no lo hace! (Vea <a href="https://es.wikipedia.org/wiki/Conjetura_de_Collatz." class="bare">https://es.wikipedia.org/wiki/Conjetura_de_Collatz.</a>)
@@ -5529,7 +5542,7 @@ end</code></pre>
 <div class="sect3">
 <h4 id="_ejercicio_7_1">Ejercicio 7-1</h4>
 <div class="paragraph">
-<p>Reescribe la función <code>printn</code> de <a href="#recursion">[recursion]</a> utilizando iteración en vez de recursión.</p>
+<p>Reescribe la función <code>printn</code> de <a href="#recursión">Recursividad</a> utilizando iteración en vez de recursión.</p>
 </div>
 </div>
 </div>
@@ -5688,7 +5701,7 @@ end</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Para la mayoría de los valores de a esto funciona bien, aunque en general no se recomienda probar igualdad entre números de punto flotante. Los números de punto flotante son aproximadamente correctos: la mayoría de los números racionales, como \(\frac{1}{3}\), e irracionales, como \(\sqrt 2\), no pueden ser representados exactamente con un <code>Float64</code>.</p>
+<p>Para la mayoría de los valores de <code>a</code> esto funciona bien, aunque en general no se recomienda probar igualdad entre números de punto flotante. Los números de punto flotante son aproximadamente correctos: la mayoría de los números racionales, como \(\frac{1}{3}\), e irracionales, como \(\sqrt 2\), no pueden ser representados exactamente con un <code>Float64</code>.</p>
 </div>
 <div class="paragraph">
 <p>En lugar de verificar si <code>x</code> e <code>y</code> son exactamente iguales, es más seguro usar la función integrada <code>abs</code> para calcular el valor absoluto o la magnitud de la diferencia entre ellos:
@@ -5702,7 +5715,7 @@ end</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Donde <code>ε</code> (<strong><code>\varepsilon TAB</code></strong>) toma un valor como <code>0.0000001</code>, y representa el error que estamos dispuestos a aceptar entre la estimación y el valor real.</p>
+<p>Donde <code>ε</code> (<strong><code>\varepsilon TAB</code></strong>) toma un valor como <code>0.0000001</code> que determina cómo de cerca es suficientemente cerca.</p>
 </div>
 </div>
 <div class="sect2">
@@ -5715,7 +5728,7 @@ end</code></pre>
 <p>Para comprender qué es un algoritmo, podría ayudar empezar con algo que no es un algoritmo. Cuando aprendió a multiplicar números de un solo dígito, probablemente memorizó la tabla de multiplicar. En efecto, memorizó 100 soluciones específicas. Ese tipo de conocimiento no es un algoritmo.</p>
 </div>
 <div class="paragraph">
-<p>Pero si fuera "flojo", podría haber aprendido algunos trucos. Por ejemplo, para encontrar el producto de \(n\) y 9, puede escribir \(n-1\) como el primer dígito y \(10-n\) como el segundo dígito. Este truco es una solución general para multiplicar cualquier número de un solo dígito por 9. ¡Esto sí es un algoritmo!</p>
+<p>Pero si fuera "perezoso", podría haber aprendido algunos trucos. Por ejemplo, para encontrar el producto de \(n\) y 9, puede escribir \(n-1\) como el primer dígito y \(10-n\) como el segundo dígito. Este truco es una solución general para multiplicar cualquier número de un solo dígito por 9. ¡Esto sí es un algoritmo!</p>
 </div>
 <div class="paragraph">
 <p>Del mismo modo, las técnicas que aprendió para la suma con “llevamos tanto”, la resta con “pedimos prestado tanto”, y la división “larga o con galera o de casita” son todas ellas algoritmos. Una de las características de los algoritmos es que no requieren inteligencia para realizarlos. Son procesos mecánicos donde cada paso se sigue de acuerdo con un conjunto simple de reglas.</p>
@@ -5895,7 +5908,7 @@ julia&gt; eval(expr)
 </p>
 </div>
 <div class="sect2">
-<h3 id="characters">Caracteres</h3>
+<h3 id="caracteres">Caracteres</h3>
 <div class="paragraph">
 <p>Los hispanohablantes están familiarizados con algunos caracteres, tales como las letras del alfabeto (A, B, C, &#8230;&#8203;), los números y los signos de puntuación comunes. Estos caracteres están estandarizados en el código <em>ASCII</em> (Código Estándar Estadounidense para el Intercambio de Información).
 </p>
@@ -6442,7 +6455,7 @@ end</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-julia" data-lang="julia">function esreverso(palabra1, palabra2)
+<pre class="highlight"><code class="language-julia" data-lang="julia">function espalindroma(palabra1, palabra2)
     if length(palabra1) != length(palabra2)
         return false
     end
@@ -6473,7 +6486,7 @@ end</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; esreverso("amor", "roma")
+<pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; espalindroma("amor", "roma")
 false</code></pre>
 </div>
 </div>
@@ -6485,7 +6498,7 @@ false</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; esreverso("amor", "roma")
+<pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; espalindroma("amor", "roma")
 i = 1
 j = 3
 false</code></pre>
@@ -6499,7 +6512,7 @@ false</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; esreverso("amor", "roma")
+<pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; espalindroma("amor", "roma")
 i = 1
 j = 4
 i = 2
@@ -6629,7 +6642,7 @@ julia&gt; fruta[1:2:6]
 <p>Un tamaño de paso de -1 recorre la palabra hacia la izquierda, por lo que la porción <code>[end:-1:1]</code> genera una cadena invertida.</p>
 </div>
 <div class="paragraph">
-<p>Use esto para escribir una versión de una línea de código de <code>espalindromo</code> de <a href="#ex06-3">Ejercicio 6-6</a>.
+<p>Use esto para escribir una versión de una línea de código de <code>espalindroma</code> de <a href="#ex06-3">Ejercicio 6-6</a>.
 </p>
 </div>
 </div>
@@ -13587,9 +13600,9 @@ end</code></pre>
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; mazo = Mazo()
 A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ 10♣ J♣ Q♣ K♣ A♦ 2♦ 3♦ 4♦ 5♦ 6♦ 7♦ 8♦ 9♦ 10♦ J♦ Q♦ K♦ A♥ 2♥ 3♥ 4♥ 5♥ 6♥ 7♥ 8♥ 9♥ 10♥ J♥ Q♥ K♥ A♠ 2♠ 3♠ 4♠ 5♠ 6♠ 7♠ 8♠ 9♠ 10♠ J♠ Q♠ K♠
 julia&gt; shuffle!(mazo)
-3♥ 8♣ 6♣ Q♣ 5♥ 3♦ J♠ 2♣ 2♥ 8♦ 2♠ 7♣ 10♥ 9♦ 5♣ 4♠ 6♥ Q♥ 4♦ 10♦ 4♣ 7♦ A♠ 8♥ 6♠ J♥ 3♣ Q♦ A♦ K♣ 5♦ 7♠ K♥ 2♦ 4♥ 8♠ 6♦ Q♠ J♦ 3♠ K♦ A♥ K♠ J♣ 9♠ 7♥ 9♥ A♣ 9♣ 10♣ 5♠ 10♠
+J♥ 6♦ 2♦ 10♠ A♦ 8♥ 5♣ 5♦ 2♥ J♠ 7♥ 2♠ 8♠ 7♠ 7♣ 10♥ 3♦ 5♠ J♣ 4♣ Q♦ 6♣ K♠ 7♦ A♥ A♠ 3♠ K♦ 4♥ 4♦ 9♠ 6♠ 6♥ 8♣ 2♣ 9♥ A♣ Q♥ 10♣ 3♣ 5♥ Q♠ 4♠ K♥ J♦ K♣ 9♦ 3♥ 10♦ 9♣ 8♦ Q♣
 julia&gt; naipe = pop!(mazo)
-10♠
+Q♣
 julia&gt; push!(mano, naipe)</code></pre>
 </div>
 </div>
@@ -15512,7 +15525,7 @@ CodeInfo(
 <div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; @code_llvm sumacuadrada(3.0, 4.0)
 ;  @ none:2 within `sumacuadrada'
-define double @julia_sumacuadrada_20378(double, double) {
+define double @julia_sumacuadrada_20461(double, double) {
 top:
 ; ┌ @ intfuncs.jl:261 within `literal_pow'
 ; │┌ @ float.jl:405 within `*'
@@ -16319,7 +16332,7 @@ return contar</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Ultima actualización 2020-09-08 02:19:31 UTC
+Ultima actualización 2020-09-25 22:39:00 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
