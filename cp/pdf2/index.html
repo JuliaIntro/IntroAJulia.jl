@@ -529,7 +529,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_ejecución_alternativa">Ejecución alternativa</a></li>
 <li><a href="#_condicionales_encadenadas">Condicionales encadenadas</a></li>
 <li><a href="#_condicionales_anidadas">Condicionales anidadas</a></li>
-<li><a href="#recursividad">Recursividad</a></li>
+<li><a href="#recursión">Recursividad</a></li>
 <li><a href="#_diagramas_de_pila_para_funciones_recursivas">Diagramas de pila para funciones recursivas</a></li>
 <li><a href="#_recursión_infinita">Recursión infinita</a></li>
 <li><a href="#_entrada_por_teclado">Entrada por teclado</a></li>
@@ -569,7 +569,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#chap08">8. Cadenas</a>
 <ul class="sectlevel2">
-<li><a href="#characters">Caracteres</a></li>
+<li><a href="#caracteres">Caracteres</a></li>
 <li><a href="#_una_cadena_es_una_secuencia">Una Cadena es una Secuencia</a></li>
 <li><a href="#_length"><code>length</code></a></li>
 <li><a href="#_recorrido">Recorrido</a></li>
@@ -1398,12 +1398,19 @@ String</code></pre>
 </div>
 <div class="sect2">
 <h3 id="_ejercicios">Ejercicios</h3>
-<div class="exampleblock">
-<div class="content">
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Observación</div>
+</td>
+<td class="content">
 <div class="paragraph">
 <p>Es una buena idea leer este libro frente a una computadora, para hacer los ejemplos y ejercicios conforme avance.</p>
 </div>
-</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="sect3">
 <h4 id="ex01-1">Ejercicio 1-1</h4>
@@ -1445,12 +1452,19 @@ String</code></pre>
 </li>
 <li>
 <p>¿Cuántas millas hay en 10 kilómetros?</p>
-<div class="exampleblock">
-<div class="content">
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Observación</div>
+</td>
+<td class="content">
 <div class="paragraph">
 <p>Hay 1.61 kilómetros en una milla.</p>
 </div>
-</div>
+</td>
+</tr>
+</table>
 </div>
 </li>
 <li>
@@ -1505,7 +1519,7 @@ julia&gt; π_val = 3.141592653589793
 <p>Los programadores generalmente eligen nombres representativos para sus variables, es decir, nombres que explican para qué se usa o qué contiene la variable.</p>
 </div>
 <div class="paragraph">
-<p>Los nombres de las variables pueden ser tan largos como se desee. Pueden contener casi todos los caracteres <em>Unicode</em> (consulte <a href="#caracteres">[caracteres]</a>), pero no pueden comenzar con un número. Es válido usar letras mayúsculas, pero lo común es usar solo minúsculas para nombres de variables.</p>
+<p>Los nombres de las variables pueden ser tan largos como se desee. Pueden contener casi todos los caracteres <em>Unicode</em> (consulte <a href="#caracteres">Caracteres</a>), pero no pueden comenzar con un número. Es válido usar letras mayúsculas, pero lo común es usar solo minúsculas para nombres de variables.</p>
 </div>
 <div class="paragraph">
 <p>Los caracteres <em>Unicode</em> se pueden ingresar mediante autocompletado por tabulación de las abreviaturas tipo LaTeX en el REPL de Julia. </p>
@@ -2188,7 +2202,7 @@ end</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p><code>function</code> es una palabra reservada que indica que esta es una definición de función. El nombre de la función es <code>imprimirletras</code>. Las reglas para los nombres de funciones son las mismas que para los nombres de variables: pueden contener casi todos los caracteres Unicode (consulte <a href="#caracteres">[caracteres]</a>), pero el primer carácter no puede ser un número. No puede usar una palabra reservada como nombre de una función, y debe evitar tener una variable y una función con el mismo nombre.
+<p><code>function</code> es una palabra reservada que indica que esta es una definición de función. El nombre de la función es <code>imprimirletras</code>. Las reglas para los nombres de funciones son las mismas que para los nombres de variables: pueden contener casi todos los caracteres Unicode (consulte <a href="#caracteres">Caracteres</a>), pero el primer carácter no puede ser un número. No puede usar una palabra reservada como nombre de una función, y debe evitar tener una variable y una función con el mismo nombre.
 </p>
 </div>
 <div class="paragraph">
@@ -2503,7 +2517,15 @@ aurea = (sqrt(5)+1)/2</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>sqrt (5)</pre>
+<pre class="highlight"><code class="language-julia" data-lang="julia">sqrt(5)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>2.23606797749979</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3877,7 +3899,7 @@ end</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="recursividad">Recursividad</h3>
+<h3 id="recursión">Recursividad</h3>
 <div class="paragraph">
 <p>Está permitido que una función llame a otra y también que una función se llame a sí misma. Puede no parecer útil, pero sí lo es, como puede verse en la siguiente función:
 </p>
@@ -4252,7 +4274,7 @@ print(decibeles)</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; time()
-1.600832210763358e9</code></pre>
+1.601063756442428e9</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4882,7 +4904,7 @@ end</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>El flujo de ejecución de este programa es similar al flujo de <code>cuentaregresiva</code> en <a href="#recursion">[recursion]</a>. Si llamamos a <code>fact</code> con el valor <code>3</code>:
+<p>El flujo de ejecución de este programa es similar al flujo de <code>cuentaregresiva</code> en <a href="#recursión">Recursividad</a>. Si llamamos a <code>fact</code> con el valor <code>3</code>:
 </p>
 </div>
 <div class="openblock small">
@@ -5315,7 +5337,7 @@ end</code></pre>
 <h2 id="chap07">7. Iteración</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Este capítulo se centra en la iteración, que es la capacidad de ejecutar repetidamente un bloque de sentencias. Se han visto dos tipos de iteración: usando recursión en <a href="#recursion">[recursion]</a> y usando ciclos <code>for</code>, en <a href="#simple_repetition">Repetición Simple</a>. En este capítulo veremos otro tipo más: usando sentencias <code>while</code>. Primeramente, se introducirán algunos términos sobre asignación de variables.
+<p>Este capítulo se centra en la iteración, que es la capacidad de ejecutar repetidamente un bloque de sentencias. Se han visto dos tipos de iteración: usando recursión en <a href="#recursión">Recursividad</a> y usando ciclos <code>for</code>, en <a href="#simple_repetition">Repetición Simple</a>. En este capítulo veremos otro tipo más: usando sentencias <code>while</code>. Primeramente, se introducirán algunos términos sobre asignación de variables.
 </p>
 </div>
 <div class="sect2">
@@ -5520,7 +5542,7 @@ end</code></pre>
 <div class="sect3">
 <h4 id="_ejercicio_7_1">Ejercicio 7-1</h4>
 <div class="paragraph">
-<p>Reescribe la función <code>printn</code> de <a href="#recursion">[recursion]</a> utilizando iteración en vez de recursión.</p>
+<p>Reescribe la función <code>printn</code> de <a href="#recursión">Recursividad</a> utilizando iteración en vez de recursión.</p>
 </div>
 </div>
 </div>
@@ -5886,7 +5908,7 @@ julia&gt; eval(expr)
 </p>
 </div>
 <div class="sect2">
-<h3 id="characters">Caracteres</h3>
+<h3 id="caracteres">Caracteres</h3>
 <div class="paragraph">
 <p>Los hispanohablantes están familiarizados con algunos caracteres, tales como las letras del alfabeto (A, B, C, &#8230;&#8203;), los números y los signos de puntuación comunes. Estos caracteres están estandarizados en el código <em>ASCII</em> (Código Estándar Estadounidense para el Intercambio de Información).
 </p>
@@ -13578,9 +13600,9 @@ end</code></pre>
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; mazo = Mazo()
 A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ 10♣ J♣ Q♣ K♣ A♦ 2♦ 3♦ 4♦ 5♦ 6♦ 7♦ 8♦ 9♦ 10♦ J♦ Q♦ K♦ A♥ 2♥ 3♥ 4♥ 5♥ 6♥ 7♥ 8♥ 9♥ 10♥ J♥ Q♥ K♥ A♠ 2♠ 3♠ 4♠ 5♠ 6♠ 7♠ 8♠ 9♠ 10♠ J♠ Q♠ K♠
 julia&gt; shuffle!(mazo)
-8♦ 5♣ 10♦ 4♥ A♦ A♥ 6♦ K♦ 2♦ Q♥ 3♠ 6♠ 3♣ 7♥ J♠ A♠ J♦ 5♥ 3♦ K♠ 2♥ 2♠ 9♠ 5♠ 7♣ 8♠ 3♥ K♣ 4♦ 4♠ 7♦ A♣ 8♣ 4♣ K♥ 10♣ 10♠ J♣ 8♥ 2♣ J♥ Q♠ Q♣ 9♣ 6♥ 10♥ 9♥ Q♦ 6♣ 5♦ 7♠ 9♦
+9♣ 2♠ K♦ 3♠ 6♦ 8♣ 7♦ 5♣ 9♦ K♥ 8♠ 6♥ 3♥ 7♠ 2♣ A♥ K♠ 5♦ K♣ 5♥ 10♥ A♣ 4♦ 4♥ 10♣ 3♣ 2♥ 7♣ 8♦ 5♠ 10♠ Q♠ 4♠ Q♦ 6♣ A♦ A♠ 9♥ J♥ Q♥ 9♠ 6♠ 10♦ Q♣ 2♦ J♦ J♠ 3♦ 4♣ 8♥ 7♥ J♣
 julia&gt; naipe = pop!(mazo)
-9♦
+J♣
 julia&gt; push!(mano, naipe)</code></pre>
 </div>
 </div>
@@ -15503,7 +15525,7 @@ CodeInfo(
 <div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; @code_llvm sumacuadrada(3.0, 4.0)
 ;  @ none:2 within `sumacuadrada'
-define double @julia_sumacuadrada_20444(double, double) {
+define double @julia_sumacuadrada_20446(double, double) {
 top:
 ; ┌ @ intfuncs.jl:261 within `literal_pow'
 ; │┌ @ float.jl:405 within `*'
@@ -16310,7 +16332,7 @@ return contar</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Ultima actualización 2020-09-23 03:36:48 UTC
+Ultima actualización 2020-09-25 19:55:54 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
