@@ -1,7 +1,7 @@
 [[chap07]]
 == Iteración
 
-Este capítulo se centra en la iteración, que es la capacidad de ejecutar repetidamente un bloque de sentencias. Se han visto dos tipos de iteración: usando recursión en <<recursion>> y usando ciclos +for+, en <<simple_repetition>>. En este capítulo veremos otro tipo más: usando sentencias +while+. Primeramente, se introducirán algunos términos sobre asignación de variables.
+Este capítulo se centra en la iteración, que es la capacidad de ejecutar repetidamente un bloque de sentencias. Se han visto dos tipos de iteración: usando recursión en <<recursión>> y usando ciclos +for+, en <<simple_repetition>>. En este capítulo veremos otro tipo más: usando sentencias +while+. Primeramente, se introducirán algunos términos sobre asignación de variables.
 (((iteración)))(((recursión)))(((sentencia for)))
 
 === Asignación múltiple
@@ -160,7 +160,7 @@ Lo díficil es preguntarse si se puede probar que este programa termina para tod
 
 ==== Ejercicio 7-1
 
-Reescribe la función +printn+ de <<recursion>> utilizando iteración en vez de recursión.
+Reescribe la función +printn+ de <<recursión>> utilizando iteración en vez de recursión.
 
 === +break+
 

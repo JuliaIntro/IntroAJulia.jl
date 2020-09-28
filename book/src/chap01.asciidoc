@@ -272,7 +272,7 @@ El proceso ((("depuración", seealso="errores (bugs); probando")))de búsqueda y
 
 === Ejercicios
 
-[Observación]
+[TIP]
 ====
 Es una buena idea leer este libro frente a una computadora, para hacer los ejemplos y ejercicios conforme avance.
 ====
@@ -304,7 +304,7 @@ Inicie el REPL de Julia, y úselo como una calculadora.
 
 . ¿Cuántas millas hay en 10 kilómetros?
 +
-[Observación]
+[TIP]
 ====
 Hay 1.61 kilómetros en una milla.
 ====

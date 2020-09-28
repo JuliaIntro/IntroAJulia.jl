@@ -1,0 +1,67 @@
+# see https://github.com/asciidoctor/asciidoctor-pdf/blob/master/docs/theming-guide.adoc
+# for details on how to change this file
+font:
+  catalog:
+    DejaVuSerif:
+      normal: /usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf
+      bold: /usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf
+      italic: /usr/share/fonts/truetype/dejavu/DejaVuSerif-Italic.ttf
+      bold_italic: /usr/share/fonts/truetype/dejavu/DejaVuSerif-BoldItalic.ttf
+    Emoji:
+      normal: /home/travis/build/JuliaIntro/IntroAJulia.jl/OpenSansEmoji.ttf
+      bold: /home/travis/build/JuliaIntro/IntroAJulia.jl/OpenSansEmoji.ttf
+      italic: /home/travis/build/JuliaIntro/IntroAJulia.jl/OpenSansEmoji.ttf
+      bold_italic: /home/travis/build/JuliaIntro/IntroAJulia.jl/OpenSansEmoji.ttf
+    NotoEmoji:
+      normal: /usr/share/fonts/truetype/noto/NotoColorEmoji.ttf
+      bold: /usr/share/fonts/truetype/noto/NotoColorEmoji.ttf
+      italic: /usr/share/fonts/truetype/noto/NotoColorEmoji.ttf
+      bold_italic: /usr/share/fonts/truetype/noto/NotoColorEmoji.ttf
+    JuliaMono:
+      normal: /home/travis/build/JuliaIntro/IntroAJulia.jl/JuliaMono-Regular.ttf
+      bold: /home/travis/build/JuliaIntro/IntroAJulia.jl/JuliaMono-Bold.ttf
+      italic: /home/travis/build/JuliaIntro/IntroAJulia.jl/JuliaMono-RegularLatin.ttf
+      bold_italic: /home/travis/build/JuliaIntro/IntroAJulia.jl/JuliaMono-BoldLatin.ttf
+  fallbacks:
+    - JuliaMono
+    - Emoji
+    - NotoEmoji
+base:
+  font_family: DejaVuSerif
+code:
+  font-family: JuliaMono
+  background-color: #eeeef2
+  font-color: #010265
+page:
+  background_color: FFFFFF
+  layout: portrait
+  initial_zoom: FitH
+  # margin: [top, right,  bottom, left]
+  margin: [0.8in, 0.67in, 0.5in, 0.67in]
+header:
+  border_color: DDDDDD
+  border_width: 0.25
+  border-offset: 0.5
+  height: 0.65in
+  line-height: 1
+  recto:
+    right:
+      content: '{page-number}'
+    left:
+      content: '{section-or-chapter-title}'
+  verso:
+    left:
+      content: '{page-number}'
+    right:
+      content: '{chapter-title}'
+footer:
+  border_color: DDDDDD
+  border_width: 0.25
+  border-offset: 0.5
+  height: 0.5in
+  recto:
+    right:
+      content: ''
+  verso:
+    left:
+      content: ''

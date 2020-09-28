@@ -235,7 +235,7 @@ end
 ----
 
 
-[[recursividad]]
+[[recursión]]
 === Recursividad
 
 Está permitido que una función llame a otra y también que una función se llame a sí misma. Puede no parecer útil, pero sí lo es, como puede verse en la siguiente función:

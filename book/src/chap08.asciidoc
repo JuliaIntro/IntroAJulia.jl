@@ -4,7 +4,7 @@
 Las cadenas son diferentes de los números enteros, flotantes y booleanos. Una cadena es una _secuencia_, es decir, una colección ordenada de valores. En este capítulo se verá cómo acceder a los caracteres que forman una cadena y se conocerán algunas funciones integradas en Julia relacionadas con cadenas.
 (((cadena)))(((secuencia)))
 
-[[characters]]
+[[caracteres]]
 === Caracteres
 
 Los hispanohablantes están familiarizados con algunos caracteres, tales como las letras del alfabeto (A, B, C, ...), los números y los signos de puntuación comunes. Estos caracteres están estandarizados en el código _ASCII_ (Código Estándar Estadounidense para el Intercambio de Información).

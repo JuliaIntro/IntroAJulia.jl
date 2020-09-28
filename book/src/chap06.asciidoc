@@ -367,7 +367,7 @@ function fact(n)
     end
 end
 ----
-El flujo de ejecución de este programa es similar al flujo de +cuentaregresiva+ en <<recursion>>. Si llamamos a +fact+ con el valor +3+:
+El flujo de ejecución de este programa es similar al flujo de +cuentaregresiva+ en <<recursión>>. Si llamamos a +fact+ con el valor +3+:
 (((flujo de ejecución)))
 
 [small]
