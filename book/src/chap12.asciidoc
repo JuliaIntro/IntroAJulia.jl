@@ -284,7 +284,7 @@ julia> s = "abc";
 julia> t = [1, 2, 3];
 
 julia> zip(s, t)
-Base.Iterators.Zip{Tuple{String,Array{Int64,1}}}(("abc", [1, 2, 3]))
+zip("abc", [1, 2, 3])
 ----
 
 El resultado es un _objeto zip_ que permite iterar a través de los pares. El uso más común de +zip+ es en un bucle +for+:

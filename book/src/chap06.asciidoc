@@ -370,7 +370,7 @@ end
 El flujo de ejecución de este programa es similar al flujo de +cuentaregresiva+ en <<recursión>>. Si llamamos a +fact+ con el valor +3+:
 (((flujo de ejecución)))
 
-[small]
+
 --
 Como +3+ no es +0+, se toma la segunda rama y se calcula el factorial de +n-1+ ...
 

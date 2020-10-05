@@ -307,7 +307,7 @@ Ahora, el número de segmentos es un número entero cercano a +circunferencia/3+
 Agregar 3 a +n+ garantiza que el polígono tenga al menos 3 lados.
 
 
-[[refactoring]]
+[[refactorización]]
 === Refactorización
 
 Cuando se escribió +circulo+, se pudo reutilizar +poligono+ ya que un polígono de muchos lados es una buena aproximación de un círculo. Pero +arco+ no es tan versátil; no se puede usar +poligono+ o +circulo+ para dibujar un arco.
@@ -513,7 +513,7 @@ Copie y pegue el código de este capítulo en un notebook.
 
 . Dibuje un diagrama de pila que muestre el estado del programa mientras ejecuta +circulo(🐢, radio)+. Puede hacer la aritmética a mano o agregar sentencias de impresión al código.
 
-. La versión de +arco+ en <<refactoring>> no es muy precisa ya que la aproximación lineal del círculo siempre queda por afuera del círculo verdadero. Como resultado, la tortuga termina a unos pocos píxeles del destino correcto. La siguiente solución muestra una forma de reducir el efecto de este error. Lea el código y vea si tiene sentido. Si dibuja un diagrama, es posible que entienda mejor cómo funciona.
+. La versión de +arco+ en <<refactorización>> no es muy precisa ya que la aproximación lineal del círculo siempre queda por afuera del círculo verdadero. Como resultado, la tortuga termina a unos pocos píxeles del destino correcto. La siguiente solución muestra una forma de reducir el efecto de este error. Lea el código y vea si tiene sentido. Si dibuja un diagrama, es posible que entienda mejor cómo funciona.
 (((arco)))
 
 [source,julia]
