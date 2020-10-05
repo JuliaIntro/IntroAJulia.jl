@@ -481,10 +481,10 @@ Y finalmente se genera el _código de máquina_:
 [source,@julia-repl-test chap20]
 ----
 julia> @code_native sumacuadrada(3.0, 4.0)
-	.section	__TEXT,__text,regular,pure_instructions
+	.text
 ; ┌ @ none:2 within `sumacuadrada'
-; │┌ @ intfuncs.jl:261 within `literal_pow'
-; ││┌ @ none:2 within `*'
+; │┌ @ intfuncs.jl:296 within `literal_pow'
+; ││┌ @ float.jl:405 within `*'
 	vmulsd	%xmm0, %xmm0, %xmm0
 	vmulsd	%xmm1, %xmm1, %xmm1
 ; │└└

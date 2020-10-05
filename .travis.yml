@@ -12,7 +12,7 @@ jobs:
     - julia: nightly
   include:
     - stage: deploy-site
-      julia: 1.4
+      julia: 1
       os: linux
       dist: focal
       if: type != pull_request
@@ -28,8 +28,8 @@ jobs:
         - julia --project -e 'using Pkg; pkg"build"'
         - mkdir -p book/build
         - julia --project=book -e 'using Pkg; pkg"dev ."; pkg"instantiate"'
-        - julia --project=book -e 'ARGS=["build", "images", "html"]; cd("book"); include("make.jl")'
-        - julia --project=book -e 'ARGS=["pdf"]; cd("book"); include("make.jl")'
+        - julia --project=book -e 'cd("book"); include("make.jl")' build images html
+        - julia --project=book -e 'cd("book"); include("make.jl")' pdf
         - julia --project=book deploy.jl
       addons:
         apt_packages:

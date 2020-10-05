@@ -112,7 +112,7 @@ end
 
 Aunque esta función es correcta, es muy larga. Más adelante se explorará una alternativa más corta.
 
-[[modifiers]]
+[[modificadores]]
 === Modificadores
 
 Hay veces en las que es útil que una función modifique uno o más de los objetos que recibe como parámetros. En ese caso, los cambios son visibles en el nivel en donde se ubica la sentencia de llamada. Estas funciones se llaman _modificadores_.

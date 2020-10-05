@@ -2,8 +2,10 @@
 :appendix-caption: Apéndice
 :appendix-refsig: {appendix-caption}
 :caution-caption: Precaución
-//:chapter-label: ???
-//:chapter-refsig: {chapter-label}
+:section-label: Sección
+:section-refsig: {section-label}
+:chapter-label: Capítulo
+:chapter-refsig: {chapter-label}
 :example-caption: Ejemplo
 :figure-caption: Figura
 :important-caption: Importante
@@ -21,6 +23,7 @@ ifdef::preface-title[:preface-title: Prefacio]
 :untitled-label: Sin título
 :version-label: Versión
 :warning-caption: Aviso
+:xrefstyle: short
 // Not sure why following doesn't work
 //:git-hash: {sys:git rev-parse --short HEAD}
 

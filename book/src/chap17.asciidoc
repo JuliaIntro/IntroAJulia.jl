@@ -14,7 +14,7 @@ El operador +::+ asocia _anotaciones de tipo_ con expresiones y variables:
 [source,@julia-repl-test]
 ----
 julia> (1 + 2) :: Float64
-ERROR: TypeError: in typeassert, expected Float64, got Int64
+ERROR: TypeError: in typeassert, expected Float64, got a value of type Int64
 julia> (1 + 2) :: Int64
 3
 ----

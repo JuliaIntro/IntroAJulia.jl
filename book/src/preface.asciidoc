@@ -89,7 +89,7 @@ Si tiene una sugerencia o corrección, abra un https://github.com/JuliaIntro/Int
 
 Avísenos con qué versión del libro está trabajando, y en qué formato. Si incluye al menos parte de la oración en la que aparece el error, eso facilita la búsqueda. Los números de página y sección también son útiles, pero no es tan fácil trabajar con ellos. ¡Gracias!
 
-[small]
+
 --
 - Scott Jones señaló el cambio de nombre de +Void+ a +Nothing+ y con esto se comenzó la migración a Julia v1.0
 - Robin Deits encontró algunos errores tipográficos en el Capítulo 2.

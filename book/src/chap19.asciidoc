@@ -482,7 +482,7 @@ julia> convert(Punto{Int64}, [1, 2])
 Punto{Int64}(1, 2)
 ----
 
-[[promotion]]
+[[promoción]]
 ==== Promoción
 
 _Promoción_ es la conversión de valores de diferentes tipos a un solo tipo común:
