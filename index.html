@@ -512,7 +512,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_encapsulación">Encapsulación</a></li>
 <li><a href="#_generalización">Generalización</a></li>
 <li><a href="#_diseño_de_interfaz">Diseño de Interfaz</a></li>
-<li><a href="#refactoring">Refactorización</a></li>
+<li><a href="#refactorización">Refactorización</a></li>
 <li><a href="#_un_plan_de_desarrollo">Un Plan de Desarrollo</a></li>
 <li><a href="#_docstring">Docstring</a></li>
 <li><a href="#_depuración_4">Depuración</a></li>
@@ -624,7 +624,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_búsqueda_inversa">Búsqueda inversa</a></li>
 <li><a href="#_diccionarios_y_matrices">Diccionarios y Matrices</a></li>
 <li><a href="#memos">Pistas</a></li>
-<li><a href="#global_variables">Variables Globales</a></li>
+<li><a href="#variables_globales">Variables Globales</a></li>
 <li><a href="#_depuración_9">Depuración</a></li>
 <li><a href="#_glosario_11">Glosario</a></li>
 <li><a href="#_ejercicios_13">Ejercicios</a></li>
@@ -694,7 +694,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#time">Tiempo</a></li>
 <li><a href="#_funciones_puras">Funciones Puras</a></li>
-<li><a href="#modifiers">Modificadores</a></li>
+<li><a href="#modificadores">Modificadores</a></li>
 <li><a href="#prototyping_versus_planning">Desarrollo de prototipos frente a la planificación</a></li>
 <li><a href="#chap16_debugging">Depuración</a></li>
 <li><a href="#_glosario_16">Glosario</a></li>
@@ -979,7 +979,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph">
 <p>Avísenos con qué versión del libro está trabajando, y en qué formato. Si incluye al menos parte de la oración en la que aparece el error, eso facilita la búsqueda. Los números de página y sección también son útiles, pero no es tan fácil trabajar con ellos. ¡Gracias!</p>
 </div>
-<div class="openblock small">
+<div class="openblock">
 <div class="content">
 <div class="ulist">
 <ul>
@@ -1077,7 +1077,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Para evitar ese problema, se recomienda que comience ejecutando Julia en un navegador. Más tarde, cuando se sienta cómodo con Julia, se harán sugerencias para instalar Julia en su ordenador.</p>
 </div>
 <div class="paragraph">
-<p>En el navegador, puede ejecutar Julia en <a href="https://www.juliabox.com">JuliaBox</a>. No se requiere instalación: simplemente abra su navegador y entre a la página de JuliaBox, inicie sesión y comience a programar (consulte <a href="#juliabox">JuliaBox</a>).</p>
+<p>En el navegador, puede ejecutar Julia en <a href="https://www.juliabox.com">JuliaBox</a>. No se requiere instalación: simplemente abra su navegador y entre a la página de JuliaBox, inicie sesión y comience a programar (consulte <a href="#juliabox">Apéndice B</a>).</p>
 </div>
 <div class="paragraph">
 <p>Julia <em>REPL</em> (Read–Eval–Print Loop) es un programa que lee y ejecuta código de Julia. Puede iniciar REPL abriendo un terminal en JuliaBox y escribiendo <strong><code>julia</code></strong> en la línea de comando. Cuando comienza, debería ver una salida como esta:</p>
@@ -1089,7 +1089,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   (_)     | (_) (_)    |
    _ _   _| |_  __ _   |  Type "?" for help, "]?" for Pkg help.
   | | | | | | |/ _` |  |
-  | | |_| | | | (_| |  |  Version 1.4.2 (2020-05-23)
+  | | |_| | | | (_| |  |  Version 1.5.2 (2020-09-23)
  _/ |\__'_|_|_|\__'_|  |  Official https://julialang.org/ release
 |__/                   |
 
@@ -1133,7 +1133,7 @@ julia&gt;</pre>
 <p>Las comillas en el programa marcan el principio y el final del texto que se mostrará, y no aparecerán en el resultado.</p>
 </div>
 <div class="paragraph">
-<p>Los paréntesis indican que <code>println</code> es una función. Se estudiarán funciones en <a href="#chap03">Funciones</a>.</p>
+<p>Los paréntesis indican que <code>println</code> es una función. Se estudiarán funciones en <a href="#chap03">Capítulo 3</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1503,7 +1503,7 @@ julia&gt; π_val = 3.141592653589793
 <p>Este ejemplo realiza tres asignaciones. La primera asigna una cadena a una nueva variable llamada <code>mensaje</code>; la segunda le asigna el entero <code>17</code> a la variable <code>n</code>; la tercera asigna el valor (aproximado) de <code>π</code> a la variable <code>π_val</code> (<strong><code>\pi TAB</code></strong>).</p>
 </div>
 <div class="paragraph">
-<p>Una forma común de representar variables en papel es escribir el nombre de la variable con una flecha apuntando a su valor. Este tipo de figura se llama “diagrama de estado” porque muestra en qué estado se encuentra cada una de las variables. La Figura 1, <a href="#fig02-1">Diagrama de estado</a>, muestra el resultado del ejemplo anterior.
+<p>Una forma común de representar variables en papel es escribir el nombre de la variable con una flecha apuntando a su valor. Este tipo de figura se llama “diagrama de estado” porque muestra en qué estado se encuentra cada una de las variables. La Figura 1, <a href="#fig02-1">Figura 1</a>, muestra el resultado del ejemplo anterior.
 </p>
 </div>
 <div id="fig02-1" class="imageblock">
@@ -1519,7 +1519,7 @@ julia&gt; π_val = 3.141592653589793
 <p>Los programadores generalmente eligen nombres representativos para sus variables, es decir, nombres que explican para qué se usa o qué contiene la variable.</p>
 </div>
 <div class="paragraph">
-<p>Los nombres de las variables pueden ser tan largos como se desee. Pueden contener casi todos los caracteres <em>Unicode</em> (consulte <a href="#caracteres">Caracteres</a>), pero no pueden comenzar con un número. Es válido usar letras mayúsculas, pero lo común es usar solo minúsculas para nombres de variables.</p>
+<p>Los nombres de las variables pueden ser tan largos como se desee. Pueden contener casi todos los caracteres <em>Unicode</em> (consulte <a href="#caracteres">Sección 8.1</a>), pero no pueden comenzar con un número. Es válido usar letras mayúsculas, pero lo común es usar solo minúsculas para nombres de variables.</p>
 </div>
 <div class="paragraph">
 <p>Los caracteres <em>Unicode</em> se pueden ingresar mediante autocompletado por tabulación de las abreviaturas tipo LaTeX en el REPL de Julia. </p>
@@ -2177,6 +2177,11 @@ julia&gt; sin(radianes)
 </div>
 <div class="listingblock">
 <div class="content">
+<pre>2</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; minutos = horas * 60 # bien
 120
 julia&gt; horas * 60 = minutos # mal!
@@ -2202,7 +2207,7 @@ end</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p><code>function</code> es una palabra reservada que indica que esta es una definición de función. El nombre de la función es <code>imprimirletras</code>. Las reglas para los nombres de funciones son las mismas que para los nombres de variables: pueden contener casi todos los caracteres Unicode (consulte <a href="#caracteres">Caracteres</a>), pero el primer carácter no puede ser un número. No puede usar una palabra reservada como nombre de una función, y debe evitar tener una variable y una función con el mismo nombre.
+<p><code>function</code> es una palabra reservada que indica que esta es una definición de función. El nombre de la función es <code>imprimirletras</code>. Las reglas para los nombres de funciones son las mismas que para los nombres de variables: pueden contener casi todos los caracteres Unicode (consulte <a href="#caracteres">Sección 8.1</a>), pero el primer carácter no puede ser un número. No puede usar una palabra reservada como nombre de una función, y debe evitar tener una variable y una función con el mismo nombre.
 </p>
 </div>
 <div class="paragraph">
@@ -2447,7 +2452,7 @@ ERROR: UndefVarError: concat not defined</code></pre>
  </p>
 </div>
 <div class="paragraph">
-<p>Cada función se representa por un <em>marco</em>. Un marco es un recuadro con el nombre de una función a un costado, y los parámetros y variables de la función dentro. El diagrama de pila para el ejemplo anterior se muestra en <a href="#fig03-1">Diagrama de pila</a>.
+<p>Cada función se representa por un <em>marco</em>. Un marco es un recuadro con el nombre de una función a un costado, y los parámetros y variables de la función dentro. El diagrama de pila para el ejemplo anterior se muestra en <a href="#fig03-1">Figura 2</a>.
 </p>
 </div>
 <div id="fig03-1" class="imageblock">
@@ -2898,7 +2903,7 @@ println("-")</code></pre>
 <p>Se presentan gráficos turtle, que es una forma de crear dibujos a través de la programación. Los gráficos turtle no están incluidos en la Biblioteca Estándar, por lo que se debe agregar el módulo IntroAJulia a su configuración de Julia.</p>
 </div>
 <div class="paragraph">
-<p>Los ejemplos de este capítulo se pueden ejecutar en un notebook gráfico en JuliaBox, el cual combina código, texto formateado, matemáticas y multimedia en un solo documento (vea <a href="#juliabox">JuliaBox</a>).
+<p>Los ejemplos de este capítulo se pueden ejecutar en un notebook gráfico en JuliaBox, el cual combina código, texto formateado, matemáticas y multimedia en un solo documento (vea <a href="#juliabox">Apéndice B</a>).
 </p>
 </div>
 <div class="sect2">
@@ -2964,7 +2969,7 @@ end</code></pre>
 </p>
 </div>
 <div class="paragraph">
-<p>Además, cada tortuga está sosteniendo un lápiz, que puede estar hacia arriba o hacia abajo; si el lápiz está hacia abajo, la tortuga deja un rastro cuando se mueve. <a href="#fig04-1">Haciendo avanzar a la tortuga</a> muestra el rastro dejado por la tortuga. Las funciones <code>penup</code> y <code>pendown</code> significan "lápiz hacia arriba" y "lápiz hacia abajo".
+<p>Además, cada tortuga está sosteniendo un lápiz, que puede estar hacia arriba o hacia abajo; si el lápiz está hacia abajo, la tortuga deja un rastro cuando se mueve. <a href="#fig04-1">Figura 3</a> muestra el rastro dejado por la tortuga. Las funciones <code>penup</code> y <code>pendown</code> significan "lápiz hacia arriba" y "lápiz hacia abajo".
 </p>
 </div>
 <div class="paragraph">
@@ -3272,7 +3277,7 @@ end</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="refactoring">Refactorización</h3>
+<h3 id="refactorización">Refactorización</h3>
 <div class="paragraph">
 <p>Cuando se escribió <code>circulo</code>, se pudo reutilizar <code>poligono</code> ya que un polígono de muchos lados es una buena aproximación de un círculo. Pero <code>arco</code> no es tan versátil; no se puede usar <code>poligono</code> o <code>circulo</code> para dibujar un arco.</p>
 </div>
@@ -3533,7 +3538,7 @@ search:
 <p>Dibuje un diagrama de pila que muestre el estado del programa mientras ejecuta <code>circulo(🐢, radio)</code>. Puede hacer la aritmética a mano o agregar sentencias de impresión al código.</p>
 </li>
 <li>
-<p>La versión de <code>arco</code> en <a href="#refactoring">Refactorización</a> no es muy precisa ya que la aproximación lineal del círculo siempre queda por afuera del círculo verdadero. Como resultado, la tortuga termina a unos pocos píxeles del destino correcto. La siguiente solución muestra una forma de reducir el efecto de este error. Lea el código y vea si tiene sentido. Si dibuja un diagrama, es posible que entienda mejor cómo funciona.
+<p>La versión de <code>arco</code> en <a href="#refactorización">Sección 4.7</a> no es muy precisa ya que la aproximación lineal del círculo siempre queda por afuera del círculo verdadero. Como resultado, la tortuga termina a unos pocos píxeles del destino correcto. La siguiente solución muestra una forma de reducir el efecto de este error. Lea el código y vea si tiene sentido. Si dibuja un diagrama, es posible que entienda mejor cómo funciona.
 </p>
 </li>
 </ol>
@@ -3567,7 +3572,7 @@ end</code></pre>
 <div class="sect3">
 <h4 id="ex04-8">Ejercicio 4-9</h4>
 <div class="paragraph">
-<p>Escriba un conjunto de funciones generales que permitan dibujar flores como en <a href="#fig04-2">Flores con Turtle</a>.</p>
+<p>Escriba un conjunto de funciones generales que permitan dibujar flores como en <a href="#fig04-2">Figura 4</a>.</p>
 </div>
 <div id="fig04-2" class="imageblock">
 <div class="content">
@@ -3579,7 +3584,7 @@ end</code></pre>
 <div class="sect3">
 <h4 id="ex04-9">Ejercicio 4-10</h4>
 <div class="paragraph">
-<p>Escriba un conjunto de funciones generales que puedan dibujar formas como en <a href="#fig04-3">Polígonos con Turtle</a>.</p>
+<p>Escriba un conjunto de funciones generales que puedan dibujar formas como en <a href="#fig04-3">Figura 5</a>.</p>
 </div>
 <div id="fig04-3" class="imageblock">
 <div class="content">
@@ -3600,7 +3605,7 @@ end</code></pre>
 <div class="sect3">
 <h4 id="ex04-11">Ejercicio 4-12</h4>
 <div class="paragraph">
-<p>Lea sobre espirales en <a href="https://es.wikipedia.org/wiki/Espiral" class="bare">https://es.wikipedia.org/wiki/Espiral</a>; luego escriba un programa que dibuje una espiral de Arquímedes como en <a href="#fig04-4">Espiral de Arquímedes</a>.</p>
+<p>Lea sobre espirales en <a href="https://es.wikipedia.org/wiki/Espiral" class="bare">https://es.wikipedia.org/wiki/Espiral</a>; luego escriba un programa que dibuje una espiral de Arquímedes como en <a href="#fig04-4">Figura 6</a>.</p>
 </div>
 <div id="fig04-4" class="imageblock">
 <div class="content">
@@ -3985,7 +3990,7 @@ end</code></pre>
 <div class="sect2">
 <h3 id="_diagramas_de_pila_para_funciones_recursivas">Diagramas de pila para funciones recursivas</h3>
 <div class="paragraph">
-<p>En <a href="#stack_diagrams">Diagramas de pila</a> se usó un diagrama de pila para representar el estado de un programa durante una llamada de función. El mismo tipo de diagrama puede ser de utilidad para interpretar una función recursiva.
+<p>En <a href="#stack_diagrams">Sección 3.9</a> se usó un diagrama de pila para representar el estado de un programa durante una llamada de función. El mismo tipo de diagrama puede ser de utilidad para interpretar una función recursiva.
 </p>
 </div>
 <div class="paragraph">
@@ -3999,7 +4004,7 @@ end</code></pre>
 <div class="title">Figura 7. Diagrama de pila</div>
 </div>
 <div class="paragraph">
-<p><a href="#fig05-1">Diagrama de pila</a> muestra un diagrama de pila para <code>cuentaregresiva</code> utilizando <code>n=3</code>.</p>
+<p><a href="#fig05-1">Figura 7</a> muestra un diagrama de pila para <code>cuentaregresiva</code> utilizando <code>n=3</code>.</p>
 </div>
 <div class="paragraph">
 <p>Como siempre, la parte superior de la pila es el marco para <code>Main</code>. Está vacío pues no se crearon variables en <code>Main</code> ni tampoco se pasaron argumentos.</p>
@@ -4274,7 +4279,7 @@ print(decibeles)</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; time()
-1.601312693879844e9</code></pre>
+1.601903686074048e9</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4370,13 +4375,13 @@ recursion(3, 0)</code></pre>
 </ol>
 </div>
 <div class="paragraph">
-<p>Los siguientes ejercicios utilizan el módulo <code>IntroAJulia</code>, descrito en <a href="#chap04">Estudio de Caso: Diseño de Interfaz</a>:</p>
+<p>Los siguientes ejercicios utilizan el módulo <code>IntroAJulia</code>, descrito en <a href="#chap04">Capítulo 4</a>:</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="ex05-5">Ejercicio 5-6</h4>
 <div class="paragraph">
-<p>Lea la siguiente función y vea si puede averiguar qué hace (vea los ejemplos en <a href="#chap04">Estudio de Caso: Diseño de Interfaz</a>). Luego ejecútelo y vea si lo hizo bien.</p>
+<p>Lea la siguiente función y vea si puede averiguar qué hace (vea los ejemplos en <a href="#chap04">Capítulo 4</a>). Luego ejecútelo y vea si lo hizo bien.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4405,7 +4410,7 @@ end</code></pre>
 <div class="title">Figura 8. Una curva de Koch</div>
 </div>
 <div class="paragraph">
-<p>La curva de Koch es un fractal que luce como <a href="#fig05-2">Una curva de Koch</a>. Para dibujar una curva de Koch con longitud \(x\), todo lo que tiene que hacer es
+<p>La curva de Koch es un fractal que luce como <a href="#fig05-2">Figura 8</a>. Para dibujar una curva de Koch con longitud \(x\), todo lo que tiene que hacer es
 </p>
 </div>
 <div class="olist arabic">
@@ -4904,10 +4909,10 @@ end</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>El flujo de ejecución de este programa es similar al flujo de <code>cuentaregresiva</code> en <a href="#recursión">Recursividad</a>. Si llamamos a <code>fact</code> con el valor <code>3</code>:
+<p>El flujo de ejecución de este programa es similar al flujo de <code>cuentaregresiva</code> en <a href="#recursión">Sección 5.8</a>. Si llamamos a <code>fact</code> con el valor <code>3</code>:
 </p>
 </div>
-<div class="openblock small">
+<div class="openblock">
 <div class="content">
 <div class="paragraph">
 <p>Como <code>3</code> no es <code>0</code>, se toma la segunda rama y se calcula el factorial de <code>n-1</code> &#8230;&#8203;</p>
@@ -4939,7 +4944,7 @@ end</code></pre>
 <div class="title">Figura 9. Diagrama de pila</div>
 </div>
 <div class="paragraph">
-<p><a href="#fig06-1">Diagrama de pila</a>  muestra cómo se ve el diagrama de pila para esta secuencia de llamadas a funciones.
+<p><a href="#fig06-1">Figura 9</a>  muestra cómo se ve el diagrama de pila para esta secuencia de llamadas a funciones.
 </p>
 </div>
 <div class="paragraph">
@@ -4974,7 +4979,7 @@ end</code></pre>
 <p>De hecho, ya se está dando este voto de confianza cuando se usan funciones integradas de Julia. Cuando se llaman a <code>cos</code> o <code>exp</code>, no se examinan los cuerpos de esas funciones. Simplemente se asume que funcionan porque las personas que las escribieron eran buenos programadores.</p>
 </div>
 <div class="paragraph">
-<p>Lo mismo ocurre cuando el usuario llama a una de sus propias funciones. Por ejemplo, en <a href="#boolean_functions">Funciones Booleanas</a>, se escribe una función llamada <code>esdivisible</code> que determina si un número es divisible por otro. Una vez que se confirme que esta función es correcta —al examinar y probar el código—, se puede usar la función sin mirar nuevamente el cuerpo.</p>
+<p>Lo mismo ocurre cuando el usuario llama a una de sus propias funciones. Por ejemplo, en <a href="#boolean_functions">Sección 6.4</a>, se escribe una función llamada <code>esdivisible</code> que determina si un número es divisible por otro. Una vez que se confirme que esta función es correcta —al examinar y probar el código—, se puede usar la función sin mirar nuevamente el cuerpo.</p>
 </div>
 <div class="paragraph">
 <p>Lo mismo aplica a los programas recursivos. Cuando llegue a la llamada recursiva, en lugar de seguir el flujo de ejecución, debe suponer que la llamada recursiva funciona (devuelve el resultado correcto) y luego preguntarse: "Suponiendo que pueda encontrar el factorial de \(n-1\), ¿se puede calcular el factorial de \(n\)?" Está claro que es posible, multiplicando por \(n\).</p>
@@ -5085,7 +5090,7 @@ ERROR: El factorial no está definido para enteros negativos.</code></pre>
 </p>
 </div>
 <div class="paragraph">
-<p>En <a href="#catching_exceptions">Captura de Excepciones</a> se explorará una alternativa más flexible para imprimir un mensaje de error: generar una excepción.</p>
+<p>En <a href="#catching_exceptions">Sección 14.5</a> se explorará una alternativa más flexible para imprimir un mensaje de error: generar una excepción.</p>
 </div>
 </div>
 <div class="sect2">
@@ -5113,7 +5118,7 @@ ERROR: El factorial no está definido para enteros negativos.</code></pre>
 <p>Para descartar la primera posibilidad, puede agregar una sentencia de impresión al comienzo de la función para mostrar los valores de los parámetros (y tal vez sus tipos) o bien escribir líneas de código que verifiquen las condiciones previas de manera explícita.</p>
 </div>
 <div class="paragraph">
-<p>Si los parámetros están bien, agregue una sentencia de impresión antes de cada sentencia <code>return</code> y muestre el valor de retorno. Si es posible, verifique el resultado a mano. Considere también llamar a la función con valores que faciliten la verificación del resultado (como en <a href="#incremental_development">Desarrollo incremental</a>).</p>
+<p>Si los parámetros están bien, agregue una sentencia de impresión antes de cada sentencia <code>return</code> y muestre el valor de retorno. Si es posible, verifique el resultado a mano. Considere también llamar a la función con valores que faciliten la verificación del resultado (como en <a href="#incremental_development">Sección 6.2</a>).</p>
 </div>
 <div class="paragraph">
 <p>Si la función parece estar funcionando, revise la llamada a la función para asegurarse de que el valor de retorno se está utilizando correctamente (¡o incluso si se está utilizando!).</p>
@@ -5279,7 +5284,7 @@ end</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Se verá cómo funcionan en <a href="#chap08">Cadenas</a>.</p>
+<p>Se verá cómo funcionan en <a href="#chap08">Capítulo 8</a>.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -5337,7 +5342,7 @@ end</code></pre>
 <h2 id="chap07">7. Iteración</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Este capítulo se centra en la iteración, que es la capacidad de ejecutar repetidamente un bloque de sentencias. Se han visto dos tipos de iteración: usando recursión en <a href="#recursión">Recursividad</a> y usando ciclos <code>for</code>, en <a href="#simple_repetition">Repetición Simple</a>. En este capítulo veremos otro tipo más: usando sentencias <code>while</code>. Primeramente, se introducirán algunos términos sobre asignación de variables.
+<p>Este capítulo se centra en la iteración, que es la capacidad de ejecutar repetidamente un bloque de sentencias. Se han visto dos tipos de iteración: usando recursión en <a href="#recursión">Sección 5.8</a> y usando ciclos <code>for</code>, en <a href="#simple_repetition">Sección 4.2</a>. En este capítulo veremos otro tipo más: usando sentencias <code>while</code>. Primeramente, se introducirán algunos términos sobre asignación de variables.
 </p>
 </div>
 <div class="sect2">
@@ -5363,7 +5368,7 @@ julia&gt; x = 7
 <div class="title">Figura 10. Diagrama de estado</div>
 </div>
 <div class="paragraph">
-<p><a href="#fig07-1">Diagrama de estado</a> muestra el aspecto de una <em>asignación múltiple</em> en un diagrama de estado.
+<p><a href="#fig07-1">Figura 10</a> muestra el aspecto de una <em>asignación múltiple</em> en un diagrama de estado.
 </p>
 </div>
 <div class="paragraph">
@@ -5458,7 +5463,7 @@ julia&gt; y = y + 1
 </p>
 </div>
 <div class="paragraph">
-<p>Ya se han visto dos funciones, <code>cuentaregresiva</code> y <code>printn</code>, que iteran usando recursividad. Por ser la iteración tan común, Julia proporciona varias características que la hacen más fácil. Una es la sentencia <code>for</code> que se vio en <a href="#simple_repetition">Repetición Simple</a>, a la cual se volverá más adelante.
+<p>Ya se han visto dos funciones, <code>cuentaregresiva</code> y <code>printn</code>, que iteran usando recursividad. Por ser la iteración tan común, Julia proporciona varias características que la hacen más fácil. Una es la sentencia <code>for</code> que se vio en <a href="#simple_repetition">Sección 4.2</a>, a la cual se volverá más adelante.
 </p>
 </div>
 <div class="paragraph">
@@ -5542,7 +5547,7 @@ end</code></pre>
 <div class="sect3">
 <h4 id="_ejercicio_7_1">Ejercicio 7-1</h4>
 <div class="paragraph">
-<p>Reescribe la función <code>printn</code> de <a href="#recursión">Recursividad</a> utilizando iteración en vez de recursión.</p>
+<p>Reescribe la función <code>printn</code> de <a href="#recursión">Sección 5.8</a> utilizando iteración en vez de recursión.</p>
 </div>
 </div>
 </div>
@@ -5831,7 +5836,7 @@ end</code></pre>
 <div class="sect3">
 <h4 id="ex07-1">Ejercicio 7-2</h4>
 <div class="paragraph">
-<p>Copie el bucle de <a href="#square_roots">Raíces Cuadradas</a> e insértelo en una función llamada <code>miraiz</code> que tome <code>a</code> como parámetro, elija un valor razonable de <code>x</code> y devuelva una estimación de la raíz cuadrada de <code>a</code>.
+<p>Copie el bucle de <a href="#square_roots">Sección 7.6</a> e insértelo en una función llamada <code>miraiz</code> que tome <code>a</code> como parámetro, elija un valor razonable de <code>x</code> y devuelva una estimación de la raíz cuadrada de <code>a</code>.
 </p>
 </div>
 <div class="paragraph">
@@ -6073,7 +6078,7 @@ end</code></pre>
 <p>Este bucle recorre la cadena y muestra cada letra en una línea distinta. La condición del bucle es <code>index &lt;= sizeof(fruta)</code>, de modo que cuando el índice es mayor al número de bytes en la cadena, la condición es <code>falsa</code> y no se ejecuta el cuerpo del bucle.</p>
 </div>
 <div class="paragraph">
-<p>La función <code>firstindex</code> devuelve el primer índice de bytes válido. La palabra reservada <code>global</code> antes de <code>indice</code> indica que queremos reasignar la variable <code>indice</code> definida en <code>Main</code> (ver <a href="#variables_globales">[variables_globales]</a>).
+<p>La función <code>firstindex</code> devuelve el primer índice de bytes válido. La palabra reservada <code>global</code> antes de <code>indice</code> indica que queremos reasignar la variable <code>indice</code> definida en <code>Main</code> (ver <a href="#variables_globales">Sección 11.7</a>).
 </p>
 </div>
 <div class="sect3">
@@ -6493,6 +6498,11 @@ false</code></pre>
 <div class="paragraph">
 <p>Para depurar este tipo de error, primeramente se imprimen los valores de los índices:</p>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre>espalindroma (generic function with 1 method)</pre>
+</div>
+</div>
 <div class="paragraph">
 <p>Ahora, al ejecutar el programa, se obtiene más información:</p>
 </div>
@@ -6509,6 +6519,11 @@ false</code></pre>
 </div>
 <div class="paragraph">
 <p>Si se soluciona ese error y se ejecuta el programa nuevamente, se obtiene:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>espalindroma (generic function with 1 method)</pre>
+</div>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6620,7 +6635,7 @@ ERROR: BoundsError: attempt to access String
 <div class="sect3">
 <h4 id="ex08-2">Ejercicio 8-8</h4>
 <div class="paragraph">
-<p>Hay una función integrada llamada <code>count</code> que es similar a la función en <a href="#looping_and_counting">Iterando y contando</a>. Lea la documentación de esta función y úsela para contar el número de letras <code>a</code> en "banana".
+<p>Hay una función integrada llamada <code>count</code> que es similar a la función en <a href="#looping_and_counting">Sección 8.9</a>. Lea la documentación de esta función y úsela para contar el número de letras <code>a</code> en "banana".
 </p>
 </div>
 </div>
@@ -6642,7 +6657,7 @@ julia&gt; fruta[1:2:6]
 <p>Un tamaño de paso de -1 recorre la palabra hacia la izquierda, por lo que la porción <code>[end:-1:1]</code> genera una cadena invertida.</p>
 </div>
 <div class="paragraph">
-<p>Use esto para escribir una versión de una línea de código de <code>espalindroma</code> de <a href="#ex06-3">Ejercicio 6-6</a>.
+<p>Use esto para escribir una versión de una línea de código de <code>espalindroma</code> de <a href="#ex06-3">Sección 6.11.3</a>.
 </p>
 </div>
 </div>
@@ -6764,6 +6779,11 @@ end</code></pre>
 <div class="paragraph">
 <p>Este archivo es un archivo de texto simple, por lo que puede ser abierto con un editor de texto o leído con Julia. La función integrada <code>open</code> toma el nombre del archivo como parámetro y devuelve un objeto archivo que puede ser usado para la lectura del archivo.
 </p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>IOStream(&lt;file /home/travis/build/JuliaIntro/IntroAJulia.jl/src/../data/palabras.txt&gt;)</pre>
+</div>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7072,7 +7092,7 @@ end</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Usando <code>esreverso</code> de <a href="#deb08">Depuración</a>.
+<p>Usando <code>esreverso</code> de <a href="#deb08">Sección 8.13</a>.
 </p>
 </div>
 </div>
@@ -7317,7 +7337,7 @@ julia&gt; print(numeros)
 <p>El segundo elemento de <code>numeros</code>, que era 123, ahora es 5.</p>
 </div>
 <div class="paragraph">
-<p><a href="#fig10-1">Diagrama de estado</a> muestra los diagramas de estado para <code>quesos</code>, <code>numeros</code> y <code>vacio</code>.
+<p><a href="#fig10-1">Figura 11</a> muestra los diagramas de estado para <code>quesos</code>, <code>numeros</code> y <code>vacio</code>.
 </p>
 </div>
 <div id="fig10-1" class="imageblock">
@@ -7856,7 +7876,7 @@ false</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Entonces el diagrama de estado se ve así <a href="#fig10-3">Diagrama de estado</a>.
+<p>Entonces el diagrama de estado se ve así <a href="#fig10-3">Figura 13</a>.
 </p>
 </div>
 <div id="fig10-3" class="imageblock">
@@ -7889,7 +7909,7 @@ true</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>El diagrama de estado sería como este <a href="#fig10-4">Diagrama de estado</a>.</p>
+<p>El diagrama de estado sería como este <a href="#fig10-4">Figura 14</a>.</p>
 </div>
 <div id="fig10-4" class="imageblock">
 <div class="content">
@@ -7969,7 +7989,7 @@ julia&gt; print(letras)
 </div>
 </div>
 <div class="paragraph">
-<p>El parámetro <code>t</code> y la variable <code>letras</code> son alias de un mismo objeto. El diagrama de estado es así <a href="#fig10-5">Diagrama de estado</a>.
+<p>El parámetro <code>t</code> y la variable <code>letras</code> son alias de un mismo objeto. El diagrama de estado es así <a href="#fig10-5">Figura 15</a>.
 </p>
 </div>
 <div id="fig10-5" class="imageblock">
@@ -8274,6 +8294,11 @@ julia&gt; println(t2)
 </div>
 <div class="sect2">
 <h3 id="_ejercicios_12">Ejercicios</h3>
+<div class="listingblock">
+<div class="content">
+<pre>estaordenada (generic function with 1 method)</pre>
+</div>
+</div>
 <div class="sect3">
 <h4 id="ex10-1">Ejercicio 10-1</h4>
 <div class="paragraph">
@@ -8484,7 +8509,7 @@ false</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; ing_a_esp = Dict()
-Dict{Any,Any} with 0 entries</code></pre>
+Dict{Any,Any}()</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -8609,7 +8634,7 @@ true</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>El operador <code>∈</code> utiliza diferentes algoritmos para matrices y diccionarios. Para las matrices, busca los elementos de la matriz en orden, como en <a href="#searching">Búsqueda</a>. El tiempo de búsqueda es directamente proporcional al largo de la matriz.</p>
+<p>El operador <code>∈</code> utiliza diferentes algoritmos para matrices y diccionarios. Para las matrices, busca los elementos de la matriz en orden, como en <a href="#searching">Sección 8.8</a>. El tiempo de búsqueda es directamente proporcional al largo de la matriz.</p>
 </div>
 <div class="paragraph">
 <p>Para los diccionarios, Julia usa un algoritmo llamado <em>tabla hash</em> que tiene una propiedad importante: el operador <code>∈</code> toma aproximadamente la misma cantidad de tiempo sin importar cuántos elementos haya en el diccionario.
@@ -8878,7 +8903,7 @@ Dict{Any,Any} with 2 entries:
 <div class="title">Figura 16. Diagrama de estado</div>
 </div>
 <div class="paragraph">
-<p><a href="#fig11-1">Diagrama de estado</a> es un diagrama de estado que muestra <code>hist</code> e <code>inverso</code>. Un diccionario se representa como un cuadro con los pares clave-valor dentro. En este libro, si los valores son enteros, números de punto flotante o cadenas de texto, se dibujan dentro del cuadro, y las matrices (generalmente) se dibujan fuera del cuadro, solo para mantener el diagrama simple.
+<p><a href="#fig11-1">Figura 16</a> es un diagrama de estado que muestra <code>hist</code> e <code>inverso</code>. Un diccionario se representa como un cuadro con los pares clave-valor dentro. En este libro, si los valores son enteros, números de punto flotante o cadenas de texto, se dibujan dentro del cuadro, y las matrices (generalmente) se dibujan fuera del cuadro, solo para mantener el diagrama simple.
 </p>
 </div>
 <div class="admonitionblock note">
@@ -8904,11 +8929,11 @@ Dict{Any,Any} with 2 entries:
 <div class="sect2">
 <h3 id="memos">Pistas</h3>
 <div class="paragraph">
-<p>Si estuvo jugando con la función <code>fibonacci</code> de <a href="#one_more_example">Un Ejemplo Más</a>, es posible que haya notado que cuanto más grande el argumento que le da, más tiempo tarda la función en ejecutarse. Más aún, el tiempo de ejecución aumenta muy rápidamente.
+<p>Si estuvo jugando con la función <code>fibonacci</code> de <a href="#one_more_example">Sección 6.7</a>, es posible que haya notado que cuanto más grande el argumento que le da, más tiempo tarda la función en ejecutarse. Más aún, el tiempo de ejecución aumenta muy rápidamente.
 </p>
 </div>
 <div class="paragraph">
-<p>Para entender por qué, considere <a href="#fig11-2">Gráfico de llamadas</a>, que muestra el <em>gráfico de llamadas</em> para la función <code>fibonacci</code> con <code>n = 4</code>:
+<p>Para entender por qué, considere <a href="#fig11-2">Figura 17</a>, que muestra el <em>gráfico de llamadas</em> para la función <code>fibonacci</code> con <code>n = 4</code>:
 </p>
 </div>
 <div id="fig11-2" class="imageblock">
@@ -8952,7 +8977,7 @@ end</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="global_variables">Variables Globales</h3>
+<h3 id="variables_globales">Variables Globales</h3>
 <div class="paragraph">
 <p>En el ejemplo anterior, el diccionario anteriores se crea fuera de la función, por lo que pertenece al marco especial llamado <code>Main</code>. Las variables en <code>Main</code> a veces son llamadas <em>globales</em> porque se puede acceder a ellas desde cualquier función. A diferencia de las variables locales, que desaparecen cuando finaliza su función, las variables globales existen de una llamada de función a la siguiente.
 </p>
@@ -9135,7 +9160,7 @@ end</code></pre>
 <li>
 <p>Formatear la salida:</p>
 <div class="paragraph">
-<p>Formatear la salida de depuración puede hacer que sea más fácil detectar un error. Vimos un ejemplo en <a href="#deb06">Depuración</a>.
+<p>Formatear la salida de depuración puede hacer que sea más fácil detectar un error. Vimos un ejemplo en <a href="#deb06">Sección 6.9</a>.
 </p>
 </div>
 <div class="paragraph">
@@ -9262,7 +9287,7 @@ end</code></pre>
 </p>
 </div>
 <div class="paragraph">
-<p>Si hizo <a href="#ex10-10">Ejercicio 10-10</a>, puede comparar la velocidad de esta implementación con el operador array <code>∈</code> y la búsqueda binaria.</p>
+<p>Si hizo <a href="#ex10-10">Sección 10.15.10</a>, puede comparar la velocidad de esta implementación con el operador array <code>∈</code> y la búsqueda binaria.</p>
 </div>
 </div>
 <div class="sect3">
@@ -9275,14 +9300,14 @@ end</code></pre>
 <div class="sect3">
 <h4 id="ex11-3">Ejercicio 11-4</h4>
 <div class="paragraph">
-<p>Use pistas en la función de Ackermann de <a href="#ex06-2">Ejercicio 6-5</a> y vea si esto permite evaluar la función con argumentos de mayor tamaño.
+<p>Use pistas en la función de Ackermann de <a href="#ex06-2">Sección 6.11.2</a> y vea si esto permite evaluar la función con argumentos de mayor tamaño.
 </p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="ex11-4">Ejercicio 11-5</h4>
 <div class="paragraph">
-<p>Si hizo <a href="#ex10-7">Ejercicio 10-7</a>, ya tiene una función llamada <code>repetido</code> que toma una matriz como parámetro y devuelve <code>true</code> si hay algún objeto que aparece más de una vez en la matriz.
+<p>Si hizo <a href="#ex10-7">Sección 10.15.7</a>, ya tiene una función llamada <code>repetido</code> que toma una matriz como parámetro y devuelve <code>true</code> si hay algún objeto que aparece más de una vez en la matriz.
 </p>
 </div>
 <div class="paragraph">
@@ -9292,7 +9317,7 @@ end</code></pre>
 <div class="sect3">
 <h4 id="ex11-5">Ejercicio 11-6</h4>
 <div class="paragraph">
-<p>Dos palabras son "pares desplazados" si puede desplazar una de ellas y obtener la otra (vea <code>desplazarpalabra</code> en <a href="#ex08-5">Exercise 8-11</a>).
+<p>Dos palabras son "pares desplazados" si puede desplazar una de ellas y obtener la otra (vea <code>desplazarpalabra</code> en <a href="#ex08-5">Sección 8.15.5</a>).
 </p>
 </div>
 <div class="paragraph">
@@ -9319,7 +9344,7 @@ end</code></pre>
 </blockquote>
 </div>
 <div class="paragraph">
-<p>You can use the dictionary from <a href="#ex11-1">Ejercicio 11-2</a> to check whether a string is in the word array.</p>
+<p>You can use the dictionary from <a href="#ex11-1">Sección 11.10.1</a> to check whether a string is in the word array.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -9672,7 +9697,7 @@ ERROR: MethodError: no method matching sum(::Int64, ::Int64, ::Int64)</code></pr
 julia&gt; t = [1, 2, 3];
 
 julia&gt; zip(s, t)
-Base.Iterators.Zip{Tuple{String,Array{Int64,1}}}(("abc", [1, 2, 3]))</code></pre>
+zip("abc", [1, 2, 3])</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -9846,7 +9871,7 @@ end</code></pre>
 <p>Este bucle recorre los pares clave-valor en <code>directorio</code>, los cuales son tuplas. Asigna los elementos de la clave de cada tupla a <code>apellido</code> y <code>nombre</code> y el valor a <code>numero</code>, luego imprime el nombre y el número de teléfono correspondiente.</p>
 </div>
 <div class="paragraph">
-<p>Hay dos formas de representar tuplas en un diagrama de estado. La versión más detallada muestra los índices y elementos tal como aparecen en un arreglo. Por ejemplo, la tupla <code>("Cortázar", "Julio")</code> se vería como en <a href="#fig12-1">Diagrama de estado</a>.
+<p>Hay dos formas de representar tuplas en un diagrama de estado. La versión más detallada muestra los índices y elementos tal como aparecen en un arreglo. Por ejemplo, la tupla <code>("Cortázar", "Julio")</code> se vería como en <a href="#fig12-1">Figura 18</a>.
 </p>
 </div>
 <div id="fig12-1" class="imageblock">
@@ -9856,7 +9881,7 @@ end</code></pre>
 <div class="title">Figura 18. Diagrama de estado</div>
 </div>
 <div class="paragraph">
-<p>Pero en un diagrama más grande, es posible que desee omitir algunos detalles. Por ejemplo, un diagrama del directorio telefónico puede verse como en <a href="#fig12-2">Diagrama de estado</a>.
+<p>Pero en un diagrama más grande, es posible que desee omitir algunos detalles. Por ejemplo, un diagrama del directorio telefónico puede verse como en <a href="#fig12-2">Figura 19</a>.
 </p>
 </div>
 <div id="fig12-2" class="imageblock">
@@ -9913,7 +9938,7 @@ end</code></pre>
 </p>
 </div>
 <div class="paragraph">
-<p>Julia permite añadir el tipo a elementos de una secuencia. Esto se detalla en <a href="#chap17">Dispatch Múltiple</a>. Especificar el tipo elimina muchos errores de forma.</p>
+<p>Julia permite añadir el tipo a elementos de una secuencia. Esto se detalla en <a href="#chap17">Capítulo 17</a>. Especificar el tipo elimina muchos errores de forma.</p>
 </div>
 </div>
 <div class="sect2">
@@ -9980,7 +10005,7 @@ end</code></pre>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Escriba un programa que lea una lista de palabras de un archivo (vea <a href="#reading_word_lists">Leer listas de palabras</a>) e imprima todos los conjuntos de palabras que son anagramas.</p>
+<p>Escriba un programa que lea una lista de palabras de un archivo (vea <a href="#reading_word_lists">Sección 9.1</a>) e imprima todos los conjuntos de palabras que son anagramas.</p>
 <div class="paragraph">
 <p>Aquí hay un ejemplo de cómo se vería la salida:</p>
 </div>
@@ -10198,7 +10223,7 @@ end</code></pre>
 <div class="sect3">
 <h4 id="ex13-5">Ejercicio 13-5</h4>
 <div class="paragraph">
-<p>Escriba una función llamada <code>escogerdelhistograma</code> que tome un histograma definido como en <a href="#dictionary_collection_counters">Diccionario como una Colección de Frecuencias</a> y devuelva un valor aleatorio del histograma, elegido con probabilidad proporcional a la frecuencia. Por ejemplo, para este histograma:
+<p>Escriba una función llamada <code>escogerdelhistograma</code> que tome un histograma definido como en <a href="#dictionary_collection_counters">Sección 11.2</a> y devuelva un valor aleatorio del histograma, elegido con probabilidad proporcional a la frecuencia. Por ejemplo, para este histograma:
 </p>
 </div>
 <div class="listingblock">
@@ -10243,6 +10268,31 @@ function procesarlinea(linea, hist)
         hist[palabra] = get!(hist, palabra, 0) + 1
     end
 end;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Dict{Any,Any} with 23607 entries:
+  "enojó"       =&gt; 1
+  "angosta"     =&gt; 1
+  "hurto"       =&gt; 10
+  "sirviesen"   =&gt; 2
+  "solene"      =&gt; 1
+  "coronan"     =&gt; 1
+  "enderécese"  =&gt; 2
+  "alteza"      =&gt; 15
+  "rescatarlos" =&gt; 1
+  "enderezador" =&gt; 1
+  "libertad"    =&gt; 81
+  "abundante"   =&gt; 5
+  "bajeza"      =&gt; 4
+  "embotó"      =&gt; 1
+  "estime"      =&gt; 1
+  "renovaban"   =&gt; 1
+  "acreciente"  =&gt; 4
+  "debieron"    =&gt; 8
+  "garci"       =&gt; 1
+  ⋮             =&gt; ⋮</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -10462,7 +10512,7 @@ enojó angosta coronan sirviesen solene enderécese rescatarlos embotó estime r
 <div class="sect3">
 <h4 id="ex13-6">Ejercicio 13-6</h4>
 <div class="paragraph">
-<p>Julia proporciona una estructura de datos llamada <code>Set</code> que permite muchas operaciones comunes de conjuntos. Puede leer sobre ellas en <a href="#collections_and_data_structures">Colecciones y Estructuras de Datos</a>, o consultar la documentación en <a href="https://docs.julialang.org/en/v1/base/collections/#Set-Like-Collections-1" class="bare">https://docs.julialang.org/en/v1/base/collections/#Set-Like-Collections-1</a>.</p>
+<p>Julia proporciona una estructura de datos llamada <code>Set</code> que permite muchas operaciones comunes de conjuntos. Puede leer sobre ellas en <a href="#collections_and_data_structures">Sección 20.2</a>, o consultar la documentación en <a href="https://docs.julialang.org/en/v1/base/collections/#Set-Like-Collections-1" class="bare">https://docs.julialang.org/en/v1/base/collections/#Set-Like-Collections-1</a>.</p>
 </div>
 <div class="paragraph">
 <p>Escriba un programa que use la resta de conjuntos para encontrar palabras en el libro que no están en la lista de palabras.</p>
@@ -10500,10 +10550,10 @@ end</code></pre>
 <p>Use las <code>claves</code> para obtener un arreglo de palabras del libro.</p>
 </li>
 <li>
-<p>Cree un arreglo que contenga la suma acumulada de las frecuencias de palabras (vea <a href="#ex10-2">Ejercicio 10-2</a>). El último elemento en este arreglo es el número total de palabras en el libro, \(n\).</p>
+<p>Cree un arreglo que contenga la suma acumulada de las frecuencias de palabras (vea <a href="#ex10-2">Sección 10.15.2</a>). El último elemento en este arreglo es el número total de palabras en el libro, \(n\).</p>
 </li>
 <li>
-<p>Elija un número aleatorio del 1 al \(n\). Use búsqueda binaria (vea <a href="#ex10-10">Ejercicio 10-10</a>) para encontrar el índice donde se insertará el número aleatorio en la suma acumulada.
+<p>Elija un número aleatorio del 1 al \(n\). Use búsqueda binaria (vea <a href="#ex10-10">Sección 10.15.10</a>) para encontrar el índice donde se insertará el número aleatorio en la suma acumulada.
 </p>
 </li>
 <li>
@@ -10655,7 +10705,7 @@ Que es más bello vivir cantando</pre>
 <p>Para la colección de sufijos, las operaciones que se deben realizar incluyen agregar un nuevo sufijo (o aumentar la frecuencia de uno existente) y elegir un sufijo aleatorio.</p>
 </div>
 <div class="paragraph">
-<p>Agregar un nuevo sufijo es igualmente fácil para la implementación del arreglo o del histograma. Elegir un elemento aleatorio de un arreglo es fácil pero elegir eficientemente de un histograma es más difícil (ver <a href="#ex13-7">Ejercicio 13-7</a>).</p>
+<p>Agregar un nuevo sufijo es igualmente fácil para la implementación del arreglo o del histograma. Elegir un elemento aleatorio de un arreglo es fácil pero elegir eficientemente de un histograma es más difícil (ver <a href="#ex13-7">Sección 13.7.1</a>).</p>
 </div>
 <div class="paragraph">
 <p>Hasta ahora se ha hablado principalmente sobre la facilidad de implementación, pero hay otros factores a considerar al elegir las estructuras de datos. Uno es el tiempo de ejecución. A veces hay una razón teórica para esperar que una estructura de datos sea más rápida que otra. Por ejemplo, anteriormente se mencionó que el operador <code>in</code> es más rápido para los diccionarios que para los arreglos, al menos cuando el número de elementos es grande.</p>
@@ -10867,7 +10917,7 @@ plot(x, y)</code></pre>
 <div class="sect2">
 <h3 id="reading_and_writing">Lectura y Escritura</h3>
 <div class="paragraph">
-<p>Un archivo de texto es una secuencia de caracteres almacenados en un medio permanente, como un disco duro o una memoria flash. Ya se vio cómo abrir y leer un archivo en <a href="#reading_word_lists">Leer listas de palabras</a>.</p>
+<p>Un archivo de texto es una secuencia de caracteres almacenados en un medio permanente, como un disco duro o una memoria flash. Ya se vio cómo abrir y leer un archivo en <a href="#reading_word_lists">Sección 9.1</a>.</p>
 </div>
 <div class="paragraph">
 <p>Para escribir un archivo, debe abrirlo usando el modo <code>"w"</code> (de write) como segundo parámetro:
@@ -11224,7 +11274,7 @@ julia&gt; t = [1, 2, 3];
 julia&gt; serialize(io, t)
 24
 julia&gt; print(take!(io))
-UInt8[0x37, 0x4a, 0x4c, 0x09, 0x04, 0x00, 0x00, 0x00, 0x15, 0x00, 0x08, 0xe2, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]</code></pre>
+UInt8[0x37, 0x4a, 0x4c, 0x0a, 0x04, 0x00, 0x00, 0x00, 0x15, 0x00, 0x08, 0xe2, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -11450,6 +11500,11 @@ julia&gt; println(s)
 </div>
 <div class="listingblock">
 <div class="content">
+<pre>"1 2\t 3\n 4"</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; repr(s)
 "\"1 2\\t 3\\n 4\""
 julia&gt; dump(s)
@@ -11540,7 +11595,7 @@ String "1 2\t 3\n 4"</code></pre>
 <div class="sect3">
 <h4 id="ex14-2">Ejercicio 14-3</h4>
 <div class="paragraph">
-<p>Si hizo <a href="#ex12-2">Ejercicio 12-3</a>, recordará que debía crear un diccionario que asociaba una cadena ordenada de letras al conjunto de palabras que se podía deletrear con esas letras. Por ejemplo, <code>"cuaderno"</code> estaba asociado al arreglo <code>["cuaderno", "educaron", "encuadro"]</code>.</p>
+<p>Si hizo <a href="#ex12-2">Sección 12.10.2</a>, recordará que debía crear un diccionario que asociaba una cadena ordenada de letras al conjunto de palabras que se podía deletrear con esas letras. Por ejemplo, <code>"cuaderno"</code> estaba asociado al arreglo <code>["cuaderno", "educaron", "encuadro"]</code>.</p>
 </div>
 <div class="paragraph">
 <p>Escriba un módulo que importe <code>conjuntoanagramas</code> y proporcione dos nuevas funciones: <code>almacenaranagramas</code>, que almacena el diccionario de anagramas usando <code>JLD2</code> (vea <a href="https://github.com/JuliaIO/JLD2.jl" class="bare">https://github.com/JuliaIO/JLD2.jl</a>); y <code>leeranagramas</code>, que busca una palabra y devuelve un arreglo de sus anagramas.
@@ -11644,7 +11699,7 @@ Punto(3.0, 4.0)</code></pre>
 <p>Cada objeto es una instancia de algún tipo, por lo que "objeto" e "instancia" son intercambiables. No obstante, en este capítulo se utiliza "instancia" para indicar que se está hablando de un tipo definido por el programador.</p>
 </div>
 <div class="paragraph">
-<p>Un diagrama de estado que muestra un objeto y sus atributos se denomina <em>diagrama de objeto</em> (ver <a href="#fig15-1">Diagrama de objeto</a>).
+<p>Un diagrama de estado que muestra un objeto y sus atributos se denomina <em>diagrama de objeto</em> (ver <a href="#fig15-1">Figura 20</a>).
 </p>
 </div>
 <div id="fig15-1" class="imageblock">
@@ -11699,7 +11754,7 @@ ERROR: setfield! immutable struct of type Punto cannot be changed</code></pre>
 <p>Puede ser más eficiente.</p>
 </li>
 <li>
-<p>No es posible violar las invariantes (requisitos que deberían cumplirse en todos los objetos, en todo momento) de los constructores de un tipo compuesto (ver <a href="#constructor">Constructores</a>).</p>
+<p>No es posible violar las invariantes (requisitos que deberían cumplirse en todos los objetos, en todo momento) de los constructores de un tipo compuesto (ver <a href="#constructor">Sección 17.4</a>).</p>
 </li>
 <li>
 <p>El código que usa objetos inmutables puede ser más fácil de entender.</p>
@@ -11791,7 +11846,7 @@ Rectangulo(100.0, 200.0, MPunto(0.0, 0.0))</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p><a href="#fig15-2">Diagrama de objeto</a> muestra el estado de este objeto. Un objeto es <em>embebido</em> si es atributo de otro objeto. Debido a que el atributo <code>esquina</code> se refiere a un objeto mutable, se dibuja fuera del objeto <code>Rectangulo</code>.
+<p><a href="#fig15-2">Figura 21</a> muestra el estado de este objeto. Un objeto es <em>embebido</em> si es atributo de otro objeto. Debido a que el atributo <code>esquina</code> se refiere a un objeto mutable, se dibuja fuera del objeto <code>Rectangulo</code>.
 </p>
 </div>
 <div id="fig15-2" class="imageblock">
@@ -12164,7 +12219,7 @@ Hora(11, 59, 30)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>El diagrama de objeto para el objeto <code>Hora</code> luce así <a href="#fig16-1">Diagrama de objeto</a>.</p>
+<p>El diagrama de objeto para el objeto <code>Hora</code> luce así <a href="#fig16-1">Figura 22</a>.</p>
 </div>
 <div id="fig16-1" class="imageblock">
 <div class="content">
@@ -12215,6 +12270,11 @@ end</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
+<pre>imprimirhora (generic function with 1 method)</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; inicio = Hora(9, 50, 0);
 
 julia&gt; duracion = Hora(2, 15, 0);
@@ -12251,7 +12311,7 @@ end</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="modifiers">Modificadores</h3>
+<h3 id="modificadores">Modificadores</h3>
 <div class="paragraph">
 <p>Hay veces en las que es útil que una función modifique uno o más de los objetos que recibe como parámetros. En ese caso, los cambios son visibles en el nivel en donde se ubica la sentencia de llamada. Estas funciones se llaman <em>modificadores</em>.
 </p>
@@ -12535,7 +12595,7 @@ end</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; (1 + 2) :: Float64
-ERROR: TypeError: in typeassert, expected Float64, got Int64
+ERROR: TypeError: in typeassert, expected Float64, got a value of type Int64
 julia&gt; (1 + 2) :: Int64
 3</code></pre>
 </div>
@@ -12588,7 +12648,7 @@ end</code></pre>
 <div class="sect2">
 <h3 id="_métodos">Métodos</h3>
 <div class="paragraph">
-<p>En <a href="#chap16">Estructuras y Funciones</a>, definimos una estructura llamada <code>Hora</code> y en <a href="#time">Tiempo</a>, escribimos una función llamada <code>imprimirhora</code>:
+<p>En <a href="#chap16">Capítulo 16</a>, definimos una estructura llamada <code>Hora</code> y en <a href="#time">Sección 16.1</a>, escribimos una función llamada <code>imprimirhora</code>:
 </p>
 </div>
 <div class="listingblock">
@@ -12666,15 +12726,20 @@ No sé cómo imprimir el tiempo del argumento.</code></pre>
 <div class="sect3">
 <h4 id="_ejercicio_17_1">Ejercicio 17-1</h4>
 <div class="paragraph">
-<p>Reescriba <code>horaaentero</code> y <code>enteroahora</code> (de <a href="#prototyping_versus_planning">Desarrollo de prototipos frente a la planificación</a>) especificando el tipo de los argumentos.
+<p>Reescriba <code>horaaentero</code> y <code>enteroahora</code> (de <a href="#prototyping_versus_planning">Sección 16.4</a>) especificando el tipo de los argumentos.
 </p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>enteroahora (generic function with 1 method)</pre>
+</div>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_ejemplos_adicionales">Ejemplos Adicionales</h3>
 <div class="paragraph">
-<p>Aquí hay una versión de la función <code>incrementar</code> (Ejercicio 16-5 de <a href="#modificadores">[modificadores]</a>) reescrita especificando el tipo de los argumentos:
+<p>Aquí hay una versión de la función <code>incrementar</code> (Ejercicio 16-5 de <a href="#modificadores">Sección 16.3</a>) reescrita especificando el tipo de los argumentos:
 </p>
 </div>
 <div class="listingblock">
@@ -12713,7 +12778,7 @@ ERROR: MethodError: no method matching incrementar(::Int64, ::Hora)</code></pre>
 <p>La especificación del método es <code>incrementar(tiempo::Hora, segundos::Int64)</code>, no <code>incrementar(segundos::Int64, tiempo::Hora)</code>.</p>
 </div>
 <div class="paragraph">
-<p>Al reescribir <code>estadespues</code> (Ejercicio 16-2 de <a href="#modificadores">[modificadores]</a>) para que solo acepte objetos <code>Hora</code> se tiene:
+<p>Al reescribir <code>estadespues</code> (Ejercicio 16-2 de <a href="#modificadores">Sección 16.3</a>) para que solo acepte objetos <code>Hora</code> se tiene:
 </p>
 </div>
 <div class="listingblock">
@@ -12886,6 +12951,11 @@ end</code></pre>
 <p>Escriba un método de constructor externo para la clase <code>Punto</code> que tome <code>x</code> e <code>y</code> como parámetros opcionales y los asigne a los atributos correspondientes.
 </p>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre>incrementar (generic function with 1 method)</pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -12999,7 +13069,7 @@ end</code></pre>
 <p>El dispatch múltiple es útil cuando es necesario, pero (afortunadamente) no siempre lo es. A menudo puede evitarse escribiendo funciones que funcionen correctamente para argumentos de diferentes tipos.</p>
 </div>
 <div class="paragraph">
-<p>Muchas de las funciones que se han visto para cadenas también funcionan para otros tipos de secuencia. Por ejemplo, en <a href="#dictionary_collection_counters">Diccionario como una Colección de Frecuencias</a> se usa <code>histograma</code> para contar la cantidad de veces que cada letra aparece en una palabra.
+<p>Muchas de las funciones que se han visto para cadenas también funcionan para otros tipos de secuencia. Por ejemplo, en <a href="#dictionary_collection_counters">Sección 11.2</a> se usa <code>histograma</code> para contar la cantidad de veces que cada letra aparece en una palabra.
 </p>
 </div>
 <div class="listingblock">
@@ -13600,9 +13670,9 @@ end</code></pre>
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; mazo = Mazo()
 A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ 10♣ J♣ Q♣ K♣ A♦ 2♦ 3♦ 4♦ 5♦ 6♦ 7♦ 8♦ 9♦ 10♦ J♦ Q♦ K♦ A♥ 2♥ 3♥ 4♥ 5♥ 6♥ 7♥ 8♥ 9♥ 10♥ J♥ Q♥ K♥ A♠ 2♠ 3♠ 4♠ 5♠ 6♠ 7♠ 8♠ 9♠ 10♠ J♠ Q♠ K♠
 julia&gt; shuffle!(mazo)
-6♥ 6♦ 5♦ 2♥ 8♣ 10♥ 5♥ 8♠ 7♣ 6♠ 9♣ K♥ 7♦ 8♦ A♦ 9♥ J♥ 3♥ Q♣ A♠ J♠ 7♠ 6♣ 9♦ 9♠ 4♣ J♣ 7♥ 2♠ 10♠ Q♥ 5♣ 8♥ 4♦ Q♠ 3♦ K♣ J♦ 10♦ A♣ 3♣ 5♠ K♠ 4♥ 3♠ Q♦ 4♠ A♥ 2♦ K♦ 10♣ 2♣
+9♦ 8♠ J♠ Q♥ 10♣ A♥ J♣ 6♠ 6♣ 9♣ J♥ 5♦ 5♣ 2♥ K♣ 3♥ 5♥ 8♣ Q♦ 2♦ 4♠ K♦ A♣ K♠ 6♥ 7♣ 8♥ 10♦ 4♥ 3♣ 4♣ 10♥ 3♦ 7♥ 9♠ 10♠ 7♠ Q♠ J♦ 2♠ 9♥ 4♦ A♦ K♥ A♠ 3♠ Q♣ 2♣ 8♦ 5♠ 7♦ 6♦
 julia&gt; naipe = pop!(mazo)
-2♣
+6♦
 julia&gt; push!(mano, naipe)</code></pre>
 </div>
 </div>
@@ -13740,7 +13810,7 @@ ConjuntoDeCartas</code></pre>
 </p>
 </div>
 <div class="paragraph">
-<p>El análisis de Markov, de <a href="#markov_analysis">Análisis de Markov</a>, es un buen ejemplo. Si descarga el código desde <a href="https://github.com/BenLauwens/ThinkJulia.jl/blob/master/src/solutions/chap13.jl" class="bare">https://github.com/BenLauwens/ThinkJulia.jl/blob/master/src/solutions/chap13.jl</a>, verá que se usan dos variables globales: <code>sufijos</code> y <code>prefijo</code>, las cuales se leen y escriben desde varias funciones.</p>
+<p>El análisis de Markov, de <a href="#markov_analysis">Sección 13.8</a>, es un buen ejemplo. Si descarga el código desde <a href="https://github.com/BenLauwens/ThinkJulia.jl/blob/master/src/solutions/chap13.jl" class="bare">https://github.com/BenLauwens/ThinkJulia.jl/blob/master/src/solutions/chap13.jl</a>, verá que se usan dos variables globales: <code>sufijos</code> y <code>prefijo</code>, las cuales se leen y escriben desde varias funciones.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -13787,7 +13857,7 @@ end</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Transformar un programa así (cambiando el diseño sin cambiar el comportamiento) es otro ejemplo de refactorización (vea <a href="#refactorización">[refactorización]</a>).
+<p>Transformar un programa así (cambiando el diseño sin cambiar el comportamiento) es otro ejemplo de refactorización (vea <a href="#refactorización">Sección 4.7</a>).
 </p>
 </div>
 <div class="paragraph">
@@ -14082,7 +14152,7 @@ julia&gt; plot(x -&gt; x^2 + 2x - 1, 0, 10, xlabel="x", ylabel="y")</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p><a href="#fig19-1">Plot</a> muestra el resultado del comando plot (graficar en inglés).</p>
+<p><a href="#fig19-1">Figura 24</a> muestra el resultado del comando plot (graficar en inglés).</p>
 </div>
 <div id="fig19-1" class="imageblock">
 <div class="content">
@@ -14139,7 +14209,7 @@ julia&gt; bar()
 </p>
 </div>
 <div class="paragraph">
-<p>En <a href="#chap04">Estudio de Caso: Diseño de Interfaz</a> se presentó la macro <code>@svg</code>:</p>
+<p>En <a href="#chap04">Capítulo 4</a> se presentó la macro <code>@svg</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14182,7 +14252,7 @@ z = -1</code></pre>
 <div class="sect3">
 <h4 id="_bloques_do">Bloques <code>do</code></h4>
 <div class="paragraph">
-<p>En <a href="#reading_and_writing">Lectura y Escritura</a> se cierra el archivo después de terminar de escribir en él. Esto se puede hacer automáticamente usando un <em>Bloque do</em>:
+<p>En <a href="#reading_and_writing">Sección 14.2</a> se cierra el archivo después de terminar de escribir en él. Esto se puede hacer automáticamente usando un <em>Bloque do</em>:
 </p>
 </div>
 <div class="listingblock">
@@ -14532,7 +14602,7 @@ Punto(x::T, y::T) where {T&lt;:Real} = Punto{T}(x,y);</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>La función <code>promote</code> se detalla en <a href="#promoción">[promoción]</a>.
+<p>La función <code>promote</code> se detalla en <a href="#promoción">Sección 19.8.2</a>.
 </p>
 </div>
 </div>
@@ -14572,7 +14642,7 @@ Punto{Int64}(1, 2)</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="promotion">Promoción</h4>
+<h4 id="promoción">Promoción</h4>
 <div class="paragraph">
 <p><em>Promoción</em> es la conversión de valores de diferentes tipos a un solo tipo común:
 </p>
@@ -14808,7 +14878,7 @@ missing</code></pre>
 </p>
 </div>
 <div class="paragraph">
-<p>En <a href="#databases">Bases de datos</a> se presentó una interfaz de Julia de la biblioteca GDBM de funciones de base de datos. La biblioteca está escrita en C. Para cerrar la base de datos, se debe hacer una llamada a la función <code>close(db)</code>:</p>
+<p>En <a href="#databases">Sección 14.6</a> se presentó una interfaz de Julia de la biblioteca GDBM de funciones de base de datos. La biblioteca está escrita en C. Para cerrar la base de datos, se debe hacer una llamada a la función <code>close(db)</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14978,7 +15048,7 @@ end</code></pre>
 <div class="sect2">
 <h3 id="_midiendo_el_rendimiento">Midiendo el Rendimiento</h3>
 <div class="paragraph">
-<p>Hemos visto que algunos algoritmos funcionan mejor que otros. <code>fibonnaci</code> en <a href="#memos">Pistas</a> es mucho más rápido que <code>fib</code> en <a href="#one_more_example">Un Ejemplo Más</a>. La macro <code>@time</code> permite cuantificar la diferencia:
+<p>Hemos visto que algunos algoritmos funcionan mejor que otros. <code>fibonnaci</code> en <a href="#memos">Sección 11.6</a> es mucho más rápido que <code>fib</code> en <a href="#one_more_example">Sección 6.7</a>. La macro <code>@time</code> permite cuantificar la diferencia:
 </p>
 </div>
 <div class="listingblock">
@@ -15026,7 +15096,7 @@ julia&gt; @time fibonacci(40)
 <div class="sect2">
 <h3 id="collections_and_data_structures">Colecciones y Estructuras de Datos</h3>
 <div class="paragraph">
-<p>En <a href="#dictionary_subtraction">Resta de Diccionario</a> se usan diccionarios para encontrar las palabras que aparecían en un documento y que no aparecían en un arreglo de palabras. La función que se escribió tomaba <code>d1</code>, que contenía las palabras del documento como claves, y <code>d2</code>, que contenía el arreglo de palabras. Y devolvía un diccionario que contenía las claves de <code>d1</code> que no estaban en <code>d2</code>.
+<p>En <a href="#dictionary_subtraction">Sección 13.6</a> se usan diccionarios para encontrar las palabras que aparecían en un documento y que no aparecían en un arreglo de palabras. La función que se escribió tomaba <code>d1</code>, que contenía las palabras del documento como claves, y <code>d2</code>, que contenía el arreglo de palabras. Y devolvía un diccionario que contenía las claves de <code>d1</code> que no estaban en <code>d2</code>.
 </p>
 </div>
 <div class="listingblock">
@@ -15064,7 +15134,7 @@ end</code></pre>
 <p>El resultado es un conjunto en vez de un diccionario.</p>
 </div>
 <div class="paragraph">
-<p>Algunos de los ejercicios en este libro se pueden hacer de manera eficiente y concisa con conjuntos. Por ejemplo, a continuación se muestra una solución para <code>repetido</code>, de <a href="#ex10-7">Ejercicio 10-7</a>, que usa un diccionario:
+<p>Algunos de los ejercicios en este libro se pueden hacer de manera eficiente y concisa con conjuntos. Por ejemplo, a continuación se muestra una solución para <code>repetido</code>, de <a href="#ex10-7">Sección 10.15.7</a>, que usa un diccionario:
 </p>
 </div>
 <div class="listingblock">
@@ -15098,7 +15168,7 @@ end</code></pre>
 <p>Un elemento solo puede aparecer en un conjunto una vez, por lo que si un elemento en <code>t</code> aparece más de una vez, el conjunto será más pequeño que <code>t</code>. Si no hay elementos repetidos, el conjunto tendrá el mismo tamaño que <code>t</code>.</p>
 </div>
 <div class="paragraph">
-<p>También podemos usar conjuntos para hacer algunos de los ejercicios de <a href="#chap09">Estudio de Caso: Juego de Palabras</a>. Por ejemplo, aquí hay una versión de <code>usasolo</code> con un bucle:
+<p>También podemos usar conjuntos para hacer algunos de los ejercicios de <a href="#chap09">Capítulo 9</a>. Por ejemplo, aquí hay una versión de <code>usasolo</code> con un bucle:
 </p>
 </div>
 <div class="listingblock">
@@ -15130,7 +15200,7 @@ end</code></pre>
 <div class="sect3">
 <h4 id="_exercise_20_1">Exercise 20-1</h4>
 <div class="paragraph">
-<p>Reescriba la función <code>evita</code> de <a href="#chap09">Estudio de Caso: Juego de Palabras</a> usando conjuntos.
+<p>Reescriba la función <code>evita</code> de <a href="#chap09">Capítulo 9</a> usando conjuntos.
 </p>
 </div>
 </div>
@@ -15183,7 +15253,7 @@ true</code></pre>
 <div class="sect2">
 <h3 id="_cadenas">Cadenas</h3>
 <div class="paragraph">
-<p>En <a href="#chap08">Cadenas</a> y <a href="#chap09">Estudio de Caso: Juego de Palabras</a>, se realizan algunas búsquedas en cadenas. Además, Julia puede usar <em>expresiones regulares</em> (o <em>regexes</em>) compatibles con Perl, lo que facilita la tarea de encontrar patrones complejos en cadenas.
+<p>En <a href="#chap08">Capítulo 8</a> y <a href="#chap09">Capítulo 9</a>, se realizan algunas búsquedas en cadenas. Además, Julia puede usar <em>expresiones regulares</em> (o <em>regexes</em>) compatibles con Perl, lo que facilita la tarea de encontrar patrones complejos en cadenas.
 </p>
 </div>
 <div class="paragraph">
@@ -15259,7 +15329,7 @@ julia&gt; m.offset
 <div class="sect2">
 <h3 id="_arreglos">Arreglos</h3>
 <div class="paragraph">
-<p>En el <a href="#chap10">Arreglos</a> se usa un objeto de arreglo unidimensional, con un índice para acceder a sus elementos. Sin embargo, en Julia las matrices son multidimensionales.</p>
+<p>En el <a href="#chap10">Capítulo 10</a> se usa un objeto de arreglo unidimensional, con un índice para acceder a sus elementos. Sin embargo, en Julia las matrices son multidimensionales.</p>
 </div>
 <div class="paragraph">
 <p>Se puede crear una <em>matriz</em> de ceros de 2 por 3:
@@ -15393,7 +15463,7 @@ julia&gt; z
 </blockquote>
 </div>
 <div class="paragraph">
-<p>En <a href="#one_more_example">Un Ejemplo Más</a> implementamos la función <code>fib</code> que devuelve el elemento \(n\)-ésimo de la secuencia de Fibonnaci.</p>
+<p>En <a href="#one_more_example">Sección 6.7</a> implementamos la función <code>fib</code> que devuelve el elemento \(n\)-ésimo de la secuencia de Fibonnaci.</p>
 </div>
 <div class="paragraph">
 <p>Recorrer los valores de una colección, lo cual recibe el nombre de iteración, es una interfaz de este tipo. Se puede crear un iterador que devuelva la secuencia de Fibonacci:
@@ -15457,7 +15527,7 @@ end</code></pre>
 <div class="sect2">
 <h3 id="_módulo_interactive_utilities">Módulo Interactive Utilities</h3>
 <div class="paragraph">
-<p>Ya se ha visto el módulo <code>InteractiveUtils</code> en <a href="#interactive">Depuración</a>. La macro <code>@which</code> es solo una de las tantas opciones.
+<p>Ya se ha visto el módulo <code>InteractiveUtils</code> en <a href="#interactive">Sección 18.10</a>. La macro <code>@which</code> es solo una de las tantas opciones.
 </p>
 </div>
 <div class="paragraph">
@@ -15524,10 +15594,11 @@ CodeInfo(
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; @code_llvm sumacuadrada(3.0, 4.0)
-;  @ none:2 within `sumacuadrada'
-define double @julia_sumacuadrada_20445(double, double) {
+;  @ none:1 within `sumacuadrada'
+define double @julia_sumacuadrada_6110(double, double) {
 top:
-; ┌ @ intfuncs.jl:261 within `literal_pow'
+;  @ none:2 within `sumacuadrada'
+; ┌ @ intfuncs.jl:296 within `literal_pow'
 ; │┌ @ float.jl:405 within `*'
     %2 = fmul double %0, %0
     %3 = fmul double %1, %1
@@ -15546,10 +15617,10 @@ top:
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; @code_native sumacuadrada(3.0, 4.0)
-	.section	__TEXT,__text,regular,pure_instructions
+	.text
 ; ┌ @ none:2 within `sumacuadrada'
-; │┌ @ intfuncs.jl:261 within `literal_pow'
-; ││┌ @ none:2 within `*'
+; │┌ @ intfuncs.jl:296 within `literal_pow'
+; ││┌ @ float.jl:405 within `*'
 	vmulsd	%xmm0, %xmm0, %xmm0
 	vmulsd	%xmm1, %xmm1, %xmm1
 ; │└└
@@ -15765,7 +15836,7 @@ top:
 <p>Este problema es común cuando su archivo consta de funciones y clases, pero en realidad no llama a ninguna función para iniciar la ejecución. Esto puede ser intencional si sólo se busca importar este módulo para suministrar clases y funciones.</p>
 </div>
 <div class="paragraph">
-<p>Si no es intencional, asegúrese de que haya una llamada a la función en el programa, y asegúrese de que el flujo de ejecución pase por esta llamada (vea <a href="#flow_of_execution">Flujo de Ejecución</a>).
+<p>Si no es intencional, asegúrese de que haya una llamada a la función en el programa, y asegúrese de que el flujo de ejecución pase por esta llamada (vea <a href="#flow_of_execution">Sección 21.2.2.3</a>).
 </p>
 </div>
 </div>
@@ -15779,14 +15850,14 @@ top:
 <li>
 <p>Si hay un bucle en particular que le resulta sospechoso de poder provocar el problema, agregue una sentencia de impresión justo antes del bucle que diga "entrando al bucle" y otra inmediatamente posterior que diga "saliendo del bucle".</p>
 <div class="paragraph">
-<p>Ejecute el programa. Si recibe el primer mensaje y no el segundo, tiene un bucle infinito. Vea <a href="#infinite_loop">Bucle Infinito</a>.
+<p>Ejecute el programa. Si recibe el primer mensaje y no el segundo, tiene un bucle infinito. Vea <a href="#infinite_loop">Sección 21.2.2.1</a>.
 </p>
 </div>
 </li>
 <li>
-<p>La mayoría de las veces, una recursión infinita hará que el programa se ejecute por un rato y luego produzca un error <code>ERROR: LoadError: StackOverflowError</code>. Si eso sucede, vea <a href="#infinite_recursion">Recursión Infinita</a>.</p>
+<p>La mayoría de las veces, una recursión infinita hará que el programa se ejecute por un rato y luego produzca un error <code>ERROR: LoadError: StackOverflowError</code>. Si eso sucede, vea <a href="#infinite_recursion">Sección 21.2.2.2</a>.</p>
 <div class="paragraph">
-<p>Si no obtiene este error pero sospecha que hay un problema con un método o función recursiva, igual puede utilizar las técnicas de <a href="#infinite_recursion">Recursión Infinita</a>.
+<p>Si no obtiene este error pero sospecha que hay un problema con un método o función recursiva, igual puede utilizar las técnicas de <a href="#infinite_recursion">Sección 21.2.2.2</a>.
 </p>
 </div>
 </li>
@@ -15794,7 +15865,7 @@ top:
 <p>Si ninguno de esos pasos funciona, comience a probar otros bucles, y otras funciones y métodos recursivos.</p>
 </li>
 <li>
-<p>Si esto no funciona, quizás es porque usted no entiende el flujo de ejecución de su programa. Vea <a href="#flow_of_execution">Flujo de Ejecución</a>.</p>
+<p>Si esto no funciona, quizás es porque usted no entiende el flujo de ejecución de su programa. Vea <a href="#flow_of_execution">Sección 21.2.2.3</a>.</p>
 </li>
 </ul>
 </div>
@@ -16259,13 +16330,13 @@ return contar</code></pre>
 <p>JuliaBox permite ejecutar Julia en su navegador. Ingrese a la página <a href="https://www.juliabox.com" class="bare">https://www.juliabox.com</a>, inicie sesión y comience a usar el entorno Jupyter.</p>
 </div>
 <div class="paragraph">
-<p>La pantalla inicial se muestra en <a href="#figb-1">Pantalla inicial</a>. El botón "new" (nuevo) permite la creación de un notebook de Julia, un archivo de texto (text file), una carpeta (folder) o una sesión de terminal (terminal session).</p>
+<p>La pantalla inicial se muestra en <a href="#figb-1">Figura 25</a>. El botón "new" (nuevo) permite la creación de un notebook de Julia, un archivo de texto (text file), una carpeta (folder) o una sesión de terminal (terminal session).</p>
 </div>
 <div class="paragraph">
-<p>En una sesión de terminal, el comando <strong><code>julia</code></strong> inicia REPL como se muestra en <a href="#figb-2">Sesión de terminal</a>.</p>
+<p>En una sesión de terminal, el comando <strong><code>julia</code></strong> inicia REPL como se muestra en <a href="#figb-2">Figura 26</a>.</p>
 </div>
 <div class="paragraph">
-<p>La interfaz del notebook permite mezclar texto (en modo Markdown) y código con su respectiva salida. <a href="#figb-3">Notebook</a> muestra un ejemplo.</p>
+<p>La interfaz del notebook permite mezclar texto (en modo Markdown) y código con su respectiva salida. <a href="#figb-3">Figura 27</a> muestra un ejemplo.</p>
 </div>
 <div class="paragraph">
 <p>Puedes encontrar más documentación en el sitio web de Jupyter: <a href="http://jupyter.org/documentation" class="bare">http://jupyter.org/documentation</a>.</p>
@@ -16332,7 +16403,7 @@ return contar</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Ultima actualización 2020-09-28 17:04:51 UTC
+Ultima actualización 2020-10-05 13:14:43 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
