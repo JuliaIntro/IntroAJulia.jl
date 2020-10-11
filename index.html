@@ -1224,7 +1224,11 @@ String</code></pre>
 <p>¡Esto no es lo que se podría esperar! Julia entiende <code>1,000,000</code> como una secuencia de enteros separados por comas. Más adelante aprenderemos más sobre este tipo de secuencias.</p>
 </div>
 <div class="paragraph">
-<p>Sin embargo, puede   obtener el resultado esperado usando <code>1_000_000</code>.</p>
+<p>Sin embargo, puede obtener el resultado esperado usando <code>1_000_000</code>.
+</p>
+</div>
+<div class="paragraph">
+<p></p>
 </div>
 </div>
 <div class="sect2">
@@ -1289,7 +1293,7 @@ String</code></pre>
 </dl>
 </div>
 <div class="paragraph">
-<p>Los lenguajes formales son más densos que los naturales, por lo que lleva más tiempo leerlos. Además, la estructura es importante, por lo que no siempre es mejor leer de arriba a abajo, y de izquierda a derecha. En cambio, aprenderá a analizar el programa mentalmente, identificando los componentes léxicos e interpretando la estructura. Finalmente, los detalles son importantes. Pequeños errores de ortografía y puntuación, que pueden pasar desapercibidos en los lenguajes naturales, pueden hacer una gran diferencia en un lenguaje formal .</p>
+<p>Los lenguajes formales son más densos que los naturales, por lo que lleva más tiempo leerlos. Además, la estructura es importante, por lo que no siempre es mejor leer de arriba a abajo, y de izquierda a derecha. En cambio, aprenderá a analizar el programa mentalmente, identificando los componentes léxicos e interpretando la estructura. Finalmente, los detalles son importantes. Pequeños errores de ortografía y puntuación, que pueden pasar desapercibidos en los lenguajes naturales, pueden hacer una gran diferencia en un lenguaje formal.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1745,7 +1749,7 @@ x + 1</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>No obstante, hay dos excepciones, <code>*</code> y <code>^</code>.
+<p>No obstante, hay dos excepciones, <code><strong></code> y <code>^</code>.
  </p>
 </div>
 <div class="paragraph">
@@ -4279,7 +4283,7 @@ print(decibeles)</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; time()
-1.601903686074048e9</code></pre>
+1.60244881206052e9</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -13670,9 +13674,9 @@ end</code></pre>
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; mazo = Mazo()
 A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ 10♣ J♣ Q♣ K♣ A♦ 2♦ 3♦ 4♦ 5♦ 6♦ 7♦ 8♦ 9♦ 10♦ J♦ Q♦ K♦ A♥ 2♥ 3♥ 4♥ 5♥ 6♥ 7♥ 8♥ 9♥ 10♥ J♥ Q♥ K♥ A♠ 2♠ 3♠ 4♠ 5♠ 6♠ 7♠ 8♠ 9♠ 10♠ J♠ Q♠ K♠
 julia&gt; shuffle!(mazo)
-9♦ 8♠ J♠ Q♥ 10♣ A♥ J♣ 6♠ 6♣ 9♣ J♥ 5♦ 5♣ 2♥ K♣ 3♥ 5♥ 8♣ Q♦ 2♦ 4♠ K♦ A♣ K♠ 6♥ 7♣ 8♥ 10♦ 4♥ 3♣ 4♣ 10♥ 3♦ 7♥ 9♠ 10♠ 7♠ Q♠ J♦ 2♠ 9♥ 4♦ A♦ K♥ A♠ 3♠ Q♣ 2♣ 8♦ 5♠ 7♦ 6♦
+5♦ 5♥ 9♦ 7♦ 9♣ 8♦ 8♥ J♣ 10♣ 3♠ K♦ 3♦ 9♠ 4♦ A♦ 3♥ 10♦ 6♦ K♥ 6♥ A♠ 2♥ 7♣ 8♣ 4♠ 7♥ 2♦ 7♠ 4♥ 6♣ K♠ Q♣ 10♠ 5♠ 10♥ 9♥ K♣ Q♠ A♥ 2♠ 5♣ Q♦ 8♠ 4♣ J♦ Q♥ 6♠ J♠ 2♣ A♣ J♥ 3♣
 julia&gt; naipe = pop!(mazo)
-6♦
+3♣
 julia&gt; push!(mano, naipe)</code></pre>
 </div>
 </div>
@@ -14612,7 +14616,7 @@ Punto(x::T, y::T) where {T&lt;:Real} = Punto{T}(x,y);</code></pre>
 <p>Julia tiene un sistema para convertir argumentos de diferentes tipos a un tipo común. Esto es llamado promoción, y aunque no es automático, se puede realizar fácilmente.</p>
 </div>
 <div class="sect3">
-<h4 id="_conversion">Conversion</h4>
+<h4 id="_conversión">Conversión</h4>
 <div class="paragraph">
 <p>Un valor se puede convertir de un tipo a otro:
 </p>
@@ -15595,7 +15599,7 @@ CodeInfo(
 <div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; @code_llvm sumacuadrada(3.0, 4.0)
 ;  @ none:1 within `sumacuadrada'
-define double @julia_sumacuadrada_6110(double, double) {
+define double @julia_sumacuadrada_6182(double, double) {
 top:
 ;  @ none:2 within `sumacuadrada'
 ; ┌ @ intfuncs.jl:296 within `literal_pow'
@@ -16403,7 +16407,7 @@ return contar</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Ultima actualización 2020-10-05 13:14:43 UTC
+Ultima actualización 2020-10-11 20:40:09 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
