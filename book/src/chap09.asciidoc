@@ -10,7 +10,7 @@ Para los ejercicios de este capítulo se necesita una lista de palabras en espa�
 (((lemario)))
 
 Este archivo es un archivo de texto simple, por lo que puede ser abierto con un editor de texto o leído con Julia. La función integrada +open+ toma el nombre del archivo como parámetro y devuelve un objeto archivo que puede ser usado para la lectura del archivo.
-(((open)))((("función", "Base", "open", see="open")))
+(((open)))((("función", "Base", "open", véase "open")))
 
 [source,@julia-eval chap09]
 ----
@@ -27,7 +27,7 @@ IOStream(<file palabras.txt>)
 +fin+ es un objeto archivo que puede ser utilizado como entrada y cuando se deja de utilizar, debe cerrarse con +close(fin)+.
 
 Julia tiene integradas varias funciones de lectura, entre ellas +readline+, que lee los caracteres del archivo hasta que llega a un +salto de línea+, devolviendo el resultado como una cadena:
-(((file stream)))(((input)))(((readline)))((("función", "Base", "readline", see="readline")))(((close)))
+(((file stream)))(((input)))(((readline)))((("función", "Base", "readline", véase "readline")))(((close)))
 
 [source,@julia-repl chap09]
 ----
@@ -46,7 +46,7 @@ readline(fin)
 La siguiente palabra es "a-", que es un prefijo que indica privación.
 
 También se puede usar un archivo como parte de un bucle +for+. El siguiente programa lee +palabras.txt+ e imprime cada palabra, una por línea:
-(((sentencia for)))(((eachline)))((("función", "Base", "eachline", see="eachline")))
+(((sentencia for)))(((eachline)))((("función", "Base", "eachline", véase "eachline")))
 
 [source,julia]
 ----
@@ -74,7 +74,7 @@ De hecho, es difícil pensar oraciones que no utilicen esta letra. Intentarlo es
 Bueno, volviendo al tema importante.
 
 Escriba una función llamada +notiene_e+ que devuelva +true+ si una palabra dada no tiene la letra +'e'+.
-(((notiene_e)))((("función", "definida por el programador", "notiene_e", see="notiene_e")))
+(((notiene_e)))((("función", "definida por el programador", "notiene_e", véase "notiene_e")))
 
 Modifique su programa de la sección anterior para que imprima solo las palabras que no tienen +'e'+, y que además calcule el porcentaje de palabras en la lista que no tengan +'e'+.
 
@@ -82,7 +82,7 @@ Modifique su programa de la sección anterior para que imprima solo las palabras
 ==== Ejercicio 9-3
 
 Escriba una función llamada +evitar+ que tome como argumentos una palabra y una cadena de letras prohibidas, y que devuelva +true+ si la palabra no usa ninguna de las letras prohibidas.
-(((evitar)))((("función", "definida por el programador", "evita", see="evita")))
+(((evitar)))((("función", "definida por el programador", "evita", véase "evita")))
 
 Modifique su programa de la sección anterior para solicitar al usuario que ingrese una cadena de letras prohibidas, y que luego imprima el número de palabras que no contengan ninguna de ellas. ¿Es posible encontrar una combinación de 5 letras prohibidas que excluya la menor cantidad de palabras?
 
@@ -90,19 +90,19 @@ Modifique su programa de la sección anterior para solicitar al usuario que ingr
 ==== Ejercicio 9-4
 
 Escriba una función llamada +usasolo+ que tome una palabra y una cadena de letras, y que devuelva +true+ si la palabra contiene solo letras de la lista. ¿Puede hacer una oración usando solo las letras +oneacmil+? Aparte de +"¿El camino?"+
-(((usasolo)))((("función", "definida por el programador", "usasolo", see="usasolo")))
+(((usasolo)))((("función", "definida por el programador", "usasolo", véase "usasolo")))
 
 [[ex09-5]]
 ==== Ejercicio 9-5
 
 Escriba una función llamada +usatodo+ que tome una palabra y una cadena de letras, y que devuelva +true+ si la palabra usa todas las letras requeridas al menos una vez. ¿Cuántas palabras usan todas las vocales +aeiou+? 
-(((usatodo)))((("función", "definida por el programador", "usatodo", see="usatodo")))
+(((usatodo)))((("función", "definida por el programador", "usatodo", véase "usatodo")))
 
 [[ex09-6]]
 ==== Ejercicio 9-6
 
 Escriba una función llamada +esabecedaria+ que devuelva +true+ si las letras de una palabra aparecen en orden alfabético. ¿Cuántas palabras de este tipo hay?
-(((esabecedaria)))((("función", "definida por el programador", "esabecedaria", see="esabecedaria")))
+(((esabecedaria)))((("función", "definida por el programador", "esabecedaria", véase "esabecedaria")))
 
 [[search]]
 === Búsqueda
@@ -125,7 +125,7 @@ end
 El bucle +for+ recorre los caracteres de palabra. Si encontramos la letra +'e'+, puede devolver inmediatamente +false+, de lo contrario hay que pasar a la siguiente letra. Si se sale del bucle normalmente, eso significa que no se encontró una +'e'+, por lo que la función devuelve +true+.
 
 Esta función podría ser escrita de manera más concisa usando el operador +∉+ (*+\notin TAB+*), pero se comienza con esta versión porque muestra la lógica del patrón de búsqueda.
-(((∉)))((("operador", "Base", "∉", see="∉")))
+(((∉)))((("operador", "Base", "∉", véase "∉")))
 
 +evita+ es una versión más general de +notiene_e+ pero tiene la misma estructura:
 (((evita)))
@@ -380,6 +380,6 @@ Escriba un programa de Julia que busque soluciones para este puzzle.
 [TIP]
 ====
 Puede encontrar la función +lpad+ útil.
-(((lpad)))((("función", "Base", "lpad", see="lpad")))
+(((lpad)))((("función", "Base", "lpad", véase "lpad")))
 ====
 

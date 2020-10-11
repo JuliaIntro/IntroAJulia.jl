@@ -16,7 +16,7 @@ Definir qué es un carácter es altamente complejo. La _norma Unicode_ permite a
 (((norma Unicode)))
 
 Un valor +Char+ representa un único carácter y está entre comillas simples:
-(((Char)))((("tipo", "Base", "Char", see="Char")))
+(((Char)))((("tipo", "Base", "Char", véase "Char")))
 
 [source,@julia-repl-test]
 ----
@@ -35,7 +35,7 @@ Incluso los emojis son parte del estándar Unicode. (*+\:banana: TAB+*)
 === Una Cadena es una Secuencia
 
 Una cadena es una secuencia de caracteres. Se puede acceder a un carácter con el operador corchete:
-(((cadena)))(((String)))(((secuencia)))(((operador corchete)))((("[]", see="operador corchete")))((("operador", "Base", "[]", see="operador corchete")))
+(((cadena)))(((String)))(((secuencia)))(((operador corchete)))((("[]", véase "operador corchete")))((("operador", "Base", "[]", véase "operador corchete")))
 
 [source,@julia-repl-test chap08]
 ----
@@ -72,7 +72,7 @@ julia> fruta[end-1]
 ----
 
 No obstante, el valor del índice tiene que ser un número entero. De lo contrario se obtiene:
-(((MethodError)))((("error", "Core", "MethodError", see="MethodError")))
+(((MethodError)))((("error", "Core", "MethodError", véase "MethodError")))
 
 [source,@julia-repl-test chap08]
 ----
@@ -108,7 +108,7 @@ Las cadenas se codifican usando _codificación UTF-8_. UTF-8 es una codificació
 (((codificación UTF-8)))
 
 La función +sizeof+ devuelve el número de bytes de una cadena:
-(((sizeof)))((("función", "Base", "sizeof", see="sizeof")))
+(((sizeof)))((("función", "Base", "sizeof", véase "sizeof")))
 
 [source,@julia-repl-test chap08]
 ----
@@ -120,7 +120,7 @@ Dado que un emoji está codificado en 4 bytes y la indexación de cadenas está 
 (((emoji)))
 
 Esto significa que no todos los índices de byte de una cadena UTF-8 son necesariamente índices válidos para un carácter. Si en una cadena se indexa con un índice de bytes no válido, se genera un error:
-(((StringIndexError)))((("error", "Base", "StringIndexError", see="StringIndexError")))
+(((StringIndexError)))((("error", "Base", "StringIndexError", véase "StringIndexError")))
 
 [source,@julia-repl-test chap08]
 ----
@@ -129,7 +129,7 @@ ERROR: StringIndexError("🍌 🍎 🍐", 2)
 ----
 
 En el caso de +frutas+, el carácter +🍌+ es un carácter de cuatro bytes, por lo que los índices 2, 3 y 4 no son válidos y el índice del siguiente carácter es 5, el siguiente índice válido se puede calcular con +nextind(frutas, 1)+, el subsiguiente con +nextind(frutas,5)+ y así sucesivamente.
-(((nextind)))((("función", "Base", "nextind", see="nextind")))
+(((nextind)))((("función", "Base", "nextind", véase "nextind")))
 
 
 === Recorrido
@@ -150,7 +150,7 @@ end
 Este bucle recorre la cadena y muestra cada letra en una línea distinta. La condición del bucle es +index pass:[&lt;=] sizeof(fruta)+, de modo que cuando el índice es mayor al número de bytes en la cadena, la condición es +falsa+ y no se ejecuta el cuerpo del bucle.
 
 La función +firstindex+ devuelve el primer índice de bytes válido. La palabra reservada +global+ antes de +indice+ indica que queremos reasignar la variable +indice+ definida en +Main+ (ver <<variables_globales>>).
-(((global)))(((firstindex)))((("función", "Base", "firstindex", see="firstindex")))
+(((global)))(((firstindex)))((("función", "Base", "firstindex", véase "firstindex")))
 
 ==== Ejercicio 8-1
 
@@ -212,7 +212,7 @@ julia> str[7:end]
 ----
 
 Si el primer índice es mayor que el segundo, el resultado es una _cadena vacía_, representada por dos comillas:
-(((cadena vacía)))((("&quot;&quot;", see="cadena vacía")))
+(((cadena vacía)))((("&quot;&quot;", véase "cadena vacía")))
 
 [source,@julia-repl-test chap08]
 ----
@@ -254,7 +254,7 @@ Este ejemplo concatena la apertura del signo de exclamación y una nueva primera
 === Interpolación de Cadenas
 
 Construir cadenas usando concatenación puede ser un poco engorroso. Para disminuir la necesidad de las llamadas a +string+ o multiplicaciones repetidas, Julia permite la _interpolación de cadenas_ usando +$+:
-(((interpolación de cadenas)))((("$", see="interpolación de cadenas")))
+(((interpolación de cadenas)))((("$", véase "interpolación de cadenas")))
 
 [source,@julia-repl-test]
 ----
@@ -280,7 +280,7 @@ julia> "1 + 2 = $(1 + 2)"
 === Búsqueda
 
 ¿Qué hace la siguiente función?
-(((búsqueda)))((("función", "definida por el programador", "búsqueda", see="búsqueda")))
+(((búsqueda)))((("función", "definida por el programador", "búsqueda", véase "búsqueda")))
 
 [source,@julia-setup]
 ----
@@ -338,7 +338,7 @@ Luego, vuelva a escribir la función para que, en vez de revisar toda la cadena,
 === Librería con cadenas
 
 Julia tiene funciones integradas que realizan una variedad de operaciones útiles en cadenas. Por ejemplo, la función +uppercase+ toma una cadena y devuelve una nueva cadena con todas las letras mayúsculas.
-(((uppercase)))((("función", "Base", "uppercase", see="uppercase")))
+(((uppercase)))((("función", "Base", "uppercase", véase "uppercase")))
 
 [source,@julia-repl-test]
 ----
@@ -347,7 +347,7 @@ julia> uppercase("¡Hola, mundo!")
 ----
 
 Existe una función llamada +findfirst+ que es notablemente similar a la función +busqueda+ que escribimos:
-(((findfirst)))((("función", "definida por el programador", "findfirst", see="findfirst")))
+(((findfirst)))((("función", "definida por el programador", "findfirst", véase "findfirst")))
 
 [source,@julia-repl-test]
 ----
@@ -364,7 +364,7 @@ julia> findfirst("na", "banana")
 ----
 
 Por defecto, +findfirst+ empieza la búsqueda al comienzo de la cadena pero la función +findnext+ toma un tercer argumento: el +indice+ donde debería comenzar:
-(((findnext)))((("función", "definida por el programador", "findnext", see="findnext")))
+(((findnext)))((("función", "definida por el programador", "findnext", véase "findnext")))
 
 [source,@julia-repl-test]
 ----
@@ -376,7 +376,7 @@ julia> findnext("na", "banana", 4)
 ===  El operador +∈+
 
 El operador +∈+ (*+\in TAB+*) es un operador booleano que toma un carácter y una cadena, y devuelve +true+ si el primero aparece en el segundo:
-((("∈", see="in")))((("operador", "Base", "in", see="in")))((("operador", "Base", "∈", see="in")))
+((("∈", véase "in")))((("operador", "Base", "in", véase "in")))((("operador", "Base", "∈", véase "in")))
 
 [source,@julia-repl-test]
 ----
@@ -385,7 +385,7 @@ true
 ----
 
 Por ejemplo, la siguiente función imprime todas las letras de palabra1 que también aparecen en palabra2:
-(((ambas)))((("función", "definida por el programador", "ambas", see="ambas")))
+(((ambas)))((("función", "definida por el programador", "ambas", véase "ambas")))
 
 [source,@julia-setup chap08-2]
 ----
@@ -458,7 +458,7 @@ Una forma común de abordar este problema es convertir las cadenas a un formato 
 === Depuración
 
 Cuando se usan índices para recorrer los valores en una secuencia, es difícil acceder al principio y al final del recorrido. Aquí hay una función que compara dos palabras y devuelve +true+ si una de las palabras es el reverso de la otra, pero contiene dos errores:
-(((depuración)))(((recorrido)))(((esreverso)))((("función", "definida por el programador", "esreverso", see="esreverso")))
+(((depuración)))(((recorrido)))(((esreverso)))((("función", "definida por el programador", "esreverso", véase "esreverso")))
 
 [source,@julia-setup chap08]
 ----
@@ -575,7 +575,7 @@ ERROR: BoundsError: attempt to access String
 ----
 
 Esta vez se ha producido un +BoundsError+. El valor de +i+ es 5, que está fuera del rango de la cadena +"amor"+.
-(((BoundsError)))((("error", "Core", "BoundsError", see="BoundsError")))
+(((BoundsError)))((("error", "Core", "BoundsError", véase "BoundsError")))
 
 ==== Ejercicio 8-6
 
@@ -640,13 +640,13 @@ Una variable utilizada para contar algo, generalmente inicializada en cero y lue
 Lea la documentación de las funciones relacionadas con cadenas en https://docs.julialang.org/en/v1/manual/strings/. Es posible que desee probar algunas de ellas para asegurarse de comprender cómo funcionan. +strip+ y +replace+ son particularmente útiles.
 
 La documentación utiliza una sintaxis que puede ser confusa. Por ejemplo, en +search(cadena::AbstractString, caracter::Chars, [comienzo::Integer])+, los corchetes indican argumentos opcionales. Por lo tanto, +cadena+ y +caracter+ son obligatorios, pero +comienzo+ es opcional.
-(((búsqueda)))((("función", "Base", "búsqueda", see="búsqueda")))
+(((búsqueda)))((("función", "Base", "búsqueda", véase "búsqueda")))
 
 [[ex08-2]]
 ==== Ejercicio 8-8
 
 Hay una función integrada llamada +count+ que es similar a la función en <<looping_and_counting>>. Lea la documentación de esta función y úsela para contar el número de letras +a+ en "banana".
-(((conteo)))((("función","Base", "conteo", see="conteo")))
+(((conteo)))((("función","Base", "conteo", véase "conteo")))
 
 [[ex08-3]]
 ==== Ejercicio 8-9
@@ -728,7 +728,7 @@ Un cifrado César es una forma simple de cifrado que implica desplazar cada letr
 Para desplazar una palabra, desplace cada letra en la misma cantidad. Por ejemplo, con un desplazamiento de 6, +"ABCDEF"+ es +"GHIJKL"+ y con un desplazamiento de -6, +"BCDE"+ es +"VWXY"+. En la película _2001: Una odisea del espacio_, la computadora de la nave se llama HAL, que es IBM desplazada por -1.
 
 Escriba una función llamada +desplazarpalabra+ que tome una cadena y un número entero como parámetros, y devuelva una nueva cadena que contenga las letras de la cadena original desplazadas por la cantidad dada.
-(((desplazarpalabra)))((("función","definida por el programador", "desplazarpalabra", see="desplazarpalabra")))
+(((desplazarpalabra)))((("función","definida por el programador", "desplazarpalabra", véase "desplazarpalabra")))
 
 [TIP]
 ====

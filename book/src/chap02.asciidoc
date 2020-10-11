@@ -9,7 +9,7 @@ Una de las características más poderosas de un lenguaje de programación es la
 === Sentencias de asignación
 
 Una _sentencia de asignación_ crea una nueva variable y le asigna un valor:
-(((sentencia de asignación)))((("sentencia", "asignación", see="sentencia de asignación")))(((pass:[=], see="sentencia de asignación"))) (((pi)))((("π", see = "pi")))
+(((sentencia de asignación)))(((=, véase "sentencia de asignación"))) (((pi)))((("π",  véase "pi")))
 
 [source,@julia-repl-test chap02]
 ----
@@ -24,7 +24,7 @@ julia> π_val = 3.141592653589793
 Este ejemplo realiza tres asignaciones. La primera asigna una cadena a una nueva variable llamada +mensaje+; la segunda le asigna el entero +17+ a la variable +n+; la tercera asigna el valor (aproximado) de +π+ a la variable +π_val+ (*+\pi TAB+*).
 
 Una forma común de representar variables en papel es escribir el nombre de la variable con una flecha apuntando a su valor. Este tipo de figura se llama “diagrama de estado” porque muestra en qué estado se encuentra cada una de las variables. La Figura 1, <<fig02-1>>, muestra el resultado del ejemplo anterior.
-(((diagrama de estado)))((("diagrama", "estado", see="diagrama de estado")))
+(((diagrama de estado)))((("diagrama", "estado", véase "diagrama de estado")))
 
 [[fig02-1]]
 .Diagrama de estado
@@ -41,7 +41,7 @@ Los caracteres _Unicode_ se pueden ingresar mediante autocompletado por tabulaci
 El carácter guión bajo, +_+, puede formar parte del nombre de una variable. Generalmente se usa como separador en nombres con varias palabras, como por ejemplo en +tu_nombre+ o +velocidad_aerodinamica_de_una_golondrina_sin_cargamento+. (((carácter guión bajo)))(((abreviaturas tipo LaTeX)))
 
 Si se le da un nombre inválido a una variable, aparece un error de sintaxis:
-(((error de sintaxis)))((("error", "sintaxis", see="error de sintaxis")))
+(((error de sintaxis)))((("error", "sintaxis", véase "error de sintaxis")))
 
 [source, jlcon]
 ----
@@ -185,10 +185,10 @@ Cuando una expresión contiene más de un operador, el orden de evaluación depe
 (((paréntesis)))
 
 * __PO__tenciación: tiene la siguiente precedencia más alta, por lo que +pass:[1+2^3]+ es 9, no 27, y +2*3^2+ es 18, no 36.
-(((pass:[^])))
+(((^)))
 
 * __MU__ltiplicación y __D__ivisión tienen mayor precedencia que la __A__dición y __S__ustracción. Entonces +2*3-1+ es 5, no 4, y +pass:[6+4/2]+ es 8, no 5.
-(((pass:[*])))(((pass:[/])))(((pass:[+])))(((pass:[-])))
+(((*)))(((/)))(((+)))(((-)))
 
 * Los operadores con la misma precedencia se evalúan de izquierda a derecha (excepto potencias). Entonces, en la expresión +grados/2*π+, la división ocurre primero y el resultado se multiplica por +π+. Para dividir entre latexmath:[2\pi], puede usar paréntesis, escribir +grados/2/π+ o +grados/2π+.
 
@@ -210,10 +210,10 @@ En general, no se pueden realizar operaciones matemáticas con cadenas, aunque l
 ----
 
 No obstante, hay dos excepciones, +*+ y +pass:[^]+.
-(((pass:[*]))) (((pass:[^])))
+(((*))) (((^)))
 
 El operador +pass:[*]+ realiza _concatenación de cadenas_, lo que significa que une las cadenas de extremo a extremo. Por ejemplo:
-((("cadena", "concatenación", see="concatenar")))((("concatenar")))
+((("cadena", "concatenación", véase "concatenar")))((("concatenar")))
 
 [source,@julia-repl-test]
 ----
@@ -226,7 +226,7 @@ julia> primer_str * segundo_str
 ----
 
 El operador +^+ también funciona con cadenas generando repeticiones. Por ejemplo, +"Spam"pass:[^]3+ es +"SpamSpamSpam"+. Si uno de los valores es una cadena, el otro tiene que ser un número entero.
-((("cadena", "repetición", see="repetición")))((("repetición")))
+((("cadena", "repetición", véase "repetición")))((("repetición")))
 
 De manera análoga, este uso de +pass:[*]+ y +^+ también tiene sentido en la multiplicación y potencia. Así como +4pass:[^]3+ es equivalente a +4*4*4+, esperamos que el +"Spam"pass:[^]3+ sea lo mismo que el +pass:["Spam"*"Spam"*"Spam"]+, y lo es.
 
@@ -236,7 +236,7 @@ De manera análoga, este uso de +pass:[*]+ y +^+ también tiene sentido en la mu
 A medida que los programas se hacen más largos y complejos, se vuelven más difíciles de leer. Los lenguajes formales son densos, y a menudo es difícil leer el código y entender qué está haciendo o por qué.
 
 Por esta razón, es una buena idea agregar notas a sus programas para explicar en lenguaje natural lo que está haciendo el programa. Estas notas se llaman _comentarios_, y comienzan con el símbolo +#+:
-(((comentario)))((("pass:[#]", see="comentario")))
+(((comentario)))((("&#35;", véase "comentario")))
 
 [source,julia]
 ----
@@ -289,13 +289,13 @@ Error en tiempo de ejecución::
 El segundo tipo de error es el error en tiempo de ejecución, llamado así porque aparece durante la ejecución del programa. Estos errores también se denominan _excepciones_ porque generalmente indican que ha sucedido algo excepcional (y malo).
 +
 Los errores en tiempo de ejecución son raros en los programas simples que verá en los primeros capítulos, por lo que puede pasar un tiempo antes de que encuentre uno.
-(((error de tiempo de ejecución)))((("error", "tiempo de ejecución", see="error de tiempo de ejecución")))(((excepción,see="error de tiempo de ejecución")))
+(((error de tiempo de ejecución)))((("error", "tiempo de ejecución", véase "error de tiempo de ejecución")))(((excepción,véase "error de tiempo de ejecución")))
 
 Error semántico::
 El tercer tipo de error es “semántico”, es decir, relacionado con el significado. Si hay un error semántico en su programa, este se ejecutará sin generar mensajes de error, pero no hará lo que se desea, sino que hará otra cosa. Específicamente, hará lo que usted le dijo que hiciera, (y no lo que usted desea que realice).
 
 Identificar errores semánticos puede ser complicado porque requiere que se trabaje a la inversa, analizando la salida del programa para intentar descubrir qué está haciendo.
-(((error semántico))) ((("error", "semántico",see="error semántico")))
+(((error semántico))) ((("error", "semántico",véase "error semántico")))
 
 === Glosario
 
@@ -365,7 +365,7 @@ Un error en un programa que hace que sea imposible de analizar (y, por lo tanto,
 
 error en tiempo de ejecución o excepción::
 Un error que se detecta mientras se ejecuta el programa.
-(((Error de tiempo de ejecución)))
+(((error de tiempo de ejecución)))
 
 semántica::
 El significado de un programa.
@@ -387,7 +387,7 @@ Repitiendo el consejo del capítulo anterior, cada vez que aprenda algo nuevo, d
 . ¿Y con +x=y=1+?
 
 . En algunos lenguajes, cada sentencia termina con un punto y coma:  +;+. ¿Qué sucede si pone un punto y coma al final de una sentencia en Julia?
-(((pass:[;])))
+(((;)))
 
 . ¿Qué pasa si pone un punto al final de una sentencia?
 
