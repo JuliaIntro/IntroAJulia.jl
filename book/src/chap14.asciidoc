@@ -32,7 +32,7 @@ IOStream(<file salida.txt>)
 ----
 
 Si el archivo ya existe, abrirlo en modo de escritura borra los datos antiguos y comienza de nuevo, ¡así que tenga cuidado!. Si el archivo no existe, se crea uno nuevo. +open+ devuelve un objeto de archivo y la función +write+ escribe datos en el archivo.
-(((write)))((("función", "Base", "write", see="write")))
+(((write)))((("función", "Base", "write", véase "write")))
 
 [source,@julia-repl-test chap14]
 ----
@@ -91,17 +91,17 @@ julia> println(fout, "He visto $camellos camellos.")
 [TIP]
 ====
 Una alternativa más potente es la macro +@printf+, que imprime utilizando cadenas con especificación de formato al más puro estilo C. Puede leer más sobre esto en https://docs.julialang.org/en/v1/stdlib/Printf/
-(((@printf)))((("macro", "Printf", "@printf", see="@printf")))(((formateando)))
+(((@printf)))((("macro", "Printf", "@printf", véase "@printf")))(((formateando)))
 ====
 
 
 === Nombre de Archivo y Ruta
 
 Los archivos están organizados en _directorios_ (también llamados "carpetas"). Cada programa en ejecución tiene su propio "directorio actual", que es el directorio que usará por defecto para para la mayoría de las operaciones. Por ejemplo, cuando abre un archivo para leer, Julia lo busca en el directorio actual.
-(((directorio)))((("carpeta", see="directorio actual")))
+(((directorio)))((("carpeta", véase "directorio actual")))
 
 La función +pwd+ (en inglés "print working directory") devuelve el nombre del directorio actual:
-(((pwd)))((("función", "Base", "pwd", see="pwd")))
+(((pwd)))((("función", "Base", "pwd", véase "pwd")))
 
 [source,jlcon]
 ----
@@ -115,10 +115,10 @@ Una cadena como +"/home/ben"+ que identifica un archivo o directorio se llama _r
 (((ruta)))
 
 Un nombre de archivo simple, como +memo.txt+ también se considera una ruta aunque es una _ruta relativa_ porque comienza en el directorio actual. Si el directorio actual es +/home/ben+, el nombre de archivo +memo.txt+ se refiere a +/home/ben/memo.txt+.
-(((ruta relativa)))((("ruta", "relativa", see="ruta relativa")))
+(((ruta relativa)))
 
 Una ruta que comienza con +/+ no depende del directorio actual. Este tipo de ruta se llama _ruta absoluta_. Para encontrar la ruta absoluta de un archivo, puede usar +abspath+:
-(((ruta absoluta)))((("ruta", "absoluta", see="ruta absoluta")))(((abspath)))((("función", "Base", "abspath", see="abspath")))
+(((ruta absoluta)))(((abspath)))((("función", "Base", "abspath", véase "abspath")))
 
 [source,jlcon]
 ----
@@ -127,7 +127,7 @@ julia> abspath("memo.txt")
 ----
 
 Julia también tiene otras funciones para trabajar con nombres de archivo y rutas. Por ejemplo, +ispath+ comprueba si existe un archivo o directorio:
-(((ispath)))((("función", "Base", "ispath", see="ispath")))
+(((ispath)))((("función", "Base", "ispath", véase "ispath")))
 
 [source,jlcon]
 ----
@@ -136,7 +136,7 @@ true
 ----
 
 Si existe, +isdir+ comprueba si es un directorio:
-(((isdir)))((("función", "Base", "isdir", see="isdir")))
+(((isdir)))((("función", "Base", "isdir", véase "isdir")))
 
 [source,jlcon]
 ----
@@ -147,10 +147,10 @@ true
 ----
 
 Del mismo modo, +isfile+ comprueba que se trate de un archivo.
-(((isfile)))((("función", "Base", "isfile", see="isfile")))
+(((isfile)))((("función", "Base", "isfile", véase "isfile")))
 
 +readdir+ devuelve un arreglo de los archivos (y otros directorios) en el directorio dado:
-(((readdir)))((("función", "Base", "readdir", see="readdir")))
+(((readdir)))((("función", "Base", "readdir", véase "readdir")))
 
 [source,jlcon]
 ----
@@ -162,7 +162,7 @@ julia> readdir(cwd)
 ----
 
 Para mostrar el comportamiento de estas funciones, el siguiente ejemplo "recorre" un directorio, imprime los nombres de todos los archivos y se llama a sí misma, de manera recursiva, en todos los directorios.
-(((recorrer)))((("función", "definida por el programador", "recorrer", see="recorrer")))
+(((recorrer)))((("función", "definida por el programador", "recorrer", véase "recorrer")))
 
 [source,@julia-setup chap14]
 ----
@@ -179,12 +179,12 @@ end
 ----
 
 +joinpath+ toma un directorio y un nombre de archivo y los une en una ruta completa.
-(((joinpath)))((("función", "Base", "joinpath", see="joinpath")))
+(((joinpath)))((("función", "Base", "joinpath", véase "joinpath")))
 
 [TIP]
 ====
 Julia tiene una función integrada llamada +walkdir+ (vea https://docs.julialang.org/en/v1/base/file/#Base.Filesystem.walkdir) que es similar a esta pero más versátil. Como ejercicio, lea la documentación y úsela para imprimir los nombres de los archivos en un directorio dado y sus subdirectorios.
-(((walkdir)))((("función", "Base", "walkdir", see="walkdir")))
+(((walkdir)))((("función", "Base", "walkdir", véase "walkdir")))
 ====
 
 
@@ -192,7 +192,7 @@ Julia tiene una función integrada llamada +walkdir+ (vea https://docs.julialang
 === Captura de Excepciones
 
 Muchas cosas pueden salir mal al intentar leer y escribir archivos. Al intentar abrir un archivo que no existe, se obtiene un +SystemError+:
-(((SystemError)))((("error", "Base", "SystemError", see="SystemError")))
+(((SystemError)))((("error", "Base", "SystemError", véase "SystemError")))
 
 [source,@julia-repl-test]
 ----
@@ -205,7 +205,7 @@ Si el usuario intenta abrir un archivo pero no tiene permiso para acceder a él,
 Para evitar estos errores se podrían usar funciones como +ispath+ e +isfile+ pero tomaría mucho tiempo y líneas de código verificar todas las posibilidades.
 
 Es más fácil intentar lidiar con los problemas a medida que ocurren, que es exactamente lo que hace la sentencia +try+. La sintaxis es similar a una sentencia +if+:
-(((sentencia try)))((("sentencia", "try", see="sentencia try")))(((try)))((("palabra reservada", "try", see="try")))(((catch)))((("palabra reservada", "catch", see="catch")))(((end)))
+(((sentencia try)))(((try)))((("palabra reservada", "try")))(((catch)))((("palabra reservada", "catch")))(((end)))
 
 [source,julia]
 ----
@@ -222,7 +222,7 @@ Gestionar una excepción con +try+ recibe el nombre de _capturar_ una excepción
 (((capturar una excepcion)))
 
 Cuando el código realiza cambios de estado o usa recursos, como archivos, generalmente se deben hacer ciertas cosas al finalizar la programación del código, como por ejemplo cerrar los archivos. Las excepciones pueden complicar esta tarea, ya que se podría salir antes de lo esperado de un bloque de código. La palabra reservada +finally+ permite ejecutar un código al salir de un bloque de código determinado, independientemente de cómo salga:
-(((finally)))((("palabra reservada", "finally", see="finally")))
+(((finally)))((("palabra reservada", "finally")))
 
 [source,julia]
 ----
@@ -248,7 +248,7 @@ IntroAJulia proporciona una interfaz para +GDBM+ (GNU dbm), que permite crear y 
 (((GDBM)))
 
 Abrir una base de datos es similar a abrir otros archivos:
-(((DBM)))((("tipo", "IntroAJulia", "DBM", see="DBM")))
+(((DBM)))((("tipo", "IntroAJulia", "DBM", véase "DBM")))
 
 [source,@julia-repl-test chap14]
 ----
@@ -313,7 +313,7 @@ julia> close(bd)
 Una limitación de +GDBM+ es que las claves y los valores deben ser cadenas o conjuntos de bytes. Si intenta utilizar cualquier otro tipo, se producirá un error.
 
 Las funciones +serialize+ y +deserialize+ pueden ser útiles. Traducen casi cualquier tipo de objeto en un arreglo de bytes (un iobuffer) adecuado para el almacenamiento en una base de datos y luego traducen los arreglos de bytes nuevamente en objetos:
-(((Serialización)))((("módulo", "Serialización", see="Serialización")))(((serialize)))((("función", "Serialización", "serialize", see="serialize)))(((IOBuffer)))((("tipo", "Base", "IOBuffer", see="IOBuffer")))(((take!)))((("función", "Base", "take!", see="take!")))
+(((Serialización)))((("módulo", "Serialización", véase "Serialización")))(((serialize)))((("función", "Serialización", "serialize", véase "serialize)))(((IOBuffer)))((("tipo", "Base", "IOBuffer", véase "IOBuffer")))(((take!)))((("función", "Base", "take!", véase "take!")))
 
 [source,@julia-repl-test chap14]
 ----
@@ -330,7 +330,7 @@ UInt8[0x37, 0x4a, 0x4c, 0x0a, 0x04, 0x00, 0x00, 0x00, 0x15, 0x00, 0x08, 0xe2, 0x
 ----
 
 El formato no es intuitivo para nosotros pero es fácil de interpretar para Julia. +deserialize+ reconstituye el objeto:
-(((deserialize)))((("función", "Serialización", "deserialize", see="deserialize")))
+(((deserialize)))((("función", "Serialización", "deserialize", véase "deserialize")))
 
 [source,@julia-repl-test chap14]
 ----
@@ -377,7 +377,7 @@ La mayoría de los sistemas operativos proporcionan una interfaz de línea de co
 (((shell)))(((cd)))
 
 Cualquier programa que se pueda iniciar desde la shell también puede iniciarse desde Julia usando un _objeto de comando_:
-(((objeto de comando)))(((comillas invertidas)))((("``", see="comillas invertidas")))
+(((objeto de comando)))(((comillas invertidas)))((("``", véase "comillas invertidas")))
 
 [source,@julia-repl-test chap14]
 ----
@@ -388,7 +388,7 @@ julia> cmd = `echo hola`
 Las comillas invertidas se usan para delimitar el comando.
 
 La función +run+ ejecuta el comando:
-(((run)))((("función", "Base", "run", see="run"))))
+(((run)))((("función", "Base", "run", véase "run"))))
 
 [source,@julia-repl-test chap14]
 ----
@@ -423,7 +423,7 @@ res = read(cmd, String)
 === Modulos
 
 Supongamos que tenemos un archivo llamado +"wc.jl"+ con el siguiente código:
-(((contarlineas)))((("función", "definida por el programador", "contarlineas", see="contarlineas")))(((eachline)))
+(((contarlineas)))((("función", "definida por el programador", "contarlineas", véase "contarlineas")))(((eachline)))
 
 [source,julia]
 ----
@@ -454,7 +454,7 @@ close(archivo)
 ----
 
 Si ejecuta este programa, se leen las líneas de código y se imprime el número de líneas en el archivo, que es 9. También puede incluirlo en REPL de esta manera:
-(((include)))((("función", "Base", "include", see="include")))
+(((include)))((("función", "Base", "include", véase "include")))
 
 [source,jl-con]
 ----
@@ -465,7 +465,7 @@ julia> include("wc.jl")
 Los módulos permiten crear espacios de trabajo separados, es decir, nuevos global scopes (ámbitos de tipo global). Una sentencia tiene  global scope si tiene efecto en todo el programa.
 
 Un módulo comienza con la palabra reservada +module+ y termina con +end+. Al usar módulos, se evitan los conflictos de nombres entre sus propias definiciones de nivel superior y las que se encuentran en el código de otra persona. +import+ permite controlar qué nombres de otros módulos están visibles y +export+ especifica cuáles de sus nombres son públicos, es decir, aquellos que se pueden usar fuera del módulo sin tener el prefijo del nombre del módulo.
-(((ámbito)))(((module)))((("palabra reservada", "module", see="module")))(((end)))(((import)))((("palabra reservada", "import", see="import")))(((export)))((("palabra reservada", "export", see="export")))(((ContarLineas)))((("module", "ContarLineas", see="ContarLineas")))((("función", "ContarLineas", "contarlineas", see="contarlineas")))
+(((ámbito)))(((module)))((("palabra reservada", "module")))(((end)))(((import)))((("palabra reservada", "import")))(((export)))((("palabra reservada", "export")))(((ContarLineas)))((("module", "ContarLineas", véase "ContarLineas")))((("función", "ContarLineas", "contarlineas", véase "contarlineas")))
 
 [source,julia]
 ----
@@ -520,7 +520,7 @@ julia> println(s)
 ----
 
 Las funciones integradas +repr+ o +dump+ pueden ser de ayuda. Toman cualquier objeto como argumento y devuelven una representación de tipo cadena del objeto.
-(((repr)))((("función", "Base", "repr", see="repr")))(((dump)))((("función", "Base", "dump", see="dump")))
+(((repr)))((("función", "Base", "repr", véase "repr")))(((dump)))((("función", "Base", "dump", véase "dump")))
 
 [source,@julia-eval chap14]
 ----
@@ -593,7 +593,7 @@ Un objeto que representa un comando de shell. Esto permite que un programa de Ju
 ==== Ejercicio 14-2
 
 Escriba una función llamada +sed+ que tome como argumentos una cadena de patrones, una cadena de reemplazo y dos nombres de archivo. La función debe leer el primer archivo y escribir el contenido en el segundo archivo (creándolo si es necesario). Si la cadena de patrones aparece en algún lugar del archivo, debe reemplazarse con la cadena de reemplazo.
-(((sed)))((("función", "definida por el programador", "sed", see="sed")))
+(((sed)))((("función", "definida por el programador", "sed", véase "sed")))
 
 Si se produce un error al abrir, leer, escribir o cerrar los archivos, su programa debe detectar la excepción, imprimir un mensaje de error y terminar.
 
@@ -603,7 +603,7 @@ Si se produce un error al abrir, leer, escribir o cerrar los archivos, su progra
 Si hizo <<ex12-2>>, recordará que debía crear un diccionario que asociaba una cadena ordenada de letras al conjunto de palabras que se podía deletrear con esas letras. Por ejemplo, +"cuaderno"+ estaba asociado al arreglo +["cuaderno", "educaron", "encuadro"]+.
 
 Escriba un módulo que importe +conjuntoanagramas+ y proporcione dos nuevas funciones: +almacenaranagramas+, que almacena el diccionario de anagramas usando +JLD2+ (vea https://github.com/JuliaIO/JLD2.jl); y +leeranagramas+, que busca una palabra y devuelve un arreglo de sus anagramas.
-(((conjuntoanagramas)))((("funcción", "definida por el programador", "conjuntoanagramas", see="conjuntoanagramas")))(((leeranagramas)))((("función", "definida por el programador", "leeranagramas", see="leeranagramas")))
+(((conjuntoanagramas)))((("funcción", "definida por el programador", "conjuntoanagramas", véase "conjuntoanagramas")))(((leeranagramas)))((("función", "definida por el programador", "leeranagramas", véase "leeranagramas")))
 
 [[ex14-3]]
 ==== Ejercicio 14-4

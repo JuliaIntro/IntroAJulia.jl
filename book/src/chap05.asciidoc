@@ -7,7 +7,7 @@ El tema principal de este capítulo es la sentencia +if+, la cual permite ejecut
 === División entera y Módulo
 
 El operador _división entera_, +÷+ (*+\div TAB+*), divide dos números y redondea hacia abajo el resultado. Por ejemplo, suponga que la duración de una película es de 105 minutos. Es posible que desee saber la duración en horas. La división convencional devuelve un número de punto flotante:
-(((operador de división entera))) ((("operador", "Base", "÷", see = "operador división entera"))) ((("÷", see="operador división entera")))
+(((operador de división entera))) ((("operador", "Base", "÷",  véase "operador división entera"))) ((("÷", véase "operador división entera")))
 
 [source,@julia-repl-test chap05]
 ----
@@ -34,7 +34,7 @@ julia> resto = minutos - horas * 60
 ----
 
 Otra alternativa es usar el _operador módulo_, +%+, que divide dos números y devuelve el resto.
-(((operador módulo)))((("operador", "Base", "%", see="operador módulo")))((("%", see="operador módulo")))
+(((operador módulo)))((("operador", "Base", "%", véase "operador módulo")))((("%", véase "operador módulo")))
 
 [source,@julia-repl-test chap05]
 ----
@@ -64,7 +64,7 @@ false
 ----
 
 +true+ y +false+ son valores especiales que pertenecen al tipo +Bool+, no son cadenas:
-(((Bool)))((("tipo", "Base", "Bool", see="Bool")))
+(((Bool)))((("tipo", "Base", "Bool", véase "Bool")))
 
 [source,@julia-repl-test]
 ----
@@ -75,7 +75,7 @@ Bool
 ----
 
 El operador +==+ es un operador relacional. El resto de operadores relacionales son:
-(((operador relacional)))(((==)))((("operador", "Base", "==", see="==")))
+(((operador relacional)))(((==)))((("operador", "Base", "==", véase "==")))
 
 [source,julia]
 ----
@@ -92,7 +92,8 @@ El operador +==+ es un operador relacional. El resto de operadores relacionales 
 [WARNING]
 ====
 Aunque estas operaciones probablemente le sean familiares, los símbolos de Julia son diferentes de los símbolos matemáticos. Un error común es usar un solo signo igual (+=+) en vez de un doble signo igual (+==+. Recuerde que +=+ es un operador de asignación y +==+ es un operador relacional. No existe +=<+ o +pass:[=>]+.
-(((≠)))((("operador", "Base", "≠", see="≠")))((("!=", see="≠")))((("operador", "Base", "!=", see="≠")))(((>)))((("operador", "Base", ">", see=">")))(((<)))((("operador", "Base", "<", see="<")))(((≥)))((("operador", "Base", "≥", see="≥")))(((">=", see="≥")))((("operador", "Base", ">=", see="≥")))(((≤)))((("operador", "Base", "≤", see="≤")))((("pass:[&lt;=]", see="≤")))((("operador", "Base", "pass:[&lt;=]", see="≤")))
+(((≠)))((("operador", "Base", "≠", véase "≠")))((("!=", véase "≠")))((("operador", "Base", "!=", véase "≠")))(((>)))((("operador", "Base", ">", véase ">")))(((<)))((("operador", "Base", "<", véase "<")))(((≥)))((("operador", "Base", "≥", véase "≥")))(((">=", véase "≥")))((("operador", "Base", ">=", véase "≥")))(((≤)))((("operador", "Base", "≤", véase "≤")))(((&lt;=, véase "≤")))((("operador", "Base", "&lt;=", véase "≤")))
+
 ====
 
 
@@ -110,7 +111,7 @@ Finalmente, el operador +!+ niega una expresión booleana, entonces +!(x>y)+ es 
 === Ejecución Condicional
 
 Para escribir programas útiles, generalmente se necesita verificar condiciones y cambiar el comportamiento del programa acorde a ellas. Las sentencias condicionales permiten llevar esto a cabo. La forma más simple es la sentencia +if+ ("si" en inglés):
-(((sentencia condicional)))(((if)))((("palabra reservada", "if", see="if")))(((sentencia if)))((("sentencia", "if", see="sentencia if")))
+(((sentencia condicional)))(((if)))((("palabra reservada", "if")))(((sentencia if)))
 
 [source,julia]
 ----
@@ -120,7 +121,7 @@ end
 ----
 
 La expresión booleana después de +if+ se llama _condición_. Si es verdadera, se ejecuta la instrucción con sangría. Si no, nada ocurre.
-(((condition)))
+(((condición)))
 
 Las sentencias +if+ tienen la misma estructura que las definiciones de función: un encabezado seguido del cuerpo, terminado con la palabra reservada +end+ (en español "fin"). Las sentencias como esta se denominan _sentencias compuestas_.
 (((sentencia compuesta)))(((end)))
@@ -138,7 +139,7 @@ end
 === Ejecución alternativa
 
 Una segunda forma de la sentencia +if+ es la "ejecución alternativa", en la que hay dos posibilidades y la condición determina cuál se ejecuta. La sintaxis se ve así:
-(((ejecución alternativa)))(((else)))((("keyword", "else", see="else")))
+(((ejecución alternativa)))(((else)))((("keyword", "else", véase "else")))
 
 [source,julia]
 ----
@@ -154,7 +155,7 @@ Si el resto de +x+ dividido por 2 es 0, entonces +x+ es par y el programa muestr
 === Condicionales encadenadas
 
 A veces hay más de dos posibilidades y se necesitan más de dos ramas. Una manera de expresar este cómputo es a través de una _condicional encadenada_:
-(((condicional encadenada)))(((elseif)))((("palabra reservada", "elseif", see="elseif")))
+(((condicional encadenada)))(((elseif)))((("palabra reservada", "elseif")))
 
 [source,julia]
 ----
@@ -239,7 +240,7 @@ end
 === Recursividad
 
 Está permitido que una función llame a otra y también que una función se llame a sí misma. Puede no parecer útil, pero sí lo es, como puede verse en la siguiente función:
-(((cuenta regresiva)))((("función", "definida por el programador", "cuenta regresiva", see="cuenta regresiva")))
+(((cuenta regresiva)))((("función", "definida por el programador", "cuenta regresiva", véase "cuenta regresiva")))
 
 [source,@julia-setup chap05]
 ----
@@ -283,7 +284,7 @@ Una función que se llama a sí misma es una función _recursiva_ y el proceso d
 (((función recursiva)))(((recursividad)))
 
 Como otro ejemplo, se puede escribir una función que imprima una cadena latexmath:[n] veces.
-(((printn)))((("función", "definida por el programador", "printn", see="printn")))
+(((printn)))((("función", "definida por el programador", "printn", véase "printn")))
 
 [source,julia]
 ----
@@ -297,7 +298,7 @@ end
 ----
 
 Si +n pass:[&lt;]= 0+, se usa la sentencia +return+ para salir de la función. El flujo de la ejecución vuelve inmediatamente a la sentencia de llamada a función y no se ejecutan las líneas restantes de la función.
-(((return)))((("palabra reservada", "return", see="return")))(((sentencia return)))((("sentencia", "return", see="return statement")))
+(((return)))((("palabra reservada", "return")))(((sentencia return)))
 
 El resto de la función es similar a +cuenta regresiva+: muestra +s+ y luego se llama a sí misma para mostrar +s+ latexmath:[n-1] veces más de modo que el número de lineas mostradas es latexmath:[1 + (n - 1)], es decir latexmath:[n].
 
@@ -328,7 +329,7 @@ Como ejercicio, dibuje un diagrama de pila para +printn+, llamada con +s = "Hola
 
 === Recursión infinita
 Si una recursión nunca alcanza un caso base, continúa haciendo llamadas recursivas para siempre y el programa nunca termina. Esto se conoce como _recursión infinita_ y generalmente no es una buena idea. Aquí hay un código con una recursión infinita:
-(((recursión infinita)))(((recursión)))((("función", "definida por el programador", "recursión", see="recursión")))
+(((recursión infinita)))(((recursión)))((("función", "definida por el programador", "recursión", véase "recursión")))
 
 [source,julia]
 ----
@@ -348,7 +349,7 @@ Stacktrace:
 ----
 
 Este stacktrace es un poco más grande que el que vimos en el capítulo anterior. Cuando se produce el error, ¡hay 80000 marcos de +recursion+ en el diagrama de pila!
-(((stacktrace)))(((StackOverflowError)))((("error", "Core", "StackOverflowError", see="StackOverflowError")))
+(((stacktrace)))(((StackOverflowError)))((("error", "Core", "StackOverflowError", véase "StackOverflowError")))
 
 Si por accidente encuentra una recursión infinita en su código, revise su función para confirmar que hay un caso base que no realiza una llamada recursiva. Si hay un caso base, verifique si realmente puede ocurrir.
 
@@ -357,7 +358,7 @@ Si por accidente encuentra una recursión infinita en su código, revise su func
 Los programas que se han escrito hasta ahora no aceptan entradas del usuario. Simplemente hacen lo mismo cada vez.
 
 Julia tiene una función incorporada llamada +readline+ que detiene el programa y espera a que el usuario escriba algo. Cuando el usuario presiona +RETURN+ o +ENTER+, el programa se reanuda y +readline+ devuelve lo que el usuario escribió como una cadena.
-(((readline)))((("función", "Base", "readline", see="readline")))
+(((readline)))((("función", "Base", "readline", véase "readline")))
 
 [source,jlcon]
 ----
@@ -466,7 +467,7 @@ Un operador, denotado con el signo de porcentaje (%), que se utiliza con enteros
 
 expresión booleana::
 Una expresión cuyo valor es +verdadero+ o +falso+.
-(((boolean expression)))
+(((expresión booleana)))
 
 operador relacional::
 Uno de los operadores que compara sus operandos: +==+, +≠+ (+!=+), +>+, +<+, +≥+ (+>=+), and +≤+ (+pass:[&lt;=]+).
@@ -523,7 +524,7 @@ Una recursión que no tiene un caso base o que nunca llega a él. Eventualmente,
 ==== Ejercicio 5-2
 
 La función +time+ devuelve el tiempo medio de Greenwich actual en segundos desde "la época", que es un tiempo arbitrario utilizado como punto de referencia. En sistemas UNIX, la época es el 1 de enero de 1970.
-(((time)))((("función", "Base", "time", see="time")))
+(((time)))((("función", "Base", "time", véase "time")))
 
 [source,@julia-repl]
 ----
@@ -548,7 +549,7 @@ El último teorema de Fermat dice que no hay enteros positivos latexmath:[a], la
 para cualquier valor de latexmath:[\ (n ] mayor que 2.
 
 . Escriba una función llamada +verificarfermat+ que tome cuatro parámetros—+a+, +b+, +c+ y +n+— y que verifique si el teorema de Fermat es válido. Si +n+ es mayor que 2 y +pass:[a^n + b^n == c^n]+ el programa debería imprimir, "¡Santo cielo, Fermat estaba equivocado!" De lo contrario, el programa debería imprimir, "No, eso no funciona".
-(((verificarfermat)))((("función", "definida por el programador", "verificarfermat", see="verificarfermat")))
+(((verificarfermat)))((("función", "definida por el programador", "verificarfermat", véase "verificarfermat")))
 
 . Escriba una función que solicite al usuario ingresar valores para +a+, +b+, +c+ y +n+, que los convierta en enteros y que use +verificarfermat+ para verificar si violan el teorema de Fermat.
 
@@ -563,7 +564,7 @@ Si cualquiera de las tres longitudes es mayor que la suma de las otras dos, ento
 ====
 
 . Escriba una función llamada +estriangulo+ que tome tres enteros como argumentos, y que imprima “Sí” o “No”, dependiendo de si se puede o no formar un triángulo a partir de barras de las longitudes dadas.
-(((estriangulo)))((("function", "definida por el programador", "estriangulo", see="estriangulo")))
+(((estriangulo)))((("función", "definida por el programador", "estriangulo", véase "estriangulo")))
 
 . Escriba una función que solicite al usuario ingresar tres longitudes de barras, las convierta en enteros y use +estriangulo+ para verificar si las barras con las longitudes dadas pueden formar un triángulo.
 
@@ -640,9 +641,9 @@ La curva de Koch es un fractal que luce como <<fig05-2>>. Para dibujar una curva
 La excepción es cuando latexmath:[x] es menor que 3: en ese caso, puede dibujar una línea recta con una longitud latexmath:[x].
 
 . Escribe una función llamada +koch+ que tome una tortuga y una longitud como parámetros y que use la tortuga para dibujar una curva de Koch con la longitud dada.
-(((koch)))((("función", "definida por el programador", "koch", see="koch")))
+(((koch)))((("función", "definida por el programador", "koch", véase "koch")))
 
 . Escriba una función llamada +copodenieve+ que dibuje tres curvas de Koch para hacer el contorno de un copo de nieve.
-(((copodenieve)))((("función", "definida por el programador", "copodenieve", see="copodenieve")))
+(((copodenieve)))((("función", "definida por el programador", "copodenieve", véase "copodenieve")))
 
 . La curva de Koch se puede generalizar de varias maneras. Consulte https://en.wikipedia.org/wiki/Koch_snowflake para ver ejemplos e implementar su favorito.

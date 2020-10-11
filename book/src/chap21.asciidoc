@@ -160,19 +160,19 @@ Se está tratando de acceder a un elemento de un arreglo fuera de los límites d
 
 DomainError::
 El argumento de una función o constructor no pertenece al dominio válido.
-(((DomainError)))((("error", "Core", "DomainError", see="DomainError")))
+(((DomainError)))((("error", "Core", "DomainError", véase "DomainError")))
 
 DivideError:: 
 Se intentó dividir un entero por 0.
-(((DivideError)))((("error", "Core", "DivideError", see="DivideError")))
+(((DivideError)))((("error", "Core", "DivideError", véase "DivideError")))
 
 EOFError:: 
 No había más datos disponibles para leer desde un archivo o stream.
-(((EOFError)))((("error", "Base", "EOFError", see="EOFError")))
+(((EOFError)))((("error", "Base", "EOFError", véase "EOFError")))
 
 InexactError::
 No se puede convertir a un tipo.
-(((InexactError)))((("error", "Core", "InexactError", see="InexactError")))
+(((InexactError)))((("error", "Core", "InexactError", véase "InexactError")))
 
 KeyError::
 Se está tratando de acceder o eliminar un elemento inexistente de un objeto +AbstractDict+ (+Dict+) o +Set+.
@@ -184,11 +184,11 @@ No existe un método con la especificación de tipo requerida en la función gen
 
 OutOfMemoryError:: 
 Una operación asignó demasiada memoria para que el sistema o el recolector de basura opere correctamente.
-(((OutOfMemoryError)))((("error", "Core", "OutOfMemoryError", see="OutOfMemoryError")))
+(((OutOfMemoryError)))((("error", "Core", "OutOfMemoryError", véase "OutOfMemoryError")))
 
 OverflowError:: 
 El resultado de una expresión es demasiado grande para el tipo especificado y se produce un desbordamiento.
-(((OverflowError)))((("error", "Core", "OverflowError", see="OverflowError")))
+(((OverflowError)))((("error", "Core", "OverflowError", véase "OverflowError")))
 
 StackOverflowError:: 
 Una llamada a función trata de usar más espacio que el que está disponible en la pila de llamadas. Esto generalmente ocurre cuando una llamada se repite infinitamente.

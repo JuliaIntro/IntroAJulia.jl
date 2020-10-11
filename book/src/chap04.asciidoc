@@ -15,7 +15,7 @@ Un _modulo_ es un archivo que contiene una colección de funciones relacionadas.
 (((modulo)))(((paquete)))
 
 Los paquetes se pueden instalar en REPL ingresando al modo Pkg REPL con la tecla +]+.
-(((pass:[&#93;])))(((IntroAJulia)))((("modulo", "IntroAJulia", see="IntroAJulia")))
+(((])))(((IntroAJulia)))((("modulo", véase "IntroAJulia")))
 
 [source,jlcon]
 ----
@@ -25,7 +25,7 @@ Los paquetes se pueden instalar en REPL ingresando al modo Pkg REPL con la tecla
 Esto puede demorar un poco.
 
 Antes de que podamos usar las funciones de un módulo, tenemos que importarlo con una sentencia +using+:
-(((using)))((("palabra reservada", "using", see="using")))(((sentencia using)))((("sentencia", "using", see="sentencia using")))
+(((using)))((("palabra reservada", "using")))(((sentencia using)))
 
 [source,@julia-repl-test]
 ----
@@ -36,10 +36,10 @@ Luxor.Turtle(0.0, 0.0, true, 0.0, (0.0, 0.0, 0.0))
 ----
 
 El módulo +IntroAJulia+ proporciona una función llamada +Turtle+ (tortuga en español) que crea un objeto +Luxor.Turtle+, el cual es asignado a una variable llamada +🐢+ (*+\:turtle: TAB+*).
-(((Turtle)))((("tipo", "Luxor", "Turtle", see="Turtle")))
+(((Turtle)))((("tipo", "Luxor", "Turtle", véase "Turtle")))
 
 Una vez que crea una tortuga, puede llamar a una función para "moverla", y así hacer un dibujo con ella. Por ejemplo, para mover la tortuga hacia adelante (forward en inglés):
-(((forward)))((("función", "IntroAJulia", "forward", see="forward")))
+(((forward)))((("función", "IntroAJulia", "forward", véase "forward")))
 
 [source,julia]
 ----
@@ -54,15 +54,15 @@ image::images/fig41.svg[]
 
 
 La palabra reservada +@svg+ ejecuta una macro que dibuja una imagen SVG. Las macros son una característica importante pero avanzada de Julia.
-(((@svg)))((("macro", "Luxor", "@svg", see="@svg")))(((macro)))(((SVG picture)))
+(((@svg)))((("macro", "Luxor", "@svg", véase "@svg")))(((macro)))(((SVG picture)))
 
 Los argumentos de +forward+ son la tortuga y una distancia en píxeles, por lo que el tamaño real depende de su pantalla.
 
 También es posible hacer girar a la tortuga con la función +turn+. Los argumentos de esta función son la tortuga y un ángulo en grados.
-(((turn)))((("function", "IntroAJulia", "turn", see="turn")))
+(((turn)))((("función", "IntroAJulia", "turn", véase "turn")))
 
 Además, cada tortuga está sosteniendo un lápiz, que puede estar hacia arriba o hacia abajo; si el lápiz está hacia abajo, la tortuga deja un rastro cuando se mueve. <<fig04-1>> muestra el rastro dejado por la tortuga. Las funciones +penup+ y +pendown+ significan "lápiz hacia arriba" y "lápiz hacia abajo".
-(((penup)))((("función", "IntroAJulia", "penup", see="penup")))(((pendown)))((("función", "IntroAJulia", "pendown", see="pendown")))
+(((penup)))((("función", "IntroAJulia", "penup", véase "penup")))(((pendown)))((("función", "IntroAJulia", "pendown", véase "pendown")))
 
 Para dibujar un ángulo recto, modifique la llamada a la macro:
 
@@ -102,7 +102,7 @@ end
 ----
 
 Se puede hacer lo mismo de manera más concisa con una sentencia +for+:
-(((sentencia for)))((("sentencia", "for", see="sentencia for")))(((for)))((("palabra reservada", "for", see="for")))(((in)))((("palabra reservada", "in", see="in")))
+(((sentencia for)))(((for)))((("palabra reservada", "for")))(((in)))((("palabra reservada", "in")))
 
 [source,@julia-repl-test]
 ----
@@ -191,7 +191,7 @@ Haga una versión más general de +circulo+ llamada +arco+ que tome un parámetr
 === Encapsulación
 
 El primer ejercicio le pide que coloque el código que permite dibujar un cuadrado en una definición de función, y que luego llame a la función, pasando a turtle como parámetro. Aquí hay una solución:
-(((cuadrado)))((("función", "definida por el programador", "cuadrado", see="cuadrado")))
+(((cuadrado)))((("función", "definida por el programador", "cuadrado", véase "cuadrado")))
 
 [source,julia]
 ----
@@ -246,7 +246,7 @@ Agregar un parámetro a una función se llama _generalización_ porque hace que 
 (((generalización)))
 
 El siguiente paso también es una generalización. En vez de dibujar cuadrados, +poligono+ dibuja polígonos regulares con cualquier número de lados. Aquí hay una solución:
-(((polígono)))((("función", "definida por el programador", "polígono", see="polígono")))
+(((polígono)))((("función", "definida por el programador", "polígono", véase "polígono")))
 
 [source,julia]
 ----
@@ -269,7 +269,7 @@ Este ejemplo dibuja un polígono de 7 lados, con una longitud de 70 por lado.
 === Diseño de Interfaz
 
 El siguiente paso es escribir +circulo+, que toma un radio +r+ como parámetro. Aquí hay una solución simple que usa +poligono+ para dibujar un polígono de 50 lados:
-(((círculo)))((("función", "definida por el programador", "círculo", see="círculo")))
+(((círculo)))((("función", "definida por el programador", "círculo", véase "círculo")))
 
 [source,julia]
 ----
@@ -313,7 +313,7 @@ Agregar 3 a +n+ garantiza que el polígono tenga al menos 3 lados.
 Cuando se escribió +circulo+, se pudo reutilizar +poligono+ ya que un polígono de muchos lados es una buena aproximación de un círculo. Pero +arco+ no es tan versátil; no se puede usar +poligono+ o +circulo+ para dibujar un arco.
 
 Una alternativa es comenzar con una copia de +poligono+ y transformarla en +arco+. El resultado podría verse así:
-(((arco)))((("función", "programmer-defined", "arco", see="arco")))
+(((arco)))((("función", "programmer-defined", "arco", véase "arco")))
 
 [source,julia]
 ----
@@ -330,7 +330,7 @@ end
 ----
 
 La segunda mitad de esta función se parece a +poligono+, pero no se puede reutilizar +poligono+ sin cambiar la interfaz. Se podría generalizar +poligono+ para tomar un +angulo+ como tercer argumento, ¡pero entonces +poligono+ ya no sería un nombre apropiado! En su lugar, se puede llamar a esta función más general +polilinea+:
-(((polyline)))((("function", "definida por el programador", "polyline", see="polyline")))
+(((polyline)))((("función", "definida por el programador", "polyline", véase "polyline")))
 
 [source,julia]
 ----
@@ -362,7 +362,7 @@ end
 ----
 
 Finalmente, se puede reescribir +circulo+ usando +arco+:
-(((circle)))
+(((círculo)))
 
 [source,julia]
 ----
@@ -398,7 +398,7 @@ Este proceso tiene algunos inconvenientes, se explorarán alternativas más adel
 === Docstring
 
 Un _docstring_ es una cadena que va antes de una función y que explica la interfaz ("doc" es la abreviatura de "documentación"). Aquí hay un ejemplo:
-(((docstring)))(((comillas triples)))((("pass:[&quot;&quot;&quot;]", see="comillas triples")))
+(((docstring)))(((comillas triples)))((("&quot;&quot;&quot;", véase "comillas triples")))
 
 [source,julia]
 ----
@@ -417,7 +417,7 @@ end
 ----
 
 Se puede acceder a la documentación en REPL o en un notebook escribiendo ? seguido del nombre de una función o macro, y presionando +ENTER+:
-(((help)))((("?", see="help")))
+(((help)))((("?", véase "help")))
 
 ----
 help?> polilinea

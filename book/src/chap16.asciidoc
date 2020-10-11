@@ -7,7 +7,7 @@ Ahora que se ha tratado cómo crear tipos compuestos, el siguiente paso es escri
 === Tiempo
 
 Como otro ejemplo de tipo compuesto, se define una +estructura+ llamada +Hora+ que registra la hora del día. La definición de esta estructura se muestra a continuación:
-(((Hora)))((("tipo", "definida por el programador", "Hora", see="Hora")))
+(((Hora)))((("tipo", "definida por el programador", "Hora", véase "Hora")))
 
 [source,@julia-setup chap16]
 ----
@@ -24,7 +24,7 @@ end
 ----
 
 Observación: +Time+ es una palabra reservada de Julia. 
-(((Time)))((("tipo", "Dates", "Time", see="Time")))
+(((Time)))((("tipo", "Dates", "Time", véase "Time")))
 
 [source,@julia-repl-test chap16]
 ----
@@ -41,12 +41,12 @@ image::images/fig161.svg[]
 ==== Ejercicio 16-1
 
 Escriba una función llamada +imprimirhora+ que tome un objeto +Hora+ y lo imprima con el formato +hora:minuto:segundo+. +Printf+, de la macro +@printf+ del módulo StdLib, permite imprimir un número entero con el formato `"%02d"`, es decir, utilizando al menos dos dígitos, incluido un cero inicial si es necesario.
-(((imprimirhora)))((("función", "definida por el programador", "imprimirhora", see="imprimirhora")))
+(((imprimirhora)))((("función", "definida por el programador", "imprimirhora", véase "imprimirhora")))
 
 ==== Ejercicio 16-2
 
 Escriba una función booleana llamada +estadespues+ que tome dos objetos +Hora+: +t1+ y +t2+ y devuelva +true+ si la hora +t1+ está después que +t2+ y +false+ de lo contrario. Desafío: no use sentencias +if+.
-(((estadespues)))((("función", "definida por el programador", "estadespues", see="estadespues")))
+(((estadespues)))((("función", "definida por el programador", "estadespues", véase "estadespues")))
 
 
 === Funciones Puras
@@ -55,7 +55,7 @@ En las siguientes secciones se escriben dos versiones de una función que calcul
 (((función pura)))(((desarrollo de prototipos)))
 
 Este es un primer prototipo de la función +sumahora+:
-(((sumahora)))((("función", "definida por el programador", "sumahora", see="sumahora")))
+(((sumahora)))((("función", "definida por el programador", "sumahora", véase "sumahora")))
 
 [source,@julia-setup chap16]
 ----
@@ -119,7 +119,7 @@ Hay veces en las que es útil que una función modifique uno o más de los objet
 (((modificador)))
 
 La función +incrementar!+, que agrega un número dado de segundos a un objeto +Hora+, puede escribirse naturalmente como un modificador. Aquí se muestra un prototipo de la función:
-(((incrementar!)))((("función", "definida por el programador", "incrementar!", see="incrementar!")))
+(((incrementar!)))((("función", "definida por el programador", "incrementar!", véase "incrementar!")))
 
 [source,@julia-setup chap16]
 ----
@@ -172,7 +172,7 @@ Cuando se escribía +sumahora+ e +incrementar!+, efectivamente se estaba sumando
 Esta observación sugiere otro enfoque para el problema: se pueden convertir los objetos +Hora+ en enteros y aprovechar el hecho de que la computadora sabe realizar aritmética con enteros.
 
 La siguiente función convierte un objeto Hora en un entero:
-(((horaaentero)))((("función", "definida por el programador", "horaaentero", see="horaaentero")))
+(((horaaentero)))((("función", "definida por el programador", "horaaentero", véase "horaaentero")))
 
 [source,@julia-setup chap16]
 ----
@@ -183,7 +183,7 @@ end
 ----
 
 Ahora, para convertir un entero en un objeto +Hora+ (recuerde que +divrem+ divide el primer argumento por el segundo, y devuelve el cociente y el resto como una tupla):
-(((enteroahora)))((("función", "definida por el programador", "enteroahora", see="enteroahora")))
+(((enteroahora)))((("función", "definida por el programador", "enteroahora", véase "enteroahora")))
 
 [source,@julia-setup chap16]
 ----
@@ -231,7 +231,7 @@ Los requisitos como estos se denominan _invariantes_ porque siempre deben ser ve
 (((invariante)))
 
 Escribir código para verificar invariantes puede ayudar a detectar errores y encontrar sus causas. Por ejemplo, podría tener una función como +eshoravalida+ que tome un objeto +Hora+ y devuelva +false+ si viola una invariante:
-(((eshoravalida)))((("función", "definida por el programador", "eshoravalida", see="eshoravalida")))
+(((eshoravalida)))((("función", "definida por el programador", "eshoravalida", véase "eshoravalida")))
 
 [source,@julia-setup chap16]
 ----
@@ -261,7 +261,7 @@ end
 ----
 
 O podría usar una macro +@assert+, que verifica un invariante dado y genera una excepción si falla:
-(((@assert)))((("macro", "Base", "@assert", see="@assert")))
+(((@assert)))((("macro", "Base", "@assert", véase "@assert")))
 
 [source,@julia-setup chap16]
 ----
@@ -308,7 +308,7 @@ Una condición que nunca debería cambiar durante la ejecución de un programa.
 ==== Ejercicio 16-6
 
 Escriba una función llamada +multhora+ que tome un objeto +Hora+ y un número, y devuelva un nuevo objeto +Hora+ que contenga el producto entre +Hora+ original y el número.
-(((multhora)))((("función", "definida por el programador", "multhora", see="multhora")))
+(((multhora)))((("función", "definida por el programador", "multhora", véase "multhora")))
 
 Luego use +multhora+ para escribir una función que tome un objeto +Hora+ que represente el tiempo de duración de una carrera, y un número que represente la distancia y devuelva un objeto +Hora+ que represente el ritmo promedio (minutos por kilómetro).
 
