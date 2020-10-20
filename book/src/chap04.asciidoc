@@ -372,7 +372,7 @@ end
 ----
 
 Este proceso, que reorganiza un programa para mejorar las interfaces y facilitar la reutilización del código, se denomina _refactorización_. En este caso, se observa que había un código similar en +arco+ y +poligono+, por lo que lo "factorizamos" en +polilinea+.
-(((refactorización))
+(((refactorización)))
 
 Si se hubiese planeado con anticipación, se podría haber escrito +polilinea+ primero y haber evitado la refactorización, pero a menudo no se sabe lo suficiente al comienzo de un proyecto para diseñar todas las interfaces. Una vez que se comienza a programar, se comprende mejor el problema. A veces, refactorizar es una señal de que se ha aprendido algo.
 

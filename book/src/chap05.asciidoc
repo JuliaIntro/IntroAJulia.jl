@@ -367,7 +367,7 @@ julia> text = readline()
 "¿Qué está esperando?"
 ----
 Antes de recibir una entrada por teclado del usuario, es una buena idea imprimir un mensaje que le diga al usuario qué escribir:
-(((prompt)))
+(((indicador)))
 
 [source,jlcon]
 ----

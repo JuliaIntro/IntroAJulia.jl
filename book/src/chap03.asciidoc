@@ -125,7 +125,7 @@ Una de las características más útiles de los lenguajes de programación es su
 x = sin(grados/360*2*π)
 ----
 
-E incluso llamadas a función:
+E incluso llamadas a funciónes:
 (((exp)))((("función", "Base", "exp", véase "exp"))) ((("función exponencial", véase "exp")))
 
 [source, julia]
@@ -163,7 +163,7 @@ function imprimirletras()
 end
 ----
 
-+function+ es una palabra reservada que indica que esta es una definición de función. El nombre de la función es +imprimirletras+. Las reglas para los nombres de funciones son las mismas que para los nombres de variables: pueden contener casi todos los caracteres Unicode (consulte <<caracteres>>), pero el primer carácter no puede ser un número. No puede usar una palabra reservada como nombre de una función, y debe evitar tener una variable y una función con el mismo nombre.
++function+ es una palabra reservada que indica que esta es una definición de función. El nombre de la función es `imprimirletras`. Las reglas para los nombres de funciones son las mismas que para los nombres de variables: pueden contener casi todos los caracteres Unicode (consulte <<caracteres>>), pero el primer carácter no puede ser un número. No puede usar una palabra reservada como nombre de una función, y debe evitar tener una variable y una función con el mismo nombre.
 ((("palabra reservada", "function")))(((argumento)))(((carácter Unicode)))
 
 Los paréntesis vacíos después del nombre indican que esta función no tiene argumentos.
@@ -349,11 +349,11 @@ Esta función toma dos argumentos, los concatena e imprime el resultado dos vece
 ----
 julia> linea1 = "Hola hola"
 "Hola hola"
-julia> linea2 = "chao chao."
-"chao chao".
+julia> linea2 = "adiós adiós."
+"adiós adiós".
 julia> concatenar_dos(línea1, línea2)
-Hola hola chao chao.
-Hola hola chao chao.
+Hola hola adiós adiós.
+Hola hola adiós adiós.
 ----
 
 Cuando +concatenar_dos+ termina, la variable +concat+ es destruida. Si intentamos imprimirla, obtendremos un error:

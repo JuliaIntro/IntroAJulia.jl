@@ -21,7 +21,8 @@ julia> π_val = 3.141592653589793
 3.141592653589793
 ----
 
-Este ejemplo realiza tres asignaciones. La primera asigna una cadena a una nueva variable llamada +mensaje+; la segunda le asigna el entero +17+ a la variable +n+; la tercera asigna el valor (aproximado) de +π+ a la variable +π_val+ (*+\pi TAB+*).
+Este ejemplo realiza tres asignaciones. La primera asigna una cadena a una nueva variable llamada `mensaje`; la segunda le asigna el entero `17` a la variable `n`; la tercera asigna el valor (aproximado) de +π+ (*+\pi TAB+*) a la variable +π_val+.
+//asciidoctor does not parse `π` so we must write +π+
 
 Una forma común de representar variables en papel es escribir el nombre de la variable con una flecha apuntando a su valor. Este tipo de figura se llama “diagrama de estado” porque muestra en qué estado se encuentra cada una de las variables. La Figura 1, <<fig02-1>>, muestra el resultado del ejemplo anterior.
 (((diagrama de estado)))((("diagrama", "estado", véase "diagrama de estado")))
@@ -38,7 +39,7 @@ Los nombres de las variables pueden ser tan largos como se desee. Pueden contene
 
 Los caracteres _Unicode_ se pueden ingresar mediante autocompletado por tabulación de las abreviaturas tipo LaTeX en el REPL de Julia. (((Carácter Unicode)))
 
-El carácter guión bajo, +_+, puede formar parte del nombre de una variable. Generalmente se usa como separador en nombres con varias palabras, como por ejemplo en +tu_nombre+ o +velocidad_aerodinamica_de_una_golondrina_sin_cargamento+. (((carácter guión bajo)))(((abreviaturas tipo LaTeX)))
+El carácter guión bajo, +_+, puede formar parte del nombre de una variable. Generalmente se usa como separador en nombres con varias palabras, como por ejemplo en `tu_nombre` o `velocidad_aerodinamica_de_una_golondrina_sin_cargamento`. (((carácter guión bajo)))(((abreviaturas tipo LaTeX)))
 
 Si se le da un nombre inválido a una variable, aparece un error de sintaxis:
 (((error de sintaxis)))((("error", "sintaxis", véase "error de sintaxis")))
@@ -53,9 +54,9 @@ julia> struct = "Química avanzada"
 ERROR: syntax: unexpected "=" (ERROR: sintaxis: "=" inesperado)
 ----
 
-+76trombones+ es un nombre de variable inválido porque comienza con un número. También es inválido +mas@+ porque contiene el carácter inválido: +@+. Pero, ¿cuál es el error en +struct+?
+`76trombones` es un nombre de variable inválido porque comienza con un número. También es inválido `mas@` porque contiene el carácter inválido: `@`. Pero, ¿cuál es el error en `struct`?
 
-Resulta que +struct+ es una de las _palabras reservadas_ de Julia. Julia usa las palabras reservadas para reconocer la estructura del programa, por ello no pueden usarse como nombres de variables.
+Resulta que `struct` es una de las _palabras reservadas_ de Julia. Julia usa las palabras reservadas para reconocer la estructura del programa, por ello no pueden usarse como nombres de variables.
 (((palabra clave)))
 
 Julia tiene las siguientes palabras reservadas:
@@ -87,7 +88,7 @@ julia> n + 25
 42
 ----
 
-Cuando escribe una expresión en el prompt, el REPL la _evalúa_, lo que significa que encuentra el valor de la expresión. En este ejemplo, +n+ tiene el valor 17 previamente asignado y +n+25+ retorna el valor 42.
+Cuando escribe una expresión en el indicador, el REPL la _evalúa_, lo que significa que encuentra el valor de la expresión. En este ejemplo, `n` tiene el valor 17 previamente asignado y `n+25` retorna el valor 42.
 (((evaluar)))
 
 Una _sentencia_ es una unidad de código que tiene un efecto, tal como crear una variable o mostrar un valor.
@@ -101,7 +102,7 @@ julia> println(n)
 17
 ----
 
-La primera línea es una sentencia de asignación, ya que asigna un valor a +n+. La segunda línea es una sentencia de impresión que muestra el valor de +n+.
+La primera línea es una sentencia de asignación, ya que asigna un valor a `n`. La segunda línea es una sentencia de impresión que muestra el valor de `n`.
 
 Cuando escribe una sentencia, REPL la ejecuta, es decir, hace lo que dice la sentencia.
 (((ejecutar)))
@@ -115,7 +116,7 @@ Hasta ahora se ha ejecutado Julia en _modo interactivo_, lo que significa que se
 Una alternativa es guardar el código en un archivo de órdenes o _script_ y luego utilizar Julia en _modo script_ para ejecutarlo. Por convención, los scripts de Julia tienen nombres que terminan con la extensión _.jl_.
 (((script)))(((modo script)))
 
-Si sabe cómo crear y ejecutar un _script_ en su computadora, está listo para comenzar. De lo contrario, es recomendable usar _JuliaBox_ nuevamente. Abra un archivo de texto, escriba el script y guárdelo con la extensión _.jl_. El script se puede ejecutar en una terminal con el comando *+julia nombre_del_script.jl+*.
+Si sabe cómo crear y ejecutar un _script_ en su computadora, está listo para comenzar. De lo contrario, es recomendable usar _JuliaBox_ nuevamente. Abra un archivo de texto, escriba el script y guárdelo con la extensión _.jl_. El script se puede ejecutar en una terminal con el comando *`julia nombre_del_script.jl`*.
 (((extension, .jl)))(((JuliaBox)))
 
 Debido a que Julia proporciona ambos modos, puede probar líneas de código en modo interactivo antes de colocarlos en un script. Aún así, tenga en consideración que existen diferencias entre el modo interactivo y el modo script que pueden generar confusión.
@@ -130,7 +131,7 @@ julia> millas * 1.61
 42.182
 ----
 
-La primera línea asigna un valor a +millas+ y muestra el valor. La segunda línea es una expresión, por lo que el REPL la evalúa y muestra el resultado. Gracias al código anterior sabemos que una maratón tiene unos 42 kilómetros.
+La primera línea asigna un valor a `millas` y muestra el valor. La segunda línea es una expresión, por lo que el REPL la evalúa y muestra el resultado. Gracias al código anterior sabemos que una maratón tiene unos 42 kilómetros.
 
 Pero, si escribe el mismo código en un script y lo ejecuta, no obtendrá ningún resultado. En el modo script, una expresión, por sí sola, no tiene ningún efecto visible. Julia evalúa la expresión, pero no muestra el valor a menos que se lo indique:
 
@@ -161,7 +162,7 @@ produce la salida
 2
 ----
 
-Notar que la sentencia de asignación +x = 2+ no tiene salida.
+Notar que la sentencia de asignación `x = 2` no tiene salida.
 
 ==== Ejercicio 2-1
 
@@ -181,13 +182,13 @@ Ahora coloque las mismas sentencias en un script y ejecútelo. ¿Cuál es el res
 Cuando una expresión contiene más de un operador, el orden de evaluación depende de las _reglas de precedencia_. Julia sigue la convención matemática para el orden de evaluación de los operadores matemáticos. El acrónimo _PAPOMUDAS_ es una forma útil de recordar estas reglas:
 (((orden de operaciones)))(((PAPOMUDAS)))
 
-* __PA__réntesis: tienen la mayor precedencia y se pueden utilizar para forzar la evaluación de una expresión en el orden que se desee. Dado que las expresiones entre paréntesis se evalúan primero, +2*(3-1)+ es 4, y +pass:[(1+1)^(5-2)]+ es 8. También puede usar paréntesis para hacer una expresión más fácil de leer, como en +(minuto*100)/60+, incluso si no cambia el resultado.
+* __PA__réntesis: tienen la mayor precedencia y se pueden utilizar para forzar la evaluación de una expresión en el orden que se desee. Dado que las expresiones entre paréntesis se evalúan primero, `2*(3-1)` es `4`, y +pass:[(1+1)^(5-2)]+ es `8`. También puede usar paréntesis para hacer una expresión más fácil de leer, como en `(minuto*100)/60`, incluso si no cambia el resultado.
 (((paréntesis)))
 
-* __PO__tenciación: tiene la siguiente precedencia más alta, por lo que +pass:[1+2^3]+ es 9, no 27, y +2*3^2+ es 18, no 36.
+* __PO__tenciación: tiene la siguiente precedencia más alta, por lo que +pass:[1+2^3]+ es `9`, no `27`, y `2*3^2` es `18`, no `36`.
 (((^)))
 
-* __MU__ltiplicación y __D__ivisión tienen mayor precedencia que la __A__dición y __S__ustracción. Entonces +2*3-1+ es 5, no 4, y +pass:[6+4/2]+ es 8, no 5.
+* __MU__ltiplicación y __D__ivisión tienen mayor precedencia que la __A__dición y __S__ustracción. Entonces `2*3-1` es `5`, no `4`, y +pass:[6+4/2]+ es `8`, no `5`.
 (((*)))(((/)))(((+)))(((-)))
 
 * Los operadores con la misma precedencia se evalúan de izquierda a derecha (excepto potencias). Entonces, en la expresión +grados/2*π+, la división ocurre primero y el resultado se multiplica por +π+. Para dividir entre latexmath:[2\pi], puede usar paréntesis, escribir +grados/2/π+ o +grados/2π+.
@@ -225,17 +226,17 @@ julia> primer_str * segundo_str
 "automóvil"
 ----
 
-El operador +^+ también funciona con cadenas generando repeticiones. Por ejemplo, +"Spam"pass:[^]3+ es +"SpamSpamSpam"+. Si uno de los valores es una cadena, el otro tiene que ser un número entero.
+El operador +^+ también funciona con cadenas generando repeticiones. Por ejemplo, `"Spam"pass:[^]3` es `"SpamSpamSpam"`. Si uno de los valores es una cadena, el otro tiene que ser un número entero.
 ((("cadena", "repetición", véase "repetición")))((("repetición")))
 
-De manera análoga, este uso de +pass:[*]+ y +^+ también tiene sentido en la multiplicación y potencia. Así como +4pass:[^]3+ es equivalente a +4*4*4+, esperamos que el +"Spam"pass:[^]3+ sea lo mismo que el +pass:["Spam"*"Spam"*"Spam"]+, y lo es.
+De manera análoga, este uso de `pass:[*]` y `^` también tiene sentido en la multiplicación y potencia. Así como `4pass:[^]3` es equivalente a `4*4*4`, esperamos que el `"Spam"pass:[^]3` sea lo mismo que el `pass:["Spam"*"Spam"*"Spam"]`, y lo es.
 
 
 === Comentarios
 
 A medida que los programas se hacen más largos y complejos, se vuelven más difíciles de leer. Los lenguajes formales son densos, y a menudo es difícil leer el código y entender qué está haciendo o por qué.
 
-Por esta razón, es una buena idea agregar notas a sus programas para explicar en lenguaje natural lo que está haciendo el programa. Estas notas se llaman _comentarios_, y comienzan con el símbolo +#+:
+Por esta razón, es una buena idea agregar notas a sus programas para explicar en lenguaje natural lo que está haciendo el programa. Estas notas se llaman _comentarios_, y comienzan con el símbolo `#`:
 (((comentario)))((("&#35;", véase "comentario")))
 
 [source,julia]
@@ -251,7 +252,7 @@ En este caso, el comentario aparece sólo en una línea. También puede poner co
 porcentaje = (minuto * 100) / 60    # porcentaje de una hora
 ----
 
-Todo, desde el +#+ hasta el final de la línea se ignora y no tiene ningún efecto en la ejecución del programa.
+Todo, desde el `#` hasta el final de la línea se ignora y no tiene ningún efecto en la ejecución del programa.
 
 Los comentarios son más útiles cuando documentan características no obvias del código. Es razonable suponer que el lector puede averiguar qué hace el código, por lo tanto es más útil explicar _por qué_.
 
@@ -280,7 +281,7 @@ Se pueden producir tres tipos de errores en un programa: errores de sintaxis, er
 (((depuración)))
 
 Error de sintaxis::
-“Sintaxis” se refiere a la estructura de un programa y las reglas sobre esa estructura. Por ejemplo, los paréntesis deben presentarse de a pares, por lo que +(1+2)+ es válido, pero +8)+ es un error de sintaxis.
+“Sintaxis” se refiere a la estructura de un programa y las reglas sobre esa estructura. Por ejemplo, los paréntesis deben presentarse de a pares, por lo que `(1+2)` es válido, pero `8)` es un error de sintaxis.
 +
 Si hay un error de sintaxis en cualquier parte de su programa, Julia muestra un mensaje de error y se cierra, no pudiendo ejecutar el programa. Durante sus primeras semanas como programador, puede pasar mucho tiempo rastreando errores de sintaxis. A medida que gane experiencia, cometerá menos errores y los encontrará más rápido.
 (((error de sintaxis)))(((mensaje de error)))
@@ -312,7 +313,7 @@ Una representación gráfica de un conjunto de variables y los valores a los que
 (((diagrama de estado)))
 
 palabra clave::
-Una palabra reservada que se utiliza para definir la sintaxis y estructura de un programa; no puede usar palabras reservadas como +if+, +function+ y +while+ como nombres de variables.
+Una palabra reservada que se utiliza para definir la sintaxis y estructura de un programa; no puede usar palabras reservadas como `if`, `function` y `while` como nombres de variables.
 (((palabra clave)))
 
 operando::
@@ -336,7 +337,7 @@ Ejecutar una sentencia y hacer lo que ésta dice.
 (((ejecutar)))
 
 modo interactivo::
-Una forma de utilizar el REPL de Julia escribiendo código en el _prompt_.
+Una forma de utilizar el REPL de Julia escribiendo código en el _indicador_.
 (((modo interactivo)))
 
 modo script::
@@ -382,16 +383,16 @@ Es un error en un programa, que provoca que se haga algo diferente a lo que el p
 
 Repitiendo el consejo del capítulo anterior, cada vez que aprenda algo nuevo, debe probarlo en el modo interactivo y cometer errores a propósito para ver el resultado.
 
-. Hemos visto que +n=42+ es válido. ¿Qué pasa con +42=n+?
+. Hemos visto que `n=42` es válido. ¿Qué pasa con `42=n`?
 
-. ¿Y con +x=y=1+?
+. ¿Y con `x=y=1`?
 
-. En algunos lenguajes, cada sentencia termina con un punto y coma:  +;+. ¿Qué sucede si pone un punto y coma al final de una sentencia en Julia?
+. En algunos lenguajes, cada sentencia termina con un punto y coma:  `;`. ¿Qué sucede si pone un punto y coma al final de una sentencia en Julia?
 (((;)))
 
 . ¿Qué pasa si pone un punto al final de una sentencia?
 
-. En notación matemática puede multiplicar +x+ e +y+ de esta manera: +x y+. ¿Qué pasa si intenta eso en Julia? ¿Y qué sucede con 5x?
+. En notación matemática puede multiplicar `x` e `y` de esta manera: `x y`. ¿Qué pasa si intenta eso en Julia? ¿Y qué sucede con 5x?
 
 [[ex02-2]]
 ==== Ejercicio 2-3
@@ -403,4 +404,4 @@ Practique usando el REPL de Julia como una calculadora:
 
 . Supongamos que el precio de venta de un libro es de $24.95, pero las librerías obtienen un descuento del 40%. El envío cuesta $3 por la primera copia y 75 centavos por cada copia adicional. ¿Cuál es el costo total al por mayor de 60 copias?
 
-. Si una persona sale de casa a las 6:52 a.m. y corre 1 milla a un ritmo relajado (8:15 minutos por milla), luego 3 millas más rápido (7:12 minutos por milla) y 1 milla a ritmo relajado nuevamente, ¿a qué hora llega a casa para desayunar?
+. Si una persona sale de casa a las 6:52 a.m. y corre 1 milla a un ritmo relajado (8:15 minutos por milla), luego 3 millas más rápido (7:12 minutos por milla) y 1 milla a ritmo relajado nuevamente, ¿A qué hora llega a casa para desayunar?
