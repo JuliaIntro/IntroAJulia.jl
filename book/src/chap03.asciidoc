@@ -125,7 +125,7 @@ Una de las características más útiles de los lenguajes de programación es su
 x = sin(grados/360*2*π)
 ----
 
-E incluso llamadas a funciónes:
+E incluso llamadas a funciones:
 (((exp)))((("función", "Base", "exp", véase "exp"))) ((("función exponencial", véase "exp")))
 
 [source, julia]

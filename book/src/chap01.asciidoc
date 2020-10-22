@@ -40,7 +40,7 @@ Para evitar ese problema, se recomienda que comience ejecutando Julia en un nave
 
 En ((("JuliaBox")))((("recursos en línea", "JuliaBox")))el navegador, puede ejecutar Julia en https://www.juliabox.com[JuliaBox]. No se requiere instalación: simplemente abra su navegador y entre a la página de JuliaBox, inicie sesión y comience a programar (consulte <<juliabox>>).
 
-Julia _REPL_ (de "Read–Eval–Print Loop" que se traduce en "Leer-Evaluar-Imprimir Bucle") ((("REPL (Read-Eval-Print Loop)")))es un programa que lee y ejecuta código de Julia. Puede iniciar REPL abriendo un terminal en JuliaBox y escribiendo *+julia+* en la línea de comando. Cuando comienza, debería ver una salida como esta:
+Julia _REPL_ (de "Read–Eval–Print Loop" que se traduce en "Bucle de Leer-Evaluar-Imprimir") ((("REPL (Read-Eval-Print Loop)")))es un programa que lee y ejecuta código de Julia. Puede iniciar REPL abriendo un terminal en JuliaBox y escribiendo *+julia+* en la línea de comando. Cuando comienza, debería ver una salida como esta:
 
 [source,@julia-eval]
 ----
@@ -182,7 +182,7 @@ Ambigüedad::
 Los lenguajes naturales están llenos de ambigüedades, este problema es abordado mediante el uso del contexto y otra información. Los lenguajes formales están diseñados para ser casi completamente precisos, lo que significa que cualquier declaración tiene exactamente un significado, independientemente del contexto.
 
 Redundancia::
-Para compensar la ambigüedad y reducir los malentendidos, los lenguajes naturales emplean mucha redundancia. Como resultado, a menudo son verboso. Los lenguajes formales son menos redundantes y más concisos.
+Para compensar la ambigüedad y reducir los malentendidos, los lenguajes naturales emplean mucha redundancia. Como resultado, a menudo son verbosos. Los lenguajes formales son menos redundantes y más concisos.
 
 Metáfora::
 Los lenguajes naturales están llenos de modismos y metáforas. Si se dice: “Caí en la cuenta”", probablemente no haya una cuenta, y nada que se caiga (este modismo significa que alguien entendió algo después de un período de confusión). Por otro lado, los lenguajes formales significan exactamente lo que expresan.
@@ -288,9 +288,9 @@ Siempre que esté experimentando con algo nuevo, debe intentar cometer errores. 
 
 Este tipo de ejercicios le ayuda a recordar lo que leyó; también le ayuda a programar, porque puede saber qué significan los mensajes de error. Es mejor cometer errores ahora y a propósito, en lugar de después y accidentalmente.
 
-. En un comando print, ¿qué sucede si omite uno de los paréntesis, o ambos?
+. En un comando print, ¿Qué sucede si omite uno de los paréntesis, o ambos?
 
-. Si está intentando imprimir un _string_, ¿qué sucede si omite una de las comillas o ambas?
+. Si está intentando imprimir un _string_, ¿Qué sucede si omite una de las comillas o ambas?
 
 . Se puede usar un signo menos para escribir un número negativo, como `-2`. ¿Qué sucede si pone un signo + antes de un número? ¿Qué pasa con +pass:[2++2]+?
 
@@ -313,4 +313,4 @@ Inicie el REPL de Julia, y úselo como una calculadora.
 Hay 1.61 kilómetros en una milla.
 ====
 
-. Si corre una carrera de 10 kilómetros en 37 minutos y 48 segundos, ¿cuál es su ritmo promedio (tiempo por milla en minutos y segundos)? ¿Cuál es su velocidad promedio en millas por hora?
+. Si corre una carrera de 10 kilómetros en 37 minutos y 48 segundos, ¿Cuál es su ritmo promedio (tiempo por milla en minutos y segundos)? ¿Cuál es su velocidad promedio en millas por hora?

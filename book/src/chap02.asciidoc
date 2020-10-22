@@ -54,7 +54,7 @@ julia> struct = "Química avanzada"
 ERROR: syntax: unexpected "=" (ERROR: sintaxis: "=" inesperado)
 ----
 
-`76trombones` es un nombre de variable inválido porque comienza con un número. También es inválido `mas@` porque contiene el carácter inválido: `@`. Pero, ¿cuál es el error en `struct`?
+`76trombones` es un nombre de variable inválido porque comienza con un número. También es inválido `mas@` porque contiene el carácter inválido: `@`. Pero, ¿Cuál es el error en `struct`?
 
 Resulta que `struct` es una de las _palabras reservadas_ de Julia. Julia usa las palabras reservadas para reconocer la estructura del programa, por ello no pueden usarse como nombres de variables.
 (((palabra clave)))

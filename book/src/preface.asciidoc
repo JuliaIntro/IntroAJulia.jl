@@ -20,7 +20,7 @@ Julia fue lanzado originalmente en 2012 por Alan Edelman, Stefan Karpinski, Jeff
 La elección de un lenguaje de programación es siempre subjetiva. Para mí, las siguientes características de Julia son decisivas:
 
 - Julia está desarrollado como un lenguaje de programación de alto rendimiento.
-- Julia usa envío múltiple (“multiple dispatch” en ingles), que le permite al programador elegir entre diferentes patrones de programación de acuerdo a la aplicación.
+- Julia usa envío múltiple (“multiple dispatch” en inglés), que le permite al programador elegir entre diferentes patrones de programación de acuerdo a la aplicación.
 - Julia es un lenguaje de tipo dinámico que se puede usar fácilmente de forma interactiva.
 - Julia tiene una sintaxis de alto nivel que es fácil de aprender.
 - Julia es un lenguaje de programación con tipos opcionales, cuyos tipos de datos (definidos por el usuario) hacen que el código sea claro y robusto.
