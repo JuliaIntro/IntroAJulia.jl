@@ -841,7 +841,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Julia está desarrollado como un lenguaje de programación de alto rendimiento.</p>
 </li>
 <li>
-<p>Julia usa envío múltiple “multiple dispatch”, que le permite al programador elegir entre diferentes patrones de programación de acuerdo a la aplicación.</p>
+<p>Julia usa envío múltiple (“multiple dispatch” en inglés), que le permite al programador elegir entre diferentes patrones de programación de acuerdo a la aplicación.</p>
 </li>
 <li>
 <p>Julia es un lenguaje de tipo dinámico que se puede usar fácilmente de forma interactiva.</p>
@@ -950,7 +950,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>El siguiente paquete puede ser de utilidad, y se puede agregar directamente a Julia. Simplemente escriba <strong><code>add https://github.com/JuliaIntro/IntroAJulia.jl</code></strong> en el REPL, en modo Pkg.</p>
 </div>
 <div class="paragraph">
-<p>La forma más fácil de ejecutar un código de Julia es yendo a <a href="https://juliabox.com" class="bare">https://juliabox.com</a>, e iniciar una sesión de prueba gratuita. Es posible utilizar tanto las interfaces REPL como de notebooks. Si desea tner Julia instalada localmente en su computadora, puede descargar <a href="https://juliacomputing.com/products/juliapro.html">JuliaPro</a> de Julia Computing gratuitamente. Consiste en una versión reciente de Julia, el IDE de Juno basado en Atom y varios paquetes de Julia preinstalados. Si es más aventurero, puede descargar Julia desde <a href="https://julialang.org" class="bare">https://julialang.org</a>, instale el editor que prefiera, por ejemplo Atom o Visual Studio Code, activando los complementos para su integración de Julia. En el caso de una instalación local, también puede agregar el paquete <code>IJulia</code> que le permite ejecutar un notebook de Jupyter en su computadora.</p>
+<p>La forma más fácil de ejecutar un código de Julia es yendo a <a href="https://juliabox.com" class="bare">https://juliabox.com</a>, e iniciar una sesión de prueba gratuita. Es posible utilizar tanto las interfaces REPL como de notebooks. Si desea tener Julia instalada localmente en su computadora, puede descargar <a href="https://juliacomputing.com/products/juliapro.html">JuliaPro</a> de Julia Computing gratuitamente. Consiste en una versión reciente de Julia, el IDE de Juno basado en Atom y varios paquetes de Julia preinstalados. Si es más aventurero, puede descargar Julia desde <a href="https://julialang.org" class="bare">https://julialang.org</a>, instale el editor que prefiera, por ejemplo Atom o Visual Studio Code, activando los complementos para su integración de Julia. En el caso de una instalación local, también puede agregar el paquete <code>IJulia</code> que le permite ejecutar un notebook de Jupyter en su computadora.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1042,7 +1042,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">Input/Entrada</dt>
+<dt class="hdlist1">Entrada/Input</dt>
 <dd>
 <p>Se obtienen datos a través del teclado, un archivo, una red u otro dispositivo.</p>
 </dd>
@@ -1080,7 +1080,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>En el navegador, puede ejecutar Julia en <a href="https://www.juliabox.com">JuliaBox</a>. No se requiere instalación: simplemente abra su navegador y entre a la página de JuliaBox, inicie sesión y comience a programar (consulte <a href="#juliabox">Apéndice B</a>).</p>
 </div>
 <div class="paragraph">
-<p>Julia <em>REPL</em> (Read–Eval–Print Loop) es un programa que lee y ejecuta código de Julia. Puede iniciar REPL abriendo un terminal en JuliaBox y escribiendo <strong><code>julia</code></strong> en la línea de comando. Cuando comienza, debería ver una salida como esta:</p>
+<p>Julia <em>REPL</em> (de "Read–Eval–Print Loop" que se traduce en "Bucle de Leer-Evaluar-Imprimir") es un programa que lee y ejecuta código de Julia. Puede iniciar REPL abriendo un terminal en JuliaBox y escribiendo <strong><code>julia</code></strong> en la línea de comando. Cuando comienza, debería ver una salida como esta:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1100,7 +1100,7 @@ julia&gt;</pre>
 <p>Las primeras líneas contienen información sobre el REPL, por lo que esto puede mostrarse diferente en su computadora. Debe verificar que la versión sea al menos <code>1.0.0</code>.</p>
 </div>
 <div class="paragraph">
-<p>El última línea es un <em>prompt</em> que indica que el REPL está listo para que se ingrese una instrucción. Si escribe una línea de código y presiona Enter, la REPL muestra el resultado:</p>
+<p>El última línea es un <em>indicador</em>, señalando que el REPL está listo para que se ingrese una instrucción. Si escribe una línea de código y presiona Enter, la REPL muestra el resultado:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1109,7 +1109,7 @@ julia&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Los fragmentos de código se pueden copiar y pegar textualmente, incluido el prompt <code>julia&gt;</code> y cualquier salida.</p>
+<p>Los fragmentos de código se pueden copiar y pegar textualmente, incluido el indicador <code>julia&gt;</code> y cualquier salida.</p>
 </div>
 <div class="paragraph">
 <p>Ahora ya está listo para comenzar. De aquí en adelante, ya sabrá cómo iniciar la REPL de Julia, y ejecutar su código.</p>
@@ -1182,7 +1182,7 @@ julia&gt; 6 * 7
 <p>Un <em>valor</em>  es uno de los elementos básicos con los que trabaja un programa, tal como una letra o un número. Algunos de los valores que hemos visto hasta ahora son <code>2</code>, <code>42.0</code> y <code>"Hola, Mundo!"</code>.</p>
 </div>
 <div class="paragraph">
-<p>Estos valores pertenecen a diferentes <em>tipos</em>: <code>2</code> es un <em>entero</em> (<em>integer</em> en inglés), <code>42.0</code> es un <em>número de punto flotante</em> (<em>floating-point number</em> en inglés), y <code>"Hola, Mundo!"</code> es una <em>cadena</em> (<em>string</em> en inglés), llamada así porque las letras que contiene están unidas.</p>
+<p>Estos valores pertenecen a diferentes <em>tipos</em>: <code>2</code> es un <em>entero</em> (<em>integer</em> en inglés), <code>42.0</code> es un <em>número de punto flotante</em> (<em>floating-point number</em> en inglés), y <code>"Hola, Mundo!"</code> es una <em>cadena</em> de caracteres (<em>string</em> en inglés), llamada así porque las letras que contiene están unidas.</p>
 </div>
 <div class="paragraph">
 <p>Si no está seguro del tipo de un valor, el REPL puede ayudarle:</p>
@@ -1240,10 +1240,10 @@ String</code></pre>
 <p><em>Los lenguajes formales</em> son lenguajes diseñados por personas para propósitos específicos. Por ejemplo, la notación que usan los matemáticos es un lenguaje formal particularmente útil para denotar relaciones entre números y símbolos. Los químicos usan un lenguaje formal para representar la estructura química de las moléculas. Los lenguajes de programación también son lenguajes formales y han sido diseñados para expresar cálculos.</p>
 </div>
 <div class="paragraph">
-<p>Los lenguajes formales tienden a dictar reglas estrictas de <em>sintaxis</em> que gobiernan la estructura de las sentencias. Por ejemplo, en matemáticas, la sentencia \(3 + 3 = 6\) tiene la sintaxis correcta, pero \(3 += 3 \$ 6\) no. En química, \(\mathrm{H_2O}\) es una fórmula sintácticamente correcta, pero \(\mathrm{_2Zz}\) no lo es.</p>
+<p>Los lenguajes formales tienden a dictar reglas estrictas de <em>sintaxis</em> que gobiernan la estructura de las sentencias. Por ejemplo, en matemáticas, la sentencia \(3 + 3 = 6\) tiene la sintaxis correcta, pero \(3 += 3 \$ 6\) no. En química, \(\Large{H_2O}\) es una fórmula sintácticamente correcta, pero \(\Large{_2Zz}\) no lo es.</p>
 </div>
 <div class="paragraph">
-<p>Las reglas de sintaxis   pueden ser de dos tipos, correspondientes a <em>componentes léxicos</em> y a <em>estructura</em>. Los componentes léxicos son los elementos básicos del lenguaje, como palabras, números y elementos químicos. Uno de los problemas con \(3 += 3 \$ 6\) es que \(\$\) no es un componente léxico válido en matemáticas (al menos hasta donde conocemos). Del mismo modo, \(\mathrm{_2Zz}\) no es válido porque no existe ningún elemento con la abreviatura \(\mathrm{Zz}\).</p>
+<p>Las reglas de sintaxis   pueden ser de dos tipos, correspondientes a <em>componentes léxicos</em> y a <em>estructura</em>. Los componentes léxicos son los elementos básicos del lenguaje, como palabras, números y elementos químicos. Uno de los problemas con \(3 += 3 \$ 6\) es que \(\$\) no es un componente léxico válido en matemáticas (al menos hasta donde conocemos). Del mismo modo, \(\Large{_2Zz}\) no es válido porque no existe ningún elemento con la abreviatura \(\Large{Zz}\).</p>
 </div>
 <div class="paragraph">
 <p>El segundo tipo de reglas de sintaxis se refiere a la forma en que se combinan los componentes léxicos. La ecuación \(3 += 3 \) no es válida porque aunque \(+\) y \(=\) son componentes léxicos válidos, no se puede tener uno justo después el otro. Del mismo modo, en una fórmula química, el subíndice se coloca después del nombre del elemento, no antes.</p>
@@ -1265,9 +1265,9 @@ String</code></pre>
 </dd>
 <dt class="hdlist1">Redundancia</dt>
 <dd>
-<p>Para compensar la ambigüedad y reducir los malentendidos, los lenguajes naturales emplean mucha redundancia. Como resultado, a menudo hace un uso excesivo de palabras. Los lenguajes formales son menos redundantes y más concisos.</p>
+<p>Para compensar la ambigüedad y reducir los malentendidos, los lenguajes naturales emplean mucha redundancia. Como resultado, a menudo son verbosos. Los lenguajes formales son menos redundantes y más concisos.</p>
 </dd>
-<dt class="hdlist1">Literalidad</dt>
+<dt class="hdlist1">Metáfora</dt>
 <dd>
 <p>Los lenguajes naturales están llenos de modismos y metáforas. Si se dice: “Caí en la cuenta”", probablemente no haya una cuenta, y nada que se caiga (este modismo significa que alguien entendió algo después de un período de confusión). Por otro lado, los lenguajes formales significan exactamente lo que expresan.</p>
 </dd>
@@ -1333,7 +1333,7 @@ String</code></pre>
 <dd>
 <p>Un programa, que de manera reiterada lee una entrada, la ejecuta y genera resultados.</p>
 </dd>
-<dt class="hdlist1">prompt</dt>
+<dt class="hdlist1">indicador</dt>
 <dd>
 <p>Caracteres mostrados por el REPL para indicar que está listo para recibir información de entrada de parte del usuario.</p>
 </dd>
@@ -1427,10 +1427,10 @@ String</code></pre>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>En un comando print, ¿qué sucede si omite uno de los paréntesis, o ambos?</p>
+<p>En un comando print, ¿Qué sucede si omite uno de los paréntesis, o ambos?</p>
 </li>
 <li>
-<p>Si está intentando imprimir un <em>string</em>, ¿qué sucede si omite una de las comillas o ambas?</p>
+<p>Si está intentando imprimir un <em>string</em>, ¿Qué sucede si omite una de las comillas o ambas?</p>
 </li>
 <li>
 <p>Se puede usar un signo menos para escribir un número negativo, como <code>-2</code>. ¿Qué sucede si pone un signo + antes de un número? ¿Qué pasa con <code>2++2</code>?</p>
@@ -1472,7 +1472,7 @@ String</code></pre>
 </div>
 </li>
 <li>
-<p>Si corre una carrera de 10 kilómetros en 37 minutos y 48 segundos, ¿cuál es su ritmo promedio (tiempo por milla en minutos y segundos)? ¿Cuál es su velocidad promedio en millas por hora?</p>
+<p>Si corre una carrera de 10 kilómetros en 37 minutos y 48 segundos, ¿Cuál es su ritmo promedio (tiempo por milla en minutos y segundos)? ¿Cuál es su velocidad promedio en millas por hora?</p>
 </li>
 </ol>
 </div>
@@ -1504,7 +1504,7 @@ julia&gt; π_val = 3.141592653589793
 </div>
 </div>
 <div class="paragraph">
-<p>Este ejemplo realiza tres asignaciones. La primera asigna una cadena a una nueva variable llamada <code>mensaje</code>; la segunda le asigna el entero <code>17</code> a la variable <code>n</code>; la tercera asigna el valor (aproximado) de <code>π</code> a la variable <code>π_val</code> (<strong><code>\pi TAB</code></strong>).</p>
+<p>Este ejemplo realiza tres asignaciones. La primera asigna una cadena a una nueva variable llamada <code>mensaje</code>; la segunda le asigna el entero <code>17</code> a la variable <code>n</code>; la tercera asigna el valor (aproximado) de <code>π</code> (<strong><code>\pi TAB</code></strong>) a la variable <code>π_val</code>.</p>
 </div>
 <div class="paragraph">
 <p>Una forma común de representar variables en papel es escribir el nombre de la variable con una flecha apuntando a su valor. Este tipo de figura se llama “diagrama de estado” porque muestra en qué estado se encuentra cada una de las variables. La Figura 1, <a href="#fig02-1">Figura 1</a>, muestra el resultado del ejemplo anterior.
@@ -1546,7 +1546,7 @@ ERROR: syntax: unexpected "=" (ERROR: sintaxis: "=" inesperado)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p><code>76trombones</code> es un nombre de variable inválido porque comienza con un número. También es inválido <code>mas@</code> porque contiene el carácter inválido: <code>@</code>. Pero, ¿cuál es el error en <code>struct</code>?</p>
+<p><code>76trombones</code> es un nombre de variable inválido porque comienza con un número. También es inválido <code>mas@</code> porque contiene el carácter inválido: <code>@</code>. Pero, ¿Cuál es el error en <code>struct</code>?</p>
 </div>
 <div class="paragraph">
 <p>Resulta que <code>struct</code> es una de las <em>palabras reservadas</em> de Julia. Julia usa las palabras reservadas para reconocer la estructura del programa, por ello no pueden usarse como nombres de variables.
@@ -1587,7 +1587,7 @@ julia&gt; n + 25
 </div>
 </div>
 <div class="paragraph">
-<p>Cuando escribe una expresión en el prompt, el REPL la <em>evalúa</em>, lo que significa que encuentra el valor de la expresión. En este ejemplo, <code>n</code> tiene el valor 17 previamente asignado y <code>n+25</code> retorna el valor 42.
+<p>Cuando escribe una expresión en el indicador, el REPL la <em>evalúa</em>, lo que significa que encuentra el valor de la expresión. En este ejemplo, <code>n</code> tiene el valor 17 previamente asignado y <code>n+25</code> retorna el valor 42.
 </p>
 </div>
 <div class="paragraph">
@@ -1704,15 +1704,15 @@ x + 1</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p><em>PA</em>réntesis: tienen la mayor precedencia y se pueden utilizar para forzar la evaluación de una expresión en el orden que se desee. Dado que las expresiones entre paréntesis se evalúan primero, <code>2*(3-1)</code> es 4, y <code>(1+1)^(5-2)</code> es 8. También puede usar paréntesis para hacer una expresión más fácil de leer, como en <code>(minuto*100)/60</code>, incluso si no cambia el resultado.
+<p><em>PA</em>réntesis: tienen la mayor precedencia y se pueden utilizar para forzar la evaluación de una expresión en el orden que se desee. Dado que las expresiones entre paréntesis se evalúan primero, <code>2*(3-1)</code> es <code>4</code>, y <code>(1+1)^(5-2)</code> es <code>8</code>. También puede usar paréntesis para hacer una expresión más fácil de leer, como en <code>(minuto*100)/60</code>, incluso si no cambia el resultado.
 </p>
 </li>
 <li>
-<p><em>PO</em>tenciación: tiene la siguiente precedencia más alta, por lo que <code>1+2^3</code> es 9, no 27, y <code>2*3^2</code> es 18, no 36.
+<p><em>PO</em>tenciación: tiene la siguiente precedencia más alta, por lo que <code>1+2^3</code> es <code>9</code>, no <code>27</code>, y <code>2*3^2</code> es <code>18</code>, no <code>36</code>.
 </p>
 </li>
 <li>
-<p><em>MU</em>ltiplicación y <em>D</em>ivisión tienen mayor precedencia que la <em>A</em>dición y <em>S</em>ustracción. Entonces <code>2*3-1</code> es 5, no 4, y <code>6+4/2</code> es 8, no 5.
+<p><em>MU</em>ltiplicación y <em>D</em>ivisión tienen mayor precedencia que la <em>A</em>dición y <em>S</em>ustracción. Entonces <code>2*3-1</code> es <code>5</code>, no <code>4</code>, y <code>6+4/2</code> es <code>8</code>, no <code>5</code>.
 </p>
 </li>
 <li>
@@ -1920,7 +1920,7 @@ porcentaje = (minuto * 100) / 60</code></pre>
 </dd>
 <dt class="hdlist1">modo interactivo</dt>
 <dd>
-<p>Una forma de utilizar el REPL de Julia escribiendo código en el <em>prompt</em>.
+<p>Una forma de utilizar el REPL de Julia escribiendo código en el <em>indicador</em>.
 </p>
 </dd>
 <dt class="hdlist1">modo script</dt>
@@ -2014,7 +2014,7 @@ porcentaje = (minuto * 100) / 60</code></pre>
 <p>Supongamos que el precio de venta de un libro es de $24.95, pero las librerías obtienen un descuento del 40%. El envío cuesta $3 por la primera copia y 75 centavos por cada copia adicional. ¿Cuál es el costo total al por mayor de 60 copias?</p>
 </li>
 <li>
-<p>Si una persona sale de casa a las 6:52 a.m. y corre 1 milla a un ritmo relajado (8:15 minutos por milla), luego 3 millas más rápido (7:12 minutos por milla) y 1 milla a ritmo relajado nuevamente, ¿a qué hora llega a casa para desayunar?</p>
+<p>Si una persona sale de casa a las 6:52 a.m. y corre 1 milla a un ritmo relajado (8:15 minutos por milla), luego 3 millas más rápido (7:12 minutos por milla) y 1 milla a ritmo relajado nuevamente, ¿A qué hora llega a casa para desayunar?</p>
 </li>
 </ol>
 </div>
@@ -2167,7 +2167,7 @@ julia&gt; sin(radianes)
 </div>
 </div>
 <div class="paragraph">
-<p>E incluso llamadas a función:
+<p>E incluso llamadas a funciones:
  </p>
 </div>
 <div class="listingblock">
@@ -2427,11 +2427,11 @@ end</code></pre>
 <div class="content">
 <pre class="highlight"><code class="language-@ julia-repl-test chap03" data-lang="@ julia-repl-test chap03">julia&gt; linea1 = "Hola hola"
 "Hola hola"
-julia&gt; linea2 = "chao chao."
-"chao chao".
+julia&gt; linea2 = "adiós adiós."
+"adiós adiós".
 julia&gt; concatenar_dos(línea1, línea2)
-Hola hola chao chao.
-Hola hola chao chao.</code></pre>
+Hola hola adiós adiós.
+Hola hola adiós adiós.</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3350,7 +3350,7 @@ end</code></pre>
 </div>
 <div class="paragraph">
 <p>Este proceso, que reorganiza un programa para mejorar las interfaces y facilitar la reutilización del código, se denomina <em>refactorización</em>. En este caso, se observa que había un código similar en <code>arco</code> y <code>poligono</code>, por lo que lo "factorizamos" en <code>polilinea</code>.
-(refactorización</p>
+</p>
 </div>
 <div class="paragraph">
 <p>Si se hubiese planeado con anticipación, se podría haber escrito <code>polilinea</code> primero y haber evitado la refactorización, pero a menudo no se sabe lo suficiente al comienzo de un proyecto para diseñar todas las interfaces. Una vez que se comienza a programar, se comprende mejor el problema. A veces, refactorizar es una señal de que se ha aprendido algo.</p>
@@ -4283,7 +4283,7 @@ print(decibeles)</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; time()
-1.60244881206052e9</code></pre>
+1.603600382165353e9</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -13674,9 +13674,9 @@ end</code></pre>
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; mazo = Mazo()
 A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ 10♣ J♣ Q♣ K♣ A♦ 2♦ 3♦ 4♦ 5♦ 6♦ 7♦ 8♦ 9♦ 10♦ J♦ Q♦ K♦ A♥ 2♥ 3♥ 4♥ 5♥ 6♥ 7♥ 8♥ 9♥ 10♥ J♥ Q♥ K♥ A♠ 2♠ 3♠ 4♠ 5♠ 6♠ 7♠ 8♠ 9♠ 10♠ J♠ Q♠ K♠
 julia&gt; shuffle!(mazo)
-5♦ 5♥ 9♦ 7♦ 9♣ 8♦ 8♥ J♣ 10♣ 3♠ K♦ 3♦ 9♠ 4♦ A♦ 3♥ 10♦ 6♦ K♥ 6♥ A♠ 2♥ 7♣ 8♣ 4♠ 7♥ 2♦ 7♠ 4♥ 6♣ K♠ Q♣ 10♠ 5♠ 10♥ 9♥ K♣ Q♠ A♥ 2♠ 5♣ Q♦ 8♠ 4♣ J♦ Q♥ 6♠ J♠ 2♣ A♣ J♥ 3♣
+10♣ 9♥ 7♠ 2♠ A♥ 4♣ J♥ 2♦ 6♣ Q♣ 8♦ 8♥ 3♥ 7♣ 3♦ 2♣ J♣ 8♣ 9♦ 6♠ 3♠ 5♠ A♦ A♣ 10♥ 4♠ Q♥ J♦ K♠ 10♦ K♥ K♣ 5♣ 5♥ 5♦ 10♠ 7♦ 3♣ 9♠ A♠ 2♥ 7♥ 9♣ Q♦ 6♥ 8♠ J♠ 4♦ Q♠ 6♦ K♦ 4♥
 julia&gt; naipe = pop!(mazo)
-3♣
+4♥
 julia&gt; push!(mano, naipe)</code></pre>
 </div>
 </div>
@@ -15599,7 +15599,7 @@ CodeInfo(
 <div class="content">
 <pre class="highlight"><code class="language-jlcon" data-lang="jlcon">julia&gt; @code_llvm sumacuadrada(3.0, 4.0)
 ;  @ none:1 within `sumacuadrada'
-define double @julia_sumacuadrada_6182(double, double) {
+define double @julia_sumacuadrada_6080(double, double) {
 top:
 ;  @ none:2 within `sumacuadrada'
 ; ┌ @ intfuncs.jl:296 within `literal_pow'
@@ -16407,7 +16407,7 @@ return contar</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Ultima actualización 2020-10-11 20:40:09 UTC
+Ultima actualización 2020-10-25 04:33:00 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
