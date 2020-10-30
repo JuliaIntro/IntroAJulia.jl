@@ -15,7 +15,7 @@ altura = radio * sin(radio)
 ----
 
 Las funciones que se han escrito hasta ahora son nulas. Coloquialmente hablando, no tienen valor de retorno; de manera formal, su valor de retorno es +nothing+. En este capítulo, (finalmente) se van a escribir funciones productivas. El primer ejemplo es +area+, que devuelve el área de un círculo dado un radio:
-(((nothing)))(((área)))((("funcion", "definida por el programador", "área", see="área")))
+(((nothing)))(((área)))((("funcion", "definida por el programador", "área", véase "área")))
 
 [source,@julia-setup]
 ----
@@ -40,7 +40,7 @@ Por otro lado, las _variables temporales_ como +a+, y las sentencias +return+ ex
 (((variable temporal)))
 
 A veces es útil tener múltiples sentencias +return+, una en cada rama de una sentencia condicional:
-(((valorabsoluto)))((("función", "definida por el programador", "valorabsoluto", see="valorabsoluto")))
+(((valorabsoluto)))((("función", "definida por el programador", "valorabsoluto", véase "valorabsoluto")))
 
 [source,@julia-setup chap06]
 ----
@@ -84,7 +84,7 @@ nothing
 [TIP]
 ====
 Julia tiene una función incorporada llamada +abs+ que calcula los valores absolutos.
-(((abs)))((("función", "Base", "abs", see="abs")))
+(((abs)))((("función", "Base", "abs", véase "abs")))
 ====
 
 
@@ -117,7 +117,7 @@ En este caso las entradas son los dos puntos, que se pueden representar usando c
 
 
 He aquí una primera versión de la función:
-(((distancia)))((("función", "definida por el programador", "distancia", see="distancia")))
+(((distancia)))((("función", "definida por el programador", "distancia", véase "distancia")))
 
 [source,@julia-setup chap06]
 ----
@@ -139,7 +139,7 @@ distance(1, 2, 4, 6)
 Se eligen estos valores de tal forma que la distancia horizontal sea igual a 3 y la distancia vertical sea igual a 4 y de esa manera el resultado es 5 (la hipotenusa del triángulo 3-4-5). Cuando se comprueba una función, es útil conocer la respuesta correcta.
 
 Hasta el momento se ha podido confirmar que la función es sintácticamente correcta, por lo que se puede empezar a agregar líneas de código. El paso lógico siguiente es encontrar las diferencias latexmath:[x_2 - x_1] y latexmath:[y_2 - y_1]. En la siguiente versión de la función se almacenarán estos valores en variables temporales y se mostrarán con el macro +@show+.
-((("@show")))((("macro", "Base", "@show", see="@show")))
+((("@show")))((("macro", "Base", "@show", véase "@show")))
 
 [source,@julia-setup]
 ----
@@ -218,7 +218,7 @@ resultado = area(radio)
 ----
 
 Envolviendo todo en una función, se obtiene:
-(((areacirculo)))((("función", "definida por el programador", "areacirculo", see="areacirculo")))
+(((areacirculo)))((("función", "definida por el programador", "areacirculo", véase "areacirculo")))
 
 [source,@julia-setup]
 ----
@@ -244,7 +244,7 @@ end
 === Funciones Booleanas
 
 Las funciones pueden devolver valores booleanos, lo que a menudo es conveniente para ocultar complicadas comprobaciones dentro de funciones. Por ejemplo:
-(((función booleana)))(((esdivisible)))((("función", "definida por el programador", "esdivisible", see="esdivisible")))
+(((función booleana)))(((esdivisible)))((("función", "definida por el programador", "esdivisible", véase "esdivisible")))
 
 [source,@julia-setup chap06]
 ----
@@ -306,7 +306,7 @@ Escriba la función +entremedio(x,y,z)+ que devuelva +true+ si +x ≤ y ≤ z+, 
 === Más recursividad
 
 Solo se ha cubierto una pequeña parte de Julia pero le puede interesar saber que esta parte ya es un lenguaje de programación _completo_, lo que significa que cualquier cómputo puede expresarse en este lenguaje. Cualquier programa que se haya escrito podría reescribirse usando solo lo que ha aprendido hasta ahora (en realidad, necesitaría algunos comandos para controlar dispositivos como el mouse, discos, etc., pero eso es todo).
-(((recursión)))(((lenguaje de programación completo)))((("lenguaje de programación", "completo", see="lenguaje de programación completo")))
+(((recursión)))(((lenguaje de programación completo)))
 
 Probar esta afirmación es un ejercicio no trivial realizado por primera vez por Alan Turing, uno de los primeros científicos de la computación (algunos argumentarían que era matemático, pero muchos de los primeros científicos informáticos comenzaron como matemáticos). En consecuencia, esto se conoce como la Tesis de Turing. Para una discusión más completa (y precisa) de la Tesis de Turing, se recomienda el libro de Michael Sipser _Introducción a la Teoría de la Computación_.
 (((Turing, Alan)))(((tesis de Turing)))
@@ -335,7 +335,7 @@ Esta definición dice que el factorial de 0 es 1, y el factorial de cualquier ot
 Entonces latexmath:[3!] es 3 veces latexmath:[2!], que es 2 veces latexmath:[1!], que es 1 vez latexmath:[0!]. Es decir, latexmath:[3!] es igual a 3 por 2 por 1 por 1, que es 6.
 
 Si se puede escribir una definición recursiva, se puede escribir un programa de Julia para evaluarlo. El primer paso es decidir cuáles deberían ser los parámetros. En este caso, debe quedar claro que factorial toma valores enteros:
-(((fact)))((("función", "definida por el programador", "fact", see="fact")))
+(((fact)))((("función", "definida por el programador", "fact", véase "fact")))
 
 [source,@julia-setup]
 ----
@@ -402,7 +402,7 @@ En el último marco, las variables locales +recursion+ y +resultado+ no existen,
 [TIP]
 ====
 Julia tiene la función +factorial+ para calcular el factorial de un número entero.
-(((factorial)))((("función", "Base", "factorial", see="factorial")))
+(((factorial)))((("función", "Base", "factorial", véase "factorial")))
 ====
 
 
@@ -423,7 +423,7 @@ Por supuesto, es un poco extraño suponer que la función funciona correctamente
 === Un Ejemplo Más
 
 Después de los factoriales, el ejemplo más común de una función matemática definida de manera recursiva es +fibonacci+, que tiene la siguiente definición (ver https://en.wikipedia.org/wiki/Fibonacci_number):
-(((fibonnaci function)))
+(((fibonnaci)))
 
 [latexmath]
 ++++
@@ -438,7 +438,7 @@ Después de los factoriales, el ejemplo más común de una función matemática 
 ++++
 
 Traducido a Julia, se ve así:
-(((fib)))((("función", "definida por el programador", "fib", see="fib")))
+(((fib)))((("función", "definida por el programador", "fib", véase "fib")))
 
 [source,@julia-setup chap06]
 ----
@@ -633,7 +633,7 @@ A(m-1, A(m, n-1))& \textrm{si}\ m > 0\ \textrm{y}\ n > 0.
 ++++
 
 Vea https://en.wikipedia.org/wiki/Ackermann_function. Escriba una función llamada +ack+ que evalúe la función de Ackermann. Use su función para evaluar +ack(3, 4)+, que debería ser 125. ¿Qué sucede para valores mayores de +m+ y +n+?
-(((ack)))((("función", "definida por el programador", "ack", see="ack")))
+(((ack)))((("función", "definida por el programador", "ack", véase "ack")))
 
 [[ex06-3]]
 ==== Ejercicio 6-6
@@ -642,7 +642,7 @@ Un palíndromo es una palabra que se escribe igual en un sentido que en otro, co
 (((palíndromo)))
 
 Las siguientes funciones toman un argumento de tipo cadena y devuelven la primera letra, la última, y las intermedias:
-(((primera)))((("función", "definida por el programador", "primera", see="primera")))(((ultima)))((("función", "definida por el programador", "ultima", see="ultima")))(((medio)))((("función", "definida por el programador", "medio", see="medio")))
+(((primera)))((("función", "definida por el programador", "primera", véase "primera")))(((ultima)))((("función", "definida por el programador", "ultima", véase "ultima")))(((medio)))((("función", "definida por el programador", "medio", véase "medio")))
 
 [source,@julia-setup]
 ----
@@ -668,13 +668,13 @@ Se verá cómo funcionan en <<chap08>>.
 . Pruebe estas funciones. ¿Qué sucede si llama a la función +medio+ con una cadena de dos letras? ¿Y con una cadena de una letra? ¿Qué pasa con la cadena vacía +""+, que no contiene letras?
 
 . Escriba una función llamada +espalindromo+ que tome un argumento de tipo cadena y devuelva +true+ si es un palíndromo y +false+ de lo contrario. Recuerde que puede usar la función integrada +length+ para verificar la longitud de una cadena.
-(((espalindromo)))((("función", "definida por el programador", "espalindromo", see="espalindromo")))(((length)))
+(((espalindromo)))((("función", "definida por el programador", "espalindromo", véase "espalindromo")))(((length)))
 
 [[ex06-4]]
 ==== Ejercicio 6-7
 
 Un número, latexmath:[a], es una potencia de latexmath:[b] si es divisible por latexmath:[b] y latexmath:[\frac{a}{b}] es una potencia de latexmath:[b]. Escriba una función llamada +espotencia+ que tome los parámetros +a+ y +b+ y devuelva +true+ si +a+ es una potencia de +b+.
-(((espotencia)))((("función", "definida por el programador", "espotencia", see="espotencia")))
+(((espotencia)))((("función", "definida por el programador", "espotencia", véase "espotencia")))
 
 [TIP]
 ====
@@ -689,6 +689,6 @@ El máximo común divisor (MCD) de latexmath:[a] y latexmath:[b] es el número m
 Una forma de encontrar el MCD de dos números se basa en la observación de que si latexmath:[r] es el resto cuando latexmath:[a] se divide por latexmath:[b], entonces +mcd(a, b) = mcd(b, r)+. Como caso base, podemos usar +mcd(a, 0) = a+.
 
 Escriba una función llamada +mcd+ que tome los parámetros +a+ y +b+ y devuelva su máximo divisor común.
-(((mcd)))((("función", "definida por el programador", "mcd", see="mcd")))
+(((mcd)))((("función", "definida por el programador", "mcd", véase "mcd")))
 
 Créditos: Este ejercicio se basa en un ejemplo del libro _Estructura e interpretación de programas informáticos_ de Abelson y Sussman.

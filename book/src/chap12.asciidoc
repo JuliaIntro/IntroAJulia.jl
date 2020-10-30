@@ -26,7 +26,7 @@ julia> t = ('a', 'b', 'c', 'd', 'e')
 ----
 
 Para crear una tupla con un solo elemento, se debe incluir una coma final:
-(((coma final)))(((typeof)))(((Tuple)))((("tipo", "Base", "Tuple", see="Tuple")))
+(((coma final)))(((typeof)))(((Tuple)))((("tipo", "Base", "Tuple", véase "Tuple")))
 
 [source,@julia-repl-test]
 ----
@@ -51,7 +51,7 @@ Char
 ====
 
 Otra forma de crear una tupla es la función de tupla integrada en Julia. Sin argumento, esta función crea una tupla vacía:
-(((tupla)))((("función", "Base", "tupla", see="tupla")))
+(((tupla)))((("función", "Base", "tupla", véase "tupla")))
 
 [source,@julia-repl-test]
 ----
@@ -174,7 +174,7 @@ Estrictamente hablando, una función solo puede devolver un valor pero si el val
 (((÷)))(((%)))
 
 La función integrada +divrem+ toma dos argumentos y devuelve una tupla de dos valores: el cociente y el resto. El resultado puede ser almacenado como una tupla:
-(((divrem)))((("función", "Base", "divrem", see="divrem")))
+(((divrem)))((("función", "Base", "divrem", véase "divrem")))
 
 [source,@julia-repl-test]
 ----
@@ -194,7 +194,7 @@ r = 1
 ----
 
 Aquí hay un ejemplo de una función que devuelve una tupla:
-(((minmax)))((("función", "definida por el programador", "minmax", see="minmax")))
+(((minmax)))((("función", "definida por el programador", "minmax", véase "minmax")))
 
 [source,@julia-setup]
 ----
@@ -204,12 +204,12 @@ end
 ----
 
 +maximum+ y +minimum+ son funciones integradas que encuentran los elementos más grandes y más pequeños de una secuencia, respectivamente. La función +minmax+ calcula ambos y devuelve una tupla de dos valores. Otra alternativa es utilizar la función integrada +extrema+, lo cual es más eficiente.
-(((maximum)))(((minimum)))(((extrema)))((("función", "Base", "maximum", see="maximum")))((("función", "Base", "minimum", see="minimum")))((("función", "Base", "extrema", see="extrema")))
+(((maximum)))(((minimum)))(((extrema)))((("función", "Base", "maximum", véase "maximum")))((("función", "Base", "minimum", véase "minimum")))((("función", "Base", "extrema", véase "extrema")))
 
 === Tupla con Argumentos de Longitud Variable
 
 Las funciones pueden tomar un número variable de argumentos. Un nombre de parámetro que termina con +pass:[...]+ _recopila_ argumentos en una tupla. Por ejemplo, +imprimirtodo+ toma cualquier número de argumentos y los imprime:
-(((recopila)))(((...)))(((imprimirtodo)))((("función", "definida por el programador", "imprimirtodo", see="imprimirtodo")))
+(((recopila)))(((...)))(((imprimirtodo)))((("función", "definida por el programador", "imprimirtodo", véase "imprimirtodo")))
 
 [source,@julia-setup chap12]
 ----
@@ -246,7 +246,7 @@ julia> divrem(t...)
 ----
 
 Muchas de las funciones integradas usan tuplas con argumentos de longitud variable. Por ejemplo, +max+ y +min+ pueden tomar cualquier número de argumentos:
-(((max)))(((min)))((("función", "Base", "max", see="max")))((("función", "Base", "min", see="min")))
+(((max)))(((min)))((("función", "Base", "max", véase "max")))((("función", "Base", "min", véase "min")))
 
 [source,@julia-repl-test]
 ----
@@ -266,14 +266,14 @@ ERROR: MethodError: no method matching sum(::Int64, ::Int64, ::Int64)
 ==== Ejercicio 12-1
 
 Escriba una función llamada +sumartodo+ que tome cualquier número de argumentos y devuelva su suma.
-(((sumartodo)))((("function", "definida por el programador", "sumartodo", see="sumartodo")))
+(((sumartodo)))((("función", "definida por el programador", "sumartodo", véase "sumartodo")))
 
 En el mundo de Julia, generalmente se le llama “slurp” ("sorber" en español) a reunir y "splat" ("plaf" en español, como el ruido cuando cae algo) a dispersar.
 
 === Arreglos y tuplas
 
 +zip+ es una función integrada que toma dos o más secuencias y devuelve una colección de tuplas donde cada tupla contiene un elemento de cada secuencia. El nombre de la función se refiere a una cremallera, que une e intercala dos filas de dientes.
-(((zip)))((("función", "Base", "zip", see="zip")))
+(((zip)))((("función", "Base", "zip", véase "zip")))
 
 Este ejemplo une e intercala una cadena y un arreglo:
 
@@ -348,7 +348,7 @@ En cada iteración del ciclo, Julia selecciona la siguiente tupla en el arreglo 
 (((paréntesis)))
 
 Combinando +zip+, +for+ y asignación de tuplas, se obtiene una forma para recorrer dos (o más) secuencias al mismo tiempo. Por ejemplo, la función +coinciden+ toma dos secuencias, +t1+ y +t2+, y devuelve +true+ si hay un índice +i+ tal que +t1[i] == t2[i]+:
-(((coinciden)))((("función", "Base", "coinciden", see="coinciden")))
+(((coinciden)))((("función", "Base", "coinciden", véase "coinciden")))
 
 [source,@julia-setup chap12]
 ----
@@ -363,7 +363,7 @@ end
 ----
 
 Si se necesita recorrer los elementos de una secuencia y sus índices, se puede usar la función integrada +enumerate+:
-(((enumerate)))((("función", "Base", "enumerate", see="enumerate")))
+(((enumerate)))((("función", "Base", "enumerate", véase "enumerate")))
 
 [source,@julia-repl-test chap12]
 ----
@@ -479,7 +479,7 @@ Los arreglos se usan con mas frecuencia que las tuplas, principalmente porque so
 * Por rendimiento. El compilador puede especializarse en este tipo.
 
 Dado que las tuplas son inmutables, no tienen funciones como +sort!+ y +reverse!+ que modifiquen arreglos ya existentes. Sin embargo, Julia proporciona las funciones integradas +sort+, que toma un arreglo y devuelve una secuencia nueva con los mismos elementos ordenados, y +reverse+, que toma cualquier secuencia y devuelve una secuencia nueva del mismo tipo con los mismos elementos en el orden contrario.
-(((sort)))(((sort!)))(((reverse)))(((reverse!)))(((zip)))((("función", "Base", "reverse", see="reverse")))(((zip)))((("función", "Base", "reverse!", see="reverse!")))
+(((sort)))(((sort!)))(((reverse)))(((reverse!)))(((zip)))((("función", "Base", "reverse", véase "reverse")))(((zip)))((("función", "Base", "reverse!", véase "reverse!")))
 
 
 === Depuración
@@ -531,7 +531,7 @@ Un error causado porque un valor tiene la forma incorrecta; es decir, el tipo o 
 ==== Ejercicio 12-2
 
 Escriba una función llamada +masfrecuente+ que tome una cadena e imprima las letras en orden decreciente de frecuencia. Encuentre muestras de texto de varios idiomas diferentes y vea cómo la frecuencia de las letras varía entre idiomas. Compare sus resultados con las tablas en https://en.wikipedia.org/wiki/Letter_frequencies.
-(((masfrecuente)))((("función", "definida por el programador", "masfrecuente", see="masfrecuente")))
+(((masfrecuente)))((("función", "definida por el programador", "masfrecuente", véase "masfrecuente")))
 
 [[ex12-2]]
 ==== Ejercicio 12-3

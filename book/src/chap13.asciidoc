@@ -18,7 +18,7 @@ Escriba un programa que lea un archivo, divida cada línea en palabras, elimine 
 [TIP]
 ====
 La función +isletter+ permite saber si un carácter pertenece al alfabeto.
-(((isletter)))((("función", "Base", "isletter", see="isletter")))
+(((isletter)))((("función", "Base", "isletter", véase "isletter")))
 ====
 
 [[ex13-2]]
@@ -76,7 +76,7 @@ end
 ==== Ejercicio 13-5
 
 Escriba una función llamada +escogerdelhistograma+ que tome un histograma definido como en <<dictionary_collection_counters>> y devuelva un valor aleatorio del histograma, elegido con probabilidad proporcional a la frecuencia. Por ejemplo, para este histograma:
-(((escogerdelhistograma)))((("función", "definida por el programador", "escogerdelhistograma", see="escogerdelhistograma")))
+(((escogerdelhistograma)))((("función", "definida por el programador", "escogerdelhistograma", véase "escogerdelhistograma")))
 
 [source,@julia-repl-test chap11]
 ----
@@ -95,7 +95,7 @@ su función debe devolver +pass:['a']+ con probabilidad latexmath:[\frac{2}{3}] 
 Debe hacer los ejercicios anteriores antes de continuar. También necesitará https://github.com/JuliaIntro/IntroAJulia.jl/blob/master/data/DonQuijote.txt.
 
 Aquí hay un programa que lee un archivo y construye un histograma de las palabras en el archivo:
-(((procesararchivo)))((("función", "definida por el programador", "procesararchivo", see="procesararchivo")))(((procesarlinea)))((("función", "definida por el programador", "procesarlinea", see="procesarlinea")))
+(((procesararchivo)))((("función", "definida por el programador", "procesararchivo", véase "procesararchivo")))(((procesarlinea)))((("función", "definida por el programador", "procesarlinea", véase "procesarlinea")))
 
 [source,@julia-setup chap13]
 ----
@@ -134,12 +134,12 @@ Este programa lee _DonQuijote.txt_, que contiene el texto de _Don Quijote_ de Mi
 (((acumulador)))
 
 +procesarlinea+ usa la función +replace+ para reemplazar los guiones por espacios antes de usar +split+ para dividir la línea en un arreglo de cadenas. Recorre el conjunto de palabras y usa +filter+, +isletter+ y +lowercase+ para eliminar los signos de puntuación y convertir las palabras a minúsculas. (Decir que las cadenas se "convierten" es incorrecto, recuerde que las cadenas son inmutables, por lo que una función como +lowercase+ devuelve cadenas nuevas).
-(((replace)))(((split)))(((isletter)))(((lowercase)))(((get!)))(((filter)))((("función", "Base", "filter", see="filter")))
+(((replace)))(((split)))(((isletter)))(((lowercase)))(((get!)))(((filter)))((("función", "Base", "filter", véase "filter")))
 
 Finalmente, +procesarlinea+ actualiza el histograma creando un nuevo elemento o incrementando uno existente.
 
 Para contar el número total de palabras en el archivo, podemos sumar las frecuencias en el histograma:
-(((palabrastotales)))((("función", "definida por el programador", "palabrastotales", see="palabrastotales")))
+(((palabrastotales)))((("función", "definida por el programador", "palabrastotales", véase "palabrastotales")))
 
 [source,@julia-setup chap13]
 ----
@@ -149,7 +149,7 @@ end
 ----
 
 El número de palabras diferentes es el número de elementos en el diccionario:
-(((palabrasdiferentes)))((("función", "definida por el programador", "palabrasdiferentes", see="palabrasdiferentes")))
+(((palabrasdiferentes)))((("función", "definida por el programador", "palabrasdiferentes", véase "palabrasdiferentes")))
 
 [source,@julia-setup chap13]
 ----
@@ -174,7 +174,7 @@ Observación: No se considera el encabezado del archivo de texto, sólo el libro
 === Palabras Más Comunes
 
 Para encontrar las palabras más comunes, podemos hacer un arreglo de tuplas, donde cada tupla contiene una palabra y su frecuencia, y ordenarlas. La siguiente función toma un histograma y devuelve un arreglo de tuplas de frecuencia de palabras:
-(((mascomun)))((("función", "definida por el programador", "mascomun", see="mascomun")))(((reverse)))(((sort)))
+(((mascomun)))((("función", "definida por el programador", "mascomun", véase "mascomun")))(((reverse)))(((sort)))
 
 [source,@julia-setup chap13]
 ----
@@ -219,7 +219,7 @@ Este código se puede simplificar usando como argumento la palabra reservada +re
 === Parametros Opcionales
 
 Se han tratado funciones integradas de Julia que toman argumentos opcionales. También es posible escribir funciones definidas por el programador con argumentos opcionales. Por ejemplo, aquí hay una función que imprime las palabras más comunes en un histograma:
-(((argumento opcional)))(((imprimirmascomun)))((("función", "definida por el programador", "imprimirmascomun", see="imprimirmascomun")))
+(((argumento opcional)))(((imprimirmascomun)))((("función", "definida por el programador", "imprimirmascomun", véase "imprimirmascomun")))
 
 [source,@julia-setup chap13]
 ----
@@ -260,7 +260,7 @@ Si una función tiene parámetros obligatorios y opcionales, los parámetros obl
 Encontrar las palabras de un libro que no están en la lista de palabras de +palabras.txt+ es un problema similar a una resta de conjuntos, es decir, se quiere encontrar todas las palabras de un conjunto (las palabras en el libro) que no están en el otro (las palabras en la lista).
 
 +resta+ toma los diccionarios +d1+ y +d2+ y devuelve un nuevo diccionario que contiene todas las claves de +d1+ que no están en +d2+. Como realmente no importan los valores, se fijan como +nothing+.
-(((resta)))((("función", "definida por el programador", "resta", see="resta")))(((nothing)))(((∩)))((("operador", "Base", "∩", see="∩")))
+(((resta)))((("función", "definida por el programador", "resta", véase "resta")))(((nothing)))(((∩)))((("operador", "Base", "∩", véase "∩")))
 
 [source,@julia-setup chap13]
 ----
@@ -309,7 +309,7 @@ Escriba un programa que use la resta de conjuntos para encontrar palabras en el 
 === Palabras al Azar
 
 Para elegir una palabra aleatoria del histograma, el algoritmo más simple es construir un arreglo con múltiples copias de cada palabra, de acuerdo con la frecuencia observada, y luego elegir una palabra del arreglo:
-(((palabraalazar)))((("función", "definida por el programador", "palabraalazar", see="palabraalazar")))
+(((palabraalazar)))((("función", "definida por el programador", "palabraalazar", véase "palabraalazar")))
 
 [source,@julia-setup chap13]
 ----
@@ -546,7 +546,7 @@ Entonces, si se grafica latexmath:[\log f] versus latexmath:[\log r], se deberí
 Escriba un programa que lea un texto de un archivo, cuente las frecuencias de las palabras e imprima una línea para cada palabra, en orden descendente de frecuencia, con  latexmath:[\log f] y latexmath:[\log r].
 
 Instale una librería para graficar:
-(((Plots)))((("módulo", "Plots", see="Plots")))
+(((Plots)))((("módulo", "Plots", véase "Plots")))
 
 [source,jlcon]
 ----
@@ -554,7 +554,7 @@ Instale una librería para graficar:
 ----
 
 Su uso es muy sencillo:
-(((graficar)))((("función", "Plots", "graficar", see="graficar")))
+(((graficar)))((("función", "Plots", "graficar", véase "graficar")))
 
 [source,julia]
 ----

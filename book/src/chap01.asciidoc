@@ -3,7 +3,7 @@
 
 == El camino de la programación
 
-El objetivo de ((("informáticos, habilidades de", seealso="programación")))este libro es enseñarle a pensar como un informático. Esta manera de pensar combina las mejores características de las matemáticas, la ingeniería y las ciencias naturales. Los informáticos, al igual que los matemáticos, usan lenguajes formales para expresar ideas (específicamente cálculos). De manera similar a los ingenieros, diseñan estructuras, ensamblan componentes para formar sistemas, evaluando los costos y beneficios entre las alternativas. Además, observan el comportamiento de sistemas complejos, elaboran hipótesis y prueban predicciones, como los científicos.
+El objetivo de ((("informáticos, habilidades de", véase "programación")))este libro es enseñarle a pensar como un informático. Esta manera de pensar combina las mejores características de las matemáticas, la ingeniería y las ciencias naturales. Los informáticos, al igual que los matemáticos, usan lenguajes formales para expresar ideas (específicamente cálculos). De manera similar a los ingenieros, diseñan estructuras, ensamblan componentes para formar sistemas, evaluando los costos y beneficios entre las alternativas. Además, observan el comportamiento de sistemas complejos, elaboran hipótesis y prueban predicciones, como los científicos.
 
 La ((("resolución de problemas")))habilidad más importante para un informático es la _resolución de problemas_. Esto implica ser capaz de formular problemas, encontrar soluciones creativas, expresando una solución de forma clara y precisa. Como resultado, el proceso de aprender a programar es una excelente oportunidad para practicar habilidades de resolución de problemas. Es por ello que este capítulo se llama "El camino de la programación".
 
@@ -13,9 +13,9 @@ Por una parte, aprenderá a programar, que es una habilidad muy útil por sí mi
 
 Un _programa_ ((("programas")))es una secuencia de instrucciones que especifica cómo hacer un cálculo. El cálculo puede ser de naturaleza matemática, tal como resolver un sistema de ecuaciones o encontrar las raíces de un polinomio, pero también puede ser un cálculo simbólico, como buscar y reemplazar texto en un documento, o bien algo gráfico, tal como procesar una imagen o reproducir un video.
 
-Los detalles ((("instrucciones", seealso="sentencias")))difieren para cada lenguaje, pero algunas instrucciones básicas aparecen en casi todos los lenguajes:
+Los detalles ((("instrucciones", véase "sentencias")))difieren para cada lenguaje, pero algunas instrucciones básicas aparecen en casi todos los lenguajes:
 
-Input/Entrada::
+Entrada/Input::
 Se obtienen datos a través del teclado, un archivo, una red u otro dispositivo.
 
 Salida/Output::
@@ -28,7 +28,7 @@ Ejecución condicional::
 Se verifican ciertas condiciones y se ejecuta el código apropiado.
 
 Repetición::
-Se realiza ((("repetición", see="iteración")))alguna acción repetidamente, generalmente con alguna variación.
+Se realiza ((("repetición", véase "iteración")))alguna acción repetidamente, generalmente con alguna variación.
 
 Aunque no lo crea, eso es todo lo que se debe hacer. Cada programa que ha usado, sin importar su complejidad, está construido basándose en instrucciones que se asemejan a estas. De esta manera, la programación puede entenderse como el proceso de dividir una tarea compleja y larga, en pequeñas subtareas lo suficientemente simples como para realizarse con una de estas instrucciones básicas.
 
@@ -40,7 +40,7 @@ Para evitar ese problema, se recomienda que comience ejecutando Julia en un nave
 
 En ((("JuliaBox")))((("recursos en línea", "JuliaBox")))el navegador, puede ejecutar Julia en https://www.juliabox.com[JuliaBox]. No se requiere instalación: simplemente abra su navegador y entre a la página de JuliaBox, inicie sesión y comience a programar (consulte <<juliabox>>).
 
-Julia _REPL_ (Read–Eval–Print Loop) ((("REPL (Read-Eval-Print Loop)")))es un programa que lee y ejecuta código de Julia. Puede iniciar REPL abriendo un terminal en JuliaBox y escribiendo *+julia+* en la línea de comando. Cuando comienza, debería ver una salida como esta:
+Julia _REPL_ (de "Read–Eval–Print Loop" que se traduce en "Bucle de Leer-Evaluar-Imprimir") ((("REPL (Read-Eval-Print Loop)")))es un programa que lee y ejecuta código de Julia. Puede iniciar REPL abriendo un terminal en JuliaBox y escribiendo *+julia+* en la línea de comando. Cuando comienza, debería ver una salida como esta:
 
 [source,@julia-eval]
 ----
@@ -50,9 +50,9 @@ banner = String(take!(io))
 println("$(banner)julia>")
 ----
 
-Las primeras líneas contienen información sobre el REPL, por lo que esto puede mostrarse diferente en su computadora. Debe verificar que la versión sea al menos +1.0.0+.
+Las primeras líneas contienen información sobre el REPL, por lo que esto puede mostrarse diferente en su computadora. Debe verificar que la versión sea al menos `1.0.0`.
 
-El ((("prompt", "en REPL", secondary-sortas="REPL")))última línea es un _prompt_ que indica que el REPL está listo para que se ingrese una instrucción. Si escribe una línea de código y presiona Enter, la REPL muestra el resultado:
+El ((("indicador", "en REPL")))última línea es un _indicador_, señalando que el REPL está listo para que se ingrese una instrucción. Si escribe una línea de código y presiona Enter, la REPL muestra el resultado:
 
 [source,@julia-repl-test]
 ----
@@ -60,7 +60,7 @@ julia> 1 + 1
 2
 ----
 
-Los fragmentos de código se pueden copiar y pegar textualmente, incluido el prompt +julia>+ y cualquier salida.
+Los fragmentos de código se pueden copiar y pegar textualmente, incluido el indicador `julia>` y cualquier salida.
 
 Ahora ya está listo para comenzar. De aquí en adelante, ya sabrá cómo iniciar la REPL de Julia, y ejecutar su código.
 
@@ -78,13 +78,13 @@ Este ((("sentencia de impresión", "función println")))((("output", "sentencia 
 
 Las comillas en el programa marcan el principio y el final del texto que se mostrará, y no aparecerán en el resultado.
 
-Los paréntesis indican que +println+ es una función. Se estudiarán funciones en <<chap03>>.
+Los paréntesis indican que `println` es una función. Se estudiarán funciones en <<chap03>>.
 
 === Operadores aritméticos
 
-Después de ((("operadores", "aritméticos")))(((("operadores aritméticos")))((("matemáticas", "operadores aritméticos")))nuestro programa “¡Hola, mundo!”, el siguiente paso es la aritmética. Julia ((("operadores")))tiene _operadores_, los cuales son símbolos que representan cálculos como la suma y la multiplicación.
+Después de ((("operadores", "aritméticos")))((("operadores aritméticos")))((("matemáticas", "operadores aritméticos")))nuestro programa “¡Hola, mundo!”, el siguiente paso es la aritmética. Julia ((("operadores")))tiene _operadores_, los cuales son símbolos que representan cálculos como la suma y la multiplicación.
 
-Los ((("$$+$$ (operador de suma)", primary-sortas="* suma")))((("operador de suma ($$+$$)")))(((($$-$$ (operador de resta)", primary-sortas="* subtraction")))((("operador de resta ($$-$$)")))((("$$*$$ (asterisco)", "operador de multiplicación", primary-sortas="* asterisco")))((("operador de multiplicación ($$*$$)")))((("asterisco ($$*$$)", "operador de multiplicación"))) operadores +pass:[+]+, +-+, y +*+ realizan las operaciones de suma, resta y multiplicación respectivamente, como se muestra en los siguientes ejemplos:
+Los ((("+ (operador de suma)", véase "suma")))((("operador de suma (&#43;)")))((("&#45; (operador de resta)", véase "subtraction")))((("operador de resta (&#45;)")))((("&#42; (asterisco)", "operador de multiplicación", véase "asterisco")))((("operador de multiplicación (&#42;)")))((("asterisco (&#42;)", "operador de multiplicación"))) operadores +pass:[+]+, +-+, y +*+ realizan las operaciones de suma, resta y multiplicación respectivamente, como se muestra en los siguientes ejemplos:
 
 [source,@julia-repl-test]
 ----
@@ -96,7 +96,7 @@ julia> 6 * 7
 42
 ----
 
-El ((("$$/$$ (operador de división)", primary-sortas="* division")))((("division", "operador de división ($$/$$)")))operador +/+ realiza la división:
+El ((("$$/$$ (operador de división)", véase "division")))((("división", "operador de división ($$/$$)")))operador +/+ realiza la división:
 
 [source,@julia-repl-test]
 ----
@@ -104,9 +104,9 @@ julia> 84/2
 42.0
 ----
 
-Quizás se pregunte por qué el resultado es +42.0+ en vez de +42+. Esto será explicado en la siguiente sección.
+Quizás se pregunte por qué el resultado es `42.0` en vez de `42`. Esto será explicado en la siguiente sección.
 
-Finalmente, el ((("$$^$$ (circunflejo)", "operador de exponenciación", primary-sortas="* circunflejo")))((("operador de exponenciación ($$^$$)")))((("circunflejo ($$^$$)", "operador de exponenciación"))) operador +^+ realiza la potencición, es decir, eleva un número a una potencia:
+Finalmente, el ((("$$^$$ (circunflejo)", "operador de exponenciación", véase "circunflejo")))((("operador de exponenciación ($$^$$)")))((("circunflejo ($$^$$)", "operador de exponenciación"))) operador `^` realiza la potencición, es decir, eleva un número a una potencia:
 
 [source,@julia-repl-test]
 ----
@@ -116,9 +116,9 @@ julia> 6^2 + 6
 
 === Valores y tipos
 
-Un _valor_ ((("valores"))) es uno de los elementos básicos con los que trabaja un programa, tal como una letra o un número. Algunos de los valores que hemos visto hasta ahora son +2+, +42.0+ y +"Hola, Mundo!"+.
+Un _valor_ ((("valores"))) es uno de los elementos básicos con los que trabaja un programa, tal como una letra o un número. Algunos de los valores que hemos visto hasta ahora son `2`, `42.0` y `"Hola, Mundo!"`.
 
-Estos ((("tipos")))((("tipos de datos", see="tipos")))((("tipo entero (Int64)")))((("tipo de punto flotante (Float64)")))((("cadenas")))((("tipos","Int64", see="tipo entero")))((("tipos","Float64", see="tipo de punto flotante")))((("tipos", "String", see="cadenas")))valores pertenecen a diferentes _tipos_: +2+ es un _entero_ (_integer_ en inglés), +42.0+ es un _número de punto flotante_ (_floating-point number_ en inglés), y +"Hola, Mundo!"+ es una _cadena_ (_string_ en inglés), llamada así porque las letras que contiene están unidas.
+Estos ((("tipos")))((("tipos de datos", véase "tipos")))((("tipo entero (Int64)")))((("tipo de punto flotante (Float64)")))((("cadenas")))((("tipos","Int64", véase "tipo entero")))((("tipos","Float64", véase "tipo de punto flotante")))((("tipos", "String", véase "cadenas")))valores pertenecen a diferentes _tipos_: `2` es un _entero_ (_integer_ en inglés), `42.0` es un _número de punto flotante_ (_floating-point number_ en inglés), y `"Hola, Mundo!"` es una _cadena_ de caracteres (_string_ en inglés), llamada así porque las letras que contiene están unidas.
 
 Si ((("función typeof")))no está seguro del tipo de un valor, el REPL puede ayudarle:
 
@@ -132,9 +132,9 @@ julia> typeof("¡Hola, mundo!")
 String
 ----
 
-Los enteros pertenecen al tipo +Int64+, las cadenas pertenecen a +String+ y los números de punto flotante pertenecen a +Float64+.
+Los enteros pertenecen al tipo `Int64`, las cadenas pertenecen a `String` y los números de punto flotante pertenecen a `Float64`.
 
-¿Qué ((("comillas (&quot;&#x2026;&quot;)", "enclosing strings"))) (((("&quot;&#x2026;&quot; (comillas)", "enclosing strings", primary-sortas="* comillas")))pasa con los valores +"2"+ y +"42.0"+? Parecen números, pero están entre comillas como si fueran cadenas. Estos valores también son cadenas:
+¿Qué ((("comillas (&quot;&#x2026;&quot;)", "entre"))) ((("&quot;&#x2026;&quot; (comillas)", véase "comillas")))pasa con los valores `"2"` y `"42.0"`? Parecen números, pero están entre comillas como si fueran cadenas. Estos valores también son cadenas:
 
 [source,@julia-repl-test]
 ----
@@ -144,7 +144,7 @@ julia> typeof("42.0")
 String
 ----
 
-Si ((("coma ($$,$$)", "no usar en enteros"))) ((("$$, $$(coma)", "no usar en enteros", primary-sortas="* coma"))) se quiere escribir un número de grandes dimensiones, se podría caer en la costumbre de usar comas para separar sus cifras, como por ejemplo 1,000,000. Este no es un _entero_ válido en Julia, aunque sí es válido.
+Si ((("coma ($$,$$)", "no usar en enteros"))) ((("$$, $$(coma)", "no usar en enteros", véase "coma"))) se quiere escribir un número de grandes dimensiones, se podría caer en la costumbre de usar comas para separar sus cifras, como por ejemplo 1,000,000. Este no es un _entero_ válido en Julia, aunque sí es válido.
 
 [source,@julia-repl-test]
 ----
@@ -152,19 +152,23 @@ julia> 1,000,000
 (1, 0, 0)
 ----
 
-¡Esto no es lo que se podría esperar! Julia entiende +1,000,000+ como una secuencia de enteros separados por comas. Más adelante aprenderemos más sobre este tipo de secuencias.
+¡Esto no es lo que se podría esperar! Julia entiende `1,000,000` como una secuencia de enteros separados por comas. Más adelante aprenderemos más sobre este tipo de secuencias.
 
-Sin embargo, puede ((("guión bajo ($$_$$)", "en enteros"))) ((("$$_$$ (guión bajo)", "en enteros", primary-sortas="* guión bajo"))) obtener el resultado esperado usando +1_000_000+.
+Sin embargo, puede obtener el resultado esperado usando `1_000_000`.
+((("guión bajo (_)", "en enteros")))
+
+((("_ (guión bajo)", "en enteros", véase "guión bajo (_)")))
+
 
 === Lenguajes formales y naturales
 
-_Los lenguajes naturales_ ((("lenguaje natural", id="ch1nat", range="startofrange")))son los lenguajes hablados, como el español, el inglés o el francés, no fueron diseñados por personas (aunque las personas intentan imponerles un orden); sino que evolucionaron naturalmente.
+_Los lenguajes naturales_ ((("lenguaje natural")))son los lenguajes hablados, como el español, el inglés o el francés, no fueron diseñados por personas (aunque las personas intentan imponerles un orden); sino que evolucionaron naturalmente.
 
-_Los lenguajes formales_ ((("lenguaje formal", id="ch1nat2", range="startofrange")))son lenguajes diseñados por personas para propósitos específicos. Por ejemplo, la notación que usan los matemáticos es un lenguaje formal particularmente útil para denotar relaciones entre números y símbolos. Los químicos usan un lenguaje formal para representar la estructura química de las moléculas. Los ((("lenguaje de programación", id="ch1nat3", range="startofrange")))lenguajes de programación también son lenguajes formales y han sido diseñados para expresar cálculos.
+_Los lenguajes formales_ ((("lenguaje formal")))son lenguajes diseñados por personas para propósitos específicos. Por ejemplo, la notación que usan los matemáticos es un lenguaje formal particularmente útil para denotar relaciones entre números y símbolos. Los químicos usan un lenguaje formal para representar la estructura química de las moléculas. Los ((("lenguaje de programación")))lenguajes de programación también son lenguajes formales y han sido diseñados para expresar cálculos.
 
-Los lenguajes formales ((("sintaxis", id="ch1nat4", range="startofrange")))tienden a dictar reglas estrictas de _sintaxis_ que gobiernan la estructura de las sentencias. Por ejemplo, en matemáticas, la sentencia latexmath:[3 + 3 = 6] tiene la sintaxis correcta, pero latexmath:[3 += 3 \$ 6] no. En química, latexmath:[\mathrm{H_2O}] es una fórmula sintácticamente correcta, pero latexmath:[\mathrm{_2Zz}] no lo es.
+Los lenguajes formales ((("sintaxis")))tienden a dictar reglas estrictas de _sintaxis_ que gobiernan la estructura de las sentencias. Por ejemplo, en matemáticas, la sentencia latexmath:[3 + 3 = 6] tiene la sintaxis correcta, pero latexmath:[3 += 3 \$ 6] no. En química, latexmath:[\Large{H_2O}] es una fórmula sintácticamente correcta, pero latexmath:[\Large{_2Zz}] no lo es.
 
-Las reglas de sintaxis ((("componentes léxicos", id="ch1nat5", range="startofrange"))) ((("estructura", id="ch1nat6", range= "startofrange"))) pueden ser de dos tipos, correspondientes a _componentes léxicos_ y a _estructura_. Los componentes léxicos son los elementos básicos del lenguaje, como palabras, números y elementos químicos. Uno de los problemas con latexmath:[3 += 3 \$ 6] es que latexmath:[\$] no es un componente léxico válido en matemáticas (al menos hasta donde conocemos). Del mismo modo, latexmath:[\mathrm{_2Zz}] no es válido porque no existe ningún elemento con la abreviatura latexmath:[\mathrm{Zz}].
+Las reglas de sintaxis ((("componentes léxicos"))) ((("estructura"))) pueden ser de dos tipos, correspondientes a _componentes léxicos_ y a _estructura_. Los componentes léxicos son los elementos básicos del lenguaje, como palabras, números y elementos químicos. Uno de los problemas con latexmath:[3 += 3 \$ 6] es que latexmath:[\$] no es un componente léxico válido en matemáticas (al menos hasta donde conocemos). Del mismo modo, latexmath:[\Large{_2Zz}] no es válido porque no existe ningún elemento con la abreviatura latexmath:[\Large{Zz}].
 
 El segundo tipo de reglas de sintaxis se refiere a la forma en que se combinan los componentes léxicos. La ecuación latexmath:[3 += 3 ] no es válida porque aunque latexmath:[+] y latexmath:[=] son componentes léxicos válidos, no se puede tener uno justo después el otro. Del mismo modo, en una fórmula química, el subíndice se coloca después del nombre del elemento, no antes.
 
@@ -178,9 +182,9 @@ Ambigüedad::
 Los lenguajes naturales están llenos de ambigüedades, este problema es abordado mediante el uso del contexto y otra información. Los lenguajes formales están diseñados para ser casi completamente precisos, lo que significa que cualquier declaración tiene exactamente un significado, independientemente del contexto.
 
 Redundancia::
-Para compensar la ambigüedad y reducir los malentendidos, los lenguajes naturales emplean mucha redundancia. Como resultado, a menudo hace un uso excesivo de palabras. Los lenguajes formales son menos redundantes y más concisos.
+Para compensar la ambigüedad y reducir los malentendidos, los lenguajes naturales emplean mucha redundancia. Como resultado, a menudo son verbosos. Los lenguajes formales son menos redundantes y más concisos.
 
-Literalidad::
+Metáfora::
 Los lenguajes naturales están llenos de modismos y metáforas. Si se dice: “Caí en la cuenta”", probablemente no haya una cuenta, y nada que se caiga (este modismo significa que alguien entendió algo después de un período de confusión). Por otro lado, los lenguajes formales significan exactamente lo que expresan.
 
 Debido a que todo el mundo crece hablando lenguajes naturales, a veces es difícil adaptarse a los lenguajes formales. La diferencia entre lenguaje formal y natural es como la diferencia entre la poesía y la prosa:
@@ -194,7 +198,7 @@ El significado literal de las palabras es más importante, y la estructura aport
 Programas::
 El significado de un programa computacional es inequívoco y literal, y puede entenderse por completo mediante el análisis de los componentes léxicos y de estructura.
 
-Los lenguajes formales son más densos que los naturales, por lo que lleva más tiempo leerlos. Además, la estructura es importante, por lo que no siempre es mejor leer de arriba a abajo, y de izquierda a derecha. En cambio, aprenderá a analizar el programa mentalmente, identificando los componentes léxicos e interpretando la estructura. Finalmente, los detalles son importantes. Pequeños errores de ortografía y puntuación, que pueden pasar desapercibidos en los lenguajes naturales, pueden hacer una gran diferencia en un lenguaje formal (((range="endofrange", startref="ch1nat")))((((range="endofrange", startref="ch1nat2")))((((range="endofrange", startref="ch1nat3")))(((range="endofrange", startref="ch1nat4")))((((range="endofrange", startref="ch1nat5")))(((range="endofrange", startref="ch1nat6"))).
+Los lenguajes formales son más densos que los naturales, por lo que lleva más tiempo leerlos. Además, la estructura es importante, por lo que no siempre es mejor leer de arriba a abajo, y de izquierda a derecha. En cambio, aprenderá a analizar el programa mentalmente, identificando los componentes léxicos e interpretando la estructura. Finalmente, los detalles son importantes. Pequeños errores de ortografía y puntuación, que pueden pasar desapercibidos en los lenguajes naturales, pueden hacer una gran diferencia en un lenguaje formal.
 
 === Depuración
 
@@ -221,8 +225,8 @@ Una secuencia de instrucciones ((("programas")))que especifica un cálculo.
 REPL::
 Un programa, ((("REPL (Read-Eval-Print Loop)")))que de manera reiterada lee una entrada, la ejecuta y genera resultados.
 
-prompt::
-Caracteres ((("prompt", "en REPL", secundary-sortas="REPL")))mostrados por el REPL para indicar que está listo para recibir información de entrada de parte del usuario.
+indicador::
+Caracteres ((("indicador", "en REPL")))mostrados por el REPL para indicar que está listo para recibir información de entrada de parte del usuario.
 
 sentencia de impresión (print)::
 Una instrucción ((("sentencia de impresión")))((("output", "sentencia de impresión")))que hace que el REPL de Julia muestre un valor en la pantalla.
@@ -234,7 +238,7 @@ valor::
 Una ((("valores")))de las unidades básicas de datos, como un número o cadena, que manipula un programa.
 
 tipo::
-Una categoría de valores ((("tipos"))). Los tipos que se han visto hasta ahora son enteros (+Int64+), números de punto flotante (+Float64+) y cadenas (+String+).
+Una categoría de valores ((("tipos"))). Los tipos que se han visto hasta ahora son enteros (`Int64`), números de punto flotante (`Float64`) y cadenas (`String`).
 
 entero::
 Un tipo ((("tipo entero (Int64)")))que representa números enteros.
@@ -264,10 +268,10 @@ análisis de sintaxis::
 Examinar ((("análisis de sintaxis")))un programa y analizar la estructura sintáctica.
 
 bug::
-Un error ((("errores (bugs)", seealso="depuración")))((("bugs", see="errores")))en un programa.
+Un error ((("errores (bugs)", véase "depuración")))((("bugs", véase "errores")))en un programa.
 
 depuración/debugging::
-El proceso ((("depuración", seealso="errores (bugs); probando")))de búsqueda y corrección de errores.
+El proceso ((("depuración", véase "errores (bugs); probando")))de búsqueda y corrección de errores.
 
 
 === Ejercicios
@@ -280,15 +284,15 @@ Es una buena idea leer este libro frente a una computadora, para hacer los ejemp
 [[ex01-1]]
 ==== Ejercicio 1-1
 
-Siempre que esté experimentando con algo nuevo, debe intentar cometer errores. Por ejemplo, en el programa “¡Hola, mundo!”, ¿Qué sucede si omite una de las comillas? ¿Qué pasa si omite ambas? ¿Qué ocurre si escribe mal +println+?
+Siempre que esté experimentando con algo nuevo, debe intentar cometer errores. Por ejemplo, en el programa “¡Hola, mundo!”, ¿Qué sucede si omite una de las comillas? ¿Qué pasa si omite ambas? ¿Qué ocurre si escribe mal `println`?
 
 Este tipo de ejercicios le ayuda a recordar lo que leyó; también le ayuda a programar, porque puede saber qué significan los mensajes de error. Es mejor cometer errores ahora y a propósito, en lugar de después y accidentalmente.
 
-. En un comando print, ¿qué sucede si omite uno de los paréntesis, o ambos?
+. En un comando print, ¿Qué sucede si omite uno de los paréntesis, o ambos?
 
-. Si está intentando imprimir un _string_, ¿qué sucede si omite una de las comillas o ambas?
+. Si está intentando imprimir un _string_, ¿Qué sucede si omite una de las comillas o ambas?
 
-. Se puede usar un signo menos para escribir un número negativo, como +-2+. ¿Qué sucede si pone un signo + antes de un número? ¿Qué pasa con +pass:[2++2]+?
+. Se puede usar un signo menos para escribir un número negativo, como `-2`. ¿Qué sucede si pone un signo + antes de un número? ¿Qué pasa con +pass:[2++2]+?
 
 . En notación matemática, los ceros a la izquierda son correctos, como en +02+. ¿Qué pasa si intenta esto en Julia?
 
@@ -309,4 +313,4 @@ Inicie el REPL de Julia, y úselo como una calculadora.
 Hay 1.61 kilómetros en una milla.
 ====
 
-. Si corre una carrera de 10 kilómetros en 37 minutos y 48 segundos, ¿cuál es su ritmo promedio (tiempo por milla en minutos y segundos)? ¿Cuál es su velocidad promedio en millas por hora?
+. Si corre una carrera de 10 kilómetros en 37 minutos y 48 segundos, ¿Cuál es su ritmo promedio (tiempo por milla en minutos y segundos)? ¿Cuál es su velocidad promedio en millas por hora?

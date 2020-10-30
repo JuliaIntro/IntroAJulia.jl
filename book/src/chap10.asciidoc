@@ -58,7 +58,7 @@ Array{Any,1}
 ----
 
 El tipo del arreglo se especifica entre llaves, y se compone de un tipo y un número. El número indica las dimensiones. El conjunto +vacío+ contiene valores de tipo +Any+, es decir, puede contener valores de todos los tipos.
-(((Arreglo)))((("tipo", "Base", "Array", see="Array")))(((Any)))((("tipo", "Base", "Any", see="Any")))
+(((Arreglo)))((("tipo", "Base", "Array", véase "Array")))(((Any)))((("tipo", "Base", "Any", véase "Any")))
 
 
 === Los arreglos son mutables
@@ -128,7 +128,7 @@ end
 ----
 
 Esto funciona bien si solo se necesita leer los elementos del arreglo, pero si se desea escribir o actualizar los elementos es necesario utilizar índices. Una forma común de hacerlo es usando la función integrada +eachindex+:
-(((eachindex)))((("función", "Base", "eachindex", see="eachindex")))
+(((eachindex)))((("función", "Base", "eachindex", véase "eachindex")))
 
 [source,@julia-setup chap10]
 ----
@@ -142,7 +142,7 @@ Este bucle recorre el arreglo y actualiza cada elemento. En cada iteración del 
 Por otra parte, +length+ devuelve el número de elementos en el arreglo.
 
 Un ciclo +for+ sobre un arreglo vacío nunca ejecuta el cuerpo del bucle:
-(((empty array)))
+(((arreglo vacío)))
 
 [source,@julia-setup]
 ----
@@ -162,7 +162,7 @@ Aunque un arreglo puede contener otro arreglo, este arreglo anidado cuenta como 
 === Porciones de arreglos
 
 El operador porción también funciona en arreglos:
-(((operador porción)))((("operador", "Base", "[:]", see="slice operator")))((("[:]", see="slice operator")))
+(((operador porción)))((("operador", "Base", "[:]", véase "slice operator")))((("[:]", véase "slice operator")))
 
 [source,@julia-repl-test chap10]
 ----
@@ -175,7 +175,7 @@ julia> print(t[3:end])
 ----
 
 El operador porción +[:]+ hace una copia de todo el arreglo:
-(((copy)))
+(((copia)))
 
 [source,@julia-repl-test chap10]
 ----
@@ -199,7 +199,7 @@ julia> print(t)
 === Librería de Arreglos
 
 Julia tiene funciones integradas que operan en arreglos. Por ejemplo, +push!+ agrega un nuevo elemento al final de un arreglo:
-(((push!)))((("función", "Base", "push!", see="push!")))
+(((push!)))((("función", "Base", "push!", véase "push!")))
 
 [source,@julia-repl-test chap10]
 ----
@@ -212,7 +212,7 @@ julia> print(t)
 ----
 
 +append!+ agrega elementos de un arreglo al final de otro:
-(((append!)))((("función", "Base", "append!", see="append!")))
+(((append!)))((("función", "Base", "append!", véase "append!")))
 
 [source,@julia-repl-test chap10]
 ----
@@ -229,7 +229,7 @@ julia> print(t1)
 En este ejemplo +t2+ no es modificado.
 
 +sort!+ ordena los elementos de un arreglo de menor a mayor:
-(((sort!)))((("función", "Base", "sort!", see="sort!")))
+(((sort!)))((("función", "Base", "sort!", véase "sort!")))
 
 [source,@julia-repl-test chap10]
 ----
@@ -242,7 +242,7 @@ julia> print(t)
 ----
 
 +sort+ devuelve una copia ordenada de los elementos de un arreglo:
-(((sort)))((("función", "Base", "sort", see="sort")))
+(((sort)))((("función", "Base", "sort", véase "sort")))
 
 [source,@julia-repl-test chap10]
 ----
@@ -279,7 +279,7 @@ end
 ----
 
 +total+ se inicializa en 0. En cada iteración, con +pass:[+=]+ se añade un elemento del arreglo a la suma total. El operador +pass:[+=]+ es una forma simple de actualizar esta variable. Esta _sentencia de asignación aumentada_,
-(((sentencia de asignación aumentada)))(((pass:[+=])))((("operador", "Base", "pass:[+=]", see="pass:[+=]")))
+(((sentencia de asignación aumentada)))((("&#43;&#61;")))((("operador", "Base", "&#43;&#61;", véase "&#43;&#61;")))
 
 [source,julia]
 ----
@@ -297,7 +297,7 @@ A medida que se ejecuta el ciclo, +total+ acumula la suma de los elementos. A ve
 (((acumulador)))
 
 Sumar los elementos de un arreglo es una operación tan común que Julia tiene una función integrada para ello, +sum+:
-(((sum)))((("función", "Base", "sum", see="sum")))
+(((sum)))((("función", "Base", "sum", véase "sum")))
 
 [source,@julia-repl-test]
 ----
@@ -311,7 +311,7 @@ Una operación como esta, que combina una secuencia de elementos en un solo valo
 (((operación de reducción)))
 
 Es común querer recorrer un arreglo mientras se construye otro. Por ejemplo, la siguiente función toma un arreglo de cadenas y devuelve un nuevo arreglo que contiene las mismas cadenas pero en mayúsculas:
-(((todoenmayusculas)))((("función", "definida por el programador", "todoenmayusculas", see="todoenmayusculas")))(((mayúscula)))
+(((todoenmayusculas)))((("función", "definida por el programador", "todoenmayusculas", véase "todoenmayusculas")))(((mayúscula)))
 
 [source,@julia-setup]
 ----
@@ -330,7 +330,7 @@ Una operación como +todoenmayusculas+ a veces se denomina _mapeo_ porque "asign
 (((map)))
 
 Otra operación común es seleccionar solo algunos de los elementos de un arreglo y devolver una sub-arreglo. Por ejemplo, la siguiente función toma un arreglo de cadenas y devuelve un arreglo que contiene solamente las cadenas en mayúsculas:
-(((solomayusculas)))((("función", "definida por el programador", "solomayusculas", see="solomayusculas")))
+(((solomayusculas)))((("función", "definida por el programador", "solomayusculas", véase "solomayusculas")))
 
 [source,@julia-setup]
 ----
@@ -354,7 +354,7 @@ Las operaciones de arreglos más comunes son una combinación de mapeo, filtro y
 === Sintaxis de punto
 
 Para cada operador binario, como por ejemplo +pass:[^]+, existe un _operador punto_ correspondiente pass:[<code>.^</code>] que automáticamente define la operación +pass:[^]+ para cada elemento de un arreglo. Por ejemplo, pass:[<code>&#91;1, 2, 3&#93; ^ 3</code>] no está definido, pero pass:[<code>&#91;1, 2, 3&#93; .^ 3</code>] se define como el resultado de realizar la operación +pass:[^]+ en cada elemento pass:[<code>&#91;1^3, 2^3, 3^3&#93;</code>]:
-(((operador punto)))((("operador", "Base", ".", see="operador punto")))(((".", see="operador punto")))
+(((operador punto)))((("operador", "Base", ".", véase "operador punto")))(((".", véase "operador punto")))
 
 [source,@julia-repl-test]
 ----
@@ -387,7 +387,7 @@ end
 === Borrando (Insertando) Elementos
 
 Hay varias formas de eliminar elementos de un arreglo. Si se conoce el índice del elemento que se desea eliminar, se puede usar +splice!+:
-(((splice!)))((("función", "Base", "splice!", see="splice!")))
+(((splice!)))((("función", "Base", "splice!", véase "splice!")))
 
 [source,@julia-repl-test]
 ----
@@ -402,7 +402,7 @@ julia> print(t)
 +splice!+ modifica el arreglo y devuelve el elemento que se eliminó.
 
 +pop!+ elimina y devuelve el último elemento:
-(((pop!)))((("función", "Base", "pop!", see="pop!")))
+(((pop!)))((("función", "Base", "pop!", véase "pop!")))
 
 [source,@julia-repl-test]
 ----
@@ -415,7 +415,7 @@ julia> print(t)
 ----
 
 +popfirst!+ elimina y devuelve el primer elemento:
-(((popfirst!)))((("función", "Base", "popfirst!", see="popfirst!")))
+(((popfirst!)))((("función", "Base", "popfirst!", véase "popfirst!")))
 
 [source,@julia-repl-test]
 ----
@@ -428,10 +428,10 @@ julia> print(t)
 ----
 
 Las funciones +pushfirst!+ y +push!+ insertan un elemento al principio y al final del arreglo, respectivamente.
-(((pushfirst!)))((("función", "Base", "pushfirst!", see="pushfirst!")))(((push!)))
+(((pushfirst!)))((("función", "Base", "pushfirst!", véase "pushfirst!")))(((push!)))
 
 Si no se necesita el valor eliminado, se puede usar la función +deleteat!+:
-(((deleteat!)))((("función", "Base", "deleteat!", see="deleteat!")))
+(((deleteat!)))((("función", "Base", "deleteat!", véase "deleteat!")))
 
 [source,@julia-repl-test]
 ----
@@ -442,7 +442,7 @@ julia> print(deleteat!(t, 2))
 ----
 
 La función +insert!+ inserta un elemento en un índice dado:
-(((insert!)))((("función", "Base", "insert!", see="insert!")))
+(((insert!)))((("función", "Base", "insert!", véase "insert!")))
 
 [source,@julia-repl-test]
 ----
@@ -456,7 +456,7 @@ julia> print(insert!(t, 2, 'x'))
 === Arreglos y Cadenas
 
 Una cadena es una secuencia de caracteres y un arreglo es una secuencia de valores, pero un arreglo de caracteres no es lo mismo que una cadena. Para convertir una cadena a un arreglo de caracteres, se puede usar la función +collect+:
-(((collect)))((("función", "Base", "collect", see="collect")))
+(((collect)))((("función", "Base", "collect", véase "collect")))
 
 [source,@julia-repl-test]
 ----
@@ -469,7 +469,7 @@ julia> print(t)
 La función +collect+ divide una cadena u otra secuencia en elementos individuales.
 
 Si desea dividir una cadena en palabras, puede usar la función +split+:
-(((split)))((("función", "Base", "split", see="split")))
+(((split)))((("función", "Base", "split", véase "split")))
 
 [source,@julia-repl-test]
 ----
@@ -491,7 +491,7 @@ SubString{String}["hola", "hola", "hola"]
 ----
 
 +join+ es el inverso de +split+. Toma un arreglo de cadenas y concatena los elementos:
-(((join)))((("función", "Base", "join", see="join")))
+(((join)))((("función", "Base", "join", véase "join")))
 
 [source,@julia-repl-test]
 ----
@@ -526,7 +526,7 @@ image::images/fig102.svg[]
 En un caso, +a+ y +b+ se refieren a dos objetos diferentes que tienen el mismo valor. En el segundo caso, se refieren al mismo objeto. 
 
 Para verificar si dos variables se refieren al mismo objeto, se puede usar el operador +≡+ (*+\equiv TAB+*)) o +===+.
-(((≡)))((("operador", "Base", "≡", see="≡")))((("===", see="≡")))
+(((≡)))((("operador", "Base", "≡", véase "≡")))((("===", véase "≡")))
 
 [source,@julia-repl-test]
 ----
@@ -621,7 +621,7 @@ Casi nunca es relevante que +a+ y +b+ se refieran a la misma cadena o no.
 === Arreglos como argumentos
 
 Cuando se pasa un arreglo como argumento de una función, en realidad se pasa una referencia a ella. Si la función modifica el arreglo, el que hizo la llamada verá el cambio. Por ejemplo, la función +borrarprimero+ elimina el primer elemento de un arreglo:
-(((borrarprimero!)))((("función", "definida por el programador", "borrarprimero!", see="borrarprimero!")))(((popfirst!)))
+(((borrarprimero!)))((("función", "definida por el programador", "borrarprimero!", véase "borrarprimero!")))(((popfirst!)))
 
 [source,@julia-setup chap10]
 ----
@@ -652,7 +652,7 @@ image::images/fig105.svg[]
 Como el arreglo está compartido por dos marcos, se dibuja entre ambos.
 
 Es importante distinguir entre operaciones que modifiquen arreglos y operaciones que creen nuevas arreglos. Por ejemplo, +push!+ modifica un arreglo, pero +vcat+ crea un nuevo arreglo.
-(((push!)))(((vcat)))((("función", "Base", "vcat", see="vcat")))
+(((push!)))(((vcat)))((("función", "Base", "vcat", véase "vcat")))
 
 Aquí hay un ejemplo de +push!+:
 
@@ -685,7 +685,7 @@ El resultado de +vcat+ es un nuevo arreglo. El arreglo original no ha sufrido ca
 Esta diferencia es importante al momento de escribir funciones que modifican arreglos.
 
 Por ejemplo, esta función _no_ elimina el primer elemento de un arrreglo:
-(((noborrarprimero)))((("función", "definida por el programador", "noborrarprimero", see="noborrarprimero")))
+(((noborrarprimero)))((("función", "definida por el programador", "noborrarprimero", véase "noborrarprimero")))
 
 [source,@julia-setup chap10]
 ----
@@ -710,7 +710,7 @@ julia> print(t4)
 Al comienzo de +noborrarprimero+, +t+ y +t3+ se refieren al mismo arreglo. Al final, +t+ se refiere a un nuevo arreglo, pero +t3+ todavía se refiere al arreglo original no modificado.
 
 Una alternativa es escribir una función que cree y devuelva un nuevo arreglo. Por ejemplo, la función +cola+ devuelve todos menos el primer elemento de un arreglo:
-(((cola)))((("function", "definida por el programador", "cola", see="cola")))
+(((cola)))((("función", "definida por el programador", "cola", véase "cola")))
 
 [source,@julia-setup chap10]
 ----
@@ -927,7 +927,7 @@ end;
 ==== Ejercicio 10-1
 
 Escriba una función llamada +sumaanidada+ que tome un arreglo de arreglos de enteros y sume los elementos de todos los arreglos anidados. Por ejemplo:
-(((sumaanidada)))((("función", "definida por el programador", "sumaanidada", see="sumaanidada")))
+(((sumaanidada)))((("función", "definida por el programador", "sumaanidada", véase "sumaanidada")))
 
 [source,@julia-repl-test chap10]
 ----
@@ -941,7 +941,7 @@ julia> sumaanidada(t)
 ==== Ejercicio 10-2
 
 Escriba una función llamada +sumaacumulada+ que tome un arreglo de números y devuelva la suma acumulativa, es decir, un nuevo arreglo donde el latexmath:[i]ésimo elemento es la suma de los primeros latexmath:[i] elementos del arreglo original. Por ejemplo:
-(((sumaacumulada)))((("función", "definida por el programador", "sumaacumulada", see="sumaacumulada")))
+(((sumaacumulada)))((("función", "definida por el programador", "sumaacumulada", véase "sumaacumulada")))
 
 [source,@julia-repl-test chap10]
 ----
@@ -955,7 +955,7 @@ Any[1, 3, 6]
 ==== Ejercicio 10-3
 
 Escriba una función llamada +interior+ que tome un arreglo y devuelva un nuevo arreglo que contenga todos los elementos excepto el primero y el último. Por ejemplo:
-(((interior)))((("función", "definida por el programador", "interior", see="interior")))
+(((interior)))((("función", "definida por el programador", "interior", véase "interior")))
 
 [source,@julia-repl-test chap10]
 ----
@@ -969,7 +969,7 @@ julia> print(interior(t))
 ==== Ejercicio 10-4
 
 Escriba una función llamada +interior!+ que tome un arreglo, lo modifique eliminando el primer y el último elemento, y que no devuelva un valor. Por ejemplo:
-(((interior!)))((("función", "definida por el programador", "interior!", see="interior!")))
+(((interior!)))((("función", "definida por el programador", "interior!", véase "interior!")))
 
 [source,@julia-repl-test chap10]
 ----
@@ -985,7 +985,7 @@ julia> print(t)
 ==== Ejercicio 10-5
 
 Escriba una función llamada +estaordenada+ que tome un arreglo como parámetro y devuelva +true+ si el arreglo se ordena en orden ascendente y +false+ de lo contrario. Por ejemplo:
-(((estaordenada)))((("función", "definida por el programador", "estaordenada", see="estaordenada")))
+(((estaordenada)))((("función", "definida por el programador", "estaordenada", véase "estaordenada")))
 
 [source,@julia-repl-test chap10]
 ----
@@ -999,13 +999,13 @@ false
 ==== Ejercicio 10-6
 
 Dos palabras son anagramas si se pueden ordenar las letras de una para escribir la otra. Escriba una función llamada +esanagrama+ que tome dos cadenas y devuelva +true+ si son anagramas.
-(((esanagrama)))((("función", "definida por el programador", "esanagrama", see="esanagrama")))
+(((esanagrama)))((("función", "definida por el programador", "esanagrama", véase "esanagrama")))
 
 [[ex10-7]]
 ==== Ejercicio 10-7
 
 Escriba una función llamada +repetido+ que tome un arreglo y devuelva +true+ si hay algún elemento que aparece más de una vez. No debe modificar el arreglo original.
-(((repetido)))((("función", "definida por el programador", "repetido", see="repetido")))
+(((repetido)))((("función", "definida por el programador", "repetido", véase "repetido")))
 
 [[ex10-8]]
 ==== Ejercicio 10-8
@@ -1037,13 +1037,13 @@ Debido a que las palabras están en orden alfabético, se puede acelerar la veri
 En ambos casos se reduce el espacio de búsqueda restante a la mitad. Si el arreglo de palabras tiene 113,809 palabras, se necesitarán unos 17 pasos para encontrar la palabra o concluir que no está allí.
 
 Escriba una función llamada +enbiseccion+ que tome un arreglo ordenado y un valor objetivo, y devuelva +true+ si la palabra está en el arreglo y +false+ si no lo está.
-(((enbiseccion)))((("función", "definida por el programador", "enbiseccion", see="enbiseccion")))
+(((enbiseccion)))((("función", "definida por el programador", "enbiseccion", véase "enbiseccion")))
 
 [[ex10-11]]
 ==== Ejercicio 10-11
 
 Dos palabras son un "par inverso" si cada una es la inversa de la otra. Escriba un programa llamado +parinverso+ que encuentre todos los pares inversos en el arreglo de palabras.
-(((par inverso)))((("función", "definida por el programador", "par inverso", see="par inverso")))
+(((par inverso)))((("función", "definida por el programador", "par inverso", véase "par inverso")))
 
 [[ex10-12]]
 ==== Ejercicio 10-12

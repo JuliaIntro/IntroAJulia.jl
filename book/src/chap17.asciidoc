@@ -9,7 +9,7 @@ En este capítulo se discutirá sobre las declaraciones de tipo en Julia. Ademá
 === Declaraciones de Tipo
 
 El operador +::+ asocia _anotaciones de tipo_ con expresiones y variables:
-(((TypeError)))((("error", "Core", "TypeError", see="TypeError")))
+(((TypeError)))((("error", "Core", "TypeError", véase "TypeError")))
 
 [source,@julia-repl-test]
 ----
@@ -22,7 +22,7 @@ julia> (1 + 2) :: Int64
 Esto ayuda a verificar que el programa funciona de la manera esperada.
 
 El operador +::+ también se puede agregar al lado izquierdo de una asignación o como parte de una declaración.
-(((devolverfloat)))((("función", "definida por el programador", "devolverfloat", see="devolverfloat")))
+(((devolverfloat)))((("función", "definida por el programador", "devolverfloat", véase "devolverfloat")))
 
 [source,@julia-repl-test]
 ----
@@ -40,7 +40,7 @@ Float64
 La variable +x+ siempre es de tipo +Float64+, y su valor se convierte en un punto flotante si es necesario.
 
 También se puede añadir una anotación de tipo al encabezado de una definición de función:
-(((sinc)))((("función", "definida por el programador", "sinc", see="sinc")))
+(((sinc)))((("función", "definida por el programador", "sinc", véase "sinc")))
 
 [source,@julia-setup]
 ----
@@ -227,7 +227,7 @@ Hora(hora::Int64, minuto::Int64, segundo::Int64)
 ----
 
 También se pueden agregar métodos propios de _constructores externos_:
-(((constructor externo)))((("constructor", "externo", see="constructor externo")))
+(((constructor externo)))((("constructor", "externo", véase "constructor externo")))
 
 [source,@julia-setup chap17a]
 ----
@@ -237,10 +237,10 @@ end
 ----
 
 Este método se llama _constructor de copia_ porque el nuevo objeto +Hora+ es una copia de su argumento.
-(((constructor de copia)))((("constructor", "copia", see="constructor de copia")))
+(((constructor de copia)))((("constructor", "copia", véase "constructor de copia")))
 
 Para imponer invariantes se necesitan métodos de _constructor interno_:
-(((constructor interno)))((("constructor", "interno", see="constructor interno")))
+(((constructor interno)))((("constructor", "interno", véase "constructor interno")))
 
 [source,@julia-setup chap17b]
 ----
@@ -274,7 +274,7 @@ Si se define algún constructor interno, el constructor por defecto ya no está 
 ====
 
 También existe un método sin argumentos de la función local +new+:
-(((new)))((("función", "Base", "new", see="new")))
+(((new)))((("función", "Base", "new", véase "new")))
 
 [source,@julia-setup chap17c]
 ----
@@ -590,12 +590,12 @@ Cambie los atributos de +Hora+ para que sea un solo número entero que represent
 ==== Ejercicio 17-5
 
 Escriba una definición para un tipo llamado +Canguro+, con un atributo llamado +contenidodemarsupio+ de tipo +Arreglo+ y los siguientes métodos:
-(((Canguro)))((("tipo", "definida por el programador", "Canguro", see="Canguro")))
+(((Canguro)))((("tipo", "definida por el programador", "Canguro", véase "Canguro")))
 
 * Un constructor que inicialice +contenidodemarsupio+ a un arreglo vacío.
 
 * Un método llamado +ponerenmarsupio+ que tome un objeto +Canguro+ y un objeto de cualquier tipo y lo agregue a +contenidodemarsupio+.
-(((ponerenmarsupio)))((("función", "definida por el programador", "ponerenmarsupio", see="ponerenmarsupio")))
+(((ponerenmarsupio)))((("función", "definida por el programador", "ponerenmarsupio", véase "ponerenmarsupio")))
 
 * Un método +show+ que devuelva una representación de cadena del objeto +Canguro+ y el contenido del marsupio.
 (((show)))

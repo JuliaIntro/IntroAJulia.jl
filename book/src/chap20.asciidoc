@@ -7,7 +7,7 @@ Julia tiene todo lo necesario. El módulo +Base+ contiene las funciones, tipos y
 Julia también posee una gran cantidad de módulos especializados en su Biblioteca Estándar (módulos para fechas, computación distribuida, álgebra lineal, perfiles, números aleatorios, entre otros). Las funciones, los tipos y las macros definidos en la Biblioteca Estándar deben importarse antes de poder usarse:
 
 * +import _Module_+ importa el modulo, y +_Module.fn_(x)+ llama a la función +_fn_+
-(((import)))((("keyword", "import", see="import")))
+(((import)))((("keyword", "import", véase "import")))
 * +using _Module_+ importa todas las funciones, tipos y macros exportadas de +_Module_+.
 (((using)))
 
@@ -19,7 +19,7 @@ Este capítulo no es un reemplazo de la documentación oficial de Julia. Sólo s
 === Midiendo el Rendimiento
 
 Hemos visto que algunos algoritmos funcionan mejor que otros. +fibonnaci+ en <<memos>> es mucho más rápido que +fib+ en <<one_more_example>>. La macro +@time+ permite cuantificar la diferencia:
-(((@time)))((("macro", "Base", "@time", see="@time")))
+(((@time)))((("macro", "Base", "@time", véase "@time")))
 
 [source,jlcon]
 ----
@@ -74,10 +74,10 @@ end
 En todos estos diccionarios, los valores son +nothing+ porque nunca son usados. Con esto se está desperdiciando espacio de almacenamiento.
 
 Julia ofrece otro tipo integrado llamado _conjunto_, que se comporta como una colección de claves de diccionario sin valores. Agregar elementos a un conjunto es rápido y también lo es verificar si un elemento forma parte de él. Además, los conjuntos proporcionan funciones y operadores para calcular operaciones de conjuntos.
-(((Set)))((("tipo", "Base", "Set", see="Set")))
+(((Set)))((("tipo", "Base", "Set", véase "Set")))
 
 Por ejemplo, la resta de conjuntos está disponible como una función llamada +setdiff+. Entonces reescribiendo +resta+:
-(((setdiff)))((("función", "Base", "setdiff", see="setdiff")))
+(((setdiff)))((("función", "Base", "setdiff", véase "setdiff")))
 
 [source,@julia-setup]
 ----
@@ -143,7 +143,7 @@ end
 ----
 
 El operador +⊆+ (*+\subseteq TAB+*) verifica si un conjunto es un subconjunto de otro, incluida la posibilidad de que sean iguales, lo cual es cierto si todas las letras en +palabra+ aparecen en +disponibles+.
-(((⊆)))((("operador", "Base", "⊆", see="⊆")))
+(((⊆)))((("operador", "Base", "⊆", véase "⊆")))
 
 ==== Exercise 20-1
 
@@ -195,7 +195,7 @@ En <<chap08>> y <<chap09>>, se realizan algunas búsquedas en cadenas. Además, 
 (((regex)))
 
 La función +usasolo+ se puede implementar como una expresión regular:
-(((usasolo)))(((Regex)))((("tipo", "Base", "Regex", see="Regex")))(((occursin)))((("función", "Base", "occursin", see="occursin")))
+(((usasolo)))(((Regex)))((("tipo", "Base", "Regex", véase "Regex")))(((occursin)))((("función", "Base", "occursin", véase "occursin")))
 
 [source,@julia-setup chap20]
 ----
@@ -216,7 +216,7 @@ false
 ----
 
 Las expresiones regulares también se pueden construir como literales de cadena no estándar con el prefijo +r+:
-(((string)))(((match)))((("función", "Base", "match", see="match")))
+(((string)))(((match)))((("función", "Base", "match", véase "match")))
 
 [source,@julia-repl-test chap20]
 ----
@@ -227,7 +227,7 @@ RegexMatch("s")
 ----
 
 En este caso, la interpolación de cadenas no está permitida. La función +match+ devuelve nothing si no se encuentra el patrón, de lo contrario, devuelve un objeto regexmatch.
-(((interpolación de cadenas)))(((RegexMatch)))((("tipo", "Base", "RegexMatch", see="RegexMatch")))
+(((interpolación de cadenas)))(((RegexMatch)))((("tipo", "Base", "RegexMatch", véase "RegexMatch")))
 
 Podemos extraer la siguiente información de un objeto regexmatch:
 
@@ -251,7 +251,7 @@ Las expresiones regulares son extremadamente poderosas y el manual de PERL http:
 En el <<chap10>> se usa un objeto de arreglo unidimensional, con un índice para acceder a sus elementos. Sin embargo, en Julia las matrices son multidimensionales.
 
 Se puede crear una _matriz_ de ceros de 2 por 3:
-(((zeros)))((("función", "Base", "zeros", see="zeros")))(((matrix)))
+(((zeros)))((("función", "Base", "zeros", véase "zeros")))(((matrix)))
 
 [source,@julia-repl-test chap20]
 ----
@@ -267,7 +267,7 @@ El tipo de esta matriz es un arreglo que contiene números de punto flotante. Es
 (((dimensión)))
 
 La función +size+ devuelve una tupla con el número de elementos en cada dimensión:
-(((size)))((("función", "Base", "size", see="size")))
+(((size)))((("función", "Base", "size", véase "size")))
 
 [source,@julia-repl-test chap20]
 ----
@@ -276,7 +276,7 @@ julia> size(z)
 ----
 
 La función +ones+ construye una matriz con elementos de valor unitario:
-(((ones)))((("función", "Base", "ones", see="ones")))
+(((ones)))((("función", "Base", "ones", véase "ones")))
 
 [source,@julia-repl-test chap20]
 ----
@@ -361,7 +361,7 @@ ____
 En <<one_more_example>> implementamos la función +fib+ que devuelve el elemento latexmath:[n]-ésimo de la secuencia de Fibonnaci.
 
 Recorrer los valores de una colección, lo cual recibe el nombre de iteración, es una interfaz de este tipo. Se puede crear un iterador que devuelva la secuencia de Fibonacci:
-(((iterador)))(((Fibonacci)))((("tipo", "definida por el programador", "Fibonacci", see="Fibonacci")))(((iterate)))((("función", "Base", "iterate", see="iterate")))
+(((iterador)))(((Fibonacci)))((("tipo", "definida por el programador", "Fibonacci", véase "Fibonacci")))(((iterate)))((("función", "Base", "iterate", véase "iterate")))
 
 [source,@julia-setup chap20]
 ----
@@ -419,7 +419,7 @@ Ya se ha visto el módulo +InteractiveUtils+ en <<interactive>>. La macro +@whic
 La biblioteca LLVM transforma el código de Julia en código de máquina, en varios pasos. Podemos visualizar la salida de cada etapa.
 
 Aquí se muestra un ejemplo simple:
-(((sumacuadrada)))((("función", "definida por el programador", "sumacuadrada", see="sumacuadrada")))
+(((sumacuadrada)))((("función", "definida por el programador", "sumacuadrada", véase "sumacuadrada")))
 
 [source,@julia-setup chap20]
 ----
@@ -429,7 +429,7 @@ end
 ----
 
 El primer paso es mirar el código de bajo nivel (lowered code):
-(((@code_lowered)))((("macro", "InteractiveUtils", "@code_lowered", see="@code_lowered")))
+(((@code_lowered)))((("macro", "InteractiveUtils", "@code_lowered", véase "@code_lowered")))
 
 [source,@julia-repl-test chap20]
 ----
@@ -452,7 +452,7 @@ La macro +@code_lowered+ devuelve un arreglo de una _representación intermedia_
 (((representación intermedia)))
 
 El siguiente paso añade información del tipo:
-(((@code_typed)))((("macro", "InteractiveUtils", "@code_typed", see="@code_typed")))
+(((@code_typed)))((("macro", "InteractiveUtils", "@code_typed", véase "@code_typed")))
 
 [source,@julia-repl-test chap20]
 ----
@@ -468,7 +468,7 @@ CodeInfo(
 El tipo de resultados intermedios y el valor de retorno se infiere correctamente.
 
 Esta representación del código se transforma en código LLVM:
-(((LLVM code)))(((@code_llvm)))((("macro", "InteractiveUtils", "@code_llvm", see="@code_llvm")))
+(((LLVM code)))(((@code_llvm)))((("macro", "InteractiveUtils", "@code_llvm", véase "@code_llvm")))
 
 [source,@julia-repl chap20]
 ----
@@ -476,7 +476,7 @@ Esta representación del código se transforma en código LLVM:
 ----
 
 Y finalmente se genera el _código de máquina_:
-(((código de máquina)))(((@code_native)))((("macro", "InteractiveUtils", "@code_native", see="@code_native")))
+(((código de máquina)))(((@code_native)))((("macro", "InteractiveUtils", "@code_native", véase "@code_native")))
 
 [source,@julia-repl-test chap20]
 ----
@@ -499,7 +499,7 @@ julia> @code_native sumacuadrada(3.0, 4.0)
 === Depuración
 
 Las macros +Logging+ son una alternativa al andamiaje con sentencias de impresión:
-(((@warn)))((("macro", "Base", "@warn", see="@warn")))(((depuración)))
+(((@warn)))((("macro", "Base", "@warn", véase "@warn")))(((depuración)))
 
 [source,jlcon]
 ----
@@ -509,7 +509,7 @@ julia> @warn "¡Oh vosotros los que entráis, abandonad la depuración con print
 ----
 
 Las sentencias de depuración (debug) no tienen que eliminarse del código. Por ejemplo, en contraste con el +@warn+ anterior,
-(((sentencia de depuración)))(((@debug)))((("macro", "Base", "@debug", see="@debug")))
+(((sentencia de depuración)))(((@debug)))((("macro", "Base", "@debug", véase "@debug")))
 
 [source,jlcon]
 ----
