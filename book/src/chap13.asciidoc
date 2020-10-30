@@ -41,7 +41,7 @@ Modifique el programa del ejercicio anterior para imprimir las 20 palabras más 
 [[ex13-4]]
 ==== Ejercicio 13-4
 
-Modifique el programa anterior para que lea una lista de palabras y luego imprima todas las palabras del libro que no estén en la lista de palabras. ¿Cuántos de ellos son errores tipográficos? ¿Cuántos de ellos son palabras comunes que deberían estar en la lista de palabras? ¿ Cuántos de ellos son términos realmente macabros?
+Modifique el programa anterior para que lea una lista de palabras y luego imprima todas las palabras del libro que no estén en la lista de palabras. ¿Cuántos de ellos son errores tipográficos? ¿Cuántos de ellos son palabras comunes que deberían estar en la lista de palabras? ¿Cuántos de ellos son términos realmente macabros?
 
 === Números aleatorios
 

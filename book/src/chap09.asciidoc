@@ -358,7 +358,7 @@ Ahora, lo que vi ese día fue muy interesante. Noté que los últimos 4 dígitos
 
 Un kilómetro después, los últimos 5 números fueron palindrómicos. Por ejemplo, podría haberse leído 3-6-5-4-5-6. Un kilómetro después de eso, los 4 números del medio eran palindrómicos. ¿Y... estás listo para esto? ¡Un kilómetro después, los 6 eran palindrómicos!
 
-La pregunta es, ¿qué número estaba en el odómetro cuando miré por primera vez?
+La pregunta es, ¿Qué número estaba en el odómetro cuando miré por primera vez?
 ____
 
 Escriba un programa de Julia que pruebe todos los números de seis dígitos e imprima cualquier número que satisfaga estos requisitos.
@@ -372,7 +372,7 @@ Aquí hay otro puzzle de _Car Talk_ que puede resolver con una búsqueda (https:
 ____
 Hace poco visité a mi madre y nos dimos cuenta de que los dos dígitos que componen mi edad cuando se invertían daban como resultado su edad. Por ejemplo, si tiene 73 años, yo tengo 37. Nos preguntamos con qué frecuencia esto ha sucedido a lo largo de los años, pero nos desviamos de otros temas y nunca obtuvimos una respuesta.
 
-Cuando llegué a casa descubrí que los dígitos de nuestras edades han sido reversibles seis veces hasta ahora. También descubrí que si teníamos suerte, volvería a suceder en unos años, y si tenemos mucha suerte, sucedería una vez más después de eso. En otras palabras, habría sucedido 8 veces. Entonces la pregunta es, ¿cuántos años tengo ahora?
+Cuando llegué a casa descubrí que los dígitos de nuestras edades han sido reversibles seis veces hasta ahora. También descubrí que si teníamos suerte, volvería a suceder en unos años, y si tenemos mucha suerte, sucedería una vez más después de eso. En otras palabras, habría sucedido 8 veces. Entonces la pregunta es, ¿Cuántos años tengo ahora?
 ____
 
 Escriba un programa de Julia que busque soluciones para este puzzle.

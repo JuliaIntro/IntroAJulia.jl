@@ -111,7 +111,7 @@ Por ejemplo, suponga que desea encontrar la distancia entre dos puntos dados por
 \end{equation}
 ++++
 
-El primer paso es considerar qué aspecto tendría la función distancia en Julia. En otras palabras, ¿cuáles son las entradas (parámetros) y cuál es la salida (valor de retorno)?
+El primer paso es considerar qué aspecto tendría la función distancia en Julia. En otras palabras, ¿Cuáles son las entradas (parámetros) y cuál es la salida (valor de retorno)?
 
 En este caso las entradas son los dos puntos, que se pueden representar usando cuatro números. El valor devuelto es la distancia, que es un número de punto flotante.
 
@@ -415,7 +415,7 @@ De hecho, ya se está dando este voto de confianza cuando se usan funciones inte
 
 Lo mismo ocurre cuando el usuario llama a una de sus propias funciones. Por ejemplo, en <<boolean_functions>>, se escribe una función llamada +esdivisible+ que determina si un número es divisible por otro. Una vez que se confirme que esta función es correcta —al examinar y probar el código—, se puede usar la función sin mirar nuevamente el cuerpo.
 
-Lo mismo aplica a los programas recursivos. Cuando llegue a la llamada recursiva, en lugar de seguir el flujo de ejecución, debe suponer que la llamada recursiva funciona (devuelve el resultado correcto) y luego preguntarse: "Suponiendo que pueda encontrar el factorial de latexmath:[n-1], ¿se puede calcular el factorial de latexmath:[n]?" Está claro que es posible, multiplicando por latexmath:[n].
+Lo mismo aplica a los programas recursivos. Cuando llegue a la llamada recursiva, en lugar de seguir el flujo de ejecución, debe suponer que la llamada recursiva funciona (devuelve el resultado correcto) y luego preguntarse: "Suponiendo que pueda encontrar el factorial de latexmath:[n-1], ¿Se puede calcular el factorial de latexmath:[n]?" Está claro que es posible, multiplicando por latexmath:[n].
 
 Por supuesto, es un poco extraño suponer que la función funciona correctamente cuando no ha terminado de escribirla, ¡pero por eso se llama voto de confianza!
 
@@ -468,7 +468,7 @@ Stacktrace:
  [1] fact(::Float64) at ./REPL[3]:2
 ----
 
-Parece una recursión infinita. ¿Como es esto posible? La función tiene un caso base (cuando +n == 0+). Pero si +n+ no es un número entero, es posible _perderse_ el caso base y hacer recursión para siempre.
+Parece una recursión infinita. ¿Cómo es esto posible? La función tiene un caso base (cuando +n == 0+). Pero si +n+ no es un número entero, es posible _perderse_ el caso base y hacer recursión para siempre.
 (((recursión infinita)))
 
 En la primera llamada recursiva, el valor de +n+ es +0.5+. En la siguiente, es +-0.5+. A partir de ahí, se vuelve más pequeño (más negativo), pero nunca será +0+.
