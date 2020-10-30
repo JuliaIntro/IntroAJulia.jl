@@ -224,7 +224,7 @@ Una cadena vacía no contiene caracteres y tiene una longitud de 0, pero aparte 
 
 ==== Ejercicio 8-3
 
-Continuando este ejemplo, ¿qué cree que significa +str[:]+? Pruebe y verá.
+Continuando este ejemplo, ¿Qué cree que significa +str[:]+? Pruebe y verá.
 
 === Las Cadenas son Inmutables
 

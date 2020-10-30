@@ -210,7 +210,7 @@ end
 Las sentencias más internas, +forward+ y +turn+ tienen doble sangría para mostrar que están dentro del bucle +for+, que a su vez está dentro de la definición de función.
 (((indentación)))
 
-Dentro de la función, +t+ se refiere a la misma tortuga +🐢+, entonces +turn(t, -90)+ tiene el mismo efecto que +turn(🐢, -90)+. En ese caso, ¿por qué no llamar al parámetro +🐢+? La razón es que +t+ puede ser cualquier tortuga, no solo +🐢+, por lo que podríamos crear una segunda tortuga y pasarla como argumento a +cuadrado+:
+Dentro de la función, +t+ se refiere a la misma tortuga +🐢+, entonces +turn(t, -90)+ tiene el mismo efecto que +turn(🐢, -90)+. En ese caso, ¿Por qué no llamar al parámetro +🐢+? La razón es que +t+ puede ser cualquier tortuga, no solo +🐢+, por lo que podríamos crear una segunda tortuga y pasarla como argumento a +cuadrado+:
 
 [source,julia]
 ----

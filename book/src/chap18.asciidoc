@@ -94,7 +94,7 @@ J♥
 
 Para los tipos integrados, existen operadores relacionales (+<+, +>+, +==+, etc.) que comparan valores y determinan cuándo uno es mayor, menor o igual a otro. Para los tipos definidos por el usuario, se puede sustituir el comportamiento de estos operadores si se proporciona un método llamado: +<+.
 
-El orden correcto de los naipes no es obvio. Por ejemplo, ¿cuál es mejor, el 3 de Tréboles o el 2 de Diamantes? Uno tiene un valor mayor, pero el otro tiene un palo mayor. Para hacer que los naipes sean comparables, se debe decidir qué es más importante: valor o palo.
+El orden correcto de los naipes no es obvio. Por ejemplo, ¿Cuál es mejor, el 3 de Tréboles o el 2 de Diamantes? Uno tiene un valor mayor, pero el otro tiene un palo mayor. Para hacer que los naipes sean comparables, se debe decidir qué es más importante: valor o palo.
 
 La respuesta puede depender del tipo de juego, pero para simplificar las cosas, se establece la elección arbitraria de que el palo es más importante, por lo que todas los tréboles superan a todos los diamantes, y así sucesivamente.
 

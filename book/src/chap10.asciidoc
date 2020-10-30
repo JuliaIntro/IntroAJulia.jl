@@ -1013,7 +1013,7 @@ Escriba una función llamada +repetido+ que tome un arreglo y devuelva +true+ si
 Este ejercicio se relaciona con la llamada paradoja del cumpleaños, sobre la cual puede leer en https://es.wikipedia.org/wiki/Paradoja_del_cumplea%C3%B1os
 (((Paradoja del cumpleaños)))
 
-Si hay 23 estudiantes en su clase, ¿cuáles son las posibilidades de que dos de ustedes tengan el mismo cumpleaños? Puede estimar esta probabilidad generando muestras aleatorias de 23 cumpleaños y buscando coincidencias.
+Si hay 23 estudiantes en su clase, ¿Cuáles son las posibilidades de que dos de ustedes tengan el mismo cumpleaños? Puede estimar esta probabilidad generando muestras aleatorias de 23 cumpleaños y buscando coincidencias.
 (((rand)))((("función", "Base", "rand", see="rand")))
 
 [TIP]

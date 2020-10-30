@@ -462,7 +462,7 @@ Aquí las tuplas se muestran usando la sintaxis de Julia para tener un esquema m
 Hasta ahora, el capítulo se ha centrado en los arreglos de tuplas, pero casi todos los ejemplos que se han visto también funcionan con arreglos de arreglos, tuplas de tuplas y tuplas de arreglos. Para evitar enumerar todas las posibles combinaciones, a veces es más fácil hablar sobre secuencias de secuencias.
 (((secuencias de secuencias)))
 
-En muchos contextos, los diferentes tipos de secuencias (cadenas, arreglos y tuplas) se pueden usar indistintamente. Entonces, ¿cómo elegir uno u otro?
+En muchos contextos, los diferentes tipos de secuencias (cadenas, arreglos y tuplas) se pueden usar indistintamente. Entonces, ¿Cómo elegir uno u otro?
 (((cadena)))(((arreglo)))(((tupla)))
 
 Para comenzar con lo mas obvio, las cadenas son más limitadas que las demás secuencias, porque los elementos deben ser caracteres. Además son inmutables. Si se necesita poder cambiar los caracteres en una cadena (en vez de crear una nueva), puede que lo mas adecuado sea elegir un arreglo de caracteres.
