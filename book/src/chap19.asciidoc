@@ -55,7 +55,7 @@ julia> function (x)
 ----
 
 Estos son ejemplos de _funciones anónimas_. Las funciones anónimas generalmente se usan como argumento de otra función:
-(((función anónima)))(((Plots)))((("módulo", "Plots", see="Plots")))(((plot)))((("función", "Plots", "graficar", see="graficar")))
+(((función anónima)))(((Plots)))((("módulo", "Plots", véase "Plots")))(((plot)))((("función", "Plots", "graficar", véase "graficar")))
 
 [source,jlcon]
 ----
@@ -110,7 +110,7 @@ En este ejemplo, la función +foo+ devuelve una función anónima que tiene acce
 === Bloques
 
 Un _bloque_ es una forma de agrupar varias sentencias. Un bloque comienza con la palabra reservada +begin+ y termina con +end+.
-(((begin)))((("palabra reservada", "begin", see="begin")))(((end)))(((block)))
+(((begin)))((("palabra reservada", "begin")))(((end)))(((bloque)))
 
 En <<chap04>> se presentó la macro +@svg+:
 
@@ -152,7 +152,7 @@ En el ejemplo, la primera macro +@show+ muestra la variable local +x+, la variab
 ==== Bloques +do+
 
 En <<reading_and_writing>> se cierra el archivo después de terminar de escribir en él. Esto se puede hacer automáticamente usando un _Bloque do_:
-(((do)))((("palabra reservada", "do", see="do")))
+(((do)))((("palabra reservada", "do")))
 
 [source,@julia-repl-test chap19]
 ----
@@ -201,7 +201,7 @@ Un bloque +do+ puede "capturar" variables de su ámbito envolvente (enclosed sco
 ==== Operador ternario
 
 El _operador ternario_, +?:+, puede utilizarse en vez de una sentencia +if-elseif+. Esta sentencia se usa cuando se necesita elegir entre diferentes expresiones con valor único.
-(((?:)))((("operador", "Base", "?:", see="?:")))((("operador ternario", see="?:")))
+(((?:)))((("operador", "Base", "?:", véase "?:")))((("operador ternario", véase "?:")))
 
 [source,@julia-repl-test]
 ----
@@ -237,7 +237,7 @@ Una _tarea_ es una estructura de control que puede ceder el control de forma coo
 El término "cooperativo" alude a que los programas deben cooperar para que todo el esquema de programación funcione.
 
 La secuencia de Fibonnaci se puede generar mediante una tarea.
-(((tarea)))(((Channel)))((("tipo", "Base", "Channel", see="Channel")))(((put!)))((("función", "Base", "put!", see="put!")))
+(((tarea)))(((Channel)))((("tipo", "Base", "Channel", véase "Channel")))(((put!)))((("función", "Base", "put!", véase "put!")))
 
 [source,@julia-setup chap19]
 ----
@@ -253,7 +253,7 @@ end
 ----
 
 +put!+ almacena valores en un objeto channel y +take!+ lee valores desde él:
-(((take!)))((("función", "Base", "take!", see="take!")))
+(((take!)))((("función", "Base", "take!", véase "take!")))
 
 [source,@julia-repl-test chap19]
 ----
@@ -290,7 +290,7 @@ julia> for val in Channel(fib)
 ==== Tipos Primitivos
 
 Un tipo concreto compuesto por bits se llama _tipo primitivo_. A diferencia de la mayoría de los lenguajes, en Julia se puede declarar nuestros propios tipos primitivos. Los tipos primitivos estándar se definen de la misma manera:
-(((tipo primitivo)))((("palabra reservada", "tipo primitivo", see="tipo primitivo")))
+(((tipo primitivo)))((("palabra reservada", "tipo primitivo")))
 
 [source,julia]
 ----
@@ -303,7 +303,7 @@ primitive type Int64 <: Signed 64 end
 El número en las sentencias especifica cuántos bits son necesarios.
 
 El siguiente ejemplo crea un tipo primitivo +Byte+ y un constructor:
-(((Byte)))((("tipo", "definida por el programador", "Byte", see="Byte")))
+(((Byte)))((("tipo", "definida por el programador", "Byte", véase "Byte")))
 
 [source,@julia-repl-test]
 ----
@@ -316,7 +316,7 @@ Byte(0x01)
 ----
 
 La función +reinterpret+ se usa para almacenar los bits de un entero sin signo con 8 bits (+UInt8+) en el byte.
-(((reinterpret)))((("función", "Base", "reinterpret", see="reinterpret")))(((UInt8)))((("tipo", "Base", "UInt8", see="UInt8")))
+(((reinterpret)))((("función", "Base", "reinterpret", véase "reinterpret")))(((UInt8)))((("tipo", "Base", "UInt8", véase "UInt8")))
 
 ==== Tipos Paramétricos
 
@@ -351,7 +351,7 @@ Para mejorar el rendimiento, es totalmente recomendable tener tipos concretos co
 ==== Union de Tipo
 
 Una _union de tipo_ es un tipo paramétrico abstracto que puede actuar como cualquiera de los tipos de sus argumentos:
-(((union de tipo)))(((Union)))((("tipo", "Base", "Union", see="Union")))
+(((union de tipo)))(((Union)))((("tipo", "Base", "Union", véase "Union")))
 
 [source,@julia-repl-test]
 ----
@@ -450,16 +450,16 @@ Punto(x::Real, y::Real) = Punto(promote(x,y)...);
 ----
 
 La función +promote+ se detalla en <<promoción>>.
-(((promote)))((("función", "Base", "promote", see="promote")))
+(((promote)))((("función", "Base", "promote", véase "promote")))
 
 === Conversión y Promoción
 
 Julia tiene un sistema para convertir argumentos de diferentes tipos a un tipo común. Esto es llamado promoción, y aunque no es automático, se puede realizar fácilmente.
 
-==== Conversion
+==== Conversión
 
 Un valor se puede convertir de un tipo a otro:
-(((conversion)))(((convert)))((("función", "Base", "convert", see="convert")))
+(((conversión)))(((convert)))((("función", "Base", "convert", véase "convert")))
 
 [source,@julia-repl-test]
 ----
@@ -482,7 +482,7 @@ julia> convert(Punto{Int64}, [1, 2])
 Punto{Int64}(1, 2)
 ----
 
-[[promotion]]
+[[promoción]]
 ==== Promoción
 
 _Promoción_ es la conversión de valores de diferentes tipos a un solo tipo común:
@@ -495,7 +495,7 @@ julia> promote(1, 2.5, 3)
 ----
 
 Generalmente, los métodos para la función +promote+ no se definen directamente, sino que se usa la función auxiliar +promot_rule+ para especificar las reglas de la promoción:
-(((promote_rule)))((("función", "Base", "promote_rule", see="promote_rule")))
+(((promote_rule)))((("función", "Base", "promote_rule", véase "promote_rule")))
 
 [source,julia]
 ----
@@ -517,7 +517,7 @@ julia> prog = "1 + 2"
 ----
 
 El siguiente paso es analizar cada cadena en un objeto llamado _expresión_, representado por el tipo de Julia +Expr+:
-(((expresión)))(((Expr)))((("tipo", "Base", "Expr", see="Expr")))(((parse)))((("función", "Meta", "parse", see="parse")))
+(((expresión)))(((Expr)))((("tipo", "Base", "Expr", véase "Expr")))(((parse)))((("función", "Meta", "parse", véase "parse")))
 
 [source,@julia-repl-test chap19]
 ----
@@ -538,7 +538,7 @@ La función +dump+ muestra objetos expr con anotaciones.
 (((dump)))
 
 Las expresiones se pueden construir directamente con el prefijo +:+ entre paréntesis o usando un bloque quote:
-(((:)))(((quote)))((("palabra reservada", "quote", see="quote")))
+(((:)))(((quote)))((("palabra reservada", "quote")))
 
 [source,@julia-repl-test chap19]
 ----
@@ -550,7 +550,7 @@ julia> ex = quote
 ==== +eval+
 
 Julia puede evaluar un objeto de expresión usando la función +eval+:
-(((eval)))((("función", "Core", "eval", see="eval")))
+(((eval)))((("función", "Core", "eval", véase "eval")))
 
 [source,@julia-eval chap19]
 ----
@@ -576,7 +576,7 @@ Las macros pueden incluir código generado en un programa. Una _macro_ asocia un
 (((macro)))
 
 Aquí hay una macro simple:
-(((@contenedorvariable)))((("macro", "definida por el programador", "@contenedorvariable", see="@contenedorvariable")))
+(((@contenedorvariable)))((("macro", "definida por el programador", "@contenedorvariable", véase "@contenedorvariable")))
 
 [source,@julia-setup chap19]
 ----
@@ -594,10 +594,10 @@ Las macros se llaman anteponiendo +@+ (arroba) a su nombre. La llamada a la macr
 ----
 
 +@macroexpand @contenedorvariable letras 1+  returns this expression which is extremely useful for debugging.
-(((@macroexpand)))((("macro", "Base", "@macroexpand", see="@macroexpand")))
+(((@macroexpand)))((("macro", "Base", "@macroexpand", véase "@macroexpand")))
 
 Este ejemplo ilustra cómo una macro puede acceder al nombre de sus argumentos, algo que una función no puede hacer. Se debe "escapar" de la expresión de retorno con +esc+ porque debe resolverse en el entorno de la macro llamada.
-(((esc)))((("función", "Base", "esc", see="esc")))
+(((esc)))((("función", "Base", "esc", véase "esc")))
 
 [NOTE]
 ====
@@ -609,7 +609,7 @@ Las macros generan e incluyen fragmentos de código personalizado durante el tie
 ==== Funciones Generadas
 
 La macro +@generated+ crea código especializado para métodos dependiendo del tipo de los argumentos:
-(((funciones generadas)))(((@generated)))((("macro", "Base", "@generated", see="@generated")))
+(((funciones generadas)))(((@generated)))((("macro", "Base", "@generated", véase "@generated")))
 
 [source,@julia-setup chap19]
 ----
@@ -638,7 +638,7 @@ julia> y
 === Datos Faltantes
 
 Los _datos faltantes_ se pueden representar a través del objeto +missing+, que es la instancia única del tipo +Missing+.
-(((datos faltantes)))(((faltantes)))(((Missing)))((("type", "Base", "Missing", see="Missing")))
+(((datos faltantes)))(((faltantes)))(((Missing)))((("tipo", "Base", "Missing", véase "Missing")))
 
 Los arreglos pueden contener datos que faltan, missing values en inglés:
 
@@ -661,7 +661,7 @@ missing
 ----
 
 En este caso, se puede usar la función +skipmissing+ para omitir los valores que faltan:
-(((skipmissing)))((("función", "Base", "skipmissing", see="skipmissing")))
+(((skipmissing)))((("función", "Base", "skipmissing", véase "skipmissing")))
 
 [source,@julia-repl-test chap19]
 ----
@@ -673,7 +673,7 @@ julia> sum(skipmissing([1, missing]))
 === Llamar a Código de C y Fortran
 
 Se escribe mucho código en C o Fortran. Reutilizar un código que ya ha sido probado generalmente es mejor que escribir su propia versión en otro lenguaje. Julia puede llamar directamente a las bibliotecas C o Fortran existentes utilizando la sintaxis +ccall+.
-(((ccall)))((("función", "Base", "ccall", see="ccall")))
+(((ccall)))((("función", "Base", "ccall", véase "ccall")))
 
 En <<databases>> se presentó una interfaz de Julia de la biblioteca GDBM de funciones de base de datos. La biblioteca está escrita en C. Para cerrar la base de datos, se debe hacer una llamada a la función +close(db)+:
 
@@ -687,7 +687,7 @@ end
 ----
 
 Un objeto dbm tiene un atributo +handle+ de tipo +Ptr{Cvoid}+. Este atributo contiene un puntero de C que apunta a la base de datos. Para cerrar la base de datos, debe llamarse a la función de C +gdbm_close+ teniendo como único argumento el puntero C apuntando a la base de datos, sin valor de retorno. Julia hace esto directamente con la función +ccall+ que tiene como argumentos:
-(((Ptr)))((("tipo", "Base", "Ptr", see="Ptr")))
+(((Ptr)))((("tipo", "Base", "Ptr", véase "Ptr")))
 
 * una tupla que consiste en un símbolo que contiene el nombre de la función que queremos llamar: +:gdbm_close+ y la librería compartida especificada como una cadena: ++"libgdm"+,
 

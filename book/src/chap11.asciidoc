@@ -16,16 +16,16 @@ En lenguaje matemático, un diccionario representa un _mapeo_ de las claves a lo
 (((mapeo)))
 
 La función +Dict+ crea un nuevo diccionario sin elementos. Como +Dict+ es el nombre de una función integrada de Julia, debe evitar usarla como nombre de variable.
-(((Dict)))((("tipo", "Base", "Dict", see="Dict")))
+(((Dict)))((("tipo", "Base", "Dict", véase "Dict")))
 
 [source,@julia-repl-test chap11]
 ----
 julia> ing_a_esp = Dict()
-Dict{Any,Any} with 0 entries
+Dict{Any,Any}()
 ----
 
 El tipo de este diccionario está compuesto por el tipo de las claves y de los valores, entre llaves. En este caso, las claves y los valores son de tipo +Any+.
-(((llaves)))((("{}", see="llaves")))(((Any)))((("tipo", "Base", "Any", see="Any")))
+(((llaves)))((("{}", véase "llaves")))(((Any)))((("tipo", "Base", "Any", véase "Any")))
 
 El diccionario está vacío. Para agregar elementos a él, se pueden usar corchetes:
 (((corchetes)))
@@ -37,7 +37,7 @@ julia> ing_a_esp["one"] = "uno";
 ----
 
 Esta línea de código crea un elemento con la clave "one" que apunta al valor "uno". Si se imprime el diccionario nuevamente, se ve un par clave-valor con una flecha +pass:[=&gt;]+ entre la clave y el valor:
-(((pass:[=&gt;])))
+(((=&gt;)))
 
 [source,@julia-repl-test chap11]
 ----
@@ -75,7 +75,7 @@ julia> ing_a_esp["two"]
 La clave "two" da el valor "dos", así que el orden de los ítems no importa.
 
 Si la clave no está en el diccionario, se da un mensaje de error:
-(((KeyError)))((("error", "Base", "KeyError", see="KeyError")))
+(((KeyError)))((("error", "Base", "KeyError", véase "KeyError")))
 
 [source,@julia-repl-test chap11]
 ----
@@ -93,7 +93,7 @@ julia> length(ing_a_esp)
 ----
 
 La función +keys+ devuelve una colección con las claves del diccionario:
-(((keys)))((("función", "Base", "keys", see="keys")))
+(((keys)))((("función", "Base", "keys", véase "keys")))
 
 [source,@julia-repl-test chap11]
 ----
@@ -115,7 +115,7 @@ false
 ----
 
 Para ver si algo es un valor en un diccionario, se puede usar la función +values+, que devuelve una colección de valores, y luego usar el operador +∈+:
-(((values)))((("función", "Base", "values", see="values")))
+(((values)))((("función", "Base", "values", véase "values")))
 
 [source,@julia-repl-test chap11]
 ----
@@ -164,7 +164,7 @@ end
 ----
 
 La función se llama +histograma+, que es un término en estadística para una colección de frecuencias (o conteos).
-(((histograma)))((("función", "definida por el programador", "histograma", see="histograma")))
+(((histograma)))((("función", "definida por el programador", "histograma", véase "histograma")))
 
 La primera línea de la función crea un diccionario vacío. El ciclo +for+ recorre la cadena +s+. En cada iteración de este ciclo, si el carácter +c+ no está en el diccionario, se crea un nuevo elemento con la clave +c+ y el valor inicial +1+ (ya que hemos visto esta letra una vez). Si +c+ ya está en el diccionario, se incrementa +d[c]+.
 
@@ -187,7 +187,7 @@ Dict{Any,Any} with 8 entries:
 El histograma indica que las letras +'a'+ y +'b'+ aparecen una vez, +'o'+ aparece dos veces, y así sucesivamente.
 
 Los diccionarios tienen una función llamada +get+ que toma como argumentos un diccionario, una clave y un valor predeterminado. Si la clave aparece en el diccionario, +get+ devuelve el valor correspondiente; de lo contrario, devuelve el valor predeterminado. Por ejemplo:
-(((get)))((("función", "Base", "get", see="get")))
+(((get)))((("función", "Base", "get", véase "get")))
 
 [source,@julia-repl-test chap11]
 ----
@@ -207,7 +207,7 @@ Use +get+ para escribir la función +histograma+ de manera más concisa. Deberí
 === Iteración y Diccionarios 
 
 Es posible recorrer las claves del diccionario con un ciclo +for+. Por ejemplo, +imprimirhist+ imprime cada clave y su valor correspondiente:
-(((imprimirhist)))((("function", "definida por el programador", "imprimirhist", see="imprimirhist")))
+(((imprimirhist)))((("función", "definida por el programador", "imprimirhist", véase "imprimirhist")))
 
 [source,@julia-setup chap11]
 ----
@@ -271,7 +271,7 @@ end
 ----
 
 Esta función es otro ejemplo del patrón de búsqueda, pero utiliza una función que no hemos visto antes: +error+. La función +error+ se usa para producir un +ErrorException+ que interrumpe el flujo normal. En este caso tiene el mensaje +"Error de Busqueda"+, que indica que no existe una clave.
-(((error)))((("función", "Base", "error", see="error")))
+(((error)))((("función", "Base", "error", véase "error")))
 
 Si llega al final del ciclo, eso significa que +v+ no aparece en el diccionario como un valor, por lo que se produce una excepción.
 
@@ -296,7 +296,7 @@ ERROR: Error de Busqueda
 El efecto cuando generamos una excepción es el mismo que cuando Julia genera una: se imprime un trazado inverso y un mensaje de error.
 
 Julia proporciona una forma optimizada de hacer una búsqueda inversa: +findall(isequal(3),h)+.
-(((findall)))((("función", "Base", "findall", see="findall")))(((isequal)))((("función", "Base", "isequal", see="isequal")))
+(((findall)))((("función", "Base", "findall", véase "findall")))(((isequal)))((("función", "Base", "isequal", véase "isequal")))
 
 [WARNING]
 ====
@@ -309,7 +309,7 @@ Una búsqueda inversa es mucho más lenta que una búsqueda directa. Si tiene qu
 Las matrices pueden aparecer como valores en un diccionario. Por ejemplo, si se tiene un diccionario que asigna frecuencias a letras, y se quiere invertir, es decir, tener un diccionario que asigne letras a frecuencias. Dado que pueden haber varias letras con la misma frecuencia, cada valor en el diccionario invertido debería ser una matriz de letras.
 
 Aquí hay una función que invierte un diccionario:
-(((invertirdic)))((("función", "definida por el programador", "invertirdic", see="invertirdic")))
+(((invertirdic)))((("función", "definida por el programador", "invertirdic", véase "invertirdic")))
 
 [source,@julia-setup chap11]
 ----
@@ -365,7 +365,7 @@ Si estuvo jugando con la función +fibonacci+ de <<one_more_example>>, es posibl
 (((fibonnaci)))
 
 Para entender por qué, considere <<fig11-2>>, que muestra el _gráfico de llamadas_ para la función +fibonacci+ con +n = 4+:
-(((gráfico de llamadas)))((("diagrama", "gráfico de llamadas", see="gráfico de llamadas")))
+(((gráfico de llamadas)))((("diagrama", "gráfico de llamadas", véase "gráfico de llamadas")))
 
 [[fig11-2]]
 .Gráfico de llamadas
@@ -398,11 +398,11 @@ Siempre que se llama a +fibonacci+, se comprueba si el diccionario contiene el r
 
 Si ejecuta esta versión de +fibonacci+ y la compara con la original, se dará cuenta que es mucho más rápida.
 
-[[global_variables]]
+[[variables_globales]]
 === Variables Globales 
 
 En el ejemplo anterior, el diccionario anteriores se crea fuera de la función, por lo que pertenece al marco especial llamado +Main+. Las variables en +Main+ a veces son llamadas _globales_ porque se puede acceder a ellas desde cualquier función. A diferencia de las variables locales, que desaparecen cuando finaliza su función, las variables globales existen de una llamada de función a la siguiente.
-(((global)))((("palabra reservada", "global", see="global")))(((variable global)))
+(((global)))((("palabra reservada", "global")))(((variable global)))
 
 Es común usar variables globales como _flags_ o _banderas_; es decir, variables booleanas que indican si una condición es verdadera. Por ejemplo, algunos programas usan una bandera llamada +verbosa+ para controlar el nivel de detalle en la salida:
 (((bandera)))
@@ -445,7 +445,7 @@ end
 ----
 
 La _sentencia global_ le dice al intérprete algo como esto: “En esta función, cuando digo +ha_sido_llamada+, me refiero a la variable global; así que no crees una variable local".
-(((sentencia global)))((("sentencia", "global", see="sentencia global")))
+(((sentencia global)))
 
 A continuación se muestra un ejemplo que intenta actualizar una variable global:
 
@@ -503,7 +503,7 @@ end
 ----
 
 Para mejorar el rendimiento, puede declarar la variable global como constante. Con esto, ya no se puede reasignar la variable, pero si se refiere a un valor mutable, sí se puede modificar el valor.
-(((const)))((("palabra reservada", "const", see="const")))(((variable global constante)))
+(((const)))((("palabra reservada", "const")))(((variable global constante)))
 
 [source,@julia-setup]
 ----
@@ -652,7 +652,7 @@ Si hizo <<ex10-10>>, puede comparar la velocidad de esta implementación con el 
 ==== Ejercicio 11-3
 
 Lea la documentación de la función que opera sobre diccionarios +get!+ y úsela para escribir una versión más concisa de +invertirdic+.
-(((get!)))((("function", "Base", "get!", see="get!")))
+(((get!)))((("función", "Base", "get!", véase "get!")))
 
 [[ex11-3]]
 ==== Ejercicio 11-4

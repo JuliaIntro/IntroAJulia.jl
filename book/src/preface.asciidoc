@@ -20,7 +20,7 @@ Julia fue lanzado originalmente en 2012 por Alan Edelman, Stefan Karpinski, Jeff
 La elección de un lenguaje de programación es siempre subjetiva. Para mí, las siguientes características de Julia son decisivas:
 
 - Julia está desarrollado como un lenguaje de programación de alto rendimiento.
-- Julia usa envío múltiple “multiple dispatch”, que le permite al programador elegir entre diferentes patrones de programación de acuerdo a la aplicación.
+- Julia usa envío múltiple (“multiple dispatch” en inglés), que le permite al programador elegir entre diferentes patrones de programación de acuerdo a la aplicación.
 - Julia es un lenguaje de tipo dinámico que se puede usar fácilmente de forma interactiva.
 - Julia tiene una sintaxis de alto nivel que es fácil de aprender.
 - Julia es un lenguaje de programación con tipos opcionales, cuyos tipos de datos (definidos por el usuario) hacen que el código sea claro y robusto.
@@ -69,7 +69,7 @@ Todo el código utilizado en este libro está disponible en un repositorio de Gi
 
 El siguiente paquete puede ser de utilidad, y se puede agregar directamente a Julia. Simplemente escriba *+pass:[add https://github.com/JuliaIntro/IntroAJulia.jl]+* en el REPL, en modo Pkg.
 
-La forma más fácil de ejecutar un código de Julia es yendo a https://juliabox.com, e iniciar una sesión de prueba gratuita. Es posible utilizar tanto las interfaces REPL como de notebooks. Si desea tner Julia instalada localmente en su computadora, puede descargar https://juliacomputing.com/products/juliapro.html[JuliaPro] de Julia Computing gratuitamente. Consiste en una versión reciente de Julia, el IDE de Juno basado en Atom y varios paquetes de Julia preinstalados. Si es más aventurero, puede descargar Julia desde https://julialang.org, instale el editor que prefiera, por ejemplo Atom o Visual Studio Code, activando los complementos para su integración de Julia. En el caso de una instalación local, también puede agregar el paquete +IJulia+ que le permite ejecutar un notebook de Jupyter en su computadora.
+La forma más fácil de ejecutar un código de Julia es yendo a https://juliabox.com, e iniciar una sesión de prueba gratuita. Es posible utilizar tanto las interfaces REPL como de notebooks. Si desea tener Julia instalada localmente en su computadora, puede descargar https://juliacomputing.com/products/juliapro.html[JuliaPro] de Julia Computing gratuitamente. Consiste en una versión reciente de Julia, el IDE de Juno basado en Atom y varios paquetes de Julia preinstalados. Si es más aventurero, puede descargar Julia desde https://julialang.org, instale el editor que prefiera, por ejemplo Atom o Visual Studio Code, activando los complementos para su integración de Julia. En el caso de una instalación local, también puede agregar el paquete +IJulia+ que le permite ejecutar un notebook de Jupyter en su computadora.
 
 === Agradecimientos
 
@@ -89,7 +89,7 @@ Si tiene una sugerencia o corrección, abra un https://github.com/JuliaIntro/Int
 
 Avísenos con qué versión del libro está trabajando, y en qué formato. Si incluye al menos parte de la oración en la que aparece el error, eso facilita la búsqueda. Los números de página y sección también son útiles, pero no es tan fácil trabajar con ellos. ¡Gracias!
 
-[small]
+
 --
 - Scott Jones señaló el cambio de nombre de +Void+ a +Nothing+ y con esto se comenzó la migración a Julia v1.0
 - Robin Deits encontró algunos errores tipográficos en el Capítulo 2.

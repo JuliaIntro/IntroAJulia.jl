@@ -32,7 +32,7 @@ Este código facilita la comparación de naipes; los palos más altos se asignan
 Estamos usando el símbolo latexmath:[\mapsto] para dejar en claro que estas asignaciones no son parte de Julia. Forman parte del diseño del programa, pero no aparecen explícitamente en el código.
 
 La definición de estructura de +Naipe+ se ve así:
-(((Naipe)))((("tipo", "definida por el programador", "Naipe", see="Naipe")))
+(((Naipe)))((("tipo", "definida por el programador", "Naipe", véase "Naipe")))
 
 [source,@julia-setup chap18]
 ----
@@ -67,7 +67,7 @@ const nombres_valor = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "
 ----
 
 Las variables +nombres_palo+ y +nombres_valor+ son variables globales. La declaración +const+ significa que la variable solo se puede asignar una vez. Esto resuelve el problema de rendimiento de las variables globales.
-(((variable global)))(((const)))((("palabra reservada", "const", see="const")))
+(((variable global)))(((const)))((("palabra reservada", "const")))
 
 Ahora se puede implementar un método +show+ apropiado:
 (((show)))
@@ -120,7 +120,7 @@ Una _prueba unitaria_ permite verificar el correcto funcionamiento de su código
 (((prueba unitaria)))
 
 Se pueden realizar pruebas unitarias simples con las macros +@test+:
-(((Test)))((("module", "Test", see="Test")))(((@test)))((("macro", "Test", "@test", see="@test"))) 
+(((Test)))((("module", "Test", véase "Test")))(((@test)))((("macro", "Test", "@test", véase "@test"))) 
 
 [source,@julia-repl-test chap18]
 ----
@@ -140,7 +140,7 @@ Test Passed
 Ahora que ya tenemos Naipes, el próximo paso es definir Mazos. Como un mazo está compuesto de naipes, naturalmente cada Mazo contendrá un arreglo de naipes como atributo.
 
 A continuación se muestra una definición para +Mazo+. El constructor crea el atributo naipes y genera la baraja estándar de cincuenta y dos naipes:
-(((Mazo)))((("tipo", "definida por el programador", "Mazo", see="Mazo")))
+(((Mazo)))((("tipo", "definida por el programador", "Mazo", véase "Mazo")))
 
 [source,@julia-setup chap18]
 ----
@@ -213,7 +213,7 @@ Un método como este, que usa otro método sin hacer mucho más, se llama _encha
 En este caso, +push!+ es un método "fino" que expresa una operación de arreglos adecuada para los mazos. Mejora la apariencia o interfaz, de la implementación.
 
 También podemos escribir un método llamado +shuffle!+ (barajar en inglés) usando la función +Random.shuffle!+:
-(((Random)))((("module", "Random", see="Random")))(((shuffle!)))((("función", "Random", "shuffle!", see="shuffle!")))
+(((Random)))((("module", "Random", véase "Random")))(((shuffle!)))((("función", "Random", "shuffle!", véase "shuffle!")))
 
 [source,@julia-setup chap18]
 ----
@@ -241,7 +241,7 @@ Por lo tanto, hace falta una forma de agrupar los _tipos concretos_ que están r
 (((tipo concreto)))(((abstract type)))(((subtipo)))
 
 Se llama al tipo abstracto +ConjuntoDeCartas+:
-(((ConjuntoDeCartas)))((("tipo", "definida por el programador", "ConjuntoDeCartas", see="ConjuntoDeCartas")))
+(((ConjuntoDeCartas)))((("tipo", "definida por el programador", "ConjuntoDeCartas", véase "ConjuntoDeCartas")))
 
 [source,@julia-eval chap18a]
 ----
@@ -262,7 +262,7 @@ abstract type ConjuntoDeCartas end
 ----
 
 Se puede crear un nuevo tipo abstracto con la palabra reservada +abstract type+. De manera opcional, se puede especificar un tipo "padre" de una estructura colocando después del nombre de esta, el símbolo +<:+ seguido del nombre de un tipo abstracto existente.
-(((abstract type)))((("palabra reservada", "abstract type", see="abstract type")))(((tipo)))
+(((abstract type)))((("palabra reservada", "abstract type")))(((tipo)))
 
 Cuando no se proporciona un _supertipo_, el supertipo por defecto es +Any+, es decir, un tipo abstracto predefinido del que todos los objetos son instancias y del que todos los tipos son _subtipos_.
 (((supertipo)))(((subtipo)))
@@ -304,7 +304,7 @@ end
 ----
 
 El operador +isa+ comprueba si un objeto es de un tipo dado:
-(((isa)))((("operador", "Base", "isa", see="isa")))
+(((isa)))((("operador", "Base", "isa", véase "isa")))
 
 [source,@julia-repl-test chap18a]
 ----
@@ -315,7 +315,7 @@ true
 ----
 
 Una mano también es un +ConjuntoDeCartas+:
-(((Mano)))((("tipo", "definida por el programador", "Mano", see="Mano")))
+(((Mano)))((("tipo", "definida por el programador", "Mano", véase "Mano")))
 
 [source,@julia-setup chap18a]
 ----
@@ -372,7 +372,7 @@ push!(mano, naipe)
 ----
 
 A continuación, se encapsula este código en una función llamada +mover!+:
-(((mover!)))((("función", "definida por el programador", "mover!", see="mover!")))
+(((mover!)))((("función", "definida por el programador", "mover!", véase "mover!")))
 
 [source,@julia-setup chap18a]
 ----
@@ -396,7 +396,7 @@ En algunos juegos, las cartas se mueven de una mano a otra, o de una mano al maz
 Hasta ahora se han visto diagramas de pila, que muestran el estado de un programa, y diagramas de objetos, que muestran los atributos de un objeto y sus valores. Estos diagramas son como una foto sacada durante la ejecución de un programa, por lo que cambian a medida que se ejecuta el programa.
 
 También son muy detallados; en algunos casos demasiado detallados. Un _diagrama de tipos_ es una representación más abstracta de la estructura de un programa. En vez de mostrar objetos individuales, muestra los tipos y las relaciones entre ellos.
-(((diagrama de tipos)))((("diagrama", "tipos", see="diagrama de tipos")))
+(((diagrama de tipos)))((("diagrama", "tipos", véase "diagrama de tipos")))
 
 Hay varias formas de relación entre tipos:
 
@@ -441,7 +441,7 @@ end
 Si usted no está seguro del flujo de ejecución de un programa, la solución más simple es agregar sentencias de impresión al inicio de sus métodos más relevantes. Si +shuffle!+ imprimiera un mensaje como +Ejecutando shuffle! en Mazo+ durante la ejecución del programa, sería posible rastrear el flujo de ejecución.
 
 Una mejor alternativa es la macro +@which+:
-(((InteractiveUtils)))((("module", "InteractiveUtils", see="InteractiveUtils")))(((@which)))((("macro", "InteractiveUtils", "@which", see="@which")))
+(((InteractiveUtils)))((("module", "InteractiveUtils", véase "InteractiveUtils")))(((@which)))((("macro", "InteractiveUtils", "@which", véase "@which")))
 
 [source,jlcon]
 ----
@@ -457,7 +457,7 @@ Si viola esta regla, llamada "principio de sustitución de Liskov", su código c
 (((principio de sustitución de Liskov)))
 
 La función +supertype+ permite encontrar el supertipo directo de un tipo.
-(((supertype)))((("función", "Base", "supertype", see="supertype")))
+(((supertype)))((("función", "Base", "supertype", véase "supertype")))
 
 [source,@julia-repl-test chap18a]
 ----
@@ -485,7 +485,7 @@ prefijos = []
 Debido a que estas variables son globales, solo se puede ejecutar un análisis a la vez. Si se leen dos textos, sus prefijos y sufijos se agregarían a las mismas estructuras de datos (lo que generaría un texto interesante).
 
 Para ejecutar múltiples análisis y mantenerlos separados, se puede encapsular el estado de cada análisis en un objeto. Así es como se vería:
-(((Markov)))((("tipo", "definida por el programador", "Markov", see="Markov")))
+(((Markov)))((("tipo", "definida por el programador", "Markov", véase "Markov")))
 
 [source,@julia-setup chap18b]
 ----
@@ -501,7 +501,7 @@ end
 ----
 
 A continuación, se transforman las funciones en métodos. Por ejemplo, para +procesarpalabra+:
-(((procesarpalabra)))((("función", "definida por el programador", "procesarpalabra", see="procesarpalabra")))
+(((procesarpalabra)))((("función", "definida por el programador", "procesarpalabra", véase "procesarpalabra")))
 
 [source,@julia-setup chap18b]
 ----
@@ -631,7 +631,7 @@ agregarping(pong, ping)
 ==== Ejercicio 18-5
 
 Escriba un método llamado +repartir!+ que tome tres parámetros: un +Mazo+, el número de manos y el número de naipes por mano. Debería crear el número apropiado de objetos +Mano+, repartir el número apropiado de naipes por mano y devolver un arreglo de +Manos+.
-(((repartir!)))((("función", "definida por el programador", "repartir!", see="repartir!")))
+(((repartir!)))((("función", "definida por el programador", "repartir!", véase "repartir!")))
 
 [[ex18-3]]
 ==== Ejercicio 18-6
@@ -665,10 +665,10 @@ Cinco cartas consecutivas del mismo palo.
 El objetivo de este ejercicio es estimar la probabilidad de tener cada una de estas manos.
 
 . Agregue métodos llamados +tienepareja+, +tienedoblepareja+, etc. que devuelvan +true+ o +false+ según si la mano cumple o no con los criterios relevantes. Su código debería funcionar correctamente para manos que contengan cualquier número de naipes (aunque 5 y 7 son los tamaños más comunes).
-(((tienepareja)))((("función", "definida por el programador", "tienepareja", see="tienepareja")))(((tienedoblepareja)))((("función", "definida por el programador", "tienedoblepareja", see="tienedoblepareja")))
+(((tienepareja)))((("función", "definida por el programador", "tienepareja", véase "tienepareja")))(((tienedoblepareja)))((("función", "definida por el programador", "tienedoblepareja", véase "tienedoblepareja")))
 
 . Escriba un método llamado +clasificar+ que descubra la clasificación de mayor valor para una mano, y defina el atributo +etiqueta+ con esta clasificación. Por ejemplo, una mano de 7 cartas que contiene un color y una pareja, debe etiquetarse como "color".
-(((clasificar)))((("función", "definida por el programador", "clasificar", see="clasificar")))
+(((clasificar)))((("función", "definida por el programador", "clasificar", véase "clasificar")))
 
 . Cuando esté convencido de que sus métodos de clasificación están funcionando correctamente, estime las probabilidades de las distintas manos. Escriba una función que baraje un mazo de naipes, la divida en diferentes manos, clasifique las manos y cuente la cantidad de veces que aparecen varias clasificaciones.
 

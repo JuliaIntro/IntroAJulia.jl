@@ -1,7 +1,7 @@
 [[chap07]]
 == Iteración
 
-Este capítulo se centra en la iteración, que es la capacidad de ejecutar repetidamente un bloque de sentencias. Se han visto dos tipos de iteración: usando recursión en <<recursion>> y usando ciclos +for+, en <<simple_repetition>>. En este capítulo veremos otro tipo más: usando sentencias +while+. Primeramente, se introducirán algunos términos sobre asignación de variables.
+Este capítulo se centra en la iteración, que es la capacidad de ejecutar repetidamente un bloque de sentencias. Se han visto dos tipos de iteración: usando recursión en <<recursión>> y usando ciclos +for+, en <<simple_repetition>>. En este capítulo veremos otro tipo más: usando sentencias +while+. Primeramente, se introducirán algunos términos sobre asignación de variables.
 (((iteración)))(((recursión)))(((sentencia for)))
 
 === Asignación múltiple
@@ -99,7 +99,7 @@ Ya se han visto dos funciones, +cuentaregresiva+ y +printn+, que iteran usando r
 (((recursión)))(((sentencia for)))
 
 Otra característica es la _sentencia_ +while+. Aquí hay una versión de +cuentaregresiva+ que muestra el uso de la sentencia +while+:
-(((while)))((("palabra reservada", "while", see="while")))(((sentencia while)))((("sentencia", "while", see="sentencia while")))
+(((while)))((("palabra reservada", "while")))(((sentencia while)))
 
 [source,@julia-setup]
 ----
@@ -133,7 +133,7 @@ El cuerpo del bucle debería cambiar el valor de una o más variables de manera 
 En el caso de +cuentaregresiva+, podemos probar que el bucle termina: si +n+ es cero o negativo, el ciclo termina. En otro caso, el valor de +n+ se hace más pequeño cada vez que pasa por el bucle, así en cierto momento se llega a 0. 
 
 En otros casos no es tan fácil decirlo. Por ejemplo:
-(((seq)))((("función", "definida por el programador", "seq", see="seq")))
+(((seq)))((("función", "definida por el programador", "seq", véase "seq")))
 
 [source,@julia-setup]
 ----
@@ -160,12 +160,12 @@ Lo díficil es preguntarse si se puede probar que este programa termina para tod
 
 ==== Ejercicio 7-1
 
-Reescribe la función +printn+ de <<recursion>> utilizando iteración en vez de recursión.
+Reescribe la función +printn+ de <<recursión>> utilizando iteración en vez de recursión.
 
 === +break+
 
 A veces no se sabe que un ciclo debe terminar hasta que se llega al cuerpo. En ese caso, se puede usar la _sentencia break_ para salir del bucle.
-(((break)))((("palabra reservada", "break", see="break")))(((sentencia break)))((("sentencia", "break", see="sentencia break")))
+(((break)))((("palabra reservada", "break")))(((sentencia break)))
 
 Por ejemplo, suponga que se desea recibir entradas del usuario hasta que este escriba "listo". Podríamos escribir:
 (((readline)))
@@ -200,7 +200,7 @@ Esta forma de escribir bucles while es común porque permite verificar la condic
 === +continue+
 
 La sentencia break permite terminar el bucle. Cuando aparece una _sentencia continue_ dentro de un bucle, se regresa al comienzo del bucle, ignorando todos las sentencias que quedan en la iteración actual del bucle e inicia la siguiente iteración. Por ejemplo:
-(((continue)))((("palabra reservada", "continue", see="continue")))(((sentencia continue)))((("sentencia", "continue", see="sentencia continue")))
+(((continue)))((("palabra reservada", "continue")))(((sentencia continue)))
 
 [source,@julia]
 ----
@@ -392,10 +392,10 @@ Proceso general para resolver una categoría de problemas.
 ==== Ejercicio 7-2
 
 Copie el bucle de <<square_roots>> e insértelo en una función llamada +miraiz+ que tome +a+ como parámetro, elija un valor razonable de +x+ y devuelva una estimación de la raíz cuadrada de +a+.
-(((miraiz)))((("función", "definida por el programador", "miraiz", see="miraiz")))
+(((miraiz)))((("función", "definida por el programador", "miraiz", véase "miraiz")))
 
 Para probarla, escriba una función llamada +probarraiz+ que imprima una tabla como esta:
-(((probarraiz)))((("function", "definida por el programador", "probarraiz", see="probarraiz")))
+(((probarraiz)))((("función", "definida por el programador", "probarraiz", véase "probarraiz")))
 
 [source,@julia-eval]
 ----
@@ -412,7 +412,7 @@ La primera columna es un número, +a+; la segunda columna es la raíz cuadrada d
 ==== Exercise 7-3
 
 La función integrada +Meta.parse+ toma una cadena y la transforma en una expresión. Esta expresión se puede evaluar en Julia con la función +Core.eval+. Por ejemplo:
-(((parse)))((("función", "Meta", "parse", see="parse")))(((eval)))((("función", "Core", "eval", see="eval")))
+(((parse)))((("función", "Meta", "parse", véase "parse")))(((eval)))((("función", "Core", "eval", véase "eval")))
 
 [source,@julia-eval chap07]
 ----
@@ -432,7 +432,7 @@ julia> eval(expr)
 ----
 
 Escriba una función llamada +evalbucle+ que iterativamente solicite una entrada al usuario, tome la entrada resultante, la evalúe usando +eval+ y pase posteriormente a imprimir el resultado. Debe continuar hasta que el usuario ingrese +listo+ y luego devolver el valor de la última expresión que evaluó.
-(((evalbucle)))((("función", "definida por el programador", "evalbucle", see="evalbucle")))
+(((evalbucle)))((("función", "definida por el programador", "evalbucle", véase "evalbucle")))
 
 [[ex07-3]]
 ==== Exercise 7-4
@@ -447,4 +447,4 @@ El matemático Srinivasa Ramanujan encontró una serie infinita que puede usarse
 ++++
 
 Escriba una función llamada +estimarpi+ que utilice esta fórmula para calcular y devolver una estimación de π. Debe usar un ciclo while para calcular los términos de la suma hasta que el último término sea menor que +1e-15+ (que es la notación de Julia para latexmath:[10^{-15}]). Puede verificar el resultado comparándolo con +π+.
-(((estimarpi)))((("función", "definida por el programador", "estimarpi", see="estimarpi")))
+(((estimarpi)))((("función", "definida por el programador", "estimarpi", véase "estimarpi")))

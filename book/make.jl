@@ -54,18 +54,21 @@ if "build" in ARGS
   println("building files...")
   for chap in chaps
     expandcodeblocks(root, joinpath("src", chap), joinpath("build", chap))
+    fname = joinpath("build", chap)
+    run(`sed -i.bak 's/\$\$//g' $fname`)
   end
   println("   ...done building files")
 end
 if "pdf" in ARGS
   println("building PDF...")
-  run(`asciidoctor-pdf -d book -b pdf -r asciidoctor-mathematical -a mathematical-format=svg  -a compat-mode -a stem=latexmath -a sectnums -a sectnumlevels=1 -a source-highlighter=pygmentize -a toc -a toc=left -a toclevels=2 build/book.asciidoc`)
-  #  run(`asciidoctor-pdf -d book -b pdf  -a pdf-style=./custom-theme.yml -a pdf-fontsdir=./fonts -r asciidoctor-mathematical -a mathematical-format=svg -a stem=latexmath -a sectnums -a sectnumlevels=1 -a source-highlighter=pygmentize -a toc -a toc=left -a toclevels=2 build/book.asciidoc`)
+  # run(`asciidoctor-pdf -d book -b pdf -r asciidoctor-mathematical -a mathematical-format=svg  -a compat-mode -a stem=latexmath -a sectnums -a sectnumlevels=1 -a source-highlighter=pygmentize -a toc -a toc=left -a toclevels=2 build/book.asciidoc`)
+  # run(`asciidoctor-pdf --verbose -d book -b pdf  -a pdf-style=./custom-theme-cp.yml -a pdf-fontsdir=./fonts -r asciidoctor-mathematical -a mathematical-format=svg -a stem=latexmath -a sectnums -a sectnumlevels=1 -a source-highlighter=pygmentize -a toc -a toc=left -a toclevels=1 build/book.asciidoc`)
+  run(`asciidoctor-pdf --verbose -d book -b pdf -a pdf-style=./custom-theme.yml -r asciidoctor-mathematical -a mathematical-format=svg -a stem=latexmath -a sectnums -a sectnumlevels=1 -a source-highlighter=pygmentize -a toc -a toc=left -a toclevels=1 build/book.asciidoc`)
 
   println("   ...PDF done.")
 elseif "html" in ARGS
   println("making HTML...")
-  run(`asciidoctor -d book -b html5 -a compat-mode -a stem=latexmath -a sectnums -a sectnumlevels=1 -a source-highlighter=pygmentize -a toc -a toc=left -a toclevels=2 build/book.asciidoc`)
+  run(`asciidoctor --verbose -d book -b html5 -a compat-mode -a stem=latexmath -a sectnums -a sectnumlevels=1 -a source-highlighter=pygmentize -a toc -a toc=left -a toclevels=2 build/book.asciidoc`)
   book = read("build/book.html", String)
   book = replace(book, "\\(\\("=> "\\(")
   book = replace(book, "\\)\\)"=> "\\)")

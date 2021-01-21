@@ -22,7 +22,7 @@ Es común decir que una función "toma" un argumento y "devuelve" un resultado. 
 (((valor de retorno)))
 
 Julia tiene funciones integradas que convierten valores de un tipo a otro. La función +parse+ toma una cadena y, si es posible, la convierte en cualquier tipo de número, en caso contrario arroja error:
-(((conversión de tipo)))((("función", "Base", "parse", see="parse")))(((ArgumentError)))((("error", "Core", "ArgumentError", see="ArgumentError")))
+(((conversión de tipo)))((("función", "Base", "parse", véase "parse")))(((ArgumentError)))((("error", "Core", "ArgumentError", véase "ArgumentError")))
 
 [source,@julia-repl-test]
 ----
@@ -36,7 +36,7 @@ ERROR: ArgumentError: invalid base 10 digit 'H' in "Hola"
 (ERROR: ArgumentError: base inválida de 10 dígitos 'H' en "Hola")
 
 +trunc+ puede convertir valores de punto flotante a enteros, pero no redondea; sino que trunca:
-(((trunc)))((("función", "Base", "trunc", see="trunc")))
+(((trunc)))((("función", "Base", "trunc", véase "trunc")))
 
 [source,@julia-repl-test]
 ----
@@ -47,7 +47,7 @@ julia> trunc(Int64, -2.3)
 ----
 
 +float+ convierte números enteros en números de punto flotante:
-(((float)))((("función", "Base", "float", see="float")))
+(((float)))((("función", "Base", "float", véase "float")))
 
 [source,@julia-repl-test]
 ----
@@ -56,7 +56,7 @@ julia> float(32)
 ----
 
 Finalmente, +string+ convierte el argumento en una cadena:
-(((string)))((("función", "Base", "string", see="string")))
+(((string)))((("función", "Base", "string", véase "string")))
 
 [source,@julia-repl-test]
 ----
@@ -70,7 +70,7 @@ julia> string(3.14159)
 === Funciones matemáticas
 
 En Julia, la mayoría de las funciones matemáticas conocidas están disponibles directamente:
-(((función matemática)))(((log10)))((("función", "Base", "log10", see="log10")))
+(((función matemática)))(((log10)))((("función", "Base", "log10", véase "log10")))
 
 [source,julia]
 ----
@@ -79,7 +79,7 @@ decibelios = 10*log10(proporción)
 ----
 
 Este primer ejemplo utiliza la función +log10+ para calcular la proporción entre señal y ruido en decibelios (suponiendo que +potencia_de_señal+ y +potencia_de_ruido+ están definidos). También existe la función +log+, que calcula el logaritmo natural.
-(((log)))((("función", "Base", "log",see="log")))((("función logaritmo", see="log")))
+(((log)))((("función", "Base", "log",véase "log")))((("función logaritmo", véase "log")))
 
 [source,julia]
 ----
@@ -88,7 +88,7 @@ altura = sin(radianes)
 ----
 
 Este segundo ejemplo encuentra la razón seno (en inglés sine) de la variable +radianes+. El nombre de esta variable es una pista de que la función +sin+ y las otras funciones trigonométricas (+cos+, +tan+, etc.) toman argumentos en radianes. Para convertir grados a radianes, se debe dividir por 180 y multiplicar por latexmath:[\pi]:
-(((sin)))((("función", "Base", "sin", see="sin")))(((función trigonométrica)))
+(((sin)))((("función", "Base", "sin", véase "sin")))(((función trigonométrica)))
 
 [source,@julia-repl-test]
 ----
@@ -101,10 +101,10 @@ julia> sin(radianes)
 ----
 
 El valor de la variable +π+ es una aproximación de punto flotante de latexmath:[\pi ], con una precisión de aproximadamente 16 dígitos.
-(((Pi)))
+(((pi)))
 
 Si sabe de trigonometría, puede verificar el resultado anterior comparándolo con la raíz cuadrada de dos dividido por dos:
-(((sqrt)))((("función", "Base", "sqrt", see="sqrt")))((("function raíz", see = "sqrt")))
+(((sqrt)))((("función", "Base", "sqrt", véase "sqrt")))((("función raíz", véase "sqrt")))
 
 [source,@julia-repl-test]
 ----
@@ -125,8 +125,8 @@ Una de las características más útiles de los lenguajes de programación es su
 x = sin(grados/360*2*π)
 ----
 
-E incluso llamadas a función:
-(((exp)))((("función", "Base", "exp", see="exp"))) ((("función exponencial", see="exp")))
+E incluso llamadas a funciones:
+(((exp)))((("función", "Base", "exp", véase "exp"))) ((("función exponencial", véase "exp")))
 
 [source, julia]
 ----
@@ -153,7 +153,7 @@ ERROR: syntax: "60" is not a valid function argument name
 === Agregar nuevas funciones
 
 Hasta ahora, solo hemos usado las funciones integradas en Julia, pero también es posible agregar nuevas funciones. Una _definición de función_ especifica el nombre de una nueva función y la secuencia de sentencias que se ejecutan cuando se llama a la función. A continuación se muestra un ejemplo:
-(((función)))(((definición de función)))(((función definida por el programador)))(((imprimirletras)))((("función", "definido por el programador", "imprimirletras", see="imprimirletras")))
+(((function)))(((función)))(((definición de función)))(((función definida por el programador)))(((imprimirletras)))((("función", "definido por el programador", "imprimirletras", véase "imprimirletras")))
 
 [source,@julia-setup chap03]
 ----
@@ -163,14 +163,14 @@ function imprimirletras()
 end
 ----
 
-+function+ es una palabra reservada que indica que esta es una definición de función. El nombre de la función es +imprimirletras+. Las reglas para los nombres de funciones son las mismas que para los nombres de variables: pueden contener casi todos los caracteres Unicode (consulte <<caracteres>>), pero el primer carácter no puede ser un número. No puede usar una palabra reservada como nombre de una función, y debe evitar tener una variable y una función con el mismo nombre.
-((("palabra reservada", "función", see="función")))(((argumento)))(((carácter Unicode)))
++function+ es una palabra reservada que indica que esta es una definición de función. El nombre de la función es `imprimirletras`. Las reglas para los nombres de funciones son las mismas que para los nombres de variables: pueden contener casi todos los caracteres Unicode (consulte <<caracteres>>), pero el primer carácter no puede ser un número. No puede usar una palabra reservada como nombre de una función, y debe evitar tener una variable y una función con el mismo nombre.
+((("palabra reservada", "function")))(((argumento)))(((carácter Unicode)))
 
 Los paréntesis vacíos después del nombre indican que esta función no tiene argumentos.
 (((paréntesis, vacíos)))
 
 La primera línea de una definición de función se llama _encabezado_; el resto se llama _cuerpo_. El cuerpo termina con la palabra reservada +end+ y puede contener todas las sentencias que desee. Para facilitar la lectura, el cuerpo de la función debería tener sangría.
-(((encabezado)))(((cuerpo)))(((end)))((("palabra reservada", "final", see="final")))(((sangría)))
+(((encabezado)))(((cuerpo)))(((end)))((("palabra reservada", "final")))(((sangría)))
 
 Las comillas deben ser "comillas rectas" (""), generalmente ubicadas junto a la tecla Enter en el teclado. Las "comillas inglesas" (“”)no son válidas en Julia.
 (((comillas)))
@@ -196,7 +196,7 @@ mientras el lobo no está.
 ----
 
 Una vez definida una función, puede usarla dentro de otra función. Por ejemplo, para repetir el estribillo anterior, se podría escribir una función llamada +repetirletras+:
-(((repetirletras)))((("función", "definida por el programador", "repetirletras", see="repetirletras")))
+(((repetirletras)))((("función", "definida por el programador", "repetirletras", véase "repetirletras")))
 
 [source,@julia-setup chap03]
 ----
@@ -272,7 +272,7 @@ Algunas de las funciones que se han visto requieren argumentos. Por ejemplo, la 
 (((parámetro))) (((argumento))) (((analizar))) (((sin)))
 
 Dentro de la función, los argumentos se asignan a variables llamadas _parámetros_. A continuación se muestra un ejemplo de definición de función que toma un argumento:
-(((imprimirdosveces)))((("función", "definida por el programador", "imprimirdosveces", see = "imprimirdosveces")))
+(((imprimirdosveces)))((("función", "definida por el programador", "imprimirdosveces",  véase "imprimirdosveces")))
 
 [source, @julia-setup chap03]
 ----
@@ -313,7 +313,7 @@ julia> imprimirdosveces(cos(π))
 ----
 
 El argumento se evalúa antes de llamar a la función, por lo que en los ejemplos las expresiones +"Correo no deseado "^4+ y +cos(π)+ solo se evalúan una vez.
-(((argumento)))(((cos)))((("función", "Base", "cos", see="cos")))
+(((argumento)))(((cos)))((("función", "Base", "cos", véase "cos")))
 
 También puede usar una variable como argumento:
 
@@ -332,7 +332,7 @@ El nombre de la variable que pasamos como argumento (+michael+) no tiene nada qu
 === Las variables y los parámetros son locales
 
 Cuando se crea una variable dentro de una función, esta es _local_, es decir, solo existe dentro de la función. Por ejemplo:
-(((variable local))) (((variable, local))) (((concatenar_dos))) ((("función", "definida por el programador", "concatenar_dos", see = "concatenar_dos")))
+(((variable local))) (((variable, local))) (((concatenar_dos))) ((("función", "definida por el programador", "concatenar_dos",  véase "concatenar_dos")))
 
 [source, @julia-setup chap03]
 ----
@@ -349,15 +349,15 @@ Esta función toma dos argumentos, los concatena e imprime el resultado dos vece
 ----
 julia> linea1 = "Hola hola"
 "Hola hola"
-julia> linea2 = "chao chao."
-"chao chao".
+julia> linea2 = "adiós adiós."
+"adiós adiós".
 julia> concatenar_dos(línea1, línea2)
-Hola hola chao chao.
-Hola hola chao chao.
+Hola hola adiós adiós.
+Hola hola adiós adiós.
 ----
 
 Cuando +concatenar_dos+ termina, la variable +concat+ es destruida. Si intentamos imprimirla, obtendremos un error:
-(((error en tiempo de ejecución))) (((UndefVarError))) ((("error", "Core", "UndefVarError", see = "UndefVarError")))
+(((error en tiempo de ejecución))) (((UndefVarError))) ((("error", "Core", "UndefVarError",  véase "UndefVarError")))
 
 [source, @ julia-repl-test chap03]
 ----
@@ -373,7 +373,7 @@ Los parámetros también son locales. Por ejemplo, fuera de la función +imprimi
 === Diagramas de pila
 
 Para seguir la pista de qué variables se usan en qué lugares es útil dibujar un _diagrama de pila_. Al igual que los diagramas de estado, los diagramas de pila muestran el valor de cada variable, pero también muestran la función a la que pertenece cada una.
-(((diagrama de pila))) ((("diagrama", "pila", see = "diagrama de pila")))
+(((diagrama de pila))) ((("diagrama", "pila",  véase "diagrama de pila")))
 
 Cada función se representa por un _marco_. Un marco es un recuadro con el nombre de una función a un costado, y los parámetros y variables de la función dentro. El diagrama de pila para el ejemplo anterior se muestra en <<fig03-1>>.
 (((marco)))
@@ -430,9 +430,9 @@ julia> sqrt(5)
 Pero en un script, si se llama a una función productiva, ¡el valor de retorno se pierde para siempre!
 (((modo script)))
 
-[fuente, @ julia-run]
+[source,@julia-run]
 ----
-sqrt (5)
+sqrt(5)
 ----
 
 Este script calcula la raíz cuadrada de 5, pero como no almacena ni muestra el resultado, no es muy útil.
@@ -450,10 +450,10 @@ nothing
 ----
 
 Para imprimir el valor +nothing+, debe usar la función +show+ que es como la función +print+ pero permite el valor +nothing+.
-(((show))) ((("function", "Base", "show", see = "show")))
+(((show))) ((("función", "Base", "show",  véase "show")))
 
 El valor +nothing+ no es lo mismo que la cadena +"nothing"+. Es un valor especial que tiene su propio tipo:
-(((nothing))) ((("type", "Base", "nothing", see = "nothing")))
+(((nothing))) ((("tipo", "Base", "nothing",  véase "nothing")))
 
 [source, @julia-repl-test]
 ----
@@ -488,7 +488,7 @@ La depuración puede ser vista como un trabajo de detective. El programador se e
 
 La depuración también es como una ciencia experimental. Una vez que se tiene una idea de lo que está mal, se modifica el programa y se intenta nuevamente. Si la hipótesis era correcta, se puede predecir el resultado de la modificación y así estar un paso más cerca de un programa totalmente funcional. Si la hipótesis era incorrecta, se tiene que encontrar una nueva. Como Sherlock Holmes señaló:
 
-[cita, A. Conan Doyle, El signo de los cuatro]
+[quote, A. Conan Doyle, El signo de los cuatro]
 ____
 Cuando todo aquello que es imposible ha sido eliminado, lo que quede, por muy improbable que parezca, es la verdad.
 ____
@@ -586,7 +586,7 @@ Estos ejercicios deben realizarse utilizando sólo lo que se ha tratado hasta ah
 ==== Ejercicio 3-2
 
 Escriba una función llamada +justificar_a_la_derecha+ que tome una cadena +s+ como parámetro y que imprima la cadena con suficientes espacios en blanco para que la última letra de la cadena se encuentre en la columna 70 de la pantalla.
-(((justificar_a_la_derecha))) ((("función", "definida por el programador", "justificar_a_la_derecha", see = "justificar_a_la_derecha")))
+(((justificar_a_la_derecha))) ((("función", "definida por el programador", "justificar_a_la_derecha",  véase "justificar_a_la_derecha")))
 
 [source, @julia-eval chap03-ex]
 ----
@@ -601,14 +601,14 @@ justificar_a_la_derecha("Celia")
 [TIP]
 ====
 Use concatenación de cadenas y repetición. Además, Julia tiene integrada una función llamada +length+ que devuelve la longitud de una cadena, por lo que el valor de +length("Celia")+ es 5.
-(((length))) ((("función", "Base", "length", see = "length")))
+(((length))) ((("función", "Base", "length",  véase "length")))
 ====
 
 [[ex03-2]]
 ==== Ejercicio 3-3
 
 Un objeto de función es un valor que se puede asignar a una variable o ser pasado como argumento. Por ejemplo, +dosveces+ es una función que toma un objeto de función como argumento y lo llama dos veces:
-(((objeto de función))) (((dosveces))) ((("función", "definida por el programador", "dosveces", see = "dosveces")))
+(((objeto de función))) (((dosveces))) ((("función", "definida por el programador", "dosveces",  véase "dosveces")))
 
 [source, julia]
 ----
@@ -619,7 +619,7 @@ end
 ----
 
 A continuación se muestra un ejemplo que usa +dosveces+ para llamar a una función llamada +imprimirgato+ dos veces.
-(((imprimirpalabra))) ((("función", "definida por el programador", "imprimirpalabra", see = "imprimirgato")))
+(((imprimirpalabra))) ((("función", "definida por el programador", "imprimirpalabra",  véase "imprimirgato")))
 
 [source, julia]
 ----
@@ -639,7 +639,7 @@ dosveces(imprimirpalabra)
 . Use la versión modificada de +dosveces+ para llamar a +imprimirdosveces+ dos veces, pasando +"palabra"+ como argumento.
 
 . Defina una nueva función llamada +cuatroveces+ que tome un objeto de función y un valor, y que llame a la función cuatro veces, pasando el valor como parámetro. Debe haber solo dos sentencias en el cuerpo de esta función, no cuatro.
-(((cuatroveces))) ((("función", "definida por el programador", "cuatroveces", see = "cuatroveces")))
+(((cuatroveces))) ((("función", "definida por el programador", "cuatroveces",  véase "cuatroveces")))
 
 [[ex03-3]]
 ==== Ejercicio 3-4
@@ -686,4 +686,4 @@ println("-")
 
 El resultado de estas sentencias es +pass:["+ -"]+ en la misma línea. El resultado de una siguiente sentencia de impresión comenzaría en la siguiente línea.
 ====
-(((println))) (((print))) ((("función", "Base", "print", see = "print")))
+(((println))) (((print))) ((("función", "Base", "print",  véase "print")))

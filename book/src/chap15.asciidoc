@@ -6,7 +6,7 @@ A esta altura, ya debe saber cómo usar funciones para tener un código más org
 === Tipos Compuestos
 
 Se han utilizado muchos tipos integrados en Julia y ahora se va a definir un nuevo tipo. A modo de ejemplo, se crea un tipo llamado +Punto+ que representa un punto en un espacio bidimensional.
-(((tipo)))(((Punto)))((("tipo", "definida por el programador", "Punto", see="Punto")))
+(((tipo)))(((Punto)))((("tipo", "definida por el programador", "Punto", véase "Punto")))
 
 En notación matemática, los puntos suelen escribirse entre paréntesis con una coma que separa las coordenadas. Por ejemplo, latexmath:[\left(0,0\right)] representa el origen y latexmath:[\left(x,y\right)] representa el punto localizado latexmath:[x] unidades a la derecha y latexmath:[y] unidades hacia arriba del origen.
 
@@ -21,7 +21,7 @@ Hay varias formas en que se podrían representar puntos del plano cartesiano en 
 Crear un nuevo tipo exige un poco más de esfuerzo que las otras dos opciones pero tiene algunas ventajas, como pronto se verá.
 
 Un _tipo compuesto_ definido por el programador también se denomina _estructura_ (struct en inglés). La definición de +estructura+ de un punto se ve así:
-(((tipo compuesto)))(((struct)))((("palabra reservada", "struct", see="struct")))(((end)))
+(((tipo compuesto)))(((struct)))((("palabra reservada", "struct")))(((end)))
 
 [source,@julia-setup chap15]
 ----
@@ -32,7 +32,7 @@ end
 ----
 
 El encabezado indica que la nueva estructura se llama +Punto+. El cuerpo define los _atributos_ o _campos_ de la estructura. La estructura de +Punto+ tiene dos campos: +x+ e +y+.
-(((atributo)))((("campo", see="atributo")))
+(((atributo)))((("campo", véase "atributo")))
 
 Una estructura es como una fábrica que crea objetos. Para crear un punto, se debe llamar a +Punto+ como si fuera una función que tiene como argumentos los valores de los campos. Cuando +Punto+ se usa como una función, se llama _constructor_.
 (((constructor)))
@@ -54,7 +54,7 @@ Cuando se imprime una instancia Julia dice a qué tipo pertenece y cuáles son l
 Cada objeto es una instancia de algún tipo, por lo que "objeto" e "instancia" son intercambiables. No obstante, en este capítulo se utiliza "instancia" para indicar que se está hablando de un tipo definido por el programador.
 
 Un diagrama de estado que muestra un objeto y sus atributos se denomina _diagrama de objeto_ (ver <<fig15-1>>).
-(((diagrama de objeto)))((("diagrama", "objeto", see="diagrama de objeto")))
+(((diagrama de objeto)))((("diagrama", "objeto", véase "diagrama de objeto")))
 
 [[fig15-1]]
 .Diagrama de objeto
@@ -64,7 +64,7 @@ image::images/fig151.svg[]
 === Las Estructuras son Inmutables
 
 Puede obtener los valores de los campos utilizando la notación +.+:
-(((.)))((("notación de punto", see=".")))
+(((.)))((("notación de punto", véase ".")))
 
 [source,@julia-repl-test chap15]
 ----
@@ -105,7 +105,7 @@ Esto puede parecer extraño al principio pero tiene varias ventajas:
 === Estructuras Mutables
 
 De ser necesario, se pueden declarar tipos compuestos mutables con la palabra reservada +mutable struct+. A continuación se muestra la definición de un punto mutable:
-(((tipo compuesto mutable)))(((mutable struct)))((("palabra reservada", "mutable struct", see="mutable struct")))(((MPunto)))((("tipo", "definida por el programador", "MPunto", see="MPunto")))
+(((tipo compuesto mutable)))(((mutable struct)))((("palabra reservada", "mutable struct")))(((MPunto)))((("tipo", "definida por el programador", "MPunto", véase "MPunto")))
 
 [source,@julia-setup chap15]
 ----
@@ -140,7 +140,7 @@ Hay al menos dos posibilidades:
 * Puede especificar dos esquinas opuestas.
 
 Es difícil decir que una opción es mejor que la otra, por lo que implementaremos la primera, a modo de ejemplo.
-(((Rectangulo)))((("tipo", "definida por el programador", "Rectangulo", see="Rectangulo")))
+(((Rectangulo)))((("tipo", "definida por el programador", "Rectangulo", véase "Rectangulo")))
 
 [source,@julia-setup chap15]
 ----
@@ -182,7 +182,7 @@ image::images/fig152.svg[]
 === Instancias como Argumentos
 
 Podemos pasar una instancia como argumento de la manera habitual. Por ejemplo:
-(((imprimirpunto)))((("función", "definida por el programador", "imprimirpunto", see="imprimirpunto")))
+(((imprimirpunto)))((("función", "definida por el programador", "imprimirpunto", véase "imprimirpunto")))
 
 [source,@julia-setup chap15]
 ----
@@ -202,10 +202,10 @@ julia> imprimirpunto(blanco)
 ==== Ejercicio 15-1
 
 Escriba una función llamada +distanciaentrepuntos+ que tome dos puntos como argumentos y devuelva la distancia entre ellos.
-(((distanciaentrepuntos)))((("función", "definida por el programador", "distanciaentrepuntos", see="distanciaentrepuntos")))
+(((distanciaentrepuntos)))((("función", "definida por el programador", "distanciaentrepuntos", véase "distanciaentrepuntos")))
 
 Si un objeto de estructura mutable se pasa a una función como argumento, la función puede modificar los campos del objeto. Por ejemplo, +moverpunto!+ toma un objeto mutable +Punto+ y dos números, +dx+ y +dy+, los cuales suma a los atributos +x+ e +y+ de +Punto+, respectivamente:
-(((moverpunto!)))((("función", "definida por el programador", "moverpunto!", see="moverpunto!")))
+(((moverpunto!)))((("función", "definida por el programador", "moverpunto!", véase "moverpunto!")))
 
 [source,@julia-setup chap15]
 ----
@@ -275,7 +275,7 @@ ERROR: setfield! immutable struct of type Rectangulo cannot be changed
 === Instancias como Valores de Retorno
 
 Las funciones pueden devolver instancias. Por ejemplo, +encontrarcentro+ toma un +Rectangulo+ como argumento y devuelve un +Punto+ que contiene las coordenadas del centro del rectángulo:
-(((encontrarcentro)))((("función", "definida por el programador", "encontrarcentro", see="encontrarcentro")))
+(((encontrarcentro)))((("función", "definida por el programador", "encontrarcentro", véase "encontrarcentro")))
 
 [source,@julia-setup chap15]
 ----
@@ -301,7 +301,7 @@ El uso de alias puede hacer que un programa sea difícil de leer ya que los camb
 (((alias)))
 
 Copiar un objeto es, muchas veces, una alternativa a la creación de un alias. Julia provee una función llamada copy que puede duplicar cualquier objeto:
-(((copiar)))(((deepcopy)))((("función", "Base", "deepcopy", see="deepcopy")))(((deep copy)))
+(((copiar)))(((deepcopy)))((("función", "Base", "deepcopy", véase "deepcopy")))
 
 [source,@julia-repl-test chap15]
 ----
@@ -346,7 +346,7 @@ Punto
 ----
 
 También puede usar +isa+ para verificar si un objeto es una instancia de un tipo específico:
-(((isa)))((("operador", "Base", "isa", see="isa")))
+(((isa)))((("operador", "Base", "isa", véase "isa")))
 
 [source,@julia-repl-test chap15]
 ----
@@ -355,7 +355,7 @@ true
 ----
 
 Si no está seguro de si un objeto tiene un atributo particular, puede usar la función +fieldnames+:
-(((deepcopy)))((("función", "Base", "deepcopy", see="deepcopy")))
+(((deepcopy)))((("función", "Base", "deepcopy", véase "deepcopy")))
 
 [source,@julia-repl-test chap15]
 ----
@@ -364,7 +364,7 @@ julia> fieldnames(Punto)
 ----
 
 o la función +isdefined+:
-(((isdefined)))((("función", "Base", "isdefined", see="isdefined")))
+(((isdefined)))((("función", "Base", "isdefined", véase "isdefined")))
 
 [source,@julia-repl-test chap15]
 ----
@@ -375,7 +375,7 @@ false
 ----
 
 El primer argumento puede ser cualquier objeto y el segundo argumento es el símbolo +:+ seguido del nombre del atributo.
-(((:)))(((Symbol)))((("tipo", "Base", "Symbol", see="Symbol")))
+(((:)))(((Symbol)))((("tipo", "Base", "Symbol", véase "Symbol")))
 
 === Glosario
 
@@ -405,7 +405,7 @@ Un objeto que se almacena como atributo de otro objeto.
 
 deep copy o copia profunda::
 Copiar el contenido de un objeto, y cualquier objeto embebido en él y, a su vez, cualquier objeto embebido en ellos, y así sucesivamente. Implementado por la función +deepcopy+.
-(((deep copy)))
+(((deepcopy)))
 
 diagrama de objeto::
 Un diagrama que muestra objetos, sus atributos y valores de atributos.
@@ -418,25 +418,25 @@ Un diagrama que muestra objetos, sus atributos y valores de atributos.
 ==== Ejercicio 15-3
 
 . Escriba una definición de un tipo llamado +Circulo+ que tenga atributos +centro+ y +radio+ y dónde +centro+ sea un objeto +Punto+ y +radio+ un número.
-(((Circulo)))((("tipo", "definida por el programador", "Circulo", see="Circulo")))
+(((Circulo)))((("tipo", "definida por el programador", "Circulo", véase "Circulo")))
 
 . Cree una instancia de un objeto +Circulo+ que represente a un círculo con centro en latexmath:[\left(150, 100\right)] y radio 75.
 
 . Escriba una función llamada +puntoencirculo+ que tome un objeto +Circulo+ y un objeto +Punto+ y devuelva +true+ si el punto se encuentra dentro o en el límite del círculo.
-(((puntoencirculo)))((("función", "definida por el programador", "puntoencirculo", see="puntoencirculo")))
+(((puntoencirculo)))((("función", "definida por el programador", "puntoencirculo", véase "puntoencirculo")))
 
 . Escriba una función llamada +rectencirculo+ que tome un objeto +Circulo+ y un objeto +Rectangulo+ y devuelva +true+ si el rectángulo se encuentra completamente dentro o en el límite del círculo.
-(((rectencirculo)))((("función", "definida por el programador", "rectencirculo", see="rectencirculo")))
+(((rectencirculo)))((("función", "definida por el programador", "rectencirculo", véase "rectencirculo")))
 
 . Escriba una función llamada +sobreposicionrectcirc+ que tome un objeto +Circulo+ y un objeto +Rectangulo+ y devuelva +true+ si alguna de las esquinas del rectángulo cae dentro del círculo. Una versión más desafiante es escribir una función que devuelva +true+ si alguna parte del rectángulo (no necesariamente una esquina) cae dentro del círculo.
-(((sobreposicionrectcirc)))((("función", "definida por el programador", "sobreposicionrectcirc", see="sobreposicionrectcirc")))
+(((sobreposicionrectcirc)))((("función", "definida por el programador", "sobreposicionrectcirc", véase "sobreposicionrectcirc")))
 
 [[ex15-2]]
 ==== Ejercicio 15-4
 
 . Escriba una función llamada +dibujarrect+ que tome como argumentos un objeto turtle y un objeto +Rectángulo+, y use turtle para dibujar el rectángulo. Consulte el Capítulo 4 para ver ejemplos que usen objetos +Turtle+.
-(((dibujarrect)))((("función", "definida por el programador", "dibujarrect", see="dibujarrect")))
+(((dibujarrect)))((("función", "definida por el programador", "dibujarrect", véase "dibujarrect")))
 
 . Escriba una función llamada +dibujarcirculo+ que tome como argumentos un objeto +Turtle+ y un objeto +Circulo+, y dibuje el círculo.
-(((dibujarcirculo)))((("función", "definida por el programador", "dibujarcirculo", see="dibujarcirculo")))
+(((dibujarcirculo)))((("función", "definida por el programador", "dibujarcirculo", véase "dibujarcirculo")))
 
